@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Crusader Kings III - aide à la décision</title>
+  <style>
+    /* Ajoutez du CSS pour styliser la page selon vos préférences */
+    /* ... */
+    .container {
+      display: flex;
+      justify-content: start;
+    }
+    .drag-container,
+    .drop-container {
+      border: 1px dashed #aaa;
+      min-height: 100px;
+      width: 15%; /* Ajuster la largeur selon vos besoins */
+      padding: 10px;
+      box-sizing: border-box;
+    }
+    .drop-container > div {
+  margin-bottom: 10px; /* Espacement entre les divs enfants */
+  width: 100%; /* Chaque div enfant prend 100% de la largeur de la div mère */
+  background-color: #f0f0f0; /* Couleur de fond pour distinguer les divs enfants */
+  padding: 5px; /* Espacement interne des divs enfants */
+}
+    /* Style pour chaque élément draggable */
+    .draggable-item {
+      margin: 5px 0;
+      padding: 8px;
+      background-color: #f9f9f9;
+      border: 1px solid #aaa;
+      cursor: move;
+    }
+    /* Style pour chaque élément déposé dans la zone dropItems */
+    .dropped-item {
+      margin: 5px 0;
+      padding: 8px;
+      background-color: #e0e0e0;
+      border: 1px solid #aaa;
+      cursor: move;
+    }
+    .dropped-item:hover {
+      background-color: #ccc;
+    }
+    .inline-title {
+    display: inline;
+    font-size: smaller; /* Ajuster la taille pour ressembler à un h2 */
+    font-weight: bold; /* Optionnel, selon le style souhaité */
+}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div id="results">
+      <h1>Militaire</h1>
+        <p id="militaireResult"></p>
+      <h1>Conseil</h1>
+        <h2>Conjoint</h2>
+          <p id="conseilConjointResult"></p>
+        <h2>Chancelier</h2>
+          <p><em>sans annuler</em><br>
+          <span id="conseilChancelierResult"></span></p>
+        <h2>Maréchal</h2>
+          <p id="conseilMarechalResult"></p>
+        <h2>Conseiller religieux</h2>
+          <p><em>sans annuler</em><br>
+          <span id="religieuxResult"></span></p>
+        <h2>Intendant</h2>
+          <p><em>sans annuler</em><br><span id="intendantResult"></span></p>
+        <h2>Maître-espion</h2>
+          <p id="espionResult"></p>
+        <h1>Courtisans</h1>
+          <h2>Postes de la cour > Médecin de la cour</h2><p id="epidResult"></p>
+          <h2>Prisonniers</h2><p id="prisonResult"></p> 
+      <h1>Intrigue</h1>
+        <h2>Complots</h2>
+          <p id="influenceResult"></p> 
+        <h2>Hameçons et secrets</h2>
+          <h3>Hameçons</h3><p id="hamecResult"></p>
+          <h3>Secrets</h3><p id="secretsResult"></p>
+    </div>
+    <div class="drag-container" ondragover="allowDrop(event)">
+      <p>Éléments disponibles :</p>
+      <div id="draggableItems">
+        <!-- Les valeurs disponibles seront affichées ici -->
+      </div>
+    </div>
+    <div class="drop-container">
+      <p>Zone d'arrivée :</p>
+      <div id="dropItems"><!-- ondrop="drop(event)" ondragover="allowDrop(event)"-->
+        <!-- Les valeurs sélectionnées seront déposées ici -->
+        <!-- <div id="dropItemsFaction" ondrop="drop(event)" ondragover="allowDrop(event)"><p>Factions</p></div> -->
+        <div id="dropItemsGuerre" ondrop="drop(event)" ondragover="allowDrop(event)"><p>Guerres ou Factions</p></div>
+        <!-- <div id="dropItemsEpidemie" ondrop="drop(event)" ondragover="allowDrop(event)"><p>Epidémies</p></div> -->
+        <div id="dropItemsIcone" ondrop="drop(event)" ondragover="allowDrop(event)"><p>Barre icônes</p></div>
+        <div id="dropItemsRouge" ondrop="drop(event)" ondragover="allowDrop(event)"><p>Situation > rouge</p></div>
+        <div id="dropItemsSit" ondrop="drop(event)" ondragover="allowDrop(event)"><p>Situation</p></div>
+        <div id="dropItemsSurvie" ondrop="drop(event)" ondragover="allowDrop(event)"><p>Succession ?</p></div>
+      </div>
+      <button onclick="calculate()">Calculer</button>
+    </div>
+    <div>
+      <form id="conseillers"><table><tbody>
+        <tr><td><input type="text"></td><td><input type="number" min="0" value="10" class="highlight-input"></td><td><input type="number" min="0" value="10" class="highlight-input"></td><td><input type="number" min="0" value="10" class="highlight-input"></td><td><input type="number" min="0" value="10" class="highlight-input"></td><td></td></tr>
+        <tr><td><input type="text"></td><td><input type="number" min="0" value="10" class="highlight-input"></td><td><input type="number" min="0" value="10" class="highlight-input"></td><td><input type="number" min="0" value="10" class="highlight-input"></td><td><input type="number" min="0" value="10" class="highlight-input"></td><td></td></tr>
+        <tr><td><input type="text"></td><td><input type="number" min="0" value="10" class="highlight-input"></td><td><input type="number" min="0" value="10" class="highlight-input"></td><td><input type="number" min="0" value="10" class="highlight-input"></td><td><input type="number" min="0" value="10" class="highlight-input"></td><td></td></tr>
+        <tr><td><input type="text"></td><td><input type="number" min="0" value="10" class="highlight-input"></td><td><input type="number" min="0" value="10" class="highlight-input"></td><td><input type="number" min="0" value="10" class="highlight-input"></td><td><input type="number" min="0" value="10" class="highlight-input"></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td></tr>
+      </tbody></table></form>
+    </div>
+</div>
+<div><h1>Décisions</h1><p id="decisions"></p></div>
+<h1>Activités</h1>
+<div class="container">
+  <div>
+  <div class="container">
+    <div><h2>Grande tournée</h2><p id="tourneeType"></p></div>
+    <div><h3>Intention</h3><p id="tourneeIntention"></p></div>
+    <div><h3>Options d'activité</h3>
+      <h4>Suite</h4><p id="suite"></p>
+      <h4>Biens de luxe</h4><p id="luxe"></p></div>
+  </div>
+  <div class="container">
+    <div><h2>Grand tournoi</h2><p id="activite"></p></div>
+    <div><h3>Participation</h3><p id="particip"></p></div>
+    <div><h3>Options d'activité</h3>
+      <h4>Hébergement</h4><p id="tournoiHeberg"></p>
+      <h4>Prix</h4><p id="prix"></p></div>
+  </div>
+<h2>Grand mariage</h2>
+<p id="activite2"></p>
+<h2>Séjour universitaire</h2>
+<p></p>
+<h2>Festin</h2>
+<p id="festin"></p>
+<h2>Funérailles</h2>
+<p id="fun"></p>
+<h2>Chasse</h2>
+<p id="activite3"></p>
+<h2>Pélerinage</h2>
+<p></p>
+</div>
+<div><h1>Partage du pouvoir</h1>
+    <p id="regence"></p>
+</div>
+</div>
+<h1>Cour</h1>
+<div class="container">
+    <div><h2>Type de cour</h2><p><em>Si suffisamment de Prestige</em><br><span id="cour"></span></p></div>
+    <div><h2>Commodités</h2><ul>
+        <li>mode : <span id="mode"></span></li>
+        <li>nourriture : <span id="nourriture"></span></li>
+        <li>hébergement : <span id="heberg"></span></li>
+        <li>domestiques : <span id="domestiques"></span></li>
+    </ul></div>
+</div>
+
+  <script>
+    // Votre tableau de valeurs JavaScript
+    const domaines = new Map();
+    domaines.set('guerre', 'Guerre');
+    domaines.set('revenu','Revenu');
+    //domaines.set('perteTerresRevoquer', 'Perte de terres (titre à révoquer)');
+    domaines.set('domaine', 'Limite domaine (accorder impensable)');
+    domaines.set('controle', 'Contrôle');
+    domaines.set('assassinat', 'Assassinat');
+    domaines.set('vassalAInfluencer', 'Vassal à influencer');
+    domaines.set('vassalSOppose', "Vassal qui s'oppose");
+    domaines.set('dirigeantAInfluencer','Dirigeant à influencer');
+    domaines.set('religieuxAInfluencer','Conseiller religieux à influencer');
+    domaines.set('aInfluencer','Autre à influencer');
+    domaines.set('hamecon', 'Hameçon');
+    domaines.set('recruterChevalier', 'Recruter chevalier');
+    domaines.set('proclame', 'Rechercher chevalier proclamé');
+    domaines.set('terrJureSinonRevendic', 'Convaincre le territoire de jure SINON Revendication comtale');
+    domaines.set('declarationGuerre', 'Déclaration de guerre');
+    domaines.set('survie', 'Survie');
+    domaines.set('stress', 'Perte de stress');
+    domaines.set('prestige', 'Prestige');
+    domaines.set('piete', 'Piété');
+    domaines.set('foiChangemt', 'Changer de foi');
+    domaines.set('renommee', 'Renommée');
+    domaines.set('factionFoi', 'Faction - ferveur');
+    domaines.set('factionCult', 'Faction - Acceptation culturelle');
+    domaines.set('enfant', 'Produire enfant légitime');
+    domaines.set('erudition', 'Erudition');
+    
+    let draggedItem;
+    // Cette fonction crée des éléments draggable pour chaque valeur du tableau
+    function populateDraggableItems() {
+      var draggableItems = document.getElementById('draggableItems');
+
+      domaines.forEach(function(value, key) {
+        var draggableElement = createDraggableElement(key);
+        draggableItems.appendChild(draggableElement);
+      });
+    }
+
+    function createDraggableElement(value) {
+      var draggableElement = document.createElement('div');
+      draggableElement.className = 'draggable-item';
+      draggableElement.setAttribute('draggable', true);
+      draggableElement.innerHTML = value;
+      draggableElement.setAttribute('ondragstart', 'drag(event)');
+      return draggableElement;
+    }
+
+    function allowDrop(ev) {
+      ev.preventDefault();
+    }
+
+    function drag(ev) {
+      ev.dataTransfer.setData("text", ev.target.innerHTML);
+      //var data = ev.dataTransfer.getData("text");
+      draggedItem = ev.target;
+      //if (ev.target.className === 'dropped-item') {
+        //console.log('drag arrivée');
+      //var droppedItem = createDroppedItem(data);
+      //  ev.target.remove();
+      //}
+    }
+
+    function drop(ev) {
+      ev.preventDefault();
+      var data = ev.dataTransfer.getData("text");
+      // Récupère une référence à l'élément sur lequel l'élément glissé a été lâché
+      const dropItems = ev.target;
+      console.log(dropItems);
+      //if (ev.target.className === 'drop-container') {
+        var droppedItem = createDroppedItem(data);
+        dropItems.appendChild(droppedItem);
+        console.log(draggedItem.className);
+        //draggedItem.parentNode.removeChild(draggedItem);
+        if (draggedItem.className === 'dropped-item') {
+          draggedItem.remove();
+        }
+    }
+
+    function createDroppedItem(value) {
+      var droppedItem = document.createElement('div');
+      droppedItem.className = 'dropped-item';
+      droppedItem.setAttribute('draggable', true);
+      droppedItem.innerHTML = value;
+      droppedItem.setAttribute('ondragstart', 'drag(event)');
+      droppedItem.setAttribute('onclick', 'removeElement(this)');
+      return droppedItem;
+    }
+
+    function removeElement(element) {
+      element.remove();
+    }
+
+    // Appel pour peupler la zone draggable avec les valeurs initiales
+    populateDraggableItems();
+
+    // Sélectionnez tous les champs de texte
+let inputs = document.querySelectorAll('.highlight-input');
+// Ajoutez un gestionnaire d'événements à chaque champ de texte
+inputs.forEach(input => {
+    input.addEventListener('click', function() {
+        // Mettez en valeur l'arrière-plan de l'input en jaune
+        if(this.style.backgroundColor != 'yellow') {
+          this.style.backgroundColor = 'yellow';
+        } else {
+          this.style.backgroundColor = null;
+        }
+    });
+});
+
+// Sélectionnez la table
+let table = document.querySelector('#conseillers>table');
+table.addEventListener('change', function() {
+// Parcourez les lignes de la table
+  for (let i = 0; i < table.rows.length - 1; i++) {
+    let maxRowValue = Number.MIN_SAFE_INTEGER; // Initialisez la valeur maximale de la ligne avec une valeur minimale
+    let row = table.rows[i];
+
+    // Parcourez les cellules de chaque ligne
+    for (let j = 1; j < row.cells.length - 1; j++) { // Ignorez la dernière cellule vide
+        let cellValue = parseFloat(row.cells[j].querySelector('input').value); // Obtenez la valeur de la cellule
+        maxRowValue = Math.max(maxRowValue, cellValue); // Mettez à jour la valeur maximale de la ligne
+    }
+
+    // Ajoutez la valeur maximale de la ligne dans la dernière cellule de cette ligne
+    row.cells[row.cells.length - 1].textContent = maxRowValue;
+}
+// Parcourez les colonnes de la table
+  for (let j = 1; j < table.rows[0].cells.length-1; j++) {
+    let maxColValue = Number.MIN_SAFE_INTEGER; // Initialisez la valeur maximale de la colonne avec une valeur minimale
+
+    // Parcourez chaque ligne de la colonne
+    for (let i = 0; i < table.rows.length - 1; i++) { // Ignorez la dernière ligne vide
+        let cellValue = parseFloat(table.rows[i].cells[j].querySelector('input').value); // Obtenez la valeur de la cellule
+        maxColValue = Math.max(maxColValue, cellValue); // Mettez à jour la valeur maximale de la colonne
+    }
+
+    // Ajoutez la valeur maximale de la colonne dans la dernière ligne de cette colonne
+    table.rows[table.rows.length - 1].cells[j].textContent = maxColValue;
+}
+});
+
+  </script>
+  <script src="ck.js"></script>
+</body>
+</html>
