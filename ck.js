@@ -1624,6 +1624,7 @@ function epidemies(p, t=new Array()) {
     const pp = p[0];
     switch(pp) {
         case 'revenu':
+            t.push(new Set().add(fonctions[2]+" SI Aucun coût"));
             t.push(new Set().add(fonctions[0]+" SI Médecin"));
             t.push(new Set().add("ne rien faire"));
             return t;
