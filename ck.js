@@ -1368,6 +1368,42 @@ function activChasse(p, t=new Array()) {
             return activChasse(p.slice(1),t);
     }
 }
+function participChasse(p, t=new Array()) {
+    if (p.length === 0) {
+        t.push(new Set().add("Groupes de gardes-chasse"));
+        t.push(new Set().add("Groupes de chasse"));
+        t.push(new Set().add("Gardes-chasse locaux"));
+        return t;
+    }
+    const pp = p[0];
+    switch(pp) {
+        case 'revenu':
+            t.push(new Set().add("Gardes-chasse locaux"));
+            return t;
+        default:
+            return participChasse(p.slice(1),t);
+    }
+}
+function grpeChasse(p, t=new Array()) {
+    if (p.length === 0) {
+        t.push(new Set().add("Grand groupe"));
+        t.push(new Set().add("Groupe raisonnable"));
+        t.push(new Set().add("Petit groupe"));
+        return t;
+    }
+    const pp = p[0];
+    switch(pp) {
+        case 'revenu':
+            t.push(new Set().add("Petit groupe"));
+            return t;
+        case 'prestige':
+            t.push(new Set().add("Grand groupe"));
+            t.push(new Set().add("Groupe raisonnable"));
+            return grpeChasse(p.slice(1),t);
+        default:
+            return grpeChasse(p.slice(1),t);
+    }
+}
 function particip(p, t=new Array()) {
     if (p.length === 0) {
         t.push(new Set().add("Participe"));
@@ -1713,6 +1749,8 @@ function evidence(id, texte, ttLeTps=false) {
     const regenceResult=regence(p);
     const activMariageResult = activMariage(p);
     const activChasseResult = activChasse(p);
+    const participChasseResult = participChasse(p);
+    const grpeChasseResult = grpeChasse(p);
     const tourneeResult = activTournee(p);
     const hebergResult = tournoiHeb(p);
     const prixResult = prix(p);
@@ -1746,6 +1784,8 @@ function evidence(id, texte, ttLeTps=false) {
     evidence('regence', sansDoublon(regenceResult, ""));
     evidence('activite2', sansDoublon(activMariageResult, "SINON"));
     evidence('activite3', sansDoublon(activChasseResult, "SINON"));
+    evidence('participChasse', sansDoublon(participChasseResult, "SINON"));
+    evidence('grpeChasse', sansDoublon(grpeChasseResult, "SINON"));
     evidence('tourneeType', sansDoublon(tourneeResult));
     evidence('tourneeIntention', sansDoublon(tourneeIntentionResult, "SINON"));
     evidence('suite', sansDoublon(suiteResult, "SINON"));
