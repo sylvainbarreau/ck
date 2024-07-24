@@ -10,7 +10,6 @@
       display: flex;
       justify-content: start;
     }
-    .drag-container,
     .drop-container {
       border: 1px dashed #aaa;
       min-height: 100px;
@@ -18,20 +17,34 @@
       padding: 10px;
       box-sizing: border-box;
     }
+    .drag-container {
+  border: 1px dashed #aaa;
+  min-height: 40px;
+  width: 300px; /* Ajuster la largeur selon vos besoins */
+  padding: 8px;
+  box-sizing: border-box;
+}
+/* Conteneur pour les éléments draggables */
+#draggableItems {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2px; /* Espace entre les éléments */
+}
+
     .drop-container > div {
   margin-bottom: 10px; /* Espacement entre les divs enfants */
   width: 100%; /* Chaque div enfant prend 100% de la largeur de la div mère */
   background-color: #f0f0f0; /* Couleur de fond pour distinguer les divs enfants */
   padding: 5px; /* Espacement interne des divs enfants */
 }
-    /* Style pour chaque élément draggable */
-    .draggable-item {
-      margin: 5px 0;
-      padding: 8px;
-      background-color: #f9f9f9;
-      border: 1px solid #aaa;
-      cursor: move;
-    }
+/* Style pour chaque élément draggable */
+.draggable-item {
+  margin: 5px 0;
+  padding: 8px;
+  background-color: #f9f9f9;
+  border: 1px solid #aaa;
+  cursor: move;
+}
     /* Style pour chaque élément déposé dans la zone dropItems */
     .dropped-item {
       margin: 5px 0;
