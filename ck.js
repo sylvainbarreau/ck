@@ -486,7 +486,7 @@ function secrets(p, t=new Array()) {
             return secrets(p.slice(1), t);
          case 'revenu':
             t.push(new Set().add("Faire chanter SI paiement hameçon ET or&gt;0"));
-            t.push(new Set().add("Révéler SI emprisonnable ET or&gt;0"));
+            t.push(new Set().add("Révéler SI emprisonnable"));
             return secrets(p.slice(1), t); 
         case 'vassalAInfluencer':
         case 'dirigeantAInfluencer':
