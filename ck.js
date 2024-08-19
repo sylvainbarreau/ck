@@ -427,6 +427,7 @@ function prison(p, t=new Array()) {
             t.push(new Set().add("Négocier la libération &gt; Recruter SI chevalier possible ET Prouesse&gt;=8"));
             return prison(p.slice(1), t);
         case 'revenu':
+            t.push(new Set().add("Négocier la libération &gt; Bannir SI or"));
             t.push(new Set().add("Rançonner &gt; or"));
             t.push(new Set().add("Négocier la libération &gt; hameçon SI paiement"));
             t.push(new Set().add("Rançonner &gt; hameçon SI paiement"));
@@ -485,7 +486,7 @@ function secrets(p, t=new Array()) {
             t.push(new Set().add("Révéler SI emprisonnable ET chevalier possible ET Prouesse&gt;=8"));
             return secrets(p.slice(1), t);
          case 'revenu':
-            t.push(new Set().add("Faire chanter SI paiement hameçon ET or&gt;0"));
+            t.push(new Set().add("Faire chanter SI paiement hameçon ET or"));
             t.push(new Set().add("Révéler SI emprisonnable"));
             return secrets(p.slice(1), t); 
         case 'vassalAInfluencer':
