@@ -56,7 +56,6 @@ function militaire(p, t=new Array()) {
         case 'prestige':
         case 'religieuxAInfluencer':
         case 'piete':
-        case 'vassalSOppose':
         case 'renommee':
         case 'domaine':
         case 'factionFoi':
@@ -452,8 +451,7 @@ function prison(p, t=new Array()) {
             t.push(new Set().add("NE PAS Torturer SI perte Piété"));
             return prison(p.slice(1), t); 
                case 'prestige':
-                    case 'vassalSOppose':
-                        case 'renommee':
+                           case 'renommee':
                             case 'domaine':
                                 case 'factionFoi':
                                     case 'stress':
@@ -567,6 +565,8 @@ function influence(p, t=new Array()) {
         e.add("Influencer allié");
         e.add("Influencer médecin");
         e.add("Influencer conseiller religieux");
+        e.add("Influencer conjoint");
+        e.add("Influencer seigneur lige");
         t.push(e);
         return t;
     } 
@@ -665,10 +665,11 @@ function decisions(p, t=new Array()) {
         case 'enfant':
                 let e20=new Set().add("Amant");
                 e20.add("coucher");
-                e20.add("influence LUI");
+                e20.add("influence Séduire LUI");
                 e20.add("Intrigue");
                 e20.add("emprisonner SI Sombres connaissances");
                 e20.add("stress descendre");
+                e20.add("santé");
                 t.push(e20);
                 return decisions(p.slice(1), t); 
         case 'aInfluencer':
@@ -778,9 +779,9 @@ function decisions(p, t=new Array()) {
         case 'vassalSOppose':
             let e13=new Set().add("influence LUI");
             e13.add("emprisonner LUI");
+            e13.add("redoutabilité");
             e13.add("Diplomatie");
             e13.add("Intrigue");
-            e13.add("redoutabilité");
             t.push(e13);
             return decisions(p.slice(1), t);
         case 'renommee':
@@ -894,8 +895,7 @@ function commoditesMode(p, t=new Array()) {
         case 'hamecon':
         case 'religieuxAInfluencer':
             case 'piete':
-                case 'vassalSOppose':
-                    case 'renommee':
+        case 'renommee':
                         case 'factionFoi':
         case 'enfant':
         case 'erudition':
@@ -935,8 +935,7 @@ function commoditesNourriture(p, t=new Array()) {
         case 'hamecon':
         case 'religieuxAInfluencer':
             case 'piete':
-                case 'vassalSOppose':
-                    case 'renommee':
+        case 'renommee':
                         case 'factionFoi':
                             case 'erudition':
                             default:
@@ -975,8 +974,7 @@ function commoditesHebergement(p, t=new Array()) {
         case 'prestige':
         case 'religieuxAInfluencer':
             case 'piete':
-                case 'vassalSOppose':
-                    case 'renommee':
+            case 'renommee':
                         case 'factionFoi':
                             case 'erudition':
                             default:
@@ -1107,7 +1105,6 @@ function tournoiHeb(p, t=new Array()) {
             t.push(new Set().add("Tentes délabrées"));
             return t;
         case 'vassalAInfluencer':
-        case 'vassalSOppose':
         case 'factionFoi':
         case 'prestige':
         case 'enfant':
@@ -1144,15 +1141,15 @@ function prix(p, t=new Array()) {
             case 'factionCult':
                 case 'religieuxAInfluencer':
         case 'erudition':
+        case 'vassalSOppose':
+        case 'vassalAInfluencer':
             t.push(new Set().add(tabPrix[4]+" SI Triompher"));
             t.push(new Set().add(tabPrix[3]+" SI Triompher"));
             t.push(new Set().add(tabPrix[2]+" SI Triompher"));
             t.push(new Set().add(tabPrix[1]+" SI Triompher"));
             t.push(new Set().add(tabPrix[0]+" SI Triompher"));
             return prix(p.slice(1),t);
-        case 'vassalAInfluencer':
-        case 'vassalSOppose':
-        case 'enfant':
+           case 'enfant':
         default:
             return prix(p.slice(1),t);
     }
@@ -1202,8 +1199,7 @@ function activMariage(p, t=new Array()) {
                     case 'domaine':
         case 'religieuxAInfluencer':
             case 'piete':
-                case 'vassalSOppose':
-                    case 'renommee':
+        case 'renommee':
                         case 'factionFoi':
                             case 'perteTerresRevoquer':
                                 default:
@@ -1517,6 +1513,8 @@ function intentionTournee(p, t=new Array()) {
         case 'declarationGuerre':
             case 'terrJureSinonRevendic':
                 case 'perteTerresRevoquer':
+                    case 'vassalSOppose':
+
                     t.push(new Set().add(intentions[3]));
                 return t;
         case 'religieuxAInfluencer':
@@ -1535,8 +1533,7 @@ function intentionTournee(p, t=new Array()) {
         case 'aInfluencer':
         case 'hamecon':
         case 'prestige':
-                case 'vassalSOppose':
-                    default:
+                       default:
             return intentionTournee(p.slice(1),t);
     }
 }
@@ -1572,8 +1569,7 @@ function suite(p, t=new Array()) {
         case 'dirigeantAInfluencer':
         case 'aInfluencer':
         case 'hamecon':
-        case 'vassalSOppose':
-                    default:
+        default:
             return suite(p.slice(1),t);
     }
 }
