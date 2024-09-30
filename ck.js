@@ -20,15 +20,20 @@ function (p, t=new Array()) {
         case 'aInfluencer':
         case 'hamecon':
         case 'recruterChevalier':
+        case 'chevalierPartisan':
         case 'proclame':
         case 'terrJureSinonRevendic':
         case 'declarationGuerre':
         case 'survie':
+        case 'stress':
         case 'prestige':
         case 'piete':
+        case 'foiChangemt':
         case 'renommee':
         case 'factionFoi':
-        case 'stress':
+        case 'factionCult':
+        case 'enfant':
+        case 'erudition':
         default:
             return (p.slice(1));
     }
@@ -51,6 +56,7 @@ function militaire(p, t=new Array()) {
             t.push(e);
             return t;
         case 'revenu':
+        case 'chevalierPartisan':
             t.push(new Set().add("pas Renforcement mensuel"));
             return t;
         case 'prestige':
@@ -450,13 +456,14 @@ function prison(p, t=new Array()) {
         case 'piete':
             t.push(new Set().add("NE PAS Torturer SI perte Piété"));
             return prison(p.slice(1), t); 
-               case 'prestige':
-                           case 'renommee':
-                            case 'domaine':
-                                case 'factionFoi':
-                                    case 'stress':
-                                        case 'erudition':
-                                        default:
+        case 'chevalierPartisan':
+            t.push(new Set().add("Négocier la libération &gt; Recruter SI chevalier possible"));
+            t.push(new Set().add("Négocier la libération &gt; Bannir SI or"));
+            t.push(new Set().add("Rançonner &gt; or"));
+            t.push(new Set().add("Négocier la libération &gt; hameçon SI paiement"));
+            t.push(new Set().add("Rançonner &gt; hameçon SI paiement"));
+            return prison(p.slice(1), t); 
+        default:
             return prison(p.slice(1), t);
     }
 }
@@ -505,14 +512,13 @@ function secrets(p, t=new Array()) {
             t.push(new Set().add("Révéler SI motif de révocation LUI"));
             t.push(new Set().add("Révéler SI emprisonnable LUI"));
             return secrets(p.slice(1), t); 
-   case 'prestige':
-                case 'piete':
-                    case 'renommee':
-                        case 'domaine':
-                            case 'factionFoi':
-                                case 'stress':
-                                    case 'erudition':
-                                    default:
+        case 'chevalierPartisan':
+            t.push(new Set().add("Faire chanter SI chevalier possible"));
+            t.push(new Set().add("Révéler SI emprisonnable ET chevalier possible"));
+            t.push(new Set().add("Faire chanter SI paiement hameçon ET or"));
+            t.push(new Set().add("Révéler SI emprisonnable"));
+            return secrets(p.slice(1), t); 
+        default:
             return secrets(p.slice(1), t);
     }
 }
@@ -537,22 +543,10 @@ function hamec(p, t=new Array()) {
         case 'assassinat':
             t.push(new Set().add("ne rien faire"));
             return t; 
-            case 'revenu':
-                case 'vassalAInfluencer':
-                    case 'dirigeantAInfluencer':
-                    case 'aInfluencer':
-                    case 'hamecon':
-                    case 'enfant':
-                        case 'religieuxAInfluencer':
-                                   case 'perteTerresRevoquer':
-                                    case 'prestige':
-                case 'piete':
-                    case 'renommee':
-                        case 'domaine':
-                            case 'factionFoi':
-                                case 'stress':
-                                    case 'erudition':
-                                    default:
+        case 'chevalierPartisan':
+            t.push(new Set().add("Recruter SI chevalier possible"));
+            return hamec(p.slice(1), t);
+        default:
             return hamec(p.slice(1), t);
     }
 }
@@ -563,10 +557,11 @@ function influence(p, t=new Array()) {
         e.add("Influencer vassal non intimidé non factiable");
         e.add("Influencer vassal intimidé non factiable");
         e.add("Influencer allié");
-        e.add("Influencer médecin");
         e.add("Influencer conseiller religieux");
-        e.add("Influencer conjoint");
         e.add("Influencer seigneur lige");
+        e.add("Influencer conjoint");
+        e.add("Influencer maître-espion");
+        e.add("Influencer médecin");
         t.push(e);
         return t;
     } 
@@ -670,6 +665,8 @@ function decisions(p, t=new Array()) {
                 e20.add("emprisonner SI Sombres connaissances");
                 e20.add("stress descendre");
                 e20.add("santé");
+				e20.add("opinion maître-espion");
+				e20.add("opinion médecin");
                 t.push(e20);
                 return decisions(p.slice(1), t); 
         case 'aInfluencer':
@@ -692,6 +689,7 @@ function decisions(p, t=new Array()) {
             return decisions(p.slice(1), t);
         case 'recruterChevalier':
             let e6=new Set().add("recruter chevalier");
+            e6.add("hameçon SI chevalier possible");
             e6.add("Martialité");
             e6.add("emprisonner SI chevalier possible");
             e6.add("Prestige");
@@ -741,6 +739,8 @@ function decisions(p, t=new Array()) {
         case 'survie':
             let e14=new Set().add("santé");
             e14.add("stress descendre");
+			e14.add("opinion maître-espion");
+			e14.add("opinion médecin");
             t.push(e14);
             return decisions(p.slice(1), t);
         case 'stress':
@@ -787,6 +787,19 @@ function decisions(p, t=new Array()) {
         case 'renommee':
             t.push(new Set().add("Renommée"));
             return decisions(p.slice(1), t);
+        case 'chevalierPartisan':
+            let e_champ=new Set().add("recruter chevalier");
+            e_champ.add("hameçon SI chevalier possible");
+            e_champ.add("emprisonner SI chevalier possible");
+            e_champ.add("améliorer le camp");
+            e_champ.add("revenu");
+            e_champ.add("contrôle SI &lt;100");
+            e_champ.add("développement");
+            e_champ.add("Intendance");
+            e_champ.add("emprisonner");
+            e_champ.add("hameçon SI paiement");
+            t.push(e_champ);
+            return decisions(p.slice(1), t);    
         default:
             return decisions(p.slice(1), t);
     }
@@ -1084,11 +1097,10 @@ function activTournoi(p, t=new Array()) {
             t.push(new Set().add(intentions[5]+" LUI"));
             t.push(new Set().add(intentions[1]));
             return activTournoi(p.slice(1),t);
-       case 'piete':
-                case 'renommee':
-                    case 'domaine':
-                        case 'perteTerresRevoquer':
-                            default:
+       case 'chevalierPartisan':
+            t.push(new Set().add(intentions[2]));
+            return t;
+        default:
             return activTournoi(p.slice(1),t);
     }
 }
@@ -1104,11 +1116,9 @@ function tournoiHeb(p, t=new Array()) {
         case 'revenu':
             t.push(new Set().add("Tentes délabrées"));
             return t;
-        case 'vassalAInfluencer':
-        case 'factionFoi':
-        case 'prestige':
-        case 'enfant':
-        case 'erudition':
+        case 'chevalierPartisan':
+            t.push(new Set().add("A DEFINIR"));
+            return t;
         default:
             return tournoiHeb(p.slice(1),t);
     }
@@ -1149,7 +1159,9 @@ function prix(p, t=new Array()) {
             t.push(new Set().add(tabPrix[1]+" SI Triompher"));
             t.push(new Set().add(tabPrix[0]+" SI Triompher"));
             return prix(p.slice(1),t);
-           case 'enfant':
+        case 'chevalierPartisan':
+                t.push(new Set().add("A DEFINIR"));
+                return t;
         default:
             return prix(p.slice(1),t);
     }
@@ -1657,6 +1669,7 @@ function epidemies(p, t=new Array()) {
     const pp = p[0];
     switch(pp) {
         case 'revenu':
+        case 'chevalierPartisan':
             t.push(new Set().add(fonctions[2]+" SI Aucun coût"));
             t.push(new Set().add(fonctions[0]+" SI Médecin"));
             t.push(new Set().add("ne rien faire"));
@@ -1694,6 +1707,47 @@ function epidemies(p, t=new Array()) {
         case 'stress':
             default:
             return epidemies(p.slice(1));
+    }
+}
+
+function campObjectif(p, t=new Array()) {
+    const obj = ["Nous sommes Vagabonds!",//0
+        "Devenir lames à louer",//1
+        "Devenir érudits",//2
+        "Devenir explorateurs",//3
+        "Devenir écumeurs",//4
+        "Devenir légitimistes",//5
+        ];
+    if (p.length === 0) {
+        t.push(new Set().add(obj[5]));
+        t.push(new Set().add(obj[2]));
+        return t;
+    }
+    const pp = p[0];
+    switch(pp) {
+        case 'prestige':
+        case 'piete':
+            t.push(new Set().add(obj[0]));
+            return t;
+        case 'guerre':
+            t.push(new Set().add(obj[1]));
+            return t;
+        case 'survie':
+            t.push(new Set().add(obj[3]));
+            return t;
+        case 'revenu':
+            case 'assassinat':
+                case 'vassalAInfluencer':
+                case 'vassalSOppose':
+                case 'dirigeantAInfluencer':
+                case 'religieuxAInfluencer':
+                case 'aInfluencer':
+                case 'hamecon':
+       case 'chevalierPartisan':
+            t.push(new Set().add(obj[4]));
+            return t;
+        default:
+            return (p.slice(1));
     }
 }
 
@@ -1757,6 +1811,7 @@ function evidence(id, texte, ttLeTps=false) {
     const epidResult = epidemies(p);
     const festinResult = activFestin(p);
     const funResult = activFun(p);
+    const campObjectifResult = campObjectif(p);
     // Afficher les résultats dans la section des résultats sur la page
     //console.log(epidResult);
     evidence('militaireResult', sansDoublon(militaireResult));
@@ -1792,6 +1847,7 @@ function evidence(id, texte, ttLeTps=false) {
     evidence('prix', sansDoublon(prixResult, "SINON"));
     evidence('festin', sansDoublon(festinResult, "SINON"));
     evidence('fun', sansDoublon(funResult, "SINON"));
+    evidence('campObjectif', sansDoublon(campObjectifResult, "SINON"));
   }
 
 function sansDoublon(tab, liaison="") {
