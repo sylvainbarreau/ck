@@ -12,7 +12,7 @@ function (p, t=new Array()) {
         case 'revenu':
         case 'domaine':
         case 'controle':
-        case 'assassinat':
+        case 'assassinat':  //Intrigue+influence,hameçon,Prestige,Or
         case 'vassalAInfluencer':
         case 'vassalSOppose':
         case 'dirigeantAInfluencer':
@@ -56,7 +56,7 @@ function militaire(p, t=new Array()) {
             t.push(e);
             return t;
         case 'revenu':
-        case 'chevalierPartisan':
+        case 'assassinat':  //Intrigue+influence,hameçon,Prestige,Or
             t.push(new Set().add("pas Renforcement mensuel"));
             return t;
         case 'prestige':
@@ -99,11 +99,11 @@ function conjoint(p, t=new Array()) {
             case 'vassalSOppose':
                 t.push(new Set().add(roles[1]));
                 return t;
-        case 'assassinat':
+        case 'assassinat':  //Intrigue+influence,hameçon,Prestige,Or
         case 'aInfluencer':
         case 'hamecon':
-            case 'perteTerresRevoquer':
-            case 'enfant':
+        case 'perteTerresRevoquer':
+        case 'enfant':
                 t.push(new Set().add(roles[2]));
             return t;
         case 'terrJureSinonRevendic':
@@ -168,18 +168,12 @@ function chancelier(p, t=new Array()) {
         case 'prestige':
             t.push(new Set().add(roles[3]));
             return t;
-        case 'assassinat':
-        case 'aInfluencer':
-        case 'hamecon':
-        case 'religieuxAInfluencer':
-        case 'piete':
-            case 'renommee':
-                case 'domaine':
-                    case 'factionFoi':
-                        case 'perteTerresRevoquer':
-                            case 'stress':
-                                case 'erudition':
-                                default:
+        case 'assassinat':  //Intrigue+influence,hameçon,Prestige,Or
+            t.push(new Set().add(roles[2]+" SI "+effets[2][4]));
+            t.push(new Set().add(roles[0]+" L'UN"));
+            t.push(new Set().add(roles[3]));
+            return t;
+        default:
             return chancelier(p.slice(1), t);
     }
 }
@@ -209,6 +203,7 @@ function marechal(p, t=new Array()) {
             return t; 
         case 'controle':
         case 'revenu':
+        case 'assassinat':  //Intrigue+influence,hameçon,Prestige,Or
             t.push(new Set().add(roles[1]));
             return marechal(p.slice(1), t);
         case 'recruterChevalier':
@@ -231,17 +226,7 @@ function marechal(p, t=new Array()) {
         case 'factionCult':
             t.push(new Set().add(roles[1]+" LUI"+" SI "+effets[1][1]));
             return marechal(p.slice(1),t);
-        case 'assassinat':
-        case 'hamecon':
-            case 'prestige':
-                case 'piete':
-                    case 'renommee':
-                        case 'domaine':
-                            case 'aInfluencer':
-                                case 'perteTerresRevoquer':
-                                    case 'stress':
-                                        case 'erudition':
-                                        default:
+    default:
             return marechal(p.slice(1), t);
     }
 }
@@ -275,7 +260,7 @@ function religieux(p, t=new Array()) {
             t.push(new Set().add(roles[2]+' SI Séduire '+effets[2][0]));
             return religieux(p.slice(1), t);
     case 'revenu':
-            t.push(new Set().add(roles[1]+' SI '+effets[1][0]));
+        t.push(new Set().add(roles[1]+' SI '+effets[1][0]));
             return religieux(p.slice(1), t);
         case 'terrJureSinonRevendic':
             t.push(new Set().add(roles[0]));
@@ -290,16 +275,10 @@ function religieux(p, t=new Array()) {
         case 'factionCult':
                 t.push(new Set().add(roles[1]+" LUI"+' SI '+effets[1][2]));
                 return religieux(p.slice(1), t);                
-        case 'assassinat':
-        case 'aInfluencer':
-        case 'hamecon':
-        case 'prestige':
-                case 'renommee':
-                    case 'domaine':
-                        case 'perteTerresRevoquer':
-                            case 'stress':
-                                case 'erudition':
-                                default:
+        case 'assassinat':  //Intrigue+influence,hameçon,Prestige,Or
+            t.push(new Set().add(roles[2]));
+            return t;
+        default:
             return religieux(p.slice(1), t);
     }
 }
@@ -354,17 +333,15 @@ function intendant(p, t=new Array()) {
         case 'perteTerresRevoquer':
             t.push(new Set().add(roles[4]));
             return intendant(p.slice(1), t);
-        case 'hamecon':
-        case 'assassinat':
+        case 'assassinat':  //Intrigue+influence,hameçon,Prestige,Or
+            t.push(new Set().add(roles[0]+" L'UN SI "+effets[0][2]));
+            t.push(new Set().add(roles[4]+" SI "+effets[4][0]));
+            t.push(new Set().add(roles[3]));
+            return t;
         case 'prestige':
-        case 'religieuxAInfluencer':
-            case 'piete':
-                case 'renommee':
-                    case 'domaine':
-                        case 'aInfluencer':
-                            case 'stress':
-                            case 'erudition':
-                                default:
+            t.push(new Set().add(roles[4]+" SI "+effets[4][0]));
+            return intendant(p.slice(1), t);
+        default:
             return intendant(p.slice(1), t);
     }
 }
@@ -387,7 +364,7 @@ function espion(p, t=new Array()) {
             t.push(new Set().add(roles[1]+" SI Fabriquer un hamecon"));
             t.push(new Set().add(roles[0]+" LUI")); 
             return espion(p.slice(1), t);;
-        case 'assassinat':
+        case 'assassinat':  //Intrigue+influence,hameçon,Prestige,Or
             t.push(new Set().add(roles[1]));
             return t;
         case 'survie':
@@ -445,11 +422,16 @@ function prison(p, t=new Array()) {
         case 'enfant':
                 t.push(new Set().add("Torturer SI Sombres connaissances"));
             return prison(p.slice(1), t); 
-        case 'assassinat':
+        case 'assassinat':  //Intrigue+influence,hameçon,Prestige,Or
             t.push(new Set().add("Torturer SI Sombres connaissances"));
             t.push(new Set().add("Négocier la libération &gt; hameçon SI pas déjà"));
             t.push(new Set().add("Rançonner &gt; hameçon SI pas déjà"));
-            return prison(p.slice(1), t); 
+            t.push(new Set().add("Négocier la libération &gt; Bannir SI or"));
+            t.push(new Set().add("Rançonner &gt; or"));
+            t.push(new Set().add("Négocier la libération &gt; hameçon SI paiement"));
+            t.push(new Set().add("Rançonner &gt; hameçon SI paiement"));
+            t.push(new Set().add("Négocier la libération"));
+            return t; 
         case 'religieuxAInfluencer':
             t.push(new Set().add("Torturer SI Sombres connaissances ET NON perte Piété"));
             return prison(p.slice(1), t); 
@@ -458,10 +440,8 @@ function prison(p, t=new Array()) {
             return prison(p.slice(1), t); 
         case 'chevalierPartisan':
             t.push(new Set().add("Négocier la libération &gt; Recruter SI chevalier possible"));
-            t.push(new Set().add("Négocier la libération &gt; Bannir SI or"));
-            t.push(new Set().add("Rançonner &gt; or"));
-            t.push(new Set().add("Négocier la libération &gt; hameçon SI paiement"));
-            t.push(new Set().add("Rançonner &gt; hameçon SI paiement"));
+            t.push(new Set().add("Négocier la libération &gt; hameçon SI mécène"));
+            t.push(new Set().add("Rançonner &gt; hameçon SI mécène"));
             return prison(p.slice(1), t); 
         default:
             return prison(p.slice(1), t);
@@ -504,9 +484,9 @@ function secrets(p, t=new Array()) {
         case 'religieuxAInfluencer':
             t.push(new Set().add("Révéler SI emprisonnable ET Sombres connaissances ET NON perte Piété"));
             return secrets(p.slice(1), t); 
-        case 'assassinat':
-            t.push(new Set().add("Faire chanter"));
+        case 'assassinat':  //Intrigue+influence,hameçon,Prestige,Or
             t.push(new Set().add("Révéler SI emprisonnable ET Sombres connaissances"));
+            t.push(new Set().add("Faire chanter"));
             return t; 
         case 'perteTerresRevoquer':
             t.push(new Set().add("Révéler SI motif de révocation LUI"));
@@ -515,8 +495,7 @@ function secrets(p, t=new Array()) {
         case 'chevalierPartisan':
             t.push(new Set().add("Faire chanter SI chevalier possible"));
             t.push(new Set().add("Révéler SI emprisonnable ET chevalier possible"));
-            t.push(new Set().add("Faire chanter SI paiement hameçon ET or"));
-            t.push(new Set().add("Révéler SI emprisonnable"));
+            t.push(new Set().add("Faire chanter SI mécène"));
             return secrets(p.slice(1), t); 
         default:
             return secrets(p.slice(1), t);
@@ -540,11 +519,12 @@ function hamec(p, t=new Array()) {
         case 'proclame':
             t.push(new Set().add("Recruter SI chevalier possible ET Prouesse&gt;=8"));
             return hamec(p.slice(1), t);
-        case 'assassinat':
+        case 'assassinat':  //Intrigue+influence,hameçon,Prestige,Or
             t.push(new Set().add("ne rien faire"));
             return t; 
         case 'chevalierPartisan':
             t.push(new Set().add("Recruter SI chevalier possible"));
+            t.push(new Set().add("Déplacer camp"));
             return hamec(p.slice(1), t);
         default:
             return hamec(p.slice(1), t);
@@ -578,20 +558,15 @@ function influence(p, t=new Array()) {
         case 'enfant':
             t.push(new Set().add("Séduire"));
             return influence(p.slice(1), t);
-        case 'assassinat':
+        case 'assassinat':  //Intrigue+influence,hameçon,Prestige,Or
             t.push(new Set().add("Influencer agent"));
             return influence(p.slice(1), t);
-        case 'hamecon':
-        case 'recruterChevalier':
-        case 'prestige':
-                case 'domaine':
-                    case 'piete':
-                        case 'renommee':
-                            case 'factionFoi':
-                                case 'perteTerresRevoquer':
-                                    case 'stress':
-                                        case 'erudition':
-                                        default:
+        case 'chevalierPartisan':
+            t.push(new Set().add("Influencer ami SI chevalier possible ET hors camp &gt; meilleur ami"));
+            t.push(new Set().add("Influencer amant SI chevalier possible ET hors camp &gt; âme soeur"));
+            t.push(new Set().add("Séduire SI NON héritier"));
+            return influence(p.slice(1), t);
+        default:
             return influence(p.slice(1), t);
     }
 }
@@ -681,10 +656,18 @@ function decisions(p, t=new Array()) {
             e4.add("emprisonner SI Sombres connaissances");
             t.push(e4);
             return decisions(p.slice(1), t);
-        case 'assassinat':
+        case 'assassinat':  //Intrigue+influence,hameçon,Prestige,Or
             let e5=new Set().add("Intrigue");
+            e5.add("emprisonner SI Sombres connaissances");
+            e5.add("influence");
             e5.add("hameçon");
+            e5.add("Prestige");
+            e5.add("revenu");
+            e5.add("contrôle SI &lt;100");
+            e5.add("développement");
+            e5.add("Intendance");
             e5.add("emprisonner");
+            e5.add("hameçon SI paiement");
             t.push(e5);
             return decisions(p.slice(1), t);
         case 'recruterChevalier':
@@ -791,13 +774,11 @@ function decisions(p, t=new Array()) {
             let e_champ=new Set().add("recruter chevalier");
             e_champ.add("hameçon SI chevalier possible");
             e_champ.add("emprisonner SI chevalier possible");
-            e_champ.add("améliorer le camp");
-            e_champ.add("revenu");
-            e_champ.add("contrôle SI &lt;100");
-            e_champ.add("développement");
-            e_champ.add("Intendance");
-            e_champ.add("emprisonner");
-            e_champ.add("hameçon SI paiement");
+            e_champ.add("améliorer le camp &gt; Recherche de talents");
+            e_champ.add("conjoint SI chevalier possible");
+            e_champ.add("héritier");
+            e_champ.add("meilleur ami SI chevalier possible ET hors camp");
+            e_champ.add("âme soeur SI chevalier possible ET hors camp");
             t.push(e_champ);
             return decisions(p.slice(1), t);    
         default:
@@ -823,10 +804,15 @@ function typeCour(p, t=new Array()) {
             t.push(new Set().add("ne rien changer"));
             return t;
         case 'enfant':
-        case 'assassinat':
             t.push(new Set().add(cours[3]));
             t.push(new Set().add(cours[0]));
             t.push(new Set().add(cours[4]));
+            return typeCour(p.slice(1), t);
+        case 'assassinat':  //Intrigue+influence,hameçon,Prestige,Or
+            t.push(new Set().add(cours[3]));
+            t.push(new Set().add(cours[4]));
+            t.push(new Set().add(cours[0]));
+            t.push(new Set().add(cours[2]));
             return typeCour(p.slice(1), t);
         case 'hamecon':
             t.push(new Set().add(cours[3]));
@@ -891,28 +877,10 @@ function commoditesMode(p, t=new Array()) {
         case 'terrJureSinonRevendic':
             t.push(new Set().add("monter"));
             return t;
-        case 'domaine':
-            t.push(new Set().add("VERIF Mode"));
+        case 'assassinat':  //Intrigue+influence,hameçon,Prestige,Or
+            t.push(new Set().add("monter"));
             return t;
-        case 'survie':
-            case 'stress':
-            case 'perteTerresRevoquer':
-                case 'vassalAInfluencer':
-        case 'dirigeantAInfluencer':
-        case 'guerre':
-        case 'recruterChevalier':
-        case 'declarationGuerre':
-        case 'controle':
-        case 'assassinat':
-        case 'aInfluencer':
-        case 'hamecon':
-        case 'religieuxAInfluencer':
-            case 'piete':
-        case 'renommee':
-                        case 'factionFoi':
-        case 'enfant':
-        case 'erudition':
-                            default:
+        default:
             return commoditesMode(p.slice(1), t);
     }
 }
@@ -933,25 +901,7 @@ function commoditesNourriture(p, t=new Array()) {
         case 'revenu':
             t.push(new Set().add("baisser jusqu'à 1"));
             return t;
-        case 'domaine':
-            t.push(new Set().add("VERIF nourr"));
-            return t;
-            case 'perteTerresRevoquer':
-                case 'vassalAInfluencer':
-        case 'dirigeantAInfluencer':
-        case 'guerre':
-        case 'recruterChevalier':
-        case 'declarationGuerre':
-        case 'controle':
-        case 'assassinat':
-        case 'aInfluencer':
-        case 'hamecon':
-        case 'religieuxAInfluencer':
-            case 'piete':
-        case 'renommee':
-                        case 'factionFoi':
-                            case 'erudition':
-                            default:
+        default:
             return commoditesNourriture(p.slice(1), t);
     }
 }
@@ -965,7 +915,6 @@ function commoditesHebergement(p, t=new Array()) {
         case 'revenu':
             t.push(new Set().add("baisser jusqu'à 1"));
             return t;
-        case 'assassinat':
         case 'enfant':
         case 'terrJureSinonRevendic':
             t.push(new Set().add("monter"));
@@ -973,24 +922,10 @@ function commoditesHebergement(p, t=new Array()) {
         case 'domaine':
                 t.push(new Set().add("VERIF heb"));
                 return t;
-            case 'survie':
-                case 'stress':
-                    case 'perteTerresRevoquer':
-                    case 'vassalAInfluencer':
-        case 'dirigeantAInfluencer':
-        case 'guerre':
-        case 'recruterChevalier':
-        case 'declarationGuerre':
-        case 'controle':
-        case 'aInfluencer':
-        case 'hamecon':
-        case 'prestige':
-        case 'religieuxAInfluencer':
-            case 'piete':
-            case 'renommee':
-                        case 'factionFoi':
-                            case 'erudition':
-                            default:
+        case 'assassinat':  //Intrigue+influence,hameçon,Prestige,Or
+            t.push(new Set().add("monter"));
+            return t;
+        default:
             return commoditesHebergement(p.slice(1), t);
     }
 }
@@ -1007,7 +942,7 @@ function commoditesDomestiques(p, t=new Array()) {
         case 'vassalAInfluencer':
         case 'dirigeantAInfluencer':
         case 'survie':
-        case 'assassinat':
+        case 'assassinat':  //Intrigue+influence,hameçon,Prestige,Or
         case 'aInfluencer':
         case 'recruterChevalier':
         case 'proclame':
@@ -1017,21 +952,7 @@ function commoditesDomestiques(p, t=new Array()) {
         case 'terrJureSinonRevendic':
             t.push(new Set().add("monter"));
             return t;
-        case 'domaine':
-            t.push(new Set().add("VERIF DOMEST"));
-            return t;
-            case 'perteTerresRevoquer':
-                case 'guerre':
-        case 'declarationGuerre':
-        case 'controle':
-        case 'hamecon':
-            case 'prestige':
-                case 'piete':
-                    case 'renommee':
-                        case 'factionFoi':
-                            case 'stress':
-                                case 'erudition':
-                                default:
+        default:
             return commoditesDomestiques(p.slice(1), t);
     }
 }
@@ -1061,9 +982,10 @@ function activTournoi(p, t=new Array()) {
             t.push(new Set().add(intentions[5]+" LUI Séduire"));
             t.push(new Set().add(intentions[0]));
             return t;
-        case 'assassinat':
+        case 'assassinat':  //Intrigue+influence,hameçon,Prestige,Or
             t.push(new Set().add(intentions[3]+" LUI"));
-            return activTournoi(p.slice(1),t);
+            t.push(new Set().add(intentions[2]));
+            return t;
         case 'vassalAInfluencer':
         case 'dirigeantAInfluencer':
         case 'aInfluencer':
@@ -1114,6 +1036,7 @@ function tournoiHeb(p, t=new Array()) {
     const pp = p[0];
     switch(pp) {
         case 'revenu':
+        case 'assassinat':  //Intrigue+influence,hameçon,Prestige,Or
             t.push(new Set().add("Tentes délabrées"));
             return t;
         case 'chevalierPartisan':
@@ -1160,8 +1083,9 @@ function prix(p, t=new Array()) {
             t.push(new Set().add(tabPrix[0]+" SI Triompher"));
             return prix(p.slice(1),t);
         case 'chevalierPartisan':
-                t.push(new Set().add("A DEFINIR"));
-                return t;
+        case 'assassinat':  //Intrigue+influence,hameçon,Prestige,Or
+            t.push(new Set().add("A DEFINIR"));
+            return t;
         default:
             return prix(p.slice(1),t);
     }
@@ -1189,7 +1113,7 @@ function activMariage(p, t=new Array()) {
             t.push(new Set().add(intentions[2]));
             t.push(new Set().add(intentions[0]));
             return t;
-        case 'assassinat':
+        case 'assassinat':  //Intrigue+influence,hameçon,Prestige,Or
             t.push(new Set().add(intentions[1]+" LUI"));
             return activMariage(p.slice(1),t);
         case 'dirigeantAInfluencer':
@@ -1200,21 +1124,10 @@ function activMariage(p, t=new Array()) {
             case 'stress':
             t.push(new Set().add(intentions[0]));
             return t;
-        case 'vassalAInfluencer':
-        case 'recruterChevalier':
-        case 'guerre':
-        case 'declarationGuerre':
-        case 'revenu':
-        case 'controle':
-        case 'hamecon':
-        case 'prestige':
-                    case 'domaine':
-        case 'religieuxAInfluencer':
-            case 'piete':
-        case 'renommee':
-                        case 'factionFoi':
-                            case 'perteTerresRevoquer':
-                                default:
+        case 'chevalierPartisan':
+            t.push(new Set().add(intentions[2]+" SI AUCUN héritier"));
+            return activMariage(p.slice(1),t);
+        default:
             return activMariage(p.slice(1),t);
     }
 }
@@ -1246,7 +1159,7 @@ function activFestin(p, t=new Array()) {
             t.push(new Set().add(intentions[3]+" LUI"));
             t.push(new Set().add(intentions[0]));
             return t;
-        case 'assassinat':
+        case 'assassinat':  //Intrigue+influence,hameçon,Prestige,Or
             t.push(new Set().add(intentions[1]+" LUI"));
             return activFestin(p.slice(1),t);
         case 'dirigeantAInfluencer':
@@ -1260,19 +1173,10 @@ function activFestin(p, t=new Array()) {
         case 'stress':
             t.push(new Set().add(intentions[0]));
             return t;
-        case 'recruterChevalier':
-        case 'guerre':
-        case 'declarationGuerre':
-        case 'revenu':
-        case 'controle':
-        case 'hamecon':
-        case 'prestige':
-                    case 'domaine':
-            case 'piete':
-                    case 'renommee':
-                        case 'factionFoi':
-                            case 'perteTerresRevoquer':
-                                default:
+        case 'chevalierPartisan':
+            t.push(new Set().add(intentions[2]+" SI AUCUN héritier"));
+            return activFestin(p.slice(1),t);
+         default:
             return activFestin(p.slice(1),t);
     }
 }
@@ -1295,7 +1199,7 @@ function activFun(p, t=new Array()) {
     }
     const pp = p[0];
     switch(pp) {
-        case 'assassinat':
+        case 'assassinat':  //Intrigue+influence,hameçon,Prestige,Or
             t.push(new Set().add(intentions[1]+" LUI"));
             return activFun(p.slice(1),t);
         case 'vassalAInfluencer':
@@ -1315,6 +1219,9 @@ function activFun(p, t=new Array()) {
             return t;
         case 'enfant':
             t.push(new Set().add(intentions[2]));
+            return activFun(p.slice(1),t);
+        case 'chevalierPartisan':
+            t.push(new Set().add(intentions[2]+" SI AUCUN héritier"));
             return activFun(p.slice(1),t);
         default:
             return activFun(p.slice(1),t);
@@ -1345,8 +1252,9 @@ function activChasse(p, t=new Array()) {
             t.push(new Set().add(intentions[4]+" LUI"));
             t.push(new Set().add(intentions[0]));
             return t;
-        case 'assassinat':
+        case 'assassinat':  //Intrigue+influence,hameçon,Prestige,Or
             t.push(new Set().add(intentions[2]+" LUI"));
+            t.push(new Set().add(intentions[1]));
             return activChasse(p.slice(1),t);
         case 'vassalAInfluencer':
         case 'dirigeantAInfluencer':
@@ -1362,18 +1270,10 @@ function activChasse(p, t=new Array()) {
         case 'prestige':
             t.push(new Set().add(intentions[1]));
             return activChasse(p.slice(1),t);
-        case 'recruterChevalier':
-        case 'guerre':
-        case 'declarationGuerre':
-        case 'revenu':
-        case 'controle':
-        case 'hamecon':
-        case 'domaine':
-                    case 'piete':
-                        case 'renommee':
-                            case 'factionFoi':
-                                case 'perteTerresRevoquer':
-                                    default:
+        case 'chevalierPartisan':
+            t.push(new Set().add(intentions[3]+" SI AUCUN héritier"));
+            return activChasse(p.slice(1),t);
+        default:
             return activChasse(p.slice(1),t);
     }
 }
@@ -1388,6 +1288,9 @@ function participChasse(p, t=new Array()) {
     switch(pp) {
         case 'revenu':
             t.push(new Set().add("Gardes-chasse locaux"));
+            return t;
+        case 'assassinat':  //Intrigue+influence,hameçon,Prestige,Or
+            t.push(new Set().add("A DEFINIR"));
             return t;
         default:
             return participChasse(p.slice(1),t);
@@ -1409,7 +1312,12 @@ function grpeChasse(p, t=new Array()) {
             t.push(new Set().add("Grand groupe"));
             t.push(new Set().add("Groupe raisonnable"));
             return grpeChasse(p.slice(1),t);
-        default:
+        case 'assassinat':  //Intrigue+influence,hameçon,Prestige,Or
+            t.push(new Set().add("Grand groupe"));
+            t.push(new Set().add("Groupe raisonnable"));
+            t.push(new Set().add("Petit groupe"));
+            return t;
+         default:
             return grpeChasse(p.slice(1),t);
     }
 }
@@ -1432,7 +1340,7 @@ function particip(p, t=new Array()) {
         case 'declarationGuerre':
         case 'controle':
         case 'revenu':
-        case 'assassinat':
+        case 'assassinat':  //Intrigue+influence,hameçon,Prestige,Or
         case 'aInfluencer':
         case 'hamecon':
         case 'proclame':
@@ -1446,8 +1354,9 @@ function particip(p, t=new Array()) {
                         case 'factionCult':
                             case 'perteTerresRevoquer':
                             case 'renommee':
-                                t.push(new Set().add("Participe"));
-                    return t;
+        case 'chevalierPartisan':
+            t.push(new Set().add("Participe"));
+            return t;
                     case 'stress':
                         default:
             return particip(p.slice(1),t);
@@ -1476,22 +1385,10 @@ function activTournee(p, t=new Array()) {
                 case 'factionCult':
                     t.push(new Set().add(types[1]));
                     return t;
-        case 'domaine':
-                case 'guerre':
-                    case 'perteTerresRevoquer':
-                        case 'controle':
-        case 'assassinat':
-        case 'dirigeantAInfluencer':
-        case 'aInfluencer':
-        case 'hamecon':
-        case 'recruterChevalier':
-        case 'declarationGuerre':
-        case 'survie':
-            case 'stress':
-        case 'religieuxAInfluencer':
-            case 'piete':
-                case 'renommee':
-                    default:
+        case 'assassinat':  //Intrigue+influence,hameçon,Prestige,Or
+            t.push(new Set().add(types[0]));
+            return t;
+        default:
             return activTournee(p.slice(1),t);
     }
 }
@@ -1538,14 +1435,10 @@ function intentionTournee(p, t=new Array()) {
         case 'renommee':
             t.push(new Set().add("VERIF"));
             return intentionTournee(p.slice(1),t);
-        case 'domaine':
-        case 'assassinat':
-        case 'vassalAInfluencer':
-        case 'dirigeantAInfluencer':
-        case 'aInfluencer':
-        case 'hamecon':
-        case 'prestige':
-                       default:
+        case 'assassinat':  //Intrigue+influence,hameçon,Prestige,Or
+            t.push(new Set().add("A DEFINIR"));
+            return t;
+        default:
             return intentionTournee(p.slice(1),t);
     }
 }
@@ -1565,22 +1458,11 @@ function suite(p, t=new Array()) {
         case 'revenu':
             t.push(new Set().add("Suite modeste"));
             return t;    
-        case 'survie':
-        case 'stress':
-        case 'guerre':
-        case 'controle':
-        case 'declarationGuerre':
-        case 'perteTerresRevoquer':
-        case 'religieuxAInfluencer':
-            case 'piete':
-                case 'factionFoi':
-        case 'renommee':
-        case 'domaine':
-        case 'assassinat':
-        case 'vassalAInfluencer':
-        case 'dirigeantAInfluencer':
-        case 'aInfluencer':
-        case 'hamecon':
+        case 'assassinat':  //Intrigue+influence,hameçon,Prestige,Or
+            t.push(new Set().add("Suite nombreuse"));
+            t.push(new Set().add("Entourage modeste"));
+            t.push(new Set().add("Suite modeste"));
+            return t;
         default:
             return suite(p.slice(1),t);
     }
@@ -1607,6 +1489,13 @@ function luxe(p, t=new Array()) {
             t.push(new Set().add("Luxe extravagant"));
             t.push(new Set().add("Biens de luxe essentiels"));
             return luxe(p.slice(1),t);
+        case 'assassinat':  //Intrigue+influence,hameçon,Prestige,Or
+            t.push(new Set().add("Mobilier en excès"));
+            t.push(new Set().add("Mobilier luxueux"));
+            t.push(new Set().add("Luxe extravagant"));
+            t.push(new Set().add("Biens de luxe essentiels"));
+            t.push(new Set().add("Aucun luxe"));
+            return t;
         default:
             return luxe(p.slice(1),t);
     }
@@ -1628,7 +1517,8 @@ function regence(p, t=new Array()) {
             case 'vassalSOppose':
                 case 'factionFoi':
                     case 'factionCult':
-                        t.push(new Set().add(roles[2]));
+        case 'assassinat':  //Intrigue+influence,hameçon,Prestige,Or
+            t.push(new Set().add(roles[2]));
                 return t;
         case 'recruterChevalier':
         case 'proclame':
@@ -1640,17 +1530,6 @@ function regence(p, t=new Array()) {
         case 'revenu':
             t.push(new Set().add(roles[0]));
             return t;
-        case 'survie':
-            case 'stress':
-        case 'dirigeantAInfluencer':
-        case 'controle':
-        case 'assassinat':
-        case 'aInfluencer':
-        case 'hamecon':
-            case 'prestige':
-                case 'piete':
-                        case 'perteTerresRevoquer':
-                            case 'renommee':
                                 default:
                                  return regence(p.slice(1), t);
     }
@@ -1669,7 +1548,6 @@ function epidemies(p, t=new Array()) {
     const pp = p[0];
     switch(pp) {
         case 'revenu':
-        case 'chevalierPartisan':
             t.push(new Set().add(fonctions[2]+" SI Aucun coût"));
             t.push(new Set().add(fonctions[0]+" SI Médecin"));
             t.push(new Set().add("ne rien faire"));
@@ -1683,8 +1561,8 @@ function epidemies(p, t=new Array()) {
         case 'guerre':
             case 'domaine':
                 case 'controle':
-                case 'assassinat':
-                case 'vassalAInfluencer':
+                    case 'assassinat':  //Intrigue+influence,hameçon,Prestige,Or
+                    case 'vassalAInfluencer':
                 case 'vassalSOppose':
                 case 'dirigeantAInfluencer':
                 case 'religieuxAInfluencer':
@@ -1701,7 +1579,8 @@ function epidemies(p, t=new Array()) {
                         case 'perteTerresRevoquer':
                         case 'enfant':
                             case 'erudition':
-                        t.push(new Set().add(fonctions[2]));
+            case 'chevalierPartisan':
+                t.push(new Set().add(fonctions[2]));
             return t;        
         //case 'perteTerres':
         case 'stress':
@@ -1736,18 +1615,20 @@ function campObjectif(p, t=new Array()) {
             t.push(new Set().add(obj[3]));
             return t;
         case 'revenu':
-            case 'assassinat':
-                case 'vassalAInfluencer':
-                case 'vassalSOppose':
-                case 'dirigeantAInfluencer':
-                case 'religieuxAInfluencer':
-                case 'aInfluencer':
-                case 'hamecon':
-       case 'chevalierPartisan':
             t.push(new Set().add(obj[4]));
             return t;
-        default:
-            return (p.slice(1));
+        case 'vassalAInfluencer':
+        case 'vassalSOppose':
+        case 'dirigeantAInfluencer':
+        case 'religieuxAInfluencer':
+        case 'aInfluencer':
+        case 'hamecon':
+        case 'chevalierPartisan':
+        case 'assassinat':  //Intrigue+influence,hameçon,Prestige,Or
+            t.push(new Set().add(obj[2]));
+            return t;
+         default:
+            return campObjectif(p.slice(1));
     }
 }
 
