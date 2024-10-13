@@ -564,7 +564,7 @@ function influence(p, t=new Array()) {
         case 'chevalierPartisan':
             t.push(new Set().add("Influencer ami SI chevalier possible ET hors camp &gt; meilleur ami"));
             t.push(new Set().add("Influencer amant SI chevalier possible ET hors camp &gt; âme soeur"));
-            t.push(new Set().add("Séduire SI NON héritier"));
+            t.push(new Set().add("Séduire SI AUCUN héritier - chevalier possible"));
             return influence(p.slice(1), t);
         default:
             return influence(p.slice(1), t);
@@ -591,6 +591,7 @@ function decisions(p, t=new Array()) {
         e.add("recruter");
         e.add("développement");
         e.add("revenu");
+        e.add("provisions");
         e.add("stress descendre");
         t.push(e);
         return t;
@@ -640,7 +641,8 @@ function decisions(p, t=new Array()) {
                 e20.add("emprisonner SI Sombres connaissances");
                 e20.add("stress descendre");
                 e20.add("santé");
-				e20.add("opinion maître-espion");
+				e20.add("provisions");
+                e20.add("opinion maître-espion");
 				e20.add("opinion médecin");
                 t.push(e20);
                 return decisions(p.slice(1), t); 
@@ -721,6 +723,7 @@ function decisions(p, t=new Array()) {
             return decisions(p.slice(1), t);
         case 'survie':
             let e14=new Set().add("santé");
+            e14.add("provisions");
             e14.add("stress descendre");
 			e14.add("opinion maître-espion");
 			e14.add("opinion médecin");
@@ -776,7 +779,7 @@ function decisions(p, t=new Array()) {
             e_champ.add("emprisonner SI chevalier possible");
             e_champ.add("améliorer le camp &gt; Recherche de talents");
             e_champ.add("conjoint SI chevalier possible");
-            e_champ.add("héritier");
+            e_champ.add("héritier - chevalier possible");
             e_champ.add("meilleur ami SI chevalier possible ET hors camp");
             e_champ.add("âme soeur SI chevalier possible ET hors camp");
             t.push(e_champ);
@@ -1021,7 +1024,8 @@ function activTournoi(p, t=new Array()) {
             return activTournoi(p.slice(1),t);
        case 'chevalierPartisan':
             t.push(new Set().add(intentions[2]));
-            return t;
+            t.push(new Set().add(intentions[4]+" SI AUCUN héritier - chevalier possible"));
+            return activTournoi(p.slice(1),t);
         default:
             return activTournoi(p.slice(1),t);
     }
@@ -1125,7 +1129,7 @@ function activMariage(p, t=new Array()) {
             t.push(new Set().add(intentions[0]));
             return t;
         case 'chevalierPartisan':
-            t.push(new Set().add(intentions[2]+" SI AUCUN héritier"));
+            t.push(new Set().add(intentions[2]+" SI AUCUN héritier - chevalier possible"));
             return activMariage(p.slice(1),t);
         default:
             return activMariage(p.slice(1),t);
@@ -1174,7 +1178,7 @@ function activFestin(p, t=new Array()) {
             t.push(new Set().add(intentions[0]));
             return t;
         case 'chevalierPartisan':
-            t.push(new Set().add(intentions[2]+" SI AUCUN héritier"));
+            t.push(new Set().add(intentions[2]+" SI AUCUN héritier - chevalier possible"));
             return activFestin(p.slice(1),t);
          default:
             return activFestin(p.slice(1),t);
@@ -1221,7 +1225,7 @@ function activFun(p, t=new Array()) {
             t.push(new Set().add(intentions[2]));
             return activFun(p.slice(1),t);
         case 'chevalierPartisan':
-            t.push(new Set().add(intentions[2]+" SI AUCUN héritier"));
+            t.push(new Set().add(intentions[2]+" SI AUCUN héritier - chevalier possible"));
             return activFun(p.slice(1),t);
         default:
             return activFun(p.slice(1),t);
@@ -1271,7 +1275,7 @@ function activChasse(p, t=new Array()) {
             t.push(new Set().add(intentions[1]));
             return activChasse(p.slice(1),t);
         case 'chevalierPartisan':
-            t.push(new Set().add(intentions[3]+" SI AUCUN héritier"));
+            t.push(new Set().add(intentions[3]+" SI AUCUN héritier - chevalier possible"));
             return activChasse(p.slice(1),t);
         default:
             return activChasse(p.slice(1),t);
