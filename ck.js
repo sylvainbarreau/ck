@@ -590,8 +590,8 @@ function decisions(p, t=new Array()) {
         e.add("hameçon");
         e.add("recruter");
         e.add("développement");
-        e.add("revenu");
         e.add("provisions");
+        e.add("revenu");
         e.add("stress descendre");
         t.push(e);
         return t;
