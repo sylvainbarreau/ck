@@ -551,11 +551,12 @@ function influence(p, t=new Array()) {
         case 'dirigeantAInfluencer':
         case 'aInfluencer':
         case 'religieuxAInfluencer':
-            case 'vassalSOppose':
-                t.push(new Set().add("Influencer LUI"));
-                return t;
+        case 'vassalSOppose':
+            t.push(new Set().add("Influencer LUI"));
+            return influence(p.slice(1), t);
         /*case 'pertesTerres':*/
         case 'enfant':
+            t.push(new Set().add("Influencer L'UN SI adoption/aventurier"));
             t.push(new Set().add("Séduire"));
             return influence(p.slice(1), t);
         case 'assassinat':  //Intrigue+influence,hameçon,Prestige,Or
@@ -582,6 +583,7 @@ function decisions(p, t=new Array()) {
         e.add("légende");
         e.add("artefact");
         e.add("stress descendre niveau 0");
+        e.add("mission");
         e.add("redoutabilité");
         e.add("vassal non factiable");
         e.add("éviter rivalité");
@@ -634,7 +636,9 @@ function decisions(p, t=new Array()) {
             t.push(e2);
             return decisions(p.slice(1), t); 
         case 'enfant':
-                let e20=new Set().add("Amant");
+                let e20=new Set().add("Prestige SI adoption/aventurier");
+                e20.add("influence L'UN SI adoption/aventurier");
+                e20.add("Amant");
                 e20.add("coucher");
                 e20.add("influence Séduire LUI");
                 e20.add("Intrigue");
