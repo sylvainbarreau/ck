@@ -34,6 +34,7 @@ function (p, t=new Array()) {
         case 'factionCult':
         case 'enfant':
         case 'erudition':
+        case 'influence':
         default:
             return (p.slice(1));
     }
@@ -169,7 +170,7 @@ function chancelier(p, t=new Array()) {
             t.push(new Set().add(roles[3]));
             return t;
         case 'assassinat':  //Intrigue+influence,hameçon,Prestige,Or
-            t.push(new Set().add(roles[2]+" SI "+effets[2][4]));
+            t.push(new Set().add(roles[2]+" SI "+effets[2][3]));
             t.push(new Set().add(roles[0]+" L'UN"));
             t.push(new Set().add(roles[3]));
             return t;
@@ -594,6 +595,7 @@ function decisions(p, t=new Array()) {
         e.add("développement");
         e.add("provisions");
         e.add("revenu");
+        e.add("Influence");
         e.add("stress descendre");
         t.push(e);
         return t;
@@ -788,6 +790,9 @@ function decisions(p, t=new Array()) {
             e_champ.add("âme soeur SI chevalier possible ET hors camp");
             t.push(e_champ);
             return decisions(p.slice(1), t);    
+        case 'influence':
+            t.push(new Set().add("Influence"));
+            return decisions(p.slice(1), t);
         default:
             return decisions(p.slice(1), t);
     }
@@ -1084,6 +1089,7 @@ function prix(p, t=new Array()) {
         case 'erudition':
         case 'vassalSOppose':
         case 'vassalAInfluencer':
+        case 'assassinat':  //Intrigue+influence,hameçon,Prestige,Or
             t.push(new Set().add(tabPrix[4]+" SI Triompher"));
             t.push(new Set().add(tabPrix[3]+" SI Triompher"));
             t.push(new Set().add(tabPrix[2]+" SI Triompher"));
@@ -1091,7 +1097,6 @@ function prix(p, t=new Array()) {
             t.push(new Set().add(tabPrix[0]+" SI Triompher"));
             return prix(p.slice(1),t);
         case 'chevalierPartisan':
-        case 'assassinat':  //Intrigue+influence,hameçon,Prestige,Or
             t.push(new Set().add("A DEFINIR"));
             return t;
         default:
