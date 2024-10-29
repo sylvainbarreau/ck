@@ -504,7 +504,10 @@ function secrets(p, t=new Array()) {
             t.push(new Set().add("Faire chanter SI chevalier possible"));
             t.push(new Set().add("Révéler SI emprisonnable ET chevalier possible"));
             t.push(new Set().add("Faire chanter SI mécène"));
-            return secrets(p.slice(1), t); 
+            return secrets(p.slice(1), t);
+        case 'influence':
+            t.push(new Set().add("Faire chanter"));
+            return t;
         default:
             return secrets(p.slice(1), t);
     }
@@ -638,7 +641,7 @@ function decisions(p, t=new Array()) {
             return decisions(p.slice(1), t);
         case 'vassalAInfluencer':
         case 'dirigeantAInfluencer':
-            let e2=new Set().add("influence LUI");
+            let e2=new Set().add("opinion LUI");
             e2.add("Diplomatie");
             e2.add("Intrigue");
             e2.add("emprisonner SI Sombres connaissances");
@@ -646,10 +649,10 @@ function decisions(p, t=new Array()) {
             return decisions(p.slice(1), t); 
         case 'enfant':
                 let e20=new Set().add("Prestige SI adoption/aventurier");
-                e20.add("influence L'UN SI adoption/aventurier");
+                e20.add("opinion L'UN SI adoption/aventurier");
                 e20.add("Amant");
                 e20.add("coucher");
-                e20.add("influence Séduire LUI");
+                e20.add("opinion Séduire LUI");
                 e20.add("Intrigue");
                 e20.add("emprisonner SI Sombres connaissances");
                 e20.add("stress descendre");
@@ -660,7 +663,7 @@ function decisions(p, t=new Array()) {
                 t.push(e20);
                 return decisions(p.slice(1), t); 
         case 'aInfluencer':
-            let e3=new Set().add("influence LUI");
+            let e3=new Set().add("opinion LUI");
             e3.add("Intrigue");
             e3.add("emprisonner SI Sombres connaissances");
             t.push(e3);
@@ -677,7 +680,7 @@ function decisions(p, t=new Array()) {
             t.push(e5);
             return decisions(p.slice(1), t);
         case 'agent':  //influence SI vassal direct LUI OU courtisan LUI OU invité LUI, Influence, Or, Prestige, hameçon
-            let eAgent=new Set().add("influence SI vassal direct LUI OU courtisan LUI OU invité LUI");
+            let eAgent=new Set().add("opinion SI vassal direct LUI OU courtisan LUI OU invité LUI");
             eAgent.add("Intrigue");
             eAgent.add("emprisonner SI Sombres connaissances");
             eAgent.add("Influence");
@@ -758,7 +761,7 @@ function decisions(p, t=new Array()) {
                 t.push(new Set().add("Erudition"));
                 return decisions(p.slice(1), t);
         case 'religieuxAInfluencer':
-            let e12=new Set().add("influence LUI");
+            let e12=new Set().add("opinion LUI");
             e12.add("Piété");
             e12.add("Intrigue");
             e12.add("Erudition");
@@ -782,7 +785,7 @@ function decisions(p, t=new Array()) {
             t.push(e152);
             return decisions(p.slice(1), t);
         case 'vassalSOppose':
-            let e13=new Set().add("influence LUI");
+            let e13=new Set().add("opinion LUI");
             e13.add("emprisonner LUI");
             e13.add("redoutabilité");
             e13.add("Diplomatie");
@@ -1153,7 +1156,7 @@ function activMariage(p, t=new Array()) {
             t.push(new Set().add(intentions[2]));
             t.push(new Set().add(intentions[0]));
             return t;
-        case 'assassinat':  //Intrigue+influence,hameçon,Prestige,Or
+        case 'assassinat':
             t.push(new Set().add(intentions[1]+" LUI"));
             return activMariage(p.slice(1),t);
         case 'agent':  //influence SI vassal direct LUI OU courtisan LUI OU invité LUI, Influence, Or, Prestige, hameçon
@@ -1202,7 +1205,7 @@ function activFestin(p, t=new Array()) {
             t.push(new Set().add(intentions[3]+" LUI"));
             t.push(new Set().add(intentions[0]));
             return t;
-        case 'assassinat':  //Intrigue+influence,hameçon,Prestige,Or
+        case 'assassinat':
             t.push(new Set().add(intentions[1]+" LUI"));
             return activFestin(p.slice(1),t);
         case 'agent':  //influence SI vassal direct LUI OU courtisan LUI OU invité LUI, Influence, Or, Prestige, hameçon
