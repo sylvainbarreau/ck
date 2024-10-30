@@ -37,7 +37,7 @@ function (p, t=new Array()) {
         case 'erudition':
         case 'agent':  //influence SI vassal direct LUI OU courtisan LUI OU invité LUI, Influence, Or, Prestige, hameçon
         default:
-            return (p.slice(1));
+            return (p.slice(1), t);
     }
 }
 */
@@ -679,7 +679,7 @@ function compHostile(p, t=new Array()) {
 function compPolitique(p, t=new Array()) {
     const complots = ["Contestation du statut",//0 Statut du défi
         "Destitution",//1 Déposer
-        "Consolidation de la base du pouvoir",//2 Mentor en gouvernance
+        "Consolider la base du pouvoir",//2 Mentor en gouvernance
         "Fabrication de revendication",//3 Conflit frontalier & Subsumer la gouvernance
         "Promouvoir",//4 Promouvoir
         "Diffamation",//5 Calomnier
@@ -1285,7 +1285,8 @@ function activMariage(p, t=new Array()) {
         "Diplomatie",//3
         "Semer le chaos",//4
         "Répandre la légende",//5
-        "Légitimation"//6
+        "Légitimation",//6
+        "Faiseur de mariages"//7
     ];
     if (p.length === 0) {
         t.push(new Set().add(intentions[6]));
@@ -1298,6 +1299,7 @@ function activMariage(p, t=new Array()) {
         /*case 'perteTerres':*/
         case 'enfant':
             t.push(new Set().add(intentions[2]));
+            t.push(new Set().add(intentions[7]));
             t.push(new Set().add(intentions[0]));
             return t;
         case 'assassinat':
@@ -1311,14 +1313,151 @@ function activMariage(p, t=new Array()) {
             t.push(new Set().add(intentions[3]+" LUI"));
             return activMariage(p.slice(1),t);
         case 'survie':
-            case 'stress':
+        case 'stress':
             t.push(new Set().add(intentions[0]));
             return t;
         case 'chevalierPartisan':
             t.push(new Set().add(intentions[2]+" SI AUCUN héritier - chevalier possible"));
             return activMariage(p.slice(1),t);
+        case 'guerre':
+        case 'terrJureSinonRevendic':
+        case 'declarationGuerre':
+            t.push(new Set().add(intentions[7]));
+            return activMariage(p.slice(1),t);
         default:
             return activMariage(p.slice(1),t);
+    }
+}
+function activMariageDiverti(p, t=new Array()) {
+    const divertis = ["Divertissements privés",//0
+        "Acrobates et musiciens",//1
+        "Troubadours et monstres exotiques",//2
+    ];
+    if (p.length === 0) {
+        t.push(new Set().add(divertis[2]));
+        t.push(new Set().add(divertis[1]));
+        t.push(new Set().add(divertis[0]));
+        return t;
+    }
+    const pp = p[0];
+    switch(pp) {
+        case 'revenu':
+            t.push(new Set().add(divertis[0]));
+            return t;
+        case 'vassalAInfluencer':
+        case 'vassalSOppose':
+            t.push(new Set().add(divertis[2]+" SI LUI"));
+            t.push(new Set().add(divertis[1]+" SI LUI"));
+            return activMariageDiverti(p.slice(1),t);
+        case 'prestige':
+        case 'recruterChevalier':
+        case 'proclame':
+            t.push(new Set().add(divertis[2]));
+            t.push(new Set().add(divertis[1]));
+            return activMariageDiverti(p.slice(1),t);
+        case 'agent':  //influence SI vassal direct LUI OU courtisan LUI OU invité LUI, Influence, Or, Prestige, hameçon
+            t.push(new Set().add(divertis[2]));
+            t.push(new Set().add(divertis[1]));
+            t.push(new Set().add(divertis[0]));
+            return t;
+        default:
+            return activMariageDiverti(p.slice(1),t);
+    }
+}
+function activMariageNourr(p, t=new Array()) {
+    const nourrBoissons = ["Fête modeste",//0
+        "Festin généreux",//1
+        "Repas gargantuesque",//2
+    ];
+    if (p.length === 0) {
+        t.push(new Set().add(nourrBoissons[2]));
+        t.push(new Set().add(nourrBoissons[1]));
+        t.push(new Set().add(nourrBoissons[0]));
+        return t;
+    }
+    const pp = p[0];
+    switch(pp) {
+        case 'revenu':
+            t.push(new Set().add(nourrBoissons[0]));
+            return t;
+        case 'vassalAInfluencer':
+        case 'vassalSOppose':
+            t.push(new Set().add(nourrBoissons[2]));
+            t.push(new Set().add(nourrBoissons[1]));
+            t.push(new Set().add(nourrBoissons[0]));
+            return t;
+        case 'dirigeantAInfluencer':
+        case 'religieuxAInfluencer':
+        case 'aInfluencer':
+            t.push(new Set().add(nourrBoissons[2]+" SI LUI invité"));
+            t.push(new Set().add(nourrBoissons[1]+" SI LUI invité"));
+            t.push(new Set().add(nourrBoissons[0]+" SI LUI invité"));
+            return activMariageNourr(p.slice(1),t);
+        case 'chevalierPartisan':
+            t.push(new Set().add(nourrBoissons[2]+" SI ami ou amant invité OU pas d'héritier chevalier possible"));
+            t.push(new Set().add(nourrBoissons[1]+" SI ami ou amant invité OU pas d'héritier chevalier possible"));
+            t.push(new Set().add(nourrBoissons[0]+" SI ami ou amant invité OU pas d'héritier chevalier possible"));
+            return activMariageNourr(p.slice(1),t);
+        case 'survie':
+        case 'enfant':
+        case 'agent':  //influence SI vassal direct LUI OU courtisan LUI OU invité LUI, Influence, Or, Prestige, hameçon
+            t.push(new Set().add(nourrBoissons[2]));
+            t.push(new Set().add(nourrBoissons[1]));
+            t.push(new Set().add(nourrBoissons[0]));
+            return t;
+        case 'stress':
+            t.push(new Set().add(nourrBoissons[2]));
+            return activMariageNourr(p.slice(1),t);
+        default:
+            return activMariageNourr(p.slice(1), t);
+    }
+}
+function activMariageLieu(p, t=new Array()) {
+    const lieux = ["Fleurs sauvages",//0
+        "Guirlandes et torches",//1
+        "Argent et or",//2
+    ];
+    if (p.length === 0) {
+        t.push(new Set().add(lieux[2]));
+        t.push(new Set().add(lieux[1]));
+        t.push(new Set().add(lieux[0]));
+        return t;
+    }
+    const pp = p[0];
+    switch(pp) {
+        case 'revenu':
+            t.push(new Set().add(lieux[0]));
+            return t;
+        case 'domaine':
+            t.push(new Set().add(lieux[2]));
+            return activMariageLieu(p.slice(1),t);
+        case 'succession':
+            t.push(new Set().add(lieux[2]));
+            return activMariageLieu(p.slice(1),t);
+        case 'vassalAInfluencer':
+        case 'vassalSOppose':
+            t.push(new Set().add(lieux[2]+" SI LUI"));
+            t.push(new Set().add(lieux[1]+" SI LUI"));
+            t.push(new Set().add(lieux[0]+" SI LUI"));
+            t.push(new Set().add(lieux[2]));
+            return activMariageLieu(p.slice(1),t);
+        case 'dirigeantAInfluencer':
+            t.push(new Set().add(lieux[2]));
+            return activMariageLieu(p.slice(1),t);
+        case 'recruterChevalier':
+        case 'proclame':
+            case 'prestige':
+                case 'renommee':
+                    t.push(new Set().add(lieux[2]));
+            t.push(new Set().add(lieux[1]));
+            return activMariageLieu(p.slice(1),t);
+        case 'agent':  //influence SI vassal direct LUI OU courtisan LUI OU invité LUI, Influence, Or, Prestige, hameçon
+            t.push(new Set().add(lieux[2]));
+            t.push(new Set().add(lieux[1]));
+            t.push(new Set().add(lieux[0]));
+            return t;
+        default:
+            return activMariageLieu(p.slice(1), t);
     }
 }
 function activFestin(p, t=new Array()) {
@@ -1881,6 +2020,9 @@ function evidence(id, texte, ttLeTps=false) {
     const participResult = particip(p);
     const regenceResult=regence(p);
     const activMariageResult = activMariage(p);
+    const mariageDivertiResult = activMariageDiverti(p);
+    const mariageNourrResult = activMariageNourr(p);
+    const mariageLieuResult = activMariageLieu(p);
     const activChasseResult = activChasse(p);
     const participChasseResult = participChasse(p);
     const grpeChasseResult = grpeChasse(p);
@@ -1920,6 +2062,9 @@ function evidence(id, texte, ttLeTps=false) {
     evidence('particip', sansDoublon(participResult));
     evidence('regence', sansDoublon(regenceResult, ""));
     evidence('activite2', sansDoublon(activMariageResult, "SINON"));
+    evidence('mariageDiverti', sansDoublon(mariageDivertiResult, "SINON"));
+    evidence('mariageNourr', sansDoublon(mariageNourrResult, "SINON"));
+    evidence('mariageLieu', sansDoublon(mariageLieuResult, "SINON"));
     evidence('activite3', sansDoublon(activChasseResult, "SINON"));
     evidence('participChasse', sansDoublon(participChasseResult, "SINON"));
     evidence('grpeChasse', sansDoublon(grpeChasseResult, "SINON"));
