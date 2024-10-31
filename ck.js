@@ -680,17 +680,19 @@ function compPolitique(p, t=new Array()) {
     const complots = ["Contestation du statut",//0 Statut du défi
         "Destitution",//1 Déposer
         "Consolider la base du pouvoir",//2 Mentor en gouvernance
-        "Fabrication de revendication",//3 Conflit frontalier & Subsumer la gouvernance
+        "Intégrer le gouvernorat",//3 Subsumer la gouvernance
         "Promouvoir",//4 Promouvoir
         "Diffamation",//5 Calomnier
         "Légitimité des dommages",//6
         "Favoriser la légitimité",//7
         "Pillage de la possession",//8
         "Famille ingrate",//9
+        "Dispute frontalière",//10 Conflit frontalier
     ];
     if (p.length === 0) {
         let ePol=new Set().add(complots[2]);
         ePol.add(complots[3]);
+        ePol.add(complots[10]);
         ePol.add(complots[8]);
         t.push(ePol);
         return t;
@@ -702,6 +704,7 @@ function compPolitique(p, t=new Array()) {
             return t;
         case 'terrJureSinonRevendic':
             t.push(new Set().add(complots[3]));
+            t.push(new Set().add(complots[10]));
             return compPolitique(p.slice(1), t);
         case 'agent':  //influence SI vassal direct LUI OU courtisan LUI OU invité LUI, Influence, Or, Prestige, hameçon
             let ePol=new Set().add(complots[9]);
