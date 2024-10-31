@@ -36,6 +36,7 @@ function (p, t=new Array()) {
         case 'enfant':
         case 'erudition':
         case 'agent':  //influence SI vassal direct LUI OU courtisan LUI OU invité LUI, Influence, Or, Prestige, hameçon
+        case 'influence' :
         default:
             return (p.slice(1), t);
     }
@@ -87,7 +88,7 @@ function conjoint(p, t=new Array()) {
         case 'vassalAInfluencer':
         case 'dirigeantAInfluencer':
         case 'prestige':
-            case 'vassalSOppose':
+        case 'vassalSOppose':
         case 'succession':
                 t.push(new Set().add(roles[1]));
                 return t;
@@ -368,8 +369,7 @@ function espion(p, t=new Array()) {
         case 'terrJureSinonRevendic':
             case 'prestige':
                 case 'domaine':
-        case 'religieuxAInfluencer':
-            case 'piete':
+        case 'piete':
                 case 'renommee':
                     case 'factionFoi':
                         case 'stress':
@@ -378,8 +378,8 @@ function espion(p, t=new Array()) {
             return espion(p.slice(1), t);
     }
 }
-function prison(p, t=new Array()) {
-    let actions = ["Négocier la libération",//0
+function prison(p, t=new Array(), actions=null) {
+    if(actions == null) actions = ["Négocier la libération",//0
         "Rançonner",//1
         "Exécuter",//2
         "Torturer",//3
@@ -397,19 +397,19 @@ function prison(p, t=new Array()) {
         case 'terrJureSinonRevendic':
             t.push(new Set().add(actions[3]+" SI Sombres connaissances"));
             t.push(new Set().add(actions[0]+" &gt; Recruter SI chevalier possible"));
-            return prison(p.slice(1), t);
+            return prison(p.slice(1), t, actions);
         case 'recruterChevalier':
             t.push(new Set().add(actions[0]+" &gt; Recruter SI chevalier possible"));
-            return prison(p.slice(1), t);
+            return prison(p.slice(1), t, actions);
         case 'proclame':
             t.push(new Set().add(actions[0]+" &gt; Recruter SI chevalier possible ET Prouesse&gt;=8"));
-            return prison(p.slice(1), t);
+            return prison(p.slice(1), t, actions);
         case 'revenu':
             t.push(new Set().add(actions[0]+" &gt; Bannir SI or"));
             t.push(new Set().add(actions[1]+" &gt; or"));
             t.push(new Set().add(actions[0]+" &gt; hameçon SI paiement"));
             t.push(new Set().add(actions[1]+" &gt; hameçon SI paiement"));
-            return prison(p.slice(1), t); 
+            return prison(p.slice(1), t, actions); 
         case 'vassalAInfluencer':
         case 'dirigeantAInfluencer':
         case 'aInfluencer':
@@ -417,10 +417,10 @@ function prison(p, t=new Array()) {
         case 'perteTerresRevoquer':
         case 'enfant':
                 t.push(new Set().add(actions[3]+" SI Sombres connaissances"));
-            return prison(p.slice(1), t); 
+            return prison(p.slice(1), t, actions); 
         case 'assassinat':
             t.push(new Set().add(actions[3]+" SI Sombres connaissances"));
-            return prison(p.slice(1), t);
+            return prison(p.slice(1), t, actions);
         case 'agent':  //influence SI vassal direct LUI OU courtisan LUI OU invité LUI, Influence, Or, Prestige, hameçon 
             t.push(new Set().add(actions[0]+" &gt; hameçon SI vassal direct LUI OU courtisan LUI OU invité LUI"));
             t.push(new Set().add(actions[1]+" &gt; hameçon SI vassal direct LUI OU courtisan LUI OU invité LUI"));
@@ -429,20 +429,21 @@ function prison(p, t=new Array()) {
             t.push(new Set().add(actions[1]+" &gt; or"));
             t.push(new Set().add(actions[0]+" &gt; hameçon SI paiement"));
             t.push(new Set().add(actions[1]+" &gt; hameçon SI paiement"));
-            return prison(p.slice(1), t);
+            return prison(p.slice(1), t, actions);
         case 'religieuxAInfluencer':
             t.push(new Set().add(actions[3]+" SI Sombres connaissances ET NON perte Piété"));
-            return prison(p.slice(1), t); 
+            actions[3] += "SI NON perte Piété";
+            return prison(p.slice(1), t, actions); 
         case 'piete':
             actions[3] += "SI NON perte Piété";
-            return prison(p.slice(1), t); 
+            return prison(p.slice(1), t, actions); 
         case 'chevalierPartisan':
             t.push(new Set().add(actions[0]+" &gt; Recruter SI chevalier possible"));
             t.push(new Set().add(actions[0]+" &gt; hameçon SI mécène"));
             t.push(new Set().add(actions[1]+" &gt; hameçon SI mécène"));
-            return prison(p.slice(1), t); 
+            return prison(p.slice(1), t, actions); 
         default:
-            return prison(p.slice(1), t);
+            return prison(p.slice(1), t, actions);
     }
 }
 function secrets(p, t=new Array()) {
@@ -493,6 +494,7 @@ function secrets(p, t=new Array()) {
             t.push(new Set().add("Révéler SI emprisonnable"));
             return secrets(p.slice(1), t);
         case 'succession':
+        case 'influence' :
             t.push(new Set().add("Faire chanter")); //Influence
             return t;
         case 'perteTerresRevoquer':
@@ -596,8 +598,8 @@ function influence(p, t=new Array()) {
             return influence(p.slice(1), t);
     }
 }
-function contreMesure(p, t=new Array()) {
-    let mesures = ["Primes pour les dénonciations",//0
+function contreMesure(p, t=new Array(), mesures=null) {
+    if(mesures == null) mesures = ["Primes pour les dénonciations",//0
         "Arrestations arbitraires",//1
         "Sentinelles renforcées",//2
         "Garde doublée",//3
@@ -615,14 +617,14 @@ function contreMesure(p, t=new Array()) {
             mesures[2]=undefined;
             mesures[3]=undefined;
             mesures[4]=undefined;
-            return contreMesure(p.slice(1),t);
+            return contreMesure(p.slice(1),t, mesures);
         case 'agent':  //influence SI vassal direct LUI OU courtisan LUI OU invité LUI, Influence, Or, Prestige, hameçon
             t.push(new Set().add("Aucune"));
             return t;
         case 'stress':
             mesures[3]=undefined;
             mesures[4]=undefined;
-            return contreMesure(p.slice(1),t);
+            return contreMesure(p.slice(1),t, mesures);
         case 'dirigeantAInfluencer':
         case 'religieuxAInfluencer':
         case 'aInfluencer':
@@ -630,23 +632,23 @@ function contreMesure(p, t=new Array()) {
             mesures[2]=undefined;
             mesures[3]=undefined;
             mesures[4]=undefined;
-            return contreMesure(p.slice(1),t);
+            return contreMesure(p.slice(1),t, mesures);
         case 'survie':
         case 'enfant':
             t.push(new Set().add(mesures[3]));
-            return contreMesure(p.slice(1),t);
+            return contreMesure(p.slice(1),t, mesures);
         case 'revenu':
         case 'prestige':
             mesures[0]=undefined;
-            return contreMesure(p.slice(1),t);
+            return contreMesure(p.slice(1),t, mesures);
         default:
-            return contreMesure(p.slice(1),t);
+            return contreMesure(p.slice(1),t, mesures);
     }
 }
 function compHostile(p, t=new Array()) {
     const complots = ["Assassinat",//0
         "Enlèvement",//1
-        "Revendication du trône",//2
+        "Revendiquer le trône",//2
         "Fabrication d'un hameçon",//3
         "Voler un artefact",//4
         "Renverser le régent",//5
@@ -677,7 +679,7 @@ function compHostile(p, t=new Array()) {
     }
 }
 function compPolitique(p, t=new Array()) {
-    const complots = ["Contestation du statut",//0 Statut du défi
+    const complots = ["Contester le statut",//0 Statut du défi
         "Destitution",//1 Déposer
         "Consolider la base du pouvoir",//2 Mentor en gouvernance
         "Intégrer le gouvernorat",//3 Subsumer la gouvernance
@@ -702,6 +704,11 @@ function compPolitique(p, t=new Array()) {
         case 'succession':
             t.push(new Set().add(complots[4]));
             return t;
+        case 'influence' :
+            t.push(new Set().add(complots[2]));
+            t.push(new Set().add(complots[9]));
+            t.push(new Set().add(complots[0]));
+            return compPolitique(p.slice(1), t);
         case 'terrJureSinonRevendic':
             t.push(new Set().add(complots[3]));
             t.push(new Set().add(complots[10]));
@@ -953,6 +960,9 @@ function decisions(p, t=new Array()) {
             t.push(new Set().add("Influence"));
             t.push(new Set().add("Diplomatie"));
             return decisions(p.slice(1), t);
+        case 'influence' :
+            t.push(new Set().add("Influence"));
+            return decisions(p.slice(1), t);
         default:
             return decisions(p.slice(1), t);
     }
@@ -1036,7 +1046,8 @@ function typeCour(p, t=new Array()) {
             t.push(new Set().add(cours[1]));
             return typeCour(p.slice(1), t);
         case 'succession':
-            t.push(new Set().add(cours[4]));
+            case 'influence' :
+                t.push(new Set().add(cours[4]));
             return typeCour(p.slice(1), t);
         default:
             return typeCour(p.slice(1), t);
@@ -1435,7 +1446,8 @@ function activMariageLieu(p, t=new Array()) {
             t.push(new Set().add(lieux[2]));
             return activMariageLieu(p.slice(1),t);
         case 'succession':
-            t.push(new Set().add(lieux[2]));
+            case 'influence' :
+                t.push(new Set().add(lieux[2]));
             return activMariageLieu(p.slice(1),t);
         case 'vassalAInfluencer':
         case 'vassalSOppose':
@@ -1698,7 +1710,8 @@ function particip(p, t=new Array()) {
                             case 'renommee':
         case 'chevalierPartisan':
         case 'succession':
-            t.push(new Set().add("Participe"));
+            case 'influence' :
+                t.push(new Set().add("Participe"));
             return t;
         default:
             return particip(p.slice(1),t);
@@ -1902,7 +1915,8 @@ function epidemies(p, t=new Array()) {
                     case 'assassinat':
         case 'agent':  //influence SI vassal direct LUI OU courtisan LUI OU invité LUI, Influence, Or, Prestige, hameçon
         case 'succession':
-        case 'vassalAInfluencer':
+            case 'influence' :
+                case 'vassalAInfluencer':
                 case 'vassalSOppose':
                 case 'dirigeantAInfluencer':
                 case 'religieuxAInfluencer':
