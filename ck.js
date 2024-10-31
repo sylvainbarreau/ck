@@ -685,7 +685,7 @@ function compPolitique(p, t=new Array()) {
         "Diffamation",//5 Calomnier
         "Légitimité des dommages",//6
         "Favoriser la légitimité",//7
-        "Domaine du raid",//8
+        "Pillage de la possession",//8
         "Famille ingrate",//9
     ];
     if (p.length === 0) {
