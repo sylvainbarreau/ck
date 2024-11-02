@@ -135,7 +135,7 @@
       </div>
     </div>
     <div class="drop-container">
-      <p>Zone d'arrivée :</p>
+      <p>Situation</p>
       <div id="dropItems"><!-- ondrop="drop(event)" ondragover="allowDrop(event)"-->
         <!-- Les valeurs sélectionnées seront déposées ici -->
         <!-- <div id="dropItemsFaction" ondrop="drop(event)" ondragover="allowDrop(event)"><p>Factions</p></div> -->
@@ -215,38 +215,39 @@
 </div>
 
   <script>
-    // Votre tableau de valeurs JavaScript
+    // Votre tableau de valeurs JavaScript : situation annoncée si projet long terme ou descendre à l'option
     const domaines = new Map();
-    domaines.set('guerre', 'Guerre');
-    domaines.set('revenu','Revenu');
+    //domaines.set('agent', 'agent complot manquant');
+    //domaines.set('assassinat', 'Faire démissionner ou Assassiner');
+    //domaines.set('guerre', 'Guerre');
+    domaines.set('hamecon', 'Utiliser un hameçon');
+    domaines.set('influence', "Dépenser de l'influence");
+    domaines.set('religieuxAInfluencer','opinion Conseiller religieux');
+    domaines.set('revenu','Or');
     //domaines.set('perteTerresRevoquer', 'Perte de terres (titre à révoquer)');
-    domaines.set('domaine', 'Limite domaine (accorder impensable)');
-    domaines.set('controle', 'Contrôle');
-    domaines.set('assassinat', 'Assassinat');
-    domaines.set('succession', 'Succession par acclamation ou nomination, à remonter');
-    domaines.set('vassalAInfluencer', 'Vassal à influencer');
-    domaines.set('vassalSOppose', "Vassal qui s'oppose");
-    domaines.set('dirigeantAInfluencer','Dirigeant à influencer');
-    domaines.set('religieuxAInfluencer','Conseiller religieux à influencer');
-    domaines.set('aInfluencer','Autre à influencer');
-    domaines.set('hamecon', 'Hameçon');
-    domaines.set('recruterChevalier', 'Recruter chevalier');
-    domaines.set('chevalierPartisan', 'Recruter partisan > chevalier');
-    domaines.set('proclame', 'Rechercher chevalier proclamé');
-    domaines.set('terrJureSinonRevendic', 'Convaincre le territoire de jure SINON Revendication comtale');
-    domaines.set('declarationGuerre', 'Déclaration de guerre');
-    domaines.set('survie', 'Survie');
-    domaines.set('stress', 'Perte de stress');
-    domaines.set('prestige', 'Prestige');
-    domaines.set('piete', 'Piété');
-    domaines.set('foiChangemt', 'Changer de foi');
-    domaines.set('renommee', 'Renommée');
-    domaines.set('factionFoi', 'Faction - ferveur');
-    domaines.set('factionCult', 'Faction - Acceptation culturelle');
-    domaines.set('enfant', 'Produire enfant légitime');
-    domaines.set('erudition', 'Erudition');
-    domaines.set('agent', 'Agent complot hostile');
-    domaines.set('influence', 'Influence');
+    //domaines.set('domaine', 'Limite domaine (accorder impensable)');
+    //domaines.set('controle', 'Contrôle');
+    domaines.set('seigneur', 'seigneur lige empêche guerre');
+    domaines.set('succession', 'Succession par acclamation ou nomination à remonter');
+    domaines.set('survie', 'Titre perdu à la succession');
+    domaines.set('terrJureSinonRevendic', 'Pas de cassus belli');
+    //domaines.set('vassalAInfluencer', 'Vassal à influencer');
+    //domaines.set('vassalSOppose', "Vassal qui s'oppose");
+    //domaines.set('dirigeantAInfluencer','Dirigeant à influencer');
+    //domaines.set('aInfluencer','Autre à influencer');
+    //domaines.set('recruterChevalier', 'Recruter chevalier');
+    //domaines.set('chevalierPartisan', 'Recruter partisan > chevalier');
+    //domaines.set('proclame', 'Rechercher chevalier proclamé');
+    //domaines.set('declarationGuerre', 'Déclaration de guerre');
+    //domaines.set('stress', 'Perte de stress');
+    //domaines.set('prestige', 'Prestige');
+    //domaines.set('piete', 'Piété');
+    //domaines.set('foiChangemt', 'Changer de foi');
+    //domaines.set('renommee', 'Renommée');
+    //domaines.set('factionFoi', 'Faction - ferveur');
+    //domaines.set('factionCult', 'Faction - Acceptation culturelle');
+    //domaines.set('enfant', 'Produire enfant légitime');
+    //domaines.set('erudition', 'Erudition');
     
     let draggedItem;
     // Cette fonction crée des éléments draggable pour chaque valeur du tableau
@@ -254,16 +255,17 @@
       var draggableItems = document.getElementById('draggableItems');
 
       domaines.forEach(function(value, key) {
-        var draggableElement = createDraggableElement(key);
+        var draggableElement = createDraggableElement(key, value);
         draggableItems.appendChild(draggableElement);
       });
     }
 
-    function createDraggableElement(value) {
+    function createDraggableElement(key, value) {
       var draggableElement = document.createElement('div');
       draggableElement.className = 'draggable-item';
       draggableElement.setAttribute('draggable', true);
       draggableElement.innerHTML = value;
+      draggableElement.setAttribute('data-key', key);
       draggableElement.setAttribute('ondragstart', 'drag(event)');
       return draggableElement;
     }
@@ -273,8 +275,9 @@
     }
 
     function drag(ev) {
-      ev.dataTransfer.setData("text", ev.target.innerHTML);
-      //var data = ev.dataTransfer.getData("text");
+      // On récupère la clé via l'attribut data-key au lieu de l'innerHTML
+      ev.dataTransfer.setData("key", ev.target.getAttribute('data-key'));
+      //ev.dataTransfer.setData("text", ev.target.innerHTML);
       draggedItem = ev.target;
       //if (ev.target.className === 'dropped-item') {
         //console.log('drag arrivée');
@@ -285,12 +288,12 @@
 
     function drop(ev) {
       ev.preventDefault();
-      var data = ev.dataTransfer.getData("text");
+      var droppedKey = ev.dataTransfer.getData("key");
       // Récupère une référence à l'élément sur lequel l'élément glissé a été lâché
       const dropItems = ev.target;
       console.log(dropItems);
       //if (ev.target.className === 'drop-container') {
-        var droppedItem = createDroppedItem(data);
+        var droppedItem = createDroppedItem(droppedKey);
         dropItems.appendChild(droppedItem);
         console.log(draggedItem.className);
         //draggedItem.parentNode.removeChild(draggedItem);
@@ -299,11 +302,13 @@
         }
     }
 
-    function createDroppedItem(value) {
+    function createDroppedItem(key) {
       var droppedItem = document.createElement('div');
       droppedItem.className = 'dropped-item';
       droppedItem.setAttribute('draggable', true);
-      droppedItem.innerHTML = value;
+      //droppedItem.innerHTML = value;
+      droppedItem.setAttribute('data-key', key);
+      droppedItem.innerHTML = domaines.get(key); // Affiche la valeur de la Map en fonction de la clé
       droppedItem.setAttribute('ondragstart', 'drag(event)');
       droppedItem.setAttribute('onclick', 'removeElement(this)');
       return droppedItem;
