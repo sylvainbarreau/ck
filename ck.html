@@ -218,35 +218,34 @@
     // Votre tableau de valeurs JavaScript : situation annoncée si projet long terme ou descendre à l'option
     const domaines = new Map();
     //domaines.set('agent', 'agent complot manquant');
+    domaines.set('controle', 'Contrôle');
+    //domaines.set('denoncer', 'Dénoncer');
     //domaines.set('assassinat', 'Faire démissionner ou Assassiner');
-    //domaines.set('guerre', 'Guerre');
-    domaines.set('hamecon', 'Utiliser un hameçon');
-    domaines.set('influence', "Dépenser de l'influence");
+    domaines.set('guerre', 'Guerre');
+    domaines.set('declarationGuerre', 'Guerre (préparation)');
+    domaines.set('enfant', 'Héritier');
+    domaines.set('influence', "Influence");
+    domaines.set('aInfluencer','opinion autre');
     domaines.set('religieuxAInfluencer','opinion Conseiller religieux');
+    domaines.set('dirigeantAInfluencer','opinion dirigeant');
     domaines.set('revenu','Or');
-    //domaines.set('perteTerresRevoquer', 'Perte de terres (titre à révoquer)');
-    //domaines.set('domaine', 'Limite domaine (accorder impensable)');
-    //domaines.set('controle', 'Contrôle');
+    domaines.set('terrJureSinonRevendic', 'Pas de cassus belli');
+    domaines.set('stress', 'Perte de stress');
+    domaines.set('prestige', 'Prestige');
+    domaines.set('recruterChevalier', 'Chevalier');
+    domaines.set('proclame', 'Recruter chevalier proclamé');
     domaines.set('seigneur', 'seigneur lige empêche guerre');
     domaines.set('succession', 'Succession par acclamation ou nomination à remonter');
     domaines.set('survie', 'Titre perdu à la succession');
-    domaines.set('terrJureSinonRevendic', 'Pas de cassus belli');
+    domaines.set('hamecon', 'Utiliser un hameçon');
+    //domaines.set('perteTerresRevoquer', 'Perte de terres (titre à révoquer)');
+    //domaines.set('domaine', 'Limite domaine (accorder impensable)');
     //domaines.set('vassalAInfluencer', 'Vassal à influencer');
     //domaines.set('vassalSOppose', "Vassal qui s'oppose");
-    //domaines.set('dirigeantAInfluencer','Dirigeant à influencer');
-    //domaines.set('aInfluencer','Autre à influencer');
-    //domaines.set('recruterChevalier', 'Recruter chevalier');
-    //domaines.set('chevalierPartisan', 'Recruter partisan > chevalier');
-    //domaines.set('proclame', 'Rechercher chevalier proclamé');
-    //domaines.set('declarationGuerre', 'Déclaration de guerre');
-    //domaines.set('stress', 'Perte de stress');
-    //domaines.set('prestige', 'Prestige');
     //domaines.set('piete', 'Piété');
     //domaines.set('foiChangemt', 'Changer de foi');
-    //domaines.set('renommee', 'Renommée');
     //domaines.set('factionFoi', 'Faction - ferveur');
     //domaines.set('factionCult', 'Faction - Acceptation culturelle');
-    //domaines.set('enfant', 'Produire enfant légitime');
     //domaines.set('erudition', 'Erudition');
     
     let draggedItem;
@@ -306,9 +305,12 @@
       var droppedItem = document.createElement('div');
       droppedItem.className = 'dropped-item';
       droppedItem.setAttribute('draggable', true);
-      //droppedItem.innerHTML = value;
-      droppedItem.setAttribute('data-key', key);
       droppedItem.innerHTML = domaines.get(key); // Affiche la valeur de la Map en fonction de la clé
+      if(key in ['aInfluencer', 'vassalAInfluencer', 'dirigeantAInfluencer', 'religieuxAInfluencer', 'vassalSOppose', 'seigneur']) {
+            // ajout d'un UUID à i pour différencier les personnages
+            key = key+'-'+strUUID(); console.log(key);
+        }
+      droppedItem.setAttribute('data-key', key);
       droppedItem.setAttribute('ondragstart', 'drag(event)');
       droppedItem.setAttribute('onclick', 'removeElement(this)');
       return droppedItem;
