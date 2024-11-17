@@ -2240,9 +2240,6 @@ function campObjectif(p, t=new Array()) {
     }
     const pp = p[0];
     switch(pp) {
-        case 'dirigeantAInfluencer': // opinion, Diplomatie, Intrigue, Or
-            t.push(new Set().add("A DEFINIR"));
-            return t;
         case 'prestige':
             case 'denoncer': // Prestige, Renommée 
             case 'piete':
@@ -2266,6 +2263,7 @@ function campObjectif(p, t=new Array()) {
         case 'recruterChevalier':
         case 'assassinat':
         case 'agent':  //influence SI vassal direct LUI OU courtisan LUI OU invité LUI, Influence, Or, Prestige, hameçon
+        case 'dirigeantAInfluencer': // opinion, Diplomatie, Intrigue, Or
             t.push(new Set().add(obj[2]));
             return t;
          default:
