@@ -919,8 +919,10 @@ function decisions(p, t=new Array()) {
             e2.add("emprisonner");
             t.push(e2);
             return decisions(p.slice(1), t); 
-        case 'enfant': // SI aventurier : Prestige, opinion, Or adopté SINON procréer ; survivre
-            let e20=new Set().add("Prestige SI adoption/aventurier");
+        case 'enfant': // survivre ; SI aventurier : Prestige, opinion, Or adopté SINON procréer
+            let e20=new Set().add("santé");
+            e20.add("provisions");
+            e20.add("Prestige SI adoption/aventurier");
                 e20.add("opinion LUI SI adoption/aventurier");
                 e20.add("Diplomatie SI adoption/aventurier");
             e20.add("Intrigue SI adoption/aventurier");
@@ -937,8 +939,6 @@ function decisions(p, t=new Array()) {
                 e20.add("Intrigue");
                 e20.add("emprisonner SI Sombres connaissances ET NON Aventurier OU Outils du tortionnaire");
                 e20.add("stress descendre");
-                e20.add("santé");
-				e20.add("provisions");
                 e20.add("opinion maître-espion");
 				e20.add("opinion médecin");
                 t.push(e20);
@@ -974,7 +974,7 @@ function decisions(p, t=new Array()) {
             e6.add("hameçon SI chevalier possible");
             e6.add("Martialité");
             e6.add("emprisonner SI chevalier possible");
-            e6.add("améliorer le camp &gt; Recherche de talents");
+            //e6.add("améliorer le camp &gt; Recherche de talents");
             e6.add("conjoint SI aventurier ET chevalier possible");
             e6.add("héritier - chevalier partisan possible");
             e6.add("meilleur ami SI chevalier possible ET hors camp");
@@ -1334,11 +1334,9 @@ function activTournoi(p, t=new Array()) {
             case 'proclame':
                 case 'guerre':
         case 'declarationGuerre':
-              t.push(new Set().add(intentions[2]));
-            return t;
         case 'recruterChevalier':
-                t.push(new Set().add(intentions[2]));
-            return t;
+            t.push(new Set().add(intentions[2]));
+            return activTournoi(p.slice(1),t);
         case 'terrJureSinonRevendic': // Intendance (Convaincre territoire de jure), Diplomatie (complots) SI gouvernmt admin, Erudition (Revendication comtale)
             t.push(new Set().add(intentions[1]));
             return activTournoi(p.slice(1),t);
