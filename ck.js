@@ -574,7 +574,7 @@ function secrets(p, t=new Array()) {
         case 'dirigeantAInfluencer': // opinion, Diplomatie, Intrigue, Or
         case 'aInfluencer': // opinion, Diplomatie, Intrigue, Or
         case 'demande':
-            t.push(new Set().add("Révéler SI emprisonnable ET Sombres connaissances ET NON Aventurier OU Outils du tortionnaire"));
+            t.push(new Set().add("Révéler SI emprisonnable ET Sombres connaissances ET Outils du tortionnaire"));
             t.push(new Set().add("Faire chanter SI paiement hameçon ET Or"));
             t.push(new Set().add("Révéler SI emprisonnable"));
             return secrets(p.slice(1), t); 
@@ -773,7 +773,7 @@ function compHostile(p, t=new Array()) {
         "Fabrication d'un hameçon",//3
         "Voler un artefact",//4
         "Renverser le régent",//5
-        "S'emparer du royaume",//6
+        "Saisie du pays",//6
     ];
     if (p.length === 0) {
         let eDefaut=new Set().add(complots[6]);
@@ -2294,7 +2294,7 @@ function epidemies(p, t=new Array()) {
     ];
     if (t.length === 0) { t.push(new Set().add(fonctions[1]+" SI Epidémies du pays")); }
     if (p.length === 0) {
-        t.push(new Set().add(fonctions[1]));
+        t.push(new Set().add(fonctions[2]));
         return t;
     }
     const pp = p[0];
