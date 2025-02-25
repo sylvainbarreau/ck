@@ -128,6 +128,14 @@
           <h3>Hameçons</h3><p id="hamecResult"></p>
           <h3>Secrets</h3><p id="secretsResult"></p>
     </div>
+    <div class="container">
+      <div><h1>Décisions et contrats</h1><h2>Décisions</h2>
+      <h3>Décisions importantes d'aventurier</h3><ul id="decImp"></ul>
+      <h3>Décisions d'aventurier</h3><ul id="decAv"></ul>
+      <h3>Décisions</h3><ul id="dec"></ul></div>
+      <div><h1>Activités</h1>
+      <ul id="activites"></ul></div>
+    </div>
     <div class="drag-container" ondragover="allowDrop(event)">
       <p>Éléments disponibles :</p>
       <div id="draggableItems">
@@ -158,7 +166,7 @@
       </tbody></table></form>
     </div>
 </div>
-<div><h1>Décisions</h1><p id="decisions"></p></div>
+<div><h1>autres décisions</h1><p id="decisions"></p></div>
 <h1>Activités</h1>
 <div class="container">
   <div>
@@ -228,19 +236,19 @@
     domaines.set('demande', 'Faire une demande (pour autre objectif)');
     domaines.set('guerre', 'Guerre');
     domaines.set('declarationGuerre', 'Guerre (préparation)');
+    domaines.set('hamecon', 'Hameçon');
     domaines.set('enfant', 'Héritier');
     domaines.set('influence', "Influence");
     domaines.set('aInfluencer','opinion autre');
     domaines.set('religieuxAInfluencer','opinion Conseiller religieux');
     domaines.set('dirigeantAInfluencer','opinion dirigeant');
     domaines.set('revenu','Or');
-    domaines.set('terrJureSinonRevendic', 'Pas de cassus belli');
+    //domaines.set('terrJureSinonRevendic', 'Pas de cassus belli');
     domaines.set('stress', 'Perte de stress');
     domaines.set('prestige', 'Prestige');
     domaines.set('seigneur', 'seigneur lige empêche guerre');
     domaines.set('succession', 'Succession par acclamation ou nomination à remonter');
     domaines.set('survie', 'Titre perdu à la succession');
-    domaines.set('hamecon', 'Hameçon');
     //domaines.set('perteTerresRevoquer', 'Perte de terres (titre à révoquer)');
     //domaines.set('domaine', 'Limite domaine (accorder impensable)');
     //domaines.set('vassalAInfluencer', 'Vassal à influencer');

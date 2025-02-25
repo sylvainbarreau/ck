@@ -49,6 +49,11 @@ function (p, t=new Array()) {
 }
 */
 function militaire(p, t=new Array()) {
+    if (p.length === 0 && t.length === 0) {
+        // Aventurier : complot Saisie du pays (Prestige, Intrigue) SINON Acheter terre (éviter Gibier de potence, éviter Baroudeur, hameçon, Or, langue, opinion) SINON Demander soutien invasion (Prestige)
+        t.push(new Set().add("pas Renforcement mensuel"));
+        return t;
+    }
     if (p.length === 0) {
         t.push(new Set().add("ne rien changer"));
         return t;
@@ -441,6 +446,16 @@ function prison(p, t=new Array(), actions=null) {
         "Castrer",//4
         "Aveugler",//5
     ];
+    if (p.length === 0 && t.length === 0) {
+        // Aventurier : complot Saisie du pays (Prestige, Intrigue) SINON Acheter terre (éviter Gibier de potence, éviter Baroudeur, hameçon, Or, langue, opinion) SINON Demander soutien invasion (Prestige)
+        t.push(new Set().add(actions[3]+" SI Sombres connaissances"));
+        t.push(new Set().add(actions[0]+" &gt; Bannir SI Or"));
+        t.push(new Set().add(actions[1]+" &gt; Or"));
+        t.push(new Set().add(actions[0]+" &gt; hameçon SI paiement"));
+        t.push(new Set().add(actions[1]+" &gt; hameçon SI paiement"));
+        t.push(new Set().add(actions[0]+" &gt; hameçon SI mécène"));
+        t.push(new Set().add(actions[1]+" &gt; hameçon SI mécène"));
+    }
     if (p.length === 0) {
         t.push(new Set().add(actions[0]+" &gt; hameçon SI mécène"));
         t.push(new Set().add(actions[1]+" &gt; hameçon SI mécène"));           
@@ -553,6 +568,13 @@ function prison(p, t=new Array(), actions=null) {
     }
 }
 function secrets(p, t=new Array()) {
+    if (p.length === 0 && t.length === 0) { // Aventurier : complot Saisie du pays (Prestige, Intrigue) SINON Acheter terre (éviter Gibier de potence, éviter Baroudeur, hameçon, Or, langue, opinion) SINON Demander soutien invasion (Prestige)
+        t.push(new Set().add("Révéler SI emprisonnable ET Sombres connaissances ET NON Aventurier OU Outils du tortionnaire"));
+        t.push(new Set().add("Faire chanter SI paiement hameçon ET Or"));
+        t.push(new Set().add("Faire chanter SI mécène"));
+        t.push(new Set().add("Révéler SI emprisonnable"));
+        t.push(new Set().add("Faire chanter SI chevalier possible"));
+    }
     if (p.length === 0) {
         t.push(new Set().add("Faire chanter SI mécène"));
         t.push(new Set().add("ne rien faire"));
@@ -647,6 +669,9 @@ function secrets(p, t=new Array()) {
     }
 }
 function hamec(p, t=new Array()) {
+    if (p.length === 0 && t.length === 0) { // Aventurier : complot Saisie du pays (Prestige, Intrigue) SINON Acheter terre (éviter Gibier de potence, éviter Baroudeur, hameçon, Or, langue, opinion) SINON Demander soutien invasion (Prestige)
+        t.push(new Set().add("Recruter SI chevalier possible"));
+    }
     if (p.length === 0) {
         t.push(new Set().add("ne rien faire"));
         return t;
@@ -685,6 +710,12 @@ function influence(p, t=new Array()) {
         "Faire la cour",//5
         "Convertir à la sorcellerie",//6
     ];
+    if (p.length === 0 && t.length === 0) { // Aventurier : complot Saisie du pays (Prestige, Intrigue) SINON Acheter terre (éviter Gibier de potence, éviter Baroudeur, hameçon, Or, langue, opinion) SINON Demander soutien invasion (Prestige)
+        t.push(new Set().add(complots[4]+" LUI"));
+        t.push(new Set().add(complots[0]+" LUI"));
+        t.push(new Set().add(complots[1]+" LUI"));
+        t.push(new Set().add(complots[2]+" LUI"));
+    }
     if (p.length === 0) {
         let e=new Set().add(complots[0]+" vassal puissant non intimidé non factiable");
         e.add(complots[0]+" vassal puissant intimidé non factiable");
@@ -744,12 +775,16 @@ function influence(p, t=new Array()) {
     }
 }
 function contreMesure(p, t=new Array(), mesures=null) {
-    if(mesures == null) mesures = ["Primes pour les dénonciations",//0
-        "Arrestations arbitraires",//1
-        "Sentinelles renforcées",//2
+    if(mesures == null) mesures = ["Primes pour les dénonciations",//0 revenu - prestige -
+        "Arrestations arbitraires",//1 opinion -
+        "Sentinelles renforcées",//2 
         "Garde doublée",//3
-        "Retrait de la vie publique",//4
+        "Retrait de la vie publique",//4 opinion -
     ];
+    if (p.length === 0 && t.length === 0) { // Aventurier : complot Saisie du pays (Prestige, Intrigue) SINON Acheter terre (éviter Gibier de potence, éviter Baroudeur, hameçon, Or, langue, opinion) SINON Demander soutien invasion (Prestige)
+        t.push(new Set().add("Aucune"));
+        return t;
+    }
     if (p.length === 0) {
         t.push(new Set().add(mesures[4]));
         t.push(new Set().add("Aucune"));
@@ -823,6 +858,10 @@ function compHostile(p, t=new Array()) {
         "Renverser le régent",//5
         "Saisie du pays",//6
     ];
+    if (p.length === 0 && t.length === 0) { // Aventurier : complot Saisie du pays (Prestige, Intrigue) SINON Acheter terre (éviter Gibier de potence, éviter Baroudeur, hameçon, Or, langue, opinion) SINON Demander soutien invasion (Prestige)
+        t.push(new Set().add(complots[6]));
+        t.push(new Set().add(complots[3]+" LUI"));
+    }
     if (p.length === 0) {
         let eDefaut=new Set().add(complots[6]);
         eDefaut.add(complots[2]);
@@ -853,7 +892,7 @@ function compHostile(p, t=new Array()) {
             t.push(new Set().add(complots[3]+" LUI"));
             return compHostile(p.slice(1), t);
         case 'denoncer': // Prestige, Renommée 
-            case 'enfant': // SI aventurier : Prestige, opinion, Or adopté SINON procréer ; survivre
+        case 'enfant': // SI aventurier : Prestige, opinion, Or adopté SINON procréer ; survivre
         case 'chevalierPartisan': // recruterChevalier sans Martialité
         default:
             return compHostile(p.slice(1),t);
@@ -930,10 +969,37 @@ function compPolitique(p, t=new Array()) {
     }
 }
 function decisions(p, t=new Array()) {
+    let rien=false;
+    if (p.length === 0 && t.length === 0) {
+        rien=true;
+    }
     if (t.length === 0) {
         let e00=new Set().add("stress éviter niveau+");
         t.push(e00);
     }
+    if(rien) { // Aventurier : complot Saisie du pays (Prestige, Intrigue) SINON Acheter terre (éviter Gibier de potence, éviter Baroudeur, hameçon, Or, langue, opinion) SINON Demander soutien invasion (Prestige)
+        let eRienAvent=new Set().add("Prestige (complot Saisie du pays)");
+        eRienAvent.add("Diplomatie");
+        eRienAvent.add("Intrigue");
+        eRienAvent.add("emprisonner SI Sombres connaissances ET Outils du tortionnaire");
+        eRienAvent.add("éviter Gibier de potence");
+        eRienAvent.add("éviter Baroudeur");
+        eRienAvent.add("hameçon LUI");
+        eRienAvent.add("Or");
+        eRienAvent.add("hameçon OU secret SI paiement");
+        eRienAvent.add("Intendance");
+        eRienAvent.add("emprisonner");
+        eRienAvent.add("Erudition");
+        eRienAvent.add("opinion LUI");
+        eRienAvent.add("Martialité");
+        eRienAvent.add("recruter SI chevalier possible");
+        eRienAvent.add("emprisonner SI chevalier possible");
+        eRienAvent.add("Prouesse");
+        // Or pour batiment non aventurier
+        eRienAvent.add("contrôle SI &lt;100");
+        eRienAvent.add("développement");
+        t.push(eRienAvent);
+   }
     if (p.length === 0) {
         let e=new Set().add("points d'expérience");
         e.add("Renommée");
@@ -949,15 +1015,7 @@ function decisions(p, t=new Array()) {
         e.add("recruter");
         e.add("développement");
         e.add("emprisonner");
-        if(t.length === 1) {
-            e.add("Or");
-            e.add("hameçon OU secret SI paiement");
-            e.add("contrôle SI &lt;100");
-            e.add("développement");
-            e.add("Intendance");
-            e.add("emprisonner");
-       }
-       e.add("Piété");
+        e.add("Piété");
         e.add("Prestige");
         e.add("provisions");
         e.add("Or");
@@ -1450,6 +1508,11 @@ function activTournoi(p, t=new Array()) {
         "Séduire",//4
         "Nouer une amitié"//5
     ];
+    if (p.length === 0 && t.length === 0) { // Aventurier : complot Saisie du pays (Prestige, Intrigue) SINON Acheter terre (éviter Gibier de potence, éviter Baroudeur, hameçon, Or, langue, opinion) SINON Demander soutien invasion (Prestige)
+        t.push(new Set().add(intentions[1]));
+        t.push(new Set().add(intentions[5]+" LUI"));
+        t.push(new Set().add(intentions[2]));
+    }
     if (p.length === 0) {
         t.push(new Set().add(intentions[5]+" vassal puissant non intimidé non factiable"));
         t.push(new Set().add(intentions[5]+" vassal puissant intimidé non factiable"));
@@ -1636,6 +1699,9 @@ function activMariage(p, t=new Array()) {
         "Légitimation",//6
         "Faiseur de mariages"//7
     ];
+    if (p.length === 0 && t.length === 0) { // Aventurier : complot Saisie du pays (Prestige, Intrigue) SINON Acheter terre (éviter Gibier de potence, éviter Baroudeur, hameçon, Or, langue, opinion) SINON Demander soutien invasion (Prestige)
+
+    }
     if (p.length === 0) {
         t.push(new Set().add(intentions[6]));
         t.push(new Set().add(intentions[5]));
@@ -1866,6 +1932,9 @@ function activFestin(p, t=new Array()) {
         "Répandre la légende",//5
         "Légitimation"//6
     ];
+    if (p.length === 0 && t.length === 0) { // Aventurier : complot Saisie du pays (Prestige, Intrigue) SINON Acheter terre (éviter Gibier de potence, éviter Baroudeur, hameçon, Or, langue, opinion) SINON Demander soutien invasion (Prestige)
+        t.push(new Set().add(intentions[3]+" LUI"));
+    }
     if (p.length === 0) {
         t.push(new Set().add(intentions[6]));
         t.push(new Set().add(intentions[5]));
@@ -1924,6 +1993,9 @@ function activFun(p, t=new Array()) {
         "Nouer une amitié",//3
         "Légitimation"//4
     ];
+    if (p.length === 0 && t.length === 0) { // Aventurier : complot Saisie du pays (Prestige, Intrigue) SINON Acheter terre (éviter Gibier de potence, éviter Baroudeur, hameçon, Or, langue, opinion) SINON Demander soutien invasion (Prestige)
+        t.push(new Set().add(intentions[3]+" LUI"));
+    }
     if (p.length === 0) {
         t.push(new Set().add(intentions[4]));
         t.push(new Set().add(intentions[3]+" vassal puissant non intimidé non factiable"));
@@ -1982,6 +2054,10 @@ function activChasse(p, t=new Array()) {
         "Séduire",//3
         "Nouer une amitié",//4
     ];
+    if (p.length === 0 && t.length === 0) { // Aventurier : complot Saisie du pays (Prestige, Intrigue) SINON Acheter terre (éviter Gibier de potence, éviter Baroudeur, hameçon, Or, langue, opinion) SINON Demander soutien invasion (Prestige)
+        t.push(new Set().add(intentions[1]));
+        t.push(new Set().add(intentions[4]+" LUI"));
+    }
     if (p.length === 0) {
         t.push(new Set().add(intentions[4]+" vassal puissant non intimidé non factiable"));
         t.push(new Set().add(intentions[4]+" vassal puissant intimidé non factiable"));
@@ -2115,6 +2191,9 @@ function grpeChasse(p, t=new Array()) {
     }
 }
 function particip(p, t=new Array()) {
+    if (p.length === 0 && t.length === 0) { // Aventurier : complot Saisie du pays (Prestige, Intrigue) SINON Acheter terre (éviter Gibier de potence, éviter Baroudeur, hameçon, Or, langue, opinion) SINON Demander soutien invasion (Prestige)
+        t.push(new Set().add("Participe"));
+    }
     if (p.length === 0) {
         t.push(new Set().add("Participe"));
         return t;
@@ -2386,6 +2465,9 @@ function epidemies(p, t=new Array()) {
     "Faire de la recherche avancée",
     "Exercer la charité"
     ];
+    if (p.length === 0 && t.length === 0) { // Aventurier : complot Saisie du pays (Prestige, Intrigue) SINON Acheter terre (éviter Gibier de potence, éviter Baroudeur, hameçon, Or, langue, opinion) SINON Demander soutien invasion (Prestige)
+
+    }
     if (t.length === 0) { t.push(new Set().add(fonctions[1]+" SI Epidémies du pays")); }
     if (p.length === 0) {
         t.push(new Set().add(fonctions[2]));
@@ -2441,7 +2523,6 @@ function epidemies(p, t=new Array()) {
             return epidemies(p.slice(1));
     }
 }
-
 function campObjectif(p, t=new Array()) {
     const obj = ["Nous sommes Vagabonds!",//0
         "Devenir lames à louer",//1
@@ -2450,6 +2531,12 @@ function campObjectif(p, t=new Array()) {
         "Devenir écumeurs",//4
         "Devenir légitimistes",//5
         ];
+    if (p.length === 0 && t.length === 0) { // Aventurier : complot Saisie du pays (Prestige, Intrigue) SINON Acheter terre (éviter Gibier de potence, éviter Baroudeur, hameçon, Or, langue, opinion) SINON Demander soutien invasion (Prestige)
+        t.push(new Set().add(obj[5]+" SI aucun coût"));
+        t.push(new Set().add(obj[0]+" SI aucun coût"));
+        t.push(new Set().add("ne rien faire"));
+        return t;        
+    }
     if (p.length === 0) {
         t.push(new Set().add(obj[5]));
         t.push(new Set().add("ne rien faire"));
@@ -2492,6 +2579,38 @@ function campObjectif(p, t=new Array()) {
         default:
             return campObjectif(p.slice(1));
     }
+}
+function decisionOuNon(res, setOui, setNon) {
+    // rechercher dans res si au moins 1 setOui est avant tout setNon
+    // parcours de res (tableau de Set) :
+    for (let r of res) {
+        for (let e of r) {
+            // parcourir setOui
+            if (setOui) {
+            for (let o of setOui) {
+                // recherche de o dans chaîne e :
+                console.log(e.toLowerCase(), o.toLowerCase());
+                if (e.toLowerCase().includes(o.toLowerCase())) {
+                    return true;
+                }
+            }}
+            if (setNon) {
+            for (let n of setNon) {
+                // recherche de n dans chaîne e :
+                if (e.toLowerCase().includes(n.toLowerCase())) {
+                    return false;
+                }
+            }}
+        }
+    }
+    return true;
+}
+function liDec(listeDecisions, libDecision, ouiNon) {
+    //if (ouiNon) {
+        const d = document.createElement('li');
+        d.textContent = libDecision+" : "+ouiNon;
+        listeDecisions.appendChild(d);
+    //}
 }
 function evidence(id, texte, ttLeTps=false) {
     let e=document.getElementById(id);
@@ -2602,8 +2721,81 @@ function evidence(id, texte, ttLeTps=false) {
     evidence('festin', sansDoublon(festinResult, "SINON"));
     evidence('fun', sansDoublon(funResult, "SINON"));
     evidence('campObjectif', sansDoublon(campObjectifResult, "SINON"));
-  }
-
+    // création de <li> dans id 'dec'
+    let listeDecisions = document.getElementById('decImp');
+    // décisions majeures Aventurier
+    liDec(listeDecisions, 'Devenir un grand conquérant', decisionOuNon(decisionsResult,
+        new Set(["Prestige (complot Saisie du pays)", "augmenter levées", "légende"]),
+        new Set(["Prestige"])));
+    liDec(listeDecisions, 'Défendre la culture ...', decisionOuNon(decisionsResult,
+        new Set(["Prestige (complot Saisie du pays)"]),
+        new Set(["Or", "Prestige"])));
+    liDec(listeDecisions, 'Devenir le chevalier du Cygne', decisionOuNon(decisionsResult,
+        new Set(["Prestige (complot Saisie du pays)", "Prouesse", "artefact", "légende"]),
+        new Set(["Prestige"])));
+    liDec(listeDecisions, 'Les voyages de ...', decisionOuNon(decisionsResult,
+            new Set(["points d'expérience", "artefact"]),
+            new Set(["Or", "Prestige"])));
+    liDec(listeDecisions, 'Le chemin de la foi ...', decisionOuNon(decisionsResult,
+        null,
+        null));
+    liDec(listeDecisions, 'Fonder une propriété', decisionOuNon(decisionsResult,
+            new Set(["contrôle SI ", "Prestige (complot Saisie du pays)"]),
+            new Set(["Or"])));
+    liDec(listeDecisions, 'Enrôler les exclus', decisionOuNon(decisionsResult,
+        new Set(["Martialité", "Intrigue", "opinion LUI", "augmenter levées"]),
+        new Set(["Or", "Prestige"])));
+    // Décisions aventurier
+    listeDecisions = document.getElementById('decAv');
+    liDec(listeDecisions, 'Visiter la propriété cadastrale', decisionOuNon(decisionsResult,
+            new Set(["chevalier possible", "provisions", "Prestige (complot Saisie du pays)"]),
+            null));
+    liDec(listeDecisions, 'Rassembler les provisions', decisionOuNon(decisionsResult,
+                new Set(["provisions"]),
+                null));
+    liDec(listeDecisions, 'Humilier le larbin', decisionOuNon(decisionsResult,
+                    new Set(["stress", "redoutabilité"]),
+                    new Set(["Prestige"])));
+    liDec(listeDecisions, 'A la pêche', decisionOuNon(decisionsResult,
+                        new Set(["stress", "provisions"]),
+                        null));
+    liDec(listeDecisions, 'Faire table rase du passé', decisionOuNon(decisionsResult,
+        new Set(["éviter Gibier de potence", "Prestige (complot Saisie du pays)"]),
+        new Set(["Or", "Prestige", "Piété"])));
+    liDec(listeDecisions, "Renoncer à l'héritage", decisionOuNon(decisionsResult,
+            new Set(["stress"]),
+            new Set(["Prestige SI adoption/aventurier ET NON mort", "Prestige"])));
+    // Décisions mineures
+    listeDecisions = document.getElementById('dec');
+    liDec(listeDecisions, "S'entraîner pour un tournoi", decisionOuNon(decisionsResult,
+        new Set(["Or" /*"prouesse"*/]),
+        new Set(["Prestige"])));
+    liDec(listeDecisions, "Adopter la culture locale", decisionOuNon(decisionsResult,
+        null,
+        new Set(["Prestige"])));
+    liDec(listeDecisions, "Faites-vous plaisir en buvant", decisionOuNon(decisionsResult,
+            new Set(["stress"]),
+            new Set(["Prestige"])));
+    const listeActiv = document.getElementById('activites');
+    liDec(listeActiv, "Séjour universitaire", decisionOuNon(decisionsResult,
+        new Set(["Diplomatie", "Martialité", "Intendance", "Intrigue", "Erudition", "points d'expérience", "artefact", "recruter"]),
+        new Set(["Or"])));
+    liDec(listeActiv, "Fête de camp", decisionOuNon(decisionsResult,
+            new Set(["stress", "provisions", "Diplomatie", "Martialité", "Intendance", "Intrigue", "Erudition", "Prestige (complot Saisie du pays)", "artefact", "recruter"]),
+            new Set(["Or"])));
+    liDec(listeActiv, "Randonnée", decisionOuNon(decisionsResult,
+                new Set(["opinion LUI", "stress", "Prestige", "Erudition"]),
+                new Set(["Or"])));
+    liDec(listeActiv, "Chasse", decisionOuNon(decisionsResult,
+        new Set(["Prestige", "provisions", "opinion LUI", "artefact", "légende", "légitimité", "stress", "Prouesse", "stress", "opinion LUI"]),
+        new Set(["Or"])));
+    liDec(listeActiv, "Expédition vers un monument", decisionOuNon(decisionsResult,
+        new Set(["Intrigue", "Diplomatie", "Martialité", "Erudition", "Intendance", "recruter", "Prestige"]),
+        new Set(["Or"])));
+    liDec(listeActiv, "Pélerinage", decisionOuNon(decisionsResult,
+            new Set(["Piété", "légitimité", "stress", "éviter Gibier de potence", "Prestige (complot Saisie du pays)"]),
+            new Set(["Or"])));
+    }
 function sansDoublon(tab, liaison="") {
     let texte = "";
     let faits = new Set();
