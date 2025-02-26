@@ -3020,7 +3020,7 @@ function evidence(id, texte, ttLeTps=false) {
     // Décisions aventurier
     listeDecisions = document.getElementById('decAv');
     liDec(listeDecisions, 'Visiter la propriété ...', 'dec-av-0', decisionOuNon(decisionsResult,
-            new Set(["chevalier possible", "provisions", "Prestige (complot Saisie du pays)"]),
+            new Set(["provisions", "Prestige (complot Saisie du pays)"]),
             null));
     liDec(listeDecisions, 'Rassembler les provisions', 'dec-av-1', decisionOuNon(decisionsResult,
                 new Set(["provisions"]),
