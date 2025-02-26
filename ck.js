@@ -11,15 +11,23 @@ function (p, t=new Array()) {
     const lui = p2[1];
     const pp = p2[0];
     switch(pp) {
-        case 'agent': // opinion SI vassal direct LUI OU courtisan LUI OU invité LUI, Influence, Or, Prestige, hameçon
+        // A REVOIR :
+        case 'agent': 
+        case 'domaine':
+        case 'vassalAInfluencer':
+        case 'vassalSOppose':
+        case 'terrJureSinonRevendic': // Intendance (Convaincre territoire de jure), Diplomatie (complots) SI gouvernmt admin, Erudition (Revendication comtale)
+        case 'piete':
+        case 'foiChangemt':
+        case 'denoncer': // Prestige, Renommée 
+        case 'factionFoi':
+        case 'factionCult':
+        case 'erudition': *
         case 'guerre': // guerre, Influence,opinion SI gouvernmt admin
         case 'revenu':
-        case 'domaine':
         case 'controle':
         case 'assassinat': // Faire démissionner ou Assassiner
         case 'succession': // besoin agent //influence SI vassal direct LUI OU courtisan LUI OU invité LUI, Influence, Or, Prestige, hameçon
-        case 'vassalAInfluencer':
-        case 'vassalSOppose':
         case 'dirigeantAInfluencer': // opinion, Diplomatie, Intrigue, Or
         case 'religieuxAInfluencer': // opinion, Or
         case 'aInfluencer': // opinion, Diplomatie, Intrigue, Or
@@ -29,18 +37,11 @@ function (p, t=new Array()) {
         case 'demande': // Prestige, opinion, Or
         case 'demande2': // (contrat, Or, provisions) Prestige, opinion
         case 'proclame':
-        case 'terrJureSinonRevendic': // Intendance (Convaincre territoire de jure), Diplomatie (complots) SI gouvernmt admin, Erudition (Revendication comtale)
         case 'declarationGuerre':
         case 'survie':
         case 'stress':
         case 'prestige':
-        case 'piete':
-        case 'foiChangemt':
-        case 'denoncer': // Prestige, Renommée 
-        case 'factionFoi':
-        case 'factionCult':
         case 'enfant': // SI aventurier : Prestige, opinion, Or adopté SINON procréer ; survivre
-        case 'erudition':
         case 'influence' : // besoin agent //influence SI vassal direct LUI OU courtisan LUI OU invité LUI, Influence, Or, Prestige, hameçon
         case 'seigneur': // Erudition (Revendiquer trône), (Factions), Prestige,opinion,Or (Me faire déclarer régent)
         default:
@@ -1985,6 +1986,172 @@ function activFestin(p, t=new Array()) {
             return activFestin(p.slice(1),t);
     }
 }
+function activFete(p, t=new Array()) {
+    const intentions = [
+        "Se détendre",//0
+        "Nouer une amitié",//1
+        "Conversation au coin du feu"//2
+    ];
+    if (p.length === 0) {
+        t.push(new Set().add(intentions[1]+" vassal puissant non intimidé non factiable"));
+        t.push(new Set().add(intentions[1]+" vassal puissant intimidé non factiable"));
+        t.push(new Set().add(intentions[1]+" vassal non intimidé non factiable"));
+        t.push(new Set().add(intentions[1]+" vassal intimidé non factiable"));
+        t.push(new Set().add(intentions[2]));
+        return t;
+    }
+    // garder avant -
+    const p2 = p[0].split('-');
+    const lui = p2[1];
+    const pp = p2[0];
+    switch(pp) {
+        case 'succession': // besoin agent //influence SI vassal direct LUI OU courtisan LUI OU invité LUI, Influence, Or, Prestige, hameçon
+        case 'dirigeantAInfluencer': // opinion, Diplomatie, Intrigue, Or
+        case 'religieuxAInfluencer': // opinion, Or
+        case 'aInfluencer': // opinion, Diplomatie, Intrigue, Or
+        case 'demande': // Prestige, opinion, Or
+        case 'demande2': // (contrat, Or, provisions) Prestige, opinion
+        case 'influence' : // besoin agent //influence SI vassal direct LUI OU courtisan LUI OU invité LUI, Influence, Or, Prestige, hameçon
+        case 'seigneur': // Erudition (Revendiquer trône), (Factions), Prestige,opinion,Or (Me faire déclarer régent)
+            t.push(new Set().add(intentions[1]+" LUI"));
+            return activFete(p.slice(1),t);
+        case 'guerre': // guerre, Influence,opinion SI gouvernmt admin
+        case 'recruterChevalier':
+        case 'chevalierPartisan': // comme recruterChevalier sans Martialité
+        case 'proclame':
+        case 'declarationGuerre':
+            t.push(new Set().add(intentions[2]));
+            return t;
+        case 'survie':
+        case 'stress':
+            t.push(new Set().add(intentions[0]));
+            return t;
+        case 'enfant': // SI aventurier : Prestige, opinion, Or adopté SINON procréer ; survivre
+            t.push(new Set().add(intentions[1]+" LUI SI adoption/aventurier"));
+            t.push(new Set().add(intentions[0]));
+            return t;
+        case 'revenu':
+        case 'controle':
+        case 'assassinat': // Faire démissionner ou Assassiner
+        case 'hamecon':
+        case 'prestige':
+        default:
+            return (p.slice(1), t);
+    }
+}
+function activFeteNourr(p, t=new Array()) {
+    const options = ["Maigres repas",//0
+        "Repas simples",//1
+        "Banquet somptueux"//2
+    ];
+    if (p.length === 0) {
+        t.push(new Set().add(options[2]));
+        t.push(new Set().add(options[1]));
+        t.push(new Set().add(options[0]));
+        return t;
+    }
+    // garder avant -
+    const p2 = p[0].split('-');
+    const lui = p2[1];
+    const pp = p2[0];
+    switch(pp) {
+        case 'guerre': // guerre, Influence,opinion SI gouvernmt admin
+        case 'recruterChevalier':
+        case 'chevalierPartisan': // comme recruterChevalier sans Martialité
+        case 'proclame':
+        case 'declarationGuerre':
+            t.push(new Set().add(options[2]));
+            return activFeteNourr(p.slice(1),t);
+        case 'revenu':
+            case 'succession': // besoin agent //influence SI vassal direct LUI OU courtisan LUI OU invité LUI, Influence, Or, Prestige, hameçon
+            case 'dirigeantAInfluencer': // opinion, Diplomatie, Intrigue, Or
+            case 'religieuxAInfluencer': // opinion, Or
+            case 'aInfluencer': // opinion, Diplomatie, Intrigue, Or
+            case 'demande': // Prestige, opinion, Or
+            case 'influence' : // besoin agent //influence SI vassal direct LUI OU courtisan LUI OU invité LUI, Influence, Or, Prestige, hameçon
+            case 'seigneur': // Erudition (Revendiquer trône), (Factions), Prestige,opinion,Or (Me faire déclarer régent)
+            t.push(new Set().add(options[0]));
+            return t;
+        case 'survie':
+            t.push(new Set().add(options[2]));
+            t.push(new Set().add(options[1]));
+            return activFeteNourr(p.slice(1),t);
+        case 'enfant': // SI aventurier : Prestige, opinion, Or adopté SINON procréer ; survivre
+            t.push(new Set().add(options[0]+" SI adoption/aventurier"));
+            t.push(new Set().add(options[2]));
+            t.push(new Set().add(options[1]));
+            return activFeteNourr(p.slice(1),t);
+            case 'controle':
+        case 'assassinat': // Faire démissionner ou Assassiner
+        case 'hamecon':
+        case 'demande2': // (contrat, Or, provisions) Prestige, opinion
+        case 'stress':
+        case 'prestige':
+        default:
+            return (p.slice(1), t);
+    }
+}
+function activFeteBoiss(p, t=new Array()) {
+    const options = ["Rares boissons",//0
+        "Boissons adéquates",//1
+        "Boissons abondantes"//2
+    ];
+    if (p.length === 0) {
+        t.push(new Set().add(options[2]));
+        t.push(new Set().add(options[0]));
+        return t;
+    }
+    // garder avant -
+    const p2 = p[0].split('-');
+    const lui = p2[1];
+    const pp = p2[0];
+    switch(pp) {
+        case 'revenu':
+            t.push(new Set().add(options[0]));
+            return t;
+        case 'dirigeantAInfluencer': // opinion, Diplomatie, Intrigue, Or
+        case 'aInfluencer': // opinion, Diplomatie, Intrigue, Or
+            t.push(new Set().add(options[2]+" SI LUI invité"));
+            t.push(new Set().add(options[1]+" LUI"));
+            t.push(new Set().add(options[0]));
+            return t;
+        case 'demande': // Prestige, opinion, Or
+            t.push(new Set().add(options[2]));
+            t.push(new Set().add(options[1]+" LUI"));
+            t.push(new Set().add(options[0]));
+            return t;
+            case 'survie':
+                t.push(new Set().add(options[2]));
+                return activFeteBoiss(p.slice(1),t);
+        case 'enfant': // SI aventurier : Prestige, opinion, Or adopté SINON procréer ; survivre
+            t.push(new Set().add(options[2]+" SI adoption/aventurier"));
+            t.push(new Set().add(options[1]+" LUI SI adoption/aventurier"));
+            t.push(new Set().add(options[0]+" SI adoption/aventurier"));
+            return activFeteBoiss(p.slice(1),t);
+        case 'demande2': // (contrat, Or, provisions) Prestige, opinion
+            t.push(new Set().add(options[2]));
+            t.push(new Set().add(options[1]+" LUI"));
+            return activFeteBoiss(p.slice(1),t);
+        case 'prestige':
+            t.push(new Set().add(options[2]));
+            return activFeteBoiss(p.slice(1),t);
+        case 'recruterChevalier':
+            case 'religieuxAInfluencer': // opinion, Or
+            case 'influence' : // besoin agent //influence SI vassal direct LUI OU courtisan LUI OU invité LUI, Influence, Or, Prestige, hameçon
+            case 'seigneur': // Erudition (Revendiquer trône), (Factions), Prestige,opinion,Or (Me faire déclarer régent)
+            case 'controle':
+                return null;
+                case 'chevalierPartisan': // comme recruterChevalier sans Martialité
+                case 'proclame':
+                case 'declarationGuerre':
+                case 'assassinat': // Faire démissionner ou Assassiner
+                case 'hamecon':
+                case 'stress':
+                case 'guerre': // guerre, Influence,opinion SI gouvernmt admin
+                    default:
+            return (p.slice(1), t);
+    }
+}
 function activFun(p, t=new Array()) {
     const intentions = [
         "Pleurer la perte",//0
@@ -2046,6 +2213,103 @@ function activFun(p, t=new Array()) {
             return activFun(p.slice(1),t);
     }
 }
+function activMonum(p, t=new Array(), intentions=null) {
+    if(intentions == null) intentions = ["Amassage de savoirs",//0
+        "Curiosité",//1
+        "Répandre la légende"
+    ];
+    if (p.length === 0) {
+        t.push(new Set().add(intentions[2]));
+        t.push(new Set().add(intentions[0]));
+        return t;
+    }
+    // garder avant -
+    const p2 = p[0].split('-');
+    const lui = p2[1];
+    const pp = p2[0];
+    switch(pp) {
+       case 'guerre': // guerre, Influence,opinion SI gouvernmt admin
+       case 'controle':
+        case 'assassinat': // Faire démissionner ou Assassiner
+        case 'succession': // besoin agent //influence SI vassal direct LUI OU courtisan LUI OU invité LUI, Influence, Or, Prestige, hameçon
+        case 'dirigeantAInfluencer': // opinion, Diplomatie, Intrigue, Or
+        case 'aInfluencer': // opinion, Diplomatie, Intrigue, Or
+        case 'hamecon':
+        case 'recruterChevalier':
+        case 'chevalierPartisan': // comme recruterChevalier sans Martialité
+        case 'demande': // Prestige, opinion, Or
+        case 'demande2': // (contrat, Or, provisions) Prestige, opinion
+        case 'proclame':
+        case 'declarationGuerre':
+            case 'prestige':
+                case 'influence' : // besoin agent //influence SI vassal direct LUI OU courtisan LUI OU invité LUI, Influence, Or, Prestige, hameçon
+                case 'seigneur': // Erudition (Revendiquer trône), (Factions), Prestige,opinion,Or (Me faire déclarer régent)
+                        t.push(new Set().add(intentions[0]));
+            return t;
+        case 'revenu':
+            case 'religieuxAInfluencer': // opinion, Or
+            t.push(new Set().add(intentions[1]+" SI paiement hameçon"));
+            t.push(new Set().add(intentions[0]));
+            return t;
+        case 'survie':
+        case 'stress':
+            intentions[0] = undefined;
+            return activMonum(p.slice(1),t,intentions);
+        case 'enfant': // SI aventurier : Prestige, opinion, Or adopté SINON procréer ; survivre
+            t.push(new Set().add(intentions[0]+" SI adoption/aventurier"));
+            intentions[0] = undefined;
+            return activMonum(p.slice(1),t,intentions);
+        default:
+            return (p.slice(1), t);
+    }
+}
+function activMonumScribe(p, t=new Array()) {
+    const options = ["Pas de scribes",//0
+        "Recruter des scribes compétents"//1
+    ];
+    if (p.length === 0) {
+        t.push(new Set().add(options[1]));
+        t.push(new Set().add(options[0]));
+        return t;
+    }
+    // garder avant -
+    const p2 = p[0].split('-');
+    const lui = p2[1];
+    const pp = p2[0];
+    switch(pp) {
+        case 'guerre': // guerre, Influence,opinion SI gouvernmt admin
+        case 'controle':
+        case 'assassinat': // Faire démissionner ou Assassiner
+        case 'succession': // besoin agent //influence SI vassal direct LUI OU courtisan LUI OU invité LUI, Influence, Or, Prestige, hameçon
+        case 'dirigeantAInfluencer': // opinion, Diplomatie, Intrigue, Or
+        case 'religieuxAInfluencer': // opinion, Or
+        case 'aInfluencer': // opinion, Diplomatie, Intrigue, Or
+        case 'hamecon':
+        case 'recruterChevalier':
+        case 'chevalierPartisan': // comme recruterChevalier sans Martialité
+        case 'demande': // Prestige, opinion, Or
+        case 'demande2': // (contrat, Or, provisions) Prestige, opinion
+        case 'proclame':
+        case 'declarationGuerre':
+            case 'prestige':
+                case 'influence' : // besoin agent //influence SI vassal direct LUI OU courtisan LUI OU invité LUI, Influence, Or, Prestige, hameçon
+                case 'seigneur': // Erudition (Revendiquer trône), (Factions), Prestige,opinion,Or (Me faire déclarer régent)
+                        t.push(new Set().add(options[1]));
+          t.push(new Set().add(options[0]));
+            return t;
+        case 'revenu':
+            t.push(new Set().add(options[0]));
+            return t;
+        case 'enfant': // SI aventurier : Prestige, opinion, Or adopté SINON procréer ; survivre
+            t.push(new Set().add(options[1]+" SI adoption/aventurier"));
+            return activMonumScribe(p.slice(1),t);
+            case 'survie':
+        case 'stress':
+        default:
+            return (p.slice(1), t);
+    }
+}
+
 function activChasse(p, t=new Array()) {
     const intentions = [
         "Se détendre",//0
@@ -2605,12 +2869,15 @@ function decisionOuNon(res, setOui, setNon) {
     }
     return true;
 }
-function liDec(listeDecisions, libDecision, ouiNon) {
-    //if (ouiNon) {
+function liDec(listeDecisions, libDecision, id, ouiNon) {
+    // si id n'existe pas, le créer :
+    if (!document.getElementById(id)) {
         const d = document.createElement('li');
-        d.textContent = libDecision+" : "+ouiNon;
+        // ajout attribut id :
+        d.setAttribute('id', id);
         listeDecisions.appendChild(d);
-    //}
+    }
+    evidence(id, libDecision+" : "+ouiNon);   
 }
 function evidence(id, texte, ttLeTps=false) {
     let e=document.getElementById(id);
@@ -2677,6 +2944,11 @@ function evidence(id, texte, ttLeTps=false) {
     const tourneeIntentionResult = intentionTournee(p);
     const epidResult = epidemies(p);
     const festinResult = activFestin(p);
+    const feteResult = activFete(p);
+    const feteNourrResult = activFeteNourr(p);
+    const feteBoissResult = activFeteBoiss(p);
+    const monumResult = activMonum(p);
+    const monumScribeResult = activMonumScribe(p);
     const funResult = activFun(p);
     const campObjectifResult = campObjectif(p);
     // Afficher les résultats dans la section des résultats sur la page
@@ -2718,82 +2990,86 @@ function evidence(id, texte, ttLeTps=false) {
     evidence('epidResult', sansDoublon(epidResult, "SINON"));
     evidence('tournoiHeberg', sansDoublon(hebergResult, "SINON"));
     evidence('prix', sansDoublon(prixResult, "SINON"));
-    evidence('festin', sansDoublon(festinResult, "SINON"));
+    evidence('fete', sansDoublon(feteResult, "SINON"));
+    evidence('feteNourr', sansDoublon(feteNourrResult, "SINON"));
+    evidence('monum', sansDoublon(monumResult, "SINON"));
+    evidence('monumScribe', sansDoublon(monumScribeResult, "SINON"));
+    evidence('feteBoiss', sansDoublon(feteBoissResult, "SINON"));
     evidence('fun', sansDoublon(funResult, "SINON"));
     evidence('campObjectif', sansDoublon(campObjectifResult, "SINON"));
     // création de <li> dans id 'dec'
     let listeDecisions = document.getElementById('decImp');
     // décisions majeures Aventurier
-    liDec(listeDecisions, 'Devenir un grand conquérant', decisionOuNon(decisionsResult,
+    liDec(listeDecisions, 'Devenir un grand conquérant', 'dec-maj-av-0', decisionOuNon(decisionsResult,
         new Set(["Prestige (complot Saisie du pays)", "augmenter levées", "légende"]),
         new Set(["Prestige"])));
-    liDec(listeDecisions, 'Défendre la culture ...', decisionOuNon(decisionsResult,
+    liDec(listeDecisions, 'Défendre la culture ...', 'dec-maj-av-1', decisionOuNon(decisionsResult,
         new Set(["Prestige (complot Saisie du pays)"]),
         new Set(["Or", "Prestige"])));
-    liDec(listeDecisions, 'Devenir le chevalier du Cygne', decisionOuNon(decisionsResult,
+    liDec(listeDecisions, 'Devenir le chevalier du Cygne', 'dec-maj-av-2', decisionOuNon(decisionsResult,
         new Set(["Prestige (complot Saisie du pays)", "Prouesse", "artefact", "légende"]),
         new Set(["Prestige"])));
-    liDec(listeDecisions, 'Les voyages de ...', decisionOuNon(decisionsResult,
+    liDec(listeDecisions, 'Les voyages de ...', 'dec-maj-av-3', decisionOuNon(decisionsResult,
             new Set(["points d'expérience", "artefact"]),
             new Set(["Or", "Prestige"])));
-    liDec(listeDecisions, 'Le chemin de la foi ...', decisionOuNon(decisionsResult,
+    liDec(listeDecisions, 'Le chemin de la foi ...', 'dec-maj-av-4', decisionOuNon(decisionsResult,
         null,
         null));
-    liDec(listeDecisions, 'Fonder une propriété', decisionOuNon(decisionsResult,
+    liDec(listeDecisions, 'Fonder une propriété', 'dec-maj-av-5', decisionOuNon(decisionsResult,
             new Set(["contrôle SI ", "Prestige (complot Saisie du pays)"]),
             new Set(["Or"])));
-    liDec(listeDecisions, 'Enrôler les exclus', decisionOuNon(decisionsResult,
-        new Set(["Martialité", "Intrigue", "opinion LUI", "augmenter levées"]),
+    liDec(listeDecisions, 'Enrôler les exclus', 'dec-maj-av-6', decisionOuNon(decisionsResult,
+        new Set(["Martialité", "Intrigue", "augmenter levées"]),
         new Set(["Or", "Prestige"])));
     // Décisions aventurier
     listeDecisions = document.getElementById('decAv');
-    liDec(listeDecisions, 'Visiter la propriété cadastrale', decisionOuNon(decisionsResult,
+    liDec(listeDecisions, 'Visiter la propriété cadastrale', 'dec-av-0', decisionOuNon(decisionsResult,
             new Set(["chevalier possible", "provisions", "Prestige (complot Saisie du pays)"]),
             null));
-    liDec(listeDecisions, 'Rassembler les provisions', decisionOuNon(decisionsResult,
+    liDec(listeDecisions, 'Rassembler les provisions', 'dec-av-1', decisionOuNon(decisionsResult,
                 new Set(["provisions"]),
                 null));
-    liDec(listeDecisions, 'Humilier le larbin', decisionOuNon(decisionsResult,
-                    new Set(["stress", "redoutabilité"]),
+    liDec(listeDecisions, 'Humilier le larbin', 'dec-av-2', decisionOuNon(decisionsResult,
+                    new Set(["stress descendre", "redoutabilité"]),
                     new Set(["Prestige"])));
-    liDec(listeDecisions, 'A la pêche', decisionOuNon(decisionsResult,
-                        new Set(["stress", "provisions"]),
+    liDec(listeDecisions, 'A la pêche', 'dec-av-3', decisionOuNon(decisionsResult,
+                        new Set(["stress descendre", "provisions"]),
                         null));
-    liDec(listeDecisions, 'Faire table rase du passé', decisionOuNon(decisionsResult,
+    liDec(listeDecisions, 'Faire table rase du passé', 'dec-av-4', decisionOuNon(decisionsResult,
         new Set(["éviter Gibier de potence", "Prestige (complot Saisie du pays)"]),
         new Set(["Or", "Prestige", "Piété"])));
-    liDec(listeDecisions, "Renoncer à l'héritage", decisionOuNon(decisionsResult,
-            new Set(["stress"]),
+    liDec(listeDecisions, "Renoncer à l'héritage", 'dec-av-5', decisionOuNon(decisionsResult,
+            new Set(["stress descendre"]),
             new Set(["Prestige SI adoption/aventurier ET NON mort", "Prestige"])));
     // Décisions mineures
     listeDecisions = document.getElementById('dec');
-    liDec(listeDecisions, "S'entraîner pour un tournoi", decisionOuNon(decisionsResult,
+    liDec(listeDecisions, "S'entraîner pour un tournoi", 'dec-1', decisionOuNon(decisionsResult,
         new Set(["Or" /*"prouesse"*/]),
         new Set(["Prestige"])));
-    liDec(listeDecisions, "Adopter la culture locale", decisionOuNon(decisionsResult,
+    liDec(listeDecisions, "Adopter la culture locale", 'dec-2', decisionOuNon(decisionsResult,
         null,
         new Set(["Prestige"])));
-    liDec(listeDecisions, "Faites-vous plaisir en buvant", decisionOuNon(decisionsResult,
-            new Set(["stress"]),
+    liDec(listeDecisions, "Faites-vous plaisir en buvant", 'dec-3', decisionOuNon(decisionsResult,
+            new Set(["stress descendre"]),
             new Set(["Prestige"])));
     const listeActiv = document.getElementById('activites');
-    liDec(listeActiv, "Séjour universitaire", decisionOuNon(decisionsResult,
+    liDec(listeActiv, "Séjour universitaire", 'act-1', decisionOuNon(decisionsResult,
         new Set(["Diplomatie", "Martialité", "Intendance", "Intrigue", "Erudition", "points d'expérience", "artefact", "recruter"]),
         new Set(["Or"])));
-    liDec(listeActiv, "Fête de camp", decisionOuNon(decisionsResult,
-            new Set(["stress", "provisions", "Diplomatie", "Martialité", "Intendance", "Intrigue", "Erudition", "Prestige (complot Saisie du pays)", "artefact", "recruter"]),
+    liDec(listeActiv, "Fête de camp", 'act-2', decisionOuNon(decisionsResult,
+            new Set(["stress descendre", "provisions", "Diplomatie", "Martialité", "Intendance", "Intrigue", "Erudition", "Prestige (complot Saisie du pays)", "artefact", "recruter"]),
             new Set(["Or"])));
-    liDec(listeActiv, "Randonnée", decisionOuNon(decisionsResult,
-                new Set(["opinion LUI", "stress", "Prestige", "Erudition"]),
+    liDec(listeActiv, "Randonnée", 'act-3', decisionOuNon(decisionsResult,
+                new Set(["stress descendre", "Prestige", "Erudition"]),
                 new Set(["Or"])));
-    liDec(listeActiv, "Chasse", decisionOuNon(decisionsResult,
-        new Set(["Prestige", "provisions", "opinion LUI", "artefact", "légende", "légitimité", "stress", "Prouesse", "stress", "opinion LUI"]),
+    liDec(listeActiv, "Chasse", 'act-4', decisionOuNon(decisionsResult,
+        new Set(["Prestige", "provisions", "artefact", "légende", "légitimité", "stress descendre", "Prouesse", "stress descendre"]),
         new Set(["Or"])));
-    liDec(listeActiv, "Expédition vers un monument", decisionOuNon(decisionsResult,
+    liDec(listeActiv, "Expédition vers un monument", 'act-5', decisionOuNon(decisionsResult,
         new Set(["Intrigue", "Diplomatie", "Martialité", "Erudition", "Intendance", "recruter", "Prestige"]),
         new Set(["Or"])));
-    liDec(listeActiv, "Pélerinage", decisionOuNon(decisionsResult,
-            new Set(["Piété", "légitimité", "stress", "éviter Gibier de potence", "Prestige (complot Saisie du pays)"]),
+    liDec(listeActiv, "Pélerinage", 'act-6', decisionOuNon(decisionsResult,
+            new Set(["Piété", "légitimité", "stress descendre", "éviter Gibier de potence", "Prestige (complot Saisie du pays)"]),
             new Set(["Or"])));
     }
 function sansDoublon(tab, liaison="") {
