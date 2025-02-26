@@ -1021,7 +1021,7 @@ function decisions(p, t=new Array()) {
         e.add("provisions");
         e.add("Or");
         e.add("influence");
-        e.add("stress descendre");
+        e.add("stress diminuer");
         t.push(e);
         return t;
     }
@@ -1103,7 +1103,7 @@ function decisions(p, t=new Array()) {
             e20.add("emprisonner SI Sombres connaissances ET NON Aventurier OU Outils du tortionnaire ET NON mort");
             e20.add("santé");
             e20.add("provisions");
-            e20.add("stress descendre");
+            e20.add("stress diminuer");
                 e20.add("opinion maître-espion");
 				e20.add("opinion médecin");
                 t.push(e20);
@@ -1208,13 +1208,13 @@ function decisions(p, t=new Array()) {
         case 'survie':
             let e14=new Set().add("santé");
             e14.add("provisions");
-            e14.add("stress descendre");
+            e14.add("stress diminuer");
 			e14.add("opinion maître-espion");
 			e14.add("opinion médecin");
             t.push(e14);
             return decisions(p.slice(1), t);
         case 'stress':
-            t.push(new Set().add("stress descendre"));
+            t.push(new Set().add("stress diminuer"));
             return decisions(p.slice(1), t);
         case 'prestige':
             let ePrestige=new Set().add("Prestige");
@@ -1993,10 +1993,6 @@ function activFete(p, t=new Array()) {
         "Conversation au coin du feu"//2
     ];
     if (p.length === 0) {
-        t.push(new Set().add(intentions[1]+" vassal puissant non intimidé non factiable"));
-        t.push(new Set().add(intentions[1]+" vassal puissant intimidé non factiable"));
-        t.push(new Set().add(intentions[1]+" vassal non intimidé non factiable"));
-        t.push(new Set().add(intentions[1]+" vassal intimidé non factiable"));
         t.push(new Set().add(intentions[2]));
         return t;
     }
@@ -2036,7 +2032,7 @@ function activFete(p, t=new Array()) {
         case 'hamecon':
         case 'prestige':
         default:
-            return (p.slice(1), t);
+            return activFete(p.slice(1), t);
     }
 }
 function activFeteNourr(p, t=new Array()) {
@@ -2081,14 +2077,14 @@ function activFeteNourr(p, t=new Array()) {
             t.push(new Set().add(options[2]));
             t.push(new Set().add(options[1]));
             return activFeteNourr(p.slice(1),t);
-            case 'controle':
+        case 'controle':
         case 'assassinat': // Faire démissionner ou Assassiner
         case 'hamecon':
         case 'demande2': // (contrat, Or, provisions) Prestige, opinion
         case 'stress':
         case 'prestige':
         default:
-            return (p.slice(1), t);
+            return activFeteNourr(p.slice(1), t);
     }
 }
 function activFeteBoiss(p, t=new Array()) {
@@ -2149,7 +2145,7 @@ function activFeteBoiss(p, t=new Array()) {
                 case 'stress':
                 case 'guerre': // guerre, Influence,opinion SI gouvernmt admin
                     default:
-            return (p.slice(1), t);
+            return activFeteBoiss(p.slice(1), t);
     }
 }
 function activFun(p, t=new Array()) {
@@ -2260,7 +2256,7 @@ function activMonum(p, t=new Array(), intentions=null) {
             intentions[0] = undefined;
             return activMonum(p.slice(1),t,intentions);
         default:
-            return (p.slice(1), t);
+            return activMonum(p.slice(1), t);
     }
 }
 function activMonumScribe(p, t=new Array()) {
@@ -2306,7 +2302,7 @@ function activMonumScribe(p, t=new Array()) {
             case 'survie':
         case 'stress':
         default:
-            return (p.slice(1), t);
+            return activMonumScribe(p.slice(1), t);
     }
 }
 
@@ -2991,7 +2987,7 @@ function evidence(id, texte, ttLeTps=false) {
     evidence('tournoiHeberg', sansDoublon(hebergResult, "SINON"));
     evidence('prix', sansDoublon(prixResult, "SINON"));
     evidence('fete', sansDoublon(feteResult, "SINON"));
-    evidence('feteNourr', sansDoublon(feteNourrResult, "SINON"));
+    evidence('feteNourr', sansDoublon(feteNourrResult, "SINON")); console.log("feteNourr",feteNourrResult);
     evidence('monum', sansDoublon(monumResult, "SINON"));
     evidence('monumScribe', sansDoublon(monumScribeResult, "SINON"));
     evidence('feteBoiss', sansDoublon(feteBoissResult, "SINON"));
@@ -3023,23 +3019,23 @@ function evidence(id, texte, ttLeTps=false) {
         new Set(["Or", "Prestige"])));
     // Décisions aventurier
     listeDecisions = document.getElementById('decAv');
-    liDec(listeDecisions, 'Visiter la propriété cadastrale', 'dec-av-0', decisionOuNon(decisionsResult,
+    liDec(listeDecisions, 'Visiter la propriété ...', 'dec-av-0', decisionOuNon(decisionsResult,
             new Set(["chevalier possible", "provisions", "Prestige (complot Saisie du pays)"]),
             null));
     liDec(listeDecisions, 'Rassembler les provisions', 'dec-av-1', decisionOuNon(decisionsResult,
                 new Set(["provisions"]),
                 null));
     liDec(listeDecisions, 'Humilier le larbin', 'dec-av-2', decisionOuNon(decisionsResult,
-                    new Set(["stress descendre", "redoutabilité"]),
+                    new Set(["stress diminuer", "redoutabilité"]),
                     new Set(["Prestige"])));
     liDec(listeDecisions, 'A la pêche', 'dec-av-3', decisionOuNon(decisionsResult,
-                        new Set(["stress descendre", "provisions"]),
+                        new Set(["stress diminuer", "provisions"]),
                         null));
     liDec(listeDecisions, 'Faire table rase du passé', 'dec-av-4', decisionOuNon(decisionsResult,
         new Set(["éviter Gibier de potence", "Prestige (complot Saisie du pays)"]),
         new Set(["Or", "Prestige", "Piété"])));
     liDec(listeDecisions, "Renoncer à l'héritage", 'dec-av-5', decisionOuNon(decisionsResult,
-            new Set(["stress descendre"]),
+            new Set(["stress diminuer"]),
             new Set(["Prestige SI adoption/aventurier ET NON mort", "Prestige"])));
     // Décisions mineures
     listeDecisions = document.getElementById('dec');
@@ -3050,26 +3046,26 @@ function evidence(id, texte, ttLeTps=false) {
         null,
         new Set(["Prestige"])));
     liDec(listeDecisions, "Faites-vous plaisir en buvant", 'dec-3', decisionOuNon(decisionsResult,
-            new Set(["stress descendre"]),
+            new Set(["stress diminuer"]),
             new Set(["Prestige"])));
     const listeActiv = document.getElementById('activites');
     liDec(listeActiv, "Séjour universitaire", 'act-1', decisionOuNon(decisionsResult,
         new Set(["Diplomatie", "Martialité", "Intendance", "Intrigue", "Erudition", "points d'expérience", "artefact", "recruter"]),
         new Set(["Or"])));
     liDec(listeActiv, "Fête de camp", 'act-2', decisionOuNon(decisionsResult,
-            new Set(["stress descendre", "provisions", "Diplomatie", "Martialité", "Intendance", "Intrigue", "Erudition", "Prestige (complot Saisie du pays)", "artefact", "recruter"]),
+            new Set(["stress diminuer", "provisions", "Diplomatie", "Martialité", "Intendance", "Intrigue", "Erudition", "Prestige (complot Saisie du pays)", "artefact", "recruter"]),
             new Set(["Or"])));
     liDec(listeActiv, "Randonnée", 'act-3', decisionOuNon(decisionsResult,
-                new Set(["stress descendre", "Prestige", "Erudition"]),
+                new Set(["stress diminuer", "Prestige", "Erudition"]),
                 new Set(["Or"])));
     liDec(listeActiv, "Chasse", 'act-4', decisionOuNon(decisionsResult,
-        new Set(["Prestige", "provisions", "artefact", "légende", "légitimité", "stress descendre", "Prouesse", "stress descendre"]),
+        new Set(["Prestige", "provisions", "artefact", "légende", "légitimité", "stress diminuer", "Prouesse"]),
         new Set(["Or"])));
     liDec(listeActiv, "Expédition vers un monument", 'act-5', decisionOuNon(decisionsResult,
         new Set(["Intrigue", "Diplomatie", "Martialité", "Erudition", "Intendance", "recruter", "Prestige"]),
         new Set(["Or"])));
     liDec(listeActiv, "Pélerinage", 'act-6', decisionOuNon(decisionsResult,
-            new Set(["Piété", "légitimité", "stress descendre", "éviter Gibier de potence", "Prestige (complot Saisie du pays)"]),
+            new Set(["Piété", "légitimité", "stress diminuer", "éviter Gibier de potence", "Prestige (complot Saisie du pays)"]),
             new Set(["Or"])));
     }
 function sansDoublon(tab, liaison="") {
