@@ -859,9 +859,9 @@ function compHostile(p, t=new Array()) {
         "Renverser le régent",//5
         "Saisie du pays",//6
     ];
-    if (p.length === 0 && t.length === 0) { // Aventurier : complot Saisie du pays (Prestige, Intrigue) SINON Acheter terre (éviter Gibier de potence, éviter Baroudeur, hameçon, Or, langue, opinion) SINON Demander soutien invasion (Prestige)
+    if (p.length === 0 && t.length === 0) { // Aventurier : complot Saisie du pays (Prestige, Intrigue) SINON Acheter terre/Acquérir une possession (éviter Gibier de potence, éviter Baroudeur, hameçon, Or, langue, opinion) SINON Demander soutien invasion (Prestige)
         t.push(new Set().add(complots[6]));
-        t.push(new Set().add(complots[3]+" LUI"));
+        t.push(new Set().add(complots[3]+" POUR Acheter terre ou Acquérir une possession"));
     }
     if (p.length === 0) {
         let eDefaut=new Set().add(complots[6]);
