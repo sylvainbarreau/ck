@@ -617,7 +617,7 @@ function prison(p, t=new Array(), actions=null) {
 }
 function secrets(p, t=new Array()) {
     if (p.length === 0 && t.length === 0) { // Aventurier : complot Saisie du pays (Prestige, Intrigue) SINON Acheter terre (éviter Gibier de potence, éviter Baroudeur, hameçon, Or, langue, opinion) SINON Demander soutien invasion (Prestige)
-        t.push(new Set().add("Révéler SI Prestige"));
+        t.push(new Set().add('Révéler SI Atout "Je suis bien en comparaison"'));
         t.push(new Set().add("Révéler SI emprisonnable ET Sombres connaissances ET NON Aventurier OU Outils du tortionnaire"));
         t.push(new Set().add("Faire chanter SI paiement hameçon ET Or"));
         t.push(new Set().add("Faire chanter SI mécène"));
@@ -664,7 +664,7 @@ function secrets(p, t=new Array()) {
             t.push(new Set().add("Révéler SI emprisonnable"));
             return secrets(p.slice(1), t); 
         case 'seigneur': // Erudition (Revendiquer trône), (Factions), Prestige,opinion,Or (Me faire déclarer régent)
-            t.push(new Set().add("Révéler SI Prestige"));
+            t.push(new Set().add('Révéler SI Atout "Je suis bien en comparaison"'));
             t.push(new Set().add("Faire chanter SI paiement hameçon ET Or"));
             t.push(new Set().add("Révéler SI emprisonnable"));
             return secrets(p.slice(1), t); 
@@ -673,7 +673,7 @@ function secrets(p, t=new Array()) {
             t.push(new Set().add("Révéler SI emprisonnable ET Sombres connaissances ET NON Aventurier OU Outils du tortionnaire"));
             return secrets(p.slice(1), t); 
         case 'enfant': // SI aventurier : Prestige, opinion, Or adopté SINON procréer ; survivre
-            t.push(new Set().add("Révéler SI Prestige ET adoption/aventurier"));
+            t.push(new Set().add('Révéler SI Atout "Je suis bien en comparaison" ET adoption/aventurier'));
             t.push(new Set().add("Faire chanter SI adoption/aventurier ET paiement hameçon ET Or"));
             t.push(new Set().add("Révéler SI adoption/aventurier ET emprisonnable"));
             t.push(new Set().add("Révéler SI emprisonnable ET Sombres connaissances ET NON Aventurier OU Outils du tortionnaire"));
@@ -707,7 +707,7 @@ function secrets(p, t=new Array()) {
             t.push(new Set().add("Révéler SI emprisonnable LUI"));
             return secrets(p.slice(1), t);
         case 'prestige':
-            t.push(new Set().add("Révéler SI Prestige"));
+            t.push(new Set().add('Révéler SI Atout "Je suis bien en comparaison"'));
             return secrets(p.slice(1), t);
         default:
             return secrets(p.slice(1), t);
@@ -756,10 +756,10 @@ function influence(p, t=new Array()) {
         "Convertir à la sorcellerie",//6
     ];
     if (p.length === 0 && t.length === 0) { // Aventurier : complot Saisie du pays (Prestige, Intrigue) SINON Acheter terre (éviter Gibier de potence, éviter Baroudeur, hameçon, Or, langue, opinion) SINON Demander soutien invasion (Prestige)
-        t.push(new Set().add(complots[4]+" LUI"));
-        t.push(new Set().add(complots[0]+" LUI"));
-        t.push(new Set().add(complots[1]+" LUI"));
-        t.push(new Set().add(complots[2]+" LUI"));
+        t.push(new Set().add(complots[4]+" LUI SI Aventurier"));
+        t.push(new Set().add(complots[0]+" LUI SI Aventurier"));
+        t.push(new Set().add(complots[1]+" LUI SI Aventurier"));
+        t.push(new Set().add(complots[2]+" LUI SI Aventurier"));
     }
     if (p.length === 0) {
         let e=new Set().add(complots[0]+" vassal puissant non intimidé non factiable");
@@ -769,10 +769,10 @@ function influence(p, t=new Array()) {
         e.add(complots[0]+" conseiller religieux");
         e.add(complots[0]+" allié");
         e.add(complots[0]+" seigneur lige");
-        e.add(complots[0]+" maître-espion");
         e.add(complots[0]+" Médecin");
         e.add(complots[0]+" Garde du corps");
         e.add(complots[0]+" conjoint");
+        e.add(complots[0]+" Maître-espion");
         t.push(e);
         return t;
     } 
@@ -1025,7 +1025,7 @@ function decisions(p, t=new Array()) {
     }
     if(rien) { // Aventurier : complot Saisie du pays (Prestige, Intrigue) SINON Acheter terre (éviter Gibier de potence, éviter Baroudeur, hameçon, Or, langue, opinion) SINON Demander soutien invasion (Prestige)
         let eRienAvent=new Set().add("Prestige (complot Saisie du pays)");
-        eRienAvent.add("secret SI révéler &gt; Prestige");
+        eRienAvent.add('secret SI Atout "Je suis bien en comparaison"');
         eRienAvent.add("Diplomatie");
         eRienAvent.add("Intrigue");
         eRienAvent.add("emprisonner SI Sombres connaissances ET Outils du tortionnaire");
@@ -1076,7 +1076,7 @@ function decisions(p, t=new Array()) {
         case 'seigneur': // Erudition (Revendiquer trône), (Factions), Prestige,opinion,Or (Me faire déclarer régent)
             let eSeigneur=new Set().add("Erudition");
             eSeigneur.add("Prestige");
-            eSeigneur.add("secret SI révéler &gt; Prestige");
+            eSeigneur.add('secret SI Atout "Je suis bien en comparaison"');
             eSeigneur.add("opinion LUI");
             eSeigneur.add("Or");
             eSeigneur.add("hameçon OU secret SI paiement");
@@ -1133,7 +1133,7 @@ function decisions(p, t=new Array()) {
             return decisions(p.slice(1), t); 
         case 'enfant': // SI aventurier : Prestige, opinion, Or adopté SINON procréer ; survivre
             let e20=new Set().add("Prestige SI adoption/aventurier ET NON mort");
-            e20.add("secret SI révéler &gt; Prestige ET adoption/aventurier ET NON mort");
+            e20.add('secret SI Atout "Je suis bien en comparaison" ET adoption/aventurier ET NON mort');
             e20.add("opinion LUI SI adoption/aventurier ET NON mort");
             e20.add("Diplomatie SI adoption/aventurier ET NON mort");
             e20.add("Intrigue SI adoption/aventurier ET NON mort");
@@ -1173,7 +1173,7 @@ function decisions(p, t=new Array()) {
             e6.add("Martialité");
             e6.add("emprisonner SI chevalier possible");
             e6.add("Prestige");
-            e6.add("secret SI révéler &gt; Prestige");
+            e6.add('secret SI Atout "Je suis bien en comparaison"');
             t.push(e6);
             return decisions(p.slice(1), t);
         case 'chevalierPartisan': // recruterChevalier sans Martialité
@@ -1187,7 +1187,7 @@ function decisions(p, t=new Array()) {
             return decisions(p.slice(1), t);
         case 'demande': // Prestige, opinion, Or
             let eDemande=new Set().add("Prestige");
-            eDemande.add("secret SI révéler &gt; Prestige");
+            eDemande.add('secret SI Atout "Je suis bien en comparaison"');
             eDemande.add("opinion LUI");
             eDemande.add("Diplomatie");
             eDemande.add("Intrigue");
@@ -1200,7 +1200,7 @@ function decisions(p, t=new Array()) {
             return decisions(p.slice(1), t); 
         case 'demande2':
             let eDem=new Set().add("Prestige");
-            eDem.add("secret SI révéler &gt; Prestige");
+            eDem.add('secret SI Atout "Je suis bien en comparaison"');
             eDem.add("opinion LUI");
             eDem.add("Diplomatie");
             eDem.add("Intrigue");
@@ -1212,7 +1212,7 @@ function decisions(p, t=new Array()) {
             e7.add("Martialité");
             e7.add("emprisonner SI chevalier possible ET Prouesse&gt;=8");
             e7.add("Prestige");
-            e7.add("secret SI révéler &gt; Prestige");
+            e7.add('secret SI Atout "Je suis bien en comparaison"');
             t.push(e7);
             return decisions(p.slice(1), t);
         case 'perteTerresRevoquer':
@@ -1254,7 +1254,7 @@ function decisions(p, t=new Array()) {
             return decisions(p.slice(1), t);
         case 'prestige':
             let ePrestige=new Set().add("Prestige");
-            ePrestige.add("secret SI révéler &gt; Prestige");
+            ePrestige.add('secret SI Atout "Je suis bien en comparaison"');
             ePrestige.add("Diplomatie");
             t.push(ePrestige);
             return decisions(p.slice(1), t);
@@ -3141,11 +3141,28 @@ function evidence(id, texte, ttLeTps=false) {
     liDec(listeDecisions, "Renoncer à l'héritage", 'dec-av-5', decisionOuNon(decisionsResult,
             new Set(["stress diminuer"]),
             new Set(["Prestige SI adoption/aventurier ET NON mort", "Prestige"])));
+    // Décisions de l'unité de la Maison decMaison
+    listeDecisions = document.getElementById('decMaison');
+    liDec(listeDecisions, "Orienter l'unité de la Maison", 'dec-maison-0', decisionOuNon(decisionsResult,
+        new Set(["points d'expérience", "opinion LUI"]),
+        new Set(["Piété", "redoutabilité", "opinion LUI"])));
+    liDec(listeDecisions, "Chercher des percepteurs d'impôts", 'dec-maison-1', decisionOuNon(decisionsResult,
+        new Set(["Or"]),
+        new Set(["Or", "Piété"])));
     // Décisions mineures
     listeDecisions = document.getElementById('dec');
+    liDec(listeDecisions, "Commander un artefact", 'dec-6', decisionOuNon(decisionsResult,
+        new Set(["artefact"]),
+        new Set(["Or"])));
     liDec(listeDecisions, "S'entraîner pour un tournoi", 'dec-0', decisionOuNon(decisionsResult,
-        new Set(["Or" /*"prouesse"*/]),
-        new Set(["Prestige"])));
+            new Set(["Or" /*"prouesse"*/]),
+            new Set(["Prestige"])));
+    liDec(listeDecisions, "Devenir un aventurier", 'dec-7', decisionOuNon(decisionsResult,
+        new Set(["Prestige"]),
+        new Set(["Renommée"])));
+    liDec(listeDecisions, "Accélérer les complots", 'dec-8', decisionOuNon(decisionsResult,
+            null,
+            null));
     liDec(listeDecisions, "Créer un itinéraire de voyage", 'dec-1', decisionOuNon(decisionsResult,
             new Set(["Prestige", "artefact"]),
             new Set(["Or"])));
@@ -3155,15 +3172,43 @@ function evidence(id, texte, ttLeTps=false) {
     liDec(listeDecisions, "Faites-vous plaisir en buvant", 'dec-3', decisionOuNon(decisionsResult,
             new Set(["stress diminuer"]),
             new Set(["Prestige"])));
+    liDec(listeDecisions, "Méditer dans l'isolement", 'dec-9', decisionOuNon(decisionsResult,
+            new Set(["stress diminuer", "Erudition"]),
+            new Set(["Diplomatie", "Martialité", "Intendance", "Intrigue", ])));
     liDec(listeDecisions, "Faire la charité", 'dec-5', decisionOuNon(decisionsResult,
         new Set(["stress diminuer"]),
         new Set(["Or"])));
     liDec(listeDecisions, "Tenter de se suicider", 'dec-4', decisionOuNon(decisionsResult,
         null,
         new Set(["Piété"])));
-    const listeActiv = document.getElementById('activites');
+    // Décisions de courtisans decCour
+    listeDecisions = document.getElementById('decCour');
+    liDec(listeDecisions, "Favoriser les experts étrangers", 'dec-cour-0', decisionOuNon(decisionsResult,
+        new Set(["recruter"]),
+        new Set(["Prestige", "opinion LUI"])));
+    liDec(listeDecisions, "Recruter un spécialiste du terrain", 'dec-cour-1', decisionOuNon(decisionsResult,
+            new Set(["recruter"]),
+            new Set(["Or", "Prestige"])));
+    liDec(listeDecisions, "Recruter à un poste de la Cour", 'dec-cour-2', decisionOuNon(decisionsResult,
+        new Set(["recruter", "santé", "points d'expérience"]),
+        new Set(["Or", "Prestige"])));
+    liDec(listeDecisions, "Inviter des chevaliers", 'dec-cour-3', decisionOuNon(decisionsResult,
+        new Set(["recruter chevalier"]),
+        new Set(["Prestige"])));
+    // Activités
+    let listeActiv = document.getElementById('activitesGrand');
+    liDec(listeActiv, "Grand tournoi", 'act-g-0', decisionOuNon(decisionsResult,
+        new Set(["Prestige", "Légitimation", "stress diminuer"]),
+        new Set(["Or"])));
+    listeActiv = document.getElementById('activites');
     liDec(listeActiv, "Séjour universitaire", 'act-1', decisionOuNon(decisionsResult,
         new Set(["Diplomatie", "Martialité", "Intendance", "Intrigue", "Erudition", "points d'expérience", "artefact", "recruter"]),
+        new Set(["Or"])));
+    liDec(listeActiv, "Festin", 'act-0', decisionOuNon(decisionsResult,
+        new Set(["Prestige", "Légitimation", "stress diminuer", "Intrigue"]),
+        new Set(["Or"])));
+    liDec(listeActiv, "Funérailles", 'act-7', decisionOuNon(decisionsResult,
+        new Set(["stress diminuer", "Piété", "Légitimation"]),
         new Set(["Or"])));
     liDec(listeActiv, "Fête de camp", 'act-2', decisionOuNon(decisionsResult,
             new Set(["stress diminuer", "provisions", "Diplomatie", "Martialité", "Intendance", "Intrigue", "Erudition", "Prestige (complot Saisie du pays)", "artefact", "recruter"]),
