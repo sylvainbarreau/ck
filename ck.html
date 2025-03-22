@@ -4,244 +4,327 @@
   <meta charset="UTF-8">
   <title>Crusader Kings III - aide à la décision</title>
   <style>
-  /* Ajoutez du CSS pour styliser la page selon vos préférences */
-.container {
-  display: flex;
-  justify-content: start;
-}
+  @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;700&display=swap');
 
-.drop-container {
-  border: 1px dashed #aaa;
-  min-height: 100px;
-  width: 15%; /* Ajuster la largeur selon vos besoins */
-  padding: 10px;
-  box-sizing: border-box;
-}
+  body {
+    font-family: 'EB Garamond', serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+  }
 
-.drag-container {
-  border: 1px dashed #aaa;
-  min-height: 40px;
-  width: 300px; /* Ajuster la largeur selon vos besoins */
-  padding: 8px;
-  box-sizing: border-box;
-}
+  .left-container {
+    width: 28%;
+    height: 100vh;
+    overflow-y: auto;
+    padding: 10px;
+    box-sizing: border-box;
+  }
 
-/* Conteneur pour les éléments draggables */
-#draggableItems {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 2px; /* Espace entre les éléments */
-}
+  .right-container {
+    width: 72%;
+    height: 100vh;
+    overflow-y: auto;
+    padding: 10px;
+    box-sizing: border-box;
+  }
 
-.drop-container > div {
-  margin-bottom: 10px; /* Espacement entre les divs enfants */
-  width: 100%; /* Chaque div enfant prend 100% de la largeur de la div mère */
-  background-color: #f0f0f0; /* Couleur de fond pour distinguer les divs enfants */
-  padding: 5px; /* Espacement interne des divs enfants */
-}
+  .full-width-container {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+  }
 
-/* Style pour chaque élément draggable */
-.draggable-item {
-  margin: 5px 0;
-  padding: 8px;
-  background-color: #f9f9f9;
-  border: 1px solid #aaa;
-  cursor: move;
-}
+  h1, h2, h3, h4, h5 {
+    margin: 0;
+    padding: 5px 0;
+    font-size: 0.8em; /* Réduire la taille de la police */
+  }
 
-/* Style pour chaque élément déposé dans la zone dropItems */
-.dropped-item {
-  margin: 5px 0;
-  padding: 8px;
-  background-color: #e0e0e0;
-  border: 1px solid #aaa;
-  cursor: move;
-}
+  p, span, li {
+    font-size: 0.9em; /* Légèrement plus grand que les titres */
+    color: #333; /* Couleur plus foncée pour ressortir */
+  }
 
-.dropped-item:hover {
-  background-color: #ccc;
-}
+  strong {
+    font-weight: bold;
+    color: #d9534f; /* Couleur rouge pour faire ressortir */
+  }
 
-.inline-title {
-  display: inline;
-  font-size: smaller; /* Ajuster la taille pour ressembler à un h2 */
-  font-weight: bold; /* Optionnel, selon le style souhaité */
-}
+  .drag-container, .drop-container {
+    border: 1px dashed #aaa;
+    padding: 10px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+  }
 
-/* Ajouts pour organiser les éléments dans #results */
-#results {
-  display: grid;
-  grid-template-columns: 1fr 3fr;
-  gap: 5px;
-  width: 40%;
-}
+  .drag-container {
+    width: 100%;
+  }
 
-#results h1 {
-  grid-column: 1;
-  margin: 0;
-}
+  .drop-container {
+    min-height: 100px;
+  }
 
-#results h2, #results h3, #results p {
-  grid-column: 2;
-  margin: 0;
-}
+  .draggable-item, .dropped-item {
+    margin: 5px 0;
+    padding: 8px;
+    background-color: #f9f9f9;
+    border: 1px solid #aaa;
+    cursor: move;
+  }
 
-#results h2::before, #results h3::before, #results p::before {
-  content: '';
-  display: block;
-  margin-top: 5px; /* Espace entre les éléments */
-}
+  .dropped-item:hover {
+    background-color: #ccc;
+  }
+
+  .highlight-input {
+    background-color: yellow;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  table, th, td {
+    border: 1px solid black;
+  }
+
+  th, td {
+    padding: 5px;
+    text-align: left;
+  }
   </style>
 </head>
 <body>
-  <div class="container">
-    <div id="results" class="container">
-      <div>
+  <div class="left-container">
+    <div id="results">
       <h1>Pays</h1>
-        <h2>Objectif du camp</h2>
-          <p id="campObjectif"></p></div>
-      <div><h1>Militaire</h1>
-        <span id="militaireResult"></span>
+      <h2>Objectif du camp</h2>
+      <p id="campObjectif"></p>
+      <h1>Militaire</h1>
+      <span id="militaireResult"></span>
       <h1>Conseil</h1>
-        <h2>Conjoint</h2>
-          <p id="conseilConjointResult"></p>
-        <h2>Chancelier</h2>
-          <p><em>sans annuler </em><span id="conseilChancelierResult"></span></p>
-        <h2>Maréchal</h2>
-          <p id="conseilMarechalResult"></p>
-        <h2>Conseiller religieux</h2>
-          <p><em>sans annuler </em><span id="religieuxResult"></span></p>
-        <h2>Intendant</h2>
-          <p><em>sans annuler </em><span id="intendantResult"></span></p>
-        <h2>Maître-espion</h2>
-          <p id="espionResult"></p></div>
-        <h1>Courtisans</h1>
-          <h2>Postes de la cour</h2><ul id="epidResult"></ul>
-          <h2>Prisonniers</h2><p id="prisonResult"></p> 
+      <h2>Conjoint</h2>
+      <p id="conseilConjointResult"></p>
+      <h2>Chancelier</h2>
+      <p><em>sans annuler </em><span id="conseilChancelierResult"></span></p>
+      <h2>Maréchal</h2>
+      <p id="conseilMarechalResult"></p>
+      <h2>Conseiller religieux</h2>
+      <p><em>sans annuler </em><span id="religieuxResult"></span></p>
+      <h2>Intendant</h2>
+      <p><em>sans annuler </em><span id="intendantResult"></span></p>
+      <h2>Maître-espion</h2>
+      <p id="espionResult"></p>
+      <h1>Courtisans</h1>
+      <h2>Postes de la cour</h2>
+      <ul id="epidResult"></ul>
+      <h2>Prisonniers</h2>
+      <p id="prisonResult"></p>
       <h1>Intrigue</h1>
-        <h2>Complots</h2>
-          <h3>Contre-mesures</h3><p id="contreResult"></p> 
-          <h3>Complots hostiles</h3><p><em>sans annuler </em><span id="hostileResult"></span></p> 
-          <h3>Complots personnels</h3><p id="influenceResult"></p> 
-          <h3>Complots politiques</h3><p><em>sans annuler </em><span id="politiqueResult"></span></p> 
-        <h2>Hameçons et secrets</h2>
-          <h3>Hameçons</h3><p id="hamecResult"></p>
-          <h3>Secrets</h3><p id="secretsResult"></p>
-    </div>
-    <div class="container">
-      <div><h1>Décisions et contrats</h1><h2>Décisions</h2>
+      <h2>Complots</h2>
+      <h3>Contre-mesures</h3>
+      <p id="contreResult"></p>
+      <h3>Complots hostiles</h3>
+      <p><em>sans annuler </em><span id="hostileResult"></span></p>
+      <h3>Complots personnels</h3>
+      <p id="influenceResult"></p>
+      <h3>Complots politiques</h3>
+      <p><em>sans annuler </em><span id="politiqueResult"></span></p>
+      <h2>Hameçons et secrets</h2>
+      <h3>Hameçons</h3>
+      <p id="hamecResult"></p>
+      <h3>Secrets</h3>
+      <p id="secretsResult"></p>
+      <h1>Décisions et contrats</h1><h2>Décisions</h2>
       <h3>Décisions importantes d'aventurier</h3><ul id="decImp"></ul>
       <h3>Pays</h3><ul id="decPays"></ul>
       <h3>Décisions d'aventurier</h3><ul id="decAv"></ul>
       <h3>Décisions de l'unité de la Maison</h3><ul id="decMaison"></ul>
       <h3>Décisions</h3><ul id="dec"></ul>
-      <h3>Décisions de courtisan</h3><ul id="decCour"></ul></div>
-      <div><h1>Activités</h1>
-        <h2>Activités grandioses</h2><ul id="activitesGrand"></ul>
-        <h2>Activités</h2><ul id="activites"></ul></div>
+      <h3>Décisions de courtisan</h3><ul id="decCour"></ul>
+      <h1>Activités</h1>
+      <h2>Activités grandioses</h2>
+      <ul id="activitesGrand"></ul>
+      <h2>Activités</h2>
+      <ul id="activites"></ul>
+      <h1>Autres décisions</h1>
+    <p id="decisions"></p>
     </div>
-    <div class="drag-container" ondragover="allowDrop(event)">
-      <p>Éléments disponibles :</p>
-      <div id="draggableItems">
-        <!-- Les valeurs disponibles seront affichées ici -->
+  </div>
+  <div class="right-container">
+    <div style="display: flex; flex-wrap: wrap;">
+      <div class="drag-container" ondragover="allowDrop(event)" style="width: 50%;">
+        <p>Éléments disponibles :</p>
+        <div id="draggableItems">
+          <!-- Les valeurs disponibles seront affichées ici -->
+        </div>
       </div>
-    </div>
-    <div class="drop-container">
-      <p>Situation</p>
-      <div id="dropItems"><!-- ondrop="drop(event)" ondragover="allowDrop(event)"-->
-        <!-- Les valeurs sélectionnées seront déposées ici -->
-        <!-- <div id="dropItemsFaction" ondrop="drop(event)" ondragover="allowDrop(event)"><p>Factions</p></div> -->
-        <div id="dropItemsGuerre" ondrop="drop(event)" ondragover="allowDrop(event)"><p>Guerres ou Factions</p></div>
-        <!-- <div id="dropItemsEpidemie" ondrop="drop(event)" ondragover="allowDrop(event)"><p>Epidémies</p></div> -->
-        <div id="dropItemsIcone" ondrop="drop(event)" ondragover="allowDrop(event)"><p>Barre icônes</p></div>
-        <div id="dropItemsRouge" ondrop="drop(event)" ondragover="allowDrop(event)"><p>Situation > rouge</p></div>
-        <div id="dropItemsSit" ondrop="drop(event)" ondragover="allowDrop(event)"><p>Situation</p></div>
-        <div id="dropItemsSurvie" ondrop="drop(event)" ondragover="allowDrop(event)"><p>Succession ?</p></div>
+      <div class="drop-container" style="width: 50%;">
+        <p>Situation</p>
+        <div id="dropItems">
+          <div id="dropItemsGuerre" ondrop="drop(event)" ondragover="allowDrop(event)"><p>Guerres ou Factions</p></div>
+          <div id="dropItemsIcone" ondrop="drop(event)" ondragover="allowDrop(event)"><p>Barre icônes</p></div>
+          <div id="dropItemsRouge" ondrop="drop(event)" ondragover="allowDrop(event)"><p>Situation > rouge</p></div>
+          <div id="dropItemsSit" ondrop="drop(event)" ondragover="allowDrop(event)"><p>Situation</p></div>
+          <div id="dropItemsSurvie" ondrop="drop(event)" ondragover="allowDrop(event)"><p>Succession ?</p></div>
+        </div>
+        <button onclick="calculate()">Calculer</button>
       </div>
-      <button onclick="calculate()">Calculer</button>
     </div>
     <div>
-      <form id="conseillers"><table><tbody>
-        <tr><td><input type="text"></td><td><input type="number" min="0" value="10" class="highlight-input"></td><td><input type="number" min="0" value="10" class="highlight-input"></td><td><input type="number" min="0" value="10" class="highlight-input"></td><td><input type="number" min="0" value="10" class="highlight-input"></td><td></td></tr>
-        <tr><td><input type="text"></td><td><input type="number" min="0" value="10" class="highlight-input"></td><td><input type="number" min="0" value="10" class="highlight-input"></td><td><input type="number" min="0" value="10" class="highlight-input"></td><td><input type="number" min="0" value="10" class="highlight-input"></td><td></td></tr>
-        <tr><td><input type="text"></td><td><input type="number" min="0" value="10" class="highlight-input"></td><td><input type="number" min="0" value="10" class="highlight-input"></td><td><input type="number" min="0" value="10" class="highlight-input"></td><td><input type="number" min="0" value="10" class="highlight-input"></td><td></td></tr>
-        <tr><td><input type="text"></td><td><input type="number" min="0" value="10" class="highlight-input"></td><td><input type="number" min="0" value="10" class="highlight-input"></td><td><input type="number" min="0" value="10" class="highlight-input"></td><td><input type="number" min="0" value="10" class="highlight-input"></td><td></td></tr>
-        <tr><td></td><td></td><td></td><td></td><td></td></tr>
-      </tbody></table></form>
+      <form id="conseillers">
+        <table>
+          <tbody>
+            <tr>
+              <td><input type="text"></td>
+              <td><input type="number" min="0" value="10" class="highlight-input"></td>
+              <td><input type="number" min="0" value="10" class="highlight-input"></td>
+              <td><input type="number" min="0" value="10" class="highlight-input"></td>
+              <td><input type="number" min="0" value="10" class="highlight-input"></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><input type="text"></td>
+              <td><input type="number" min="0" value="10" class="highlight-input"></td>
+              <td><input type="number" min="0" value="10" class="highlight-input"></td>
+              <td><input type="number" min="0" value="10" class="highlight-input"></td>
+              <td><input type="number" min="0" value="10" class="highlight-input"></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><input type="text"></td>
+              <td><input type="number" min="0" value="10" class="highlight-input"></td>
+              <td><input type="number" min="0" value="10" class="highlight-input"></td>
+              <td><input type="number" min="0" value="10" class="highlight-input"></td>
+              <td><input type="number" min="0" value="10" class="highlight-input"></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><input type="text"></td>
+              <td><input type="number" min="0" value="10" class="highlight-input"></td>
+              <td><input type="number" min="0" value="10" class="highlight-input"></td>
+              <td><input type="number" min="0" value="10" class="highlight-input"></td>
+              <td><input type="number" min="0" value="10" class="highlight-input"></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </form>
     </div>
-</div>
-<div><h1>autres décisions</h1><p id="decisions"></p></div>
-<h1>Activités</h1><h2>activité grandiose</h2>
-<div class="container">
-  <div>
-  <div class="container">
-    <div><h3>Grande tournée</h3><p id="tourneeType"></p></div>
-    <div><h4>Intention</h4><p id="tourneeIntention"></p></div>
-    <div><h4>Options d'activité</h4>
-      <h5>Suite</h5><p id="suite"></p>
-      <h5>Biens de luxe</h5><p id="luxe"></p></div>
   </div>
-  <div class="container">
-    <div><h3>Grand tournoi</h3><p id="activite"></p></div>
-    <div><h4>Participation</h4><p id="particip"></p></div>
-    <div><h4>Options d'activité</h4>
-      <h5>Hébergement</h5><p id="tournoiHeberg"></p>
-      <h5>Prix</h5><p id="prix"></p></div>
-  </div>
-  <div class="container">
-    <div><h3>Grand mariage</h3><p id="activite2"></p></div>
-    <div><h4>Options d'activité</h4>
-      <h5>Divertissement</h5><p id="mariageDiverti"></p>
-      <h5>Nourriture et boissons</h5><p id="mariageNourr"></p>
-      <h5>Lieu du mariage</h5><p id="mariageLieu"></p></div>
-  </div>
-<h2>activité</h2>
-<h3>Séjour universitaire</h3>
-<p></p>
-<h3>Festin</h3>
-<p id="festin"></p>
-<h3>Fête de camp</h3>
-<div class="container">
-<div><h4>Intention</h4><p id="fete"></p></div>
-<div><h4>Options d'activité</h4>
-  <h5>Nourriture</h5><p id="feteNourr"></p>
-  <h5>Boissons</h5><p id="feteBoiss"></p></div>
-</div>
-<h3>Funérailles</h3>
-<p id="fun"></p>
-<h3>Randonnée</h3>
-<p id=""></p>
-<div class="container">
-  <div><h3>Chasse</h3></div>
-  <div><h4>Intention</h4><p id="activite3"></p></div>
-  <div><h4>Options d'activité</h4>
-    <h5>Participants</h5><p id="participChasse"></p>
-    <h5>Taille du groupe</h5><p id="grpeChasse"></p></div>
-</div>
-<div class="container">
-  <div><h3>Expédition vers un monument</h3></div>
-  <div><h4>Intention</h4><p id="monum"></p></div>
-  <div><h4>Options d'activité</h4>
-    <h5>Scribes</h5><p id="monumScribe"></p>
-</div>
-<h3>Pélerinage</h3>
-<p></p>
-</div>
-<div><h1>Partage du pouvoir</h1>
+  <div class="full-width-container">
+    <h1>Activités</h1>
+    <div style="display: flex; flex-wrap: wrap;">
+        <div style="flex: 1; padding: 10px;">
+            <h2>Activité grandiose</h2>
+            <div>
+                <h3>Grande tournée</h3>
+                <p id="tourneeType"></p>
+                <h4>Intention</h4>
+                <p id="tourneeIntention"></p>
+                <h4>Options d'activité</h4>
+                <h5>Suite</h5>
+                <p id="suite"></p>
+                <h5>Biens de luxe</h5>
+                <p id="luxe"></p>
+            </div>
+        </div>
+        <div style="flex: 1; padding: 10px;">
+            <h3>Grand tournoi</h3>
+            <p id="activite"></p>
+            <h4>Participation</h4>
+            <p id="particip"></p>
+            <h4>Options d'activité</h4>
+            <h5>Hébergement</h5>
+            <p id="tournoiHeberg"></p>
+            <h5>Prix</h5>
+            <p id="prix"></p>
+        </div>
+        <div style="flex: 1; padding: 10px;">
+            <h3>Grand mariage</h3>
+            <p id="activite2"></p>
+            <h4>Options d'activité</h5>
+            <h5>Divertissement</h5>
+            <p id="mariageDiverti"></p>
+            <h5>Nourriture et boissons</h5>
+            <p id="mariageNourr"></p>
+            <h5>Lieu du mariage</h5>
+            <p id="mariageLieu"></p>
+        </div>
+    </div>
+    <div style="display: flex; flex-wrap: wrap;">
+        <div style="flex: 1; padding: 10px;">
+            <h2>Activité</h2>
+            <h3>Séjour universitaire</h3>
+            <p></p>
+            <h3>Festin</h3>
+            <p id="festin"></p>
+            <h3>Fête de camp</h3>
+            <h4>Intention</h4>
+            <p id="fete"></p>
+            <h4>Options d'activité</h4>
+            <h5>Nourriture</h5>
+            <p id="feteNourr"></p>
+            <h5>Boissons</h5>
+            <p id="feteBoiss"></p>
+        </div>
+        <div style="flex: 1; padding: 10px;">
+            <h3>Funérailles</h3>
+            <p id="fun"></p>
+            <h3>Randonnée</h3>
+            <h4>Intention</h4>
+            <p id="activRando"></p>
+            <h4>Options d'activité</h4>
+            <h5>Longueur du voyage</h5>
+            <p id="randoOption"></p>
+            <h3>Chasse</h3>
+            <h4>Intention</h4>
+            <p id="activite3"></p>
+            <h4>Options d'activité</h4>
+            <h5>Participants</h5>
+            <p id="participChasse"></p>
+            <h5>Taille du groupe</h5>
+            <p id="grpeChasse"></p>
+        </div>
+        <div style="flex: 1; padding: 10px;">
+            <h3>Expédition vers un monument</h3>
+            <h4>Intention</h4>
+            <p id="monum"></p>
+            <h4>Options d'activité</h4>
+            <h5>Scribes</h5>
+            <p id="monumScribe"></p>
+            <h3>Pélerinage</h3>
+            <p></p>
+        </div>
+    </div>
+    <h1>Partage du pouvoir</h1>
     <p id="regence"></p>
-</div>
-</div>
-<h1>Cour</h1>
-<div class="container">
-    <div><h2>Type de cour</h2><p><em>Si suffisamment de Prestige</em><br><span id="cour"></span></p></div>
-    <div><h2>Commodités</h2><ul>
-        <li>mode : <span id="mode"></span></li>
-        <li>nourriture : <span id="nourriture"></span></li>
-        <li>hébergement : <span id="heberg"></span></li>
-        <li>domestiques : <span id="domestiques"></span></li>
-    </ul></div>
-</div>
-
+    <h1>Cour</h1>
+    <div>
+        <h2>Type de cour</h2>
+        <p><em>Si suffisamment de Prestige</em><br><span id="cour"></span></p>
+    </div>
+    <div>
+        <h2>Commodités</h2>
+        <ul>
+            <li>Mode : <span id="mode"></span></li>
+            <li>Nourriture : <span id="nourriture"></span></li>
+            <li>Hébergement : <span id="heberg"></span></li>
+            <li>Domestiques : <span id="domestiques"></span></li>
+        </ul>
+    </div>
+  </div>
   <script>
     // Votre tableau de valeurs JavaScript : situation annoncée si projet long terme ou descendre à l'option
     const domaines = new Map();
