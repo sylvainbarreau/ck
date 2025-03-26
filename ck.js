@@ -1,7 +1,7 @@
 /*
-function (p, t=new Array()) {
-    const  = ["",//0
-    ];
+function (p, t=new Array(), o=null) {
+    if(o==null) { o= ["",//0
+    ]; }
     if (p.length === 0 && t.length === 0) {
         // Aventurier : complot Saisie du pays (Prestige, Intrigue) SINON Acheter terre (éviter Gibier de potence, éviter Baroudeur, hameçon, Or, langue, opinion) SINON Demander soutien invasion (Prestige)
         t.push(new Set().add(""));
@@ -19,9 +19,7 @@ function (p, t=new Array()) {
         case 'vassalAInfluencer':
         case 'vassalSOppose':
         case 'terrJureSinonRevendic': // Intendance (Convaincre territoire de jure), Diplomatie (complots) SI gouvernmt admin, Erudition (Revendication comtale)
-        case 'piete':
         case 'foiChangemt':
-        case 'denoncer': // Prestige, Renommée 
         case 'factionFoi':
         case 'factionCult':
         case 'erudition': *
@@ -46,8 +44,10 @@ function (p, t=new Array()) {
         case 'enfant': // SI aventurier : Prestige, opinion, Or adopté SINON procréer ; survivre
         case 'influence' : // besoin agent //influence SI vassal direct LUI OU courtisan LUI OU invité LUI, Influence, Or, Prestige, hameçon
         case 'seigneur': // Erudition (Revendiquer trône), (Factions), Prestige,opinion,Or (Me faire déclarer régent)
+        case 'piete': // Piété, Erudition
+        case 'denoncer': // Prestige, Renommée 
         default:
-            return (p.slice(1), t);
+            return (p.slice(1), t, o);
     }
 }
 */
@@ -86,6 +86,8 @@ function militaire(p, t=new Array()) {
             return t;
         case 'chevalierPartisan': // comme recruterChevalier sans Martialité
         case 'demande2':
+        case 'piete': // Piété, Erudition
+        case 'denoncer': // Prestige, Renommée 
         default:
             return militaire(p.slice(1), t);
     }
@@ -129,6 +131,8 @@ function militaireAuto(p, t=new Array()) {
         case 'prestige':
         case 'influence' : // besoin agent //influence SI vassal direct LUI OU courtisan LUI OU invité LUI, Influence, Or, Prestige, hameçon
         case 'seigneur': // Erudition (Revendiquer trône), (Factions), Prestige,opinion,Or (Me faire déclarer régent)
+        case 'piete': // Piété, Erudition
+        case 'denoncer': // Prestige, Renommée 
         default:
             return militaireAuto(p.slice(1), t);
     }
@@ -164,6 +168,7 @@ function conjoint(p, t=new Array()) {
         case 'vassalSOppose':
         case 'succession':
             case 'aInfluencer': // opinion, Diplomatie, Intrigue, Or
+            case 'denoncer': // Prestige, Renommée 
             t.push(new Set().add(roles[1]));
                 return t;
         case 'assassinat':
@@ -176,8 +181,8 @@ function conjoint(p, t=new Array()) {
             t.push(new Set().add(roles[4]));
             return t;
             case 'religieuxAInfluencer': // opinion, Or
-            case 'piete':
-                case 'factionFoi':
+            case 'piete': // Piété, Erudition
+            case 'factionFoi':
                     case 'erudition':
                     t.push(new Set().add(roles[3]));
                 return t;
@@ -250,7 +255,8 @@ function chancelier(p, t=new Array()) {
         case 'demande': // Prestige, opinion, Or
         case 'demande2':
             return new Array();
-        default:
+            case 'piete': // Piété, Erudition
+            default:
             return chancelier(p.slice(1), t);
     }
 }
@@ -307,7 +313,9 @@ function marechal(p, t=new Array()) {
         case 'demande': // Prestige, opinion, Or
         case 'demande2':
             return new Array();
-        default:
+            case 'piete': // Piété, Erudition
+            case 'denoncer': // Prestige, Renommée 
+            default:
             return marechal(p.slice(1), t);
     }
 }
@@ -349,8 +357,8 @@ function religieux(p, t=new Array()) {
             t.push(new Set().add(roles[0]));
             return t;
         case 'religieuxAInfluencer':
-            case 'piete':
-                t.push(new Set().add(roles[2]));
+            case 'piete': // Piété, Erudition
+            t.push(new Set().add(roles[2]));
                 return t;
         case 'factionFoi':
             t.push(new Set().add(roles[1]));
@@ -365,7 +373,8 @@ function religieux(p, t=new Array()) {
         case 'demande': // Prestige, opinion, Or
         case 'demande2':
             return new Array();
-        default:
+            case 'denoncer': // Prestige, Renommée 
+            default:
             return religieux(p.slice(1), t);
     }
 }
@@ -424,6 +433,7 @@ function intendant(p, t=new Array()) {
             t.push(new Set().add(roles[3]));
             return t;
         case 'prestige':
+        case 'denoncer': // Prestige, Renommée 
             t.push(new Set().add(roles[4]+" SI "+effets[4][0]));
             return intendant(p.slice(1), t);
         case 'seigneur': // Erudition (Revendiquer trône), (Factions), Prestige,opinion,Or (Me faire déclarer régent)
@@ -434,7 +444,8 @@ function intendant(p, t=new Array()) {
         case 'demande': // Prestige, opinion, Or
         case 'demande2':
             return new Array();    
-        default:
+            case 'piete': // Piété, Erudition
+            default:
             return intendant(p.slice(1), t);
     }
 }
@@ -475,10 +486,11 @@ function espion(p, t=new Array()) {
             return new Array();
         case 'prestige':
                 case 'domaine':
-        case 'piete':
+                    case 'piete': // Piété, Erudition
                     case 'factionFoi':
                         case 'stress':
-                            case 'erudition': case 'denoncer': // Prestige, Renommée 
+                            case 'erudition':
+        case 'denoncer': // Prestige, Renommée 
                             default:
             return espion(p.slice(1), t);
     }
@@ -606,7 +618,7 @@ function prison(p, t=new Array(), actions=null) {
             t.push(new Set().add(actions[0]+" &gt; hameçon SI mécène"));
             t.push(new Set().add(actions[1]+" &gt; hameçon SI mécène"));           
             return prison(p.slice(1), t, actions); 
-        case 'piete':
+            case 'piete': // Piété, Erudition
             actions[3] += "SI NON perte Piété";
             return prison(p.slice(1), t, actions); 
         case 'denoncer': // Prestige, Renommée 
@@ -710,9 +722,11 @@ function secrets(p, t=new Array()) {
             t.push(new Set().add("Révéler SI emprisonnable LUI"));
             return secrets(p.slice(1), t);
         case 'prestige':
+            case 'denoncer': // Prestige, Renommée 
             t.push(new Set().add('Révéler SI Atout "Je suis bien en comparaison"'));
             return secrets(p.slice(1), t);
-        default:
+            case 'piete': // Piété, Erudition
+            default:
             return secrets(p.slice(1), t);
     }
 }
@@ -745,7 +759,8 @@ function hamec(p, t=new Array()) {
         case 'enfant': // SI aventurier : Prestige, opinion, Or adopté SINON procréer ; survivre
         case 'demande': // Prestige, opinion, Or
         case 'demande2':
-        default:
+            case 'piete': // Piété, Erudition
+            default:
             return hamec(p.slice(1), t);
     }
 }
@@ -819,7 +834,8 @@ function influence(p, t=new Array()) {
             return influence(p.slice(1), t);
         case 'denoncer': // Prestige, Renommée 
         case 'recruterChevalier':
-        default:
+            case 'piete': // Piété, Erudition
+            default:
             return influence(p.slice(1), t);
     }
 }
@@ -894,6 +910,7 @@ function contreMesure(p, t=new Array(), mesures=null) {
             mesures[4]=undefined;
             return contreMesure(p.slice(1),t, mesures);
         case 'chevalierPartisan': // comme recruterChevalier sans Martialité
+        case 'piete': // Piété, Erudition
         default:
             return contreMesure(p.slice(1),t, mesures);
     }
@@ -945,6 +962,7 @@ function compHostile(p, t=new Array()) {
             return compHostile(p.slice(1), t);
         case 'denoncer': // Prestige, Renommée 
         case 'chevalierPartisan': // recruterChevalier sans Martialité
+        case 'piete': // Piété, Erudition
         default:
             return compHostile(p.slice(1),t);
     }
@@ -1015,6 +1033,7 @@ function compPolitique(p, t=new Array()) {
             return new Array();
         case 'denoncer': // Prestige, Renommée 
         case 'enfant': // SI aventurier : Prestige, opinion, Or adopté SINON procréer ; survivre
+        case 'piete': // Piété, Erudition
         default:
             return compPolitique(p.slice(1), t);
     }
@@ -1273,6 +1292,13 @@ function decisions(p, t=new Array()) {
             ePrestige.add("Diplomatie");
             t.push(ePrestige);
             return decisions(p.slice(1), t);
+        case 'denoncer': // Prestige, Renommée 
+            let eDenonc=new Set().add("Prestige");
+            eDenonc.add("Renommée");
+            eDenonc.add('secret SI Atout "Je suis bien en comparaison"');
+            eDenonc.add("Diplomatie");
+            t.push(eDenonc);
+            return decisions(p.slice(1), t);
         case 'erudition':
                 t.push(new Set().add("Erudition"));
                 return decisions(p.slice(1), t);
@@ -1290,7 +1316,7 @@ function decisions(p, t=new Array()) {
             e12.add("emprisonner");
             t.push(e12);
             return decisions(p.slice(1), t);
-        case 'piete':
+        case 'piete': // Piété, Erudition
             let e16=new Set().add("Piété");
             e16.add("Erudition");
             t.push(e16);
@@ -1390,8 +1416,8 @@ function typeCour(p, t=new Array()) {
             t.push(new Set().add(cours[4]));
             return typeCour(p.slice(1), t);
         case 'domaine':
-        case 'piete':
-        case 'erudition':
+            case 'piete': // Piété, Erudition
+            case 'erudition':
         case 'factionFoi':
             t.push(new Set().add(cours[4]));
             return typeCour(p.slice(1), t);
@@ -1447,7 +1473,8 @@ function commoditesMode(p, t=new Array()) {
         case 'demande': // Prestige, opinion, Or
         case 'demande2':
             return new Array();
-        default:
+            case 'piete': // Piété, Erudition
+            default:
             return commoditesMode(p.slice(1), t);
     }
 }
@@ -1476,7 +1503,8 @@ function commoditesNourriture(p, t=new Array()) {
             case 'demande': // Prestige, opinion, Or
             case 'demande2':
                 return new Array();
-            default:
+                case 'piete': // Piété, Erudition
+                default:
             return commoditesNourriture(p.slice(1), t);
     }
 }
@@ -1511,7 +1539,8 @@ function commoditesHebergement(p, t=new Array()) {
             case 'demande2':
                 return new Array();
                 case 'denoncer': // Prestige, Renommée 
-            default:
+                case 'piete': // Piété, Erudition
+                default:
             return commoditesHebergement(p.slice(1), t);
     }
 }
@@ -1543,7 +1572,8 @@ function commoditesDomestiques(p, t=new Array()) {
             case 'demande2':
                 return new Array();
                 case 'denoncer': // Prestige, Renommée 
-            default:
+                case 'piete': // Piété, Erudition
+                default:
             return commoditesDomestiques(p.slice(1), t);
     }
 }
@@ -1616,7 +1646,8 @@ function activTournoi(p, t=new Array()) {
                         case 'erudition':
         case 'demande': // Prestige, opinion, Or
         case 'demande2':
-                    t.push(new Set().add(intentions[1]));
+            case 'piete': // Piété, Erudition
+            t.push(new Set().add(intentions[1]));
                 return activTournoi(p.slice(1),t);
         case 'survie':
             case 'stress':
@@ -1665,7 +1696,8 @@ function tournoiHeb(p, t=new Array()) {
             case 'demande2':
                 return new Array();
         case 'recruterChevalier':
-        default:
+            case 'piete': // Piété, Erudition
+            default:
             return tournoiHeb(p.slice(1),t);
     }
 }
@@ -1708,11 +1740,12 @@ function prix(p, t=new Array()) {
         case 'vassalSOppose':
         case 'vassalAInfluencer':
         case 'assassinat':
+        case 'piete': // Piété, Erudition
             t.push(new Set().add(tabPrix[4]+" SI Triompher"));
             t.push(new Set().add(tabPrix[3]+" SI Triompher"));
             t.push(new Set().add(tabPrix[2]+" SI Triompher"));
             t.push(new Set().add(tabPrix[1]+" SI Triompher"));
-            t.push(new Set().add(tabPrix[0])); // Or
+            t.push(new Set().add(tabPrix[0]));
             return t;
         case 'agent':  //influence SI vassal direct LUI OU courtisan LUI OU invité LUI, Influence, Or, Prestige, hameçon
             t.push(new Set().add(tabPrix[4]+" SI Triompher"));
@@ -1795,7 +1828,8 @@ function activMariage(p, t=new Array()) {
             t.push(new Set().add(intentions[7]));
             return activMariage(p.slice(1),t);
         case 'recruterChevalier':
-        default:
+            case 'piete': // Piété, Erudition
+            default:
             return activMariage(p.slice(1),t);
     }
 }
@@ -1849,7 +1883,8 @@ function activMariageDiverti(p, t=new Array()) {
             t.push(new Set().add(divertis[1]));
             t.push(new Set().add(divertis[0]));
             return t;
-        default:
+            case 'piete': // Piété, Erudition
+            default:
             return activMariageDiverti(p.slice(1),t);
     }
 }
@@ -1910,6 +1945,7 @@ function activMariageNourr(p, t=new Array()) {
             return activMariageNourr(p.slice(1),t);
             case 'denoncer': // Prestige, Renommée
         case 'recruterChevalier':
+            case 'piete': // Piété, Erudition
             default:
             return activMariageNourr(p.slice(1), t);
     }
@@ -1968,7 +2004,8 @@ function activMariageLieu(p, t=new Array()) {
             t.push(new Set().add(lieux[1]));
             t.push(new Set().add(lieux[0]));
             return t;
-        default:
+            case 'piete': // Piété, Erudition
+            default:
             return activMariageLieu(p.slice(1), t);
     }
 }
@@ -2031,7 +2068,8 @@ function activFestin(p, t=new Array()) {
             return activFestin(p.slice(1),t);
         case 'denoncer': // Prestige, Renommée
         case 'recruterChevalier':
-        default:
+            case 'piete': // Piété, Erudition
+            default:
             return activFestin(p.slice(1),t);
     }
 }
@@ -2081,7 +2119,9 @@ function activFete(p, t=new Array()) {
         case 'assassinat': // Faire démissionner ou Assassiner
         case 'hamecon':
         case 'prestige':
-        default:
+            case 'denoncer': // Prestige, Renommée 
+            case 'piete': // Piété, Erudition
+            default:
             return activFete(p.slice(1), t);
     }
 }
@@ -2133,7 +2173,9 @@ function activFeteNourr(p, t=new Array()) {
         case 'demande2': // (contrat, Or, provisions) Prestige, opinion
         case 'stress':
         case 'prestige':
-        default:
+            case 'denoncer': // Prestige, Renommée 
+            case 'piete': // Piété, Erudition
+            default:
             return activFeteNourr(p.slice(1), t);
     }
 }
@@ -2179,6 +2221,7 @@ function activFeteBoiss(p, t=new Array()) {
             t.push(new Set().add(options[1]+" SI LUI invité"));
             return activFeteBoiss(p.slice(1),t);
         case 'prestige':
+            case 'denoncer': // Prestige, Renommée 
             t.push(new Set().add(options[2]));
             return activFeteBoiss(p.slice(1),t);
         case 'recruterChevalier':
@@ -2194,7 +2237,8 @@ function activFeteBoiss(p, t=new Array()) {
                 case 'hamecon':
                 case 'stress':
                 case 'guerre': // guerre, Influence,opinion SI gouvernmt admin
-                    default:
+                case 'piete': // Piété, Erudition
+                default:
             return activFeteBoiss(p.slice(1), t);
     }
 }
@@ -2238,8 +2282,8 @@ function activFun(p, t=new Array()) {
         case 'demande2':
             t.push(new Set().add(intentions[3]+" LUI"));
             return activFun(p.slice(1),t);
-        case 'piete':
-        case 'foiChangemt':
+            case 'piete': // Piété, Erudition
+            case 'foiChangemt':
         case 'factionFoi':
             t.push(new Set().add(intentions[0]));
             return t;
@@ -2288,6 +2332,7 @@ function activMonum(p, t=new Array(), intentions=null) {
         case 'proclame':
         case 'declarationGuerre':
             case 'prestige':
+                case 'denoncer': // Prestige, Renommée 
                 case 'influence' : // besoin agent //influence SI vassal direct LUI OU courtisan LUI OU invité LUI, Influence, Or, Prestige, hameçon
                 case 'seigneur': // Erudition (Revendiquer trône), (Factions), Prestige,opinion,Or (Me faire déclarer régent)
                         t.push(new Set().add(intentions[0]));
@@ -2305,7 +2350,8 @@ function activMonum(p, t=new Array(), intentions=null) {
             t.push(new Set().add(intentions[0]+" SI adoption/aventurier"));
             intentions[0] = undefined;
             return activMonum(p.slice(1),t,intentions);
-        default:
+            case 'piete': // Piété, Erudition
+            default:
             return activMonum(p.slice(1), t);
     }
 }
@@ -2338,6 +2384,7 @@ function activMonumScribe(p, t=new Array()) {
         case 'proclame':
         case 'declarationGuerre':
             case 'prestige':
+                case 'denoncer': // Prestige, Renommée 
                 case 'influence' : // besoin agent //influence SI vassal direct LUI OU courtisan LUI OU invité LUI, Influence, Or, Prestige, hameçon
                 case 'seigneur': // Erudition (Revendiquer trône), (Factions), Prestige,opinion,Or (Me faire déclarer régent)
                         t.push(new Set().add(options[1]));
@@ -2351,11 +2398,11 @@ function activMonumScribe(p, t=new Array()) {
             return activMonumScribe(p.slice(1),t);
             case 'survie':
         case 'stress':
-        default:
+            case 'piete': // Piété, Erudition
+            default:
             return activMonumScribe(p.slice(1), t);
     }
 }
-
 function activChasse(p, t=new Array()) {
     const intentions = [
         "Se détendre",//0
@@ -2420,7 +2467,8 @@ function activChasse(p, t=new Array()) {
                 t.push(new Set().add(intentions[3]+" SI AUCUN héritier-chevalier partisan possible"));
             return activChasse(p.slice(1),t);
         case 'recruterChevalier':
-        default:
+            case 'piete': // Piété, Erudition
+            default:
             return activChasse(p.slice(1),t);
     }
 }
@@ -2452,6 +2500,7 @@ function participChasse(p, t=new Array()) {
         case 'chevalierPartisan': // recruterChevalier sans Martialité
         case 'demande': // Prestige, opinion, Or
         case 'demande2':
+            case 'piete': // Piété, Erudition
             t.push(new Set().add(options[2]));
             t.push(new Set().add(options[1]));
             t.push(new Set().add(options[0]));
@@ -2502,6 +2551,7 @@ function grpeChasse(p, t=new Array()) {
         case 'terrJureSinonRevendic': // Intendance (Convaincre territoire de jure), Diplomatie (complots) SI gouvernmt admin, Erudition (Revendication comtale)
         case 'declarationGuerre':
         case 'guerre': // guerre, Influence,opinion seigneur SI gouvernmt admin
+        case 'piete': // Piété, Erudition
         default:
             return grpeChasse(p.slice(1),t);
     }
@@ -2556,7 +2606,8 @@ function activRando(p, t=new Array()) {
         case 'chevalierPartisan': // comme recruterChevalier sans Martialité
         case 'proclame':
         case 'declarationGuerre':
-        default:
+            case 'piete': // Piété, Erudition
+            default:
             return activRando(p.slice(1), t);
     }
 }
@@ -2595,8 +2646,103 @@ function activRandoLong(p, t=new Array()) {
         case 'enfant': // SI aventurier : Prestige, opinion, Or adopté SINON procréer ; survivre
         case 'influence' : // besoin agent //influence SI vassal direct LUI OU courtisan LUI OU invité LUI, Influence, Or, Prestige, hameçon
         case 'seigneur': // Erudition (Revendiquer trône), (Factions), Prestige,opinion,Or (Me faire déclarer régent)
+        case 'piete': // Piété, Erudition
         default:
             return activRandoLong(p.slice(1), t);
+    }
+}
+function activUniv(p, t=new Array(), actions=null) {
+    if(actions==null) { actions= ["Etudier durement",//0
+        "Mener une vie goliardique",//1 vie étu
+    ]; }
+    if (p.length === 0 && t.length === 0) {
+        // Aventurier : complot Saisie du pays (Prestige, Intrigue) SINON Acheter terre (éviter Gibier de potence, éviter Baroudeur, hameçon, Or, langue, opinion) SINON Demander soutien invasion (Prestige)
+    }
+    if (p.length === 0) {
+        t.push(new Set().add(actions[0]));
+        return t;
+    }
+    const pp = p[0];
+    switch(pp) {
+        case 'guerre': // guerre, Influence,opinion SI gouvernmt admin
+        case 'revenu':
+        case 'controle':
+        case 'assassinat': // Faire démissionner ou Assassiner
+        case 'succession': // besoin agent //influence SI vassal direct LUI OU courtisan LUI OU invité LUI, Influence, Or, Prestige, hameçon
+        case 'dirigeantAInfluencer': // opinion, Diplomatie, Intrigue, Or
+        case 'religieuxAInfluencer': // opinion, Or
+        case 'aInfluencer': // opinion, Diplomatie, Intrigue, Or
+        case 'hamecon':
+        case 'recruterChevalier':
+        case 'chevalierPartisan': // comme recruterChevalier sans Martialité
+        case 'demande': // Prestige, opinion, Or
+        case 'demande2': // (contrat, Or, provisions) Prestige, opinion
+        case 'proclame':
+        case 'declarationGuerre':
+        case 'prestige':
+            case 'influence' : // besoin agent //influence SI vassal direct LUI OU courtisan LUI OU invité LUI, Influence, Or, Prestige, hameçon
+            case 'seigneur': // Erudition (Revendiquer trône), (Factions), Prestige,opinion,Or (Me faire déclarer régent)
+            case 'piete': // Piété, Erudition
+                t.push(new Set().add(actions[0]));
+            return t;
+        case 'survie':
+        case 'stress':
+            t.push(new Set().add(actions[1]));
+            return t;
+        case 'enfant': // SI aventurier : Prestige, opinion, Or adopté SINON procréer ; survivre
+            t.push(new Set().add(actions[0]+" SI adoption/aventurier"));
+            t.push(new Set().add(actions[1]));
+            return t;
+        default:
+            return activUniv(p.slice(1), t, actions);
+    }
+}
+function activUnivMat(p, t=new Array(), actions=null) {
+    if(actions==null) { actions= ["Bouts de parchemin",//0 +or
+        "Livres et notes",//1 +diplo,martial,intendance,intrigue,eru -or
+        "Bibliothèque",//2 +artefact,diplo,martial,intendance,intrigue,eru -or
+    ]; }
+    if (p.length === 0 && t.length === 0) {
+        // Aventurier : complot Saisie du pays (Prestige, Intrigue) SINON Acheter terre (éviter Gibier de potence, éviter Baroudeur, hameçon, Or, langue, opinion) SINON Demander soutien invasion (Prestige)
+    }
+    if (p.length === 0) {
+        t.push(new Set().add(actions[2]));
+        t.push(new Set().add(actions[1]));
+        t.push(new Set().add(actions[0]));
+        return t;
+    }
+    const pp = p[0];
+    switch(pp) {
+        case 'guerre': // guerre, Influence,opinion SI gouvernmt admin
+        case 'controle':
+        case 'assassinat': // Faire démissionner ou Assassiner
+        case 'succession': // besoin agent //influence SI vassal direct LUI OU courtisan LUI OU invité LUI, Influence, Or, Prestige, hameçon
+        case 'dirigeantAInfluencer': // opinion, Diplomatie, Intrigue, Or
+        case 'religieuxAInfluencer': // opinion, Or
+        case 'aInfluencer': // opinion, Diplomatie, Intrigue, Or
+        case 'hamecon':
+        case 'recruterChevalier':
+        case 'chevalierPartisan': // comme recruterChevalier sans Martialité
+        case 'demande': // Prestige, opinion, Or
+        case 'demande2': // (contrat, Or, provisions) Prestige, opinion
+        case 'proclame':
+        case 'declarationGuerre':
+        case 'survie':
+        case 'stress':
+        case 'prestige':
+        case 'enfant': // SI aventurier : Prestige, opinion, Or adopté SINON procréer ; survivre
+        case 'influence' : // besoin agent //influence SI vassal direct LUI OU courtisan LUI OU invité LUI, Influence, Or, Prestige, hameçon
+        case 'seigneur': // Erudition (Revendiquer trône), (Factions), Prestige,opinion,Or (Me faire déclarer régent)
+        case 'piete': // Piété, Erudition
+            t.push(new Set().add(actions[2]));
+            t.push(new Set().add(actions[1]));
+            t.push(new Set().add(actions[0]));
+            return t;
+        case 'revenu':
+            t.push(new Set().add(actions[0]));
+            return t;
+        default:
+            return (p.slice(1), t);
     }
 }
 function particip(p, t=new Array()) {
@@ -2645,6 +2791,7 @@ function particip(p, t=new Array()) {
                 case 'chevalierPartisan': // recruterChevalier sans Martialité
                 case 'demande': // Prestige, opinion, Or
                 case 'demande2':
+                    case 'piete': // Piété, Erudition
                     t.push(new Set().add("Participe"));
             return t;
         default:
@@ -2686,6 +2833,7 @@ function activTournee(p, t=new Array()) {
             case 'demande2':
                 return new Array();
             case 'enfant': // SI aventurier : Prestige, opinion, Or adopté SINON procréer ; survivre
+            case 'piete': // Piété, Erudition
             default:
             return activTournee(p.slice(1),t);
     }
@@ -2724,8 +2872,8 @@ function intentionTournee(p, t=new Array()) {
                     t.push(new Set().add(intentions[3]));
                 return t;
         case 'religieuxAInfluencer':
-            case 'piete':
-                case 'factionFoi':
+            case 'piete': // Piété, Erudition
+            case 'factionFoi':
                     case 'factionCult':
                         t.push(new Set().add(intentions[2]));
                 return t;
@@ -2762,6 +2910,7 @@ function suite(p, t=new Array()) {
             case 'dirigeantAInfluencer': // opinion, Diplomatie, Intrigue, Or
             case 'aInfluencer': // opinion, Diplomatie, Intrigue, Or
             case 'enfant': // SI aventurier : Prestige, opinion, Or adopté SINON procréer ; survivre
+            case 'piete': // Piété, Erudition
             t.push(new Set().add("A DEFINIR"));
             return t;
         case 'prestige':
@@ -2813,6 +2962,7 @@ function luxe(p, t=new Array()) {
             case 'dirigeantAInfluencer': // opinion, Diplomatie, Intrigue, Or
             case 'aInfluencer': // opinion, Diplomatie, Intrigue, Or
             case 'enfant': // SI aventurier : Prestige, opinion, Or adopté SINON procréer ; survivre
+            case 'piete': // Piété, Erudition
             t.push(new Set().add("A DEFINIR"));
             return t;
             case 'chevalierPartisan': // recruterChevalier sans Martialité
@@ -2864,6 +3014,7 @@ function regence(p, t=new Array()) {
             case 'demande2':
                 return new Array();
         case 'denoncer': // Prestige, Renommée 
+        case 'piete': // Piété, Erudition
             default:
             return regence(p.slice(1), t);
     }
@@ -2925,6 +3076,7 @@ function epidemies(p, t=new Array(), fonctions=null) {
         case 'proclame':
         case 'declarationGuerre':
         case 'stress':
+            case 'piete': // Piété, Erudition
             t.push(new Set().add(fonctions[1]));
             return epidemies(p.slice(1),t,fonctions);
         default:
@@ -2966,7 +3118,7 @@ function posteCaravanier(p, t=new Array(), fonctions=null) {
         case 'demande2': // (contrat, Or, provisions) Prestige, opinion
         case 'prestige':
             fonctions[2]=undefined;
-            return epidemies(p.slice(1),t,fonctions);
+            return posteCaravanier(p.slice(1),t,fonctions);
         case 'enfant': // SI aventurier : Prestige, opinion, Or adopté SINON procréer ; survivre
             t.push(new Set().add("aucune fonction SI adoption/aventurier"));
             t.push(new Set().add(fonctions[0]));
@@ -2985,8 +3137,509 @@ function posteCaravanier(p, t=new Array(), fonctions=null) {
         case 'assassinat': // Faire démissionner ou Assassiner
         case 'hamecon':
         case 'stress':
+            case 'piete': // Piété, Erudition
+            default:
+            return posteCaravanier(p.slice(1),t,fonctions);
+    }
+}
+function posteAntiq(p, t=new Array(), fonctions=null) {
+    if (fonctions==null) fonctions = ["Améliorer les artefacts",//0 +artefact -or
+        "Exposer les objets illustres",//1 +intendance, légende -prestige
+        "Rechercher des artefacts rares",//2 +artefact -prestige
+    ];
+    if (p.length === 0 && t.length === 0) {
+        // Aventurier : complot Saisie du pays (Prestige, Intrigue) SINON Acheter terre (éviter Gibier de potence, éviter Baroudeur, hameçon, Or, langue, opinion) SINON Demander soutien invasion (Prestige)
+        t.push(new Set().add("aucune fonction SI aventurier"));
+    }
+    if (p.length === 0) {
+        t.push(new Set().add(fonctions[1]));
+        t.push(new Set().add(fonctions[0]));
+        t.push(new Set().add(fonctions[2]));
+        t.push(new Set().add("aucune fonction"));
+        return t;
+    }
+    const pp = p[0];
+    switch(pp) {
+        case 'revenu':
+        case 'succession': // besoin agent //influence SI vassal direct LUI OU courtisan LUI OU invité LUI, Influence, Or, Prestige, hameçon
+        case 'dirigeantAInfluencer': // opinion, Diplomatie, Intrigue, Or
+        case 'religieuxAInfluencer': // opinion, Or
+        case 'aInfluencer': // opinion, Diplomatie, Intrigue, Or
+        case 'influence' : // besoin agent //influence SI vassal direct LUI OU courtisan LUI OU invité LUI, Influence, Or, Prestige, hameçon
+            t.push(new Set().add(fonctions[1]));
+            return posteAntiq(p.slice(1),t, fonctions);
+        case 'chevalierPartisan': // comme recruterChevalier sans Martialité
+        case 'demande': // Prestige, opinion, Or
+        case 'demande2': // (contrat, Or, provisions) Prestige, opinion
+            return new Array();
+        case 'prestige':
+            fonctions[1]=undefined;
+            fonctions[2]=undefined;
+            return posteAntiq(p.slice(1),t, fonctions);
+        case 'seigneur': // Erudition (Revendiquer trône), (Factions), Prestige,opinion,Or (Me faire déclarer régent)
+            t.push(new Set().add("aucune fonction"));
+            return t;
+            case 'guerre': // guerre, Influence,opinion SI gouvernmt admin
+            case 'controle':
+            case 'assassinat': // Faire démissionner ou Assassiner
+            case 'hamecon':
+            case 'recruterChevalier':
+            case 'proclame':
+            case 'declarationGuerre':
+            case 'survie':
+            case 'stress':
+            case 'enfant': // SI aventurier : Prestige, opinion, Or adopté SINON procréer ; survivre
+            case 'piete': // Piété, Erudition
+            t.push(new Set().add(fonctions[0]));
+            t.push(new Set().add(fonctions[2]));
+            return posteAntiq(p.slice(1),t, fonctions);
         default:
-            return epidemies(p.slice(1),t,fonctions);
+            return posteAntiq(p.slice(1), t, fonctions);
+    }
+}
+function posteSenech(p, t=new Array(), fonctions=null) {
+    if (fonctions == null) fonctions = ["Organiser la Cour",//0 -prestige
+        "Gérer le domaine",//1 +controle -or
+        "Gérer la possession",//2 +Influence,construction -or, prestige
+    ];
+    if (p.length === 0 && t.length === 0) {
+        // Aventurier : complot Saisie du pays (Prestige, Intrigue) SINON Acheter terre (éviter Gibier de potence, éviter Baroudeur, hameçon, Or, langue, opinion) SINON Demander soutien invasion (Prestige)
+        t.push(new Set().add(fonctions[2]));
+        t.push(new Set().add("aucune fonction"));
+        return t;
+    }
+    if (p.length === 0) {
+        t.push(new Set().add("aucune fonction"));
+        return t;
+    }
+    const pp = p[0];
+    switch(pp) {
+        case 'revenu':
+            case 'dirigeantAInfluencer': // opinion, Diplomatie, Intrigue, Or
+            case 'religieuxAInfluencer': // opinion, Or
+            case 'aInfluencer': // opinion, Diplomatie, Intrigue, Or
+                fonctions[1]=undefined;
+            fonctions[2]=undefined;
+            return posteSenech(p.slice(1),t, fonctions);
+        case 'succession': // besoin agent //influence SI vassal direct LUI OU courtisan LUI OU invité LUI, Influence, Or, Prestige, hameçon
+        case 'influence' : // besoin agent //influence SI vassal direct LUI OU courtisan LUI OU invité LUI, Influence, Or, Prestige, hameçon
+            t.push(new Set().add(fonctions[2]));
+            t.push(new Set().add("aucune fonction"));
+            return t;
+        case 'chevalierPartisan': // comme recruterChevalier sans Martialité
+        case 'demande': // Prestige, opinion, Or
+        case 'demande2': // (contrat, Or, provisions) Prestige, opinion
+            return new Array();
+        case 'prestige':
+            fonctions[0]=undefined;
+            fonctions[2]=undefined;
+            return posteSenech(p.slice(1),t, fonctions);
+        case 'seigneur': // Erudition (Revendiquer trône), (Factions), Prestige,opinion,Or (Me faire déclarer régent)
+            t.push(new Set().add("aucune fonction"));
+            return t;
+        case 'guerre': // guerre, Influence,opinion SI gouvernmt admin
+            t.push(new Set().add(fonctions[2]+" SI gouvernement administratif"));
+            return posteSenech(p.slice(1),t, fonctions);
+        case 'controle':
+            t.push(new Set().add(fonctions[1]));
+            return posteSenech(p.slice(1),t, fonctions);
+        case 'assassinat': // Faire démissionner ou Assassiner
+        case 'hamecon':
+        case 'recruterChevalier':
+        case 'proclame':
+        case 'declarationGuerre':
+        case 'survie':
+        case 'stress':
+        case 'enfant': // SI aventurier : Prestige, opinion, Or adopté SINON procréer ; survivre
+        case 'piete': // Piété, Erudition
+        default:
+            return posteSenech(p.slice(1), t, fonctions);
+    }
+}
+function posteProf(p, t=new Array(), fonctions=null) {
+    if (fonctions == null) fonctions = ["Faire de la recherche avancée",//0 +exp -or
+        "Enseigner à la Cour",//1 +diplo,intendance,eru,martialite -prestige
+        "Eduquer les enfants",//2 -prestige
+    ];
+    if (p.length === 0 && t.length === 0) {
+        // Aventurier : complot Saisie du pays (Prestige, Intrigue) SINON Acheter terre (éviter Gibier de potence, éviter Baroudeur, hameçon, Or, langue, opinion) SINON Demander soutien invasion (Prestige)
+        t.push(new Set().add("aucune fonction SI aventurier"));
+     }
+    if (p.length === 0) {
+        t.push(new Set().add(fonctions[0]));
+        t.push(new Set().add("aucune fonction"));
+        return t;
+    }
+    const pp = p[0];
+    switch(pp) {
+        case 'revenu':
+            t.push(new Set().add(fonctions[1]));
+            fonctions[0]=undefined;
+            return posteProf(p.slice(1),t, fonctions);
+        case 'succession': // besoin agent //influence SI vassal direct LUI OU courtisan LUI OU invité LUI, Influence, Or, Prestige, hameçon
+        case 'influence' : // besoin agent //influence SI vassal direct LUI OU courtisan LUI OU invité LUI, Influence, Or, Prestige, hameçon
+            t.push(new Set().add(fonctions[0]));
+            t.push(new Set().add(fonctions[1]));
+            t.push(new Set().add("aucune fonction"));
+            return t;
+        case 'dirigeantAInfluencer': // opinion, Diplomatie, Intrigue, Or
+        case 'recruterChevalier':
+        case 'proclame':
+        case 'declarationGuerre':
+        case 'guerre': // guerre, Influence,opinion SI gouvernmt admin
+        case 'controle':
+            case 'piete': // Piété, Erudition
+            t.push(new Set().add(fonctions[1]));
+            t.push(new Set().add(fonctions[0]));
+            return posteProf(p.slice(1),t, fonctions);
+        case 'religieuxAInfluencer': // opinion, Or
+        case 'aInfluencer': // opinion, Diplomatie, Intrigue, Or
+            t.push(new Set().add(fonctions[0]));
+            t.push(new Set().add(fonctions[1]));
+            return posteProf(p.slice(1),t, fonctions);
+        case 'chevalierPartisan': // comme recruterChevalier sans Martialité
+        case 'demande': // Prestige, opinion, Or
+        case 'demande2': // (contrat, Or, provisions) Prestige, opinion
+            return new Array();
+        case 'prestige':
+        case 'seigneur': // Erudition (Revendiquer trône), (Factions), Prestige,opinion,Or (Me faire déclarer régent)
+            fonctions[1]=undefined;
+            fonctions[2]=undefined;
+            t.push(new Set().add(fonctions[0]));
+            return posteProf(p.slice(1),t, fonctions);
+        case 'assassinat': // Faire démissionner ou Assassiner
+        case 'hamecon':
+                            case 'stress':
+                case 'enfant': // SI aventurier : Prestige, opinion, Or adopté SINON procréer ; survivre
+                case 'survie':
+                    t.push(new Set().add(fonctions[0]));
+            return posteProf(p.slice(1),t, fonctions);
+        default:
+            return posteProf(p.slice(1), t, fonctions);
+    }
+}
+function posteNour(p, t=new Array()) {
+    const fonctions = ["Enseigner la vertu",//0 -prestige
+        "Promouvoir l'amitié",//1 -prestige
+        "Encourager la compétition",//2 -prestige
+    ];
+    if (p.length === 0 && t.length === 0) {
+        // Aventurier : complot Saisie du pays (Prestige, Intrigue) SINON Acheter terre (éviter Gibier de potence, éviter Baroudeur, hameçon, Or, langue, opinion) SINON Demander soutien invasion (Prestige)
+    }
+    if (p.length === 0) {
+        t.push(new Set().add("aucune fonction"));
+        return t;
+    }
+    const pp = p[0];
+    switch(pp) {
+        case 'succession': // besoin agent //influence SI vassal direct LUI OU courtisan LUI OU invité LUI, Influence, Or, Prestige, hameçon
+        case 'influence' : // besoin agent //influence SI vassal direct LUI OU courtisan LUI OU invité LUI, Influence, Or, Prestige, hameçon
+        case 'prestige':
+        case 'seigneur': // Erudition (Revendiquer trône), (Factions), Prestige,opinion,Or (Me faire déclarer régent)
+            t.push(new Set().add("aucune fonction"));
+            return t;
+            case 'chevalierPartisan': // comme recruterChevalier sans Martialité
+            case 'demande': // Prestige, opinion, Or
+            case 'demande2': // (contrat, Or, provisions) Prestige, opinion
+                return new Array();    
+        case 'revenu':
+        case 'dirigeantAInfluencer': // opinion, Diplomatie, Intrigue, Or
+        case 'religieuxAInfluencer': // opinion, Or
+        case 'aInfluencer': // opinion, Diplomatie, Intrigue, Or
+        case 'guerre': // guerre, Influence,opinion SI gouvernmt admin
+        case 'controle':
+        case 'assassinat': // Faire démissionner ou Assassiner
+        case 'hamecon':
+        case 'recruterChevalier':
+        case 'proclame':
+        case 'declarationGuerre':
+        case 'survie':
+        case 'stress':
+        case 'enfant': // SI aventurier : Prestige, opinion, Or adopté SINON procréer ; survivre
+        case 'piete': // Piété, Erudition
+        default:
+            return posteNour(p.slice(1), t);
+    }
+}
+function posteEcuyer(p, t=new Array(), fonctions=null) {
+    if(fonctions==null) fonctions = ["Supervise la reproduction",//0 +guerre -or
+        "Toilettage des chevaux de guerre",//1 +guerre SI commande -or
+    ];
+    if (p.length === 0 && t.length === 0) {
+        // Aventurier : complot Saisie du pays (Prestige, Intrigue) SINON Acheter terre (éviter Gibier de potence, éviter Baroudeur, hameçon, Or, langue, opinion) SINON Demander soutien invasion (Prestige)
+    }
+    if (p.length === 0) {
+        t.push(new Set().add("aucune fonction"));
+        return t;
+    }
+    const pp = p[0];
+    switch(pp) {
+        case 'revenu':
+            case 'succession': // besoin agent //influence SI vassal direct LUI OU courtisan LUI OU invité LUI, Influence, Or, Prestige, hameçon
+            case 'dirigeantAInfluencer': // opinion, Diplomatie, Intrigue, Or
+            case 'religieuxAInfluencer': // opinion, Or
+            case 'aInfluencer': // opinion, Diplomatie, Intrigue, Or
+            case 'influence' : // besoin agent //influence SI vassal direct LUI OU courtisan LUI OU invité LUI, Influence, Or, Prestige, hameçon
+            case 'seigneur': // Erudition (Revendiquer trône), (Factions), Prestige,opinion,Or (Me faire déclarer régent)
+            t.push(new Set().add("aucune fonction"));
+            return t;
+        case 'chevalierPartisan': // comme recruterChevalier sans Martialité
+        case 'demande': // Prestige, opinion, Or
+        case 'demande2': // (contrat, Or, provisions) Prestige, opinion
+            return new Array();
+        case 'guerre': // guerre, Influence,opinion SI gouvernmt admin
+            t.push(new Set().add(fonctions[1]));
+            t.push(new Set().add(fonctions[0]));
+            return posteEcuyer(p.slice(1),t, fonctions);
+        case 'enfant': // SI aventurier : Prestige, opinion, Or adopté SINON procréer ; survivre
+        case 'survie':
+            fonctions[1]=undefined;
+            return posteEcuyer(p.slice(1),t, fonctions);   
+        case 'prestige':
+        case 'controle':
+        case 'assassinat': // Faire démissionner ou Assassiner
+        case 'hamecon':
+        case 'recruterChevalier':
+        case 'proclame':
+        case 'declarationGuerre':
+        case 'stress':
+            case 'piete': // Piété, Erudition
+            default:
+            return posteEcuyer(p.slice(1), t, fonctions);
+    }
+}
+function posteChasse(p, t=new Array()) {
+    const fonctions = ["Traquer une bête ordinaire",//0 -or
+        "Traquer une bête dangereuse",//1 -or
+        "Traquer une bête légendaire",//2 -or
+    ];
+    if (p.length === 0 && t.length === 0) {
+        // Aventurier : complot Saisie du pays (Prestige, Intrigue) SINON Acheter terre (éviter Gibier de potence, éviter Baroudeur, hameçon, Or, langue, opinion) SINON Demander soutien invasion (Prestige)
+    }
+    if (p.length === 0) {
+        t.push(new Set().add(fonctions[2]));
+        return t;
+    }
+    const pp = p[0];
+    switch(pp) {
+        case 'revenu':
+        case 'succession': // besoin agent //influence SI vassal direct LUI OU courtisan LUI OU invité LUI, Influence, Or, Prestige, hameçon
+        case 'dirigeantAInfluencer': // opinion, Diplomatie, Intrigue, Or
+        case 'religieuxAInfluencer': // opinion, Or
+        case 'aInfluencer': // opinion, Diplomatie, Intrigue, Or
+        case 'influence' : // besoin agent //influence SI vassal direct LUI OU courtisan LUI OU invité LUI, Influence, Or, Prestige, hameçon
+        case 'seigneur': // Erudition (Revendiquer trône), (Factions), Prestige,opinion,Or (Me faire déclarer régent)
+            t.push(new Set().add("aucune fonction"));
+            return t;
+        case 'chevalierPartisan': // comme recruterChevalier sans Martialité
+        case 'demande': // Prestige, opinion, Or
+        case 'demande2': // (contrat, Or, provisions) Prestige, opinion
+            return new Array();
+        case 'prestige':
+        case 'guerre': // guerre, Influence,opinion SI gouvernmt admin
+        case 'controle':
+        case 'assassinat': // Faire démissionner ou Assassiner
+        case 'hamecon':
+        case 'recruterChevalier':
+        case 'proclame':
+        case 'declarationGuerre':
+        case 'survie':
+        case 'stress':
+        case 'enfant': // SI aventurier : Prestige, opinion, Or adopté SINON procréer ; survivre
+        case 'piete': // Piété, Erudition
+        default:
+            return posteChasse(p.slice(1), t);
+    }
+}
+function posteChroni(p, t=new Array()) {
+    const fonctions = ["Rechercher des légendes",//0 +légende -or
+        "Exalter la légende dans le pays",//1 +légende -or
+        "Répandre la légende à l'étranger",//2 +légende -or
+    ];
+    if (p.length === 0 && t.length === 0) {
+        // Aventurier : complot Saisie du pays (Prestige, Intrigue) SINON Acheter terre (éviter Gibier de potence, éviter Baroudeur, hameçon, Or, langue, opinion) SINON Demander soutien invasion (Prestige)
+    }
+    if (p.length === 0) {
+        t.push(new Set().add(fonctions[1]+" SI légende"));
+        t.push(new Set().add(fonctions[0]));
+        return t;
+    }
+    const pp = p[0];
+    switch(pp) {
+        case 'revenu':
+        case 'succession': // besoin agent //influence SI vassal direct LUI OU courtisan LUI OU invité LUI, Influence, Or, Prestige, hameçon
+        case 'dirigeantAInfluencer': // opinion, Diplomatie, Intrigue, Or
+        case 'religieuxAInfluencer': // opinion, Or
+        case 'aInfluencer': // opinion, Diplomatie, Intrigue, Or
+        case 'influence' : // besoin agent //influence SI vassal direct LUI OU courtisan LUI OU invité LUI, Influence, Or, Prestige, hameçon
+        case 'seigneur': // Erudition (Revendiquer trône), (Factions), Prestige,opinion,Or (Me faire déclarer régent)
+            t.push(new Set().add("aucune fonction"));
+            return t;
+        case 'chevalierPartisan': // comme recruterChevalier sans Martialité
+        case 'demande': // Prestige, opinion, Or
+        case 'demande2': // (contrat, Or, provisions) Prestige, opinion
+            return new Array();
+        case 'prestige':
+        case 'guerre': // guerre, Influence,opinion SI gouvernmt admin
+        case 'controle':
+        case 'assassinat': // Faire démissionner ou Assassiner
+        case 'hamecon':
+        case 'recruterChevalier':
+        case 'proclame':
+        case 'declarationGuerre':
+        case 'survie':
+        case 'stress':
+        case 'enfant': // SI aventurier : Prestige, opinion, Or adopté SINON procréer ; survivre
+        case 'piete': // Piété, Erudition
+        default:
+            return posteChroni(p.slice(1), t);
+    }
+}
+function posteChamp(p, t=new Array(), fonctions=null) {
+    if(fonctions==null) fonctions = ["Concourir en son nom",//0 +prestige -or
+        "Entraîner le dirigeant",//1 +prouesse -prestige, stress
+        "Améliorer les aptitudes",//2 +prouesse -prestige
+    ];
+    if (p.length === 0 && t.length === 0) {
+        // Aventurier : complot Saisie du pays (Prestige, Intrigue) SINON Acheter terre (éviter Gibier de potence, éviter Baroudeur, hameçon, Or, langue, opinion) SINON Demander soutien invasion (Prestige)
+    }
+    if (p.length === 0) {
+        t.push(new Set().add(fonctions[0]));
+        t.push(new Set().add("aucune fonction"));
+        return t;
+    }
+    const pp = p[0];
+    switch(pp) {
+        case 'revenu':
+            case 'dirigeantAInfluencer': // opinion, Diplomatie, Intrigue, Or
+            case 'religieuxAInfluencer': // opinion, Or
+            case 'aInfluencer': // opinion, Diplomatie, Intrigue, Or
+                fonctions[0]=undefined;
+            return posteChamp(p.slice(1),t,fonctions);
+        case 'succession': // besoin agent //influence SI vassal direct LUI OU courtisan LUI OU invité LUI, Influence, Or, Prestige, hameçon
+        case 'influence' : // besoin agent //influence SI vassal direct LUI OU courtisan LUI OU invité LUI, Influence, Or, Prestige, hameçon
+            t.push(new Set().add("aucune fonction"));
+            return t;
+        case 'chevalierPartisan': // comme recruterChevalier sans Martialité
+        case 'demande': // Prestige, opinion, Or
+        case 'demande2': // (contrat, Or, provisions) Prestige, opinion
+            return new Array();
+        case 'prestige':
+            case 'seigneur': // Erudition (Revendiquer trône), (Factions), Prestige,opinion,Or (Me faire déclarer régent)
+            t.push(new Set().add(fonctions[0]));
+            t.push(new Set().add("aucune fonction"));
+            return t;
+        case 'guerre': // guerre, Influence,opinion SI gouvernmt admin
+        case 'declarationGuerre':
+            t.push(new Set().add(fonctions[2]));
+            t.push(new Set().add(fonctions[1]));
+            return posteChamp(p.slice(1),t,fonctions);
+            case 'survie':
+                case 'stress':
+        case 'enfant': // SI aventurier : Prestige, opinion, Or adopté SINON procréer ; survivre
+            fonctions[1]=undefined;
+            return posteChamp(p.slice(1),t,fonctions);
+        case 'controle':
+        case 'assassinat': // Faire démissionner ou Assassiner
+        case 'hamecon':
+        case 'recruterChevalier':
+        case 'proclame':
+            case 'piete': // Piété, Erudition
+            default:
+            return posteChamp(p.slice(1), t, fonctions);
+    }
+}
+function posteBouffon(p, t=new Array(), fonctions=null) {
+    if(fonctions==null) fonctions = ["Divertir les courtisans",//0 +stress -prestige
+        "Alimenter la rumeur",//1 +complot ennemi -prestige
+        "Abuser du bouffon",//2 +redoutabilité -prestige
+    ];
+    if (p.length === 0 && t.length === 0) {
+        // Aventurier : complot Saisie du pays (Prestige, Intrigue) SINON Acheter terre (éviter Gibier de potence, éviter Baroudeur, hameçon, Or, langue, opinion) SINON Demander soutien invasion (Prestige)
+    }
+    if (p.length === 0) {
+        t.push(new Set().add(fonctions[2]));
+        t.push(new Set().add("aucune fonction"));
+        return t;
+    }
+    const pp = p[0];
+    switch(pp) {
+        case 'succession': // besoin agent //influence SI vassal direct LUI OU courtisan LUI OU invité LUI, Influence, Or, Prestige, hameçon
+        case 'influence' : // besoin agent //influence SI vassal direct LUI OU courtisan LUI OU invité LUI, Influence, Or, Prestige, hameçon
+        case 'prestige':
+        case 'seigneur': // Erudition (Revendiquer trône), (Factions), Prestige,opinion,Or (Me faire déclarer régent)
+            t.push(new Set().add("aucune fonction"));
+            return t;
+        case 'chevalierPartisan': // comme recruterChevalier sans Martialité
+            case 'demande': // Prestige, opinion, Or
+            case 'demande2': // (contrat, Or, provisions) Prestige, opinion
+                return new Array();
+                case 'survie':
+                    case 'enfant': // SI aventurier : Prestige, opinion, Or adopté SINON procréer ; survivre
+                    t.push(new Set().add(fonctions[1]));
+            return posteBouffon(p.slice(1),t,fonctions);
+        case 'stress':
+            t.push(new Set().add(fonctions[0]));
+            return posteBouffon(p.slice(1),t,fonctions);
+        case 'revenu':
+        case 'dirigeantAInfluencer': // opinion, Diplomatie, Intrigue, Or
+        case 'religieuxAInfluencer': // opinion, Or
+        case 'aInfluencer': // opinion, Diplomatie, Intrigue, Or
+        case 'guerre': // guerre, Influence,opinion SI gouvernmt admin
+        case 'controle':
+        case 'assassinat': // Faire démissionner ou Assassiner
+        case 'hamecon':
+        case 'recruterChevalier':
+        case 'proclame':
+        case 'declarationGuerre':
+            case 'piete': // Piété, Erudition
+            default:
+            return posteBouffon(p.slice(1), t, fonctions);
+    }
+}
+function posteGarde(p, t=new Array(), fonctions=null) {
+    if(fonctions==null) fonctions = ["Terrifier la Cour",//0 +redout -prestige, opinion cour
+    ];
+    if (p.length === 0 && t.length === 0) {
+        // Aventurier : complot Saisie du pays (Prestige, Intrigue) SINON Acheter terre (éviter Gibier de potence, éviter Baroudeur, hameçon, Or, langue, opinion) SINON Demander soutien invasion (Prestige)
+    }
+    if (p.length === 0) {
+        t.push(new Set().add(fonctions[0]));
+        return t;
+    }
+    const pp = p[0];
+    switch(pp) {
+        case 'succession': // besoin agent //influence SI vassal direct LUI OU courtisan LUI OU invité LUI, Influence, Or, Prestige, hameçon
+        case 'religieuxAInfluencer': // opinion, Or
+        case 'influence' : // besoin agent //influence SI vassal direct LUI OU courtisan LUI OU invité LUI, Influence, Or, Prestige, hameçon
+        case 'prestige':
+            case 'seigneur': // Erudition (Revendiquer trône), (Factions), Prestige,opinion,Or (Me faire déclarer régent)
+            t.push(new Set().add("aucune fonction"));
+            return t;
+            case 'aInfluencer': // opinion, Diplomatie, Intrigue, Or
+            t.push(new Set().add("aucune fonction SI LUI courtisan"));
+            return posteGarde(p.slice(1),t,fonctions);
+            case 'chevalierPartisan': // comme recruterChevalier sans Martialité
+            case 'demande': // Prestige, opinion, Or
+            case 'demande2': // (contrat, Or, provisions) Prestige, opinion
+                return new Array();
+            case 'revenu':
+        case 'dirigeantAInfluencer': // opinion, Diplomatie, Intrigue, Or
+            t.push(new Set().add("aucune fonction"));
+            return t;
+        case 'guerre': // guerre, Influence,opinion SI gouvernmt admin
+        case 'controle':
+        case 'assassinat': // Faire démissionner ou Assassiner
+        case 'hamecon':
+        case 'recruterChevalier':
+        case 'proclame':
+        case 'declarationGuerre':
+        case 'survie':
+        case 'stress':
+        case 'enfant': // SI aventurier : Prestige, opinion, Or adopté SINON procréer ; survivre
+        case 'piete': // Piété, Erudition
+        default:
+            return posteGarde(p.slice(1), t, fonctions);
     }
 }
 function campObjectif(p, t=new Array()) {
@@ -3031,7 +3684,7 @@ function campObjectif(p, t=new Array()) {
         case 'assassinat':
         case 'agent':  //influence SI vassal direct LUI OU courtisan LUI OU invité LUI, Influence, Or, Prestige, hameçon
         case 'dirigeantAInfluencer': // opinion, Diplomatie, Intrigue, Or
-        case 'piete':
+        case 'piete': // Piété, Erudition
             t.push(new Set().add(obj[2]));
             return t;
         case 'survie':
@@ -3154,7 +3807,8 @@ function evidence(id, texte, ttLeTps=false) {
     const funResult = activFun(p);
     const campObjectifResult = campObjectif(p);
     // Afficher les résultats dans la section des résultats sur la page
-    evidence('militaireResult', "<p>"+sansDoublon(militaireResult)+"</p><h2>Affecter des commandants</h2><p>"+sansDoublon(armeesResult)+"</p>");
+    evidence('militaireResult', sansDoublon(militaireResult));
+    evidence('comm', sansDoublon(armeesResult));
     evidence('conseilConjointResult', sansDoublon(conseilConjointResult));
     evidence('conseilChancelierResult', sansDoublon(conseilChancelierResult, "SINON"));
     evidence('conseilMarechalResult', sansDoublon(conseilMarechalResult, "SINON"));
@@ -3186,6 +3840,8 @@ function evidence(id, texte, ttLeTps=false) {
     evidence('grpeChasse', sansDoublon(grpeChasseResult, "SINON"));
     evidence('activRando', sansDoublon(activRando(p), "SINON"));
     evidence('randoOption', sansDoublon(activRandoLong(p), "SINON"));
+    evidence('activUniv', sansDoublon(activUniv(p), "SINON"));
+    evidence('univMat', sansDoublon(activUnivMat(p), "SINON"));
     evidence('tourneeType', sansDoublon(tourneeResult));
     evidence('tourneeIntention', sansDoublon(tourneeIntentionResult, "SINON"));
     evidence('suite', sansDoublon(suiteResult, "SINON"));
@@ -3193,7 +3849,7 @@ function evidence(id, texte, ttLeTps=false) {
     evidence('tournoiHeberg', sansDoublon(hebergResult, "SINON"));
     evidence('prix', sansDoublon(prixResult, "SINON"));
     evidence('fete', sansDoublon(feteResult, "SINON"));
-    evidence('feteNourr', sansDoublon(feteNourrResult, "SINON")); console.log("feteNourr",feteNourrResult);
+    evidence('feteNourr', sansDoublon(feteNourrResult, "SINON"));
     evidence('monum', sansDoublon(monumResult, "SINON"));
     evidence('monumScribe', sansDoublon(monumScribeResult, "SINON"));
     evidence('feteBoiss', sansDoublon(feteBoissResult, "SINON"));
@@ -3202,9 +3858,27 @@ function evidence(id, texte, ttLeTps=false) {
     let listePostes = document.getElementById('epidResult');
     liDec(listePostes, "Médecin", 'poste-0', sansDoublon(epidemies(p), "SINON"));
     liDec(listePostes, "Maître-caravanier", 'poste-1', sansDoublon(posteCaravanier(p), "SINON"));
+    liDec(listePostes, "Antiquaire", 'poste-2', sansDoublon(posteAntiq(p), "SINON"));
+    liDec(listePostes, "Sénéchal", 'poste-3', sansDoublon(posteSenech(p), "SINON"));
+    liDec(listePostes, "Professeur", 'poste-4', sansDoublon(posteProf(p), "SINON"));
+    liDec(listePostes, "Nourrice", 'poste-5', sansDoublon(posteNour(p), "SINON"));
+    liDec(listePostes, "Grand écuyer", 'poste-6', sansDoublon(posteEcuyer(p), "SINON"));
+    liDec(listePostes, "Maître de chasse", 'poste-7', sansDoublon(posteChasse(p), "SINON"));
+    liDec(listePostes, "Chroniqueur de la Cour", 'poste-8', sansDoublon(posteChroni(p), "SINON"));
+    liDec(listePostes, "Champion personnel", 'poste-9', sansDoublon(posteChamp(p), "SINON"));
+    liDec(listePostes, "Bouffon de la Cour", 'poste-10', sansDoublon(posteBouffon(p), "SINON"));
+    liDec(listePostes, "Garde du corps", 'poste-11', sansDoublon(posteGarde(p), "SINON"));
     // création de <li> dans id 'dec'
-    let listeDecisions = document.getElementById('decImp');
+    // Décisions pays
+    let listeDecisions = document.getElementById('decPays');
+    liDec(listeDecisions, 'Agrandir le duché', 'dec-pays-1', decisionOuNon(decisionsResult,
+        new Set(["Renommée"]),
+        new Set(["Prestige"])));
+    liDec(listeDecisions, 'Déplacer la capitale de jure', 'dec-pays-0', decisionOuNon(decisionsResult,
+        new Set(["Prestige (complot Saisie du pays)"]),
+        new Set(["Prestige"])));
     // décisions importantes Aventurier
+    listeDecisions = document.getElementById('decImp');
     liDec(listeDecisions, 'Devenir un grand conquérant', 'dec-maj-av-0', decisionOuNon(decisionsResult,
         new Set(["Prestige (complot Saisie du pays)", "augmenter levées", "légende"]),
         new Set(["Prestige"])));
@@ -3217,9 +3891,9 @@ function evidence(id, texte, ttLeTps=false) {
     liDec(listeDecisions, 'Les voyages de ...', 'dec-maj-av-3', decisionOuNon(decisionsResult,
             new Set(["points d'expérience", "artefact"]),
             new Set(["Or", "Prestige"])));
-    liDec(listeDecisions, 'Le chemin de la foi ...', 'dec-maj-av-4', decisionOuNon(decisionsResult,
+    /*liDec(listeDecisions, 'Le chemin de la foi ...', 'dec-maj-av-4', decisionOuNon(decisionsResult,
         null,
-        null));
+        null));*/
     liDec(listeDecisions, "La voie ... - l'ascension", 'dec-maj-av-8', decisionOuNon(decisionsResult,
             new Set(["Martialité", "Prouesse"]),
             new Set(["Piété", "stress diminuer"])));
@@ -3232,11 +3906,6 @@ function evidence(id, texte, ttLeTps=false) {
     liDec(listeDecisions, 'Mesures désespérées - Abattage des animaux', 'dec-maj-av-7', decisionOuNon(decisionsResult,
             new Set(["provisions"]),
             new Set(["Prestige"])));
-    // Décisions pays
-    listeDecisions = document.getElementById('decPays');
-    liDec(listeDecisions, 'Déplacer la capitale de jure', 'dec-pays-0', decisionOuNon(decisionsResult,
-        new Set(["Prestige (complot Saisie du pays)"]),
-        new Set(["Prestige"])));
     // Décisions aventurier
     listeDecisions = document.getElementById('decAv');
     liDec(listeDecisions, 'Visiter la propriété ...', 'dec-av-0', decisionOuNon(decisionsResult,
@@ -3267,6 +3936,9 @@ function evidence(id, texte, ttLeTps=false) {
         new Set(["Or", "Piété"])));
     // Décisions mineures
     listeDecisions = document.getElementById('dec');
+    liDec(listeDecisions, "Être diverti par le bouffon de la Cour", 'dec-14', decisionOuNon(decisionsResult,
+        new Set(["stress diminuer"]),
+        null));
     liDec(listeDecisions, "Commander un artefact", 'dec-6', decisionOuNon(decisionsResult,
         new Set(["artefact"]),
         new Set(["Or"])));
@@ -3300,9 +3972,15 @@ function evidence(id, texte, ttLeTps=false) {
     liDec(listeDecisions, "Faire la charité", 'dec-5', decisionOuNon(decisionsResult,
         new Set(["stress diminuer"]),
         new Set(["Or"])));
+    liDec(listeDecisions, "Faire voeu de pauvreté", 'dec-12', decisionOuNon(decisionsResult,
+        new Set(["Piété"]),
+        new Set(["Or"])));
     liDec(listeDecisions, "Tenter de se suicider", 'dec-4', decisionOuNon(decisionsResult,
         null,
         new Set(["Piété"])));
+    liDec(listeDecisions, "Demander audience au Roi", 'dec-13', decisionOuNon(decisionsResult,
+        null,
+        null));
     // Décisions de courtisans decCour
     listeDecisions = document.getElementById('decCour');
     liDec(listeDecisions, "Favoriser les experts étrangers", 'dec-cour-0', decisionOuNon(decisionsResult,
@@ -3317,8 +3995,14 @@ function evidence(id, texte, ttLeTps=false) {
     liDec(listeDecisions, "Inviter des chevaliers", 'dec-cour-3', decisionOuNon(decisionsResult,
         new Set(["recruter chevalier"]),
         new Set(["Prestige"])));
+    liDec(listeDecisions, "Inviter des prétendants", 'dec-cour-4', decisionOuNon(decisionsResult,
+        new Set(["recruter"]),
+        new Set(["Prestige"])));
     // Activités
     let listeActiv = document.getElementById('activitesGrand');
+    liDec(listeActiv, "Grande tournée", 'act-g-1', decisionOuNon(decisionsResult,
+        new Set(["contrôle SI &lt;100", "opinion comtale", "légitimité", "stress diminuer", "Prestige"]),
+        new Set(["Or"])));
     liDec(listeActiv, "Grand tournoi", 'act-g-0', decisionOuNon(decisionsResult,
         new Set(["Prestige", "Légitimation", "stress diminuer"]),
         new Set(["Or"])));

@@ -105,7 +105,9 @@
       <h2>Objectif du camp</h2>
       <p id="campObjectif"></p>
       <h1>Militaire</h1>
-      <span id="militaireResult"></span>
+      <h2>Affecter des commandants</h2>
+      <p id="comm"></p>
+      <h2></h2><p id="militaireResult"></p>
       <h1>Conseil</h1>
       <h2>Conjoint</h2>
       <p id="conseilConjointResult"></p>
@@ -140,8 +142,8 @@
       <h3>Secrets</h3>
       <p id="secretsResult"></p>
       <h1>Décisions et contrats</h1><h2>Décisions</h2>
-      <h3>Décisions importantes d'aventurier</h3><ul id="decImp"></ul>
       <h3>Pays</h3><ul id="decPays"></ul>
+      <h3>Décisions importantes d'aventurier</h3><ul id="decImp"></ul>
       <h3>Décisions d'aventurier</h3><ul id="decAv"></ul>
       <h3>Décisions de l'unité de la Maison</h3><ul id="decMaison"></ul>
       <h3>Décisions</h3><ul id="dec"></ul>
@@ -267,7 +269,11 @@
         <div style="flex: 1; padding: 10px;">
             <h2>Activité</h2>
             <h3>Séjour universitaire</h3>
-            <p></p>
+            <h4>Intention</h4>
+            <p id="activUniv"></p>
+            <h4>Options d'activité</h4>
+            <h5>Matériel d'études</h5>
+            <p id="univMat"></p>
             <h3>Festin</h3>
             <p id="festin"></p>
             <h3>Fête de camp</h3>
@@ -334,9 +340,9 @@
     domaines.set('proclame', 'Chevalier proclamé');
     domaines.set('controle', 'Contrôle');
     domaines.set('assassinat', 'dans la ligne de succession');
-    //domaines.set('denoncer', 'Dénoncer');
-    domaines.set('demande2', 'Faire une demande');
-    domaines.set('demande', 'Faire une demande (pour autre objectif)');
+    domaines.set('denoncer', 'Dénoncer');
+    domaines.set('demande2', 'faire une demande');
+    domaines.set('demande', 'faire une demande (pour autre objectif)');
     domaines.set('guerre', 'Guerre');
     domaines.set('declarationGuerre', 'Guerre (préparation)');
     domaines.set('hamecon', 'Hameçon');
@@ -347,16 +353,16 @@
     domaines.set('dirigeantAInfluencer','opinion dirigeant');
     domaines.set('revenu','Or');
     //domaines.set('terrJureSinonRevendic', 'Pas de cassus belli');
-    domaines.set('stress', 'Perte de stress');
+    domaines.set('stress', 'perte de stress');
+    domaines.set('piete', 'Piété');
     domaines.set('prestige', 'Prestige');
-    domaines.set('seigneur', 'seigneur lige empêche guerre');
-    domaines.set('succession', 'Succession par acclamation ou nomination à remonter');
-    domaines.set('survie', 'Titre perdu à la succession');
+    domaines.set('seigneur', 'Seigneur lige empêche guerre');
+    domaines.set('succession', 'succession par acclamation ou nomination à remonter');
+    domaines.set('survie', 'titre perdu à la succession');
     //domaines.set('perteTerresRevoquer', 'Perte de terres (titre à révoquer)');
     //domaines.set('domaine', 'Limite domaine (accorder impensable)');
     //domaines.set('vassalAInfluencer', 'Vassal à influencer');
     //domaines.set('vassalSOppose', "Vassal qui s'oppose");
-    //domaines.set('piete', 'Piété');
     //domaines.set('foiChangemt', 'Changer de foi');
     //domaines.set('factionFoi', 'Faction - ferveur');
     //domaines.set('factionCult', 'Faction - Acceptation culturelle');
