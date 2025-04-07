@@ -275,7 +275,13 @@
             <h5>Matériel d'études</h5>
             <p id="univMat"></p>
             <h3>Festin</h3>
+            <h4>Intention</h4>
             <p id="festin"></p>
+            <h4>Options d'activité</h4>
+            <h5>Complexité des repas</h5>
+            <p id="festinRepas"></p>
+            <h5>Nombre de plats</h5>
+            <p id="festinPlats"></p>
             <h3>Fête de camp</h3>
             <h4>Intention</h4>
             <p id="fete"></p>
@@ -335,6 +341,7 @@
     // Votre tableau de valeurs JavaScript :
     const domaines = new Map();
     // situation annoncée (si projet long terme) OU descendre à l'option
+    domaines.set('aInfluencer', "alliance");
     domaines.set('recruterChevalier', 'Chevalier');
     domaines.set('chevalierPartisan', 'Chevalier (aventurier)');
     domaines.set('proclame', 'Chevalier proclamé');
@@ -348,15 +355,15 @@
     domaines.set('hamecon', 'Hameçon');
     domaines.set('enfant', 'Héritier');
     domaines.set('influence', "Influence");
-    domaines.set('aInfluencer','opinion autre');
     domaines.set('religieuxAInfluencer','opinion Conseiller religieux');
-    domaines.set('dirigeantAInfluencer','opinion dirigeant');
+    //domaines.set('dirigeantAInfluencer','opinion dirigeant');
     domaines.set('revenu','Or');
     //domaines.set('terrJureSinonRevendic', 'Pas de cassus belli');
     domaines.set('stress', 'perte de stress');
     domaines.set('piete', 'Piété');
     domaines.set('agent', "place d'agent");
     domaines.set('prestige', 'Prestige');
+    domaines.set('rancon', 'rançon');
     domaines.set('seigneur', 'Seigneur lige empêche guerre');
     domaines.set('succession', 'succession par acclamation ou nomination à remonter');
     domaines.set('survie', 'titre perdu à la succession');
@@ -453,7 +460,7 @@ inputs.forEach(input => {
         if(this.style.backgroundColor != 'yellow') {
           this.style.backgroundColor = 'yellow';
         } else {
-          this.style.backgroundColor = null;
+          this.style.backgroundColor = 'white';
         }
     });
 });
