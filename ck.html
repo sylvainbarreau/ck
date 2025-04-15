@@ -102,7 +102,7 @@
   <div class="left-container">
     <div id="results">
       <h1>Pays</h1>
-      <h2>Objectif du camp</h2>
+      <h2>(Objectif du camp)</h2>
       <p id="campObjectif"></p>
       <h1>Militaire</h1>
       <h2>Affecter des commandants</h2>
@@ -121,8 +121,8 @@
       <p><em>sans annuler </em><span id="intendantResult"></span></p>
       <h2>Maître-espion</h2>
       <p id="espionResult"></p>
-      <h1>Courtisans</h1>
-      <h2>Postes de la cour</h2>
+      <h1>Courtisans (Camp)</h1>
+      <h2>Postes de la cour (Officiers)</h2>
       <ul id="epidResult"></ul>
       <h2>Prisonniers</h2>
       <p id="prisonResult"></p>
@@ -141,10 +141,10 @@
       <p id="hamecResult"></p>
       <h3>Secrets</h3>
       <p id="secretsResult"></p>
-      <h1>Décisions et contrats</h1><h2>Décisions</h2>
+      <h1>Décisions (et Contrats)</h1><h2>Décisions</h2>
       <h3>Pays</h3><ul id="decPays"></ul>
-      <h3>Décisions importantes d'aventurier</h3><ul id="decImp"></ul>
-      <h3>Décisions d'aventurier</h3><ul id="decAv"></ul>
+      <h3>(Décisions importantes d'aventurier)</h3><ul id="decImp"></ul>
+      <h3>(Décisions d'aventurier)</h3><ul id="decAv"></ul>
       <h3>Décisions de l'unité de la Maison</h3><ul id="decMaison"></ul>
       <h3>Décisions</h3><ul id="dec"></ul>
       <h3>Décisions de courtisan</h3><ul id="decCour"></ul>
@@ -168,11 +168,11 @@
       <div class="drop-container" style="width: 50%;">
         <p>Situation</p>
         <div id="dropItems">
-          <div id="dropItemsGuerre" ondrop="drop(event)" ondragover="allowDrop(event)"><p>Guerres ou Factions</p></div>
+          <div id="dropItemsGuerre" ondrop="drop(event)" ondragover="allowDrop(event)"><p>Partie, Guerres, Factions</p></div>
           <div id="dropItemsIcone" ondrop="drop(event)" ondragover="allowDrop(event)"><p>Barre icônes</p></div>
           <div id="dropItemsRouge" ondrop="drop(event)" ondragover="allowDrop(event)"><p>Situation > rouge</p></div>
           <div id="dropItemsSit" ondrop="drop(event)" ondragover="allowDrop(event)"><p>Situation</p></div>
-          <div id="dropItemsSurvie" ondrop="drop(event)" ondragover="allowDrop(event)"><p>Succession ?</p></div>
+          <div id="dropItemsSurvie" ondrop="drop(event)" ondragover="allowDrop(event)"><p>secondaire</p></div>
         </div>
         <button onclick="calculate()">Calculer</button>
       </div>
@@ -335,9 +335,11 @@
     domaines.set('recruterChevalier', 'Chevalier');
     domaines.set('chevalierPartisan', 'Chevalier (aventurier)');
     domaines.set('proclame', 'Chevalier proclamé');
+    domaines.set('conseiller', "Conseiller manquant");
     domaines.set('controle', 'Contrôle');
     domaines.set('assassinat', 'dans la ligne de succession');
     domaines.set('denoncer', 'Dénoncer');
+    domaines.set('factionPop', "Faction (Opinion populaire)");
     domaines.set('demande2', 'faire une demande');
     domaines.set('demande', 'faire une demande (pour autre objectif)');
     domaines.set('guerre', 'Guerre');
@@ -350,6 +352,7 @@
     domaines.set('revenu','Or');
     //domaines.set('terrJureSinonRevendic', 'Pas de cassus belli');
     domaines.set('stress', 'perte de stress');
+    domaines.set('perteTerresRevoquer', "perte de terres (titre à révoquer)");
     domaines.set('piete', 'Piété');
     domaines.set('agent', "place d'agent");
     domaines.set('prestige', 'Prestige');
@@ -357,7 +360,6 @@
     domaines.set('seigneur', 'Seigneur lige empêche guerre');
     domaines.set('succession', 'succession par acclamation ou nomination à remonter');
     domaines.set('survie', 'titre perdu à la succession');
-    //domaines.set('perteTerresRevoquer', 'Perte de terres (titre à révoquer)');
     //domaines.set('domaine', 'Limite domaine (accorder impensable)');
     //domaines.set('vassalAInfluencer', 'Vassal à influencer');
     //domaines.set('vassalSOppose', "Vassal qui s'oppose");
