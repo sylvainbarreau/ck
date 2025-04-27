@@ -4490,9 +4490,12 @@ function posteGarde(p, t=new Array(), o=null) {
     ];
     if (rien) {
         // Aventurier : complot Saisie du pays (Prestige, Intrigue) SINON Acheter terre (éviter Gibier de potence, éviter Baroudeur, hameçon, Or, langue, opinion) SINON Demander soutien invasion (Prestige)
+        t.push(new Set().add("aucune fonction"));
+        return t;
     }
     if (p.length === 0) {
         t.push(new Set().add(o[0]));
+        t.push(new Set().add("aucune fonction"));
         return t;
     }
     const pp = p[0];
@@ -4623,15 +4626,28 @@ function decisionOuNon(res, setOui, setNon) {
     }
     return true;
 }
-function liDec(listeDecisions, libDecision, id, ouiNon) {
-    // si id n'existe pas, le créer :
-    if (!document.getElementById(id)) {
-        const d = document.createElement('li');
-        // ajout attribut id :
-        d.setAttribute('id', id);
-        listeDecisions.appendChild(d);
+function liDec(idPage, id) {
+    // Récupérer la valeur associée à la clé depuis le localStorage
+    const value = localStorage.getItem(id);
+    const jsonData = JSON.parse(value);
+    let listeDecisions = document.getElementById(idPage);
+    let li = document.getElementById(id); console.log(li);
+    // si élément html id n'existe pas, le créer :
+    if (!li) {
+        li = document.createElement('li');
+        li.setAttribute('id', id);
+        listeDecisions.appendChild(li);
     }
-    evidence(id, libDecision+" : "+ouiNon);   
+    evidence(id, jsonData.lib+":"+jsonData.ouiNon);
+}
+function liOuiNon(lib, id, ouiNon) {
+    const data = {
+        lib: lib,
+        ouiNon: ouiNon
+    };
+    const jsonData = JSON.stringify(data);
+        // Stocker les données dans le localStorage avec l'identifiant comme clé
+        localStorage.setItem(id, jsonData);
 }
 function evidence(id, texte, ttLeTps=false) {
     let e=document.getElementById(id);
@@ -4760,215 +4776,364 @@ function evidence(id, texte, ttLeTps=false) {
     evidence('festinRepas', sansDoublon(activFestinRepas(p), "SINON"));
     evidence('festinPlats', sansDoublon(activFestinPlats(p), "SINON"));
     evidence('campObjectif', sansDoublon(campObjectifResult, "SINON"));
-    let listePostes = document.getElementById('epidResult');
-    liDec(listePostes, "Médecin", 'poste-0', sansDoublon(epidemies(p), "SINON"));
-    liDec(listePostes, "Maître-caravanier", 'poste-1', sansDoublon(posteCaravanier(p), "SINON"));
-    liDec(listePostes, "Antiquaire", 'poste-2', sansDoublon(posteAntiq(p), "SINON"));
-    liDec(listePostes, "Sénéchal", 'poste-3', sansDoublon(posteSenech(p), "SINON"));
-    liDec(listePostes, "Professeur", 'poste-4', sansDoublon(posteProf(p), "SINON"));
-    liDec(listePostes, "Nourrice", 'poste-5', sansDoublon(posteNour(p), "SINON"));
-    liDec(listePostes, "Grand écuyer", 'poste-6', sansDoublon(posteEcuyer(p), "SINON"));
-    liDec(listePostes, "Maître de chasse", 'poste-7', sansDoublon(posteChasse(p), "SINON"));
-    liDec(listePostes, "Chroniqueur de la Cour", 'poste-8', sansDoublon(posteChroni(p), "SINON"));
-    liDec(listePostes, "Champion personnel", 'poste-9', sansDoublon(posteChamp(p), "SINON"));
-    liDec(listePostes, "Bouffon de la Cour", 'poste-10', sansDoublon(posteBouffon(p), "SINON"));
-    liDec(listePostes, "Garde du corps", 'poste-11', sansDoublon(posteGarde(p), "SINON"));
-    // création de <li> dans id 'dec'
-    // Décisions pays
-    let listeDecisions = document.getElementById('decPays');
-    liDec(listeDecisions, 'Agrandir le duché', 'dec-pays-1', decisionOuNon(decisionsResult,
-        new Set(["Renommée"]),
-        new Set(["Prestige"])));
-    liDec(listeDecisions, 'Déplacer la capitale de jure', 'dec-pays-0', decisionOuNon(decisionsResult,
-        new Set(["Prestige (complot Saisie du pays)"]),
-        new Set(["Prestige"])));
-    // décisions importantes Aventurier
-    listeDecisions = document.getElementById('decImp');
-    liDec(listeDecisions, 'Devenir un grand conquérant', 'dec-maj-av-0', decisionOuNon(decisionsResult,
-        new Set(["Prestige (complot Saisie du pays)", "augmenter levées", "légende"]),
-        new Set(["Prestige"])));
-    liDec(listeDecisions, 'Défendre la culture ...', 'dec-maj-av-1', decisionOuNon(decisionsResult,
-        new Set(["Prestige (complot Saisie du pays)"]),
-        new Set(["Or", "Prestige"])));
-    liDec(listeDecisions, 'Devenir le ...', 'dec-maj-av-2', decisionOuNon(decisionsResult,
-        new Set(["Prestige (complot Saisie du pays)", "Prouesse", "artefact", "légende"]),
-        new Set(["Prestige"])));
-    liDec(listeDecisions, 'Les voyages de ...', 'dec-maj-av-3', decisionOuNon(decisionsResult,
-            new Set(["points d'expérience", "artefact"]),
-            new Set(["Or", "Prestige"])));
-    /*liDec(listeDecisions, 'Le chemin de la foi ...', 'dec-maj-av-4', decisionOuNon(decisionsResult,
-        null,
-        null));*/
-    liDec(listeDecisions, "La voie ... - l'ascension", 'dec-maj-av-8', decisionOuNon(decisionsResult,
-            new Set(["Martialité", "Prouesse"]),
-            new Set(["Piété", "stress diminuer"])));
-    liDec(listeDecisions, 'Fonder une propriété', 'dec-maj-av-5', decisionOuNon(decisionsResult,
-            new Set(["contrôle SI ", "Prestige (complot Saisie du pays)"]),
-            new Set(["Or"])));
-    liDec(listeDecisions, 'Enrôler les exclus', 'dec-maj-av-6', decisionOuNon(decisionsResult,
-        new Set(["Martialité", "Intrigue", "augmenter levées"]),
-        new Set(["Or", "Prestige"])));
-    liDec(listeDecisions, 'Mesures désespérées - Abattage des animaux', 'dec-maj-av-7', decisionOuNon(decisionsResult,
-            new Set(["provisions"]),
-            new Set(["Prestige"])));
-    // Décisions aventurier
-    listeDecisions = document.getElementById('decAv');
-    liDec(listeDecisions, 'Visiter la propriété ...', 'dec-av-0', decisionOuNon(decisionsResult,
-            new Set(["provisions", "Prestige (complot Saisie du pays)"]),
-            null));
-    liDec(listeDecisions, 'Rassembler les provisions', 'dec-av-1', decisionOuNon(decisionsResult,
-                new Set(["provisions"]),
-                null));
-    liDec(listeDecisions, 'Humilier le larbin', 'dec-av-2', decisionOuNon(decisionsResult,
-                    new Set(["stress diminuer", "redoutabilité"]),
-                    new Set(["Prestige"])));
-    liDec(listeDecisions, 'A la pêche', 'dec-av-3', decisionOuNon(decisionsResult,
-                        new Set(["stress diminuer", "provisions"]),
-                        null));
-    liDec(listeDecisions, 'Faire table rase du passé', 'dec-av-4', decisionOuNon(decisionsResult,
-        new Set(["éviter Gibier de potence", "Prestige (complot Saisie du pays)"]),
-        new Set(["Or", "Prestige", "Piété"])));
-    liDec(listeDecisions, "Renoncer à l'héritage", 'dec-av-5', decisionOuNon(decisionsResult,
-            new Set(["stress diminuer"]),
-            new Set(["Prestige SI adoption/aventurier ET NON mort", "Prestige", "progression succession"])));
-    // Décisions de l'unité de la Maison decMaison
-    listeDecisions = document.getElementById('decMaison');
-    liDec(listeDecisions, "Orienter l'unité de la Maison", 'dec-maison-0', decisionOuNon(decisionsResult,
-        new Set(["points d'expérience", "opinion LUI"]),
-        new Set(["Piété", "redoutabilité", "opinion LUI"])));
-    liDec(listeDecisions, "Chercher des percepteurs d'impôts", 'dec-maison-1', decisionOuNon(decisionsResult,
-        new Set(["Or"]),
-        new Set(["Or", "Piété"])));
-    // Décisions
-    listeDecisions = document.getElementById('dec');
-    liDec(listeDecisions, "Être diverti par le bouffon de la Cour", 'dec-14', decisionOuNon(decisionsResult,
-        new Set(["stress diminuer"]),
-        null));
-    liDec(listeDecisions, "Commander un artefact", 'dec-6', decisionOuNon(decisionsResult,
-        new Set(["artefact"]),
-        new Set(["Or"])));
-    liDec(listeDecisions, "S'entraîner pour un tournoi", 'dec-0', decisionOuNon(decisionsResult,
-            new Set(["Or" /*"prouesse"*/]),
-            new Set(["Prestige"])));
-    liDec(listeDecisions, "Devenir un aventurier", 'dec-7', decisionOuNon(decisionsResult,
-        new Set(["Prestige"]),
-        new Set(["Renommée"])));
-    liDec(listeDecisions, "Allumer le feu royal", 'dec-20', decisionOuNon(decisionsResult,
-        new Set(["Renommée", "santé"]),
-        null));
-    liDec(listeDecisions, "Développer la capitale", 'dec-19', decisionOuNon(decisionsResult,
-        new Set(["développement"]),
-        null));
-    liDec(listeDecisions, "Commander une épopée familiale", 'dec-18', decisionOuNon(decisionsResult,
-        new Set(["Prestige", "artefact"]),
-        new Set(["Or"])));
-    liDec(listeDecisions, "Accélérer les mesures", 'dec-8', decisionOuNon(decisionsResult,
-            null,
-            null));
-    liDec(listeDecisions, "Créer un itinéraire de voyage", 'dec-1', decisionOuNon(decisionsResult,
-            new Set(["Prestige", "artefact"]),
-            new Set(["Or"])));
-    liDec(listeDecisions, "Adopter la culture locale", 'dec-2', decisionOuNon(decisionsResult,
-        null,
-        new Set(["Prestige"])));
-    liDec(listeDecisions, "Caresser ...", 'dec-23', decisionOuNon(decisionsResult,
-        new Set(["stress diminuer"]),
-        null));
-    liDec(listeDecisions, "Faites-vous plaisir en buvant", 'dec-3', decisionOuNon(decisionsResult,
-            new Set(["stress diminuer"]),
-            new Set(["Prestige"])));
-    liDec(listeDecisions, "Méditer dans l'isolement", 'dec-9', decisionOuNon(decisionsResult,
-            new Set(["stress diminuer", "Erudition"]),
-            new Set(["Diplomatie", "Martialité", "Intendance", "Intrigue", ])));
-    liDec(listeDecisions, "Perdre du poids", 'dec-10', decisionOuNon(decisionsResult,
-        new Set(["santé"]),
-        new Set(["stress diminuer"])));
-    liDec(listeDecisions, "Arrêter de perdre du poids", 'dec-11', decisionOuNon(decisionsResult,
-            new Set(["stress diminuer"]),
-            null));
-    liDec(listeDecisions, "Faire la charité", 'dec-5', decisionOuNon(decisionsResult,
-        new Set(["stress diminuer"]),
-        new Set(["Or"])));
-    liDec(listeDecisions, "Faire voeu de pauvreté", 'dec-12', decisionOuNon(decisionsResult,
-        new Set(["Piété"]),
-        new Set(["Or"])));
-    liDec(listeDecisions, "Tenter de se suicider", 'dec-4', decisionOuNon(decisionsResult,
-        null,
-        new Set(["Piété"])));
-    liDec(listeDecisions, "Consommer des gâteaux au haschisch", 'dec-22', decisionOuNon(decisionsResult,
-        new Set(["stress diminuer"]),
-        new Set(["Intendance", "Erudition"])));
-    liDec(listeDecisions, "Demander audience au Roi", 'dec-13', decisionOuNon(decisionsResult,
-        null,
-        null));
-    liDec(listeDecisions, "Aller dans un lupanar", 'dec-15', decisionOuNon(decisionsResult,
-        new Set(["stress diminuer"]),
-        new Set(["Or"])));
-    liDec(listeDecisions, "S'isoler", 'dec-17', decisionOuNon(decisionsResult,
-        new Set(["stress diminuer"]),
-        new Set(["Prestige"])));
-    liDec(listeDecisions, "Se flageller", 'dec-16', decisionOuNon(decisionsResult,
-        new Set(["stress diminuer"]),
-        new Set(["Martialité", "Intrigue", "Prouesse", "santé", "Redoutabilité"])));
-    liDec(listeDecisions, "Rites de passage", 'dec-21', decisionOuNon(decisionsResult,
-        new Set(["points d'expérience", "Diplomatie", "Martialité", "Intendance", "Intrigue", "Erudition", "stress diminuer"]),
-        new Set(["Or", "Prestige"])));
-    // Décisions de courtisans decCour
-    listeDecisions = document.getElementById('decCour');
-    liDec(listeDecisions, "Favoriser les experts étrangers", 'dec-cour-0', decisionOuNon(decisionsResult,
-        new Set(["recruter"]),
-        new Set(["Prestige", "opinion LUI"])));
-    liDec(listeDecisions, "Recruter un spécialiste du terrain", 'dec-cour-1', decisionOuNon(decisionsResult,
-            new Set(["recruter"]),
-            new Set(["Or", "Prestige"])));
-    liDec(listeDecisions, "Recruter à un poste de la Cour", 'dec-cour-2', decisionOuNon(decisionsResult,
+    liOuiNon("Médecin", 'poste-0', sansDoublon(epidemies(p), "SINON"));
+    liOuiNon("Maître-caravanier", 'poste-1', sansDoublon(posteCaravanier(p), "SINON"));
+    liOuiNon("Antiquaire", 'poste-2', sansDoublon(posteAntiq(p), "SINON"));
+    liOuiNon("Sénéchal", 'poste-3', sansDoublon(posteSenech(p), "SINON"));
+    liOuiNon("Professeur", 'poste-4', sansDoublon(posteProf(p), "SINON"));
+    liOuiNon("Nourrice", 'poste-5', sansDoublon(posteNour(p), "SINON"));
+    liOuiNon("Grand écuyer", 'poste-6', sansDoublon(posteEcuyer(p), "SINON"));
+    liOuiNon("Maître de chasse", 'poste-7', sansDoublon(posteChasse(p), "SINON"));
+    liOuiNon("Chroniqueur de la Cour", 'poste-8', sansDoublon(posteChroni(p), "SINON"));
+    liOuiNon("Champion personnel", 'poste-9', sansDoublon(posteChamp(p), "SINON"));
+    liOuiNon("Bouffon de la Cour", 'poste-10', sansDoublon(posteBouffon(p), "SINON"));
+    liOuiNon("Garde du corps", 'poste-11', sansDoublon(posteGarde(p), "SINON"));
+    liDec('epidResult', 'poste-0');
+    liDec('epidResult', 'poste-1');
+    liDec('epidResult', 'poste-2'); //Antiquaire
+    liDec('epidResult', 'poste-3'); //Sénéchal
+    liDec('epidResult', 'poste-4'); //Professeur
+    liDec('epidResult', 'poste-5'); //Nourrice
+    liDec('epidResult', 'poste-7'); //Maître de chasse
+    liDec('epidResult', 'poste-8'); //Chroniqueur de la Cour
+    liDec('epidResult', 'poste-9'); //Champion personnel
+    liDec('epidResult', 'poste-11'); //Garde du corps
+    // Ruler - Décisions mineures
+        // Recherche de médecin, Rechercher Caravan Master, Recherche de nourrice
+    liOuiNon("Recruter à un poste de la Cour", 'dec-d-min-0', decisionOuNon(decisionsResult,
         new Set(["recruter", "santé", "points d'expérience"]),
         new Set(["Or", "Prestige"])));
-    liDec(listeDecisions, "Inviter des chevaliers", 'dec-cour-3', decisionOuNon(decisionsResult,
+    liOuiNon("Chercher des percepteurs d'impôts", 'dec-d-min-4', decisionOuNon(decisionsResult,
+            new Set(["Or"]),
+            new Set(["Or", "Piété"])));
+    liOuiNon("Développer la capitale", 'dec-d-min-5', decisionOuNon(decisionsResult,
+            new Set(["développement"]),
+            null));
+    liOuiNon("Révoquer la fausse conversion", 'dec-d-min-6', "A DEFINIR");
+    liOuiNon("Introduire une nouvelle mode à la Cour", 'dec-d-min-7', "A DEFINIR");
+    liOuiNon("Développer les villes", 'dec-d-min-8', "A DEFINIR");
+    liOuiNon("Laissez le royaume embrasser la tradition locale", 'dec-d-min-9', "A DEFINIR");
+    liOuiNon("Commander un artefact", 'dec-d-min-10', decisionOuNon(decisionsResult,
+        new Set(["artefact"]),
+        new Set(["Or"])));
+    liOuiNon("Artefact de légende de commission", 'dec-d-min-11', "A DEFINIR");
+    liOuiNon("Célébrer les autres cultures", 'dec-d-min-12', "A DEFINIR");
+    liOuiNon("Révoquer le bail du Saint Ordre", 'dec-d-min-13', "A DEFINIR");
+    liOuiNon("Soumettez-vous au Grand Khan", 'dec-d-min-14', "A DEFINIR");
+    liOuiNon("Retour de la Roma", 'dec-d-min-15', "A DEFINIR");
+    liOuiNon("Adopter un chiot", 'dec-d-min-16', "A DEFINIR");
+    liOuiNon("Intégrer le duché anglais", 'dec-d-min-17', "A DEFINIR");
+    liOuiNon("Amnistie pour les fausses conversions", 'dec-d-min-18', "A DEFINIR");
+    liOuiNon("Répandez la foi Theravada", 'dec-d-min-19', "A DEFINIR");
+    liOuiNon("Favoriser les experts étrangers", 'dec-d-min-20', decisionOuNon(decisionsResult,
+        new Set(["recruter"]),
+        new Set(["Prestige", "opinion LUI"])));
+    liOuiNon("S'entraîner pour un tournoi", 'dec-d-min-21', decisionOuNon(decisionsResult,
+            new Set(["Or" /*"prouesse"*/]),
+            new Set(["Prestige"])));
+    liOuiNon("Embellir la capitale", 'dec-d-min-22', "A DEFINIR");
+    liOuiNon("Orienter l'unité de la Maison", 'dec-d-min-22', decisionOuNon(decisionsResult,
+        new Set(["points d'expérience", "opinion LUI"]),
+        new Set(["Piété", "redoutabilité", "opinion LUI"])));
+    // Ruler - Décisions mineures - avantages
+    liOuiNon("Commander une épopée familiale", 'dec-d-min-av-1', decisionOuNon(decisionsResult,
+        new Set(["Prestige", "artefact"]),
+        new Set(["Or"])));
+    liOuiNon("Sell Trivial Titles", 'dec-d-min-av-2', "A DEFINIR");
+    liOuiNon("Extort Subjects", 'dec-d-min-av-3', "A DEFINIR");
+    liOuiNon("Local Arbitration", 'dec-d-min-av-4', "A DEFINIR");
+    // Ruler - Décisions mineures - cour royale
+    liOuiNon("Find Court Language Linguist", 'dec-d-min-cour-1', "A DEFINIR");
+    liOuiNon("Order Mass Eviction", 'dec-d-min-cour-2', "A DEFINIR");
+    liOuiNon("Exoticize A Grand Hall", 'dec-d-min-cour-3', "A DEFINIR");
+    // Ruler - Décisions mineures - seigneur-lige
+    liOuiNon("Demander audience au Roi", 'dec-d-min-seign-0', decisionOuNon(decisionsResult,
+        null,
+        null));
+    // Ruler - Décisions romaines
+    liOuiNon("Démanteler les prétendants allemands", 'dec-d-rom-1', "A DEFINIR");
+    liOuiNon("Restaurer l'Empire romain", 'dec-d-rom-2', "A DEFINIR");
+    liOuiNon("Rétablir les frontières théodosiennes", 'dec-d-rom-3', "A DEFINIR");
+    liOuiNon("Tenir un triomphe", 'dec-d-rom-4', "A DEFINIR");
+    liOuiNon("Évangéliser les païens", 'dec-d-rom-5', "A DEFINIR");
+    liOuiNon("Reconfirmer l'allocation céréalière", 'dec-d-rom-6', "A DEFINIR");
+    // Ruler - Décisions de courtisans
+    liOuiNon("Recruter pour un poste au tribunal", 'dec-d-court-1', "A DEFINIR");
+    liOuiNon("Inviter des chevaliers", 'dec-d-court-2', decisionOuNon(decisionsResult,
         new Set(["recruter chevalier"]),
         new Set(["Prestige"])));
-    liDec(listeDecisions, "Inviter des prétendants", 'dec-cour-4', decisionOuNon(decisionsResult,
-        new Set(["recruter"]),
+    liOuiNon("Inviter des prétendants", 'dec-d-court-3', decisionOuNon(decisionsResult,
+            new Set(["recruter"]),
+            new Set(["Prestige"])));
+    liOuiNon("Restaurer les distinctions", 'dec-d-court-4', "A DEFINIR");
+    liOuiNon("Gratter le baril", 'dec-d-court-5', "A DEFINIR");
+    liOuiNon("Recruter un spécialiste du terrain", 'dec-d-court-6', decisionOuNon(decisionsResult,
+            new Set(["recruter"]),
+            new Set(["Or", "Prestige"])));
+    // Ruler - lutte ibérique
+    liOuiNon("Parrainez les Sciences Juives", 'dec-d-ib-1', "A DEFINIR");
+    liOuiNon("Construire des routes de pèlerinage", 'dec-d-ib-2', "A DEFINIR");
+    liOuiNon("Pied ibérique", 'dec-d-ib-3', "A DEFINIR");
+    // Character - Décisions mineures
+    liOuiNon("Adopter la culture locale", 'dec-p-1', decisionOuNon(decisionsResult,
+        null,
         new Set(["Prestige"])));
+    liOuiNon("Emprunter de l'or à l'Ordre sacré", 'dec-p-2', "A DEFINIR");
+       // chat de compagnie, chien de compagnie
+    liOuiNon("Caresser ...", 'dec-p-3', decisionOuNon(decisionsResult,
+        new Set(["stress diminuer"]),
+        null));
+    liOuiNon("Renoncer à l'héritage", 'dec-p-5', decisionOuNon(decisionsResult,
+            new Set(["stress diminuer"]),
+            new Set(["Prestige SI adoption/aventurier ET NON mort", "Prestige", "progression succession"])));
+    liOuiNon("Méditer dans l'isolement", 'dec-p-6', decisionOuNon(decisionsResult,
+                new Set(["stress diminuer", "Erudition"]),
+                new Set(["Diplomatie", "Martialité", "Intendance", "Intrigue", ])));
+    liOuiNon("Tenter de se suicider", 'dec-p-7', decisionOuNon(decisionsResult,
+                    null,
+                    new Set(["Piété"])));
+    liOuiNon("Mange ton fromage", 'dec-p-8', "A DEFINIR");
+    liOuiNon("Élever une pierre runique", 'dec-p-9', "A DEFINIR");
+    liOuiNon("Offrez à votre ancêtre une sépulture céleste", 'dec-p-10', "A DEFINIR");
+    // Character - Décisions mineures - avantages
+    liOuiNon("Accepter le célibat", 'dec-p-av-1', "A DEFINIR");
+      // Abandonner le célibat
+    liOuiNon("Créer un itinéraire de voyage", 'dec-p-av-3', decisionOuNon(decisionsResult,
+        new Set(["Prestige", "artefact"]),
+        new Set(["Or"])));
+    // Character - Décisions mineures - Tenet
+    liOuiNon("Déterminer Bhakti", 'dec-p-foi-1', "A DEFINIR");
+    liOuiNon("Déterminer la divinité personnelle", 'dec-p-foi-2', "A DEFINIR");
+    liOuiNon("Devinez les étoiles", 'dec-p-foi-3', "A DEFINIR");
+    liOuiNon("Procéder au suicide rituel", 'dec-p-foi-4', "A DEFINIR");
+    liOuiNon("Cherchez l'aide des esprits", 'dec-p-foi-5', "A DEFINIR");
+    liOuiNon("Faire voeu de pauvreté", 'dec-p-foi-6', decisionOuNon(decisionsResult,
+        new Set(["Piété"]),
+        new Set(["Or"])));
+      // Renoncer au vœu de pauvreté
+    // Character - Décisions mineures - traits
+    liOuiNon("Accélérer les complots", 'dec-p-tr-1', decisionOuNon(decisionsResult,
+        null,
+        null));
+    liOuiNon("Tenir la communion mystique", 'dec-p-tr-2', "A DEFINIR");
+    liOuiNon("Étudier l'art de l'intrigue", 'dec-p-tr-3', decisionOuNon(decisionsResult,
+        new Set(["AGENT"]),
+        null));
+    liOuiNon("Assumer ses responsabilités", 'dec-p-tr-4', "A DEFINIR"),
+    liOuiNon('Faire table rase du passé', 'dec-p-tr-5', decisionOuNon(decisionsResult,
+        new Set(["éviter Gibier de potence", "Prestige (complot Saisie du pays)"]),
+        new Set(["Or", "Prestige", "Piété"])));
+    liOuiNon("Écrire un poème de Muwashshah", 'dec-p-tr-6', "A DEFINIR");
+    liOuiNon("Salon trouvé", 'dec-p-tr-7', "A DEFINIR");
+    // Character - Décisions mineures - traits - Coping actions
+    liOuiNon("Confesser", 'dec-p-tr-cop-1', "A DEFINIR");
+    liOuiNon("Consommer des gâteaux au haschisch", 'dec-p-tr-cop-2', decisionOuNon(decisionsResult,
+        new Set(["stress diminuer"]),
+        new Set(["Intendance", "Erudition"])));
+    liOuiNon("Faire la charité", 'dec-p-tr-cop-3', decisionOuNon(decisionsResult,
+        new Set(["stress diminuer"]),
+        new Set(["Or"])));
+    liOuiNon("Se flageller", 'dec-p-tr-cop-4', decisionOuNon(decisionsResult,
+        new Set(["stress diminuer"]),
+        new Set(["Martialité", "Intrigue", "Prouesse", "santé", "Redoutabilité"])));
+    liOuiNon("Faites-vous plaisir en buvant", 'dec-p-tr-cop-5', decisionOuNon(decisionsResult,
+            new Set(["stress diminuer"]),
+            new Set(["Prestige"])));
+    liOuiNon("Faites-vous plaisir avec la nourriture", 'dec-p-tr-cop-6', "A DEFINIR");
+    liOuiNon("Déchaînez-vous", 'dec-p-tr-cop-7', "A DEFINIR");
+    liOuiNon("S'isoler", 'dec-p-tr-cop-8', decisionOuNon(decisionsResult,
+        new Set(["stress diminuer"]),
+        new Set(["Prestige"])));
+    liOuiNon("Shun Food", 'dec-p-tr-cop-9', "A DEFINIR");
+    liOuiNon("Aller dans un lupanar", 'dec-p-tr-cop-10', decisionOuNon(decisionsResult,
+        new Set(["stress diminuer"]),
+        new Set(["Or"])));
+    liOuiNon("Parlez à un confident", 'dec-p-tr-cop-10', "A DEFINIR");
+    liOuiNon("Visitez le marché", 'dec-p-tr-cop-11', "A DEFINIR");
+    liOuiNon("Évacuez votre stress", 'dec-p-tr-cop-12', "A DEFINIR");
+    liOuiNon("Écrivez vos pensées", 'dec-p-tr-cop-13', "A DEFINIR");
+    // Character - Struggle decisions
+    liOuiNon("Announce Opposition to Caliphate", 'dec-p-s-1', "A DEFINIR");
+    liOuiNon("Become Caliphal Supporter", 'dec-p-s-2', "A DEFINIR");
+    liOuiNon("Déclarer sa position dans l'intermezzo iranien", 'dec-p-s-3', "A DEFINIR");
+    // Character - Administrative decisions
+    liOuiNon("Changer les aspirations impériales", 'dec-p-adm-1', "A DEFINIR");
+    liOuiNon("Rassembler le soutien des factions", 'dec-p-adm-2', "A DEFINIR");
+    liOuiNon("Adopter la foi de l'État", 'dec-p-adm-3', "A DEFINIR");
+    liOuiNon("Favoriser l'intégration", 'dec-p-adm-4', "A DEFINIR");
+    liOuiNon("Embrasser l'hérésie", 'dec-p-adm-5', "A DEFINIR");
+    liOuiNon("Encourager le changement de foi dans l'État", 'dec-p-adm-6', "A DEFINIR");
+    liOuiNon("Établir la production de soie", 'dec-p-adm-7', "A DEFINIR");
+    // Character - Administrative decisions - Estate building decisions
+    liOuiNon("Manipulate Grain Market", 'dec-p-adm-build-1', "A DEFINIR");
+    liOuiNon("Agents de location", 'dec-p-adm-build-2', "A DEFINIR");
+    liOuiNon("Renforcer la sécurité du patrimoine", 'dec-p-adm-build-3', "A DEFINIR");
+    liOuiNon("Icône de commission", 'dec-p-adm-build-4', "A DEFINIR");
+    liOuiNon("Commande de costumes en soie", 'dec-p-adm-build-5', "A DEFINIR");
+    // Adventurer - Major decisions
+    liOuiNon('Devenir un grand conquérant', 'dec-a-maj-1', decisionOuNon(decisionsResult,
+        new Set(["Prestige (complot Saisie du pays)", "augmenter levées", "légende"]),
+        new Set(["Prestige"])));
+    liOuiNon('Défendre la culture ...', 'dec-a-maj-2', decisionOuNon(decisionsResult,
+        new Set(["Prestige (complot Saisie du pays)"]),
+        new Set(["Or", "Prestige"])));
+    liOuiNon('Devenir le ...', 'dec-a-maj-3', decisionOuNon(decisionsResult,
+        new Set(["Prestige (complot Saisie du pays)", "Prouesse", "artefact", "légende"]),
+        new Set(["Prestige"])));
+    liOuiNon('Les voyages de ...', 'dec-a-maj-4', decisionOuNon(decisionsResult,
+            new Set(["points d'expérience", "artefact"]),
+            new Set(["Or", "Prestige"])));
+    liOuiNon("La voie ... - l'ascension", 'dec-a-maj-5', decisionOuNon(decisionsResult,
+            new Set(["Martialité", "Prouesse"]),
+            new Set(["Piété", "stress diminuer"])));
+    liOuiNon("La voie ... - le prélude", 'dec-a-maj-6', "A DEFINIR");
+    liOuiNon('Fonder une propriété', 'dec-a-maj-7', decisionOuNon(decisionsResult,
+            new Set(["contrôle SI ", "Prestige (complot Saisie du pays)"]),
+            new Set(["Or"])));
+    liOuiNon('Enrôler les exclus', 'dec-a-maj-8', decisionOuNon(decisionsResult,
+        new Set(["Martialité", "Intrigue", "augmenter levées"]),
+        new Set(["Or", "Prestige"])));
+      // Terrain désigné
+      // Terrain maître
+    liOuiNon('Mesures désespérées - Abattage des animaux', 'dec-a-maj-11', decisionOuNon(decisionsResult,
+            new Set(["provisions"]),
+            new Set(["Prestige"])));
+    // Adeventurer - Minor decisions
+    liOuiNon('Visiter la propriété ...', 'dec-a-min-1', decisionOuNon(decisionsResult,
+            new Set(["provisions", "Prestige (complot Saisie du pays)"]),
+            null));
+    liOuiNon('Rassembler les provisions', 'dec-a-min-2', decisionOuNon(decisionsResult,
+                new Set(["provisions"]),
+                null));
+    liOuiNon("Adopter un chien de chenil", 'dec-a-min-3', "A DEFINIR");
+    liOuiNon('Humilier le larbin', 'dec-a-min-4', decisionOuNon(decisionsResult,
+                    new Set(["stress diminuer", "redoutabilité"]),
+                    new Set(["Prestige"])));
+    liOuiNon("Inviter des poètes", 'dec-a-min-5', "A DEFINIR");
+    liOuiNon('A la pêche', 'dec-a-min-6', decisionOuNon(decisionsResult,
+                        new Set(["stress diminuer", "provisions"]),
+                        null));
+    // Adventurer - Hasan Story decisions
+    liOuiNon("Évangéliser la foi", 'dec-a-h-1', "A DEFINIR");
+    liOuiNon("Agiter la population locale", 'dec-a-h-2', "A DEFINIR");
+    liOuiNon("Commencer la révolution", 'dec-a-h-3', "A DEFINIR");
+    liOuiNon("J'ai trouvé les Assassins", 'dec-a-h-4', "A DEFINIR");
+    liOuiNon("Développez les Assassins", 'dec-a-h-5', "A DEFINIR");
+    // Ruler - Major decisions
+    liOuiNon("Devenir un aventurier", 'dec-d-maj-26', decisionOuNon(decisionsResult,
+        new Set(["Prestige"]),
+        new Set(["Renommée"])));
+    liOuiNon('Déplacer la capitale de jure', 'dec-d-maj-1', decisionOuNon(decisionsResult,
+            new Set(["Prestige (complot Saisie du pays)"]),
+            new Set(["Prestige"])));
+    liOuiNon('Agrandir le duché', 'dec-d-maj-2', decisionOuNon(decisionsResult,
+            new Set(["Renommée"]),
+            new Set(["Prestige"])));
+    // ?
+    liOuiNon("Allumer le feu royal", 'dec-x', decisionOuNon(decisionsResult,
+        new Set(["Renommée", "santé"]),
+        null));
+    // ?
+    liOuiNon("Perdre du poids", 'dec-y', decisionOuNon(decisionsResult,
+        new Set(["santé"]),
+        new Set(["stress diminuer"])));
+    liOuiNon("Arrêter de perdre du poids", 'dec-y0', decisionOuNon(decisionsResult,
+            new Set(["stress diminuer"]),
+            null));
+    // ?
+    liOuiNon("Rites de passage", 'dec-z', decisionOuNon(decisionsResult,
+        new Set(["points d'expérience", "Diplomatie", "Martialité", "Intendance", "Intrigue", "Erudition", "stress diminuer"]),
+        new Set(["Or", "Prestige"])));
+    // ?
+    liOuiNon("Être diverti par le bouffon de la Cour", 'dec-a', decisionOuNon(decisionsResult,
+        new Set(["stress diminuer"]),
+        null));
+    liOuiNon("Avouer", 'dec-b', decisionOuNon(decisionsResult,
+        new Set(["stress diminuer"]),
+        new Set(["opinion"])));
+    // Affichage Décisions importantes d'aventurier
+    liDec('decImp', 'dec-a-maj-1');
+    liDec('decImp', 'dec-a-maj-2');
+    liDec('decImp', 'dec-a-maj-3');
+    liDec('decImp', 'dec-a-maj-4');
+    liDec('decImp', 'dec-a-maj-5');
+    liDec('decImp', 'dec-a-maj-7');
+    liDec('decImp', 'dec-a-maj-8');
+    liDec('decImp', 'dec-a-maj-11'); //Mesures désespérées - Abattage des animaux
+    // Affichage Pays
+    liDec('decPays', 'dec-d-maj-1'); //Déplacer la capitale de jure
+    // Affichage Décisions d'aventurier
+    liDec('decAv', 'dec-a-min-1');
+    liDec('decAv', 'dec-a-min-2');
+    liDec('decAv', 'dec-a-min-4');
+    liDec('decAv', 'dec-a-min-6');
+    liDec('decAv', 'dec-p-tr-5');
+    liDec('decAv', 'dec-p-5');
+    // Affichage Décisions
+    liDec('dec', 'dec-d-min-10'); //Commander un artefact", 'dec-d-min-10
+    liDec('dec', 'dec-d-min-21'); //S'entraîner pour un tournoi", 'dec-d-min-21
+    liDec('dec', 'dec-x'); //Allumer le feu royal
+    liDec('dec', 'dec-p-tr-3'); //Étudier l'art de l'intrigue
+    liDec('dec', 'dec-p-1'); //Adopter la culture locale
+    liDec('dec', 'dec-p-6'); //Méditer dans l'isolement
+    liDec('dec', 'dec-p-7'); //Tenter de se suicider
+    liDec('dec', 'dec-p-3'); //Caresser ...
+    liDec('dec', 'dec-p-tr-cop-4'); //Se flageller
+    liDec('dec', 'dec-b'); //Avouer
+    // Affichage Décisions de courtisan
+    liDec('decCour', 'dec-d-min-20'); //Favoriser les experts étrangers", 'dec-d-min-20
+    liDec('decCour', 'dec-d-court-6'); //Recruter un spécialiste du terrain", 'dec-d-court-6
+    liDec('decCour', 'dec-d-min-0'); //Recruter à un poste de la Cour", 'dec-d-min-0
+    liDec('decCour', 'dec-d-court-2'); //Inviter des chevaliers", 'dec-d-court-2
     // Activités
-    let listeActiv = document.getElementById('activitesGrand');
-    liDec(listeActiv, "Grande tournée", 'act-g-1', decisionOuNon(decisionsResult,
+    liOuiNon("Grande tournée", 'act-g-1', decisionOuNon(decisionsResult,
         new Set(["contrôle SI &lt;100", "opinion comtale", "légitimité", "stress diminuer", "Prestige"]),
         new Set(["Or"])));
-    liDec(listeActiv, "Grand tournoi", 'act-g-0', decisionOuNon(decisionsResult,
+    liOuiNon("Grand tournoi", 'act-g-0', decisionOuNon(decisionsResult,
         new Set(["Prestige", "Légitimation", "stress diminuer"]),
         new Set(["Or"])));
-    listeActiv = document.getElementById('activites');
-    liDec(listeActiv, "Séjour universitaire", 'act-1', decisionOuNon(decisionsResult,
+    liOuiNon("Séjour universitaire", 'act-1', decisionOuNon(decisionsResult,
         new Set(["Diplomatie", "Martialité", "Intendance", "Intrigue", "Erudition", "points d'expérience", "artefact", "recruter"]),
         new Set(["Or"])));
-    liDec(listeActiv, "Festin", 'act-0', decisionOuNon(decisionsResult,
+    liOuiNon("Festin", 'act-0', decisionOuNon(decisionsResult,
         new Set(["Prestige", "Légitimation", "stress diminuer", "Intrigue"]),
         new Set(["Or"])));
-    liDec(listeActiv, "Funérailles", 'act-7', decisionOuNon(decisionsResult,
+    liOuiNon("Funérailles", 'act-7', decisionOuNon(decisionsResult,
         new Set(["stress diminuer", "Piété", "Légitimation"]),
         new Set(["Or"])));
-    liDec(listeActiv, "Fête de camp", 'act-2', decisionOuNon(decisionsResult,
+    liOuiNon("Fête de camp", 'act-2', decisionOuNon(decisionsResult,
             new Set(["stress diminuer", "provisions", "Diplomatie", "Martialité", "Intendance", "Intrigue", "Erudition", "Prestige (complot Saisie du pays)", "artefact", "recruter"]),
             new Set(["Or"])));
-    liDec(listeActiv, "Randonnée", 'act-3', decisionOuNon(decisionsResult,
+    liOuiNon("Randonnée", 'act-3', decisionOuNon(decisionsResult,
                 new Set(["stress diminuer", "Prestige", "Erudition"]),
                 new Set(["Or"])));
-    liDec(listeActiv, "Chasse", 'act-4', decisionOuNon(decisionsResult,
+    liOuiNon("Chasse", 'act-4', decisionOuNon(decisionsResult,
         new Set(["Prestige", "provisions", "artefact", "légende", "légitimité", "stress diminuer", "Prouesse"]),
         new Set(["Or"])));
-    liDec(listeActiv, "Inspection", 'act-8', decisionOuNon(decisionsResult,
+    liOuiNon("Inspection", 'act-8', decisionOuNon(decisionsResult,
         new Set([/*décision si rien*/ "développement", "contrôle", "levées", "opinion"]),
         new Set(["Or"])));
-    liDec(listeActiv, "Expédition vers un monument", 'act-5', decisionOuNon(decisionsResult,
+    liOuiNon("Expédition vers un monument", 'act-5', decisionOuNon(decisionsResult,
         new Set(["Intrigue", "Diplomatie", "Martialité", "Erudition", "Intendance", "recruter", "Prestige"]),
         new Set(["Or"])));
-    liDec(listeActiv, "Pélerinage", 'act-6', decisionOuNon(decisionsResult,
+    liOuiNon("Pélerinage", 'act-6', decisionOuNon(decisionsResult,
             new Set(["Piété", "légitimité", "stress diminuer", "éviter Gibier de potence", "Prestige (complot Saisie du pays)"]),
             new Set(["Or"])));
-    liDec(listeActiv, "Rencontre des pairs", 'act-9', decisionOuNon(decisionsResult,
+    liOuiNon("Rencontre des pairs", 'act-9', decisionOuNon(decisionsResult,
         new Set(["opinion"]),
         new Set(["Or"])));
+    liDec('activitesGrand', 'act-g-1'); //Grande tournée
+    liDec('activitesGrand', 'act-g-0'); //Grand tournoi
+    liDec('activites', 'act-9'); //Rencontre des pairs
+    liDec('activites', 'act-1'); //Séjour universitaire
+    liDec('activites', 'act-0'); //Festin
+    liDec('activites', 'act-2'); //Fête de camp
+    liDec('activites', 'act-7'); //Funérailles
+    liDec('activites', 'act-3'); //Randonnée
+    liDec('activites', 'act-4'); //Chasse
+    liDec('activites', 'act-8'); //Inspection
+    liDec('activites', 'act-5'); //Expédition vers un monument
+    liDec('activites', 'act-6'); //Pélerinage
     }
 function sansDoublon(tab, liaison="") {
     let texte = "";
