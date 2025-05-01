@@ -35,7 +35,7 @@ function (p, t=new Array(), o=null) {
         case 'recruterChevalier':
         case 'chevalierPartisan': // comme recruterChevalier sans Martialité
         case 'demande': // Prestige, opinion, Or
-        case 'demande2': // (contrat, Or, provisions) Prestige, opinion
+        case 'demande2': // (contrat, tournoi, Or, provisions) Prestige, opinion
         case 'proclame':
         case 'declarationGuerre':
         case 'survie':
@@ -1247,6 +1247,7 @@ function decisions(p, t=new Array(), o=null) {
         eRienAvent.add("Erudition");
         eRienAvent.add("opinion LUI");
         eRienAvent.add("Martialité");
+        eRienAvent.add("augmenter Hommes d'armes");
         eRienAvent.add("recruter SI chevalier possible");
         eRienAvent.add("emprisonner SI chevalier possible");
         eRienAvent.add("Prouesse");
@@ -4509,12 +4510,8 @@ function posteGarde(p, t=new Array(), o=null) {
             case 'rancon': // Or, hameçon
             case 'aInfluencer': // (alliance) opinion, Diplomatie, Intrigue, Or,
             case 'perteTerresRevoquer': // accorder titre SINON chercher secret, Prestige (pour autorité couronne)
-            t.push(new Set().add("aucune fonction"));
-            return t;
-        case 'chevalierPartisan': // comme recruterChevalier sans Martialité
             case 'demande': // Prestige, opinion, Or
             case 'demande2': // (contrat, Or, provisions) Prestige, opinion
-                return new Array();
             case 'revenu':
         case 'dirigeantAInfluencer': // opinion, Diplomatie, Intrigue, Or
             t.push(new Set().add("aucune fonction"));
@@ -4534,6 +4531,7 @@ function posteGarde(p, t=new Array(), o=null) {
         case 'enfant': // SI aventurier : Prestige, opinion, Or adopté SINON procréer ; survivre
         case 'piete': // Piété, Erudition
         case 'conseiller': // recruter
+        case 'chevalierPartisan': // comme recruterChevalier sans Martialité
         default:
             return posteGarde(p.slice(1), t, o);
     }
@@ -4888,7 +4886,7 @@ function evidence(id, texte, ttLeTps=false) {
             new Set(["Prestige SI adoption/aventurier ET NON mort", "Prestige", "progression succession"])));
     liOuiNon("Méditer dans l'isolement", 'dec-p-6', decisionOuNon(decisionsResult,
                 new Set(["stress diminuer", "Erudition"]),
-                new Set(["Diplomatie", "Martialité", "Intendance", "Intrigue", ])));
+                new Set(["Diplomatie", "Martialité", "Intendance", "Intrigue"])));
     liOuiNon("Tenter de se suicider", 'dec-p-7', decisionOuNon(decisionsResult,
                     null,
                     new Set(["Piété"])));
@@ -4970,6 +4968,20 @@ function evidence(id, texte, ttLeTps=false) {
     liOuiNon("Renforcer la sécurité du patrimoine", 'dec-p-adm-build-3', "A DEFINIR");
     liOuiNon("Icône de commission", 'dec-p-adm-build-4', "A DEFINIR");
     liOuiNon("Commande de costumes en soie", 'dec-p-adm-build-5', "A DEFINIR");
+    // Character - Nomadic decisions
+    liOuiNon("Consultez le ciel", 'dec-p-nom-1', "A DEFINIR");
+    liOuiNon("Maîtrisez l'art du commandement", 'dec-p-nom-2', "A DEFINIR");
+    liOuiNon("Invoquer des visiteurs fortunés : offres locales", 'dec-p-nom-3', "A DEFINIR");
+    liOuiNon("Des temps désespérés", 'dec-p-nom-4', "A DEFINIR");
+    liOuiNon("Établir le système Paiza", 'dec-p-nom-5', "A DEFINIR");
+    liOuiNon("Paix du Grand Khan", 'dec-p-nom-6', "A DEFINIR");
+    // Character - Nomadic decisions - Conversion decisions
+    liOuiNon("Adopter les traditions culturelles", 'dec-p-nom-conv-1', "A DEFINIR");
+    liOuiNon("Mélanger les traditions", 'dec-p-nom-conv-2', "A DEFINIR");
+    liOuiNon("Convertissez-vous à la foi à travers votre peuple", 'dec-p-nom-conv-3', "A DEFINIR");
+    liOuiNon("Répandez la foi parmi votre peuple", 'dec-p-nom-conv-4', "A DEFINIR");
+    liOuiNon("Adoptez le Tengriisme", 'dec-p-nom-conv-5', "A DEFINIR");
+    liOuiNon("Promouvoir les traditions", 'dec-p-nom-conv-6', "A DEFINIR");
     // Adventurer - Major decisions
     liOuiNon('Devenir un grand conquérant', 'dec-a-maj-1', decisionOuNon(decisionsResult,
         new Set(["Prestige (complot Saisie du pays)", "augmenter levées", "légende"]),
@@ -5051,6 +5063,12 @@ function evidence(id, texte, ttLeTps=false) {
     liOuiNon("Avouer", 'dec-b', decisionOuNon(decisionsResult,
         new Set(["stress diminuer"]),
         new Set(["opinion"])));
+    liOuiNon("Adopter le mode de vie nomade", 'dec-c', decisionOuNon(decisionsResult,
+        new Set(["Or", "augmenter Hommes d'armes", "redoutabilité", /* titre comtal */"Prestige (complot Saisie du pays)", "recruter"]),
+        new Set(["Prestige"])));
+    liOuiNon("Perpétuer l'héritage de la Maison ...", 'dec-d', decisionOuNon(decisionsResult,
+        new Set(["légitimité", "augmenter levées", /*"Prestige",*/ "provisions"]),
+        new Set(["Prestige"])));
     // Affichage Décisions importantes d'aventurier
     liDec('decImp', 'dec-a-maj-1');
     liDec('decImp', 'dec-a-maj-2');
@@ -5058,8 +5076,10 @@ function evidence(id, texte, ttLeTps=false) {
     liDec('decImp', 'dec-a-maj-4');
     liDec('decImp', 'dec-a-maj-5');
     liDec('decImp', 'dec-a-maj-7');
-    liDec('decImp', 'dec-a-maj-8');
+    liDec('decImp', 'dec-a-maj-8'); //Enrôler les exclus
+    liDec('decImp', 'dec-c'); //Adopter le mode de vie nomade", 'dec-c
     liDec('decImp', 'dec-a-maj-11'); //Mesures désespérées - Abattage des animaux
+    liDec('decImp', 'dec-d'); //Perpétuer l'héritage de la Maison ...", 'dec-d
     // Affichage Pays
     liDec('decPays', 'dec-d-maj-1'); //Déplacer la capitale de jure
     // Affichage Décisions d'aventurier
