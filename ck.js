@@ -587,13 +587,13 @@ function prison(p, t=new Array(), o=null) {
     if (p.length === 0) {
         t.push(new Set().add(o[0]+" &gt; hameçon SI mécène"));
         t.push(new Set().add(o[1]+" &gt; hameçon SI mécène"));           
+        t.push(new Set().add(o[2]+" SI Atout \"Chair humaine\" ET manque provisions"));
         t.push(new Set().add("ne rien faire SAUF proposition SI NON vassal"));
         return t;
     }
     const pp = p[0];
     switch(pp) {
         case 'aInfluencer': // (alliance) opinion, Diplomatie, Intrigue, Or
-                    t.push(new Set().add(o[0]+" SI ALLIE"));
             t.push(new Set().add(o[3]+" SI Atout \"Sombres connaissances\" ET (NON Aventurier OU Outils du tortionnaire)"));
             t.push(new Set().add(o[0]+" &gt; Bannir SI Or"));
             t.push(new Set().add(o[1]+" &gt; Or"));
@@ -688,6 +688,7 @@ function prison(p, t=new Array(), o=null) {
             t.push(new Set().add(o[0]+" &gt; hameçon SI adoption/aventurier ET Atout \"Obligations en or\""));
             t.push(new Set().add(o[1]+" &gt; hameçon SI adoption/aventurier ET Atout \"Obligations en or\""));
             t.push(new Set().add(o[0]+" &gt; Bannir SI artefact"));
+            t.push(new Set().add(o[2]+" SI Atout \"Chair humaine\" ET manque provisions"));
             return prison(p.slice(1), t, o); 
         case 'assassinat':
             t.push(new Set().add(o[3]+" SI Atout \"Sombres connaissances\" ET (NON Aventurier OU Outils du tortionnaire)"));
@@ -4845,7 +4846,7 @@ function evidence(id, texte, ttLeTps=false) {
     liOuiNon("Order Mass Eviction", 'dec-d-min-cour-2', "A DEFINIR");
     liOuiNon("Exoticize A Grand Hall", 'dec-d-min-cour-3', "A DEFINIR");
     // Ruler - Décisions mineures - seigneur-lige
-    liOuiNon("Demander audience au Roi", 'dec-d-min-seign-0', decisionOuNon(decisionsResult,
+    liOuiNon("Demander audience au ...", 'dec-d-min-seign-0', decisionOuNon(decisionsResult,
         null,
         null));
     // Ruler - Décisions romaines
@@ -4876,7 +4877,9 @@ function evidence(id, texte, ttLeTps=false) {
     liOuiNon("Adopter la culture locale", 'dec-p-1', decisionOuNon(decisionsResult,
         null,
         new Set(["Prestige"])));
-    liOuiNon("Emprunter de l'or à l'Ordre sacré", 'dec-p-2', "A DEFINIR");
+    liOuiNon("Emprunter de l'or à l'ordre sacré", 'dec-p-2', decisionOuNon(decisionsResult,
+        new Set(["Or"]),
+        new Set(["Piété"])));
        // chat de compagnie, chien de compagnie
     liOuiNon("Caresser ...", 'dec-p-3', decisionOuNon(decisionsResult,
         new Set(["stress diminuer"]),
@@ -4890,11 +4893,15 @@ function evidence(id, texte, ttLeTps=false) {
     liOuiNon("Tenter de se suicider", 'dec-p-7', decisionOuNon(decisionsResult,
                     null,
                     new Set(["Piété"])));
-    liOuiNon("Mange ton fromage", 'dec-p-8', "A DEFINIR");
+    liOuiNon("Manger votre fromage", 'dec-p-8', decisionOuNon(decisionsResult,
+        new Set(["stress diminuer"]),
+        new Set(["artefact"])));
     liOuiNon("Élever une pierre runique", 'dec-p-9', "A DEFINIR");
     liOuiNon("Offrez à votre ancêtre une sépulture céleste", 'dec-p-10', "A DEFINIR");
     // Character - Décisions mineures - avantages
-    liOuiNon("Accepter le célibat", 'dec-p-av-1', "A DEFINIR");
+    liOuiNon("Embrasser le célibat", 'dec-p-av-1', decisionOuNon(decisionsResult,
+        new Set(["Piété"]),
+        new Set(["Renommée"])));
       // Abandonner le célibat
     liOuiNon("Créer un itinéraire de voyage", 'dec-p-av-3', decisionOuNon(decisionsResult,
         new Set(["Prestige", "artefact"]),
@@ -5033,7 +5040,7 @@ function evidence(id, texte, ttLeTps=false) {
     liOuiNon("Développez les Assassins", 'dec-a-h-5', "A DEFINIR");
     // Ruler - Major decisions
     liOuiNon("Devenir un aventurier", 'dec-d-maj-26', decisionOuNon(decisionsResult,
-        new Set(["Prestige"]),
+        null, //Prestige
         new Set(["Renommée"])));
     liOuiNon('Déplacer la capitale de jure', 'dec-d-maj-1', decisionOuNon(decisionsResult,
             new Set(["Prestige (complot Saisie du pays)"]),
@@ -5069,6 +5076,12 @@ function evidence(id, texte, ttLeTps=false) {
     liOuiNon("Perpétuer l'héritage de la Maison ...", 'dec-d', decisionOuNon(decisionsResult,
         new Set(["légitimité", "augmenter levées", /*"Prestige",*/ "provisions"]),
         new Set(["Prestige"])));
+    liOuiNon("Révéler la vraie foi", 'dec-e', decisionOuNon(decisionsResult,
+        null,
+        new Set(["Piété"])));
+    liOuiNon("Abandonner la foi secrète", 'dec-f', decisionOuNon(decisionsResult,
+        null,
+        null));
     // Affichage Décisions importantes d'aventurier
     liDec('decImp', 'dec-a-maj-1');
     liDec('decImp', 'dec-a-maj-2');
@@ -5091,20 +5104,31 @@ function evidence(id, texte, ttLeTps=false) {
     liDec('decAv', 'dec-p-5');
     // Affichage Décisions
     liDec('dec', 'dec-d-min-10'); //Commander un artefact", 'dec-d-min-10
+    liDec('dec', 'dec-d-maj-26'); //Devenir un aventurier", 'dec-d-maj-26
+    liDec('dec', 'dec-p-tr-1'); //Accélérer les complots", 'dec-p-tr-1
+    liDec('dec', 'dec-p-2'); //Emprunter de l'or à l'Ordre sacré", 'dec-p-2
+    liDec('dec', 'dec-e'); //Révéler la vraie foi", 'dec-e
+    liDec('dec', 'dec-f'); //Abandonner la foi secrète", 'dec-f
+    liDec('dec', 'dec-d-min-seign-0'); //Demander audience au ...", 'dec-d-min-seign-0
     liDec('dec', 'dec-d-min-21'); //S'entraîner pour un tournoi", 'dec-d-min-21
+    liDec('dec', 'dec-p-av-1') //Embrasser le célibat", 'dec-p-av-1'
     liDec('dec', 'dec-x'); //Allumer le feu royal
     liDec('dec', 'dec-p-tr-3'); //Étudier l'art de l'intrigue
     liDec('dec', 'dec-p-1'); //Adopter la culture locale
     liDec('dec', 'dec-p-6'); //Méditer dans l'isolement
+    liDec('dec', 'dec-d-min-seign-0'); //Demander audience au ...", 'dec-d-min-seign-0
+    liDec('dec', 'dec-p-tr-cop-8'); //S'isoler", 'dec-p-tr-cop-8'
     liDec('dec', 'dec-p-7'); //Tenter de se suicider
     liDec('dec', 'dec-p-3'); //Caresser ...
     liDec('dec', 'dec-p-tr-cop-4'); //Se flageller
     liDec('dec', 'dec-b'); //Avouer
+    liDec('dec', 'dec-p-8'); //Manger votre fromage 'dec-p-8'
     // Affichage Décisions de courtisan
     liDec('decCour', 'dec-d-min-20'); //Favoriser les experts étrangers", 'dec-d-min-20
     liDec('decCour', 'dec-d-court-6'); //Recruter un spécialiste du terrain", 'dec-d-court-6
     liDec('decCour', 'dec-d-min-0'); //Recruter à un poste de la Cour", 'dec-d-min-0
     liDec('decCour', 'dec-d-court-2'); //Inviter des chevaliers", 'dec-d-court-2
+    liDec('decCour', 'dec-d-court-3'); //Inviter des prétendants", 'dec-d-court-3
     // Activités
     liOuiNon("Grande tournée", 'act-g-1', decisionOuNon(decisionsResult,
         new Set(["contrôle SI &lt;100", "opinion comtale", "légitimité", "stress diminuer", "Prestige"]),
