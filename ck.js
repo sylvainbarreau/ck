@@ -598,7 +598,7 @@ function prison(p, t=new Array(), o=null) {
         "Rançonner",//1
         "Exécuter",//2
         "Torturer",//3
-        "Castrer",//4
+        "Castrer le prisonnier",//4 +redoutabilité
         "Aveugler",//5
     ];
     if (rien) {
@@ -616,6 +616,7 @@ function prison(p, t=new Array(), o=null) {
         t.push(new Set().add(o[0]+" &gt; Bannir SI artefact"));
     }
     if (p.length === 0) {
+        t.push(new Set().add(o[4]));
         t.push(new Set().add(o[0]+" &gt; hameçon SI mécène"));
         t.push(new Set().add(o[1]+" &gt; hameçon SI mécène"));           
         t.push(new Set().add(o[2]+" SI Atout \"Chair humaine\" ET manque provisions"));
@@ -704,6 +705,7 @@ function prison(p, t=new Array(), o=null) {
             t.push(new Set().add(o[1]+" &gt; Or"));
             t.push(new Set().add(o[0]+" &gt; hameçon SI Atout \"Obligations en or\""));
             t.push(new Set().add(o[1]+" &gt; hameçon SI Atout \"Obligations en or\""));
+            t.push(new Set().add(o[4]));
             return prison(p.slice(1), t, o);
         case 'hamecon':
             case 'perteTerresRevoquer': // accorder titre SINON chercher secret, Prestige (pour autorité couronne)
@@ -1342,8 +1344,10 @@ function decisions(p, t=new Array(), o=null) {
         eRienAvent.add("hameçon OU secret SI Atout \"Obligations en or\"");
         eRienAvent.add("Intendance");
         eRienAvent.add("emprisonner");
+        eRienAvent.add("langue LUI Acheter terre/Acquérir une possession");
         eRienAvent.add("Erudition");
-        eRienAvent.add("opinion SOUTIEN invasion");
+        eRienAvent.add("opinion LUI Acheter terre/Acquérir une possession");
+        //eRienAvent.add("opinion SOUTIEN invasion");
         eRienAvent.add("Martialité SI aventurier");
         eRienAvent.add("augmenter Hommes d'armes SI aventurier");
         eRienAvent.add("recruter SI aventurier ET chevalier possible");
@@ -3094,7 +3098,7 @@ function activMonumScribe(p, t=new Array(), o=null) {
 function activChasse(p, t=new Array(), o=null) {
     let rien=false; if (p.length === 0 && o == null) { rien=true; }
     if (o == null) o = [
-        "Se détendre",//0
+        "Se détendre",//0 +stress
         "Abattre une bête",//1
         "Tuer",//2
         "Séduire",//3
@@ -5308,7 +5312,7 @@ function evidence(id, texte, ttLeTps=false) {
         null));
     liOuiNon("Assumer ses responsabilités", 'dec-p-tr-4', "A DEFINIR"),
     liOuiNon('Faire table rase du passé', 'dec-p-tr-5', decisionOuNon(decisionsResult,
-        new Set(["éviter Gibier de potence", "Prestige (complot Saisie du pays)"]),
+        new Set(["éviter Gibier de potence", /* si rien : */ "augmenter magnificence de la Cour"]),
         new Set(["Or", "Prestige", "Piété"])));
     liOuiNon("Écrire un poème de Muwashshah", 'dec-p-tr-6', "A DEFINIR");
     liOuiNon("Salon trouvé", 'dec-p-tr-7', "A DEFINIR");
@@ -5503,6 +5507,7 @@ function evidence(id, texte, ttLeTps=false) {
     liDec('dec', 'dec-x'); //Allumer le feu royal
     liDec('dec', 'dec-p-tr-3'); //Étudier l'art de l'intrigue
     liDec('dec', 'dec-p-1'); //Adopter la culture locale
+    liDec('dec', 'dec-p-tr-cop-5'); //Faites-vous plaisir en buvant 'dec-p-tr-cop-5'
     liDec('dec', 'dec-d-min-18'); //Amnistier les faux convertis 'dec-d-min-18'
     liDec('dec', 'dec-p-6'); //Méditer dans l'isolement
     liDec('dec', 'dec-d-min-seign-0'); //Demander audience au ...", 'dec-d-min-seign-0
