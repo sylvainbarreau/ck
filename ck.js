@@ -5256,7 +5256,7 @@ function decisionOuNon(res, setOui, setNon) {
                 // recherche si o = e :
                 if (e==o) {
                     console.log("oui ",e,o);
-                    return "true grâce à "+o;
+                    return true;//"true grâce à "+o;
                 }
             }}
             if (setNon) {
@@ -5264,7 +5264,7 @@ function decisionOuNon(res, setOui, setNon) {
                 // recherche de n dans chaîne e :
                 if (e.includes(n)) {
                     console.log("non ", e, n);
-                    return "false à cause de "+n;
+                    return false;//"false à cause de "+n;
                 }
             }}
         }
