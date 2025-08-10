@@ -3663,7 +3663,7 @@ function activPelerin(p, t=new Array(), o=null) {
         // aventurier : complot Saisie du pays (Prestige, Intrigue) SINON Acheter terre (éviter Gibier de potence, éviter Baroudeur, hameçon, Or, langue, opinion,Diplomatie) SINON Demander soutien invasion (Prestige), (Bâtiment) Or
             }
     if (p.length === 0) {
-        t.push(new Set().add(o[1]));
+        t.push(new Set().add(o[0]));
         return t;
     }
     const pp = p[0];
@@ -5460,7 +5460,9 @@ function evidence(id, texte, ttLeTps=false) {
             new Set(["Développement"]),
             null));
     liOuiNon("Révoquer la fausse conversion", 'dec-d-min-6', "A DEFINIR");
-    liOuiNon("Introduire une nouvelle mode à la Cour", 'dec-d-min-7', "A DEFINIR");
+    liOuiNon("Introduire une nouvelle mode à la Cour", 'dec-d-min-7', decisionOuNon(decisionsResult,
+        null,
+        new Set(["Or", "Prestige"])));
     liOuiNon("Développer les villes", 'dec-d-min-8', "A DEFINIR");
     liOuiNon("Laissez le royaume embrasser la tradition locale", 'dec-d-min-9', "A DEFINIR");
     liOuiNon("Commander un artefact", 'dec-d-min-10', decisionOuNon(decisionsResult,
@@ -5782,6 +5784,7 @@ function evidence(id, texte, ttLeTps=false) {
     liDec('decAv', 'dec-p-5');
     // Affichage Décisions
     liDec('dec', 'dec-d-min-10'); //Commander un artefact", 'dec-d-min-10
+    liDec('dec', 'dec-d-min-7'); //Introduire une nouvelle mode à la Cour", 'dec-d-min-7
     liDec('dec', 'dec-d-maj-26'); //Devenir un aventurier", 'dec-d-maj-26
     liDec('dec', 'dec-p-tr-1'); //Accélérer les complots", 'dec-p-tr-1
     liDec('dec', 'dec-p-2'); //Emprunter de l'or à l'Ordre sacré", 'dec-p-2
