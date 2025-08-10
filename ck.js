@@ -261,7 +261,7 @@ function chancelier(p, t=new Array(), o=null) {
             t.push(new Set().add(o[2]+' SI '+effets[2][2]));
             return chancelier(p.slice(1), t, o); 
         case 'aInfluencer': // (alliance) opinion, Diplomatie, Intrigue, Or
-            t.push(new Set().add(o[0]+" SI "+effets[0][1]+" OU "+effets[2][3]+" ALLIE-S"));
+            t.push(new Set().add(o[0]+" SI "+effets[0][1]+" OU "+effets[2][3]+" ALLIE POTENTIEL OU PARDONNEUR-S"));
             t.push(new Set().add(o[2]+" SI "+effets[2][2]));
             return chancelier(p.slice(1), t, o);
             case 'declarationGuerre':
@@ -337,7 +337,7 @@ function marechal(p, t=new Array(), o=null) {
             t.push(new Set().add(o[1]));
             return marechal(p.slice(1), t, o);
             case 'aInfluencer': // (alliance) opinion, Diplomatie, Intrigue, Or
-            t.push(new Set().add(o[1]+' SI '+effets[1][0]+" ALLIE-S"));
+            t.push(new Set().add(o[1]+' SI '+effets[1][0]+" ALLIE POTENTIEL OU PARDONNEUR-S"));
             t.push(new Set().add(o[1]));
             return marechal(p.slice(1), t, o);
             case 'recruterChevalier':
@@ -426,7 +426,7 @@ function religieux(p, t=new Array(), o=null) {
         t.push(new Set().add(o[1]+' SI '+effets[1][0]));
             return religieux(p.slice(1), t, o);
     case 'aInfluencer': // (alliance) opinion, Diplomatie, Intrigue, Or
-        t.push(new Set().add(o[2]+' SI '+effets[2][0]+" ALLIE-S"));
+        t.push(new Set().add(o[2]+' SI '+effets[2][0]+" ALLIE POTENTIEL OU PARDONNEUR-S"));
         t.push(new Set().add(o[1]+' SI '+effets[1][0]));
         return religieux(p.slice(1), t, o);
     case 'religieuxAInfluencer':
@@ -494,7 +494,7 @@ function intendant(p, t=new Array(), o=null) {
             t.push(new Set().add(o[3]));
             return t;
         case 'aInfluencer': // (alliance) opinion, Diplomatie, Intrigue, Or
-           t.push(new Set().add(o[0]+" SI "+effets[0][2]+" ALLIE-S"));
+           t.push(new Set().add(o[0]+" SI "+effets[0][2]+" ALLIE POTENTIEL OU PARDONNEUR-S"));
             t.push(new Set().add(o[3]));
             return t;
             case 'vassalSOppose':
@@ -630,7 +630,7 @@ function prison(p, t=new Array(), o=null) {
     }
     if (p.length === 0) {
         t.push(new Set().add(o[4]));
-        t.push(new Set().add(o[2]));
+        t.push(new Set().add(o[2]+" SI Redoutabilité"));
         t.push(new Set().add(o[0]+" &gt; hameçon SI mécène"));
         t.push(new Set().add(o[1]+" &gt; hameçon SI mécène"));           
         t.push(new Set().add(o[2]+" SI Atout \"Chair humaine\" ET provisions&lt;max"));
@@ -720,13 +720,13 @@ function prison(p, t=new Array(), o=null) {
             t.push(new Set().add(o[0]+" &gt; hameçon SI Atout \"Obligations en or\""));
             t.push(new Set().add(o[1]+" &gt; hameçon SI Atout \"Obligations en or\""));
             t.push(new Set().add(o[4]));
-            t.push(new Set().add(o[2]));
+            t.push(new Set().add(o[2]+" SI Redoutabilité"));
             return t; // attendre rançon
         case 'vassal': //allié, hameçon fort,Intrigue, ami,opinion,Diplomatie,Intrigue amant, prisonnier,Intrigue, terrifié,redoutabilité
             t.push(new Set().add("ne rien faire SI VASSAL PUISSANT"));
             t.push(new Set().add(o[3]+" SI Atout \"Sombres connaissances\""));
             t.push(new Set().add(o[4]));
-            t.push(new Set().add(o[2]));
+            t.push(new Set().add(o[2]+" SI Redoutabilité"));
             return t;
         case 'hamecon':
         case 'perteTerresRevoquer': // accorder titre SINON chercher secret, Prestige (pour autorité couronne)
@@ -1040,9 +1040,9 @@ function influence(p, t=new Array(), o=null) {
             t.push(eVassal);
             return influence(p.slice(1), t, o);
         case 'aInfluencer': // (alliance) opinion, Diplomatie, Intrigue, Or
-            t.push(new Set().add(o[0]+" ALLIE-S"));
-            t.push(new Set().add(o[1]+" ALLIE-S"));
-            t.push(new Set().add(o[4]+" ALLIE-S"));
+            t.push(new Set().add(o[0]+" ALLIE POTENTIEL OU PARDONNEUR-S"));
+            t.push(new Set().add(o[1]+" ALLIE POTENTIEL OU PARDONNEUR-S"));
+            t.push(new Set().add(o[4]+" ALLIE POTENTIEL OU PARDONNEUR-S"));
             return influence(p.slice(1), t, o);
             /*case 'pertesTerres':*/
         case 'enfant': // SI aventurier : Prestige, opinion, Or adopté SINON procréer ; survivre
@@ -1171,7 +1171,7 @@ function compHostile(p, t=new Array(), o=null) {
         "Revendiquer le trône",//2
         "Fabrication d'un hameçon",//3
         "Voler un artefact",//4
-        "Renverser le régent",//5
+        "Déposer le régent",//5
         "Saisie du pays",//6
     ];
     if (rien) { 
@@ -1333,9 +1333,9 @@ function compPolitique(p, t=new Array(), o=null) {
             t.push(new Set().add(o[7]+" AGENT-S"));
             return compPolitique(p.slice(1), t, o);
         case 'aInfluencer': // (alliance) opinion, Diplomatie, Intrigue, Or
-            t.push(new Set().add(o[9]+" OU "+o[2]+" ALLIE-S"));
+            t.push(new Set().add(o[9]+" OU "+o[2]+" ALLIE POTENTIEL OU PARDONNEUR-S"));
             t.push(new Set().add(o[8]));
-            t.push(new Set().add(o[7]+" ALLIE-S"));
+            t.push(new Set().add(o[7]+" ALLIE POTENTIEL OU PARDONNEUR-S"));
             return compPolitique(p.slice(1), t, o);
             case 'denoncer': // Prestige, Renommée 
         case 'enfant': // SI aventurier : Prestige, opinion, Or adopté SINON procréer ; survivre
@@ -1498,7 +1498,7 @@ function decisions(p, t=new Array(), o=null) {
         case 'dirigeantAInfluencer': // Opinion, Diplomatie, Intrigue, Or
         case 'aInfluencer': // (alliance) Opinion, Diplomatie, Intrigue, Or
             let e2=new Set();
-            e2.add("Opinion ALLIE-S");
+            e2.add("Opinion ALLIE POTENTIEL OU PARDONNEUR-S");
             e2.add("Diplomatie");
             e2.add("Intrigue");
             e2.add("emprisonner SI Atout \"Sombres connaissances\" ET (NON aventurier OU Outils du tortionnaire)");
@@ -2135,7 +2135,7 @@ function activTournoi(p, t=new Array(), o=null) {
             t.push(new Set().add(o[1]));
             return activTournoi(p.slice(1), t, o);
         case 'aInfluencer': // (alliance) opinion, Diplomatie, Intrigue, Or,
-            t.push(new Set().add(o[5]+" ALLIE-S"));
+            t.push(new Set().add(o[5]+" ALLIE POTENTIEL OU PARDONNEUR-S"));
             t.push(new Set().add(o[1]));
             return activTournoi(p.slice(1), t, o);
             case 'conseiller': // recruter
@@ -2325,7 +2325,7 @@ function activMariage(p, t=new Array(), o=null) {
                 t.push(new Set().add(o[3]+" MECENE-S"));
             return activMariage(p.slice(1), t, o);
         case 'aInfluencer': // (alliance) opinion, Diplomatie, Intrigue, Or,
-            t.push(new Set().add(o[3]+" ALLIE-S"));
+            t.push(new Set().add(o[3]+" ALLIE POTENTIEL OU PARDONNEUR-S"));
             return activMariage(p.slice(1), t, o);
             case 'survie':
         case 'stress':
@@ -2453,8 +2453,8 @@ function activMariageNourr(p, t=new Array(), o=null) {
     const pp = p[0];
     switch(pp) {
         case 'aInfluencer': // (alliance) opinion, Diplomatie, Intrigue, Or,
-            t.push(new Set().add(o[2]+" SI ALLIE-S invité"));
-            t.push(new Set().add(o[1]+" SI ALLIE-S invité"));
+            t.push(new Set().add(o[2]+" SI ALLIE POTENTIEL OU PARDONNEUR-S invité"));
+            t.push(new Set().add(o[1]+" SI ALLIE POTENTIEL OU PARDONNEUR-S invité"));
             t.push(new Set().add(o[0]));
             return t;
         case 'declarationGuerre':
@@ -2634,7 +2634,7 @@ function activFestin(p, t=new Array(), o=null) {
             t.push(new Set().add(o[3]+" MECENE-S"));
             return activFestin(p.slice(1), t, o);
         case 'aInfluencer': // (alliance) opinion, Diplomatie, Intrigue, Or,
-            t.push(new Set().add(o[3]+" ALLIE-S"));
+            t.push(new Set().add(o[3]+" ALLIE POTENTIEL OU PARDONNEUR-S"));
             return activFestin(p.slice(1), t, o);
             case 'survie':
         case 'stress':
@@ -2812,7 +2812,7 @@ function activFete(p, t=new Array(), o=null) {
             t.push(new Set().add(o[1]+" MECENE-S"));
             return activFete(p.slice(1), t, o);
         case 'aInfluencer': // (alliance) opinion, Diplomatie, Intrigue, Or,
-            t.push(new Set().add(o[1]+" ALLIE-S"));
+            t.push(new Set().add(o[1]+" ALLIE POTENTIEL OU PARDONNEUR-S"));
             return activFete(p.slice(1), t, o);
         case 'guerre': // guerre, Influence,opinion,Diplomatie,Intrigue,Or SI gouvernmt admin
         case 'recruterChevalier':
@@ -3047,7 +3047,7 @@ function activFun(p, t=new Array(), o=null) {
             t.push(new Set().add(o[3]+" MECENE-S"));
             return activFun(p.slice(1), t, o);
         case 'aInfluencer': // (alliance) opinion, Diplomatie, Intrigue, Or,
-            t.push(new Set().add(o[3]+" ALLIE-S"));
+            t.push(new Set().add(o[3]+" ALLIE POTENTIEL OU PARDONNEUR-S"));
             return activFun(p.slice(1), t, o);
             case 'piete': // Piété, Erudition
             case 'foiChangemt':
@@ -3268,7 +3268,7 @@ function activChasse(p, t=new Array(), o=null) {
                 t.push(new Set().add(o[4]+" MECENE-S"));
                 return activChasse(p.slice(1), t, o);
         case 'aInfluencer': // (alliance) opinion, Diplomatie, Intrigue, Or,
-            t.push(new Set().add(o[4]+" ALLIE-S"));
+            t.push(new Set().add(o[4]+" ALLIE POTENTIEL OU PARDONNEUR-S"));
             t.push(new Set().add(o[1]));
             return activChasse(p.slice(1), t, o);
                 case 'survie':
@@ -3433,7 +3433,7 @@ function activRando(p, t=new Array(), o=null) {
         t.push(new Set().add(o[2]+" LUI SI gouvernement administratif"));
             return activRando(p.slice(1), t, o);
             case 'aInfluencer': // (alliance) opinion, Diplomatie, Intrigue, Or,
-            t.push(new Set().add(o[2]+" ALLIE-S"));
+            t.push(new Set().add(o[2]+" ALLIE POTENTIEL OU PARDONNEUR-S"));
             return activRando(p.slice(1), t, o);
             case 'succession': // besoin agent //influence SI vassal direct LUI OU courtisan LUI OU invité LUI, Influence, Or, Prestige, hameçon
         case 'influence' : // besoin agent //influence SI vassal direct LUI OU courtisan LUI OU invité LUI, Influence, Or, Prestige, hameçon
@@ -4199,7 +4199,7 @@ case 'vassalAInfluencer': //(Faction) opinion,Diplomatie,Intrigue,Or, allié, ha
             t.push(new Set().add(o[2]));
             return t;
         case 'aInfluencer': // (alliance) opinion, Diplomatie, Intrigue, Or,
-            t.push(new Set().add(o[2]+" SI ALLIE-S conseiller moi"));
+            t.push(new Set().add(o[2]+" SI ALLIE POTENTIEL OU PARDONNEUR-S conseiller moi"));
             t.push(new Set().add(o[0]));
             return t;
         case 'agent': // opinion SI vassal direct ou courtisan ou invité CIBLE, (Influence) Or, Prestige, hameçon, Piété (parfois)
@@ -5563,10 +5563,7 @@ function evidence(id, texte, ttLeTps=false) {
     // Character - Décisions mineures - avantages
     liOuiNon("Embrasser le célibat", 'dec-p-av-1', decisionOuNon(decisionsResult,
         new Set(["Piété"]),
-        new Set(["Renommée"])));
-    liOuiNon("Embrasser le célibat", 'dec-p-av-1', decisionOuNon(decisionsResult,
-        new Set(["Piété"]),
-        new Set(["Renommée"])));
+        new Set(["coucher SI NON mort", "Opinion"])));
       // Abandonner le célibat
     liOuiNon("Créer un itinéraire de voyage", 'dec-p-av-3', decisionOuNon(decisionsResult,
         new Set(["Prestige", "Artefact"]),
@@ -5790,7 +5787,6 @@ function evidence(id, texte, ttLeTps=false) {
     liDec('dec', 'dec-p-2'); //Emprunter de l'or à l'Ordre sacré", 'dec-p-2
     liDec('dec', 'dec-e'); //Révéler la vraie foi", 'dec-e
     liDec('dec', 'dec-f'); //Abandonner la foi secrète", 'dec-f
-    liDec('dec', 'dec-d-min-seign-0'); //Demander audience au ...", 'dec-d-min-seign-0
     liDec('dec', 'dec-d-maj-26'); //Devenir un aventurier", 'dec-d-maj-26
     liDec('dec', 'dec-p-tr-1'); //Accélérer les complots", 'dec-p-tr-1
     liDec('dec', 'dec-e'); //Révéler la vraie foi", 'dec-e
@@ -5806,6 +5802,8 @@ function evidence(id, texte, ttLeTps=false) {
     liDec('dec', 'dec-p-tr-cop-5'); //Faites-vous plaisir en buvant 'dec-p-tr-cop-5'
     liDec('dec', 'dec-d-min-18'); //Amnistier les faux convertis 'dec-d-min-18'
     liDec('dec', 'dec-p-6'); //Méditer dans l'isolement
+    liDec('dec', 'dec-d-min-seign-0'); //Demander audience au ...", 'dec-d-min-seign-0
+    liDec('dec', 'dec-p-tr-cop-3'); //Faire la charité", 'dec-p-tr-cop-3
     liDec('dec', 'dec-p-7'); //Tenter de se suicider
     liDec('dec', 'dec-p-tr-cop-2'); //Consommer des gâteaux au haschisch", 'dec-p-tr-cop-2
     liDec('dec', 'dec-p-tr-cop-9'); //Eviter la nourriture, 'dec-p-tr-cop-9
