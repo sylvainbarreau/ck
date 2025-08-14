@@ -1479,7 +1479,7 @@ function decisions(p, t=new Array(), o=null) {
         t.push(eRien2);
         let eRienAvent=new Set().add("Prestige");
         eRienAvent.add("Secret SI Atout \"Je suis bien en comparaison\"");
-        eRienAvent.add("Diplomatie");
+        //eRienAvent.add("Diplomatie");
         eRienAvent.add("Intrigue");
         eRienAvent.add("Emprisonner SI Atout \"Sombres connaissances\" ET Outils du tortionnaire");
         eRienAvent.add("éviter Gibier de potence");
@@ -1492,6 +1492,7 @@ function decisions(p, t=new Array(), o=null) {
         eRienAvent.add("langue LUI Acheter terre/Acquérir une possession");
         eRienAvent.add("Erudition");
         eRienAvent.add("Opinion LUI Acheter terre/Acquérir une possession");
+        eRienAvent.add("Diplomatie");
         //eRienAvent.add("Opinion SOUTIEN invasion");
         eRienAvent.add("Martialité SI aventurier");
         eRienAvent.add("augmenter Hommes d'armes SI aventurier");
@@ -1610,10 +1611,10 @@ function decisions(p, t=new Array(), o=null) {
         case 'enfant': // SI aventurier : Prestige, Opinion,Diplomatie,Intrigue,Or adopté SINON procréer ; survivre
             let e20=new Set().add("Prestige SI adoption/aventurier ET NON mort ET prestige&lt;150");
             e20.add("secret SI adoption/aventurier ET NON mort ET Atout \"Je suis bien en comparaison\" ET prestige&lt;150");
-            e20.add("diplomatie SI adoption/aventurier ET NON mort ET prestige&lt;150");
+            //e20.add("Diplomatie SI adoption/aventurier ET NON mort ET prestige&lt;150");
             t.push(e20);
             let eHeritier1=new Set().add("Opinion LUI SI adoption/aventurier ET NON mort ET NON perte Prestige");
-            eHeritier1.add("diplomatie SI adoption/aventurier ET NON mort ET NON perte Prestige");
+            eHeritier1.add("Diplomatie SI adoption/aventurier ET NON mort ET NON perte Prestige");
             eHeritier1.add("Intrigue SI adoption/aventurier ET NON mort ET NON perte Prestige");
             eHeritier1.add("emprisonner SI adoption/aventurier ET Atout \"Sombres connaissances\" ET Outils du tortionnaire ET NON mort ET NON perte Prestige");     
             eHeritier1.add("Or SI adoption/aventurier ET NON mort ET NON perte Prestige");
@@ -1623,8 +1624,9 @@ function decisions(p, t=new Array(), o=null) {
             t.push(eHeritier1);
             let eHeritier2=new Set().add("Prestige SI adoption/aventurier ET NON mort");
             eHeritier2.add("secret SI adoption/aventurier ET NON mort ET Atout \"Je suis bien en comparaison\"");
-            eHeritier2.add("diplomatie SI adoption/aventurier ET NON mort");
+            //eHeritier2.add("Diplomatie SI adoption/aventurier ET NON mort");
             eHeritier2.add("Opinion LUI SI adoption/aventurier ET NON mort");
+            eHeritier2.add("Diplomatie SI adoption/aventurier ET NON mort");
             eHeritier2.add("Intrigue SI adoption/aventurier ET NON mort");
             eHeritier2.add("emprisonner SI adoption/aventurier ET Atout \"Sombres connaissances\" ET Outils du tortionnaire ET NON mort");     
             eHeritier2.add("Or SI adoption/aventurier ET NON mort");
@@ -1635,7 +1637,7 @@ function decisions(p, t=new Array(), o=null) {
             let eHeritier3=new Set().add("Amant SI NON mort");
             eHeritier3.add("coucher SI NON mort");
             eHeritier3.add("Opinion Séduire LUI SI NON mort");
-            eHeritier3.add("diplomatie SI NON mort");
+            eHeritier3.add("Diplomatie SI NON mort");
             eHeritier3.add("Intrigue SI NON mort");
             eHeritier3.add("emprisonner SI Atout \"Sombres connaissances\" ET (NON aventurier OU Outils du tortionnaire)");
             eHeritier3.add("Santé");
@@ -1770,14 +1772,14 @@ function decisions(p, t=new Array(), o=null) {
         case 'prestige':
             let ePrestige=new Set().add("Prestige");
             ePrestige.add("secret SI Atout \"Je suis bien en comparaison\"");
-            ePrestige.add("Diplomatie");
+            //ePrestige.add("Diplomatie");
             t.push(ePrestige);
             return decisions(p.slice(1), t, o);
         case 'denoncer': // Prestige, Renommée 
             let eDenonc=new Set().add("Prestige");
             eDenonc.add("Renommée");
             eDenonc.add("secret SI Atout \"Je suis bien en comparaison\"");
-            eDenonc.add("Diplomatie");
+            //eDenonc.add("Diplomatie");
             t.push(eDenonc);
             return decisions(p.slice(1), t, o);
         case 'erudition':
