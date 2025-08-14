@@ -52,6 +52,7 @@ function (p, t=new Array(), o=null) {
         case 'vassalAInfluencer': //(Faction) opinion,Diplomatie,Intrigue,Or, allié, hameçon fort,Intrigue ami, amant, prisonnier,Intrigue, terrifié,redoutabilité
         case 'vassal': //allié, hameçon fort,Intrigue, ami,opinion,Diplomatie,Intrigue amant, prisonnier,Intrigue, terrifié,redoutabilité
         case 'domaine': //Intendance
+        case 'cultInnov': //SI Chef culturel : Erudition SINON Promouvoir la culture Intendance, Faire diverger la culture Prestige
         default:
             return (p.slice(1), t, o);
     }
@@ -100,6 +101,7 @@ function militaire(p, t=new Array(), o=null) {
         case 'vassal': //allié, hameçon fort,Intrigue, ami,opinion,Diplomatie,Intrigue amant, prisonnier,Intrigue, terrifié,redoutabilité
         case 'enfant': // SI aventurier : Prestige, opinion, Or adopté SINON procréer ; survivre
         case 'domaine': //Intendance
+        case 'cultInnov': //SI Chef culturel : Erudition SINON Promouvoir la culture Intendance, Faire diverger la culture Prestige
         default:
             return militaire(p.slice(1), t, o);
     }
@@ -156,6 +158,7 @@ function militaireAuto(p, t=new Array(), o=null) {
         case 'factionPop': // Opinion populaire
         case 'vassal': //allié, hameçon fort,Intrigue, ami,opinion,Diplomatie,Intrigue amant, prisonnier,Intrigue, terrifié,redoutabilité
 case 'domaine': //Intendance
+        case 'cultInnov': //SI Chef culturel : Erudition SINON Promouvoir la culture Intendance, Faire diverger la culture Prestige
         default:
             return militaireAuto(p.slice(1), t, o);
     }
@@ -222,6 +225,10 @@ function conjoint(p, t=new Array(), o=null) {
                     case 'erudition':
                     t.push(new Set().add(o[3]));
                 return t;
+        case 'cultInnov': //SI Chef culturel : Erudition SINON Promouvoir la culture Intendance, Faire diverger la culture Prestige
+            t.push(new Set().add(o[3]+" SI Chef culturel"));
+            t.push(new Set().add(o[4]));
+            return t;
         case 'chevalierPartisan': // comme recruterChevalier sans Martialité
         case 'demande': // Prestige, opinion, Or
         case 'demande2':
@@ -236,8 +243,8 @@ function chancelier(p, t=new Array(), o=null) {
     if(o==null) { o =
     ["Accorder une faveur royale",//0
     "Intégrer le titre",//1
-    "Gérer les affaires intérieures",//2
-    "Gérer les affaires étrangères"];//3 
+    "Gérer les affaires intérieures",//2 +Opinion vassal direct
+    "Gérer les affaires étrangères"];//3 +Prestige,Opinion pair vassal
     }
     const effets = [
         ["Fin de la guerre interne","Augmentation de l'opinion vassale"],
@@ -296,6 +303,9 @@ function chancelier(p, t=new Array(), o=null) {
             t.push(new Set().add(o[0]+" VASSAL A REVOQUER-S SI "+effets[0][1]));
             t.push(new Set().add(o[2]+" SI "+effets[2][3]));
             t.push(new Set().add(o[2]+" SI "+effets[2][2]));
+            return chancelier(p.slice(1), t, o);
+        case 'cultInnov': //SI Chef culturel : Erudition SINON Promouvoir la culture Intendance, Faire diverger la culture Prestige
+            t.push(new Set().add(o[3]+" SI NON Chef culturel"));
             return chancelier(p.slice(1), t, o);
         case 'chevalierPartisan': // comme recruterChevalier sans Martialité
         case 'demande': // Prestige, opinion, Or
@@ -390,7 +400,8 @@ function marechal(p, t=new Array(), o=null) {
             case 'piete': // Piété, Erudition
             case 'denoncer': // Prestige, Renommée 
         case 'domaine': //Intendance
-            default:
+        case 'cultInnov': //SI Chef culturel : Erudition SINON Promouvoir la culture Intendance, Faire diverger la culture Prestige
+                default:
             return marechal(p.slice(1), t, o);
     }
 }
@@ -463,7 +474,8 @@ function religieux(p, t=new Array(), o=null) {
             case 'denoncer': // Prestige, Renommée 
     case 'conseiller': // recruter
     case 'domaine': //Intendance
-                default:
+    case 'cultInnov': //SI Chef culturel : Erudition SINON Promouvoir la culture Intendance, Faire diverger la culture Prestige
+                        default:
             return religieux(p.slice(1), t, o);
     }
 }
@@ -542,6 +554,9 @@ function intendant(p, t=new Array(), o=null) {
         case 'denoncer': // Prestige, Renommée 
             t.push(new Set().add(o[4]+" SI "+effets[4][0]));
             return intendant(p.slice(1), t, o);
+        case 'cultInnov': //SI Chef culturel : Erudition SINON Promouvoir la culture Intendance, Faire diverger la culture Prestige
+            t.push(new Set().add(o[1]+" SI NON Chef culturel"));
+            return intendant(p.slice(1), t, o);
         case 'chevalierPartisan': // comme recruterChevalier sans Martialité
         case 'demande': // Prestige, opinion, Or
         case 'demande2':
@@ -619,7 +634,8 @@ function espion(p, t=new Array(), o=null) {
         case 'aInfluencer': // (alliance) opinion, Diplomatie, Intrigue, Or
         case 'conseiller': // recruter
         case 'factionPop': // Opinion populaire
-                            default:
+        case 'cultInnov': //SI Chef culturel : Erudition SINON Promouvoir la culture Intendance, Faire diverger la culture Prestige
+                                default:
             return espion(p.slice(1), t, o);
     }
 }
@@ -818,7 +834,8 @@ function prison(p, t=new Array(), o=null) {
             t.push(new Set().add(o[3]+" SI Atout \"Je suis bien en comparaison\""));
             return prison(p.slice(1), t, o);
         case 'domaine': //Intendance
-        default:
+        case 'cultInnov': //SI Chef culturel : Erudition SINON Promouvoir la culture Intendance, Faire diverger la culture Prestige
+            default:
             return prison(p.slice(1), t, o);
     }
 }
@@ -951,7 +968,8 @@ function secrets(p, t=new Array(), o=null) {
             case 'piete': // Piété, Erudition
             case 'factionPop': // Opinion populaire
         case 'domaine': //Intendance
-            default:
+        case 'cultInnov': //SI Chef culturel : Erudition SINON Promouvoir la culture Intendance, Faire diverger la culture Prestige
+                default:
             return secrets(p.slice(1), t, o);
     }
 }
@@ -1000,7 +1018,8 @@ function hamec(p, t=new Array(), o=null) {
         case 'vassalAInfluencer': //(Faction) opinion,Diplomatie,Intrigue,Or, allié, hameçon fort,Intrigue ami, amant, prisonnier,Intrigue, terrifié,redoutabilité
         case 'vassal': //allié, hameçon fort,Intrigue, ami,opinion,Diplomatie,Intrigue amant, prisonnier,Intrigue, terrifié,redoutabilité
         case 'domaine': //Intendance
-        default:
+        case 'cultInnov': //SI Chef culturel : Erudition SINON Promouvoir la culture Intendance, Faire diverger la culture Prestige
+            default:
             return hamec(p.slice(1), t, o);
     }
 }
@@ -1121,7 +1140,8 @@ function influence(p, t=new Array(), o=null) {
             case 'rancon': // Or, hameçon
             case 'factionPop': // Opinion populaire
         case 'domaine': //Intendance
-        default:
+        case 'cultInnov': //SI Chef culturel : Erudition SINON Promouvoir la culture Intendance, Faire diverger la culture Prestige
+            default:
             return influence(p.slice(1), t, o);
     }
 }
@@ -1213,6 +1233,9 @@ function contreMesure(p, t=new Array(), o=null) {
             o[2]=undefined;
             o[3]=undefined;
             return contreMesure(p.slice(1),t, o);
+        case 'cultInnov': //SI Chef culturel : Erudition SINON Promouvoir la culture Intendance, Faire diverger la culture Prestige
+            o[0]+=" SI Chef culturel";
+            return contreMesure(p.slice(1),t, o);
         case 'chevalierPartisan': // comme recruterChevalier sans Martialité
         case 'piete': // Piété, Erudition
         case 'conseiller': // recruter
@@ -1294,6 +1317,9 @@ case 'vassal': //allié, hameçon fort,Intrigue, ami,opinion,Diplomatie,Intrigue
           eRevoq.add(o[3]+" VASSAL A REVOQUER-S");
           t.push(eRevoq);
           return compHostile(p.slice(1), t, o);
+case 'cultInnov': //SI Chef culturel : Erudition SINON Promouvoir la culture Intendance, Faire diverger la culture Prestige
+            t.push(new Set().add(o[4]));
+            return compHostile(p.slice(1), t, o);
 case 'agent': // opinion SI vassal direct ou courtisan ou invité CIBLE, (Influence) Or, Prestige, hameçon, Piété (parfois)
             case 'denoncer': // Prestige, Renommée 
         case 'chevalierPartisan': // recruterChevalier sans Martialité
@@ -1412,7 +1438,8 @@ function compPolitique(p, t=new Array(), o=null) {
         case 'conseiller': // recruter
         case 'factionPop': // Opinion populaire
         case 'domaine': //Intendance
-        default:
+        case 'cultInnov': //SI Chef culturel : Erudition SINON Promouvoir la culture Intendance, Faire diverger la culture Prestige
+            default:
             return compPolitique(p.slice(1), t, o);
     }
 }
@@ -1820,6 +1847,13 @@ function decisions(p, t=new Array(), o=null) {
             eAgent.add("Erudition");
             t.push(eAgent);
             return decisions(p.slice(1), t, o);
+        case 'cultInnov': //SI Chef culturel : Erudition SINON Promouvoir la culture Intendance, Faire diverger la culture Prestige
+            let eCult=new Set().add("Erudition SI Chef culturel");
+            eCult.add("Intendance SI NON Chef culturel");
+            eCult.add("Prestige SI NON Chef culturel");
+            eCult.add("Artefact");
+            t.push(eCult);
+            return decisions(p.slice(1), t, o); 
         default:
             return decisions(p.slice(1), t, o);
     }
@@ -1935,6 +1969,9 @@ function typeCour(p, t=new Array(), o=null) {
             case 'influence' :
                 t.push(new Set().add(o[4]));
             return typeCour(p.slice(1), t, o);
+        case 'cultInnov': //SI Chef culturel : Erudition SINON Promouvoir la culture Intendance, Faire diverger la culture Prestige
+            t.push(new Set().add(o[4]));
+            return typeCour(p.slice(1), t, o);
         case 'chevalierPartisan': // recruterChevalier sans Martialité
         case 'demande': // Prestige, opinion, Or
         case 'demande2':
@@ -1972,7 +2009,10 @@ function commoditesMode(p, t=new Array(), o=null) {
         case 'perteTerresRevoquer': // accorder titre SINON Prestige (pour autorité couronne) SINON chercher secret,Opinion,Diplomatie,Intrigue,Or,hameçon,Intrigue (pour révoquer)
             t.push(new Set().add("monter"));
             return t;
-            case 'enfant': // SI aventurier : Prestige, opinion, Or adopté SINON procréer ; survivre
+        case 'cultInnov': //SI Chef culturel : Erudition SINON Promouvoir la culture Intendance, Faire diverger la culture Prestige
+            t.push(new Set().add("monter SI NON Chef culturel"));
+            return commoditesMode(p.slice(1), t, o);
+        case 'enfant': // SI aventurier : Prestige, opinion, Or adopté SINON procréer ; survivre
         case 'chevalierPartisan': // recruterChevalier sans Martialité
         case 'demande': // Prestige, opinion, Or
         case 'demande2':
@@ -2017,7 +2057,10 @@ function commoditesNourriture(p, t=new Array(), o=null) {
         case 'vassalAInfluencer': //(Faction) opinion,Diplomatie,Intrigue,Or, allié, hameçon fort,Intrigue ami, amant, prisonnier,Intrigue, terrifié,redoutabilité
             t.push(new Set().add("baisser jusqu'à 1"));
             return t;
-            case 'chevalierPartisan': // recruterChevalier sans Martialité
+        case 'cultInnov': //SI Chef culturel : Erudition SINON Promouvoir la culture Intendance, Faire diverger la culture Prestige
+            t.push(new Set().add("monter SI NON Chef culturel"));
+            return commoditesNourriture(p.slice(1), t, o);    
+        case 'chevalierPartisan': // recruterChevalier sans Martialité
             case 'demande': // Prestige, opinion, Or
             case 'demande2':
                 return new Array();
@@ -2056,7 +2099,8 @@ function commoditesHebergement(p, t=new Array(), o=null) {
             case 'factionPop': // Opinion populaire
         case 'vassalAInfluencer': //(Faction) opinion,Diplomatie,Intrigue,Or, allié, hameçon fort,Intrigue ami, amant, prisonnier,Intrigue, terrifié,redoutabilité
         case 'vassal': //allié, hameçon fort,Intrigue, ami,opinion,Diplomatie,Intrigue amant, prisonnier,Intrigue, terrifié,redoutabilité
-            t.push(new Set().add("monter"));
+        case 'cultInnov': //SI Chef culturel : Erudition SINON Promouvoir la culture Intendance, Faire diverger la culture Prestige
+                t.push(new Set().add("monter"));
             return t;
         case 'assassinat':
             case 'agent': // opinion SI vassal direct ou courtisan ou invité CIBLE, (Influence) Or, Prestige, hameçon, Piété (parfois)
@@ -2116,7 +2160,8 @@ function commoditesDomestiques(p, t=new Array(), o=null) {
                 case 'conseiller': // recruter
                 case 'factionPop': // Opinion populaire
         case 'domaine': //Intendance
-        default:
+        case 'cultInnov': //SI Chef culturel : Erudition SINON Promouvoir la culture Intendance, Faire diverger la culture Prestige
+            default:
             return commoditesDomestiques(p.slice(1), t, o);
     }
 }
@@ -2226,6 +2271,9 @@ function activTournoi(p, t=new Array(), o=null) {
             t.push(new Set().add(o[1]));
             t.push(new Set().add(o[5]+" VASSAL A REVOQUER"));
             return activTournoi(p.slice(1), t, o);
+        case 'cultInnov': //SI Chef culturel : Erudition SINON Promouvoir la culture Intendance, Faire diverger la culture Prestige
+            t.push(new Set().add(o[1]));
+            return activTournoi(p.slice(1), t, o);
         case 'chevalierPartisan': // recruterChevalier sans Martialité
         default:
             return activTournoi(p.slice(1), t, o);
@@ -2257,7 +2305,8 @@ function tournoiHeb(p, t=new Array(), o=null) {
         case 'vassal': //allié, hameçon fort,Intrigue, ami,opinion,Diplomatie,Intrigue amant, prisonnier,Intrigue, terrifié,redoutabilité
         case 'domaine': //Intendance
         case 'perteTerresRevoquer': // accorder titre SINON Prestige (pour autorité couronne) SINON chercher secret,Opinion,Diplomatie,Intrigue,Or,hameçon,Intrigue (pour révoquer)
-        t.push(new Set().add("VERIF heb"));
+        case 'cultInnov': //SI Chef culturel : Erudition SINON Promouvoir la culture Intendance, Faire diverger la culture Prestige
+            t.push(new Set().add("VERIF heb"));
         return t;
         case 'revenu':
             case 'agent': // opinion SI vassal direct ou courtisan ou invité CIBLE, (Influence) Or, Prestige, hameçon, Piété (parfois)
@@ -2338,7 +2387,8 @@ function prix(p, t=new Array(), o=null) {
         case 'perteTerresRevoquer': // accorder titre SINON Prestige (pour autorité couronne) SINON chercher secret,Opinion,Diplomatie,Intrigue,Or,hameçon,Intrigue (pour révoquer)
         case 'vassal': //allié, hameçon fort,Intrigue, ami,opinion,Diplomatie,Intrigue amant, prisonnier,Intrigue, terrifié,redoutabilité
         case 'domaine': //Intendance
-            t.push(new Set().add(o[4]+" SI Triompher"));
+        case 'cultInnov': //SI Chef culturel : Erudition SINON Promouvoir la culture Intendance, Faire diverger la culture Prestige
+                t.push(new Set().add(o[4]+" SI Triompher"));
             t.push(new Set().add(o[3]+" SI Triompher"));
             t.push(new Set().add(o[2]+" SI Triompher"));
             t.push(new Set().add(o[1]+" SI Triompher"));
@@ -2441,7 +2491,8 @@ function activMariage(p, t=new Array(), o=null) {
         case 'perteTerresRevoquer': // accorder titre SINON Prestige (pour autorité couronne) SINON chercher secret,Opinion,Diplomatie,Intrigue,Or,hameçon,Intrigue (pour révoquer)
         case 'factionPop': // Opinion populaire
             case 'chevalierPartisan': // recruterChevalier sans Martialité
-            default:
+        case 'cultInnov': //SI Chef culturel : Erudition SINON Promouvoir la culture Intendance, Faire diverger la culture Prestige
+                default:
             return activMariage(p.slice(1), t, o);
     }
 }
@@ -2474,7 +2525,8 @@ function activMariageDiverti(p, t=new Array(), o=null) {
         case 'conseiller': // recruter
             case 'factionPop': // Opinion populaire
         case 'domaine': //Intendance
-        t.push(new Set().add("A DEFINIR"));
+        case 'cultInnov': //SI Chef culturel : Erudition SINON Promouvoir la culture Intendance, Faire diverger la culture Prestige
+            t.push(new Set().add("A DEFINIR"));
             return t;
         case 'revenu':
             case 'rancon': // Or, hameçon
@@ -2555,7 +2607,8 @@ function activMariageNourr(p, t=new Array(), o=null) {
         case 'conseiller': // recruter
             case 'factionPop': // Opinion populaire
         case 'domaine': //Intendance
-        t.push(new Set().add("A DEFINIR"));
+        case 'cultInnov': //SI Chef culturel : Erudition SINON Promouvoir la culture Intendance, Faire diverger la culture Prestige
+            t.push(new Set().add("A DEFINIR"));
             return t;
         case 'revenu':
             case 'rancon': // Or, hameçon
@@ -2622,7 +2675,8 @@ function activMariageLieu(p, t=new Array(), o=null) {
             case 'factionPop': // Opinion populaire
         case 'vassal': //allié, hameçon fort,Intrigue, ami,opinion,Diplomatie,Intrigue amant, prisonnier,Intrigue, terrifié,redoutabilité
         case 'domaine': //Intendance
-            t.push(new Set().add("A DEFINIR"));
+        case 'cultInnov': //SI Chef culturel : Erudition SINON Promouvoir la culture Intendance, Faire diverger la culture Prestige
+                t.push(new Set().add("A DEFINIR"));
             return t;
         case 'revenu':
             case 'rancon': // Or, hameçon
@@ -2743,7 +2797,8 @@ function activFestin(p, t=new Array(), o=null) {
             case 'rancon': // Or, hameçon
         case 'factionPop': // Opinion populaire
         case 'domaine': //Intendance
-        default:
+        case 'cultInnov': //SI Chef culturel : Erudition SINON Promouvoir la culture Intendance, Faire diverger la culture Prestige
+            default:
             return activFestin(p.slice(1), t, o);
     }
 }
@@ -2792,6 +2847,11 @@ function activFestinRepas(p, t=new Array(), o=null) {
             t.push(new Set().add(o[1]));
             t.push(new Set().add(o[0]));
             return t;    
+        case 'cultInnov': //SI Chef culturel : Erudition SINON Promouvoir la culture Intendance, Faire diverger la culture Prestige
+            t.push(new Set().add(o[2]+" SI NON Chef culturel"));
+            t.push(new Set().add(o[1]+" SI NON Chef culturel"));
+            t.push(new Set().add(o[0]+" SI NON Chef culturel"));
+            return activFestinRepas(p.slice(1), t, o);
         case 'controle':
         case 'assassinat': // Faire démissionner ou Assassiner
         case 'hamecon':
@@ -2873,7 +2933,8 @@ function activFestinPlats(p, t=new Array(), o=null) {
         case 'conseiller': // recruter
         case 'factionPop': // Opinion populaire
         case 'domaine': //Intendance
-        default:
+        case 'cultInnov': //SI Chef culturel : Erudition SINON Promouvoir la culture Intendance, Faire diverger la culture Prestige
+            default:
             return activFestinPlats(p.slice(1), t, o);
     }
 }
@@ -2899,7 +2960,8 @@ function activFete(p, t=new Array(), o=null) {
     const pp = p2[0];
     switch(pp) {
         case 'domaine': //Intendance
-            t.push(new Set().add("A DEFINIR"));
+        case 'cultInnov': //SI Chef culturel : Erudition SINON Promouvoir la culture Intendance, Faire diverger la culture Prestige
+                t.push(new Set().add("A DEFINIR"));
             return t;
         case 'succession': // besoin agent //influence SI vassal direct LUI OU courtisan LUI OU invité LUI, Influence, Or, Prestige, hameçon
         case 'dirigeantAInfluencer': // opinion, Diplomatie, Intrigue, Or
@@ -3017,7 +3079,8 @@ function activFeteNourr(p, t=new Array(), o=null) {
             case 'piete': // Piété, Erudition
         case 'factionPop': // Opinion populaire
         case 'domaine': //Intendance
-            default:
+        case 'cultInnov': //SI Chef culturel : Erudition SINON Promouvoir la culture Intendance, Faire diverger la culture Prestige
+                default:
             return activFeteNourr(p.slice(1), t, o);
     }
 }
@@ -3077,7 +3140,10 @@ function activFeteBoiss(p, t=new Array(), o=null) {
             t.push(new Set().add(o[1]));
             t.push(new Set().add(o[0]));
             return t;
-            case 'recruterChevalier':
+        case 'cultInnov': //SI Chef culturel : Erudition SINON Promouvoir la culture Intendance, Faire diverger la culture Prestige
+            t.push(new Set().add(o[2]+" SI NON Chef culturel"));
+            return activFeteBoiss(p.slice(1), t, o);
+        case 'recruterChevalier':
             case 'religieuxAInfluencer': // opinion, Or
             case 'influence' : // besoin agent //influence SI vassal direct LUI OU courtisan LUI OU invité LUI, Influence, Or, Prestige, hameçon
         case 'controle':
@@ -3179,7 +3245,8 @@ function activFun(p, t=new Array(), o=null) {
             case 'factionPop': // Opinion populaire
             case 'chevalierPartisan': // recruterChevalier sans Martialité
         case 'domaine': //Intendance
-        default:
+        case 'cultInnov': //SI Chef culturel : Erudition SINON Promouvoir la culture Intendance, Faire diverger la culture Prestige
+            default:
             return activFun(p.slice(1), t, o);
     }
 }
@@ -3245,7 +3312,8 @@ function activMonum(p, t=new Array(), o=null) {
         case 'vassalAInfluencer': //(Faction) opinion,Diplomatie,Intrigue,Or, allié, hameçon fort,Intrigue ami, amant, prisonnier,Intrigue, terrifié,redoutabilité
         case 'vassal': //allié, hameçon fort,Intrigue, ami,opinion,Diplomatie,Intrigue amant, prisonnier,Intrigue, terrifié,redoutabilité
         case 'domaine': //Intendance
-            t.push(new Set().add("A DEFINIR"));
+        case 'cultInnov': //SI Chef culturel : Erudition SINON Promouvoir la culture Intendance, Faire diverger la culture Prestige
+                t.push(new Set().add("A DEFINIR"));
             return t;
             case 'piete': // Piété, Erudition
             default:
@@ -3309,7 +3377,8 @@ function activMonumScribe(p, t=new Array(), o=null) {
         case 'vassalAInfluencer': //(Faction) opinion,Diplomatie,Intrigue,Or, allié, hameçon fort,Intrigue ami, amant, prisonnier,Intrigue, terrifié,redoutabilité
         case 'vassal': //allié, hameçon fort,Intrigue, ami,opinion,Diplomatie,Intrigue amant, prisonnier,Intrigue, terrifié,redoutabilité
         case 'domaine': //Intendance
-            t.push(new Set().add("A DEFINIR"));
+        case 'cultInnov': //SI Chef culturel : Erudition SINON Promouvoir la culture Intendance, Faire diverger la culture Prestige
+                t.push(new Set().add("A DEFINIR"));
             return t;
             case 'survie':
         case 'stress':
@@ -3406,6 +3475,9 @@ function activChasse(p, t=new Array(), o=null) {
             t.push(new Set().add(o[1]));
             t.push(new Set().add(o[4]+" VASSAL A REVOQUER-S"));
             return activChasse(p.slice(1), t, o);
+        case 'cultInnov': //SI Chef culturel : Erudition SINON Promouvoir la culture Intendance, Faire diverger la culture Prestige
+            t.push(new Set().add(o[1]+" SI NON Chef culturel"));
+            return activChasse(p.slice(1), t, o);
         case 'recruterChevalier':
             case 'piete': // Piété, Erudition
             case 'conseiller': // recruter
@@ -3459,7 +3531,8 @@ function participChasse(p, t=new Array(), o=null) {
         case 'vassalAInfluencer': //(Faction) opinion,Diplomatie,Intrigue,Or, allié, hameçon fort,Intrigue ami, amant, prisonnier,Intrigue, terrifié,redoutabilité
         case 'vassal': //allié, hameçon fort,Intrigue, ami,opinion,Diplomatie,Intrigue amant, prisonnier,Intrigue, terrifié,redoutabilité
         case 'domaine': //Intendance
-            t.push(new Set().add(o[2]));
+        case 'cultInnov': //SI Chef culturel : Erudition SINON Promouvoir la culture Intendance, Faire diverger la culture Prestige
+                t.push(new Set().add(o[2]));
             t.push(new Set().add(o[1]));
             t.push(new Set().add(o[0]));
             return t;
@@ -3517,6 +3590,10 @@ function grpeChasse(p, t=new Array(), o=null) {
             t.push(new Set().add(o[2]+" SI adoption/aventurier ET Prestige &lt; 150"));
             t.push(new Set().add(o[1]+" SI adoption/aventurier ET Prestige &lt; 150"));
             t.push(new Set().add(o[0]+" SI adoption/aventurier"));
+            return grpeChasse(p.slice(1), t, o);
+        case 'cultInnov': //SI Chef culturel : Erudition SINON Promouvoir la culture Intendance, Faire diverger la culture Prestige
+            t.push(new Set().add(o[2]+" SI NON Chef culturel"));
+            t.push(new Set().add(o[1]+" SI NON Chef culturel"));
             return grpeChasse(p.slice(1), t, o);
         case 'chevalierPartisan': // recruterChevalier sans Martialité
         case 'assassinat':
@@ -3605,7 +3682,8 @@ function activRando(p, t=new Array(), o=null) {
             case 'conseiller': // recruter
             case 'factionPop': // Opinion populaire
         case 'domaine': //Intendance
-        default:
+        case 'cultInnov': //SI Chef culturel : Erudition SINON Promouvoir la culture Intendance, Faire diverger la culture Prestige
+            default:
             return activRando(p.slice(1), t, o);
     }
 }
@@ -3655,7 +3733,8 @@ function activRandoLong(p, t=new Array(), o=null) {
         case 'vassalAInfluencer': //(Faction) opinion,Diplomatie,Intrigue,Or, allié, hameçon fort,Intrigue ami, amant, prisonnier,Intrigue, terrifié,redoutabilité
         case 'vassal': //allié, hameçon fort,Intrigue, ami,opinion,Diplomatie,Intrigue amant, prisonnier,Intrigue, terrifié,redoutabilité
         case 'domaine': //Intendance
-        default:
+        case 'cultInnov': //SI Chef culturel : Erudition SINON Promouvoir la culture Intendance, Faire diverger la culture Prestige
+            default:
             return activRandoLong(p.slice(1), t, o);
     }
 }
@@ -3700,7 +3779,8 @@ function activUniv(p, t=new Array(), o=null) {
         case 'vassalAInfluencer': //(Faction) opinion,Diplomatie,Intrigue,Or, allié, hameçon fort,Intrigue ami, amant, prisonnier,Intrigue, terrifié,redoutabilité
         case 'vassal': //allié, hameçon fort,Intrigue, ami,opinion,Diplomatie,Intrigue amant, prisonnier,Intrigue, terrifié,redoutabilité
         case 'domaine': //Intendance
-            t.push(new Set().add(o[0]));
+        case 'cultInnov': //SI Chef culturel : Erudition SINON Promouvoir la culture Intendance, Faire diverger la culture Prestige
+                t.push(new Set().add(o[0]));
             return t;
         case 'survie':
         case 'stress':
@@ -3774,7 +3854,8 @@ function activUnivMat(p, t=new Array(), o=null) {
             return activUnivMat(p.slice(1), t, o);
         case 'vassalAInfluencer': //(Faction) opinion,Diplomatie,Intrigue,Or, allié, hameçon fort,Intrigue ami, amant, prisonnier,Intrigue, terrifié,redoutabilité
         case 'vassal': //allié, hameçon fort,Intrigue, ami,opinion,Diplomatie,Intrigue amant, prisonnier,Intrigue, terrifié,redoutabilité
-            t.push(new Set().add(o[2]));
+        case 'cultInnov': //SI Chef culturel : Erudition SINON Promouvoir la culture Intendance, Faire diverger la culture Prestige
+                t.push(new Set().add(o[2]));
             t.push(new Set().add(o[1]));
             t.push(new Set().add(o[0]));
             return t;
@@ -3832,7 +3913,8 @@ function activPelerin(p, t=new Array(), o=null) {
         case 'vassalAInfluencer': //(Faction) opinion,Diplomatie,Intrigue,Or, allié, hameçon fort,Intrigue ami, amant, prisonnier,Intrigue, terrifié,redoutabilité
         case 'vassal': //allié, hameçon fort,Intrigue, ami,opinion,Diplomatie,Intrigue amant, prisonnier,Intrigue, terrifié,redoutabilité
         case 'domaine': //Intendance
-        default:
+        case 'cultInnov': //SI Chef culturel : Erudition SINON Promouvoir la culture Intendance, Faire diverger la culture Prestige
+            default:
             return activPelerin(p.slice(1), t, o);
     }
 }
@@ -3887,7 +3969,8 @@ function activPelerinIntent(p, t=new Array(), o=null) {
         case 'vassalAInfluencer': //(Faction) opinion,Diplomatie,Intrigue,Or, allié, hameçon fort,Intrigue ami, amant, prisonnier,Intrigue, terrifié,redoutabilité
         case 'vassal': //allié, hameçon fort,Intrigue, ami,opinion,Diplomatie,Intrigue amant, prisonnier,Intrigue, terrifié,redoutabilité
         case 'domaine': //Intendance
-        default:
+        case 'cultInnov': //SI Chef culturel : Erudition SINON Promouvoir la culture Intendance, Faire diverger la culture Prestige
+            default:
             return activPelerinIntent(p.slice(1), t, o);
     }
 }
@@ -3943,7 +4026,8 @@ function activPelerinFidel(p, t=new Array(), o=null) {
         case 'vassalAInfluencer': //(Faction) opinion,Diplomatie,Intrigue,Or, allié, hameçon fort,Intrigue ami, amant, prisonnier,Intrigue, terrifié,redoutabilité
         case 'vassal': //allié, hameçon fort,Intrigue, ami,opinion,Diplomatie,Intrigue amant, prisonnier,Intrigue, terrifié,redoutabilité
         case 'domaine': //Intendance
-        default:
+        case 'cultInnov': //SI Chef culturel : Erudition SINON Promouvoir la culture Intendance, Faire diverger la culture Prestige
+            default:
             return activPelerinFidel(p.slice(1), t, o);
     }
 }
@@ -4018,7 +4102,8 @@ function activPelerinApp(p, t=new Array(), o=null) {
         case 'factionPop': // Opinion populaire
         case 'vassal': //allié, hameçon fort,Intrigue, ami,opinion,Diplomatie,Intrigue amant, prisonnier,Intrigue, terrifié,redoutabilité
         case 'domaine': //Intendance
-        default:
+        case 'cultInnov': //SI Chef culturel : Erudition SINON Promouvoir la culture Intendance, Faire diverger la culture Prestige
+            default:
             return activPelerinApp(p.slice(1), t, o);
     }
 }
@@ -4075,6 +4160,7 @@ function particip(p, t=new Array(), o=null) {
                     case 'rancon': // Or, hameçon
                     case 'factionPop': // Opinion populaire
             case 'vassal': //allié, hameçon fort,Intrigue, ami,opinion,Diplomatie,Intrigue amant, prisonnier,Intrigue, terrifié,redoutabilité
+            case 'cultInnov': //SI Chef culturel : Erudition SINON Promouvoir la culture Intendance, Faire diverger la culture Prestige
                 t.push(new Set().add("Participe"));
             return t;
             case 'conseiller': // recruter
@@ -4103,7 +4189,8 @@ function activTournee(p, t=new Array(), o=null) {
     switch(pp) {
         case 'domaine': //Intendance
         case 'perteTerresRevoquer': // accorder titre SINON Prestige (pour autorité couronne) SINON chercher secret,Opinion,Diplomatie,Intrigue,Or,hameçon,Intrigue (pour révoquer)
-            t.push(new Set().add("A DEFINIR"));
+        case 'cultInnov': //SI Chef culturel : Erudition SINON Promouvoir la culture Intendance, Faire diverger la culture Prestige
+                t.push(new Set().add("A DEFINIR"));
             return t;
         case 'vassalAInfluencer': //(Faction) opinion,Diplomatie,Intrigue,Or, allié, hameçon fort,Intrigue ami, amant, prisonnier,Intrigue, terrifié,redoutabilité
             case 'prestige':
@@ -4197,7 +4284,8 @@ function intentionTournee(p, t=new Array(), o=null) {
             case 'demande2':
                 return new Array();
         case 'domaine': //Intendance
-        default:
+        case 'cultInnov': //SI Chef culturel : Erudition SINON Promouvoir la culture Intendance, Faire diverger la culture Prestige
+            default:
             return intentionTournee(p.slice(1), t, o);
     }
 }
@@ -4234,7 +4322,8 @@ function suite(p, t=new Array(), o=null) {
         case 'vassalAInfluencer': //(Faction) opinion,Diplomatie,Intrigue,Or, allié, hameçon fort,Intrigue ami, amant, prisonnier,Intrigue, terrifié,redoutabilité
         case 'vassal': //allié, hameçon fort,Intrigue, ami,opinion,Diplomatie,Intrigue amant, prisonnier,Intrigue, terrifié,redoutabilité
         case 'domaine': //Intendance
-            t.push(new Set().add("A DEFINIR"));
+        case 'cultInnov': //SI Chef culturel : Erudition SINON Promouvoir la culture Intendance, Faire diverger la culture Prestige
+                t.push(new Set().add("A DEFINIR"));
             return t;
         case 'prestige':
             case 'denoncer': // Prestige, Renommée 
@@ -4302,7 +4391,8 @@ function luxe(p, t=new Array(), o=null) {
             case 'factionPop': // Opinion populaire
         case 'vassal': //allié, hameçon fort,Intrigue, ami,opinion,Diplomatie,Intrigue amant, prisonnier,Intrigue, terrifié,redoutabilité
         case 'domaine': //Intendance
-            t.push(new Set().add("A DEFINIR"));
+        case 'cultInnov': //SI Chef culturel : Erudition SINON Promouvoir la culture Intendance, Faire diverger la culture Prestige
+                t.push(new Set().add("A DEFINIR"));
             return t;
             case 'chevalierPartisan': // recruterChevalier sans Martialité
             case 'demande': // Prestige, opinion, Or
@@ -4369,7 +4459,8 @@ function regence(p, t=new Array(), o=null) {
         case 'denoncer': // Prestige, Renommée 
         case 'piete': // Piété, Erudition
         case 'domaine': //Intendance
-        default:
+        case 'cultInnov': //SI Chef culturel : Erudition SINON Promouvoir la culture Intendance, Faire diverger la culture Prestige
+            default:
             return regence(p.slice(1), t, o);
     }
 }
@@ -4453,6 +4544,10 @@ function epidemies(p, t=new Array(), o=null) {
         case 'vassal': //allié, hameçon fort,Intrigue, ami,opinion,Diplomatie,Intrigue amant, prisonnier,Intrigue, terrifié,redoutabilité
             t.push(new Set().add(o[1]));
             return t;
+        case 'cultInnov': //SI Chef culturel : Erudition SINON Promouvoir la culture Intendance, Faire diverger la culture Prestige
+            t.push(new Set().add(o[1]));
+            o[2]+=" SI Chef culturel";
+            return epidemies(p.slice(1),t,o);
         case 'conseiller': // recruter
             default:
             return epidemies(p.slice(1),t,o);
@@ -4515,6 +4610,9 @@ function posteCaravanier(p, t=new Array(), o=null) {
         case 'proclame':
         case 'declarationGuerre':
             t.push(new Set().add(o[2]));
+            return posteCaravanier(p.slice(1),t,o);
+        case 'cultInnov': //SI Chef culturel : Erudition SINON Promouvoir la culture Intendance, Faire diverger la culture Prestige
+            o[2]+=" SI Chef culturel";
             return posteCaravanier(p.slice(1),t,o);
         case 'controle':
         case 'assassinat': // Faire démissionner ou Assassiner
@@ -4613,7 +4711,15 @@ function posteAntiq(p, t=new Array(), o=null) {
             t.push(new Set().add(o[0]));
             t.push(new Set().add("aucune fonction"));
             return t;
-            case 'conseiller': // recruter
+        case 'cultInnov': //SI Chef culturel : Erudition SINON Promouvoir la culture Intendance, Faire diverger la culture Prestige
+            t.push(new Set().add(o[0]+" SI Chef culturel"));
+            t.push(new Set().add(o[2]+" SI Chef culturel"));
+            t.push(new Set().add(o[1]+" SI NON Chef culturel"));
+            t.push(new Set().add(o[0]+" SI NON Chef culturel"));
+            o[2]+=" SI Chef culturel";
+            o[1]+=" SI Chef culturel";
+            return posteAntiq(p.slice(1),t, o);
+        case 'conseiller': // recruter
             default:
             return posteAntiq(p.slice(1), t, o);
     }
@@ -4673,6 +4779,9 @@ function posteSenech(p, t=new Array(), o=null) {
             return posteSenech(p.slice(1),t, o);
         case 'controle':
             t.push(new Set().add(o[1]));
+            return posteSenech(p.slice(1),t, o);
+        case 'cultInnov': //SI Chef culturel : Erudition SINON Promouvoir la culture Intendance, Faire diverger la culture Prestige
+            t.push(new Set().add("aucune fonction SI NON Chef culturel"));
             return posteSenech(p.slice(1),t, o);
         case 'assassinat': // Faire démissionner ou Assassiner
         case 'hamecon':
@@ -4767,6 +4876,12 @@ function posteProf(p, t=new Array(), o=null) {
         case 'domaine': //Intendance
             t.push(new Set().add(o[1]));
             return posteProf(p.slice(1),t, o);
+        case 'cultInnov': //SI Chef culturel : Erudition SINON Promouvoir la culture Intendance, Faire diverger la culture Prestige
+            t.push(new Set().add(o[1]+" SI Chef culturel"));
+            t.push(new Set().add(o[0]+" SI Chef culturel"));
+            t.push(new Set().add(o[1]));
+            t.push(new Set().add("aucune fonction SI NON Chef culturel"));
+            return posteProf(p.slice(1),t, o);   
         case 'conseiller': // recruter
             default:
             return posteProf(p.slice(1), t, o);
@@ -4812,6 +4927,9 @@ function posteNour(p, t=new Array(), o=null) {
         case 'guerre': // guerre, Influence,opinion,Diplomatie,Intrigue,Or SI gouvernmt admin
             t.push(new Set().add("aucune fonction SI gouvernement administratif"));
             return posteNour(p.slice(1),t, o);
+        case 'cultInnov': //SI Chef culturel : Erudition SINON Promouvoir la culture Intendance, Faire diverger la culture Prestige
+            t.push(new Set().add("aucune fonction SI NON Chef culturel"));
+            return posteNour(p.slice(1),t, o);   
         case 'dirigeantAInfluencer': // opinion, Diplomatie, Intrigue, Or
         case 'religieuxAInfluencer': // opinion, Or
         case 'controle':
@@ -4861,6 +4979,7 @@ function posteEcuyer(p, t=new Array(), o=null) {
             case 'rancon': // Or, hameçon
         case 'perteTerresRevoquer': // accorder titre SINON Prestige (pour autorité couronne) SINON chercher secret,Opinion,Diplomatie,Intrigue,Or,hameçon,Intrigue (pour révoquer)
         case 'vassalAInfluencer': //(Faction) opinion,Diplomatie,Intrigue,Or, allié, hameçon fort,Intrigue ami, amant, prisonnier,Intrigue, terrifié,redoutabilité
+        case 'prestige':
             t.push(new Set().add("aucune fonction"));
             return t;
         case 'chevalierPartisan': // comme recruterChevalier sans Martialité
@@ -4876,7 +4995,9 @@ function posteEcuyer(p, t=new Array(), o=null) {
         case 'survie':
             o[1]=undefined;
             return posteEcuyer(p.slice(1),t, o);   
-        case 'prestige':
+        case 'cultInnov': //SI Chef culturel : Erudition SINON Promouvoir la culture Intendance, Faire diverger la culture Prestige
+            t.push(new Set().add("aucune fonction SI NON Chef culturel"));
+            return posteEcuyer(p.slice(1),t, o);
         case 'controle':
         case 'assassinat': // Faire démissionner ou Assassiner
         case 'hamecon':
@@ -4925,16 +5046,19 @@ function posteChasse(p, t=new Array(), o=null) {
         case 'rancon': // Or, hameçon
         case 'perteTerresRevoquer': // accorder titre SINON Prestige (pour autorité couronne) SINON chercher secret,Opinion,Diplomatie,Intrigue,Or,hameçon,Intrigue (pour révoquer)
             case 'vassalAInfluencer': //(Faction) opinion,Diplomatie,Intrigue,Or, allié, hameçon fort,Intrigue ami, amant, prisonnier,Intrigue, terrifié,redoutabilité
-        t.push(new Set().add("aucune fonction"));
+        case 'prestige':
+            t.push(new Set().add("aucune fonction"));
             return t;
         case 'guerre': // guerre, Influence,opinion,Diplomatie,Intrigue,Or SI gouvernmt admin
             t.push(new Set().add("aucune fonction SI gouvernement administratif"));
             return posteChasse(p.slice(1),t, o);
+        case 'cultInnov': //SI Chef culturel : Erudition SINON Promouvoir la culture Intendance, Faire diverger la culture Prestige
+            t.push(new Set().add("aucune fonction SI NON Chef culturel"));
+            return posteChasse(p.slice(1),t, o);    
         case 'chevalierPartisan': // comme recruterChevalier sans Martialité
         case 'demande': // Prestige, opinion, Or
         case 'demande2': // (contrat, Or, Provisions) Prestige, opinion
             return new Array();
-        case 'prestige':
         case 'controle':
         case 'assassinat': // Faire démissionner ou Assassiner
         case 'hamecon':
@@ -4984,16 +5108,19 @@ function posteChroni(p, t=new Array(), o=null) {
         case 'rancon': // Or, hameçon
         case 'perteTerresRevoquer': // accorder titre SINON Prestige (pour autorité couronne) SINON chercher secret,Opinion,Diplomatie,Intrigue,Or,hameçon,Intrigue (pour révoquer)
             case 'vassalAInfluencer': //(Faction) opinion,Diplomatie,Intrigue,Or, allié, hameçon fort,Intrigue ami, amant, prisonnier,Intrigue, terrifié,redoutabilité
+        case 'prestige':
         t.push(new Set().add("aucune fonction"));
             return t;
         case 'guerre': // guerre, Influence,opinion,Diplomatie,Intrigue,Or SI gouvernmt admin
             t.push(new Set().add("aucune fonction SI gouvernement administratif"));
             return posteChroni(p.slice(1),t, o);
+        case 'cultInnov': //SI Chef culturel : Erudition SINON Promouvoir la culture Intendance, Faire diverger la culture Prestige
+            t.push(new Set().add("aucune fonction SI NON Chef culturel"));
+            return posteChroni(p.slice(1),t, o);
         case 'chevalierPartisan': // comme recruterChevalier sans Martialité
         case 'demande': // Prestige, opinion, Or
         case 'demande2': // (contrat, Or, Provisions) Prestige, opinion
             return new Array();
-        case 'prestige':
         case 'controle':
         case 'assassinat': // Faire démissionner ou Assassiner
         case 'hamecon':
@@ -5072,6 +5199,10 @@ function posteChamp(p, t=new Array(), o=null) {
         case 'enfant': // SI aventurier : Prestige, opinion, Or adopté SINON procréer ; survivre
             o[1]=undefined;
             return posteChamp(p.slice(1),t,o);
+        case 'cultInnov': //SI Chef culturel : Erudition SINON Promouvoir la culture Intendance, Faire diverger la culture Prestige
+            t.push(new Set().add(o[0]+" SI NON Chef culturel"));
+            t.push(new Set().add("aucune fonction SI NON Chef culturel"));
+            return posteChamp(p.slice(1),t, o);
         case 'controle':
         case 'assassinat': // Faire démissionner ou Assassiner
         case 'hamecon':
@@ -5136,7 +5267,10 @@ function posteBouffon(p, t=new Array(), o=null) {
         case 'guerre': // guerre, Influence,opinion,Diplomatie,Intrigue,Or SI gouvernmt admin
             t.push(new Set().add("aucune fonction SI gouvernement administratif"));
             return posteBouffon(p.slice(1),t, o);
-            case 'revenu':
+        case 'cultInnov': //SI Chef culturel : Erudition SINON Promouvoir la culture Intendance, Faire diverger la culture Prestige
+            t.push(new Set().add("aucune fonction SI NON Chef culturel"));
+            return posteBouffon(p.slice(1),t,o);
+        case 'revenu':
         case 'dirigeantAInfluencer': // opinion, Diplomatie, Intrigue, Or
         case 'religieuxAInfluencer': // opinion, Or
         case 'controle':
@@ -5193,6 +5327,9 @@ function posteGarde(p, t=new Array(), o=null) {
             return t;
         case 'guerre': // guerre, Influence,opinion,Diplomatie,Intrigue,Or SI gouvernmt admin
             t.push(new Set().add("aucune fonction SI gouvernement administratif"));
+            return posteGarde(p.slice(1),t, o);
+        case 'cultInnov': //SI Chef culturel : Erudition SINON Promouvoir la culture Intendance, Faire diverger la culture Prestige
+            t.push(new Set().add("aucune fonction SI NON Chef culturel"));
             return posteGarde(p.slice(1),t, o);
         case 'controle':
         case 'assassinat': // Faire démissionner ou Assassiner
@@ -5264,6 +5401,7 @@ function posteMusi(p, t=new Array(), o=null) {
         case 'factionPop': // Opinion populaire
         case 'vassal': //allié, hameçon fort,Intrigue, ami,opinion,Diplomatie,Intrigue amant, prisonnier,Intrigue, terrifié,redoutabilité
         case 'domaine': //Intendance
+        case 'cultInnov': //SI Chef culturel : Erudition SINON Promouvoir la culture Intendance, Faire diverger la culture Prestige
         default:
             return posteMusi(p.slice(1), t, o);
     }
@@ -5317,6 +5455,9 @@ function posteEunuque(p, t=new Array(), o=null) {
             t.push(new Set().add(o[1]));
             t.push(new Set().add("aucune fonction"));
             return t;
+        case 'cultInnov': //SI Chef culturel : Erudition SINON Promouvoir la culture Intendance, Faire diverger la culture Prestige
+            t.push(new Set().add("aucune fonction SI NON Chef culturel"));
+            return posteEunuque(p.slice(1),t,o);
         case 'revenu':
         case 'controle':
         case 'chevalierPartisan': // comme recruterChevalier sans Martialité
@@ -5390,6 +5531,7 @@ function campObjectif(p, t=new Array(), o=null) {
         case 'vassalAInfluencer': //(Faction) opinion,Diplomatie,Intrigue,Or, allié, hameçon fort,Intrigue ami, amant, prisonnier,Intrigue, terrifié,redoutabilité
         case 'vassal': //allié, hameçon fort,Intrigue, ami,opinion,Diplomatie,Intrigue amant, prisonnier,Intrigue, terrifié,redoutabilité
         case 'domaine': //Intendance
+        case 'cultInnov': //SI Chef culturel : Erudition SINON Promouvoir la culture Intendance, Faire diverger la culture Prestige
             return new Array();
         default:
             return campObjectif(p.slice(1));
