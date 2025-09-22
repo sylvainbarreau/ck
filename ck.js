@@ -1039,9 +1039,9 @@ function influence(p, t=new Array(), o=null) {
         eS.add(o[2]+" SEIGNEUR LIGE");
         eS.add(o[4]+" SEIGNEUR LIGE");
         t.push(eS);
-        let eD=new Set().add(o[4]+" LUI Acheter terre");
-        eD.add(o[0]+" LUI Acheter terre");
-        eD.add(o[2]+" LUI Acheter terre");
+        let eD=new Set().add(o[4]+" DIRIGEANT A QUI ACHETER TERRE");
+        eD.add(o[0]+" DIRIGEANT A QUI ACHETER TERRE");
+        eD.add(o[2]+" DIRIGEANT A QUI ACHETER TERRE");
         t.push(eD);
     }
     if (p.length === 0) {
@@ -1481,14 +1481,14 @@ function decisions(p, t=new Array(), o=null) {
         eRienAvent.add("Emprisonner SI Atout \"Sombres connaissances\" ET Outils du tortionnaire");
         eRienAvent.add("éviter Gibier de potence");
         eRienAvent.add("éviter Baroudeur");
-        eRienAvent.add("hameçon LUI Acheter terre/Acquérir une possession");
+        eRienAvent.add("hameçon DIRIGEANT A QUI ACHETER TERRE/ACQUERIR POSSESSION");
         eRienAvent.add("Or");
         eRienAvent.add("hameçon OU secret SI Atout \"Obligations en or\"");
         eRienAvent.add("Intendance");
         eRienAvent.add("emprisonner");
-        eRienAvent.add("langue LUI Acheter terre/Acquérir une possession");
+        eRienAvent.add("langue DIRIGEANT A QUI ACHETER TERRE/ACQUERIR POSSESSION");
         eRienAvent.add("Erudition");
-        eRienAvent.add("Opinion LUI Acheter terre/Acquérir une possession");
+        eRienAvent.add("Opinion DIRIGEANT A QUI ACHETER TERRE/ACQUERIR POSSESSION");
         eRienAvent.add("Diplomatie");
         //eRienAvent.add("Opinion SOUTIEN invasion");
         eRienAvent.add("Martialité SI aventurier");
@@ -6099,6 +6099,7 @@ function evidence(id, texte, ttLeTps=false) {
     liDec('dec', 'dec-p-tr-cop-14'); //Aller dans un lupanar
     liDec('dec', 'dec-p-tr-cop-3'); //Faire la charité", 'dec-p-tr-cop-3
     liDec('dec', 'dec-p-7'); //Tenter de se suicider
+    liDec('dec', 'dec-p-foi-6'); //Faire voeu de pauvreté
     liDec('dec', 'dec-p-tr-cop-2'); //Consommer des gâteaux au haschisch", 'dec-p-tr-cop-2
     liDec('dec', 'dec-p-tr-cop-9'); //Eviter la nourriture, 'dec-p-tr-cop-9
     liDec('dec', 'dec-p-tr-cop-12'); //Evacuez votre stress", 'dec-p-tr-cop-12
