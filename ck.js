@@ -37,7 +37,7 @@ function (p, t=new Array(), o=null) {
         case 'recruterChevalier':
         case 'chevalierPartisan': // comme recruterChevalier sans Martialité
         case 'demande': // Prestige, opinion,Diplomatie,Intrigue,Or
-        case 'demande2': // (contrat, activité, Or, Provisions) Prestige, opinion,Diplomatie,Intrigue
+        case 'demande2': // (activité, contrat, Or, Provisions, mariage) Prestige, opinion,Diplomatie,Intrigue
         case 'proclame':
         case 'declarationGuerre':
         case 'stress':
@@ -761,13 +761,19 @@ function prison(p, t=new Array(), o=null) {
             return prison(p.slice(1), t, o); 
         case 'enfant': // SI aventurier : Prestige, opinion, Or adopté SINON procréer ; survivre
             t.push(new Set().add(o[3]+" SI Atout \"Je suis bien en comparaison\""));
-        t.push(new Set().add(o[3]+" SI Atout \"Sombres connaissances\""));
+            t.push(new Set().add(o[3]+" SI Atout \"Sombres connaissances\""));
             t.push(new Set().add(o[0]+" &gt; Bannir SI adoption/aventurier ET Or"));
             t.push(new Set().add(o[1]+" &gt; Or SI adoption/aventurier"));
             t.push(new Set().add(o[0]+" &gt; hameçon SI adoption/aventurier ET Atout \"Obligations en or\""));
             t.push(new Set().add(o[1]+" &gt; hameçon SI adoption/aventurier ET Atout \"Obligations en or\""));
             t.push(new Set().add(o[0]+" &gt; Bannir SI artefact"));
             t.push(new Set().add("ne rien faire pour attendre rançon SI adoption/aventurier"));
+            o[0] += " SI NON stress";
+            o[1] += " SI NON stress";
+            o[2] += " SI NON stress";
+            o[3] += " SI NON stress";
+            o[4] += " SI NON stress";
+            o[5] += " SI NON stress";
             return prison(p.slice(1), t, o);
         case 'assassinat':
             t.push(new Set().add(o[3]+" SI Atout \"Sombres connaissances\""));
@@ -5947,7 +5953,7 @@ function evidence(id, texte, ttLeTps=false) {
     liOuiNon('Défendre la culture ...', 'dec-a-maj-2', decisionOuNon(decisionsResult,
         new Set(["Construire"]),
         new Set(["Or", "Prestige"])));
-    liOuiNon('Devenir le ...', 'dec-a-maj-3', decisionOuNon(decisionsResult,
+    liOuiNon('Devenir le chevalier de ...', 'dec-a-maj-3', decisionOuNon(decisionsResult,
         new Set(["Construire", "Prouesse", "Artefact", "Légende"]),
         new Set(["Prestige"])));
     liOuiNon('Les voyages de ...', 'dec-a-maj-4', decisionOuNon(decisionsResult,
