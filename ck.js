@@ -5608,6 +5608,63 @@ function activCouro(p, t=new Array(), o=null) {
             return activCouro(p.slice(1), t, o);
     }
 }
+function posteDame(p, t=new Array(), o=null) {
+    let rien=false; if (p.length === 0 && o == null) { rien=true; }
+    if (o == null) { o= ["Rester à l'écoute du terrain",//0 +découverte complot,Intrigue -Prestige
+    ]; }
+    if (rien) {
+        // pas de cb (case terrJureSinonRevendic) : (Convaincre territoire de jure) magnificence,Intendance, Diplomatie (o) SI gouvernmt admin, (Revendication comtale) Erudition
+        //   (Revendiquer trône) Erudition, (Factions), (Revendiquer titre seigneur lige) Prestige, (Me faire déclarer régent) Prestige,opinion lige,opinion régent,Diplomatie,Or, (Bâtiment) Or
+        // aventurier : complot Saisie du pays (Prestige, Intrigue) SINON Acheter terre (éviter Gibier de potence, éviter Baroudeur, hameçon, Or, langue, opinion,Diplomatie) SINON Demander soutien invasion (Prestige), (Bâtiment) Or
+        t.push(new Set().add("aucune fonction"));
+        return t;
+    }
+    if (p.length === 0) {
+        t.push(new Set().add("aucune fonction"));
+        return t;
+    }
+    const pp = p[0];
+    switch(pp) {
+        case 'guerre': // guerre, Influence,opinion,Diplomatie,Intrigue,Or SI gouvernmt admin
+            t.push(new Set().add(o[0]+" SI gouvernement administratif"));
+            return posteDame(p.slice(1), t, o);
+        case 'religieuxAInfluencer': // opinion,Diplomatie,Intrigue,Or,Piété,Erudition
+        case 'aInfluencer': // (alliance) opinion, Diplomatie, Intrigue, Or
+        case 'hamecon':
+        case 'enfant': // SI aventurier : Prestige, opinion,Diplomatie,Intrigue,Or adopté SINON procréer ; survivre
+        case 'agent': // opinion SI vassal direct ou courtisan ou invité CIBLE,Diplomatie,Intrigue (Influence) Or, Prestige, hameçon, Piété (parfois)
+        case 'rancon': // Or, hameçon
+        case 'vassalAInfluencer': //(Faction) opinion,Diplomatie,Intrigue,Or, allié, hameçon fort,Intrigue ami, amant, prisonnier,Intrigue, terrifié,redoutabilité
+        case 'vassal': //allié, hameçon fort,Intrigue, ami,opinion,Diplomatie,Intrigue amant, prisonnier,Intrigue, terrifié,redoutabilité
+            t.push(new Set().add[0]);
+            return t;
+        case 'prestige':
+        case 'denoncer': // Prestige, Renommée 
+            t.push(new Set().add("aucune fonction"));
+            return t;
+        case 'cultInnov': //SI Chef culturel : Erudition SINON Promouvoir la culture Intendance, Faire diverger la culture Prestige
+            t.push(new Set().add("aucune fonction SI NON Chef culturel"));
+            return posteDame(p.slice(1),t,o);
+        case 'demande': // Prestige, opinion,Diplomatie,Intrigue,Or
+        case 'demande2': // (activité, contrat, Or, Provisions, mariage) Prestige, opinion,Diplomatie,Intrigue
+        case 'chevalierPartisan': // comme recruterChevalier sans Martialité
+            return new Array();
+        case 'revenu':
+        case 'controle':
+        case 'assassinat': // Faire démissionner ou Assassiner
+        case 'succession':
+        case 'recruterChevalier':
+        case 'proclame':
+        case 'declarationGuerre':
+        case 'stress':
+        case 'piete': // Piété, Erudition
+        case 'conseiller': // recruter
+        case 'factionPop': // Opinion populaire
+        case 'domaine': //Intendance
+        default:
+            return posteDame(p.slice(1), t, o);
+    }
+}
 function decisionOuNon(res, setOui, setNon) {
     // rechercher dans res si au moins 1 setOui (Mot complet) est avant tout setNon (Mot dans phrase)
     // parcours de res (tableau de Set) :
@@ -5795,11 +5852,12 @@ function evidence(id, texte, ttLeTps=false) {
     liOuiNon("Maître de chasse", 'poste-7', sansDoublon(posteChasse(p), "SINON"));
     liOuiNon("Chroniqueur de la Cour", 'poste-8', sansDoublon(posteChroni(p), "SINON"));
     liOuiNon("Champion personnel", 'poste-9', sansDoublon(posteChamp(p), "SINON"));
-    
+    liOuiNon("Dame d'honneur", 'poste-14', sansDoublon(posteDame(p), "SINON"));
     liOuiNon("Bouffon de la Cour", 'poste-10', sansDoublon(posteBouffon(p), "SINON"));
     liOuiNon("Garde du corps", 'poste-11', sansDoublon(posteGarde(p), "SINON"));
     liOuiNon("Musicien de la Cour", 'poste-12', sansDoublon(posteMusi(p), "SINON"));
     liOuiNon("Chef des eunuques", 'poste-13', sansDoublon(posteEunuque(p), "SINON"));
+    liOuiNon("Architecte royal", 'poste-15', sansDoublon(posteArchi(p), "SINON"));
     liDec('epidResult', 'poste-0');
     liDec('epidResult', 'poste-1');
     liDec('epidResult', 'poste-2'); //Antiquaire
@@ -5811,6 +5869,8 @@ function evidence(id, texte, ttLeTps=false) {
     liDec('epidResult', 'poste-7'); //Maître de chasse
     liDec('epidResult', 'poste-8'); //Chroniqueur de la Cour
     liDec('epidResult', 'poste-9'); //Champion personnel
+    liDec('epidResult', 'poste-14'); //Dame d'honneur
+    liDec('epidResult', 'poste-15'); //Architecte royal
     liDec('epidResult', 'poste-10'); //Bouffon de la Cour
     liDec('epidResult', 'poste-12'); //Musicien de la Cour
     liDec('epidResult', 'poste-11'); //Garde du corps
