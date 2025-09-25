@@ -5665,6 +5665,125 @@ function posteDame(p, t=new Array(), o=null) {
             return posteDame(p.slice(1), t, o);
     }
 }
+function posteArchi(p, t=new Array(), o=null) {
+    let rien=false; if (p.length === 0 && o == null) { rien=true; }
+    if (o == null) { o= ["Fortifier les terres",//0 +garnison -or
+        "Travaux publics"//1 +développement -or
+    ]; }
+    if (rien) {
+        // pas de cb (case terrJureSinonRevendic) : (Convaincre territoire de jure) magnificence,Intendance, Diplomatie (o) SI gouvernmt admin, (Revendication comtale) Erudition
+        //   (Revendiquer trône) Erudition, (Factions), (Revendiquer titre seigneur lige) Prestige, (Me faire déclarer régent) Prestige,opinion lige,opinion régent,Diplomatie,Or, (Bâtiment) Or
+        // aventurier : complot Saisie du pays (Prestige, Intrigue) SINON Acheter terre (éviter Gibier de potence, éviter Baroudeur, hameçon, Or, langue, opinion,Diplomatie) SINON Demander soutien invasion (Prestige), (Bâtiment) Or
+        t.push(new Set().add("aucune fonction"));
+        return t;
+    }
+    if (p.length === 0) {
+        t.push(new Set().add(o[1]));
+        return t;
+    }
+    const pp = p[0];
+    switch(pp) {
+        case 'guerre': // guerre, Influence,opinion,Diplomatie,Intrigue,Or SI gouvernmt admin
+            t.push(new Set().add(o[0]));
+            return t;
+        case 'declarationGuerre':
+            t.push(new Set().add(o[1]));
+            return t;
+        case 'revenu':
+        case 'religieuxAInfluencer': // opinion,Diplomatie,Intrigue,Or,Piété,Erudition
+        case 'aInfluencer': // (alliance) opinion, Diplomatie, Intrigue, Or
+        case 'agent': // opinion SI vassal direct ou courtisan ou invité CIBLE,Diplomatie,Intrigue (Influence) Or, Prestige, hameçon, Piété (parfois)
+        case 'rancon': // Or, hameçon
+        case 'vassalAInfluencer': //(Faction) opinion,Diplomatie,Intrigue,Or, allié, hameçon fort,Intrigue ami, amant, prisonnier,Intrigue, terrifié,redoutabilité
+            t.push(new Set().add("aucune fonction"));
+            return t;
+        case 'chevalierPartisan': // comme recruterChevalier sans Martialité
+        case 'demande': // Prestige, opinion,Diplomatie,Intrigue,Or
+        case 'demande2': // (activité, contrat, Or, Provisions, mariage) Prestige, opinion,Diplomatie,Intrigue
+            return new Array();
+        case 'controle':
+        case 'assassinat': // Faire démissionner ou Assassiner
+        case 'succession':
+        case 'hamecon':
+        case 'recruterChevalier':
+        case 'proclame':
+        case 'stress':
+        case 'prestige':
+        case 'enfant': // SI aventurier : Prestige, opinion,Diplomatie,Intrigue,Or adopté SINON procréer ; survivre
+        case 'piete': // Piété, Erudition
+        case 'denoncer': // Prestige, Renommée 
+        case 'conseiller': // recruter
+        case 'factionPop': // Opinion populaire
+        case 'vassal': //allié, hameçon fort,Intrigue, ami,opinion,Diplomatie,Intrigue amant, prisonnier,Intrigue, terrifié,redoutabilité
+        case 'domaine': //Intendance
+        case 'cultInnov': //SI Chef culturel : Erudition SINON Promouvoir la culture Intendance, Faire diverger la culture Prestige
+        default:
+            return posteArchi(p.slice(1), t, o);
+    }
+}
+function posteEch(p, t=new Array(), o=null) {
+    let rien=false; if (p.length === 0 && o == null) { rien=true; }
+    if (o == null) { o= ["Flatter les dignitaires",//0 +complot personnel -prestige
+        "Collecter des taxes supplémentaires"//1 +or -prestige,opinion vassal
+    ]; }
+    if (rien) {
+        // pas de cb (case terrJureSinonRevendic) : (Convaincre territoire de jure) magnificence,Intendance, Diplomatie (o) SI gouvernmt admin, (Revendication comtale) Erudition
+        //   (Revendiquer trône) Erudition, (Factions), (Revendiquer titre seigneur lige) Prestige, (Me faire déclarer régent) Prestige,opinion lige,opinion régent,Diplomatie,Or, (Bâtiment) Or
+        // aventurier : complot Saisie du pays (Prestige, Intrigue) SINON Acheter terre (éviter Gibier de potence, éviter Baroudeur, hameçon, Or, langue, opinion,Diplomatie) SINON Demander soutien invasion (Prestige), (Bâtiment) Or
+        t.push(new Set().add("aucune fonction"));
+        return t;
+    }
+    if (p.length === 0) {
+        t.push(new Set().add("aucune fonction"));
+        return t;
+    }
+    const pp = p[0];
+    switch(pp) {
+        case 'guerre': // guerre, Influence,opinion,Diplomatie,Intrigue,Or SI gouvernmt admin
+            t.push(new Set().add(o[0]+" SI gouvernement administratif"));
+            return posteEch(p.slice(1), t, o);
+        case 'revenu':
+        case 'rancon': // Or, hameçon
+            t.push(new Set().add(o[1]));
+            return t;
+        case 'religieuxAInfluencer': // opinion,Diplomatie,Intrigue,Or,Piété,Erudition
+        case 'aInfluencer': // (alliance) opinion, Diplomatie, Intrigue, Or
+        case 'agent': // opinion SI vassal direct ou courtisan ou invité CIBLE,Diplomatie,Intrigue (Influence) Or, Prestige, hameçon, Piété (parfois)
+        case 'vassalAInfluencer': //(Faction) opinion,Diplomatie,Intrigue,Or, allié, hameçon fort,Intrigue ami, amant, prisonnier,Intrigue, terrifié,redoutabilité
+        case 'vassal': //allié, hameçon fort,Intrigue, ami,opinion,Diplomatie,Intrigue amant, prisonnier,Intrigue, terrifié,redoutabilité
+            t.push(new Set().add(o[0]));
+            return t;
+        case 'prestige':
+        case 'denoncer': // Prestige, Renommée 
+            t.push(new Set().add("aucune fonction"));
+            return t;
+        case 'enfant': // SI aventurier : Prestige, opinion,Diplomatie,Intrigue,Or adopté SINON procréer ; survivre
+            t.push(new Set().add("aucune fonction SI aventurier"));
+            t.push(new Set().add(o[0]));
+            return t;
+        case 'cultInnov': //SI Chef culturel : Erudition SINON Promouvoir la culture Intendance, Faire diverger la culture Prestige
+            t.push(new Set().add("aucune fonction SI NON Chef culturel"));
+            return posteEch(p.slice(1),t,o);
+        case 'chevalierPartisan': // comme recruterChevalier sans Martialité
+        case 'demande': // Prestige, opinion,Diplomatie,Intrigue,Or
+        case 'demande2': // (activité, contrat, Or, Provisions, mariage) Prestige, opinion,Diplomatie,Intrigue
+            return new Array();
+        case 'controle':
+        case 'assassinat': // Faire démissionner ou Assassiner
+        case 'succession':
+        case 'hamecon':
+        case 'recruterChevalier':
+        case 'proclame':
+        case 'declarationGuerre':
+        case 'stress':
+        case 'piete': // Piété, Erudition
+        case 'conseiller': // recruter
+        case 'factionPop': // Opinion populaire
+        case 'domaine': //Intendance
+        default:
+            return posteEch(p.slice(1), t, o);
+    }
+}
 function decisionOuNon(res, setOui, setNon) {
     // rechercher dans res si au moins 1 setOui (Mot complet) est avant tout setNon (Mot dans phrase)
     // parcours de res (tableau de Set) :
@@ -5858,6 +5977,7 @@ function evidence(id, texte, ttLeTps=false) {
     liOuiNon("Musicien de la Cour", 'poste-12', sansDoublon(posteMusi(p), "SINON"));
     liOuiNon("Chef des eunuques", 'poste-13', sansDoublon(posteEunuque(p), "SINON"));
     liOuiNon("Architecte royal", 'poste-15', sansDoublon(posteArchi(p), "SINON"));
+    liOuiNon("Echanson", 'poste-16', sansDoublon(posteEch(p), "SINON"));
     liDec('epidResult', 'poste-0');
     liDec('epidResult', 'poste-1');
     liDec('epidResult', 'poste-2'); //Antiquaire
@@ -5871,8 +5991,9 @@ function evidence(id, texte, ttLeTps=false) {
     liDec('epidResult', 'poste-9'); //Champion personnel
     liDec('epidResult', 'poste-14'); //Dame d'honneur
     liDec('epidResult', 'poste-15'); //Architecte royal
-    liDec('epidResult', 'poste-10'); //Bouffon de la Cour
     liDec('epidResult', 'poste-12'); //Musicien de la Cour
+    liDec('epidResult', 'poste-16'); //Echanson
+    liDec('epidResult', 'poste-10'); //Bouffon de la Cour
     liDec('epidResult', 'poste-11'); //Garde du corps
     // Ruler - Décisions mineures
         // Recherche de médecin, Rechercher Caravan Master, Recherche de nourrice
