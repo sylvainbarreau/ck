@@ -4211,17 +4211,17 @@ function activTournee(p, t=new Array(), o=null) {
 }
 function intentionTournee(p, t=new Array(), o=null) {
     let rien=false; if (p.length === 0 && o == null) { rien=true; }
-    if (o == null) o = ["Se détendre",//0
-        "S'adonner à la luxure",//1
-        "Faire preuve d'altruisme",//2
-        "Rendre justice",//3
-        "Répandre la légende",//4
-        "Se légitimer"//5
+    if (o == null) o = ["Se détendre",//0 ++stress
+        "S'adonner à la luxure",//1 +procréer,stress
+        "Faire preuve d'altruisme",//2 +opinion populaire,piété,stress
+        "Rendre justice",//3 +contrôle,stress
+        "Répandre la légende",//4 +légende
+        "Se légitimer"//5 +légitimité
     ];
     if (rien) {
         // pas de cb (case terrJureSinonRevendic) : (Convaincre territoire de jure) magnificence,Intendance, Diplomatie (o) SI gouvernmt admin, (Revendication comtale) Erudition
         //   (Revendiquer trône) Erudition, (Factions), (Revendiquer titre seigneur lige) Prestige, (Me faire déclarer régent) Prestige,opinion,Diplomatie,Or, (Bâtiment) Or
-        t.push(new Set().add("A DEFINIR"));
+        t.push(new Set().add(o[3]));
         return t;
     }
     if (p.length === 0) {
@@ -4277,8 +4277,8 @@ function intentionTournee(p, t=new Array(), o=null) {
 }
 function suite(p, t=new Array(), o=null) {
     let rien=false; if (p.length === 0 && o == null) { rien=true; }
-    if (o == null) o = ["Suite nombreuse",//0
-        "Entourage modeste",//1
+    if (o == null) o = ["Suite nombreuse",//0 ++prestige --or
+        "Entourage modeste",//1 +prestige -or
         "Suite modeste"//2
     ];
     if (rien) {
@@ -4295,7 +4295,6 @@ function suite(p, t=new Array(), o=null) {
     }
     const pp = p[0];
     switch(pp) {
-        case 'declarationGuerre':
         case 'guerre': // guerre, Influence,opinion,Diplomatie,Intrigue,Or SI gouvernmt admin
         case 'dirigeantAInfluencer': // opinion, Diplomatie, Intrigue, Or
             case 'aInfluencer': // opinion, Diplomatie, Intrigue, Or
@@ -4324,16 +4323,18 @@ function suite(p, t=new Array(), o=null) {
             case 'demande': // Prestige, opinion, Or
             case 'demande2':
                 return new Array();
-            default:
+        case 'declarationGuerre':
+        default:
             return suite(p.slice(1), t, o);
     }
 }
 function luxe(p, t=new Array(), o=null) {
     let rien=false; if (p.length === 0 && o == null) { rien=true; }
-    if (o == null) o = ["Mobilier en excès",//0
-        "Mobilier luxueux",//1
-        "Luxe extravagant",//2
-        "Biens de luxe essentiels"//3
+    if (o == null) o = ["Mobilier en excès",//0 ++++objectif tournée,prestige ----or
+        "Mobilier luxueux",//1 +++objectif tournée,prestige ---or
+        "Luxe extravagant",//2 ++objectif tournée --or
+        "Biens de luxe essentiels",//3 +objectif tournée -or
+        "Aucun luxe"//4 -or
     ];
     if (rien) {
         // pas de cb (case terrJureSinonRevendic) : (Convaincre territoire de jure) magnificence,Intendance, Diplomatie (o) SI gouvernmt admin, (Revendication comtale) Erudition
@@ -4357,15 +4358,17 @@ function luxe(p, t=new Array(), o=null) {
         case 'vassalAInfluencer': //(Faction) opinion,Diplomatie,Intrigue,Or, allié, hameçon fort,Intrigue ami, amant, prisonnier,Intrigue, terrifié,redoutabilité
         case 'vassalSOppose':
         case 'factionFoi':
-        case 'prestige':
-            case 'denoncer': // Prestige, Renommée 
-            t.push(new Set().add("Mobilier en excès"));
-            t.push(new Set().add("Mobilier luxueux"));
+        case 'denoncer': // Prestige, Renommée 
+            t.push(new Set().add(o[0]));
+            t.push(new Set().add(o[1]));
             t.push(new Set().add("Luxe extravagant"));
             t.push(new Set().add("Biens de luxe essentiels"));
             return luxe(p.slice(1), t, o);
+        case 'prestige':
+            t.push(new Set().add(o[0]));
+            t.push(new Set().add(o[1]));
+            return luxe(p.slice(1), t, o);    
         case 'assassinat':
-        case 'declarationGuerre':
         case 'guerre': // guerre, Influence,opinion,Diplomatie,Intrigue,Or SI gouvernmt admin
         case 'dirigeantAInfluencer': // opinion, Diplomatie, Intrigue, Or
         case 'aInfluencer': // (alliance) opinion, Diplomatie, Intrigue, Or,
@@ -4384,6 +4387,7 @@ function luxe(p, t=new Array(), o=null) {
             case 'demande': // Prestige, opinion, Or
             case 'demande2':
                 return new Array();
+        case 'declarationGuerre':
         default:
             return luxe(p.slice(1), t, o);
     }
@@ -5784,6 +5788,62 @@ function posteEch(p, t=new Array(), o=null) {
             return posteEch(p.slice(1), t, o);
     }
 }
+function postePoete(p, t=new Array(), o=null) {
+    let rien=false; if (p.length === 0 && o == null) { rien=true; }
+    if (o == null) { o= ["Exalter la légende dans le pays",//0 +légende -or
+        "Répandre la légende à l'étranger",//1 +légende -or
+        "Ecrire de la poésie"//2 +légitimité,piété,avantage guerre,opinion -or
+    ]; }
+    if (rien) {
+        // pas de cb (case terrJureSinonRevendic) : (Convaincre territoire de jure) magnificence,Intendance, Diplomatie (o) SI gouvernmt admin, (Revendication comtale) Erudition
+        //   (Revendiquer trône) Erudition, (Factions), (Revendiquer titre seigneur lige) Prestige, (Me faire déclarer régent) Prestige,opinion lige,opinion régent,Diplomatie,Or, (Bâtiment) Or
+        // aventurier : complot Saisie du pays (Prestige, Intrigue) SINON Acheter terre (éviter Gibier de potence, éviter Baroudeur, hameçon, Or, langue, opinion,Diplomatie) SINON Demander soutien invasion (Prestige), (Bâtiment) Or
+        t.push(new Set().add(o[2]+" SI NON aventurier"));
+        t.push(new Set().add("aucune fonction"));
+        return t;
+    }
+    if (p.length === 0) {
+        t.push(new Set().add(o[2]));
+        return t;
+    }
+    const pp = p[0];
+    switch(pp) {
+        case 'guerre': // guerre, Influence,opinion,Diplomatie,Intrigue,Or SI gouvernmt admin
+        case 'religieuxAInfluencer': // opinion,Diplomatie,Intrigue,Or,Piété,Erudition
+        case 'aInfluencer': // (alliance) opinion, Diplomatie, Intrigue, Or
+        case 'piete': // Piété, Erudition
+        case 'agent': // opinion SI vassal direct ou courtisan ou invité CIBLE,Diplomatie,Intrigue (Influence) Or, Prestige, hameçon, Piété (parfois)
+        case 'vassalAInfluencer': //(Faction) opinion,Diplomatie,Intrigue,Or, allié, hameçon fort,Intrigue ami, amant, prisonnier,Intrigue, terrifié,redoutabilité
+        case 'vassal': //allié, hameçon fort,Intrigue, ami,opinion,Diplomatie,Intrigue amant, prisonnier,Intrigue, terrifié,redoutabilité
+            t.push(new Set().add(o[2]));
+            return t;
+        case 'revenu':
+        case 'rancon': // Or, hameçon
+            t.push(new Set().add("aucune fonction"));
+            return t;
+        case 'chevalierPartisan': // comme recruterChevalier sans Martialité
+        case 'demande': // Prestige, opinion,Diplomatie,Intrigue,Or
+        case 'demande2': // (activité, contrat, Or, Provisions, mariage) Prestige, opinion,Diplomatie,Intrigue
+            return new Array();
+        case 'controle':
+        case 'assassinat': // Faire démissionner ou Assassiner
+        case 'succession':
+        case 'hamecon':
+        case 'recruterChevalier':
+        case 'proclame':
+        case 'declarationGuerre':
+        case 'stress':
+        case 'prestige':
+        case 'enfant': // SI aventurier : Prestige, opinion,Diplomatie,Intrigue,Or adopté SINON procréer ; survivre
+        case 'denoncer': // Prestige, Renommée 
+        case 'conseiller': // recruter
+        case 'factionPop': // Opinion populaire
+        case 'domaine': //Intendance
+        case 'cultInnov': //SI Chef culturel : Erudition SINON Promouvoir la culture Intendance, Faire diverger la culture Prestige
+        default:
+            return postePoete(p.slice(1), t, o);
+    }
+}
 function decisionOuNon(res, setOui, setNon) {
     // rechercher dans res si au moins 1 setOui (Mot complet) est avant tout setNon (Mot dans phrase)
     // parcours de res (tableau de Set) :
@@ -5815,14 +5875,19 @@ function liDec(idPage, id) {
     const value = localStorage.getItem(id);
     const jsonData = JSON.parse(value);
     let listeDecisions = document.getElementById(idPage);
-    let li = document.getElementById(id); console.log(li);
+    let li = document.getElementById(id);
     // si élément html id n'existe pas, le créer :
     if (!li) {
         li = document.createElement('li');
-        li.setAttribute('id', id);
+        li.textContent = jsonData.lib + ': ';
+        const span = document.createElement('span');
+        span.id = id;
+        span.textContent = jsonData.ouiNon;
+        li.appendChild(span);
         listeDecisions.appendChild(li);
     }
-    evidence(id, jsonData.lib+":"+jsonData.ouiNon);
+    console.log(id, typeof jsonData.ouiNon === "boolean" ? String(jsonData.ouiNon) : jsonData.ouiNon);
+    evidence(id, typeof jsonData.ouiNon === "boolean" ? String(jsonData.ouiNon) : jsonData.ouiNon);
 }
 function liOuiNon(lib, id, ouiNon) {
     const data = {
@@ -5835,11 +5900,13 @@ function liOuiNon(lib, id, ouiNon) {
 }
 function evidence(id, texte, ttLeTps=false) {
     let e=document.getElementById(id);
-    if(ttLeTps || (e.innerHTML != texte) && (e.innerHTML != '<strong>'+texte+'</strong>')) {
-        console.log(e.innerHTML," diff ",texte);
-        texte = '<strong>'+texte+'</strong>';
+    // Remplacer les entités HTML <br> par la balise <br> réelle pour la comparaison
+    const inner = e.innerHTML.replace(/&lt;br&gt;/g, "<br>").replace(/<br\s*\/?>/gi, "<br>");
+    console.log(inner, " diff? ", texte);
+    if (ttLeTps || (inner != texte) && (inner != '<strong>' + texte + '</strong>')) {
+        texte = '<strong>' + texte + '</strong>';
     }
-    e.innerHTML=texte;
+    e.innerHTML = texte;
 }
   // Maintenant, la fonction pour mettre à jour l'interface utilisateur et afficher les résultats :
   function calculate() {
@@ -5978,6 +6045,7 @@ function evidence(id, texte, ttLeTps=false) {
     liOuiNon("Chef des eunuques", 'poste-13', sansDoublon(posteEunuque(p), "SINON"));
     liOuiNon("Architecte royal", 'poste-15', sansDoublon(posteArchi(p), "SINON"));
     liOuiNon("Echanson", 'poste-16', sansDoublon(posteEch(p), "SINON"));
+    liOuiNon("Poète de la Cour", 'poste-17', sansDoublon(postePoete(p), "SINON"));
     liDec('epidResult', 'poste-0');
     liDec('epidResult', 'poste-1');
     liDec('epidResult', 'poste-2'); //Antiquaire
@@ -5991,6 +6059,7 @@ function evidence(id, texte, ttLeTps=false) {
     liDec('epidResult', 'poste-9'); //Champion personnel
     liDec('epidResult', 'poste-14'); //Dame d'honneur
     liDec('epidResult', 'poste-15'); //Architecte royal
+    liDec('epidResult', 'poste-17'); //Poète de la Cour
     liDec('epidResult', 'poste-12'); //Musicien de la Cour
     liDec('epidResult', 'poste-16'); //Echanson
     liDec('epidResult', 'poste-10'); //Bouffon de la Cour
@@ -6042,8 +6111,12 @@ function evidence(id, texte, ttLeTps=false) {
     liOuiNon("Commander une épopée familiale", 'dec-d-min-av-1', decisionOuNon(decisionsResult,
         new Set(["Prestige", "Artefact"]),
         new Set(["Or"])));
-    liOuiNon("Sell Trivial Titles", 'dec-d-min-av-2', "A DEFINIR");
-    liOuiNon("Extort Subjects", 'dec-d-min-av-3', "A DEFINIR");
+    liOuiNon("Vendre des titres sans importance", 'dec-d-min-av-2', decisionOuNon(decisionsResult,
+        new Set(["Or"]),
+        new Set(["Prestige"])));
+    liOuiNon("Extorquer des sujets", 'dec-d-min-av-3', decisionOuNon(decisionsResult,
+        new Set(["Or"]),
+        null));
     liOuiNon("Local Arbitration", 'dec-d-min-av-4', "A DEFINIR");
     // Ruler - Décisions mineures - cour royale
     liOuiNon("Find Court Language Linguist", 'dec-d-min-cour-1', "A DEFINIR");
@@ -6354,6 +6427,8 @@ function evidence(id, texte, ttLeTps=false) {
     liDec('dec', 'dec-d-min-21'); //S'entraîner pour un tournoi", 'dec-d-min-21
     liDec('dec', 'dec-p-tr-2'); //Vivre la communion mystique", 'dec-p-tr-2
     liDec('dec', 'dec-d-min-cour-2'); //Ordonner une expulsion massive", 'dec-d-min-cour-2
+    liDec('dec', 'dec-d-min-av-2'); //Vendre des titres sans importance", 'dec-d-min-av-2
+    liDec('dec', 'dec-d-min-av-3'); //Extorquer des sujets", 'dec-d-min-av-3
     liDec('dec', 'dec-p-2'); //Emprunter de l'or à l'Ordre sacré", 'dec-p-2
     liDec('dec', 'dec-d-min-13'); //Révoquer le bail de l'ordre sacré 'dec-d-min-13'
     liDec('dec', 'dec-p-av-1') //Embrasser le célibat", 'dec-p-av-1'
@@ -6426,7 +6501,6 @@ function evidence(id, texte, ttLeTps=false) {
     liDec('activitesGrand', 'act-g-1'); //Grande tournée
     liDec('activitesGrand', 'act-g-0'); //Grand tournoi
     liDec('activites', 'act-9'); //Rencontre des pairs
-    liDec('activites', 'act-1'); //Séjour universitaire
     liDec('activites', 'act-0'); //Festin
     liDec('activites', 'act-2'); //Fête de camp
     liDec('activites', 'act-7'); //Funérailles
@@ -6435,6 +6509,7 @@ function evidence(id, texte, ttLeTps=false) {
     liDec('activites', 'act-8'); //Inspection
     liDec('activites', 'act-5'); //Expédition vers un monument
     liDec('activites', 'act-6'); //Pélerinage
+    liDec('activites', 'act-1'); //Séjour universitaire
     }
 function sansDoublon(tab, liaison="") {
     let texte = "";
