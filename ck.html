@@ -138,19 +138,19 @@
       <h1>Courtisans (Camp)</h1>
       <h2>Postes de la cour (Officiers)</h2>
       <ul>
-        <li id="posteMedecin"></li>
-        <li id="posteCaravanier"></li>
-        <li id="posteAntiq"></li>
-        <li id="posteSenech"></li>
-        <li id="posteProf"></li>
-        <li id="posteNour"></li>
-        <li id="posteEcuyer"></li>
-        <li id="posteChasse"></li>
-        <li id="posteChroniqueur"></li>
-        <li id="posteChampion"></li>
-        <li id="posteDame"></li>
-        <li id="posteBouffon"></li>
-        <li id="posteGardeCorps"></li>
+        <li><h3>Médecin personnel</h3><p id="epidResult"></p></li>
+        <li><h3>Maître-caravanier</h3><p id="posteCaravanierResult"></p></li>
+        <li><h3>Antiquaire</h3><p id="posteAntiqResult"></p></li>
+        <li><h3>Sénéchal</h3><p id="posteSenech"></p></li>
+        <li><h3>Professeur</h3><p id="posteProf"></p></li>
+        <li><h3>Nourrice</h3><p id="posteNourResult"></p></li>
+        <li><h3>Grand écuyer</h3><p id="posteEcuyerResult"></p></li>
+        <li><h3>Maître de chasse</h3><p id="posteChasse"></p></li>
+        <li><h3>Chroniqueur de la Cour</h3><p id="posteChroniqueur"></p></li>
+        <li><h3>Champion personnel</h3><p id="posteChampResult"></p></li>
+        <li><h3>Dame d'honneur</h3><p id="posteDame"></p></li>
+        <li><h3>Bouffon de la Cour</h3><p id="posteBouffon"></p></li>
+        <li><h3>Garde du corps</h3><p id="posteGardeCorps"></p></li>
       </ul>
       <h2>Prisonniers</h2>
       <p id="prisonResult"></p>
@@ -364,7 +364,7 @@
     // Votre tableau de valeurs JavaScript :
     const domaines = new Map();
     // situation annoncée (si projet long terme) OU descendre à l'option
-    domaines.set('aInfluencer', "alliance (ou pardon)");
+    domaines.set('aInfluencer', "Alliance");
     domaines.set('recruterChevalier', 'Chevalier');
     domaines.set('chevalierPartisan', 'Chevalier (aventurier)');
     domaines.set('proclame', 'Chevalier proclamé');

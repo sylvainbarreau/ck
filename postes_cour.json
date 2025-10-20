@@ -2,7 +2,7 @@
     "epidemies": {
         "positionVue": {
             "categories": ["Postes de la cour"],
-            "idElement": "posteMedecin"
+            "idElement": "epidResult"
         },
         "siRien": "Faire de la recherche avancée",
         "defaut": "Faire de la recherche avancée",
@@ -128,7 +128,7 @@
     "posteCaravanier": {
         "positionVue": {
             "categories": ["Postes de la cour"],
-            "idElement": "posteCaravanier"
+            "idElement": "posteCaravanierResult"
         },
         "siRien": "aucune fonction",
         "defaut": "aucune fonction",
@@ -206,7 +206,7 @@
     "posteAntiq": {
         "positionVue": {
             "categories": ["Postes de la cour"],
-            "idElement": "posteAntiq"
+            "idElement": "posteAntiqResult"
         },
         "siRien": "Améliorer les artefacts",
         "defaut": "Exposer les objets illustres",
@@ -326,7 +326,7 @@
     "posteNour": {
         "positionVue": {
             "categories": ["Postes de la cour"],
-            "idElement": "posteNour"
+            "idElement": "posteNourResult"
         },
         "siRien": "aucune fonction",
         "defaut": "aucune fonction",
@@ -404,7 +404,7 @@
     "posteEcuyer": {
         "positionVue": {
             "categories": ["Postes de la cour"],
-            "idElement": "posteEcuyer"
+            "idElement": "posteEcuyerResult"
         },
         "siRien": "aucune fonction",
         "defaut": "aucune fonction",
@@ -488,7 +488,7 @@
     "posteChamp": {
         "positionVue": {
             "categories": ["Postes de la cour"],
-            "idElement": "posteChampion"
+            "idElement": "posteChampResult"
         },
         "siRien": "Concourir en son nom",
         "defaut": "Concourir en son nom",
