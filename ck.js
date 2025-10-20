@@ -23,33 +23,33 @@ function (p, t=new Array(), o=null) {
         case 'dirigeantAInfluencer': // opinion, Diplomatie, Intrigue, Or
         case 'influence' : // besoin agent //influence SI vassal direct LUI OU courtisan LUI OU invité LUI, Influence, Or, Prestige, hameçon
         case 'erudition': *
+        case 'demande': // Prestige, opinion,Diplomatie,Intrigue,Or
+        case 'demande2': // (activité, contrat, Or, Provisions, mariage) Prestige, opinion,Diplomatie,Intrigue
         A SUPPRIMER ? case 'survie':
         case 'perteTerresRevoquer': // accorder titre SINON chercher secret,Opinion,Diplomatie,Intrigue,Or,hameçon,Intrigue (pour révoquer)
          *
-        case 'guerre': // guerre, Influence,opinion,Diplomatie,Intrigue,Or SI gouvernmt admin
+        case 'guerre': // guerre, Influence,opinion,Diplomatie,Intrigue SI gouvernmt admin
+        case 'declarationGuerre':
         case 'revenu':
         case 'controle':
         case 'assassinat': // Faire démissionner ou Assassiner
         case 'succession':
-        case 'religieuxAInfluencer': // opinion,Diplomatie,Intrigue,Or,Piété,Erudition
-        case 'aInfluencer': // (alliance) opinion, Diplomatie, Intrigue, Or
+        case 'religieuxAInfluencer': // opinion,Diplomatie,Intrigue,Piété,Erudition
+        case 'aInfluencer': // (alliance) opinion, Diplomatie, Intrigue
         case 'hamecon':
         case 'recruterChevalier':
         case 'chevalierPartisan': // comme recruterChevalier sans Martialité
-        case 'demande': // Prestige, opinion,Diplomatie,Intrigue,Or
-        case 'demande2': // (activité, contrat, Or, Provisions, mariage) Prestige, opinion,Diplomatie,Intrigue
         case 'proclame':
-        case 'declarationGuerre':
         case 'stress':
         case 'prestige':
-        case 'enfant': // SI aventurier : Prestige, opinion,Diplomatie,Intrigue,Or adopté SINON procréer ; survivre
+        case 'enfant': // SI aventurier : Prestige, opinion,Diplomatie,Intrigue adopté SINON procréer ; survivre
         case 'piete': // Piété, Erudition
         case 'denoncer': // Prestige, Renommée 
         case 'agent': // opinion SI vassal direct ou courtisan ou invité CIBLE,Diplomatie,Intrigue (Influence) Or, Prestige, hameçon, Piété (parfois)
         case 'rancon': // Or, hameçon
         case 'conseiller': // recruter
         case 'factionPop': // Opinion populaire
-        case 'vassalAInfluencer': //(Faction) opinion,Diplomatie,Intrigue,Or, allié, hameçon fort,Intrigue ami, amant, prisonnier,Intrigue, terrifié,redoutabilité
+        case 'vassalAInfluencer': //(Faction) opinion,Diplomatie,Intrigue, allié, hameçon fort,Intrigue ami, amant, prisonnier,Intrigue, terrifié,redoutabilité
         case 'vassal': //allié, hameçon fort,Intrigue, ami,opinion,Diplomatie,Intrigue amant, prisonnier,Intrigue, terrifié,redoutabilité
         case 'domaine': //Intendance
         case 'cultInnov': //SI Chef culturel : Erudition SINON Promouvoir la culture Intendance, Faire diverger la culture Prestige
@@ -992,7 +992,7 @@ function secrets(p, t=new Array(), o=null) {
             t.push(new Set().add("Révéler SI emprisonnable ET Atout \"Sombres connaissances\""));
             t.push(new Set().add("Faire chanter SI chevalier possible"));
             t.push(new Set().add("Révéler SI emprisonnable ET chevalier possible"));
-            return prison(p.slice(1), t, o);
+            return secrets(p.slice(1), t, o);
             case 'piete': // Piété, Erudition
             case 'factionPop': // Opinion populaire
         case 'domaine': //Intendance
@@ -5785,8 +5785,8 @@ function posteDame(p, t=new Array(), o=null) {
         case 'rancon': // Or, hameçon
         case 'vassalAInfluencer': //(Faction) opinion,Diplomatie,Intrigue,Or, allié, hameçon fort,Intrigue ami, amant, prisonnier,Intrigue, terrifié,redoutabilité
         case 'vassal': //allié, hameçon fort,Intrigue, ami,opinion,Diplomatie,Intrigue amant, prisonnier,Intrigue, terrifié,redoutabilité
-            t.push(new Set().add[0]);
-            return t;
+            t.push(new Set().add([0]));
+            return posteDame(p.slice(1),t,o);
         case 'prestige':
         case 'denoncer': // Prestige, Renommée 
         case 'prison': //Prestige,Intrigue,opinion,Diplomatie,puissance militaire
@@ -6151,8 +6151,13 @@ function evidence(id, texte, ttLeTps=false) {
       // Affichage du tableau des valeurs dans la console à titre d'exemple
     console.log(p);
     //const successions = document.getElementById('successions').valueAsNumber;
-  
-    //const p = prios([domainePictoOuGuerre], domaineSituation, successions);
+
+    // Utiliser le système data-driven pour afficher automatiquement les résultats
+    if (typeof displayAllResults === 'function') {
+        displayAllResults(p);
+    }
+
+    // Fonctions encore en JavaScript (non migrées)
     const militaireResult = militaire(p);
     const armeesResult = militaireAuto(p);
     const conseilConjointResult = conjoint(p);
@@ -6200,22 +6205,23 @@ function evidence(id, texte, ttLeTps=false) {
     const funResult = activFun(p);
     const campObjectifResult = campObjectif(p);
     // Afficher les résultats dans la section des résultats sur la page
-    evidence('militaireResult', sansDoublon(militaireResult));
-    evidence('comm', sansDoublon(armeesResult));
-    evidence('conseilConjointResult', sansDoublon(conseilConjointResult));
-    evidence('conseilChancelierResult', sansDoublon(conseilChancelierResult, "SINON"));
-    evidence('conseilMarechalResult', sansDoublon(conseilMarechalResult, "SINON"));
-    evidence('religieuxResult', sansDoublon(religieuxResult, "SINON"));
-    evidence('intendantResult', sansDoublon(intendantResult, "SINON"));
-    evidence('espionResult', sansDoublon(espionResult, "SINON"));
-    evidence('prisonResult', sansDoublon(prisonResult, "SINON"));
-    evidence('contreResult', sansDoublon(contreResult, "SINON"));
-    evidence('hostileResult', sansDoublon(hostileResult, "SINON"));
-    evidence('influenceResult', sansDoublon(influenceResult, "SINON"));
-    evidence('politiqueResult', sansDoublon(politiqueResult, "SINON"));
-    evidence('secretsResult', sansDoublon(secretsResult, "SINON"));
-    evidence('hamecResult', sansDoublon(hamecResult, "SINON"));
-    evidence('decisions', sansDoublon(decisionsResult, "PUIS"));
+    // NOTE: Les fonctions suivantes sont maintenant gérées automatiquement par displayAllResults()
+    // evidence('militaireResult', sansDoublon(militaireResult));
+    // evidence('comm', sansDoublon(armeesResult));
+    // evidence('conseilConjointResult', sansDoublon(conseilConjointResult));
+    // evidence('conseilChancelierResult', sansDoublon(conseilChancelierResult, "SINON"));
+    // evidence('conseilMarechalResult', sansDoublon(conseilMarechalResult, "SINON"));
+    // evidence('religieuxResult', sansDoublon(religieuxResult, "SINON"));
+    // evidence('intendantResult', sansDoublon(intendantResult, "SINON"));
+    // evidence('espionResult', sansDoublon(espionResult, "SINON"));
+    // evidence('prisonResult', sansDoublon(prisonResult, "SINON"));
+    // evidence('contreResult', sansDoublon(contreResult, "SINON"));
+    // evidence('hostileResult', sansDoublon(hostileResult, "SINON"));
+    // evidence('influenceResult', sansDoublon(influenceResult, "SINON"));
+    // evidence('politiqueResult', sansDoublon(politiqueResult, "SINON"));
+    // evidence('secretsResult', sansDoublon(secretsResult, "SINON"));
+    // evidence('hamecResult', sansDoublon(hamecResult, "SINON"));
+    // evidence('decisions', sansDoublon(decisionsResult, "PUIS"));
     evidence('cour', sansDoublon(courResult, "SINON"), true);
     evidence('mode', sansDoublon(commoditesModeResult), true);
     evidence('nourriture', sansDoublon(commoditesNourritureResult), true);
@@ -6256,26 +6262,27 @@ function evidence(id, texte, ttLeTps=false) {
     evidence('festinPlats', sansDoublon(activFestinPlats(p), "SINON"));
     evidence('campObjectif', sansDoublon(campObjectifResult, "SINON"));
     evidence('activCouro', sansDoublon(activCouro(p), "SINON"));
-    liOuiNon("Médecin", 'poste-0', sansDoublon(epidemies(p), "SINON"));
-    liOuiNon("Maître-caravanier", 'poste-1', sansDoublon(posteCaravanier(p), "SINON"));
-    liOuiNon("Antiquaire", 'poste-2', sansDoublon(posteAntiq(p), "SINON"));
-    liOuiNon("Sénéchal", 'poste-3', sansDoublon(posteSenech(p), "SINON"));
-    liOuiNon("Professeur", 'poste-4', sansDoublon(posteProf(p), "SINON"));
-    liOuiNon("Nourrice", 'poste-5', sansDoublon(posteNour(p), "SINON"));
-    liOuiNon("Grand écuyer", 'poste-6', sansDoublon(posteEcuyer(p), "SINON"));
-    liOuiNon("Maître de chasse", 'poste-7', sansDoublon(posteChasse(p), "SINON"));
-    liOuiNon("Chroniqueur de la Cour", 'poste-8', sansDoublon(posteChroni(p), "SINON"));
-    liOuiNon("Champion personnel", 'poste-9', sansDoublon(posteChamp(p), "SINON"));
-    liOuiNon("Dame d'honneur", 'poste-14', sansDoublon(posteDame(p), "SINON"));
-    liOuiNon("Bouffon de la Cour", 'poste-10', sansDoublon(posteBouffon(p), "SINON"));
-    liOuiNon("Garde du corps", 'poste-11', sansDoublon(posteGarde(p), "SINON"));
-    liOuiNon("Musicien de la Cour", 'poste-12', sansDoublon(posteMusi(p), "SINON"));
-    liOuiNon("Chef des eunuques", 'poste-13', sansDoublon(posteEunuque(p), "SINON"));
-    liOuiNon("Architecte royal", 'poste-15', sansDoublon(posteArchi(p), "SINON"));
-    liOuiNon("Echanson", 'poste-16', sansDoublon(posteEch(p), "SINON"));
-    liOuiNon("Poète de la Cour", 'poste-17', sansDoublon(postePoete(p), "SINON"));
-    liOuiNon("Goûteur", 'poste-18', sansDoublon(posteGout(p), "SINON"));
-    liDec('epidResult', 'poste-0');
+    // NOTE: Les postes de cour migrés sont maintenant gérés par displayAllResults()
+    // liOuiNon("Médecin", 'poste-0', sansDoublon(epidemies(p), "SINON"));
+    // liOuiNon("Maître-caravanier", 'poste-1', sansDoublon(posteCaravanier(p), "SINON"));
+    // liOuiNon("Antiquaire", 'poste-2', sansDoublon(posteAntiq(p), "SINON"));
+    //liOuiNon("Sénéchal", 'poste-3', sansDoublon(posteSenech(p), "SINON"));
+    //liOuiNon("Professeur", 'poste-4', sansDoublon(posteProf(p), "SINON"));
+    // liOuiNon("Nourrice", 'poste-5', sansDoublon(posteNour(p), "SINON"));
+    // liOuiNon("Grand écuyer", 'poste-6', sansDoublon(posteEcuyer(p), "SINON"));
+    //liOuiNon("Maître de chasse", 'poste-7', sansDoublon(posteChasse(p), "SINON"));
+    //liOuiNon("Chroniqueur de la Cour", 'poste-8', sansDoublon(posteChroni(p), "SINON"));
+    // liOuiNon("Champion personnel", 'poste-9', sansDoublon(posteChamp(p), "SINON"));
+    //liOuiNon("Dame d'honneur", 'poste-14', sansDoublon(posteDame(p), "SINON"));
+    //liOuiNon("Bouffon de la Cour", 'poste-10', sansDoublon(posteBouffon(p), "SINON"));
+    //liOuiNon("Garde du corps", 'poste-11', sansDoublon(posteGarde(p), "SINON"));
+    //liOuiNon("Musicien de la Cour", 'poste-12', sansDoublon(posteMusi(p), "SINON"));
+    //liOuiNon("Chef des eunuques", 'poste-13', sansDoublon(posteEunuque(p), "SINON"));
+    //liOuiNon("Architecte royal", 'poste-15', sansDoublon(posteArchi(p), "SINON"));
+    //liOuiNon("Echanson", 'poste-16', sansDoublon(posteEch(p), "SINON"));
+    //liOuiNon("Poète de la Cour", 'poste-17', sansDoublon(postePoete(p), "SINON"));
+    //liOuiNon("Goûteur", 'poste-18', sansDoublon(posteGout(p), "SINON"));
+    /*liDec('epidResult', 'poste-0');
     liDec('epidResult', 'poste-1');
     liDec('epidResult', 'poste-2'); //Antiquaire
     liDec('epidResult', 'poste-3'); //Sénéchal
@@ -6294,6 +6301,7 @@ function evidence(id, texte, ttLeTps=false) {
     liDec('epidResult', 'poste-18'); //Goûteur
     liDec('epidResult', 'poste-10'); //Bouffon de la Cour
     liDec('epidResult', 'poste-11'); //Garde du corps
+    */
     // Ruler - Décisions mineures
         // Recherche de médecin, Rechercher Caravan Master, Recherche de nourrice
     liOuiNon("Recruter à un poste de la Cour", 'dec-d-min-0', decisionOuNon(decisionsResult,

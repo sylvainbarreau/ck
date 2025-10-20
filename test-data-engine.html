@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Data-Driven Engine</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        h1 {
+            color: #333;
+            border-bottom: 3px solid #4CAF50;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #555;
+            margin-top: 30px;
+        }
+        .test-section {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .test-case {
+            margin: 15px 0;
+            padding: 15px;
+            background: #f9f9f9;
+            border-left: 4px solid #2196F3;
+        }
+        .test-title {
+            font-weight: bold;
+            color: #2196F3;
+            margin-bottom: 10px;
+        }
+        .input {
+            background: #fff3cd;
+            padding: 8px;
+            margin: 5px 0;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+        .output {
+            background: #d4edda;
+            padding: 8px;
+            margin: 5px 0;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+        .success {
+            color: #28a745;
+            font-weight: bold;
+        }
+        .error {
+            color: #dc3545;
+            font-weight: bold;
+        }
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        .comparison > div {
+            padding: 10px;
+            border-radius: 4px;
+        }
+        .old-version {
+            background: #e3f2fd;
+            border: 2px solid #2196F3;
+        }
+        .new-version {
+            background: #e8f5e9;
+            border: 2px solid #4CAF50;
+        }
+        pre {
+            margin: 5px 0;
+            white-space: pre-wrap;
+        }
+        button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 10px 5px;
+        }
+        button:hover {
+            background: #45a049;
+        }
+        .stats {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .stats h3 {
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>🧪 Test du Moteur Data-Driven</h1>
+
+    <div class="stats" id="stats">
+        <h3>Statistiques</h3>
+        <div id="stats-content">Chargement...</div>
+    </div>
+
+    <button onclick="runAllTests()">▶️ Lancer tous les tests</button>
+    <button onclick="compareWithOriginal()">🔍 Comparer avec ck.js original</button>
+
+    <div id="results"></div>
+
+    <!-- Charger le moteur data-driven -->
+    <script src="ck-data-engine.js"></script>
+
+    <!-- Charger la version originale pour comparaison -->
+    <script src="ck.js"></script>
+
+    <script>
+        // Variable globale pour le registry
+        let registry;
+
+        // Charger les configurations au démarrage
+        async function init() {
+            console.log('🚀 Initialisation du test...');
+
+            // Créer le registry
+            registry = new DataDrivenRegistry();
+
+            // Charger le JSON
+            await registry.loadFromFile('militaire_conseillers.json');
+
+            // Créer les fonctions globales
+            const functions = registry.createAllFunctions();
+
+            // Les rendre accessibles globalement
+            window.militaireDataDriven = functions.militaire;
+            window.militaireAutoDataDriven = functions.militaireAuto;
+
+            console.log('✅ Initialisation terminée');
+
+            // Afficher les stats
+            displayStats();
+        }
+
+        function displayStats() {
+            const types = registry.listTypes();
+            const positionVue = registry.getAllPositionVue();
+
+            const statsHTML = `
+                <p><strong>Types de décisions chargés :</strong> ${types.length}</p>
+                <ul>
+                    ${types.map(type => `
+                        <li>
+                            <strong>${type}</strong>
+                            → affichage: ${positionVue[type].idElement || 'N/A'}
+                            (${positionVue[type].categories?.join(', ') || 'N/A'})
+                        </li>
+                    `).join('')}
+                </ul>
+            `;
+
+            document.getElementById('stats-content').innerHTML = statsHTML;
+        }
+
+        function formatResult(result) {
+            return result.map(set => {
+                return Array.from(set).join(', ');
+            }).join(' | ');
+        }
+
+        function runAllTests() {
+            console.log('🧪 Lancement des tests...');
+
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = '<h2>Résultats des Tests</h2>';
+
+            // Tests pour militaire
+            resultsDiv.innerHTML += '<div class="test-section"><h2>Tests : militaire()</h2>';
+
+            const militaireTests = [
+                {
+                    name: 'Cas guerre',
+                    input: ['guerre'],
+                    expected: ['cocher Renforcement mensuel', 'Créer un régiment', 'régiment > Augmenter la taille']
+                },
+                {
+                    name: 'Cas declarationGuerre',
+                    input: ['declarationGuerre'],
+                    expected: ['cocher Renforcement mensuel', 'Créer un régiment', 'régiment > Augmenter la taille']
+                },
+                {
+                    name: 'Cas revenu',
+                    input: ['revenu'],
+                    expected: ['décocher Renforcement mensuel']
+                },
+                {
+                    name: 'Cas agent',
+                    input: ['agent'],
+                    expected: ['décocher Renforcement mensuel']
+                },
+                {
+                    name: 'Cas prison',
+                    input: ['prison'],
+                    expected: ['cocher Renforcement mensuel', 'Créer un régiment', 'régiment > Augmenter la taille']
+                },
+                {
+                    name: 'Cas non géré → defaut (stress seul)',
+                    input: ['stress'],
+                    expected: ['ne rien changer'],
+                    comment: 'État non géré → dépile tout → defaut'
+                },
+                {
+                    name: 'Cas multiple avec arret',
+                    input: ['guerre', 'revenu'],
+                    expected: ['cocher Renforcement mensuel', 'Créer un régiment', 'régiment > Augmenter la taille'],
+                    comment: 'guerre stoppe immédiatement'
+                },
+                {
+                    name: 'Cas multiple sans arret puis arret',
+                    input: ['stress', 'revenu'],
+                    expected: ['décocher Renforcement mensuel'],
+                    comment: 'stress ignoré, revenu stoppe'
+                },
+                {
+                    name: 'Cas defaut (états non gérés)',
+                    input: ['stress', 'piete', 'prestige'],
+                    expected: ['ne rien changer'],
+                    comment: 'Tous ignorés → defaut'
+                },
+                {
+                    name: 'Cas siRien (liste vide dès le départ)',
+                    input: [],
+                    expected: ['ne rien changer'],
+                    comment: 'Aucun problème dès le début → siRien'
+                }
+            ];
+
+            militaireTests.forEach(test => runTest('militaire', test, resultsDiv));
+
+            resultsDiv.innerHTML += '</div>';
+
+            // Tests pour militaireAuto
+            resultsDiv.innerHTML += '<div class="test-section"><h2>Tests : militaireAuto()</h2>';
+
+            const militaireAutoTests = [
+                {
+                    name: 'Cas guerre',
+                    input: ['guerre'],
+                    expected: ['Automatisé']
+                },
+                {
+                    name: 'Cas declarationGuerre',
+                    input: ['declarationGuerre'],
+                    expected: ['Manuel']
+                },
+                {
+                    name: 'Cas recruterChevalier',
+                    input: ['recruterChevalier'],
+                    expected: ['Manuel']
+                },
+                {
+                    name: 'Cas enfant',
+                    input: ['enfant'],
+                    expected: ['Limité']
+                },
+                {
+                    name: 'Cas vassalAInfluencer',
+                    input: ['vassalAInfluencer'],
+                    expected: ['Automatisé']
+                },
+                {
+                    name: 'Cas defaut (états non gérés)',
+                    input: ['piete', 'prestige'],
+                    expected: ['Automatisé'],
+                    comment: 'États non militaires → defaut'
+                },
+                {
+                    name: 'Cas siRien (liste vide dès le départ)',
+                    input: [],
+                    expected: ['Automatisé'],
+                    comment: 'Aucun problème → siRien'
+                }
+            ];
+
+            militaireAutoTests.forEach(test => runTest('militaireAuto', test, resultsDiv));
+
+            resultsDiv.innerHTML += '</div>';
+
+            console.log('✅ Tests terminés');
+        }
+
+        function runTest(functionName, test, container) {
+            const funcDataDriven = registry.createFunction(functionName);
+
+            const options = test.options !== undefined ? test.options : null;
+            const result = funcDataDriven(test.input, [], options);
+
+            const resultText = formatResult(result);
+            const expectedText = test.expected.join(', ');
+
+            const passed = resultText === expectedText;
+
+            const testHTML = `
+                <div class="test-case">
+                    <div class="test-title">${test.name}</div>
+                    ${test.comment ? `<div style="font-style: italic; color: #666; margin-bottom: 8px;">💡 ${test.comment}</div>` : ''}
+                    <div class="input">Input: [${test.input.join(', ') || '(vide)'}]${options !== null ? `, options: ${options}` : ''}</div>
+                    <div class="output">Résultat: ${resultText || '(vide)'}</div>
+                    <div class="output">Attendu: ${expectedText || '(vide)'}</div>
+                    <div class="${passed ? 'success' : 'error'}">
+                        ${passed ? '✅ PASS' : '❌ FAIL'}
+                    </div>
+                </div>
+            `;
+
+            container.innerHTML += testHTML;
+        }
+
+        function compareWithOriginal() {
+            console.log('🔍 Comparaison avec version originale...');
+
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = '<h2>Comparaison avec ck.js Original</h2>';
+
+            const testCases = [
+                { func: 'militaire', input: ['guerre'] },
+                { func: 'militaire', input: ['revenu'] },
+                { func: 'militaire', input: ['agent'] },
+                { func: 'militaire', input: ['stress', 'revenu'] },
+                { func: 'militaireAuto', input: ['guerre'] },
+                { func: 'militaireAuto', input: ['declarationGuerre'] },
+                { func: 'militaireAuto', input: ['enfant'] }
+            ];
+
+            testCases.forEach(testCase => {
+                const oldFunc = window[testCase.func];
+                const newFunc = registry.createFunction(testCase.func);
+
+                const oldResult = oldFunc(testCase.input, [], null);
+                const newResult = newFunc(testCase.input, [], null);
+
+                const oldText = formatResult(oldResult);
+                const newText = formatResult(newResult);
+
+                const comparisonHTML = `
+                    <div class="test-case">
+                        <div class="test-title">${testCase.func}([${testCase.input.join(', ')}])</div>
+                        <div class="comparison">
+                            <div class="old-version">
+                                <strong>Version originale (ck.js)</strong>
+                                <pre>${oldText || '(vide)'}</pre>
+                            </div>
+                            <div class="new-version">
+                                <strong>Version data-driven</strong>
+                                <pre>${newText || '(vide)'}</pre>
+                            </div>
+                        </div>
+                        <div class="${oldText === newText ? 'success' : 'error'}">
+                            ${oldText === newText ? '✅ Comportement identique' : '❌ Comportement différent'}
+                        </div>
+                    </div>
+                `;
+
+                resultsDiv.innerHTML += comparisonHTML;
+            });
+
+            console.log('✅ Comparaison terminée');
+        }
+
+        // Initialiser au chargement de la page
+        window.addEventListener('load', init);
+    </script>
+</body>
+</html>

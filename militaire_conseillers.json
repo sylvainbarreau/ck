@@ -1,0 +1,659 @@
+{
+    "militaire": {
+        "positionVue": {
+            "categories": ["Militaire"],
+            "idElement": "militaireResult"
+        },
+        "siRien": "ne rien changer",
+        "defaut": "ne rien changer",
+        "selonEtats": {
+            "guerre": {
+            "decisions": ["cocher Renforcement mensuel", "Créer un régiment", "régiment > Augmenter la taille"],
+            "arret": true
+            },
+            "declarationGuerre": {
+            "decisions": ["cocher Renforcement mensuel", "Créer un régiment", "régiment > Augmenter la taille"],
+            "arret": true
+            },
+            "revenu": {
+            "decisions": ["décocher Renforcement mensuel"],
+            "arret": true
+            },
+            "controle": {            "arret": false            },
+            "assassinat": {            "arret": false            },
+            "succession": {                "arret": false            },
+            "religieuxAInfluencer": {                "arret": false            },
+            "aInfluencer": {                "arret": false            },
+            "hamecon": {                "arret": false            },
+            "recruterChevalier": {                "arret": false            },
+            "chevalierPartisan": {                "arret": false            },
+            "proclame": {                "arret": false            },
+            "stress": {                "arret": false            },
+            "prestige": {                "arret": false            },
+            "enfant": {                "arret": false            },
+            "piete": {                "arret": false            },
+            "denoncer": {                "arret": false            },
+            "agent": {
+                "decisions": ["décocher Renforcement mensuel"],
+                "arret": true
+            },
+            "rancon": {
+                "decisions": ["décocher Renforcement mensuel"],
+                "arret": true
+            },
+            "conseiller": {                "arret": false            },
+            "factionPop": {                "arret": false            },
+            "vassalAInfluencer": {                "arret": false            },
+            "vassal": {                "arret": false            },
+            "domaine": {                "arret": false            },
+            "cultInnov": {                "arret": false            },
+            "prison": {
+                "decisions": ["cocher Renforcement mensuel", "Créer un régiment", "régiment > Augmenter la taille"],
+                "arret": true
+            }
+        }
+    },
+    "militaireAuto": {
+        "positionVue": {
+            "categories": ["Militaire"],
+            "idElement": "comm"
+        },
+        "siRien": "Automatisé",
+        "defaut": "Automatisé",
+        "selonEtats": {
+            "guerre": {
+                "decisions": ["Automatisé"],
+                "arret": true
+            },
+            "declarationGuerre": {
+                "decisions": ["Manuel"],
+                "arret": true
+            },
+            "revenu": { "arret": false },
+            "controle": { "arret": false },
+            "assassinat": { "arret": false },
+            "succession": { "arret": false },
+            "religieuxAInfluencer": { "arret": false },
+            "aInfluencer": { "arret": false },
+            "hamecon": { "arret": false },
+            "recruterChevalier": {
+                "decisions": ["Manuel"],
+                "arret": true
+            },
+            "chevalierPartisan": {
+                "decisions": ["Manuel"],
+                "arret": true
+            },
+            "proclame": {
+                "decisions": ["Manuel"],
+                "arret": true
+            },
+            "stress": { "arret": false },
+            "prestige": { "arret": false },
+            "enfant": {
+                "decisions": ["Limité"],
+                "arret": true
+            },
+            "piete": { "arret": false },
+            "denoncer": { "arret": false },
+            "agent": { "arret": false },
+            "rancon": { "arret": false },
+            "conseiller": {
+                "decisions": ["Manuel"],
+                "arret": true
+            },
+            "factionPop": { "arret": false },
+            "vassalAInfluencer": {
+                "decisions": ["Automatisé"],
+                "arret": true
+            },
+            "vassal": { "arret": false },
+            "domaine": { "arret": false },
+            "cultInnov": { "arret": false },
+            "prison": {
+                "decisions": ["Automatisé"],
+                "arret": true
+            }
+        }
+    },
+
+    "conjoint": {
+        "positionVue": {
+            "categories": ["Conseillers"],
+            "idElement": "conseilConjointResult"
+        },
+        "siRien": "Gérer le domaine",
+        "defaut": "ne rien changer",
+        "selonEtats": {
+            "enfant": {
+                "decisions": ["S'occuper de politique"],
+                "arret": true
+            },
+            "guerre": {
+                "decisions": ["S'occuper de chevalerie"],
+                "arret": true
+            },
+            "declarationGuerre": {
+                "decisions": ["S'occuper de chevalerie"],
+                "arret": true
+            },
+            "controle": {
+                "decisions": ["S'occuper de chevalerie"],
+                "arret": true
+            },
+            "recruterChevalier": {
+                "decisions": ["S'occuper de chevalerie"],
+                "arret": true
+            },
+            "proclame": {
+                "decisions": ["S'occuper de chevalerie"],
+                "arret": true
+            },
+            "vassalAInfluencer": {
+                "decisions": ["S'occuper de politique"],
+                "arret": true
+            },
+            "dirigeantAInfluencer": {
+                "decisions": ["S'occuper de politique"],
+                "arret": true
+            },
+            "prestige": {
+                "decisions": ["S'occuper de politique"],
+                "arret": true
+            },
+            "vassalSOppose": {
+                "decisions": ["S'occuper de politique"],
+                "arret": true
+            },
+            "succession": {
+                "decisions": ["S'occuper de politique"],
+                "arret": true
+            },
+            "aInfluencer": {
+                "decisions": ["S'occuper de politique"],
+                "arret": true
+            },
+            "denoncer": {
+                "decisions": ["S'occuper de politique"],
+                "arret": true
+            },
+            "agent": {
+                "decisions": ["S'occuper de politique"],
+                "arret": true
+            },
+            "perteTerresRevoquer": {
+                "decisions": ["S'occuper de politique"],
+                "arret": true
+            },
+            "prison": {
+                "decisions": ["S'occuper de politique"],
+                "arret": true
+            },
+            "assassinat": {
+                "decisions": ["S'occuper des intrigues"],
+                "arret": true
+            },
+            "influence": {
+                "decisions": ["S'occuper des intrigues"],
+                "arret": true
+            },
+            "hamecon": {
+                "decisions": ["S'occuper des intrigues"],
+                "arret": true
+            },
+            "vassal": {
+                "decisions": ["S'occuper des intrigues"],
+                "arret": true
+            },
+            "rancon": {
+                "decisions": ["Gérer le domaine"],
+                "arret": true
+            },
+            "revenu": {
+                "decisions": ["Gérer le domaine"],
+                "arret": true
+            },
+            "domaine": {
+                "decisions": ["Gérer le domaine"],
+                "arret": true
+            },
+            "factionPop": {
+                "decisions": ["Gérer le domaine"],
+                "arret": true
+            },
+            "religieuxAInfluencer": {
+                "decisions": ["Patronner"],
+                "arret": true
+            },
+            "piete": {
+                "decisions": ["Patronner"],
+                "arret": true
+            },
+            "factionFoi": {
+                "decisions": ["Patronner"],
+                "arret": true
+            },
+            "erudition": {
+                "decisions": ["Patronner"],
+                "arret": true
+            },
+            "cultInnov": {
+                "decisions": ["Patronner SI Chef culturel", "Gérer le domaine"],
+                "arret": true
+            },
+            "chevalierPartisan": { "arret": false },
+            "demande": { "arret": false },
+            "demande2": { "arret": false },
+            "conseiller": { "arret": false }
+        }
+    },
+
+    "chancelier": {
+        "positionVue": {
+            "categories": ["Conseillers"],
+            "idElement": "conseilChancelierResult"
+        },
+        "siRien": "Gérer les affaires étrangères",
+        "defaut": "Gérer les affaires intérieures",
+        "selonEtats": {
+            "guerre": {
+                "decisions": ["Gérer les affaires intérieures SI Contrat vassalique amélioré"],
+                "arret": false
+            },
+            "revenu": {
+                "decisions": ["Gérer les affaires intérieures SI Contrat vassalique amélioré"],
+                "arret": false
+            },
+            "rancon": {
+                "decisions": ["Gérer les affaires intérieures SI Contrat vassalique amélioré"],
+                "arret": false
+            },
+            "aInfluencer": {
+                "decisions": ["Accorder une faveur royale SI Augmentation de l'opinion vassale OU Contrat vassalique amélioré ALLIE POTENTIEL OU PARDONNEUR-S", "Gérer les affaires intérieures SI Contrat vassalique amélioré"],
+                "arret": false
+            },
+            "declarationGuerre": {
+                "decisions": ["Gérer les affaires intérieures SI Contrat vassalique amélioré"],
+                "arret": false
+            },
+            "vassalAInfluencer": {
+                "decisions": ["Accorder une faveur royale FACTIEUX", "Gérer les affaires intérieures"],
+                "arret": true
+            },
+            "vassal": {
+                "decisions": ["Accorder une faveur royale VASSAL PUISSANT", "Gérer les affaires intérieures"],
+                "arret": true
+            },
+            "vassalSOppose": {
+                "decisions": ["Accorder une faveur royale LUI", "Gérer les affaires intérieures"],
+                "arret": true
+            },
+            "dirigeantAInfluencer": {
+                "decisions": ["Gérer les affaires étrangères"],
+                "arret": true
+            },
+            "prestige": {
+                "decisions": ["Gérer les affaires étrangères"],
+                "arret": true
+            },
+            "denoncer": {
+                "decisions": ["Gérer les affaires étrangères"],
+                "arret": true
+            },
+            "agent": {
+                "decisions": ["Gérer les affaires étrangères"],
+                "arret": true
+            },
+            "prison": {
+                "decisions": ["Gérer les affaires étrangères"],
+                "arret": true
+            },
+            "perteTerresRevoquer": {
+                "decisions": ["Accorder une faveur royale VASSAL A REVOQUER-S SI Augmentation de l'opinion vassale", "Gérer les affaires intérieures SI Contrat vassalique amélioré", "Gérer les affaires intérieures SI Contrat vassalique amélioré"],
+                "arret": false
+            },
+            "cultInnov": {
+                "decisions": ["Gérer les affaires étrangères SI NON Chef culturel"],
+                "arret": false
+            },
+            "chevalierPartisan": { "arret": false },
+            "demande": { "arret": false },
+            "demande2": { "arret": false },
+            "piete": { "arret": false },
+            "conseiller": { "arret": false },
+            "factionPop": { "arret": false },
+            "domaine": { "arret": false },
+            "enfant": { "arret": false }
+        }
+    },
+
+    "marechal": {
+        "positionVue": {
+            "categories": ["Conseillers"],
+            "idElement": "conseilMarechalResult"
+        },
+        "siRien": "Augmenter le contrôle comtal",
+        "defaut": "Augmenter le contrôle comtal SI Augmentation de l'opinion du baron",
+        "selonEtats": {
+            "guerre": {
+                "decisions": ["Augmenter le contrôle comtal", "Organiser l'armée"],
+                "arret": true
+            },
+            "declarationGuerre": {
+                "decisions": ["Augmenter le contrôle comtal", "Organiser l'armée"],
+                "arret": true
+            },
+            "controle": {
+                "decisions": ["Augmenter le contrôle comtal"],
+                "arret": false
+            },
+            "revenu": {
+                "decisions": ["Augmenter le contrôle comtal"],
+                "arret": false
+            },
+            "rancon": {
+                "decisions": ["Augmenter le contrôle comtal"],
+                "arret": false
+            },
+            "aInfluencer": {
+                "decisions": ["Augmenter le contrôle comtal SI Augmentation de l'opinion du baron ALLIE POTENTIEL OU PARDONNEUR-S", "Augmenter le contrôle comtal"],
+                "arret": false
+            },
+            "recruterChevalier": {
+                "decisions": ["Former les commandants"],
+                "arret": true
+            },
+            "proclame": {
+                "decisions": ["Former les commandants"],
+                "arret": true
+            },
+            "conseiller": {
+                "decisions": ["Former les commandants"],
+                "arret": true
+            },
+            "survie": {
+                "decisions": ["Gérer la garde royale"],
+                "arret": false
+            },
+            "religieuxAInfluencer": {
+                "decisions": ["Augmenter le contrôle comtal"],
+                "arret": false
+            },
+            "vassalSOppose": {
+                "decisions": ["Augmenter le contrôle comtal"],
+                "arret": false
+            },
+            "vassalAInfluencer": {
+                "decisions": ["Augmenter le contrôle comtal FACTIEUX SI Augmentation de l'opinion du baron", "Augmenter le contrôle comtal"],
+                "arret": false
+            },
+            "vassal": {
+                "decisions": ["Augmenter le contrôle comtal VASSAL PUISSANT SI Augmentation de l'opinion du baron"],
+                "arret": false
+            },
+            "enfant": {
+                "decisions": ["Gérer la garde royale"],
+                "arret": false
+            },
+            "factionFoi": {
+                "decisions": ["Augmenter le contrôle comtal LUI SI Augmentation de l'opinion comtale"],
+                "arret": false
+            },
+            "factionPop": {
+                "decisions": ["Augmenter le contrôle comtal LUI SI Augmentation de l'opinion comtale"],
+                "arret": false
+            },
+            "agent": {
+                "decisions": ["Augmenter le contrôle comtal vassal direct CIBLE-S SI Augmentation de l'opinion du baron", "Augmenter le contrôle comtal"],
+                "arret": false
+            },
+            "perteTerresRevoquer": {
+                "decisions": ["Augmenter le contrôle comtal VASSAL A REVOQUER-S SI Augmentation de l'opinion du baron", "Augmenter le contrôle comtal"],
+                "arret": false
+            },
+            "prison": {
+                "decisions": ["Organiser l'armée"],
+                "arret": true
+            },
+            "chevalierPartisan": { "arret": false },
+            "demande": { "arret": false },
+            "demande2": { "arret": false },
+            "piete": { "arret": false },
+            "denoncer": { "arret": false },
+            "domaine": { "arret": false },
+            "cultInnov": { "arret": false }
+        }
+    },
+
+    "religieux": {
+        "positionVue": {
+            "categories": ["Conseillers"],
+            "idElement": "religieuxResult"
+        },
+        "siRien": "Fabriquer une revendication comtale",
+        "defaut": "Améliorer les relations religieuses",
+        "selonEtats": {
+            "guerre": {
+                "decisions": ["Convertir le comté SI Augmentation des levées comtales", "Convertir le comté SI Augmentation du développement comtal"],
+                "arret": false
+            },
+            "declarationGuerre": {
+                "decisions": ["Convertir le comté SI Augmentation des levées comtales", "Convertir le comté SI Augmentation du développement comtal"],
+                "arret": false
+            },
+            "vassalAInfluencer": {
+                "decisions": ["Améliorer les relations religieuses SI Augmentation de l'opinion vassale", "Convertir le comté SI Augmentation du développement comtal"],
+                "arret": false
+            },
+            "vassalSOppose": {
+                "decisions": ["Améliorer les relations religieuses SI Augmentation de l'opinion vassale", "Convertir le comté SI Augmentation du développement comtal"],
+                "arret": false
+            },
+            "vassal": {
+                "decisions": ["Améliorer les relations religieuses SI Augmentation de l'opinion vassale", "Convertir le comté SI Augmentation du développement comtal"],
+                "arret": false
+            },
+            "perteTerresRevoquer": {
+                "decisions": ["Améliorer les relations religieuses SI Augmentation de l'opinion vassale", "Convertir le comté SI Augmentation du développement comtal"],
+                "arret": false
+            },
+            "revenu": {
+                "decisions": ["Convertir le comté SI Augmentation du développement comtal"],
+                "arret": false
+            },
+            "rancon": {
+                "decisions": ["Convertir le comté SI Augmentation du développement comtal"],
+                "arret": false
+            },
+            "aInfluencer": {
+                "decisions": ["Améliorer les relations religieuses SI Augmentation de l'opinion vassale ALLIE POTENTIEL OU PARDONNEUR-S", "Convertir le comté SI Augmentation du développement comtal"],
+                "arret": false
+            },
+            "religieuxAInfluencer": {
+                "decisions": ["Améliorer les relations religieuses"],
+                "arret": true
+            },
+            "piete": {
+                "decisions": ["Améliorer les relations religieuses"],
+                "arret": true
+            },
+            "factionFoi": {
+                "decisions": ["Convertir le comté"],
+                "arret": false
+            },
+            "factionPop": {
+                "decisions": ["Convertir le comté LUI SI Augmentation de l'opinion comtale"],
+                "arret": false
+            },
+            "agent": {
+                "decisions": ["Convertir le comté SI Augmentation du développement comtal", "Améliorer les relations religieuses"],
+                "arret": true
+            },
+            "prison": {
+                "decisions": ["Améliorer les relations religieuses SI Augmentation de l'opinion vassale PRISONNIER-S", "Convertir le comté SI Augmentation des levées comtales", "Convertir le comté SI Augmentation du développement comtal"],
+                "arret": false
+            },
+            "chevalierPartisan": { "arret": false },
+            "demande": { "arret": false },
+            "demande2": { "arret": false },
+            "denoncer": { "arret": false },
+            "conseiller": { "arret": false },
+            "domaine": { "arret": false },
+            "cultInnov": { "arret": false },
+            "enfant": { "arret": false }
+        }
+    },
+
+    "intendant": {
+        "positionVue": {
+            "categories": ["Conseillers"],
+            "idElement": "intendantResult"
+        },
+        "siRien": "Convaincre le territoire de jure",
+        "defaut": "Convaincre le territoire de jure",
+        "selonEtats": {
+            "controle": {
+                "decisions": ["Augmenter le développement comtal SI Contrôle accru"],
+                "arret": false
+            },
+            "guerre": {
+                "decisions": ["Augmenter le développement comtal"],
+                "arret": true
+            },
+            "declarationGuerre": {
+                "decisions": ["Augmenter le développement comtal"],
+                "arret": true
+            },
+            "revenu": {
+                "decisions": ["Collecter les impôts"],
+                "arret": true
+            },
+            "rancon": {
+                "decisions": ["Collecter les impôts"],
+                "arret": true
+            },
+            "aInfluencer": {
+                "decisions": ["Promouvoir l'acceptation culturelle SI Opinion améliorée ALLIE POTENTIEL OU PARDONNEUR-S", "Collecter les impôts"],
+                "arret": true
+            },
+            "vassalSOppose": {
+                "decisions": ["Promouvoir l'acceptation culturelle SI Opinion améliorée FACTIEUX", "Collecter les impôts"],
+                "arret": true
+            },
+            "vassalAInfluencer": {
+                "decisions": ["Promouvoir l'acceptation culturelle SI Opinion améliorée FACTIEUX", "Collecter les impôts"],
+                "arret": true
+            },
+            "vassal": {
+                "decisions": ["Promouvoir l'acceptation culturelle SI Opinion améliorée VASSAL PUISSANT"],
+                "arret": false
+            },
+            "factionFoi": {
+                "decisions": ["Promouvoir la culture LUI SI Augmentation de l'opinion comtale"],
+                "arret": false
+            },
+            "factionPop": {
+                "decisions": ["Promouvoir la culture COMTE SI Augmentation de l'opinion comtale", "Promouvoir l'acceptation culturelle COMTE SI Opinion améliorée"],
+                "arret": false
+            },
+            "perteTerresRevoquer": {
+                "decisions": ["Convaincre le territoire de jure SI Gain de prestige", "Promouvoir l'acceptation culturelle VASSAL A REVOQUER-S SI Opinion améliorée", "Collecter les impôts"],
+                "arret": true
+            },
+            "agent": {
+                "decisions": ["Promouvoir l'acceptation culturelle SI Opinion améliorée vassal direct ou courtisan ou invité CIBLE-S", "Convaincre le territoire de jure SI Gain de prestige", "Collecter les impôts"],
+                "arret": true
+            },
+            "prestige": {
+                "decisions": ["Convaincre le territoire de jure SI Gain de prestige"],
+                "arret": false
+            },
+            "denoncer": {
+                "decisions": ["Convaincre le territoire de jure SI Gain de prestige"],
+                "arret": false
+            },
+            "cultInnov": {
+                "decisions": ["Promouvoir la culture SI NON Chef culturel"],
+                "arret": false
+            },
+            "prison": {
+                "decisions": ["Convaincre le territoire de jure SI Gain de prestige", "Promouvoir l'acceptation culturelle SI Opinion améliorée", "Augmenter le développement comtal"],
+                "arret": true
+            },
+            "chevalierPartisan": { "arret": false },
+            "demande": { "arret": false },
+            "demande2": { "arret": false },
+            "piete": { "arret": false },
+            "conseiller": { "arret": false },
+            "domaine": { "arret": false },
+            "enfant": { "arret": false }
+        }
+    },
+
+    "espion": {
+        "positionVue": {
+            "categories": ["Conseillers"],
+            "idElement": "espionResult"
+        },
+        "siRien": "ne rien changer",
+        "defaut": "ne rien changer",
+        "selonEtats": {
+            "hamecon": {
+                "decisions": ["Soutenir les complots SI Atout \"La vérité est relative\"", "Chercher des secrets A HAMECONNER-S"],
+                "arret": false
+            },
+            "agent": {
+                "decisions": ["Soutenir les complots SI Atout \"La vérité est relative\"", "Chercher des secrets AGENT-S"],
+                "arret": false
+            },
+            "assassinat": {
+                "decisions": ["Soutenir les complots"],
+                "arret": true
+            },
+            "survie": {
+                "decisions": ["Interrompre les complots"],
+                "arret": true
+            },
+            "enfant": {
+                "decisions": ["Interrompre les complots"],
+                "arret": true
+            },
+            "vassalSOppose": {
+                "decisions": ["Chercher des secrets VASSAL OPPOSANT-S"],
+                "arret": false
+            },
+            "perteTerresRevoquer": {
+                "decisions": ["Chercher des secrets VASSAL A REVOQUER-S"],
+                "arret": false
+            },
+            "rancon": {
+                "decisions": ["Soutenir les complots SI Atout \"La vérité est relative\"", "Chercher des secrets GEOLIER"],
+                "arret": false
+            },
+            "vassalAInfluencer": {
+                "decisions": ["Chercher des secrets FACTIEUX"],
+                "arret": true
+            },
+            "vassal": {
+                "decisions": ["Soutenir les complots SI Atout \"La vérité est relative\"", "Chercher des secrets VASSAL PUISSANT"],
+                "arret": false
+            },
+            "chevalierPartisan": { "arret": false },
+            "demande": { "arret": false },
+            "demande2": { "arret": false },
+            "prestige": { "arret": false },
+            "domaine": { "arret": false },
+            "piete": { "arret": false },
+            "factionFoi": { "arret": false },
+            "stress": { "arret": false },
+            "erudition": { "arret": false },
+            "denoncer": { "arret": false },
+            "aInfluencer": { "arret": false },
+            "conseiller": { "arret": false },
+            "factionPop": { "arret": false },
+            "cultInnov": { "arret": false },
+            "prison": { "arret": false }
+        }
+    }
+
+}

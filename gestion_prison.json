@@ -1,0 +1,253 @@
+{
+    "prison": {
+        "positionVue": {
+            "categories": ["Gestion"],
+            "idElement": "prisonResult"
+        },
+        "siRien": "Torturer SI Atout \"Je suis bien en comparaison\"",
+        "defaut": "Castrer le prisonnier",
+        "selonEtats": {
+            "aInfluencer": {
+                "decisions": [
+                    "Torturer SI Atout \"Sombres connaissances\"",
+                    "Négocier la libération > Bannir SI Or",
+                    "Rançonner > Or",
+                    "Négocier la libération > hameçon SI Atout \"Obligations en or\"",
+                    "Rançonner > hameçon SI Atout \"Obligations en or\"",
+                    "Négocier la libération > hameçon SI mécène",
+                    "Rançonner > hameçon SI mécène",
+                    "Négocier la libération > Bannir SI artefact"
+                ],
+                "arret": true
+            },
+            "demande": {
+                "decisions": [
+                    "Torturer SI Atout \"Sombres connaissances\"",
+                    "Négocier la libération > Bannir SI Or",
+                    "Rançonner > Or",
+                    "Négocier la libération > hameçon SI Atout \"Obligations en or\"",
+                    "Rançonner > hameçon SI Atout \"Obligations en or\"",
+                    "Négocier la libération > hameçon SI mécène",
+                    "Rançonner > hameçon SI mécène",
+                    "Négocier la libération > Bannir SI artefact"
+                ],
+                "arret": true
+            },
+            "demande2": {
+                "decisions": [
+                    "Torturer SI Atout \"Sombres connaissances\"",
+                    "Négocier la libération > hameçon SI mécène",
+                    "Rançonner > hameçon SI mécène",
+                    "Négocier la libération > Bannir SI artefact"
+                ],
+                "arret": false
+            },
+            "guerre": {
+                "decisions": [
+                    "Torturer SI Atout \"Sombres connaissances\"",
+                    "Négocier la libération > Recruter SI chevalier possible",
+                    "Négocier la libération > hameçon SI mécène",
+                    "Rançonner > hameçon SI mécène",
+                    "Négocier la libération > Bannir SI artefact"
+                ],
+                "arret": false
+            },
+            "declarationGuerre": {
+                "decisions": [
+                    "Négocier la libération > hameçon SI mécène",
+                    "Rançonner > hameçon SI mécène",
+                    "Négocier la libération > Recruter SI chevalier possible",
+                    "Torturer SI Atout \"Sombres connaissances\"",
+                    "Négocier la libération > Bannir SI artefact"
+                ],
+                "arret": false
+            },
+            "recruterChevalier": {
+                "decisions": [
+                    "Négocier la libération > Recruter SI chevalier possible",
+                    "Négocier la libération > Bannir SI artefact"
+                ],
+                "arret": false
+            },
+            "chevalierPartisan": {
+                "decisions": [
+                    "Négocier la libération > Recruter SI chevalier possible",
+                    "Négocier la libération > hameçon SI mécène",
+                    "Rançonner > hameçon SI mécène",
+                    "Négocier la libération > Bannir SI artefact"
+                ],
+                "arret": false
+            },
+            "proclame": {
+                "decisions": [
+                    "Négocier la libération > Recruter SI chevalier possible ET prouesse>=8",
+                    "Négocier la libération > Bannir SI artefact"
+                ],
+                "arret": false
+            },
+            "revenu": {
+                "decisions": [
+                    "Négocier la libération > Bannir SI Or",
+                    "Rançonner > Or",
+                    "Négocier la libération > hameçon SI Atout \"Obligations en or\"",
+                    "Rançonner > hameçon SI Atout \"Obligations en or\"",
+                    "Négocier la libération > hameçon SI mécène",
+                    "Rançonner > hameçon SI mécène",
+                    "Négocier la libération > Bannir SI artefact"
+                ],
+                "arret": true
+            },
+            "rancon": {
+                "decisions": [
+                    "Négocier la libération > Bannir SI Or",
+                    "Rançonner > Or",
+                    "Négocier la libération > hameçon SI Atout \"Obligations en or\"",
+                    "Rançonner > hameçon SI Atout \"Obligations en or\"",
+                    "Négocier la libération > hameçon SI mécène",
+                    "Rançonner > hameçon SI mécène",
+                    "Négocier la libération > hameçon SI GEOLIER",
+                    "Rançonner > hameçon SI GEOLIER",
+                    "Torturer SI Atout \"Sombres connaissances\"",
+                    "Négocier la libération > Bannir SI artefact"
+                ],
+                "arret": true
+            },
+            "vassalAInfluencer": {
+                "decisions": [
+                    "Torturer SI Atout \"Sombres connaissances\"",
+                    "Rançonner > Or",
+                    "Négocier la libération > hameçon SI Atout \"Obligations en or\"",
+                    "Rançonner > hameçon SI Atout \"Obligations en or\"",
+                    "Castrer le prisonnier",
+                    "Exécuter SI Redoutabilité"
+                ],
+                "arret": true
+            },
+            "vassal": {
+                "decisions": [
+                    "ne rien faire SI VASSAL PUISSANT",
+                    "Torturer SI Atout \"Sombres connaissances\"",
+                    "Castrer le prisonnier",
+                    "Exécuter SI Redoutabilité"
+                ],
+                "arret": true
+            },
+            "hamecon": {
+                "decisions": [
+                    "Torturer SI Atout \"Sombres connaissances\"",
+                    "Négocier la libération > Bannir SI artefact"
+                ],
+                "arret": false
+            },
+            "enfant": {
+                "decisions": [
+                    "Torturer SI Atout \"Je suis bien en comparaison\"",
+                    "Torturer SI Atout \"Sombres connaissances\"",
+                    "Négocier la libération > Bannir SI adoption/aventurier ET Or",
+                    "Rançonner > Or SI adoption/aventurier",
+                    "Négocier la libération > hameçon SI adoption/aventurier ET Atout \"Obligations en or\"",
+                    "Rançonner > hameçon SI adoption/aventurier ET Atout \"Obligations en or\"",
+                    "Négocier la libération > Bannir SI artefact",
+                    "ne rien faire pour attendre rançon SI adoption/aventurier"
+                ],
+                "arret": false
+            },
+            "assassinat": {
+                "decisions": [
+                    "Torturer SI Atout \"Sombres connaissances\"",
+                    "Négocier la libération > Bannir SI artefact"
+                ],
+                "arret": false
+            },
+            "agent": {
+                "decisions": [
+                    "Négocier la libération SI vassal direct ou courtisan ou invité CIBLE-S",
+                    "Torturer SI Atout \"Sombres connaissances\"",
+                    "Négocier la libération > Bannir SI Or",
+                    "Rançonner > Or",
+                    "Négocier la libération > hameçon SI Atout \"Obligations en or\"",
+                    "Rançonner > hameçon SI Atout \"Obligations en or\"",
+                    "Négocier la libération > hameçon SI MECENE",
+                    "Rançonner > hameçon SI MECENE",
+                    "Négocier la libération > Bannir SI artefact"
+                ],
+                "arret": true
+            },
+            "religieuxAInfluencer": {
+                "decisions": [
+                    "Torturer SI Atout \"Sombres connaissances\"",
+                    "Négocier la libération > Bannir SI Or",
+                    "Rançonner > Or",
+                    "Négocier la libération > hameçon SI Atout \"Obligations en or\"",
+                    "Rançonner > hameçon SI Atout \"Obligations en or\"",
+                    "Négocier la libération > Bannir SI artefact"
+                ],
+                "arret": true
+            },
+            "dirigeantAInfluencer": {
+                "decisions": [
+                    "Torturer SI Atout \"Sombres connaissances\"",
+                    "Négocier la libération > Bannir SI Or",
+                    "Rançonner > Or",
+                    "Négocier la libération > hameçon SI Atout \"Obligations en or\"",
+                    "Rançonner > hameçon SI Atout \"Obligations en or\"",
+                    "Négocier la libération > hameçon SI mécène",
+                    "Rançonner > hameçon SI mécène",
+                    "Négocier la libération > Bannir SI artefact"
+                ],
+                "arret": true
+            },
+            "piete": {
+                "decisions": [
+                    "Négocier la libération > Bannir SI artefact"
+                ],
+                "arret": false
+            },
+            "denoncer": {
+                "decisions": [
+                    "Négocier la libération > Bannir SI artefact"
+                ],
+                "arret": false
+            },
+            "factionPop": {
+                "decisions": [
+                    "Négocier la libération > Bannir SI artefact"
+                ],
+                "arret": false
+            },
+            "conseiller": {
+                "decisions": [
+                    "Négocier la libération > Recruter"
+                ],
+                "arret": false
+            },
+            "perteTerresRevoquer": {
+                "decisions": [
+                    "Torturer SI Atout \"Sombres connaissances\"",
+                    "Négocier la libération > Bannir SI Or",
+                    "Rançonner > Or",
+                    "Négocier la libération > hameçon SI Atout \"Obligations en or\"",
+                    "Rançonner > hameçon SI Atout \"Obligations en or\"",
+                    "Négocier la libération > Bannir SI artefact"
+                ],
+                "arret": true
+            },
+            "prestige": {
+                "decisions": [
+                    "Torturer SI Atout \"Je suis bien en comparaison\""
+                ],
+                "arret": false
+            },
+            "prison": {
+                "decisions": [
+                    "Négocier la libération > Bannir SI artefact",
+                    "Torturer SI Atout \"Sombres connaissances\"",
+                    "Négocier la libération > Recruter SI chevalier possible"
+                ],
+                "arret": false
+            },
+            "domaine": { "arret": false },
+            "cultInnov": { "arret": false }
+        }
+    }
+}

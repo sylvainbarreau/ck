@@ -1,0 +1,574 @@
+{
+    "influence": {
+        "positionVue": {
+            "categories": ["Complots"],
+            "idElement": "influenceResult"
+        },
+        "siRien": ["Influencer SEIGNEUR LIGE", "Séduire SEIGNEUR LIGE", "Apprendre la langue SEIGNEUR LIGE",
+        "Apprendre la langue DIRIGEANT A QUI ACHETER TERRE", "Influencer DIRIGEANT A QUI ACHETER TERRE", "Séduire DIRIGEANT A QUI ACHETER TERRE"],
+        "defaut": "Influencer vassal puissant non intimidé non factiable, Influencer vassal puissant intimidé non factiable, Influencer vassal non intimidé non factiable, Influencer vassal intimidé non factiable, Influencer conseiller religieux, Influencer allié, Influencer seigneur lige, Influencer Médecin, Influencer Garde du corps, Influencer conjoint, Influencer Maître-espion",
+        "selonEtats": {
+            "siRien": {
+                "decisions": [
+                    "Influencer SEIGNEUR LIGE",
+                    "Séduire SEIGNEUR LIGE",
+                    "Apprendre la langue SEIGNEUR LIGE",
+                    "Apprendre la langue DIRIGEANT A QUI ACHETER TERRE",
+                    "Influencer DIRIGEANT A QUI ACHETER TERRE",
+                    "Séduire DIRIGEANT A QUI ACHETER TERRE"
+                ],
+                "arret": false
+            },
+            "guerre": {
+                "decisions": [
+                    "Influencer LUI SI gouvernement administratif",
+                    "Séduire LUI SI gouvernement administratif",
+                    "Apprendre la langue LUI SI gouvernement administratif"
+                ],
+                "arret": false
+            },
+            "vassalAInfluencer": {
+                "decisions": [
+                    "Influencer FACTIEUX",
+                    "Nouer une amitié FACTIEUX",
+                    "Séduire FACTIEUX",
+                    "Apprendre la langue FACTIEUX"
+                ],
+                "arret": false
+            },
+            "vassal": {
+                "decisions": [
+                    "Marier clandestinement VASSAL PUISSANT",
+                    "Nouer une amitié VASSAL PUISSANT",
+                    "Séduire VASSAL PUISSANT",
+                    "Influencer VASSAL PUISSANT"
+                ],
+                "arret": false
+            },
+            "religieuxAInfluencer": {
+                "decisions": [
+                    "Influencer CONSEILLER RELIGIEUX",
+                    "Séduire CONSEILLER RELIGIEUX",
+                    "Apprendre la langue CONSEILLER RELIGIEUX"
+                ],
+                "arret": false
+            },
+            "vassalSOppose": {
+                "decisions": [
+                    "Influencer VASSAL-S",
+                    "Séduire VASSAL-S",
+                    "Apprendre la langue VASSAL-S"
+                ],
+                "arret": false
+            },
+            "dirigeantAInfluencer": {
+                "decisions": [
+                    "Influencer MECENE-S",
+                    "Séduire MECENE-S",
+                    "Apprendre la langue MECENE-S"
+                ],
+                "arret": false
+            },
+            "demande": {
+                "decisions": [
+                    "Influencer MECENE-S",
+                    "Séduire MECENE-S",
+                    "Apprendre la langue MECENE-S"
+                ],
+                "arret": false
+            },
+            "demande2": {
+                "decisions": [
+                    "Influencer MECENE-S",
+                    "Séduire MECENE-S",
+                    "Apprendre la langue MECENE-S"
+                ],
+                "arret": false
+            },
+            "aInfluencer": {
+                "decisions": [
+                    "Influencer ALLIE POTENTIEL OU PARDONNEUR-S",
+                    "Séduire ALLIE POTENTIEL OU PARDONNEUR-S",
+                    "Apprendre la langue ALLIE POTENTIEL OU PARDONNEUR-S"
+                ],
+                "arret": false
+            },
+            "enfant": {
+                "decisions": [
+                    "Influencer LUI SI adoption/aventurier",
+                    "Séduire LUI SI adoption/aventurier",
+                    "Apprendre la langue LUI SI adoption/aventurier",
+                    "Séduire",
+                    "Faire la cour",
+                    "Marier clandestinement"
+                ],
+                "arret": false
+            },
+            "chevalierPartisan": {
+                "decisions": [
+                    "Faire la cour amant SI chevalier possible ET hors camp > âme soeur",
+                    "Influencer ami SI chevalier possible ET hors camp > meilleur ami",
+                    "Influencer amant SI chevalier possible ET hors camp > âme soeur"
+                ],
+                "arret": false
+            },
+            "agent": {
+                "decisions": [
+                    "Influencer AGENT-S",
+                    "Séduire AGENT-S",
+                    "Apprendre la langue AGENT-S"
+                ],
+                "arret": false
+            },
+            "perteTerresRevoquer": {
+                "decisions": [
+                    "Influencer VASSAL A REVOQUER-S",
+                    "Séduire VASSAL A REVOQUER-S",
+                    "Apprendre la langue VASSAL A REVOQUER-S"
+                ],
+                "arret": false
+            },
+            "prison": {
+                "decisions": [
+                    "Influencer PRISONNIER-S",
+                    "Séduire PRISONNIER-S",
+                    "Apprendre la langue PRISONNIER-S"
+                ],
+                "arret": false
+            },
+            "conseiller": { "arret": false },
+            "denoncer": { "arret": false },
+            "recruterChevalier": { "arret": false },
+            "piete": { "arret": false },
+            "rancon": { "arret": false },
+            "factionPop": { "arret": false },
+            "domaine": { "arret": false },
+            "cultInnov": { "arret": false }
+        }
+    },
+    "contreMesure": {
+        "positionVue": {
+            "categories": ["Complots"],
+            "idElement": "contreResult"
+        },
+        "options": [
+            "Primes pour les dénonciations",
+            "Arrestations arbitraires",
+            "Sentinelles renforcées",
+            "Garde doublée",
+            "Retrait de la vie publique"
+        ],
+        "siRien": "Aucune",
+        "defaut": "Retrait de la vie publique, Aucune",
+        "selonEtats": {
+            "guerre": {
+                "decisions": [],
+                "arret": false,
+                "modifications": {
+                    "Retrait de la vie publique": "Retrait de la vie publique SI NON gouvernement administratif"
+                }
+            },
+            "aInfluencer": {
+                "decisions": [],
+                "arret": false,
+                "modifications": {
+                    "Primes pour les dénonciations": "undefined",
+                    "Sentinelles renforcées": "Sentinelles renforcées SI ALLIE",
+                    "Garde doublée": "Garde doublée SI ALLIE",
+                    "Retrait de la vie publique": "undefined"
+                }
+            },
+            "dirigeantAInfluencer": {
+                "decisions": [],
+                "arret": false,
+                "modifications": {
+                    "Primes pour les dénonciations": "undefined",
+                    "Retrait de la vie publique": "undefined"
+                }
+            },
+            "vassalAInfluencer": {
+                "decisions": [],
+                "arret": false,
+                "modifications": {
+                    "Sentinelles renforcées": "undefined",
+                    "Garde doublée": "undefined",
+                    "Retrait de la vie publique": "undefined",
+                    "Primes pour les dénonciations": "undefined"
+                }
+            },
+            "vassal": {
+                "decisions": [],
+                "arret": false,
+                "modifications": {
+                    "Sentinelles renforcées": "undefined",
+                    "Garde doublée": "undefined",
+                    "Retrait de la vie publique": "undefined"
+                }
+            },
+            "vassalSOppose": {
+                "decisions": [],
+                "arret": false,
+                "modifications": {
+                    "Sentinelles renforcées": "undefined",
+                    "Garde doublée": "undefined",
+                    "Retrait de la vie publique": "undefined"
+                }
+            },
+            "agent": {
+                "decisions": ["Aucune"],
+                "arret": true
+            },
+            "factionPop": {
+                "decisions": ["Aucune"],
+                "arret": true
+            },
+            "religieuxAInfluencer": {
+                "decisions": ["Aucune"],
+                "arret": true
+            },
+            "stress": {
+                "decisions": [],
+                "arret": false,
+                "modifications": {
+                    "Garde doublée": "undefined",
+                    "Retrait de la vie publique": "undefined"
+                }
+            },
+            "survie": {
+                "decisions": ["Garde doublée"],
+                "arret": false
+            },
+            "enfant": {
+                "decisions": ["Garde doublée"],
+                "arret": false,
+                "modifications": {
+                    "Primes pour les dénonciations": "Primes pour les dénonciations SI NON adoption/aventurier",
+                    "Arrestations arbitraires": "Arrestations arbitraires SI NON adoption/aventurier",
+                    "Sentinelles renforcées": "Sentinelles renforcées SI NON adoption/aventurier",
+                    "Garde doublée": "Garde doublée SI NON adoption/aventurier",
+                    "Retrait de la vie publique": "Retrait de la vie publique SI NON adoption/aventurier"
+                }
+            },
+            "revenu": {
+                "decisions": [],
+                "arret": false,
+                "modifications": {
+                    "Primes pour les dénonciations": "undefined"
+                }
+            },
+            "prestige": {
+                "decisions": [],
+                "arret": false,
+                "modifications": {
+                    "Primes pour les dénonciations": "undefined"
+                }
+            },
+            "denoncer": {
+                "decisions": [],
+                "arret": false,
+                "modifications": {
+                    "Primes pour les dénonciations": "undefined"
+                }
+            },
+            "rancon": {
+                "decisions": [],
+                "arret": false,
+                "modifications": {
+                    "Primes pour les dénonciations": "undefined"
+                }
+            },
+            "prison": {
+                "decisions": [],
+                "arret": false,
+                "modifications": {
+                    "Primes pour les dénonciations": "undefined"
+                }
+            },
+            "demande": {
+                "decisions": [],
+                "arret": false,
+                "modifications": {
+                    "Primes pour les dénonciations": "undefined",
+                    "Retrait de la vie publique": "undefined"
+                }
+            },
+            "demande2": {
+                "decisions": [],
+                "arret": false,
+                "modifications": {
+                    "Primes pour les dénonciations": "undefined",
+                    "Retrait de la vie publique": "undefined"
+                }
+            },
+            "perteTerresRevoquer": {
+                "decisions": [],
+                "arret": false,
+                "modifications": {
+                    "Primes pour les dénonciations": "undefined",
+                    "Retrait de la vie publique": "undefined",
+                    "Sentinelles renforcées": "undefined",
+                    "Garde doublée": "undefined"
+                }
+            },
+            "cultInnov": {
+                "decisions": [],
+                "arret": false,
+                "modifications": {
+                    "Primes pour les dénonciations": "Primes pour les dénonciations SI Chef culturel"
+                }
+            },
+            "chevalierPartisan": { "arret": false },
+            "piete": { "arret": false },
+            "conseiller": { "arret": false },
+            "domaine": { "arret": false }
+        }
+    },
+    "compHostile": {
+        "positionVue": {
+            "categories": ["Complots"],
+            "idElement": "hostileResult"
+        },
+        "siRien": null,
+        "defaut": "Saisie du pays, Revendiquer le trône, Déposer le régent, Voler un artefact, Aucun",
+        "selonEtats": {
+            "siRien": {
+                "decisions": [
+                    "Revendiquer le trône",
+                    "Déposer le régent",
+                    "Saisie du pays",
+                    "Fabrication d'un hameçon POUR Acheter une terre/Acquérir une possession"
+                ],
+                "arret": false
+            },
+            "assassinat": {
+                "decisions": [
+                    "Assassinat DANS LA SUCCESSION-S SI NON Destituer",
+                    "Enlèvement DANS LA SUCCESSION-S"
+                ],
+                "arret": false
+            },
+            "hamecon": {
+                "decisions": [
+                    "Fabrication d'un hameçon A HAMECONNER-S"
+                ],
+                "arret": false
+            },
+            "demande": {
+                "decisions": [
+                    "Fabrication d'un hameçon MECENE-S"
+                ],
+                "arret": false
+            },
+            "demande2": {
+                "decisions": [
+                    "Fabrication d'un hameçon MECENE-S"
+                ],
+                "arret": false
+            },
+            "enfant": {
+                "decisions": [
+                    "Voler un artefact SI adoption/aventurier"
+                ],
+                "arret": false
+            },
+            "rancon": {
+                "decisions": [
+                    "Voler un artefact",
+                    "Fabrication d'un hameçon GEOLIER"
+                ],
+                "arret": false
+            },
+            "aInfluencer": {
+                "decisions": [
+                    "Voler un artefact"
+                ],
+                "arret": false
+            },
+            "conseiller": {
+                "decisions": [
+                    "Enlèvement"
+                ],
+                "arret": false
+            },
+            "vassalAInfluencer": {
+                "decisions": [
+                    "Fabrication d'un hameçon FACTIEUX",
+                    "Enlèvement FACTIEUX",
+                    "Voler un artefact"
+                ],
+                "arret": false
+            },
+            "vassal": {
+                "decisions": [
+                    "Fabrication d'un hameçon VASSAL PUISSANT",
+                    "Enlèvement VASSAL PUISSANT"
+                ],
+                "arret": false
+            },
+            "perteTerresRevoquer": {
+                "decisions": [
+                    "Voler un artefact",
+                    "Fabrication d'un hameçon VASSAL A REVOQUER-S"
+                ],
+                "arret": false
+            },
+            "cultInnov": {
+                "decisions": [
+                    "Voler un artefact"
+                ],
+                "arret": false
+            },
+            "agent": { "arret": false },
+            "denoncer": { "arret": false },
+            "chevalierPartisan": { "arret": false },
+            "piete": { "arret": false },
+            "factionPop": { "arret": false },
+            "domaine": { "arret": false },
+            "prison": { "arret": false }
+        }
+    },
+    "compPolitique": {
+        "positionVue": {
+            "categories": ["Complots"],
+            "idElement": "politiqueResult"
+        },
+        "siRien": null,
+        "defaut": "Consolider la base du pouvoir, Intégrer le gouvernorat, Dispute frontalière, Pillage de la possession",
+        "selonEtats": {
+            "siRien": {
+                "decisions": [
+                    "Intégrer le gouvernorat",
+                    "Dispute frontalière",
+                    "Famille ingrate SEIGNEUR LIGE",
+                    "Consolider la base du pouvoir SEIGNEUR LIGE",
+                    "Famille ingrate REGENT SEIGNEUR LIGE",
+                    "Consolider la base du pouvoir REGENT SEIGNEUR LIGE",
+                    "Pillage de la possession"
+                ],
+                "arret": false
+            },
+            "guerre": {
+                "decisions": [
+                    "Famille ingrate LUI SI gouvernement administratif",
+                    "Consolider la base du pouvoir LUI SI gouvernement administratif"
+                ],
+                "arret": false
+            },
+            "succession": {
+                "decisions": [
+                    "Promouvoir"
+                ],
+                "arret": true
+            },
+            "influence": {
+                "decisions": [
+                    "Consolider la base du pouvoir",
+                    "Famille ingrate",
+                    "Contester le statut"
+                ],
+                "arret": false
+            },
+            "dirigeantAInfluencer": {
+                "decisions": [
+                    "Famille ingrate LUI",
+                    "Consolider la base du pouvoir LUI",
+                    "Pillage de la possession"
+                ],
+                "arret": false
+            },
+            "vassalAInfluencer": {
+                "decisions": [
+                    "Famille ingrate FACTIEUX",
+                    "Consolider la base du pouvoir FACTIEUX",
+                    "Pillage de la possession"
+                ],
+                "arret": false
+            },
+            "vassal": {
+                "decisions": [
+                    "Favoriser la légitimité VASSAL PUISSANT",
+                    "Famille ingrate VASSAL PUISSANT",
+                    "Consolider la base du pouvoir VASSAL PUISSANT"
+                ],
+                "arret": false
+            },
+            "vassalSOppose": {
+                "decisions": [
+                    "Famille ingrate LUI",
+                    "Consolider la base du pouvoir LUI"
+                ],
+                "arret": true
+            },
+            "assassinat": {
+                "decisions": [
+                    "Destitution"
+                ],
+                "arret": false
+            },
+            "revenu": {
+                "decisions": [
+                    "Pillage de la possession"
+                ],
+                "arret": false
+            },
+            "rancon": {
+                "decisions": [
+                    "Pillage de la possession"
+                ],
+                "arret": false
+            },
+            "chevalierPartisan": {
+                "decisions": [],
+                "arret": true
+            },
+            "demande": {
+                "decisions": [],
+                "arret": true
+            },
+            "demande2": {
+                "decisions": [],
+                "arret": true
+            },
+            "agent": {
+                "decisions": [
+                    "Famille ingrate AGENT-S",
+                    "Consolider la base du pouvoir AGENT-S",
+                    "Pillage de la possession",
+                    "Favoriser la légitimité AGENT-S"
+                ],
+                "arret": false
+            },
+            "aInfluencer": {
+                "decisions": [
+                    "Famille ingrate OU Consolider la base du pouvoir ALLIE POTENTIEL OU PARDONNEUR-S",
+                    "Pillage de la possession",
+                    "Favoriser la légitimité ALLIE POTENTIEL OU PARDONNEUR-S"
+                ],
+                "arret": false
+            },
+            "perteTerresRevoquer": {
+                "decisions": [
+                    "Famille ingrate VASSAL A REVOQUER-S",
+                    "Consolider la base du pouvoir VASSAL A REVOQUER-S",
+                    "Pillage de la possession",
+                    "Favoriser la légitimité VASSAL A REVOQUER-S"
+                ],
+                "arret": false
+            },
+            "prison": {
+                "decisions": [
+                    "Famille ingrate PRISONNIER-S",
+                    "Consolider la base du pouvoir PRISONNIER-S"
+                ],
+                "arret": false
+            },
+            "denoncer": { "arret": false },
+            "enfant": { "arret": false },
+            "piete": { "arret": false },
+            "conseiller": { "arret": false },
+            "factionPop": { "arret": false },
+            "domaine": { "arret": false },
+            "cultInnov": { "arret": false }
+        }
+    }
+}

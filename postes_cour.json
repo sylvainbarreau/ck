@@ -1,0 +1,569 @@
+{
+    "epidemies": {
+        "positionVue": {
+            "categories": ["Postes de la cour"],
+            "idElement": "posteMedecin"
+        },
+        "siRien": "Faire de la recherche avancée",
+        "defaut": "Faire de la recherche avancée",
+        "selonEtats": {
+            "revenu": { "arret": false },
+            "rancon": { "arret": false },
+            "dirigeantAInfluencer": {
+                "decisions": ["Faire de la recherche avancée"],
+                "arret": false
+            },
+            "religieuxAInfluencer": {
+                "decisions": ["Faire de la recherche avancée"],
+                "arret": false
+            },
+            "aInfluencer": {
+                "decisions": ["Faire de la recherche avancée"],
+                "arret": false
+            },
+            "vassalAInfluencer": {
+                "decisions": ["Faire de la recherche avancée"],
+                "arret": false
+            },
+            "survie": {
+                "decisions": ["Atténuer les épidémies", "Améliorer les aptitudes"],
+                "arret": false
+            },
+            "succession": {
+                "decisions": ["Faire de la recherche avancée", "aucune fonction"],
+                "arret": true
+            },
+            "demande": {
+                "decisions": ["Faire de la recherche avancée", "aucune fonction"],
+                "arret": true
+            },
+            "influence": {
+                "decisions": ["Faire de la recherche avancée", "aucune fonction"],
+                "arret": true
+            },
+            "demande2": {
+                "decisions": ["Faire de la recherche avancée"],
+                "arret": false
+            },
+            "prestige": {
+                "decisions": ["Faire de la recherche avancée"],
+                "arret": false
+            },
+            "enfant": {
+                "decisions": ["Faire de la recherche avancée SI adoption/aventurier", "Atténuer les épidémies", "Améliorer les aptitudes"],
+                "arret": false
+            },
+            "guerre": {
+                "decisions": ["Faire de la recherche avancée", "aucune fonction SI gouvernement administratif"],
+                "arret": false
+            },
+            "controle": {
+                "decisions": ["Faire de la recherche avancée"],
+                "arret": false
+            },
+            "assassinat": {
+                "decisions": ["Faire de la recherche avancée"],
+                "arret": false
+            },
+            "hamecon": {
+                "decisions": ["Faire de la recherche avancée"],
+                "arret": false
+            },
+            "recruterChevalier": {
+                "decisions": ["Faire de la recherche avancée"],
+                "arret": false
+            },
+            "chevalierPartisan": {
+                "decisions": ["Faire de la recherche avancée"],
+                "arret": false
+            },
+            "proclame": {
+                "decisions": ["Faire de la recherche avancée"],
+                "arret": false
+            },
+            "declarationGuerre": {
+                "decisions": ["Faire de la recherche avancée"],
+                "arret": false
+            },
+            "stress": {
+                "decisions": ["Faire de la recherche avancée"],
+                "arret": false
+            },
+            "piete": {
+                "decisions": ["Faire de la recherche avancée"],
+                "arret": false
+            },
+            "factionPop": {
+                "decisions": ["Faire de la recherche avancée"],
+                "arret": false
+            },
+            "domaine": {
+                "decisions": ["Faire de la recherche avancée"],
+                "arret": false
+            },
+            "agent": {
+                "decisions": ["Faire de la recherche avancée", "aucune fonction"],
+                "arret": true
+            },
+            "perteTerresRevoquer": {
+                "decisions": ["Faire de la recherche avancée", "aucune fonction"],
+                "arret": true
+            },
+            "vassal": {
+                "decisions": ["Faire de la recherche avancée"],
+                "arret": true
+            },
+            "cultInnov": {
+                "decisions": ["Faire de la recherche avancée"],
+                "arret": false
+            },
+            "prison": {
+                "decisions": ["Faire de la recherche avancée"],
+                "arret": false
+            },
+            "conseiller": { "arret": false }
+        }
+    },
+
+    "posteCaravanier": {
+        "positionVue": {
+            "categories": ["Postes de la cour"],
+            "idElement": "posteCaravanier"
+        },
+        "siRien": "aucune fonction",
+        "defaut": "aucune fonction",
+        "selonEtats": {
+            "revenu": { "arret": false },
+            "dirigeantAInfluencer": { "arret": false },
+            "religieuxAInfluencer": { "arret": false },
+            "aInfluencer": { "arret": false },
+            "rancon": { "arret": false },
+            "vassalAInfluencer": { "arret": false },
+            "survie": {
+                "decisions": ["Faire des réserves pour les voyages"],
+                "arret": false
+            },
+            "succession": {
+                "decisions": ["aucune fonction"],
+                "arret": true
+            },
+            "demande": {
+                "decisions": ["aucune fonction"],
+                "arret": true
+            },
+            "influence": {
+                "decisions": ["aucune fonction"],
+                "arret": true
+            },
+            "agent": {
+                "decisions": ["aucune fonction"],
+                "arret": true
+            },
+            "perteTerresRevoquer": {
+                "decisions": ["aucune fonction"],
+                "arret": true
+            },
+            "demande2": { "arret": false },
+            "prestige": { "arret": false },
+            "enfant": {
+                "decisions": ["aucune fonction SI adoption/aventurier", "Faire des réserves pour les voyages"],
+                "arret": true
+            },
+            "guerre": {
+                "decisions": ["Préparer les armées", "Améliorer les aptitudes", "aucune fonction SI gouvernement administratif"],
+                "arret": false
+            },
+            "recruterChevalier": {
+                "decisions": ["Améliorer les aptitudes"],
+                "arret": false
+            },
+            "chevalierPartisan": {
+                "decisions": ["Améliorer les aptitudes"],
+                "arret": false
+            },
+            "proclame": {
+                "decisions": ["Améliorer les aptitudes"],
+                "arret": false
+            },
+            "declarationGuerre": {
+                "decisions": ["Améliorer les aptitudes"],
+                "arret": false
+            },
+            "cultInnov": { "arret": false },
+            "prison": { "arret": false },
+            "controle": { "arret": false },
+            "assassinat": { "arret": false },
+            "hamecon": { "arret": false },
+            "stress": { "arret": false },
+            "piete": { "arret": false },
+            "conseiller": { "arret": false },
+            "factionPop": { "arret": false },
+            "vassal": { "arret": false },
+            "domaine": { "arret": false }
+        }
+    },
+
+    "posteAntiq": {
+        "positionVue": {
+            "categories": ["Postes de la cour"],
+            "idElement": "posteAntiq"
+        },
+        "siRien": "Améliorer les artefacts",
+        "defaut": "Exposer les objets illustres",
+        "selonEtats": {
+            "revenu": {
+                "decisions": ["aucune fonction"],
+                "arret": true
+            },
+            "rancon": {
+                "decisions": ["aucune fonction"],
+                "arret": true
+            },
+            "perteTerresRevoquer": {
+                "decisions": ["aucune fonction"],
+                "arret": true
+            },
+            "succession": {
+                "decisions": ["Exposer les objets illustres"],
+                "arret": false
+            },
+            "dirigeantAInfluencer": {
+                "decisions": ["Exposer les objets illustres"],
+                "arret": false
+            },
+            "religieuxAInfluencer": {
+                "decisions": ["Exposer les objets illustres"],
+                "arret": false
+            },
+            "influence": {
+                "decisions": ["Exposer les objets illustres"],
+                "arret": false
+            },
+            "chevalierPartisan": { "arret": false },
+            "demande": { "arret": false },
+            "demande2": { "arret": false },
+            "prestige": { "arret": false },
+            "guerre": {
+                "decisions": ["Améliorer les artefacts", "Rechercher des artefacts rares", "aucune fonction SI gouvernement administratif"],
+                "arret": false
+            },
+            "controle": {
+                "decisions": ["Améliorer les artefacts", "Rechercher des artefacts rares"],
+                "arret": false
+            },
+            "assassinat": {
+                "decisions": ["Améliorer les artefacts", "Rechercher des artefacts rares"],
+                "arret": false
+            },
+            "hamecon": {
+                "decisions": ["Améliorer les artefacts", "Rechercher des artefacts rares"],
+                "arret": false
+            },
+            "recruterChevalier": {
+                "decisions": ["Améliorer les artefacts", "Rechercher des artefacts rares"],
+                "arret": false
+            },
+            "proclame": {
+                "decisions": ["Améliorer les artefacts", "Rechercher des artefacts rares"],
+                "arret": false
+            },
+            "declarationGuerre": {
+                "decisions": ["Améliorer les artefacts", "Rechercher des artefacts rares"],
+                "arret": false
+            },
+            "survie": {
+                "decisions": ["Améliorer les artefacts", "Rechercher des artefacts rares"],
+                "arret": false
+            },
+            "stress": {
+                "decisions": ["Améliorer les artefacts", "Rechercher des artefacts rares"],
+                "arret": false
+            },
+            "enfant": {
+                "decisions": ["Améliorer les artefacts", "Rechercher des artefacts rares"],
+                "arret": false
+            },
+            "piete": {
+                "decisions": ["Améliorer les artefacts", "Rechercher des artefacts rares"],
+                "arret": false
+            },
+            "domaine": {
+                "decisions": ["Améliorer les artefacts", "Rechercher des artefacts rares"],
+                "arret": false
+            },
+            "agent": {
+                "decisions": ["Rechercher des artefacts rares", "Améliorer les artefacts", "Exposer les objets illustres", "aucune fonction"],
+                "arret": true
+            },
+            "aInfluencer": {
+                "decisions": ["Rechercher des artefacts rares", "aucune fonction"],
+                "arret": true
+            },
+            "factionPop": {
+                "decisions": ["Rechercher des artefacts rares", "Améliorer les artefacts"],
+                "arret": false
+            },
+            "vassal": {
+                "decisions": ["Rechercher des artefacts rares", "Améliorer les artefacts"],
+                "arret": false
+            },
+            "vassalAInfluencer": {
+                "decisions": ["Rechercher des artefacts rares", "Améliorer les artefacts", "aucune fonction"],
+                "arret": true
+            },
+            "cultInnov": {
+                "decisions": ["Améliorer les artefacts SI Chef culturel", "Rechercher des artefacts rares SI Chef culturel", "Exposer les objets illustres SI NON Chef culturel", "Améliorer les artefacts SI NON Chef culturel"],
+                "arret": false
+            },
+            "prison": {
+                "decisions": ["Améliorer les artefacts", "aucune fonction"],
+                "arret": true
+            },
+            "conseiller": { "arret": false }
+        }
+    },
+
+    "posteNour": {
+        "positionVue": {
+            "categories": ["Postes de la cour"],
+            "idElement": "posteNour"
+        },
+        "siRien": "aucune fonction",
+        "defaut": "aucune fonction",
+        "selonEtats": {
+            "succession": {
+                "decisions": ["aucune fonction"],
+                "arret": true
+            },
+            "influence": {
+                "decisions": ["aucune fonction"],
+                "arret": true
+            },
+            "prestige": {
+                "decisions": ["aucune fonction"],
+                "arret": true
+            },
+            "agent": {
+                "decisions": ["aucune fonction"],
+                "arret": true
+            },
+            "perteTerresRevoquer": {
+                "decisions": ["aucune fonction"],
+                "arret": true
+            },
+            "vassalAInfluencer": {
+                "decisions": ["aucune fonction"],
+                "arret": true
+            },
+            "prison": {
+                "decisions": ["aucune fonction"],
+                "arret": true
+            },
+            "chevalierPartisan": { "arret": false },
+            "demande": { "arret": false },
+            "demande2": { "arret": false },
+            "revenu": {
+                "decisions": ["aucune fonction"],
+                "arret": true
+            },
+            "rancon": {
+                "decisions": ["aucune fonction"],
+                "arret": true
+            },
+            "aInfluencer": {
+                "decisions": ["aucune fonction"],
+                "arret": true
+            },
+            "guerre": {
+                "decisions": ["aucune fonction SI gouvernement administratif"],
+                "arret": false
+            },
+            "cultInnov": {
+                "decisions": ["aucune fonction SI NON Chef culturel"],
+                "arret": false
+            },
+            "dirigeantAInfluencer": { "arret": false },
+            "religieuxAInfluencer": { "arret": false },
+            "controle": { "arret": false },
+            "assassinat": { "arret": false },
+            "hamecon": { "arret": false },
+            "recruterChevalier": { "arret": false },
+            "proclame": { "arret": false },
+            "declarationGuerre": { "arret": false },
+            "survie": { "arret": false },
+            "stress": { "arret": false },
+            "enfant": { "arret": false },
+            "piete": { "arret": false },
+            "conseiller": { "arret": false },
+            "factionPop": { "arret": false },
+            "vassal": { "arret": false },
+            "domaine": { "arret": false }
+        }
+    },
+
+    "posteEcuyer": {
+        "positionVue": {
+            "categories": ["Postes de la cour"],
+            "idElement": "posteEcuyer"
+        },
+        "siRien": "aucune fonction",
+        "defaut": "aucune fonction",
+        "selonEtats": {
+            "revenu": {
+                "decisions": ["aucune fonction"],
+                "arret": true
+            },
+            "succession": {
+                "decisions": ["aucune fonction"],
+                "arret": true
+            },
+            "dirigeantAInfluencer": {
+                "decisions": ["aucune fonction"],
+                "arret": true
+            },
+            "religieuxAInfluencer": {
+                "decisions": ["aucune fonction"],
+                "arret": true
+            },
+            "aInfluencer": {
+                "decisions": ["aucune fonction"],
+                "arret": true
+            },
+            "influence": {
+                "decisions": ["aucune fonction"],
+                "arret": true
+            },
+            "agent": {
+                "decisions": ["aucune fonction"],
+                "arret": true
+            },
+            "rancon": {
+                "decisions": ["aucune fonction"],
+                "arret": true
+            },
+            "perteTerresRevoquer": {
+                "decisions": ["aucune fonction"],
+                "arret": true
+            },
+            "vassalAInfluencer": {
+                "decisions": ["aucune fonction"],
+                "arret": true
+            },
+            "prestige": {
+                "decisions": ["aucune fonction"],
+                "arret": true
+            },
+            "prison": {
+                "decisions": ["aucune fonction"],
+                "arret": true
+            },
+            "chevalierPartisan": { "arret": false },
+            "demande": { "arret": false },
+            "demande2": { "arret": false },
+            "guerre": {
+                "decisions": ["Toilettage des chevaux de guerre", "Supervise la reproduction", "aucune fonction SI gouvernement administratif"],
+                "arret": false
+            },
+            "enfant": { "arret": false },
+            "survie": { "arret": false },
+            "cultInnov": {
+                "decisions": ["aucune fonction SI NON Chef culturel"],
+                "arret": false
+            },
+            "controle": { "arret": false },
+            "assassinat": { "arret": false },
+            "hamecon": { "arret": false },
+            "recruterChevalier": { "arret": false },
+            "proclame": { "arret": false },
+            "declarationGuerre": { "arret": false },
+            "stress": { "arret": false },
+            "piete": { "arret": false },
+            "conseiller": { "arret": false },
+            "factionPop": { "arret": false },
+            "vassal": { "arret": false },
+            "domaine": { "arret": false }
+        }
+    },
+
+    "posteChamp": {
+        "positionVue": {
+            "categories": ["Postes de la cour"],
+            "idElement": "posteChampion"
+        },
+        "siRien": "Concourir en son nom",
+        "defaut": "Concourir en son nom",
+        "selonEtats": {
+            "revenu": {
+                "decisions": ["aucune fonction"],
+                "arret": true
+            },
+            "rancon": {
+                "decisions": ["aucune fonction"],
+                "arret": true
+            },
+            "aInfluencer": {
+                "decisions": ["aucune fonction"],
+                "arret": true
+            },
+            "vassalAInfluencer": {
+                "decisions": ["aucune fonction"],
+                "arret": true
+            },
+            "dirigeantAInfluencer": { "arret": false },
+            "religieuxAInfluencer": { "arret": false },
+            "succession": {
+                "decisions": ["aucune fonction"],
+                "arret": true
+            },
+            "influence": {
+                "decisions": ["aucune fonction"],
+                "arret": true
+            },
+            "agent": {
+                "decisions": ["aucune fonction"],
+                "arret": true
+            },
+            "chevalierPartisan": { "arret": false },
+            "demande": { "arret": false },
+            "demande2": { "arret": false },
+            "prestige": {
+                "decisions": ["Concourir en son nom", "aucune fonction"],
+                "arret": true
+            },
+            "perteTerresRevoquer": {
+                "decisions": ["Concourir en son nom", "aucune fonction"],
+                "arret": true
+            },
+            "prison": {
+                "decisions": ["Concourir en son nom", "aucune fonction"],
+                "arret": true
+            },
+            "guerre": {
+                "decisions": ["Améliorer les aptitudes", "Entraîner le dirigeant", "aucune fonction SI gouvernement administratif"],
+                "arret": false
+            },
+            "declarationGuerre": {
+                "decisions": ["Améliorer les aptitudes", "Entraîner le dirigeant"],
+                "arret": false
+            },
+            "survie": { "arret": false },
+            "stress": { "arret": false },
+            "enfant": { "arret": false },
+            "cultInnov": {
+                "decisions": ["Concourir en son nom SI NON Chef culturel", "aucune fonction SI NON Chef culturel"],
+                "arret": false
+            },
+            "controle": { "arret": false },
+            "assassinat": { "arret": false },
+            "hamecon": { "arret": false },
+            "recruterChevalier": { "arret": false },
+            "proclame": { "arret": false },
+            "piete": { "arret": false },
+            "conseiller": { "arret": false },
+            "factionPop": { "arret": false },
+            "vassal": { "arret": false },
+            "domaine": { "arret": false }
+        }
+    }
+
+}

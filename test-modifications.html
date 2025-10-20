@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Système de Modifications - Data-Driven Engine</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #34495e;
+            margin-top: 30px;
+        }
+        .test-case {
+            background: white;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .test-title {
+            font-weight: bold;
+            color: #2c3e50;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+        .test-input {
+            background: #ecf0f1;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 5px 0;
+            font-family: 'Courier New', monospace;
+        }
+        .test-result {
+            background: #e8f5e9;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+            border-left: 4px solid #4caf50;
+        }
+        .test-expected {
+            background: #fff3e0;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+            border-left: 4px solid #ff9800;
+        }
+        .success {
+            color: #4caf50;
+            font-weight: bold;
+        }
+        .failure {
+            color: #f44336;
+            font-weight: bold;
+        }
+        .decision-item {
+            padding: 5px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .decision-item:last-child {
+            border-bottom: none;
+        }
+        code {
+            background: #f5f5f5;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+    </style>
+</head>
+<body>
+    <h1>🧪 Test du Système de Modifications Cumulées</h1>
+    <p>Ce test valide que le moteur data-driven applique correctement les modifications d'options de manière cumulative au fur et à mesure du dépilage des états.</p>
+
+    <div id="results"></div>
+
+    <script src="ck-data-engine.js"></script>
+    <script>
+        const resultsDiv = document.getElementById('results');
+
+        // Configuration de test pour contreMesure
+        const testConfig = {
+            "options": [
+                "Primes pour les dénonciations",
+                "Arrestations arbitraires",
+                "Sentinelles renforcées",
+                "Garde doublée",
+                "Retrait de la vie publique"
+            ],
+            "siRien": "Aucune",
+            "defaut": "Retrait de la vie publique",
+            "selonEtats": {
+                "guerre": {
+                    "decisions": [],
+                    "arret": false,
+                    "modifications": {
+                        "Retrait de la vie publique": "Retrait de la vie publique SI NON gouvernement administratif"
+                    }
+                },
+                "aInfluencer": {
+                    "decisions": [],
+                    "arret": false,
+                    "modifications": {
+                        "Primes pour les dénonciations": "undefined",
+                        "Sentinelles renforcées": "Sentinelles renforcées SI ALLIE",
+                        "Garde doublée": "Garde doublée SI ALLIE",
+                        "Retrait de la vie publique": "undefined"
+                    }
+                },
+                "stress": {
+                    "decisions": [],
+                    "arret": false,
+                    "modifications": {
+                        "Garde doublée": "undefined",
+                        "Retrait de la vie publique": "undefined"
+                    }
+                },
+                "survie": {
+                    "decisions": ["Garde doublée"],
+                    "arret": false
+                }
+            }
+        };
+
+        function runTest(testName, problemStack, expectedResults, explanation) {
+            const testDiv = document.createElement('div');
+            testDiv.className = 'test-case';
+
+            const engine = new DataDrivenEngine(testConfig);
+            const result = engine.process(problemStack, [], null);
+
+            // Extraire les décisions en texte
+            const resultText = result.map(set => Array.from(set).join(', ')).join(' | ');
+            const expectedText = expectedResults.join(' | ');
+
+            const success = resultText === expectedText;
+
+            testDiv.innerHTML = `
+                <div class="test-title">📋 ${testName}</div>
+                <div style="color: #7f8c8d; margin-bottom: 10px;">${explanation}</div>
+                <div class="test-input">
+                    <strong>États à traiter :</strong> [${problemStack.map(s => `"${s}"`).join(', ')}]
+                </div>
+                <div class="test-result">
+                    <strong>Résultat obtenu :</strong><br>
+                    ${result.map((set, i) => `
+                        <div class="decision-item">
+                            Stack ${i+1}: ${Array.from(set).join(', ')}
+                        </div>
+                    `).join('')}
+                </div>
+                <div class="test-expected">
+                    <strong>Résultat attendu :</strong><br>
+                    ${expectedResults.map((exp, i) => `
+                        <div class="decision-item">
+                            Stack ${i+1}: ${exp}
+                        </div>
+                    `).join('')}
+                </div>
+                <div style="margin-top: 10px;">
+                    <span class="${success ? 'success' : 'failure'}">
+                        ${success ? '✅ TEST RÉUSSI' : '❌ TEST ÉCHOUÉ'}
+                    </span>
+                </div>
+            `;
+
+            resultsDiv.appendChild(testDiv);
+            return success;
+        }
+
+        // Section: Tests des modifications cumulées
+        const section1 = document.createElement('h2');
+        section1.textContent = '1️⃣ Test de modification simple';
+        resultsDiv.appendChild(section1);
+
+        runTest(
+            'Test 1.1 - État "guerre" modifie le défaut',
+            ['guerre'],
+            ['Retrait de la vie publique SI NON gouvernement administratif'],
+            'La modification de "guerre" doit être appliquée au texte du défaut'
+        );
+
+        runTest(
+            'Test 1.2 - État "aInfluencer" avec plusieurs modifications',
+            ['aInfluencer'],
+            ['undefined'],
+            'Les modifications de "aInfluencer" rendent "Retrait de la vie publique" undefined'
+        );
+
+        // Section: Tests de modifications cumulatives
+        const section2 = document.createElement('h2');
+        section2.textContent = '2️⃣ Tests de modifications cumulées';
+        resultsDiv.appendChild(section2);
+
+        runTest(
+            'Test 2.1 - Deux états avec modifications successives',
+            ['guerre', 'aInfluencer'],
+            ['undefined'],
+            '"guerre" modifie d\'abord, puis "aInfluencer" remplace par undefined'
+        );
+
+        runTest(
+            'Test 2.2 - État avec décision et modifications',
+            ['aInfluencer', 'survie'],
+            ['Garde doublée SI ALLIE'],
+            '"aInfluencer" modifie "Garde doublée", puis "survie" l\'utilise'
+        );
+
+        runTest(
+            'Test 2.3 - Cumul de 3 états',
+            ['guerre', 'aInfluencer', 'stress'],
+            ['undefined'],
+            'Modifications cumulées : guerre → aInfluencer → stress → undefined final'
+        );
+
+        // Section: Test cas siRien
+        const section3 = document.createElement('h2');
+        section3.textContent = '3️⃣ Tests cas spéciaux';
+        resultsDiv.appendChild(section3);
+
+        runTest(
+            'Test 3.1 - Cas siRien (sans états)',
+            [],
+            ['Aucune'],
+            'Aucun état à traiter → utilise siRien'
+        );
+
+        runTest(
+            'Test 3.2 - État non défini dans selonEtats',
+            ['prestige', 'revenu'],
+            ['Retrait de la vie publique'],
+            'États inconnus ignorés → utilise défaut sans modification'
+        );
+
+        console.log('✅ Tous les tests de modifications ont été exécutés');
+    </script>
+</body>
+</html>

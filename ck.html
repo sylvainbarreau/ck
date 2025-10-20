@@ -137,7 +137,21 @@
       <p id="espionResult"></p>
       <h1>Courtisans (Camp)</h1>
       <h2>Postes de la cour (Officiers)</h2>
-      <ul id="epidResult"></ul>
+      <ul>
+        <li id="posteMedecin"></li>
+        <li id="posteCaravanier"></li>
+        <li id="posteAntiq"></li>
+        <li id="posteSenech"></li>
+        <li id="posteProf"></li>
+        <li id="posteNour"></li>
+        <li id="posteEcuyer"></li>
+        <li id="posteChasse"></li>
+        <li id="posteChroniqueur"></li>
+        <li id="posteChampion"></li>
+        <li id="posteDame"></li>
+        <li id="posteBouffon"></li>
+        <li id="posteGardeCorps"></li>
+      </ul>
       <h2>Prisonniers</h2>
       <p id="prisonResult"></p>
       <h1>Intrigue</h1>
@@ -511,5 +525,8 @@ table.addEventListener('change', function() {
 
   </script>
   <script src="ck.js"></script>
+  <!-- Système data-driven (NOUVEAU) - charge APRÈS ck.js pour remplacer les fonctions -->
+<script src="ck-data-engine.js"></script>
+<script src="ck-data-loader.js"></script>
 </body>
 </html>
