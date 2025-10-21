@@ -5,20 +5,10 @@
             "idElement": "influenceResult"
         },
         "siRien": ["Influencer SEIGNEUR LIGE", "Séduire SEIGNEUR LIGE", "Apprendre la langue SEIGNEUR LIGE",
-        "Apprendre la langue DIRIGEANT A QUI ACHETER TERRE", "Influencer DIRIGEANT A QUI ACHETER TERRE", "Séduire DIRIGEANT A QUI ACHETER TERRE"],
-        "defaut": "Influencer vassal puissant non intimidé non factiable, Influencer vassal puissant intimidé non factiable, Influencer vassal non intimidé non factiable, Influencer vassal intimidé non factiable, Influencer conseiller religieux, Influencer allié, Influencer seigneur lige, Influencer Médecin, Influencer Garde du corps, Influencer conjoint, Influencer Maître-espion",
+            "Apprendre la langue DIRIGEANT A QUI ACHETER TERRE", "Influencer DIRIGEANT A QUI ACHETER TERRE", "Séduire DIRIGEANT A QUI ACHETER TERRE",
+            "Influencer vassal puissant non intimidé non factiable", "Influencer vassal puissant intimidé non factiable", "Influencer vassal non intimidé non factiable", "Influencer vassal intimidé non factiable", "Influencer conseiller religieux", "Influencer allié", "Influencer seigneur lige", "Influencer Médecin", "Influencer Garde du corps", "Influencer conjoint", "Influencer Maître-espion"],
+        "defaut": ["Influencer vassal puissant non intimidé non factiable", "Influencer vassal puissant intimidé non factiable", "Influencer vassal non intimidé non factiable", "Influencer vassal intimidé non factiable", "Influencer conseiller religieux", "Influencer allié", "Influencer seigneur lige", "Influencer Médecin", "Influencer Garde du corps", "Influencer conjoint", "Influencer Maître-espion"],
         "selonEtats": {
-            "siRien": {
-                "decisions": [
-                    "Influencer SEIGNEUR LIGE",
-                    "Séduire SEIGNEUR LIGE",
-                    "Apprendre la langue SEIGNEUR LIGE",
-                    "Apprendre la langue DIRIGEANT A QUI ACHETER TERRE",
-                    "Influencer DIRIGEANT A QUI ACHETER TERRE",
-                    "Séduire DIRIGEANT A QUI ACHETER TERRE"
-                ],
-                "arret": false
-            },
             "guerre": {
                 "decisions": [
                     "Influencer LUI SI gouvernement administratif",
@@ -87,17 +77,17 @@
             },
             "aInfluencer": {
                 "decisions": [
-                    "Influencer ALLIE POTENTIEL OU PARDONNEUR-S",
-                    "Séduire ALLIE POTENTIEL OU PARDONNEUR-S",
-                    "Apprendre la langue ALLIE POTENTIEL OU PARDONNEUR-S"
+                    "Influencer ALLIE POTENTIEL-S",
+                    "Séduire ALLIE POTENTIEL-S",
+                    "Apprendre la langue ALLIE POTENTIEL-S"
                 ],
                 "arret": false
             },
             "enfant": {
                 "decisions": [
-                    "Influencer LUI SI adoption/aventurier",
-                    "Séduire LUI SI adoption/aventurier",
-                    "Apprendre la langue LUI SI adoption/aventurier",
+                    "Influencer ADOPTE POTENTIEL SI Aventurier",
+                    "Séduire ADOPTE POTENTIEL SI Aventurier",
+                    "Apprendre la langue ADOPTE POTENTIEL SI Aventurier",
                     "Séduire",
                     "Faire la cour",
                     "Marier clandestinement"
@@ -106,9 +96,9 @@
             },
             "chevalierPartisan": {
                 "decisions": [
-                    "Faire la cour amant SI chevalier possible ET hors camp > âme soeur",
-                    "Influencer ami SI chevalier possible ET hors camp > meilleur ami",
-                    "Influencer amant SI chevalier possible ET hors camp > âme soeur"
+                    "Faire la cour AMANT-S SI chevalier possible ET hors camp > âme soeur",
+                    "Influencer AMI-S SI chevalier possible ET hors camp > meilleur ami",
+                    "Influencer AMANT-S SI chevalier possible ET hors camp > âme soeur"
                 ],
                 "arret": false
             },
@@ -143,7 +133,9 @@
             "rancon": { "arret": false },
             "factionPop": { "arret": false },
             "domaine": { "arret": false },
-            "cultInnov": { "arret": false }
+            "cultInnov": { "arret": false },
+            "revenu": { "arret": false },
+            "prestige": { "arret": false }
         }
     },
     "contreMesure": {

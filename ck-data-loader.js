@@ -161,8 +161,8 @@ window.displayAllResults = function(p) {
 
         // Déterminer la liaison selon le type
         let liaison = "SINON";
-        if (typeName === 'decisions') liaison = "PUIS";
-        if (typeName === 'militaire' || typeName === 'militaireAuto') liaison = "";
+        //if (typeName === 'decisions') liaison = "PUIS";
+        //if (typeName === 'militaire' || typeName === 'militaireAuto') liaison = "";
 
         const texte = sansDoublon(result, liaison);
 

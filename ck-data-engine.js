@@ -53,20 +53,20 @@ class DataDrivenEngine {
      * → p.length === 0 mais t peut avoir du contenu
      * → utilise "defaut"
      */
-    process(p, t = [], o = null, optionModifications = new Map()) {
+    process(p, t = [], o = null, optionModifications = new Map(), isInitialCall = true) {
         // Initialiser la stack si nécessaire (pour decisions qui commence toujours avec "stress éviter niveau+")
-        if (this.initialStack && t.length === 0) {
+        if (this.initialStack && t.length === 0 && isInitialCall) {
             t.push(new Set().add(this.initialStack));
         }
 
         // Cas 1: siRien - aucun problème dès le départ (appel initial sans problèmes)
-        // Condition : liste vide ET stack vide (rien n'a encore été traité)
-        if (p.length === 0 && t.length === 0) {
+        // Condition : liste vide DÈS LE DÉPART (isInitialCall = true)
+        if (p.length === 0 && isInitialCall) {
             return this.handleRien(t);
         }
 
         // Cas 2: defaut - tous les problèmes ont été dépilés sans rencontrer "arret: true"
-        // Condition : liste vide MAIS on a potentiellement traité des états
+        // Condition : liste vide APRÈS traitement (isInitialCall = false)
         if (p.length === 0) {
             return this.handleDefaut(t, optionModifications);
         }
@@ -80,9 +80,31 @@ class DataDrivenEngine {
      * = "Que faire quand tout va bien dès le début ?"
      */
     handleRien(t) {
-        if (this.siRien) {
+        if (!this.siRien) {
+            return t;
+        }
+
+        // Cas 1: siRien est un tableau de décisions
+        if (Array.isArray(this.siRien)) {
+            this.siRien.forEach(decision => {
+                if (decision && decision !== "undefined") {
+                    t.push(new Set().add(decision));
+                }
+            });
+        }
+        // Cas 2: siRien est un objet avec { decisions: [...] }
+        else if (typeof this.siRien === 'object' && this.siRien.decisions) {
+            this.siRien.decisions.forEach(decision => {
+                if (decision && decision !== "undefined") {
+                    t.push(new Set().add(decision));
+                }
+            });
+        }
+        // Cas 3: siRien est une chaîne simple
+        else if (typeof this.siRien === 'string') {
             t.push(new Set().add(this.siRien));
         }
+
         return t;
     }
 
@@ -91,11 +113,34 @@ class DataDrivenEngine {
      * = "Que faire après avoir dépilé tous les problèmes sans décision d'arrêt ?"
      */
     handleDefaut(t, optionModifications) {
-        if (this.defaut) {
-            // Appliquer les modifications cumulées au texte du défaut
+        if (!this.defaut) {
+            return t;
+        }
+
+        // Cas 1: defaut est un tableau de décisions
+        if (Array.isArray(this.defaut)) {
+            this.defaut.forEach(decision => {
+                const modifiedDecision = this.applyModificationsToText(decision, optionModifications);
+                if (modifiedDecision && modifiedDecision !== "undefined") {
+                    t.push(new Set().add(modifiedDecision));
+                }
+            });
+        }
+        // Cas 2: defaut est un objet avec { decisions: [...] }
+        else if (typeof this.defaut === 'object' && this.defaut.decisions) {
+            this.defaut.decisions.forEach(decision => {
+                const modifiedDecision = this.applyModificationsToText(decision, optionModifications);
+                if (modifiedDecision && modifiedDecision !== "undefined") {
+                    t.push(new Set().add(modifiedDecision));
+                }
+            });
+        }
+        // Cas 3: defaut est une chaîne simple
+        else if (typeof this.defaut === 'string') {
             const defautText = this.applyModificationsToText(this.defaut, optionModifications);
             t.push(new Set().add(defautText));
         }
+
         return t;
     }
 
@@ -113,7 +158,7 @@ class DataDrivenEngine {
 
         if (!regle) {
             // Pas de règle pour cet état : passer au suivant
-            return this.process(p.slice(1), t, o, optionModifications);
+            return this.process(p.slice(1), t, o, optionModifications, false);
         }
 
         // Enregistrer les modifications de cet état (si présentes)
@@ -133,7 +178,7 @@ class DataDrivenEngine {
         }
 
         // Sinon, continuer avec le reste des problèmes
-        return this.process(p.slice(1), t, o, optionModifications);
+        return this.process(p.slice(1), t, o, optionModifications, false);
     }
 
     /**
