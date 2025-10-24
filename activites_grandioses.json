@@ -704,7 +704,7 @@
         }
     },
     "activCouro": {
-        "options_commentaires": ["Être témoin,0 +piété,légitimité,acceptation culturelle",
+        "optionsCommentaires": ["Être témoin,0 +piété,légitimité,acceptation culturelle",
         "Offrir un soutien,1 +opinion COURONNE,relation particulière COURONNE,alliance COURONNE",
         "Plaider la cause du domaine,// +développement,contrôle,opinion populaire",
         "Prétendre à des droits,// +hameçon seigneur lige,contrat vassalique moi",
@@ -742,7 +742,7 @@
                 "arret": true
             },
             "religieuxAInfluencer": {
-                "decisions": "Être témoin SI CONSEILLER RELIGIEUX culture différente",
+                "decisions": ["Être témoin SI CONSEILLER RELIGIEUX culture différente"],
                 "arret": false
             },
             "aInfluencer": {
@@ -750,7 +750,7 @@
                 "arret": false
             },
             "hamecon": {
-                "decisions": "Prétendre à des droits SI A HAMEÇONNER-S seigneur lige",
+                "decisions": ["Prétendre à des droits SI A HAMEÇONNER-S seigneur lige"],
                 "arret": false
             },
             "recruterChevalier": { "arret": false },
@@ -758,15 +758,15 @@
             "proclame": { "arret": false },
             "stress": { "arret": false },
             "prestige": {
-                "decisions": "Profiter des avantages",
+                "decisions": ["Profiter des avantages"],
                 "arret": true
             },
             "enfant": {
-                "decisions": "Profiter des avantages SI adoption/aventurier",
+                "decisions": ["Profiter des avantages SI adoption/aventurier"],
                 "arret": false
             },
             "piete":{
-                "decisions": "Être témoin",
+                "decisions": ["Être témoin"],
                 "arret": true
             },
             "denoncer": {
@@ -792,16 +792,16 @@
                 "arret": false
             },
             "vassal": {
-                "decisions": "Offrir un soutien SI VASSAL-S couronné",
+                "decisions": ["Offrir un soutien SI VASSAL-S couronné"],
                 "arret": false
             },
             "domaine": { "arret": false },
             "cultInnov": { 
-                "decisions": "Profiter des avantages SI NON chef culturel",
+                "decisions": ["Profiter des avantages SI NON chef culturel"],
                 "arret": false
             },
             "prison": {
-                "decisions": "Profiter des avantages",
+                "decisions": ["Profiter des avantages"],
                 "arret": true
             }
         }   
