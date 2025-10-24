@@ -1,0 +1,809 @@
+{
+    "suite": {
+        "positionVue": {
+            "categories": ["Activités grandioses", "Grande tournée"],
+            "idElement": "suite"
+        },
+        "siRien": "A DEFINIR",
+        "defaut": ["Suite nombreuse", "Entourage modeste", "Suite modeste"],
+        "selonEtats": {
+            "guerre": {
+                "decisions": ["A DEFINIR"],
+                "arret": true
+            },
+            "dirigeantAInfluencer": {
+                "decisions": ["A DEFINIR"],
+                "arret": true
+            },
+            "aInfluencer": {
+                "decisions": ["A DEFINIR"],
+                "arret": true
+            },
+            "enfant": {
+                "decisions": ["A DEFINIR"],
+                "arret": true
+            },
+            "piete": {
+                "decisions": ["A DEFINIR"],
+                "arret": true
+            },
+            "agent": {
+                "decisions": ["A DEFINIR"],
+                "arret": true
+            },
+            "perteTerresRevoquer": {
+                "decisions": ["A DEFINIR"],
+                "arret": true
+            },
+            "conseiller": {
+                "decisions": ["A DEFINIR"],
+                "arret": true
+            },
+            "factionPop": {
+                "decisions": ["A DEFINIR"],
+                "arret": true
+            },
+            "vassalAInfluencer": {
+                "decisions": ["A DEFINIR"],
+                "arret": true
+            },
+            "vassal": {
+                "decisions": ["A DEFINIR"],
+                "arret": true
+            },
+            "domaine": {
+                "decisions": ["A DEFINIR"],
+                "arret": true
+            },
+            "cultInnov": {
+                "decisions": ["A DEFINIR"],
+                "arret": true
+            },
+            "prestige": {
+                "decisions": ["Suite nombreuse", "Entourage modeste"],
+                "arret": false
+            },
+            "denoncer": {
+                "decisions": ["Suite nombreuse", "Entourage modeste"],
+                "arret": false
+            },
+            "prison": {
+                "decisions": ["Suite nombreuse", "Entourage modeste"],
+                "arret": false
+            },
+            "revenu": {
+                "decisions": ["Suite modeste"],
+                "arret": true
+            },
+            "rancon": {
+                "decisions": ["Suite modeste"],
+                "arret": true
+            },
+            "chevalierPartisan": {
+                "decisions": [],
+                "arret": true
+            },
+            "demande": {
+                "decisions": [],
+                "arret": true
+            },
+            "demande2": {
+                "decisions": [],
+                "arret": true
+            },
+            "declarationGuerre": { "arret": false }
+        }
+    },
+    "luxe": {
+        "positionVue": {
+            "categories": ["Activités grandioses", "Grande tournée"],
+            "idElement": "luxe"
+        },
+        "siRien": "A DEFINIR",
+        "defaut": ["Mobilier en excès", "Mobilier luxueux", "Aucun luxe"],
+        "selonEtats": {
+            "revenu": {
+                "decisions": ["Aucun luxe"],
+                "arret": true
+            },
+            "rancon": {
+                "decisions": ["Aucun luxe"],
+                "arret": true
+            },
+            "vassalAInfluencer": {
+                "decisions": ["Mobilier en excès", "Mobilier luxueux", "Luxe extravagant", "Biens de luxe essentiels"],
+                "arret": false
+            },
+            "vassalSOppose": {
+                "decisions": ["Mobilier en excès", "Mobilier luxueux", "Luxe extravagant", "Biens de luxe essentiels"],
+                "arret": false
+            },
+            "factionFoi": {
+                "decisions": ["Mobilier en excès", "Mobilier luxueux", "Luxe extravagant", "Biens de luxe essentiels"],
+                "arret": false
+            },
+            "denoncer": {
+                "decisions": ["Mobilier en excès", "Mobilier luxueux", "Luxe extravagant", "Biens de luxe essentiels"],
+                "arret": false
+            },
+            "prestige": {
+                "decisions": ["Mobilier en excès", "Mobilier luxueux"],
+                "arret": false
+            },
+            "prison": {
+                "decisions": ["Mobilier en excès", "Mobilier luxueux"],
+                "arret": false
+            },
+            "assassinat": {
+                "decisions": ["A DEFINIR"],
+                "arret": true
+            },
+            "guerre": {
+                "decisions": ["A DEFINIR"],
+                "arret": true
+            },
+            "dirigeantAInfluencer": {
+                "decisions": ["A DEFINIR"],
+                "arret": true
+            },
+            "aInfluencer": {
+                "decisions": ["A DEFINIR"],
+                "arret": true
+            },
+            "enfant": {
+                "decisions": ["A DEFINIR"],
+                "arret": true
+            },
+            "agent": {
+                "decisions": ["A DEFINIR"],
+                "arret": true
+            },
+            "perteTerresRevoquer": {
+                "decisions": ["A DEFINIR"],
+                "arret": true
+            },
+            "conseiller": {
+                "decisions": ["A DEFINIR"],
+                "arret": true
+            },
+            "factionPop": {
+                "decisions": ["A DEFINIR"],
+                "arret": true
+            },
+            "vassal": {
+                "decisions": ["A DEFINIR"],
+                "arret": true
+            },
+            "domaine": {
+                "decisions": ["A DEFINIR"],
+                "arret": true
+            },
+            "cultInnov": {
+                "decisions": ["A DEFINIR"],
+                "arret": true
+            },
+            "hamecon": {
+                "decisions": ["A DEFINIR"],
+                "arret": true
+            },
+            "recruterChevalier": {
+                "decisions": ["A DEFINIR"],
+                "arret": true
+            },
+            "proclame": {
+                "decisions": ["A DEFINIR"],
+                "arret": true
+            },
+            "piete": {
+                "decisions": ["A DEFINIR"],
+                "arret": true
+            },
+            "chevalierPartisan": {
+                "decisions": [],
+                "arret": true
+            },
+            "demande": {
+                "decisions": [],
+                "arret": true
+            },
+            "demande2": {
+                "decisions": [],
+                "arret": true
+            },
+            "declarationGuerre": { "arret": false },
+            "controle": { "arret": false },
+            "influence": { "arret": false },
+            "succession": { "arret": false }
+        }
+    },
+    "particip": {
+        "positionVue": {
+            "categories": ["Activités grandioses", "Grand tournoi"],
+            "idElement": "particip"
+        },
+        "siRien": "Participe",
+        "defaut": "Participe",
+        "selonEtats": {
+            "survie": {
+                "decisions": ["Ne participe pas"],
+                "arret": true
+            },
+            "enfant": {
+                "decisions": ["Participe SI adoption/aventurier", "Ne participe pas"],
+                "arret": true
+            },
+            "vassalAInfluencer": {
+                "decisions": ["Participe"],
+                "arret": true
+            },
+            "dirigeantAInfluencer": {
+                "decisions": ["Participe"],
+                "arret": true
+            },
+            "recruterChevalier": {
+                "decisions": ["Participe"],
+                "arret": true
+            },
+            "guerre": {
+                "decisions": ["Participe"],
+                "arret": true
+            },
+            "declarationGuerre": {
+                "decisions": ["Participe"],
+                "arret": true
+            },
+            "controle": {
+                "decisions": ["Participe"],
+                "arret": true
+            },
+            "revenu": {
+                "decisions": ["Participe"],
+                "arret": true
+            },
+            "assassinat": {
+                "decisions": ["Participe"],
+                "arret": true
+            },
+            "agent": {
+                "decisions": ["Participe"],
+                "arret": true
+            },
+            "aInfluencer": {
+                "decisions": ["Participe"],
+                "arret": true
+            },
+            "hamecon": {
+                "decisions": ["Participe"],
+                "arret": true
+            },
+            "proclame": {
+                "decisions": ["Participe"],
+                "arret": true
+            },
+            "prestige": {
+                "decisions": ["Participe"],
+                "arret": true
+            },
+            "domaine": {
+                "decisions": ["Participe"],
+                "arret": true
+            },
+            "religieuxAInfluencer": {
+                "decisions": ["Participe"],
+                "arret": true
+            },
+            "piete": {
+                "decisions": ["Participe"],
+                "arret": true
+            },
+            "vassalSOppose": {
+                "decisions": ["Participe"],
+                "arret": true
+            },
+            "factionFoi": {
+                "decisions": ["Participe"],
+                "arret": true
+            },
+            "factionCult": {
+                "decisions": ["Participe"],
+                "arret": true
+            },
+            "perteTerresRevoquer": {
+                "decisions": ["Participe"],
+                "arret": true
+            },
+            "denoncer": {
+                "decisions": ["Participe"],
+                "arret": true
+            },
+            "succession": {
+                "decisions": ["Participe"],
+                "arret": true
+            },
+            "influence": {
+                "decisions": ["Participe"],
+                "arret": true
+            },
+            "chevalierPartisan": {
+                "decisions": ["Participe"],
+                "arret": true
+            },
+            "demande": {
+                "decisions": ["Participe"],
+                "arret": true
+            },
+            "demande2": {
+                "decisions": ["Participe"],
+                "arret": true
+            },
+            "rancon": {
+                "decisions": ["Participe"],
+                "arret": true
+            },
+            "factionPop": {
+                "decisions": ["Participe"],
+                "arret": true
+            },
+            "vassal": {
+                "decisions": ["Participe"],
+                "arret": true
+            },
+            "cultInnov": {
+                "decisions": ["Participe"],
+                "arret": true
+            },
+            "prison": {
+                "decisions": ["Participe"],
+                "arret": true
+            },
+            "conseiller": { "arret": false }
+        }
+    },
+    "tournoiHeberg": {
+        "positionVue": {
+            "categories": ["Activités grandioses", "Grand tournoi"],
+            "idElement": "tournoiHeberg"
+        },
+        "siRien": "Tentes délabrées",
+        "defaut": ["Campements luxueux", "Pavillons simples", "Tentes délabrées"],
+        "selonEtats": {
+            "conseiller": {
+                "decisions": ["VERIF heb"],
+                "arret": true
+            },
+            "factionPop": {
+                "decisions": ["VERIF heb"],
+                "arret": true
+            },
+            "vassalAInfluencer": {
+                "decisions": ["VERIF heb"],
+                "arret": true
+            },
+            "vassal": {
+                "decisions": ["VERIF heb"],
+                "arret": true
+            },
+            "domaine": {
+                "decisions": ["VERIF heb"],
+                "arret": true
+            },
+            "perteTerresRevoquer": {
+                "decisions": ["VERIF heb"],
+                "arret": true
+            },
+            "cultInnov": {
+                "decisions": ["VERIF heb"],
+                "arret": true
+            },
+            "prison": {
+                "decisions": ["VERIF heb"],
+                "arret": true
+            },
+            "revenu": {
+                "decisions": ["Tentes délabrées"],
+                "arret": true
+            },
+            "agent": {
+                "decisions": ["Tentes délabrées"],
+                "arret": true
+            },
+            "assassinat": {
+                "decisions": ["Tentes délabrées"],
+                "arret": true
+            },
+            "aInfluencer": {
+                "decisions": ["Tentes délabrées"],
+                "arret": true
+            },
+            "declarationGuerre": {
+                "decisions": ["Tentes délabrées"],
+                "arret": true
+            },
+            "guerre": {
+                "decisions": ["Tentes délabrées"],
+                "arret": true
+            },
+            "dirigeantAInfluencer": {
+                "decisions": ["Tentes délabrées"],
+                "arret": true
+            },
+            "denoncer": {
+                "decisions": ["Tentes délabrées"],
+                "arret": true
+            },
+            "rancon": {
+                "decisions": ["Tentes délabrées"],
+                "arret": true
+            },
+            "enfant": {
+                "decisions": ["Tentes délabrées SI adoption/aventurier", "Campements luxueux", "Pavillons simples", "Tentes délabrées"],
+                "arret": true
+            },
+            "chevalierPartisan": {
+                "decisions": [],
+                "arret": true
+            },
+            "demande": {
+                "decisions": [],
+                "arret": true
+            },
+            "demande2": {
+                "decisions": [],
+                "arret": true
+            },
+            "recruterChevalier": { "arret": false },
+            "piete": { "arret": false }
+        }
+    },
+    "prix": {
+        "positionVue": {
+            "categories": ["Activités grandioses", "Grand tournoi"],
+            "idElement": "prix"
+        },
+        "siRien": "A DEFINIR",
+        "defaut": ["Bons prix", "Prix corrects", "Prix décents", "Prix quelconques"],
+        "selonEtats": {
+            "enfant": {
+                "decisions": [
+                    "Prix magnifiques SI adoption/aventurier ET Triompher",
+                    "Bons prix SI adoption/aventurier ET Triompher",
+                    "Prix corrects SI adoption/aventurier ET Triompher",
+                    "Prix décents SI adoption/aventurier ET Triompher",
+                    "Prix quelconques SI adoption/aventurier"
+                ],
+                "arret": false
+            },
+            "revenu": {
+                "decisions": ["Prix quelconques"],
+                "arret": true
+            },
+            "rancon": {
+                "decisions": ["Prix quelconques"],
+                "arret": true
+            },
+            "aInfluencer": {
+                "decisions": ["Prix quelconques"],
+                "arret": true
+            },
+            "controle": {
+                "decisions": [
+                    "Prix magnifiques SI Triompher",
+                    "Bons prix SI Triompher",
+                    "Prix corrects SI Triompher",
+                    "Prix décents SI Triompher",
+                    "Prix quelconques"
+                ],
+                "arret": true
+            },
+            "hamecon": {
+                "decisions": [
+                    "Prix magnifiques SI Triompher",
+                    "Bons prix SI Triompher",
+                    "Prix corrects SI Triompher",
+                    "Prix décents SI Triompher",
+                    "Prix quelconques"
+                ],
+                "arret": true
+            },
+            "prestige": {
+                "decisions": [
+                    "Prix magnifiques SI Triompher",
+                    "Bons prix SI Triompher",
+                    "Prix corrects SI Triompher",
+                    "Prix décents SI Triompher",
+                    "Prix quelconques"
+                ],
+                "arret": true
+            },
+            "denoncer": {
+                "decisions": [
+                    "Prix magnifiques SI Triompher",
+                    "Bons prix SI Triompher",
+                    "Prix corrects SI Triompher",
+                    "Prix décents SI Triompher",
+                    "Prix quelconques"
+                ],
+                "arret": true
+            },
+            "factionFoi": {
+                "decisions": [
+                    "Prix magnifiques SI Triompher",
+                    "Bons prix SI Triompher",
+                    "Prix corrects SI Triompher",
+                    "Prix décents SI Triompher",
+                    "Prix quelconques"
+                ],
+                "arret": true
+            },
+            "factionPop": {
+                "decisions": [
+                    "Prix magnifiques SI Triompher",
+                    "Bons prix SI Triompher",
+                    "Prix corrects SI Triompher",
+                    "Prix décents SI Triompher",
+                    "Prix quelconques"
+                ],
+                "arret": true
+            },
+            "religieuxAInfluencer": {
+                "decisions": [
+                    "Prix magnifiques SI Triompher",
+                    "Bons prix SI Triompher",
+                    "Prix corrects SI Triompher",
+                    "Prix décents SI Triompher",
+                    "Prix quelconques"
+                ],
+                "arret": true
+            },
+            "erudition": {
+                "decisions": [
+                    "Prix magnifiques SI Triompher",
+                    "Bons prix SI Triompher",
+                    "Prix corrects SI Triompher",
+                    "Prix décents SI Triompher",
+                    "Prix quelconques"
+                ],
+                "arret": true
+            },
+            "vassalSOppose": {
+                "decisions": [
+                    "Prix magnifiques SI Triompher",
+                    "Bons prix SI Triompher",
+                    "Prix corrects SI Triompher",
+                    "Prix décents SI Triompher",
+                    "Prix quelconques"
+                ],
+                "arret": true
+            },
+            "vassalAInfluencer": {
+                "decisions": [
+                    "Prix magnifiques SI Triompher",
+                    "Bons prix SI Triompher",
+                    "Prix corrects SI Triompher",
+                    "Prix décents SI Triompher",
+                    "Prix quelconques"
+                ],
+                "arret": true
+            },
+            "assassinat": {
+                "decisions": [
+                    "Prix magnifiques SI Triompher",
+                    "Bons prix SI Triompher",
+                    "Prix corrects SI Triompher",
+                    "Prix décents SI Triompher",
+                    "Prix quelconques"
+                ],
+                "arret": true
+            },
+            "piete": {
+                "decisions": [
+                    "Prix magnifiques SI Triompher",
+                    "Bons prix SI Triompher",
+                    "Prix corrects SI Triompher",
+                    "Prix décents SI Triompher",
+                    "Prix quelconques"
+                ],
+                "arret": true
+            },
+            "perteTerresRevoquer": {
+                "decisions": [
+                    "Prix magnifiques SI Triompher",
+                    "Bons prix SI Triompher",
+                    "Prix corrects SI Triompher",
+                    "Prix décents SI Triompher",
+                    "Prix quelconques"
+                ],
+                "arret": true
+            },
+            "vassal": {
+                "decisions": [
+                    "Prix magnifiques SI Triompher",
+                    "Bons prix SI Triompher",
+                    "Prix corrects SI Triompher",
+                    "Prix décents SI Triompher",
+                    "Prix quelconques"
+                ],
+                "arret": true
+            },
+            "domaine": {
+                "decisions": [
+                    "Prix magnifiques SI Triompher",
+                    "Bons prix SI Triompher",
+                    "Prix corrects SI Triompher",
+                    "Prix décents SI Triompher",
+                    "Prix quelconques"
+                ],
+                "arret": true
+            },
+            "cultInnov": {
+                "decisions": [
+                    "Prix magnifiques SI Triompher",
+                    "Bons prix SI Triompher",
+                    "Prix corrects SI Triompher",
+                    "Prix décents SI Triompher",
+                    "Prix quelconques"
+                ],
+                "arret": true
+            },
+            "prison": {
+                "decisions": [
+                    "Prix magnifiques SI Triompher",
+                    "Bons prix SI Triompher",
+                    "Prix corrects SI Triompher",
+                    "Prix décents SI Triompher",
+                    "Prix quelconques"
+                ],
+                "arret": true
+            },
+            "agent": {
+                "decisions": [
+                    "Prix magnifiques SI Triompher",
+                    "Bons prix SI Triompher",
+                    "Prix corrects SI Triompher ET présent dans le tournoi",
+                    "Prix décents ET présent dans le tournoi",
+                    "Prix quelconques"
+                ],
+                "arret": true
+            },
+            "guerre": {
+                "decisions": [
+                    "Bons prix SI Triompher",
+                    "Prix corrects SI Triompher",
+                    "Prix décents SI Triompher",
+                    "Prix quelconques"
+                ],
+                "arret": true
+            },
+            "dirigeantAInfluencer": {
+                "decisions": [
+                    "Bons prix SI Triompher",
+                    "Prix corrects SI Triompher",
+                    "Prix décents SI Triompher",
+                    "Prix quelconques"
+                ],
+                "arret": true
+            },
+            "chevalierPartisan": {
+                "decisions": [],
+                "arret": true
+            },
+            "demande": {
+                "decisions": [],
+                "arret": true
+            },
+            "demande2": {
+                "decisions": [],
+                "arret": true
+            },
+            "recruterChevalier": { "arret": false },
+            "proclame": { "arret": false },
+            "declarationGuerre": { "arret": false },
+            "succession": { "arret": false },
+            "conseiller": { "arret": false },
+            "influence": { "arret": false }
+        }
+    },
+    "activCouro": {
+        "options_commentaires": ["Être témoin,0 +piété,légitimité,acceptation culturelle",
+        "Offrir un soutien,1 +opinion COURONNE,relation particulière COURONNE,alliance COURONNE",
+        "Plaider la cause du domaine,// +développement,contrôle,opinion populaire",
+        "Prétendre à des droits,// +hameçon seigneur lige,contrat vassalique moi",
+        "Profiter des avantages,//2 +or,prestige,revendication",
+        "Perturber les loyalistes //+faction de moi,problème"],
+        "positionVue": {
+            "categories": ["Activités", "Activités grandioses", "Couronnement"],
+            "idElement": "activCouro"
+        },
+        "siRien": "Profiter des avantages",
+        "defaut": "Être témoin",
+        "selonEtats": {
+            "guerre": {
+                "decisions": ["Plaider la cause du domaine", "Offrir un soutien"],
+                "arret": true
+            },
+            "declarationGuerre": {
+                "decisions": ["Offrir un soutien"],
+                "arret": true
+            },
+            "revenu": {
+                "decisions": ["Profiter des avantages"],
+                "arret": true
+            },
+            "controle": {
+                "decisions": ["Plaider la cause du domaine"], 
+                "arret": false
+            },
+            "assassinat": {
+                "decisions": ["Perturber les loyalistes SI DANS LA LIGNE DE SUCCESSION"],
+                "arret": false
+            },
+            "succession": {
+                "decisions": ["A DEFINIR"],
+                "arret": true
+            },
+            "religieuxAInfluencer": {
+                "decisions": "Être témoin SI CONSEILLER RELIGIEUX culture différente",
+                "arret": false
+            },
+            "aInfluencer": {
+                "decisions": ["Être témoin SI ALLIE POTENTIEL-S culture différente"],
+                "arret": false
+            },
+            "hamecon": {
+                "decisions": "Prétendre à des droits SI A HAMEÇONNER-S seigneur lige",
+                "arret": false
+            },
+            "recruterChevalier": { "arret": false },
+            "chevalierPartisan": { "arret": false },
+            "proclame": { "arret": false },
+            "stress": { "arret": false },
+            "prestige": {
+                "decisions": "Profiter des avantages",
+                "arret": true
+            },
+            "enfant": {
+                "decisions": "Profiter des avantages SI adoption/aventurier",
+                "arret": false
+            },
+            "piete":{
+                "decisions": "Être témoin",
+                "arret": true
+            },
+            "denoncer": {
+                "decisions": ["Profiter des avantages"],
+                "arret": true
+            },
+            "agent": {
+                "decisions": ["Être témoin"],
+                "arret": true
+            },
+            "rancon": {
+                "decisions": ["Profiter des avantages"],
+                "arret": true
+            },
+            "conseiller": { "arret": false },
+            "factionPop": { 
+                "decisions": ["Plaider la cause du domaine"],
+                "arret": false
+            },
+            "vassalAInfluencer": { 
+                "decisions": ["Être témoin SI FACTIEUX-S culture différente",
+                "Offrir un soutien SI FACTIEUX-S couronné"],
+                "arret": false
+            },
+            "vassal": {
+                "decisions": "Offrir un soutien SI VASSAL-S couronné",
+                "arret": false
+            },
+            "domaine": { "arret": false },
+            "cultInnov": { 
+                "decisions": "Profiter des avantages SI NON chef culturel",
+                "arret": false
+            },
+            "prison": {
+                "decisions": "Profiter des avantages",
+                "arret": true
+            }
+        }   
+    }
+}

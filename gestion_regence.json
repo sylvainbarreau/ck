@@ -1,0 +1,110 @@
+{
+    "regence": {
+        "positionVue": {
+            "categories": ["Partage du pouvoir"],
+            "idElement": "regence"
+        },
+        "siRien": "Remplir les coffres",
+        "defaut": "Promouvoir l'autorité",
+        "selonEtats": {
+            "vassalAInfluencer": {
+                "decisions": ["Promouvoir l'autorité"],
+                "arret": true
+            },
+            "religieuxAInfluencer": {
+                "decisions": ["Promouvoir l'autorité"],
+                "arret": true
+            },
+            "vassalSOppose": {
+                "decisions": ["Promouvoir l'autorité"],
+                "arret": true
+            },
+            "factionFoi": {
+                "decisions": ["Promouvoir l'autorité"],
+                "arret": true
+            },
+            "factionPop": {
+                "decisions": ["Promouvoir l'autorité"],
+                "arret": true
+            },
+            "vassal": {
+                "decisions": ["Promouvoir l'autorité"],
+                "arret": true
+            },
+            "aInfluencer": {
+                "decisions": [
+                    "Promouvoir l'autorité SI ALLIE POTENTIEL OU PARDONNEUR-S conseiller",
+                    "Remplir les coffres"
+                ],
+                "arret": true
+            },
+            "agent": {
+                "decisions": ["Remplir les coffres"],
+                "arret": false
+            },
+            "recruterChevalier": {
+                "decisions": ["Gonfler les rangs"],
+                "arret": true
+            },
+            "proclame": {
+                "decisions": ["Gonfler les rangs"],
+                "arret": true
+            },
+            "guerre": {
+                "decisions": ["Gonfler les rangs"],
+                "arret": true
+            },
+            "declarationGuerre": {
+                "decisions": ["Gonfler les rangs"],
+                "arret": true
+            },
+            "conseiller": {
+                "decisions": ["Gonfler les rangs"],
+                "arret": true
+            },
+            "revenu": {
+                "decisions": ["Remplir les coffres"],
+                "arret": true
+            },
+            "dirigeantAInfluencer": {
+                "decisions": ["Remplir les coffres"],
+                "arret": true
+            },
+            "rancon": {
+                "decisions": ["Remplir les coffres"],
+                "arret": true
+            },
+            "enfant": {
+                "decisions": ["Remplir les coffres SI adoption/aventurier"],
+                "arret": false
+            },
+            "perteTerresRevoquer": {
+                "decisions": ["Promouvoir l'autorité"],
+                "arret": true
+            },
+            "prison": {
+                "decisions": [
+                    "Promouvoir l'autorité SI -S conseiller",
+                    "Remplir les coffres"
+                ],
+                "arret": true
+            },
+            "chevalierPartisan": {
+                "decisions": [],
+                "arret": true
+            },
+            "demande": {
+                "decisions": [],
+                "arret": true
+            },
+            "demande2": {
+                "decisions": [],
+                "arret": true
+            },
+            "denoncer": { "arret": false },
+            "piete": { "arret": false },
+            "domaine": { "arret": false },
+            "cultInnov": { "arret": false }
+        }
+    }
+}

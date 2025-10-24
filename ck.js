@@ -5675,6 +5675,8 @@ function activCouro(p, t=new Array(), o=null) {
     let rien=false; if (p.length === 0 && o == null) { rien=true; }
     if (o == null) { o= ["Être témoin",//0 +piété,légitimité,acceptation culturelle
         "Offrir un soutien",//1 +opinion COURONNE,relation particulière COURONNE,alliance COURONNE
+        "Plaider la cause du domaine",// +développement,contrôle,opinion populaire
+        "Prétendre à des droits",// +hameçon seigneur lige,contrat vassalique moi
         "Profiter des avantages",//2 +or,prestige,revendication
         "Perturber les loyalistes"//3
     ]; }

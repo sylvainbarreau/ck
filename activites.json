@@ -1,0 +1,1007 @@
+{
+    "activUniv": {
+        "positionVue": {
+            "categories": ["Activités", "Séjour universitaire"],
+            "idElement": "activUniv"
+        },
+        "siRien": null,
+        "defaut": "Etudier durement",
+        "selonEtats": {
+            "guerre": {
+                "decisions": ["Etudier durement"],
+                "arret": true
+            },
+            "revenu": {
+                "decisions": ["Etudier durement"],
+                "arret": true
+            },
+            "controle": {
+                "decisions": ["Etudier durement"],
+                "arret": true
+            },
+            "assassinat": {
+                "decisions": ["Etudier durement"],
+                "arret": true
+            },
+            "succession": {
+                "decisions": ["Etudier durement"],
+                "arret": true
+            },
+            "dirigeantAInfluencer": {
+                "decisions": ["Etudier durement"],
+                "arret": true
+            },
+            "religieuxAInfluencer": {
+                "decisions": ["Etudier durement"],
+                "arret": true
+            },
+            "aInfluencer": {
+                "decisions": ["Etudier durement"],
+                "arret": true
+            },
+            "hamecon": {
+                "decisions": ["Etudier durement"],
+                "arret": true
+            },
+            "recruterChevalier": {
+                "decisions": ["Etudier durement"],
+                "arret": true
+            },
+            "chevalierPartisan": {
+                "decisions": ["Etudier durement"],
+                "arret": true
+            },
+            "demande": {
+                "decisions": ["Etudier durement"],
+                "arret": true
+            },
+            "demande2": {
+                "decisions": ["Etudier durement"],
+                "arret": true
+            },
+            "proclame": {
+                "decisions": ["Etudier durement"],
+                "arret": true
+            },
+            "declarationGuerre": {
+                "decisions": ["Etudier durement"],
+                "arret": true
+            },
+            "prestige": {
+                "decisions": ["Etudier durement"],
+                "arret": true
+            },
+            "influence": {
+                "decisions": ["Etudier durement"],
+                "arret": true
+            },
+            "piete": {
+                "decisions": ["Etudier durement"],
+                "arret": true
+            },
+            "agent": {
+                "decisions": ["Etudier durement"],
+                "arret": true
+            },
+            "rancon": {
+                "decisions": ["Etudier durement"],
+                "arret": true
+            },
+            "perteTerresRevoquer": {
+                "decisions": ["Etudier durement"],
+                "arret": true
+            },
+            "factionPop": {
+                "decisions": ["Etudier durement"],
+                "arret": true
+            },
+            "vassalAInfluencer": {
+                "decisions": ["Etudier durement"],
+                "arret": true
+            },
+            "vassal": {
+                "decisions": ["Etudier durement"],
+                "arret": true
+            },
+            "domaine": {
+                "decisions": ["Etudier durement"],
+                "arret": true
+            },
+            "cultInnov": {
+                "decisions": ["Etudier durement"],
+                "arret": true
+            },
+            "prison": {
+                "decisions": ["Etudier durement"],
+                "arret": true
+            },
+            "survie": {
+                "decisions": ["Mener une vie goliardique"],
+                "arret": true
+            },
+            "stress": {
+                "decisions": ["Mener une vie goliardique"],
+                "arret": true
+            },
+            "conseiller": {
+                "decisions": ["Mener une vie goliardique"],
+                "arret": true
+            },
+            "enfant": {
+                "decisions": ["Etudier durement SI adoption/aventurier", "Mener une vie goliardique"],
+                "arret": true
+            }
+        }
+    },
+    "univMat": {
+        "positionVue": {
+            "categories": ["Activités", "Séjour universitaire"],
+            "idElement": "univMat"
+        },
+        "siRien": ["Bibliothèque", "Livres et notes", "Bouts de parchemin"],
+        "defaut": ["Bibliothèque", "Livres et notes", "Bouts de parchemin"],
+        "selonEtats": {
+            "guerre": {
+                "decisions": ["Bibliothèque", "Livres et notes", "Bouts de parchemin"],
+                "arret": true
+            },
+            "controle": {
+                "decisions": ["Bibliothèque", "Livres et notes", "Bouts de parchemin"],
+                "arret": true
+            },
+            "assassinat": {
+                "decisions": ["Bibliothèque", "Livres et notes", "Bouts de parchemin"],
+                "arret": true
+            },
+            "succession": {
+                "decisions": ["Bibliothèque", "Livres et notes", "Bouts de parchemin"],
+                "arret": true
+            },
+            "dirigeantAInfluencer": {
+                "decisions": ["Bibliothèque", "Livres et notes", "Bouts de parchemin"],
+                "arret": true
+            },
+            "religieuxAInfluencer": {
+                "decisions": ["Bibliothèque", "Livres et notes", "Bouts de parchemin"],
+                "arret": true
+            },
+            "aInfluencer": {
+                "decisions": ["Bibliothèque", "Livres et notes", "Bouts de parchemin"],
+                "arret": true
+            },
+            "hamecon": {
+                "decisions": ["Bibliothèque", "Livres et notes", "Bouts de parchemin"],
+                "arret": true
+            },
+            "recruterChevalier": {
+                "decisions": ["Bibliothèque", "Livres et notes", "Bouts de parchemin"],
+                "arret": true
+            },
+            "chevalierPartisan": {
+                "decisions": ["Bibliothèque", "Livres et notes", "Bouts de parchemin"],
+                "arret": true
+            },
+            "demande": {
+                "decisions": ["Bibliothèque", "Livres et notes", "Bouts de parchemin"],
+                "arret": true
+            },
+            "demande2": {
+                "decisions": ["Bibliothèque", "Livres et notes", "Bouts de parchemin"],
+                "arret": true
+            },
+            "proclame": {
+                "decisions": ["Bibliothèque", "Livres et notes", "Bouts de parchemin"],
+                "arret": true
+            },
+            "declarationGuerre": {
+                "decisions": ["Bibliothèque", "Livres et notes", "Bouts de parchemin"],
+                "arret": true
+            },
+            "survie": {
+                "decisions": ["Bibliothèque", "Livres et notes", "Bouts de parchemin"],
+                "arret": true
+            },
+            "stress": {
+                "decisions": ["Bibliothèque", "Livres et notes", "Bouts de parchemin"],
+                "arret": true
+            },
+            "prestige": {
+                "decisions": ["Bibliothèque", "Livres et notes", "Bouts de parchemin"],
+                "arret": true
+            },
+            "enfant": {
+                "decisions": ["Bibliothèque", "Livres et notes", "Bouts de parchemin"],
+                "arret": true
+            },
+            "influence": {
+                "decisions": ["Bibliothèque", "Livres et notes", "Bouts de parchemin"],
+                "arret": true
+            },
+            "piete": {
+                "decisions": ["Bibliothèque", "Livres et notes", "Bouts de parchemin"],
+                "arret": true
+            },
+            "agent": {
+                "decisions": ["Bibliothèque", "Livres et notes", "Bouts de parchemin"],
+                "arret": true
+            },
+            "perteTerresRevoquer": {
+                "decisions": ["Bibliothèque", "Livres et notes", "Bouts de parchemin"],
+                "arret": true
+            },
+            "domaine": {
+                "decisions": ["Bibliothèque", "Livres et notes", "Bouts de parchemin"],
+                "arret": true
+            },
+            "prison": {
+                "decisions": ["Bibliothèque", "Livres et notes", "Bouts de parchemin"],
+                "arret": true
+            },
+            "revenu": {
+                "decisions": ["Bouts de parchemin"],
+                "arret": true
+            },
+            "rancon": {
+                "decisions": ["Bouts de parchemin"],
+                "arret": true
+            },
+            "factionPop": {
+                "decisions": ["Bibliothèque"],
+                "arret": false
+            },
+            "vassalAInfluencer": {
+                "decisions": ["Bibliothèque"],
+                "arret": true
+            },
+            "vassal": {
+                "decisions": ["Bibliothèque"],
+                "arret": true
+            },
+            "cultInnov": {
+                "decisions": ["Bibliothèque"],
+                "arret": true
+            }
+        }
+    },
+    "participChasse": {
+        "positionVue": {
+            "categories": ["Activités", "Chasse"],
+            "idElement": "participChasse"
+        },
+        "siRien": ["Groupes de gardes-chasse", "Groupes de chasse", "Gardes-chasse locaux"],
+        "defaut": ["Groupes de gardes-chasse", "Groupes de chasse", "Gardes-chasse locaux"],
+        "selonEtats": {
+            "revenu": {
+                "decisions": ["Gardes-chasse locaux"],
+                "arret": true
+            },
+            "rancon": {
+                "decisions": ["Gardes-chasse locaux"],
+                "arret": true
+            },
+            "assassinat": {
+                "decisions": ["Groupes de gardes-chasse", "Groupes de chasse", "Gardes-chasse locaux"],
+                "arret": true
+            },
+            "aInfluencer": {
+                "decisions": ["Groupes de gardes-chasse", "Groupes de chasse", "Gardes-chasse locaux"],
+                "arret": true
+            },
+            "declarationGuerre": {
+                "decisions": ["Groupes de gardes-chasse", "Groupes de chasse", "Gardes-chasse locaux"],
+                "arret": true
+            },
+            "guerre": {
+                "decisions": ["Groupes de gardes-chasse", "Groupes de chasse", "Gardes-chasse locaux"],
+                "arret": true
+            },
+            "dirigeantAInfluencer": {
+                "decisions": ["Groupes de gardes-chasse", "Groupes de chasse", "Gardes-chasse locaux"],
+                "arret": true
+            },
+            "denoncer": {
+                "decisions": ["Groupes de gardes-chasse", "Groupes de chasse", "Gardes-chasse locaux"],
+                "arret": true
+            },
+            "chevalierPartisan": {
+                "decisions": ["Groupes de gardes-chasse", "Groupes de chasse", "Gardes-chasse locaux"],
+                "arret": true
+            },
+            "demande": {
+                "decisions": ["Groupes de gardes-chasse", "Groupes de chasse", "Gardes-chasse locaux"],
+                "arret": true
+            },
+            "demande2": {
+                "decisions": ["Groupes de gardes-chasse", "Groupes de chasse", "Gardes-chasse locaux"],
+                "arret": true
+            },
+            "piete": {
+                "decisions": ["Groupes de gardes-chasse", "Groupes de chasse", "Gardes-chasse locaux"],
+                "arret": true
+            },
+            "agent": {
+                "decisions": ["Groupes de gardes-chasse", "Groupes de chasse", "Gardes-chasse locaux"],
+                "arret": true
+            },
+            "perteTerresRevoquer": {
+                "decisions": ["Groupes de gardes-chasse", "Groupes de chasse", "Gardes-chasse locaux"],
+                "arret": true
+            },
+            "factionPop": {
+                "decisions": ["Groupes de gardes-chasse", "Groupes de chasse", "Gardes-chasse locaux"],
+                "arret": true
+            },
+            "vassalAInfluencer": {
+                "decisions": ["Groupes de gardes-chasse", "Groupes de chasse", "Gardes-chasse locaux"],
+                "arret": true
+            },
+            "vassal": {
+                "decisions": ["Groupes de gardes-chasse", "Groupes de chasse", "Gardes-chasse locaux"],
+                "arret": true
+            },
+            "domaine": {
+                "decisions": ["Groupes de gardes-chasse", "Groupes de chasse", "Gardes-chasse locaux"],
+                "arret": true
+            },
+            "cultInnov": {
+                "decisions": ["Groupes de gardes-chasse", "Groupes de chasse", "Gardes-chasse locaux"],
+                "arret": true
+            },
+            "prison": {
+                "decisions": ["Groupes de gardes-chasse", "Groupes de chasse", "Gardes-chasse locaux"],
+                "arret": true
+            },
+            "enfant": {
+                "decisions": [
+                    "Groupes de gardes-chasse SI adoption/aventurier ET Prestige < 150",
+                    "Groupes de chasse SI adoption/aventurier ET Prestige < 150",
+                    "Gardes-chasse locaux SI adoption/aventurier"
+                ],
+                "arret": false
+            },
+            "conseiller": { "arret": false }
+        }
+    },
+    "grpeChasse": {
+        "positionVue": {
+            "categories": ["Activités", "Chasse"],
+            "idElement": "grpeChasse"
+        },
+        "siRien": ["Grand groupe", "Groupe raisonnable", "Petit groupe"],
+        "defaut": ["Grand groupe", "Groupe raisonnable", "Petit groupe"],
+        "selonEtats": {
+            "revenu": {
+                "decisions": ["Petit groupe"],
+                "arret": true
+            },
+            "rancon": {
+                "decisions": ["Petit groupe"],
+                "arret": true
+            },
+            "guerre": {
+                "decisions": ["Grand groupe", "Groupe raisonnable", "Petit groupe"],
+                "arret": true
+            },
+            "controle": {
+                "decisions": ["Grand groupe", "Groupe raisonnable", "Petit groupe"],
+                "arret": true
+            },
+            "declarationGuerre": {
+                "decisions": ["Grand groupe", "Groupe raisonnable", "Petit groupe"],
+                "arret": true
+            },
+            "vassalAInfluencer": {
+                "decisions": ["Grand groupe", "Groupe raisonnable", "Petit groupe"],
+                "arret": true
+            },
+            "vassalSOppose": {
+                "decisions": ["Grand groupe", "Groupe raisonnable", "Petit groupe"],
+                "arret": true
+            },
+            "vassal": {
+                "decisions": ["Grand groupe", "Groupe raisonnable", "Petit groupe"],
+                "arret": true
+            },
+            "factionPop": {
+                "decisions": ["Grand groupe", "Groupe raisonnable", "Petit groupe"],
+                "arret": true
+            },
+            "dirigeantAInfluencer": {
+                "decisions": ["Grand groupe", "Groupe raisonnable", "Petit groupe"],
+                "arret": true
+            },
+            "perteTerresRevoquer": {
+                "decisions": ["Grand groupe", "Groupe raisonnable", "Petit groupe"],
+                "arret": true
+            },
+            "prison": {
+                "decisions": ["Grand groupe", "Groupe raisonnable", "Petit groupe"],
+                "arret": true
+            },
+            "religieuxAInfluencer": {
+                "decisions": ["Grand groupe", "Groupe raisonnable", "Petit groupe"],
+                "arret": true
+            },
+            "cultInnov": {
+                "decisions": ["Grand groupe", "Groupe raisonnable", "Petit groupe"],
+                "arret": true
+            },
+            "domaine": {
+                "decisions": ["Grand groupe", "Groupe raisonnable", "Petit groupe"],
+                "arret": true
+            },
+            "aInfluencer": {
+                "decisions": ["Grand groupe", "Groupe raisonnable", "Petit groupe"],
+                "arret": true
+            },
+            "piete": {
+                "decisions": ["Grand groupe", "Groupe raisonnable", "Petit groupe"],
+                "arret": true
+            },
+            "enfant": {
+                "decisions": ["Grand groupe SI adoption/aventurier", "Groupe raisonnable SI adoption/aventurier", "Petit groupe"],
+                "arret": true
+            },
+            "prestige": {
+                "decisions": ["Grand groupe", "Groupe raisonnable"],
+                "arret": false
+            },
+            "denoncer": {
+                "decisions": ["Grand groupe", "Groupe raisonnable"],
+                "arret": false
+            },
+            "hamecon": { "arret": false },
+            "agent": { "arret": false },
+            "recruterChevalier": { "arret": false },
+            "chevalierPartisan": { "arret": false },
+            "demande": { "arret": false },
+            "demande2": { "arret": false },
+            "proclame": { "arret": false },
+            "succession": { "arret": false },
+            "influence": { "arret": false },
+            "assassinat": { "arret": false },
+            "conseiller": { "arret": false }
+        }
+    },
+    "activRando": {
+        "positionVue": {
+            "categories": ["Activités", "Randonnée"],
+            "idElement": "activRando"
+        },
+        "siRien": "Faire de l'exercice",
+        "defaut": "Faire de l'exercice",
+        "selonEtats": {
+            "stress": {
+                "decisions": ["Renouer avec la nature"],
+                "arret": true
+            },
+            "survie": {
+                "decisions": ["Renouer avec la nature"],
+                "arret": true
+            },
+            "guerre": {
+                "decisions": ["Faire de l'exercice"],
+                "arret": true
+            },
+            "controle": {
+                "decisions": ["Faire de l'exercice"],
+                "arret": true
+            },
+            "declarationGuerre": {
+                "decisions": ["Faire de l'exercice"],
+                "arret": true
+            },
+            "assassinat": {
+                "decisions": ["Faire de l'exercice"],
+                "arret": true
+            },
+            "succession": {
+                "decisions": ["Faire de l'exercice"],
+                "arret": true
+            },
+            "vassalAInfluencer": {
+                "decisions": ["Faire de l'exercice"],
+                "arret": true
+            },
+            "vassalSOppose": {
+                "decisions": ["Faire de l'exercice"],
+                "arret": true
+            },
+            "vassal": {
+                "decisions": ["Faire de l'exercice"],
+                "arret": true
+            },
+            "factionPop": {
+                "decisions": ["Faire de l'exercice"],
+                "arret": true
+            },
+            "religieuxAInfluencer": {
+                "decisions": ["Faire de l'exercice"],
+                "arret": true
+            },
+            "dirigeantAInfluencer": {
+                "decisions": ["Faire de l'exercice"],
+                "arret": true
+            },
+            "perteTerresRevoquer": {
+                "decisions": ["Faire de l'exercice"],
+                "arret": true
+            },
+            "prison": {
+                "decisions": ["Faire de l'exercice"],
+                "arret": true
+            },
+            "cultInnov": {
+                "decisions": ["Faire de l'exercice"],
+                "arret": true
+            },
+            "domaine": {
+                "decisions": ["Faire de l'exercice"],
+                "arret": true
+            },
+            "aInfluencer": {
+                "decisions": ["Faire de l'exercice"],
+                "arret": true
+            },
+            "recruterChevalier": {
+                "decisions": ["Faire de l'exercice"],
+                "arret": true
+            },
+            "chevalierPartisan": {
+                "decisions": ["Faire de l'exercice"],
+                "arret": true
+            },
+            "piete": {
+                "decisions": ["Faire de l'exercice"],
+                "arret": true
+            },
+            "prestige": {
+                "decisions": ["Faire de l'exercice"],
+                "arret": true
+            },
+            "denoncer": {
+                "decisions": ["Faire de l'exercice"],
+                "arret": true
+            },
+            "influence": {
+                "decisions": ["Faire de l'exercice"],
+                "arret": true
+            },
+            "agent": {
+                "decisions": ["Faire de l'exercice"],
+                "arret": true
+            },
+            "hamecon": {
+                "decisions": ["Faire de l'exercice"],
+                "arret": true
+            },
+            "demande": {
+                "decisions": ["Faire de l'exercice"],
+                "arret": true
+            },
+            "demande2": {
+                "decisions": ["Faire de l'exercice"],
+                "arret": true
+            },
+            "proclame": {
+                "decisions": ["Faire de l'exercice"],
+                "arret": true
+            },
+            "rancon": {
+                "decisions": ["Faire de l'exercice"],
+                "arret": true
+            },
+            "revenu": {
+                "decisions": ["Faire de l'exercice"],
+                "arret": true
+            },
+            "enfant": {
+                "decisions": ["Faire de l'exercice SI adoption/aventurier", "Renouer avec la nature"],
+                "arret": true
+            },
+            "conseiller": { "arret": false }
+        }
+    },
+    "activPelerin": {
+        "positionVue": {
+            "categories": ["Activités", "Pélerinage"],
+            "idElement": "activPelerin"
+        },
+        "siRien": "Pèlerinage SI même foi",
+        "defaut": "Pèlerinage SI même foi",
+        "selonEtats": {}
+    },
+    "pelerinIntent": {
+        "positionVue": {
+            "categories": ["Activités", "Pélerinage"],
+            "idElement": "pelerinIntent"
+        },
+        "siRien": "Gagner de la piété",
+        "defaut": "Gagner de la piété",
+        "selonEtats": {
+            "stress": {
+                "decisions": ["Trouver la paix intérieure"],
+                "arret": true
+            },
+            "guerre": {
+                "decisions": ["Gagner de la piété"],
+                "arret": true
+            },
+            "revenu": {
+                "decisions": ["Gagner de la piété"],
+                "arret": true
+            },
+            "controle": {
+                "decisions": ["Gagner de la piété"],
+                "arret": true
+            },
+            "assassinat": {
+                "decisions": ["Gagner de la piété"],
+                "arret": true
+            },
+            "succession": {
+                "decisions": ["Gagner de la piété"],
+                "arret": true
+            },
+            "dirigeantAInfluencer": {
+                "decisions": ["Gagner de la piété"],
+                "arret": true
+            },
+            "religieuxAInfluencer": {
+                "decisions": ["Gagner de la piété"],
+                "arret": true
+            },
+            "aInfluencer": {
+                "decisions": ["Gagner de la piété"],
+                "arret": true
+            },
+            "hamecon": {
+                "decisions": ["Gagner de la piété"],
+                "arret": true
+            },
+            "recruterChevalier": {
+                "decisions": ["Gagner de la piété"],
+                "arret": true
+            },
+            "chevalierPartisan": {
+                "decisions": ["Gagner de la piété"],
+                "arret": true
+            },
+            "demande": {
+                "decisions": ["Gagner de la piété"],
+                "arret": true
+            },
+            "demande2": {
+                "decisions": ["Gagner de la piété"],
+                "arret": true
+            },
+            "proclame": {
+                "decisions": ["Gagner de la piété"],
+                "arret": true
+            },
+            "declarationGuerre": {
+                "decisions": ["Gagner de la piété"],
+                "arret": true
+            },
+            "prestige": {
+                "decisions": ["Gagner de la piété"],
+                "arret": true
+            },
+            "influence": {
+                "decisions": ["Gagner de la piété"],
+                "arret": true
+            },
+            "piete": {
+                "decisions": ["Gagner de la piété"],
+                "arret": true
+            },
+            "agent": {
+                "decisions": ["Gagner de la piété"],
+                "arret": true
+            },
+            "rancon": {
+                "decisions": ["Gagner de la piété"],
+                "arret": true
+            },
+            "perteTerresRevoquer": {
+                "decisions": ["Gagner de la piété"],
+                "arret": true
+            },
+            "factionPop": {
+                "decisions": ["Gagner de la piété"],
+                "arret": true
+            },
+            "vassalAInfluencer": {
+                "decisions": ["Gagner de la piété"],
+                "arret": true
+            },
+            "vassal": {
+                "decisions": ["Gagner de la piété"],
+                "arret": true
+            },
+            "domaine": {
+                "decisions": ["Gagner de la piété"],
+                "arret": true
+            },
+            "cultInnov": {
+                "decisions": ["Gagner de la piété"],
+                "arret": true
+            },
+            "prison": {
+                "decisions": ["Gagner de la piété"],
+                "arret": true
+            },
+            "survie": {
+                "decisions": ["Trouver la paix intérieure"],
+                "arret": true
+            },
+            "enfant": {
+                "decisions": ["Gagner de la piété SI adoption/aventurier", "Trouver la paix intérieure"],
+                "arret": true
+            },
+            "conseiller": { "arret": false }
+        }
+    },
+    "pelerinFidel": {
+        "positionVue": {
+            "categories": ["Activités", "Pélerinage"],
+            "idElement": "pelerinFidel"
+        },
+        "siRien": ["Zèle absolu", "Dévotion publique", "Apparences pieuses"],
+        "defaut": ["Zèle absolu", "Dévotion publique", "Apparences pieuses"],
+        "selonEtats": {
+            "revenu": {
+                "decisions": ["Apparences pieuses"],
+                "arret": true
+            },
+            "rancon": {
+                "decisions": ["Apparences pieuses"],
+                "arret": true
+            },
+            "guerre": {
+                "decisions": ["Zèle absolu", "Dévotion publique", "Apparences pieuses"],
+                "arret": true
+            },
+            "controle": {
+                "decisions": ["Zèle absolu", "Dévotion publique", "Apparences pieuses"],
+                "arret": true
+            },
+            "assassinat": {
+                "decisions": ["Zèle absolu", "Dévotion publique", "Apparences pieuses"],
+                "arret": true
+            },
+            "succession": {
+                "decisions": ["Zèle absolu", "Dévotion publique", "Apparences pieuses"],
+                "arret": true
+            },
+            "dirigeantAInfluencer": {
+                "decisions": ["Zèle absolu", "Dévotion publique", "Apparences pieuses"],
+                "arret": true
+            },
+            "religieuxAInfluencer": {
+                "decisions": ["Zèle absolu", "Dévotion publique", "Apparences pieuses"],
+                "arret": true
+            },
+            "aInfluencer": {
+                "decisions": ["Zèle absolu", "Dévotion publique", "Apparences pieuses"],
+                "arret": true
+            },
+            "hamecon": {
+                "decisions": ["Zèle absolu", "Dévotion publique", "Apparences pieuses"],
+                "arret": true
+            },
+            "recruterChevalier": {
+                "decisions": ["Zèle absolu", "Dévotion publique", "Apparences pieuses"],
+                "arret": true
+            },
+            "chevalierPartisan": {
+                "decisions": ["Zèle absolu", "Dévotion publique", "Apparences pieuses"],
+                "arret": true
+            },
+            "demande": {
+                "decisions": ["Zèle absolu", "Dévotion publique", "Apparences pieuses"],
+                "arret": true
+            },
+            "demande2": {
+                "decisions": ["Zèle absolu", "Dévotion publique", "Apparences pieuses"],
+                "arret": true
+            },
+            "proclame": {
+                "decisions": ["Zèle absolu", "Dévotion publique", "Apparences pieuses"],
+                "arret": true
+            },
+            "declarationGuerre": {
+                "decisions": ["Zèle absolu", "Dévotion publique", "Apparences pieuses"],
+                "arret": true
+            },
+            "stress": {
+                "decisions": ["Zèle absolu", "Dévotion publique", "Apparences pieuses"],
+                "arret": true
+            },
+            "prestige": {
+                "decisions": ["Zèle absolu", "Dévotion publique", "Apparences pieuses"],
+                "arret": true
+            },
+            "enfant": {
+                "decisions": ["Zèle absolu", "Dévotion publique", "Apparences pieuses"],
+                "arret": true
+            },
+            "influence": {
+                "decisions": ["Zèle absolu", "Dévotion publique", "Apparences pieuses"],
+                "arret": true
+            },
+            "piete": {
+                "decisions": ["Zèle absolu", "Dévotion publique", "Apparences pieuses"],
+                "arret": true
+            },
+            "agent": {
+                "decisions": ["Zèle absolu", "Dévotion publique", "Apparences pieuses"],
+                "arret": true
+            },
+            "perteTerresRevoquer": {
+                "decisions": ["Zèle absolu", "Dévotion publique", "Apparences pieuses"],
+                "arret": true
+            },
+            "domaine": {
+                "decisions": ["Zèle absolu", "Dévotion publique", "Apparences pieuses"],
+                "arret": true
+            },
+            "prison": {
+                "decisions": ["Zèle absolu", "Dévotion publique", "Apparences pieuses"],
+                "arret": true
+            },
+            "survie": {
+                "decisions": ["Zèle absolu", "Dévotion publique", "Apparences pieuses"],
+                "arret": true
+            },
+            "factionPop": {
+                "decisions": ["Zèle absolu", "Dévotion publique"],
+                "arret": false
+            },
+            "vassalAInfluencer": {
+                "decisions": ["Zèle absolu", "Dévotion publique"],
+                "arret": false
+            },
+            "vassal": {
+                "decisions": ["Zèle absolu", "Dévotion publique"],
+                "arret": false
+            },
+            "cultInnov": {
+                "decisions": ["Zèle absolu", "Dévotion publique"],
+                "arret": false
+            },
+            "conseiller": { "arret": false }
+        }
+    },
+    "pelerinApp": {
+        "positionVue": {
+            "categories": ["Activités", "Pélerinage"],
+            "idElement": "pelerinApp"
+        },
+        "siRien": ["Magnifique", "Grand", "Modeste"],
+        "defaut": ["Magnifique", "Grand", "Modeste"],
+        "selonEtats": {
+            "revenu": {
+                "decisions": ["Modeste"],
+                "arret": true
+            },
+            "rancon": {
+                "decisions": ["Modeste"],
+                "arret": true
+            },
+            "guerre": {
+                "decisions": ["Magnifique", "Grand", "Modeste"],
+                "arret": true
+            },
+            "controle": {
+                "decisions": ["Magnifique", "Grand", "Modeste"],
+                "arret": true
+            },
+            "assassinat": {
+                "decisions": ["Magnifique", "Grand", "Modeste"],
+                "arret": true
+            },
+            "succession": {
+                "decisions": ["Magnifique", "Grand", "Modeste"],
+                "arret": true
+            },
+            "dirigeantAInfluencer": {
+                "decisions": ["Magnifique", "Grand", "Modeste"],
+                "arret": true
+            },
+            "religieuxAInfluencer": {
+                "decisions": ["Magnifique", "Grand", "Modeste"],
+                "arret": true
+            },
+            "aInfluencer": {
+                "decisions": ["Magnifique", "Grand", "Modeste"],
+                "arret": true
+            },
+            "hamecon": {
+                "decisions": ["Magnifique", "Grand", "Modeste"],
+                "arret": true
+            },
+            "recruterChevalier": {
+                "decisions": ["Magnifique", "Grand", "Modeste"],
+                "arret": true
+            },
+            "chevalierPartisan": {
+                "decisions": ["Magnifique", "Grand", "Modeste"],
+                "arret": true
+            },
+            "demande": {
+                "decisions": ["Magnifique", "Grand", "Modeste"],
+                "arret": true
+            },
+            "demande2": {
+                "decisions": ["Magnifique", "Grand", "Modeste"],
+                "arret": true
+            },
+            "proclame": {
+                "decisions": ["Magnifique", "Grand", "Modeste"],
+                "arret": true
+            },
+            "declarationGuerre": {
+                "decisions": ["Magnifique", "Grand", "Modeste"],
+                "arret": true
+            },
+            "stress": {
+                "decisions": ["Magnifique", "Grand", "Modeste"],
+                "arret": true
+            },
+            "prestige": {
+                "decisions": ["Magnifique", "Grand", "Modeste"],
+                "arret": true
+            },
+            "enfant": {
+                "decisions": ["Magnifique", "Grand", "Modeste"],
+                "arret": true
+            },
+            "influence": {
+                "decisions": ["Magnifique", "Grand", "Modeste"],
+                "arret": true
+            },
+            "piete": {
+                "decisions": ["Magnifique", "Grand", "Modeste"],
+                "arret": true
+            },
+            "agent": {
+                "decisions": ["Magnifique", "Grand", "Modeste"],
+                "arret": true
+            },
+            "perteTerresRevoquer": {
+                "decisions": ["Magnifique", "Grand", "Modeste"],
+                "arret": true
+            },
+            "factionPop": {
+                "decisions": ["Magnifique", "Grand", "Modeste"],
+                "arret": true
+            },
+            "vassalAInfluencer": {
+                "decisions": ["Magnifique", "Grand", "Modeste"],
+                "arret": true
+            },
+            "vassal": {
+                "decisions": ["Magnifique", "Grand", "Modeste"],
+                "arret": true
+            },
+            "domaine": {
+                "decisions": ["Magnifique", "Grand", "Modeste"],
+                "arret": true
+            },
+            "cultInnov": {
+                "decisions": ["Magnifique", "Grand", "Modeste"],
+                "arret": true
+            },
+            "prison": {
+                "decisions": ["Magnifique", "Grand", "Modeste"],
+                "arret": true
+            },
+            "survie": {
+                "decisions": ["Magnifique", "Grand", "Modeste"],
+                "arret": true
+            },
+            "conseiller": { "arret": false }
+        }
+    }
+}

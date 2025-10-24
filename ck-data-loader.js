@@ -20,7 +20,10 @@ const JSON_FILES = [
     'gestion_prison.json',
     'gestion_complots.json',
     'gestion_hamecons_secrets.json',
-    'gestion_decisions.json'
+    'gestion_decisions.json',
+    'gestion_regence.json',
+    'activites_grandioses.json',
+    'activites.json'
 ];
 
 // Fonction pour charger tous les fichiers JSON (nécessite un serveur HTTP)
