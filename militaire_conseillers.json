@@ -333,7 +333,8 @@
             "idElement": "conseilMarechalResult"
         },
         "siRien": "Augmenter le contrôle comtal",
-        "defaut": "Augmenter le contrôle comtal SI Augmentation de l'opinion du baron",
+        "defaut": ["Augmenter le contrôle comtal SI Augmentation de l'opinion du baron",
+            "ne rien changer"],
         "selonEtats": {
             "guerre": {
                 "decisions": ["Augmenter le contrôle comtal", "Organiser l'armée"],
