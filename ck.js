@@ -6130,10 +6130,21 @@ function liOuiNon(lib, id, ouiNon) {
 }
 function evidence(id, texte, ttLeTps=false) {
     let e=document.getElementById(id);
-    // Remplacer les entités HTML <br> par la balise <br> réelle pour la comparaison
-    const inner = e.innerHTML.replace(/&lt;br&gt;/g, "<br>").replace(/<br\s*\/?>/gi, "<br>");
-    console.log(inner, " diff? ", texte);
-    if (ttLeTps || (inner != texte) && (inner != '<strong>' + texte + '</strong>')) {
+
+    // Créer un élément temporaire pour décoder les entités HTML
+    const decoder = document.createElement('textarea');
+    decoder.innerHTML = e.innerHTML;
+    const decodedInner = decoder.value;
+
+    // Normaliser les balises <br> pour la comparaison
+    const normalizedInner = decodedInner.replace(/<br\s*\/?>/gi, "<br>");
+    const normalizedTexte = texte.replace(/<br\s*\/?>/gi, "<br>");
+
+    // Extraire le texte sans les balises <strong> si présentes
+    const innerWithoutStrong = normalizedInner.replace(/^<strong>|<\/strong>$/g, "");
+
+    console.log(innerWithoutStrong, " diff? ", normalizedTexte);
+    if (ttLeTps || (innerWithoutStrong != normalizedTexte)) {
         texte = '<strong>' + texte + '</strong>';
     }
     e.innerHTML = texte;
