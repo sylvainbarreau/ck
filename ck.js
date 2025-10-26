@@ -6752,6 +6752,12 @@ function evidence(id, texte, ttLeTps=false) {
     liDec('activites', 'act-1'); //Séjour universitaire
     }
 function sansDoublon(tab, liaison="") {
+    // Support pour les nouveaux tableaux simples du moteur data-driven
+    if (tab.length > 0 && typeof tab[0] === 'string') {
+        return formatDecisions(tab, liaison);
+    }
+
+    // Code original pour compatibilité avec les anciennes fonctions (tableaux de Sets)
     let texte = "";
     let faits = new Set();
     for(let l=0; l<tab.length; l++) {
@@ -6776,6 +6782,56 @@ function sansDoublon(tab, liaison="") {
             }
         });
     }
+    return texte;
+}
+
+/**
+ * Formate un tableau simple de décisions en texte HTML
+ * Gère les retours à la ligne avec "\n" et évite les doublons
+ * @param {Array<string>} decisions - Tableau de décisions
+ * @param {string} liaison - Mot de liaison (SINON par défaut, PUIS pour decisions)
+ * @returns {string} Texte formaté en HTML
+ */
+function formatDecisions(decisions, liaison = "SINON") {
+    if (!decisions || decisions.length === 0) {
+        return "";
+    }
+
+    let texte = "";
+    let faits = new Set();
+    let premiereLigne = true;
+
+    for (let i = 0; i < decisions.length; i++) {
+        const decision = decisions[i];
+
+        // Ignorer les décisions vides ou undefined
+        if (!decision || decision === "" || decision === "undefined") {
+            continue;
+        }
+
+        // Gérer les retours à la ligne
+        if (decision === "\n") {
+            texte += "<br>";
+            premiereLigne = true;
+            continue;
+        }
+
+        // Éviter les doublons (sauf si contient "A HAMECONNER")
+        if (faits.has(decision) && !decision.includes("A HAMECONNER")) {
+            continue;
+        }
+
+        // Ajouter la décision au texte
+        if (premiereLigne) {
+            texte += decision;
+            premiereLigne = false;
+        } else {
+            texte += " " + liaison + " " + decision;
+        }
+
+        faits.add(decision);
+    }
+
     return texte;
 }
 /*function nbLui(pp, p) {
