@@ -2,7 +2,8 @@
     "militaire": {
         "positionVue": {
             "categories": ["Militaire"],
-            "idElement": "militaireResult"
+            "idElement": "militaireResult",
+            "motLiaison": "PUIS"
         },
         "siRien": "ne rien changer",
         "defaut": "ne rien changer",

@@ -2,7 +2,8 @@
     "decisions": {
         "positionVue": {
             "categories": ["Décisions d'événements"],
-            "idElement": "decisions"
+            "idElement": "decisions",
+            "motLiaison": "PUIS"
         },
         "initialStack": "stress éviter niveau+",
         "siRien": null,

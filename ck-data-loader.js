@@ -162,12 +162,8 @@ window.displayAllResults = function(p) {
         // Appeler la fonction data-driven
         const result = window[typeName](p);
 
-        // Déterminer la liaison selon le type
-        // Par défaut SINON, sauf PUIS pour le type "decisions"
-        let liaison = "SINON";
-        if (typeName === 'decisions') {
-            liaison = "PUIS";
-        }
+        // Lire le mot de liaison depuis positionVue (par défaut "SINON")
+        const liaison = positionVue.motLiaison || "SINON";
 
         const texte = sansDoublon(result, liaison);
 
