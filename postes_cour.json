@@ -4,10 +4,22 @@
             "categories": ["Postes de la cour"],
             "idElement": "epidResult"
         },
-        "siRien": "Faire de la recherche avancée",
-        "defaut": "Faire de la recherche avancée",
+        "siRien": ["Faire de la recherche avancée", "aucune fonction"],
+        "defaut": ["Faire de la recherche avancée", "aucune fonction"],
+        "options": ["Atténuer les épidémies",
+        "Faire de la recherche avancée",
+        "Améliorer les aptitudes"],
+        "optionsCommentaires": ["Atténuer les épidémies, 0 +santé -or",
+        "Faire de la recherche avancée,//1 +exp -or",
+        "Améliorer les aptitudes//2 +santé -prestige"],
         "selonEtats": {
-            "revenu": { "arret": false },
+            "revenu": {
+                "modifications": {
+                    "Atténuer les épidémies": "undefined",
+                    "Faire de la recherche avancée": "undefined"
+                },
+                "arret": false
+            },
             "rancon": { "arret": false },
             "dirigeantAInfluencer": {
                 "decisions": ["Faire de la recherche avancée"],
