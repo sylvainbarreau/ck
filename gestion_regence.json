@@ -2,10 +2,11 @@
     "regence": {
         "positionVue": {
             "categories": ["Partage du pouvoir"],
-            "idElement": "regence"
+            "idElement": "regence",
+            "motLiaison": "SINON"
         },
         "siRien": "Remplir les coffres",
-        "defaut": "Promouvoir l'autorité",
+        "defaut": ["Promouvoir l'autorité"],
         "selonEtats": {
             "vassalAInfluencer": {
                 "decisions": ["Promouvoir l'autorité"],
@@ -40,7 +41,7 @@
             },
             "agent": {
                 "decisions": ["Remplir les coffres"],
-                "arret": false
+                "arret": true
             },
             "recruterChevalier": {
                 "decisions": ["Gonfler les rangs"],

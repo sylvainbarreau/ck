@@ -509,7 +509,7 @@
             "idElement": "intendantResult"
         },
         "siRien": "Convaincre le territoire de jure",
-        "defaut": "Convaincre le territoire de jure",
+        "defaut": ["Convaincre le territoire de jure", "Augmenter le développement comtal"],
         "selonEtats": {
             "controle": {
                 "decisions": ["Augmenter le développement comtal SI Contrôle accru"],
