@@ -6076,7 +6076,34 @@ function posteGout(p, t=new Array(), o=null) {
 }
 function decisionOuNon(res, setOui, setNon) {
     // rechercher dans res si au moins 1 setOui (Mot complet) est avant tout setNon (Mot dans phrase)
-    // parcours de res (tableau de Set) :
+
+    // Support pour les nouveaux tableaux simples (data-driven)
+    if (res.length > 0 && typeof res[0] === 'string') {
+        for (let e of res) {
+            // parcourir setOui
+            if (setOui) {
+                for (let o of setOui) {
+                    // recherche si o = e :
+                    if (e == o) {
+                        console.log("oui ", e, o);
+                        return true;
+                    }
+                }
+            }
+            if (setNon) {
+                for (let n of setNon) {
+                    // recherche de n dans chaîne e :
+                    if (e.includes(n)) {
+                        console.log("non ", e, n);
+                        return false;
+                    }
+                }
+            }
+        }
+        return false; // Défaut: false si rien trouvé
+    }
+
+    // Code original pour tableaux de Sets (anciennes fonctions)
     for (let r of res) {
         for (let e of r) {
             // parcourir setOui
@@ -6098,7 +6125,7 @@ function decisionOuNon(res, setOui, setNon) {
             }}
         }
     }
-    return true;
+    return false; // Défaut: false si rien trouvé
 }
 function liDec(idPage, id) {
     // Récupérer la valeur associée à la clé depuis le localStorage

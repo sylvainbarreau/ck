@@ -576,6 +576,190 @@
             "vassal": { "arret": false },
             "domaine": { "arret": false }
         }
-    }
+    },
+    "posteSenechal": {
+        "positionVue": {
+            "categories": ["Courtisans", "Postes de la cour"],
+            "idElement": "posteSenechalResult",
+            "motLiaison": "SINON"
+        },
+        "optionsCommentaires": ["Organiser la Cour,//0 -prestige",
+        "Gérer le domaine,//1 +controle -or",
+        "Gérer la possession,//2 +Influence,construction -or, prestige",
+        "// aucune +or,prestige"],
+        "siRien":"aucune fonction",
+        "defaut": ["aucune fonction"],
+        "selonEtats": {
+            "guerre": {
+                "decisions": ["Gérer le domaine"],
+                "arret": false
+            },
+            "declarationGuerre": {
+                "decisions": ["Gérer le domaine"],
+                "arret": false
+            },
+            "revenu": {
+                "decisions": ["aucune fonction"],
+                "arret": true
+            },
+            "controle": {
+                "decisions": ["Gérer le domaine"],
+                "arret": false
+            },
+            "assassinat": { "arret": false },
+            "succession": { "arret": false },
+            "religieuxAInfluencer": { "arret": false },
+            "aInfluencer": { "arret": false },
+            "hamecon": { "arret": false },
+            "recruterChevalier": { "arret": false },
+            "chevalierPartisan": { "arret": true },
+            "proclame": { "arret": false },
+            "stress": { "arret": false },
+            "prestige": {
+                "decisions": ["aucune fonction"],
+                "arret": true
+            },
+            "enfant": { "arret": false },
+            "piete": { "arret": false },
+            "denoncer": {
+                "decisions": ["aucune fonction"],
+                "arret": true
+            },
+            "agent": {
+                "decisions": ["aucune fonction"],
+                "arret": true
+            },
+            "rancon": {
+                "decisions": ["aucune fonction"],
+                "arret": true
+            },
+            "conseiller": { "arret":false },
+            "factionPop": { "arret": false },
+            "vassalAInfluencer": { "arret": false },
+            "vassal": { "arret": false },
+            "domaine": { "arret": false },
+            "cultInnov": { 
+                "decisions": ["aucune fonction SI NON Chef culturel"],
+                "arret": false
+            },
+            "prison": {
+                "decisions": ["aucune fonction"],
+                "arret": true
+            }
+        }
+    },
 
+    "posteProf": {
+        "positionVue": {
+            "categories": ["Postes de la cour"],
+            "idElement": "posteProf"
+        },
+        "siRien": "Faire de la recherche avancée",
+        "defaut": "Faire de la recherche avancée",
+        "selonEtats": {}
+    },
+
+    "posteChasse": {
+        "positionVue": {
+            "categories": ["Postes de la cour"],
+            "idElement": "posteChasse"
+        },
+        "siRien": "Organiser une chasse",
+        "defaut": "Organiser une chasse",
+        "selonEtats": {
+            "revenu": { "decisions": ["aucune fonction"], "arret": true },
+            "rancon": { "decisions": ["aucune fonction"], "arret": true },
+            "chevalierPartisan": { "decisions": [], "arret": true },
+            "demande": { "decisions": [], "arret": true },
+            "demande2": { "decisions": [], "arret": true }
+        }
+    },
+
+    "posteChroni": {
+        "positionVue": {
+            "categories": ["Postes de la cour"],
+            "idElement": "posteChroniqueur"
+        },
+        "siRien": "aucune fonction",
+        "defaut": ["Exalter la légende dans le pays SI légende", "Rechercher des légendes"],
+        "selonEtats": {
+            "revenu": { "decisions": ["aucune fonction"], "arret": true },
+            "succession": { "decisions": ["aucune fonction"], "arret": true },
+            "dirigeantAInfluencer": { "decisions": ["aucune fonction"], "arret": true },
+            "religieuxAInfluencer": { "decisions": ["aucune fonction"], "arret": true },
+            "aInfluencer": { "decisions": ["aucune fonction"], "arret": true },
+            "influence": { "decisions": ["aucune fonction"], "arret": true },
+            "agent": { "decisions": ["aucune fonction"], "arret": true },
+            "rancon": { "decisions": ["aucune fonction"], "arret": true },
+            "perteTerresRevoquer": { "decisions": ["aucune fonction"], "arret": true },
+            "vassalAInfluencer": { "decisions": ["aucune fonction"], "arret": true },
+            "prestige": { "decisions": ["aucune fonction"], "arret": true },
+            "prison": { "decisions": ["aucune fonction"], "arret": true },
+            "guerre": { "decisions": ["aucune fonction SI gouvernement administratif"], "arret": false },
+            "cultInnov": { "decisions": ["aucune fonction SI NON Chef culturel"], "arret": false },
+            "chevalierPartisan": { "decisions": [], "arret": true },
+            "demande": { "decisions": [], "arret": true },
+            "demande2": { "decisions": [], "arret": true },
+            "controle": { "arret": false },
+            "assassinat": { "arret": false },
+            "hamecon": { "arret": false },
+            "recruterChevalier": { "arret": false },
+            "proclame": { "arret": false },
+            "declarationGuerre": { "arret": false },
+            "survie": { "arret": false },
+            "stress": { "arret": false },
+            "enfant": { "arret": false },
+            "piete": { "arret": false },
+            "conseiller": { "arret": false },
+            "factionPop": { "arret": false },
+            "vassal": { "arret": false },
+            "domaine": { "arret": false }
+        }
+    },
+
+    "posteBouffon": {
+        "positionVue": {
+            "categories": ["Postes de la cour"],
+            "idElement": "posteBouffon"
+        },
+        "siRien": "Divertir la Cour",
+        "defaut": "Divertir la Cour",
+        "selonEtats": {
+            "stress": { "decisions": ["Soutenir le dirigeant"], "arret": true },
+            "chevalierPartisan": { "decisions": [], "arret": true },
+            "demande": { "decisions": [], "arret": true },
+            "demande2": { "decisions": [], "arret": true }
+        }
+    },
+
+    "posteDame": {
+        "positionVue": {
+            "categories": ["Postes de la cour"],
+            "idElement": "posteDame"
+        },
+        "siRien": "aucune fonction",
+        "defaut": "aucune fonction",
+        "selonEtats": {
+            "enfant": { "decisions": ["Organiser une éducation SI NON adoption/aventurier"], "arret": true },
+            "chevalierPartisan": { "decisions": [], "arret": true },
+            "demande": { "decisions": [], "arret": true },
+            "demande2": { "decisions": [], "arret": true }
+        }
+    },
+
+    "posteGarde": {
+        "positionVue": {
+            "categories": ["Postes de la cour"],
+            "idElement": "posteGardeCorps"
+        },
+        "siRien": "Garder la chambre",
+        "defaut": "Garder la chambre",
+        "selonEtats": {
+            "survie": { "decisions": ["Protéger le dirigeant"], "arret": true },
+            "assassinat": { "decisions": ["Protéger le dirigeant"], "arret": true },
+            "chevalierPartisan": { "decisions": [], "arret": true },
+            "demande": { "decisions": [], "arret": true },
+            "demande2": { "decisions": [], "arret": true }
+        }
+    }
 }

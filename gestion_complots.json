@@ -150,8 +150,8 @@
             "Garde doublée",
             "Retrait de la vie publique"
         ],
-        "siRien": "Aucune",
-        "defaut": "Retrait de la vie publique, Aucune",
+        "siRien": "Aucune contre-mesure",
+        "defaut": ["Retrait de la vie publique", "Aucune contre-mesure"],
         "selonEtats": {
             "guerre": {
                 "decisions": [],
@@ -321,7 +321,7 @@
             "idElement": "hostileResult"
         },
         "siRien": null,
-        "defaut": "Saisie du pays, Revendiquer le trône, Déposer le régent, Voler un artefact, Aucun",
+        "defaut": ["Saisie du pays", "Revendiquer le trône", "Déposer le régent", "Voler un artefact", "Aucune"],
         "selonEtats": {
             "siRien": {
                 "decisions": [
