@@ -360,16 +360,10 @@
             },
             "religieuxAInfluencer": {
                 "decisions": [
-                    "Opinion LUI",
+                    "Opinion CONSEILLER RELIGIEUX",
                     "Diplomatie",
                     "Intrigue",
                     "emprisonner SI Atout \"Sombres connaissances\"",
-                    "Or",
-                    "hameçon OU secret SI Atout \"Obligations en or\"",
-                    "contrôle SI <100",
-                    "Développement",
-                    "Intendance",
-                    "emprisonner",
                     "Piété",
                     "Erudition"
                 ],

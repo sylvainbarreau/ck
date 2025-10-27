@@ -377,10 +377,7 @@
                 "decisions": ["Gérer la garde royale"],
                 "arret": false
             },
-            "religieuxAInfluencer": {
-                "decisions": ["Augmenter le contrôle comtal"],
-                "arret": false
-            },
+            "religieuxAInfluencer": { "arret": false },
             "vassalSOppose": {
                 "decisions": ["Augmenter le contrôle comtal"],
                 "arret": false

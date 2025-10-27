@@ -516,8 +516,8 @@
                 "arret": true
             },
             "religieuxAInfluencer": {
-                "decisions": ["Faire de l'exercice"],
-                "arret": true
+                "decisions": ["Amitié"],
+                "arret": false
             },
             "dirigeantAInfluencer": {
                 "decisions": ["Faire de l'exercice"],
@@ -648,8 +648,8 @@
                 "arret": true
             },
             "religieuxAInfluencer": {
-                "decisions": ["Gagner de la piété"],
-                "arret": true
+                "decisions": ["Faire preuve d'altruisme"],
+                "arret": false
             },
             "aInfluencer": {
                 "decisions": ["Gagner de la piété"],
@@ -779,7 +779,7 @@
                 "arret": true
             },
             "religieuxAInfluencer": {
-                "decisions": ["Zèle absolu", "Dévotion publique", "Apparences pieuses"],
+                "decisions": ["Contemplatif", "Pèlerin", "Obligatoire"],
                 "arret": true
             },
             "aInfluencer": {
@@ -910,7 +910,7 @@
                 "arret": true
             },
             "religieuxAInfluencer": {
-                "decisions": ["Magnifique", "Grand", "Modeste"],
+                "decisions": ["En nombre", "Humble"],
                 "arret": true
             },
             "aInfluencer": {
