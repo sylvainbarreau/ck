@@ -150,6 +150,12 @@
             "Garde doublée",
             "Retrait de la vie publique"
         ],
+        "optionsCommentaires": ["Primes pour les dénonciations//0 -or,prestige",
+        "Arrestations arbitraires//1 -opinion courtisan,invité",
+        "Sentinelles renforcées//2 -opinion courtisan,invité,vassal",
+        "Garde doublée//3 +survie -opinion courtisan,invité,vassal",
+        "Retrait de la vie publique//4 -opinion,stress"
+    ],
         "siRien": "Aucune contre-mesure",
         "defaut": ["Retrait de la vie publique", "Aucune contre-mesure"],
         "selonEtats": {
@@ -164,9 +170,8 @@
                 "decisions": [],
                 "arret": false,
                 "modifications": {
-                    "Primes pour les dénonciations": "undefined",
-                    "Sentinelles renforcées": "Sentinelles renforcées SI ALLIE",
-                    "Garde doublée": "Garde doublée SI ALLIE",
+                    "Sentinelles renforcées": "Sentinelles renforcées SI ALLIE POTENTIEL-S",
+                    "Garde doublée": "Garde doublée SI ALLIE POTENTIEL-S",
                     "Retrait de la vie publique": "undefined"
                 }
             },
@@ -174,7 +179,6 @@
                 "decisions": [],
                 "arret": false,
                 "modifications": {
-                    "Primes pour les dénonciations": "undefined",
                     "Retrait de la vie publique": "undefined"
                 }
             },
@@ -184,9 +188,7 @@
                 "modifications": {
                     "Sentinelles renforcées": "undefined",
                     "Garde doublée": "undefined",
-                    "Retrait de la vie publique": "undefined",
-                    "Primes pour les dénonciations": "undefined"
-                }
+                    "Retrait de la vie publique": "undefined"                }
             },
             "vassal": {
                 "decisions": [],
@@ -215,8 +217,14 @@
                 "arret": true
             },
             "religieuxAInfluencer": {
-                "decisions": ["Aucune"],
-                "arret": true
+                "decisions": [],
+                "modifications": {
+                    "Retrait de la vie publique": "undefined",
+                    "Sentinelles renforcées":"undefined",
+                    "Garde doublée":"undefined",
+                    "Arrestations arbitraires": "undefined"
+                },
+                "arret": false
             },
             "stress": {
                 "decisions": [],
@@ -320,10 +328,22 @@
             "categories": ["Complots"],
             "idElement": "hostileResult"
         },
-        "siRien": null,
-        "defaut": ["Saisie du pays", "Revendiquer le trône", "Déposer le régent", "Voler un artefact", "Aucune"],
-        "selonEtats": {
-            "siRien": {
+        "optionsCommentaires": ["Contester le statut//0 (agents) +Influence Statut du défi",
+        "Destitution//1 (agents) Déposer",
+        "Consolider la base du pouvoir//2 (agents) +Influence,opinion Mentor en gouvernance",
+        "Intégrer le gouvernorat//3 (agents) Subsumer la gouvernance",
+        "Promouvoir//4 (agents) +succession Promouvoir",
+        "Diffamation//5 (agents) -succession Calomnier",
+        "Légitimité des dommages//6 -légitimité",
+        "Favoriser la légitimité//7 +légitimité,hameçon",
+        "Pillage de la possession//8 (agents) +Or",
+        "Famille ingrate//9 +Influence,opinion,amitié",
+        "Dispute frontalière//10 (agents) Conflit frontalier"
+    ],
+    "siRien": null,
+    "defaut": ["Saisie du pays", "Revendiquer le trône", "Déposer le régent", "Voler un artefact", "Aucune"],
+    "selonEtats": {
+        "siRien": {
                 "decisions": [
                     "Revendiquer le trône",
                     "Déposer le régent",
@@ -461,18 +481,13 @@
                 "arret": false
             },
             "dirigeantAInfluencer": {
-                "decisions": [
-                    "Famille ingrate LUI",
-                    "Consolider la base du pouvoir LUI",
-                    "Pillage de la possession"
-                ],
-                "arret": false
+                "decisions": [],
+                "arret": true
             },
             "vassalAInfluencer": {
                 "decisions": [
                     "Famille ingrate FACTIEUX",
-                    "Consolider la base du pouvoir FACTIEUX",
-                    "Pillage de la possession"
+                    "Consolider la base du pouvoir FACTIEUX"                
                 ],
                 "arret": false
             },
@@ -532,9 +547,8 @@
             },
             "aInfluencer": {
                 "decisions": [
-                    "Famille ingrate OU Consolider la base du pouvoir ALLIE POTENTIEL OU PARDONNEUR-S",
-                    "Pillage de la possession",
-                    "Favoriser la légitimité ALLIE POTENTIEL OU PARDONNEUR-S"
+                    "Famille ingrate OU Consolider la base du pouvoir ALLIE POTENTIEL-S",
+                    "Favoriser la légitimité ALLIE POTENTIEL-S"
                 ],
                 "arret": false
             },

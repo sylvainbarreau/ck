@@ -104,12 +104,6 @@
                     "Diplomatie",
                     "Intrigue",
                     "emprisonner SI Atout \"Sombres connaissances\"",
-                    "Or",
-                    "hameçon OU secret SI Atout \"Obligations en or\"",
-                    "contrôle SI <100",
-                    "Développement",
-                    "Intendance",
-                    "emprisonner",
                     "Redoutabilité"
                 ],
                 "arret": false
@@ -135,14 +129,8 @@
                     "Opinion ALLIE POTENTIEL OU PARDONNEUR-S",
                     "Diplomatie",
                     "Intrigue",
-                    "emprisonner SI Atout \"Sombres connaissances\" ET (NON aventurier OU Outils du tortionnaire)",
-                    "Or",
-                    "hameçon OU secret SI Atout \"Obligations en or\"",
-                    "contrôle SI <100",
-                    "Développement",
-                    "Intendance",
-                    "emprisonner"
-                ],
+                    "emprisonner SI Atout \"Sombres connaissances\" ET Outils du tortionnaire"
+],
                 "arret": false
             },
             "aInfluencer": {
@@ -150,14 +138,8 @@
                     "Opinion ALLIE POTENTIEL OU PARDONNEUR-S",
                     "Diplomatie",
                     "Intrigue",
-                    "emprisonner SI Atout \"Sombres connaissances\" ET (NON aventurier OU Outils du tortionnaire)",
-                    "Or",
-                    "hameçon OU secret SI Atout \"Obligations en or\"",
-                    "contrôle SI <100",
-                    "Développement",
-                    "Intendance",
-                    "emprisonner"
-                ],
+                    "emprisonner SI Atout \"Sombres connaissances\" ET (NON aventurier OU Outils du tortionnaire)"          
+                      ],
                 "arret": false
             },
             "enfant": {

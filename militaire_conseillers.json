@@ -270,7 +270,7 @@
                 "arret": false
             },
             "aInfluencer": {
-                "decisions": ["Accorder une faveur royale SI Augmentation de l'opinion vassale OU Contrat vassalique amélioré ALLIE POTENTIEL OU PARDONNEUR-S", "Gérer les affaires intérieures SI Contrat vassalique amélioré"],
+                "decisions": ["Accorder une faveur royale SI Augmentation de l'opinion vassale ALLIE POTENTIEL-S"],
                 "arret": false
             },
             "declarationGuerre": {
@@ -358,7 +358,7 @@
                 "arret": false
             },
             "aInfluencer": {
-                "decisions": ["Augmenter le contrôle comtal SI Augmentation de l'opinion du baron ALLIE POTENTIEL OU PARDONNEUR-S", "Augmenter le contrôle comtal"],
+                "decisions": ["Augmenter le contrôle comtal SI Augmentation de l'opinion du baron ALLIE POTENTIEL-S"],
                 "arret": false
             },
             "recruterChevalier": {
@@ -379,11 +379,10 @@
             },
             "religieuxAInfluencer": { "arret": false },
             "vassalSOppose": {
-                "decisions": ["Augmenter le contrôle comtal"],
                 "arret": false
             },
             "vassalAInfluencer": {
-                "decisions": ["Augmenter le contrôle comtal FACTIEUX SI Augmentation de l'opinion du baron", "Augmenter le contrôle comtal"],
+                "decisions": ["Augmenter le contrôle comtal FACTIEUX SI Augmentation de l'opinion du baron"],
                 "arret": false
             },
             "vassal": {
@@ -441,7 +440,7 @@
                 "arret": false
             },
             "vassalAInfluencer": {
-                "decisions": ["Améliorer les relations religieuses SI Augmentation de l'opinion vassale", "Convertir le comté SI Augmentation du développement comtal"],
+                "decisions": ["Améliorer les relations religieuses SI Augmentation de l'opinion vassale"],
                 "arret": false
             },
             "vassalSOppose": {
@@ -465,7 +464,7 @@
                 "arret": false
             },
             "aInfluencer": {
-                "decisions": ["Améliorer les relations religieuses SI Augmentation de l'opinion vassale ALLIE POTENTIEL OU PARDONNEUR-S", "Convertir le comté SI Augmentation du développement comtal"],
+                "decisions": ["Améliorer les relations religieuses SI Augmentation de l'opinion vassale ALLIE POTENTIEL-S"],
                 "arret": false
             },
             "religieuxAInfluencer": {
@@ -532,15 +531,15 @@
                 "arret": true
             },
             "aInfluencer": {
-                "decisions": ["Promouvoir l'acceptation culturelle SI Opinion améliorée ALLIE POTENTIEL OU PARDONNEUR-S", "Collecter les impôts"],
-                "arret": true
+                "decisions": ["Promouvoir l'acceptation culturelle SI Opinion améliorée ALLIE POTENTIEL-S"],
+                "arret": false
             },
             "vassalSOppose": {
                 "decisions": ["Promouvoir l'acceptation culturelle SI Opinion améliorée FACTIEUX", "Collecter les impôts"],
                 "arret": true
             },
             "vassalAInfluencer": {
-                "decisions": ["Promouvoir l'acceptation culturelle SI Opinion améliorée FACTIEUX", "Collecter les impôts"],
+                "decisions": ["Promouvoir l'acceptation culturelle SI Opinion améliorée FACTIEUX"],
                 "arret": true
             },
             "vassal": {

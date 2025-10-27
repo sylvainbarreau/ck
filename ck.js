@@ -4777,8 +4777,8 @@ function posteAntiq(p, t=new Array(), o=null) {
             t.push(new Set().add("aucune fonction"));
             return t;
             case 'succession': // besoin agent //influence SI vassal direct LUI OU courtisan LUI OU invité LUI, Influence, Or, Prestige, hameçon
-        case 'dirigeantAInfluencer': // opinion, Diplomatie, Intrigue, Or
-        case 'religieuxAInfluencer': // opinion, Or
+        case 'dirigeantAInfluencer': // opinion, Diplomatie, Intrigue
+        case 'religieuxAInfluencer': // opinion
         case 'influence' : // besoin agent //influence SI vassal direct LUI OU courtisan LUI OU invité LUI, Influence, Or, Prestige, hameçon
             t.push(new Set().add(o[1]));
             return posteAntiq(p.slice(1),t, o);

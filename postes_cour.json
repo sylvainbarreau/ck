@@ -220,6 +220,11 @@
             "categories": ["Postes de la cour"],
             "idElement": "posteAntiqResult"
         },
+        "optionsCommentaires": ["Améliorer les artefacts,//0 +artefact -or",
+        "Exposer les objets illustres//1 +intendance,légende -prestige",
+        "Rechercher des artefacts rares//2 +artefact -prestige",
+        "// aucune +or"
+        ],
         "siRien": "Améliorer les artefacts",
         "defaut": "Exposer les objets illustres",
         "selonEtats": {
@@ -240,12 +245,12 @@
                 "arret": false
             },
             "dirigeantAInfluencer": {
-                "decisions": ["Exposer les objets illustres"],
-                "arret": false
+                "decisions": ["Améliorer les artefacts", "Rechercher des artefacts rares", "Exposer les objets illustres", "aucune fonction"],
+                "arret": true
             },
             "religieuxAInfluencer": {
-                "decisions": ["Exposer les objets illustres"],
-                "arret": false
+"decisions": ["Améliorer les artefacts", "Rechercher des artefacts rares", "Exposer les objets illustres", "aucune fonction"],
+                "arret": true
             },
             "influence": {
                 "decisions": ["Exposer les objets illustres"],
@@ -308,7 +313,7 @@
                 "arret": true
             },
             "aInfluencer": {
-                "decisions": ["Rechercher des artefacts rares", "aucune fonction"],
+"decisions": ["Améliorer les artefacts", "Rechercher des artefacts rares", "Exposer les objets illustres", "aucune fonction"],
                 "arret": true
             },
             "factionPop": {
@@ -340,6 +345,11 @@
             "categories": ["Postes de la cour"],
             "idElement": "posteNourResult"
         },
+        "optionsCommentaires": ["Enseigner la vertu//0 -prestige",
+        "Promouvoir l'amitié//1 -prestige",
+        "Encourager la compétition//2 -prestige",
+        "// aucune +or,prestige"
+    ],
         "siRien": "aucune fonction",
         "defaut": "aucune fonction",
         "selonEtats": {
@@ -382,9 +392,7 @@
                 "decisions": ["aucune fonction"],
                 "arret": true
             },
-            "aInfluencer": {
-                "decisions": ["aucune fonction"],
-                "arret": true
+            "aInfluencer": { "arret": false
             },
             "guerre": {
                 "decisions": ["aucune fonction SI gouvernement administratif"],
@@ -429,17 +437,11 @@
                 "decisions": ["aucune fonction"],
                 "arret": true
             },
-            "dirigeantAInfluencer": {
-                "decisions": ["aucune fonction"],
-                "arret": true
+            "dirigeantAInfluencer": { "arret": false
             },
-            "religieuxAInfluencer": {
-                "decisions": ["aucune fonction"],
-                "arret": true
+            "religieuxAInfluencer": { "arret": false
             },
-            "aInfluencer": {
-                "decisions": ["aucune fonction"],
-                "arret": true
+            "aInfluencer": { "arret": false
             },
             "influence": {
                 "decisions": ["aucune fonction"],
@@ -457,9 +459,7 @@
                 "decisions": ["aucune fonction"],
                 "arret": true
             },
-            "vassalAInfluencer": {
-                "decisions": ["aucune fonction"],
-                "arret": true
+            "vassalAInfluencer": { "arret": false
             },
             "prestige": {
                 "decisions": ["aucune fonction"],
@@ -513,14 +513,8 @@
                 "decisions": ["aucune fonction"],
                 "arret": true
             },
-            "aInfluencer": {
-                "decisions": ["aucune fonction"],
-                "arret": true
-            },
-            "vassalAInfluencer": {
-                "decisions": ["aucune fonction"],
-                "arret": true
-            },
+            "aInfluencer": { "arret": false },
+            "vassalAInfluencer": { "arret": false },
             "dirigeantAInfluencer": { "arret": false },
             "religieuxAInfluencer": { "arret": false },
             "succession": {
@@ -685,14 +679,14 @@
         "selonEtats": {
             "revenu": { "decisions": ["aucune fonction"], "arret": true },
             "succession": { "decisions": ["aucune fonction"], "arret": true },
-            "dirigeantAInfluencer": { "decisions": ["aucune fonction"], "arret": true },
-            "religieuxAInfluencer": { "decisions": ["aucune fonction"], "arret": true },
-            "aInfluencer": { "decisions": ["aucune fonction"], "arret": true },
+            "dirigeantAInfluencer": { "decisions": [], "arret": true },
+            "religieuxAInfluencer": { "arret": false },
+            "aInfluencer": { "arret": false },
             "influence": { "decisions": ["aucune fonction"], "arret": true },
             "agent": { "decisions": ["aucune fonction"], "arret": true },
             "rancon": { "decisions": ["aucune fonction"], "arret": true },
             "perteTerresRevoquer": { "decisions": ["aucune fonction"], "arret": true },
-            "vassalAInfluencer": { "decisions": ["aucune fonction"], "arret": true },
+            "vassalAInfluencer": { "arret": false },
             "prestige": { "decisions": ["aucune fonction"], "arret": true },
             "prison": { "decisions": ["aucune fonction"], "arret": true },
             "guerre": { "decisions": ["aucune fonction SI gouvernement administratif"], "arret": false },

@@ -412,7 +412,7 @@
                 "arret": true
             },
             "aInfluencer": {
-                "decisions": ["Tentes délabrées"],
+                "decisions": ["A DEFINIR"],
                 "arret": true
             },
             "declarationGuerre": {
@@ -424,7 +424,7 @@
                 "arret": true
             },
             "dirigeantAInfluencer": {
-                "decisions": ["Tentes délabrées"],
+                "decisions": ["A DEFINIR"],
                 "arret": true
             },
             "denoncer": {
@@ -482,7 +482,7 @@
                 "arret": true
             },
             "aInfluencer": {
-                "decisions": ["Prix quelconques"],
+                "decisions": ["A DEFINIR"],
                 "arret": true
             },
             "controle": {

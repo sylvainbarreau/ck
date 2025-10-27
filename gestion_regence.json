@@ -34,10 +34,8 @@
             },
             "aInfluencer": {
                 "decisions": [
-                    "Promouvoir l'autorité SI ALLIE POTENTIEL OU PARDONNEUR-S conseiller",
-                    "Remplir les coffres"
-                ],
-                "arret": true
+                    "Promouvoir l'autorité SI ALLIE POTENTIEL-S conseiller"                ],
+                "arret": false
             },
             "agent": {
                 "decisions": ["Remplir les coffres"],
@@ -68,7 +66,7 @@
                 "arret": true
             },
             "dirigeantAInfluencer": {
-                "decisions": ["Remplir les coffres"],
+                "decisions": [],
                 "arret": true
             },
             "rancon": {

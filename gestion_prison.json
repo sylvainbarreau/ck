@@ -10,15 +10,11 @@
             "aInfluencer": {
                 "decisions": [
                     "Torturer SI Atout \"Sombres connaissances\"",
-                    "Négocier la libération > Bannir SI Or",
-                    "Rançonner > Or",
-                    "Négocier la libération > hameçon SI Atout \"Obligations en or\"",
-                    "Rançonner > hameçon SI Atout \"Obligations en or\"",
                     "Négocier la libération > hameçon SI mécène",
                     "Rançonner > hameçon SI mécène",
                     "Négocier la libération > Bannir SI artefact"
                 ],
-                "arret": true
+                "arret": false
             },
             "demande": {
                 "decisions": [
@@ -115,13 +111,10 @@
             "vassalAInfluencer": {
                 "decisions": [
                     "Torturer SI Atout \"Sombres connaissances\"",
-                    "Rançonner > Or",
-                    "Négocier la libération > hameçon SI Atout \"Obligations en or\"",
-                    "Rançonner > hameçon SI Atout \"Obligations en or\"",
                     "Castrer le prisonnier",
                     "Exécuter SI Redoutabilité"
                 ],
-                "arret": true
+                "arret": false
             },
             "vassal": {
                 "decisions": [
@@ -183,15 +176,11 @@
             "dirigeantAInfluencer": {
                 "decisions": [
                     "Torturer SI Atout \"Sombres connaissances\"",
-                    "Négocier la libération > Bannir SI Or",
-                    "Rançonner > Or",
-                    "Négocier la libération > hameçon SI Atout \"Obligations en or\"",
-                    "Rançonner > hameçon SI Atout \"Obligations en or\"",
                     "Négocier la libération > hameçon SI mécène",
                     "Rançonner > hameçon SI mécène",
                     "Négocier la libération > Bannir SI artefact"
                 ],
-                "arret": true
+                "arret": false
             },
             "piete": {
                 "decisions": [
