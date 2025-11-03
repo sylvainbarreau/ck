@@ -154,14 +154,11 @@
             },
             "agent": {
                 "decisions": [
-                    "Négocier la libération SI vassal direct ou courtisan ou invité CIBLE-S",
                     "Torturer SI Atout \"Sombres connaissances\"",
                     "Négocier la libération > Bannir SI Or",
                     "Rançonner > Or",
                     "Négocier la libération > hameçon SI Atout \"Obligations en or\"",
                     "Rançonner > hameçon SI Atout \"Obligations en or\"",
-                    "Négocier la libération > hameçon SI MECENE",
-                    "Rançonner > hameçon SI MECENE",
                     "Négocier la libération > Bannir SI artefact"
                 ],
                 "arret": true
