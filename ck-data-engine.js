@@ -62,6 +62,10 @@ class DataDrivenEngine {
         // Cas 1: siRien - aucun problème dès le départ (appel initial sans problèmes)
         // Condition : liste vide DÈS LE DÉPART (isInitialCall = true)
         if (p.length === 0 && isInitialCall) {
+            // Si siRien est null, chercher un état spécial "siRien" dans selonEtats
+            if (this.siRien === null && this.selonEtats['siRien']) {
+                return this.handleProbleme(['siRien'], t, o, optionModifications);
+            }
             return this.handleRien(t);
         }
 

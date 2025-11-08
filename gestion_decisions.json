@@ -11,7 +11,7 @@
         "selonEtats": {
             "siRien": {
                 "decisions": [
-                    "Construire",
+                    "Construire", "\n",
                     "Augmenter magnificence de la Cour",
                     "Intendance SI NON aventurier",
                     "Diplomatie SI gouvernement administratif",
@@ -30,7 +30,7 @@
                     "Hameçon OU Secret SI NON aventurier ET Atout \"Obligations en or\"",
                     "Contrôle SI <100",
                     "Développement",
-                    "Emprisonner SI NON aventurier",
+                    "Emprisonner SI NON aventurier", "\n",
                     "Prestige",
                     "Secret SI Atout \"Je suis bien en comparaison\"",
                     "Intrigue",

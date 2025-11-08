@@ -4,7 +4,18 @@
             "categories": ["Gestion"],
             "idElement": "prisonResult"
         },
-        "siRien": "Torturer SI Atout \"Je suis bien en comparaison\"",
+        "siRien": ["Bannir SI NON aventurier ET artefact",
+            "Torturer SI Atout \"Je suis bien en comparaison\"",
+            "Bannir SI artefact",
+            "Torturer SI Atout \"Sombres connaissances\"",
+            "Négocier la libération > Bannir SI Or",
+            "Rançonner > Or",
+            "Négocier la libération > hameçon SI Atout \"Obligations en or\"",
+            "Rançonner > hameçon SI Atout \"Obligations en or\"",
+            "Négocier la libération > hameçon SI mécène",
+            "Rançonner > hameçon SI mécène",
+            "Négocier la libération > Recruter SI aventurier ET chevalier possible"
+            ],
         "defaut": "Castrer le prisonnier",
         "selonEtats": {
             "aInfluencer": {
