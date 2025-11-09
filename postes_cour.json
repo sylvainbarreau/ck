@@ -574,14 +574,14 @@
     "posteSenechal": {
         "positionVue": {
             "categories": ["Courtisans", "Postes de la cour"],
-            "idElement": "posteSenechalResult",
+            "idElement": "posteSenech",
             "motLiaison": "SINON"
         },
         "optionsCommentaires": ["Organiser la Cour,//0 -prestige",
         "Gérer le domaine,//1 +controle -or",
         "Gérer la possession,//2 +Influence,construction -or, prestige",
         "// aucune +or,prestige"],
-        "siRien":"aucune fonction",
+        "siRien": "aucune fonction",
         "defaut": ["aucune fonction"],
         "selonEtats": {
             "guerre": {
@@ -609,6 +609,7 @@
             "chevalierPartisan": { "arret": true },
             "proclame": { "arret": false },
             "stress": { "arret": false },
+            "survie": { "arret": false },
             "prestige": {
                 "decisions": ["aucune fonction"],
                 "arret": true
@@ -648,9 +649,138 @@
             "categories": ["Postes de la cour"],
             "idElement": "posteProf"
         },
+        "optionsCommentaires": ["Faire de la recherche avancée//0 +exp -or",
+        "Enseigner à la Cour//1 +diplo,intendance,eru,martialite -prestige",
+        "Eduquer les enfants//2 -prestige",
+        "// aucune +or,prestige"
+    ],
         "siRien": "Faire de la recherche avancée",
         "defaut": "Faire de la recherche avancée",
-        "selonEtats": {}
+        "selonEtats": {
+                    "revenu": {
+                        "decisions": ["aucune fonction"],
+                        "arret": true
+                    },
+                    "rancon": {
+                        "decisions": ["aucune fonction"],
+                        "arret": true
+                    },
+                    "perteTerresRevoquer": {
+                        "decisions": ["aucune fonction"],
+                        "arret": true
+                    },
+                    "prison": {
+                        "decisions": ["aucune fonction"],
+                        "arret": true
+                    },
+                    "succession": {
+                        "decisions": ["Faire de la recherche avancée", "Enseigner à la Cour", "aucune fonction"],
+                        "arret": true
+                    },
+                    "influence": {
+                        "decisions": ["Faire de la recherche avancée", "Enseigner à la Cour", "aucune fonction"],
+                        "arret": true
+                    },
+                    "agent": {
+                        "decisions": ["Faire de la recherche avancée", "Enseigner à la Cour", "aucune fonction"],
+                        "arret": true
+                    },
+                    "aInfluencer": {
+                        "decisions": ["Faire de la recherche avancée", "Enseigner à la Cour"],
+                        "arret": false
+                    },
+                    "vassalAInfluencer": {
+                        "decisions": ["Faire de la recherche avancée", "Enseigner à la Cour", "aucune fonction"],
+                        "arret": true
+                    },
+                    "guerre": {
+                        "decisions": ["Enseigner à la Cour", "Faire de la recherche avancée", "aucune fonction SI gouvernement administratif"],
+                        "arret": false
+                    },
+                    "dirigeantAInfluencer": {
+                        "decisions": ["Enseigner à la Cour", "Faire de la recherche avancée"],
+                        "arret": false
+                    },
+                    "recruterChevalier": {
+                        "decisions": ["Enseigner à la Cour", "Faire de la recherche avancée"],
+                        "arret": false
+                    },
+                    "proclame": {
+                        "decisions": ["Enseigner à la Cour", "Faire de la recherche avancée"],
+                        "arret": false
+                    },
+                    "declarationGuerre": {
+                        "decisions": ["Enseigner à la Cour", "Faire de la recherche avancée"],
+                        "arret": false
+                    },
+                    "controle": {
+                        "decisions": ["Enseigner à la Cour", "Faire de la recherche avancée"],
+                        "arret": false
+                    },
+                    "piete": {
+                        "decisions": ["Enseigner à la Cour", "Faire de la recherche avancée"],
+                        "arret": false
+                    },
+                    "religieuxAInfluencer": {
+                        "decisions": ["Faire de la recherche avancée", "Enseigner à la Cour"],
+                        "arret": false
+                    },
+                    "vassal": {
+                        "decisions": ["Faire de la recherche avancée", "Enseigner à la Cour"],
+                        "arret": false
+                    },
+                    "chevalierPartisan": {
+                        "decisions": [],
+                        "arret": true
+                    },
+                    "demande": {
+                        "decisions": [],
+                        "arret": true
+                    },
+                    "demande2": {
+                        "decisions": [],
+                        "arret": true
+                    },
+                    "prestige": {
+                        "decisions": ["Faire de la recherche avancée"],
+                        "arret": false
+                    },
+                    "assassinat": {
+                        "decisions": ["Faire de la recherche avancée"],
+                        "arret": false
+                    },
+                    "hamecon": {
+                        "decisions": ["Faire de la recherche avancée"],
+                        "arret": false
+                    },
+                    "stress": {
+                        "decisions": ["Faire de la recherche avancée"],
+                        "arret": false
+                    },
+                    "enfant": {
+                        "decisions": ["Faire de la recherche avancée"],
+                        "arret": false
+                    },
+                    "survie": {
+                        "decisions": ["Faire de la recherche avancée"],
+                        "arret": false
+                    },
+                    "factionPop": {
+                        "decisions": ["Faire de la recherche avancée"],
+                        "arret": false
+                    },
+                    "domaine": {
+                        "decisions": ["Enseigner à la Cour"],
+                        "arret": false
+                    },
+                    "cultInnov": {
+                        "decisions": ["Enseigner à la Cour SI Chef culturel", "Faire de la recherche avancée SI Chef culturel", "Enseigner à la Cour", "aucune fonction SI NON Chef culturel"],
+                        "arret": false
+                    },
+                    "conseiller": {
+                        "arret": false
+                    }
+        }
     },
 
     "posteChasse": {
@@ -665,7 +795,8 @@
             "rancon": { "decisions": ["aucune fonction"], "arret": true },
             "chevalierPartisan": { "decisions": [], "arret": true },
             "demande": { "decisions": [], "arret": true },
-            "demande2": { "decisions": [], "arret": true }
+            "demande2": { "decisions": [], "arret": true },
+            "survie":{ "arret": false }
         }
     },
 
@@ -719,7 +850,8 @@
         "siRien": "Divertir la Cour",
         "defaut": "Divertir la Cour",
         "selonEtats": {
-            "stress": { "decisions": ["Soutenir le dirigeant"], "arret": true },
+            "stress": { "decisions": ["Divertir les courtisans"], "arret": false },
+            "survie": { "decisions": ["Divertir les courtisans"], "arret": false },
             "chevalierPartisan": { "decisions": [], "arret": true },
             "demande": { "decisions": [], "arret": true },
             "demande2": { "decisions": [], "arret": true }
@@ -737,7 +869,11 @@
             "enfant": { "decisions": ["Organiser une éducation SI NON adoption/aventurier"], "arret": true },
             "chevalierPartisan": { "decisions": [], "arret": true },
             "demande": { "decisions": [], "arret": true },
-            "demande2": { "decisions": [], "arret": true }
+            "demande2": { "decisions": [], "arret": true },
+            "survie": { 
+                "decisions": ["Rester à l'écoute du terrain", "aucune fonction"],
+                "arret": true
+            }
         }
     },
 
@@ -749,7 +885,7 @@
         "siRien": "Garder la chambre",
         "defaut": "Garder la chambre",
         "selonEtats": {
-            "survie": { "decisions": ["Protéger le dirigeant"], "arret": true },
+            "survie": { "arret": false },
             "assassinat": { "decisions": ["Protéger le dirigeant"], "arret": true },
             "chevalierPartisan": { "decisions": [], "arret": true },
             "demande": { "decisions": [], "arret": true },

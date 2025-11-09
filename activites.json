@@ -198,8 +198,8 @@
                 "arret": true
             },
             "survie": {
-                "decisions": ["Bibliothèque", "Livres et notes", "Bouts de parchemin"],
-                "arret": true
+                "decisions": ["Bibliothèque"],
+                "arret": false
             },
             "stress": {
                 "decisions": ["Bibliothèque", "Livres et notes", "Bouts de parchemin"],
@@ -359,7 +359,11 @@
                 ],
                 "arret": false
             },
-            "conseiller": { "arret": false }
+            "conseiller": { "arret": false },
+            "survie": {
+                "decisions": ["Groupes de gardes-chasse", "Groupes de chasse", "Gardes-chasse locaux"],
+                "arret": true
+            }
         }
     },
     "grpeChasse": {
@@ -460,7 +464,8 @@
             "succession": { "arret": false },
             "influence": { "arret": false },
             "assassinat": { "arret": false },
-            "conseiller": { "arret": false }
+            "conseiller": { "arret": false },
+            "survie": { "arret": false }
         }
     },
     "activRando": {
@@ -476,7 +481,7 @@
                 "arret": true
             },
             "survie": {
-                "decisions": ["Renouer avec la nature"],
+                "decisions": ["Se détendre"],
                 "arret": true
             },
             "guerre": {
@@ -731,10 +736,7 @@
                 "decisions": ["Gagner de la piété"],
                 "arret": true
             },
-            "survie": {
-                "decisions": ["Trouver la paix intérieure"],
-                "arret": true
-            },
+            "survie": { "arret": false             },
             "enfant": {
                 "decisions": ["Gagner de la piété SI adoption/aventurier", "Trouver la paix intérieure"],
                 "arret": true
@@ -850,10 +852,7 @@
                 "decisions": ["Zèle absolu", "Dévotion publique", "Apparences pieuses"],
                 "arret": true
             },
-            "survie": {
-                "decisions": ["Zèle absolu", "Dévotion publique", "Apparences pieuses"],
-                "arret": true
-            },
+            "survie": { "arret": false            },
             "factionPop": {
                 "decisions": ["Zèle absolu", "Dévotion publique"],
                 "arret": false
@@ -878,6 +877,7 @@
             "categories": ["Activités", "Pélerinage"],
             "idElement": "pelerinApp"
         },
+        "options": ["Humble", "Approprié", "Cérémoniel", "En nombre"],
         "siRien": ["Magnifique", "Grand", "Modeste"],
         "defaut": ["Magnifique", "Grand", "Modeste"],
         "selonEtats": {
@@ -998,8 +998,10 @@
                 "arret": true
             },
             "survie": {
-                "decisions": ["Magnifique", "Grand", "Modeste"],
-                "arret": true
+                "modifications": {
+                    "Humble": "undefined"
+                },
+                "arret": false
             },
             "conseiller": { "arret": false }
         }

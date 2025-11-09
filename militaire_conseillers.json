@@ -51,7 +51,8 @@
             "prison": {
                 "decisions": ["cocher Renforcement mensuel", "Créer un régiment", "régiment > Augmenter la taille"],
                 "arret": true
-            }
+            },
+            "survie": { "arret": false }
         }
     },
     "militaireAuto": {
@@ -90,6 +91,7 @@
                 "arret": true
             },
             "stress": { "arret": false },
+            "survie": { "arret": false },
             "prestige": { "arret": false },
             "enfant": {
                 "decisions": ["Limité"],
@@ -245,7 +247,8 @@
             "chevalierPartisan": { "arret": false },
             "demande": { "arret": false },
             "demande2": { "arret": false },
-            "conseiller": { "arret": false }
+            "conseiller": { "arret": false },
+            "survie": { "arret": false }
         }
     },
 
@@ -324,7 +327,8 @@
             "conseiller": { "arret": false },
             "factionPop": { "arret": false },
             "domaine": { "arret": false },
-            "enfant": { "arret": false }
+            "enfant": { "arret": false },
+            "survie": { "arret": false }
         }
     },
 
@@ -498,7 +502,8 @@
             "conseiller": { "arret": false },
             "domaine": { "arret": false },
             "cultInnov": { "arret": false },
-            "enfant": { "arret": false }
+            "enfant": { "arret": false },
+            "survie": { "arret": false }
         }
     },
 
@@ -584,7 +589,8 @@
             "piete": { "arret": false },
             "conseiller": { "arret": false },
             "domaine": { "arret": false },
-            "enfant": { "arret": false }
+            "enfant": { "arret": false },
+            "survie": { "arret": false }
         }
     },
 

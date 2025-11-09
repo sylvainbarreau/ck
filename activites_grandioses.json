@@ -91,7 +91,8 @@
                 "decisions": [],
                 "arret": true
             },
-            "declarationGuerre": { "arret": false }
+            "declarationGuerre": { "arret": false },
+            "survie": { "arret": false }
         }
     },
     "luxe": {
@@ -213,7 +214,8 @@
             "declarationGuerre": { "arret": false },
             "controle": { "arret": false },
             "influence": { "arret": false },
-            "succession": { "arret": false }
+            "succession": { "arret": false },
+            "survie": { "arret": false }
         }
     },
     "particip": {
@@ -452,7 +454,8 @@
                 "arret": true
             },
             "recruterChevalier": { "arret": false },
-            "piete": { "arret": false }
+            "piete": { "arret": false },
+            "survie": { "decisions": ["A DEFINIR"], "arret": true}
         }
     },
     "prix": {
@@ -700,10 +703,12 @@
             "declarationGuerre": { "arret": false },
             "succession": { "arret": false },
             "conseiller": { "arret": false },
-            "influence": { "arret": false }
+            "influence": { "arret": false },
+            "survie": { "arret": false }
         }
     },
     "activCouro": {
+        "options": ["Être témoin", "Offrir un soutien", "Plaider la cause du domaine", "Prétendre à des droits", "Profiter des avantages", "Perturber les loyalistes"],
         "optionsCommentaires": ["Être témoin,0 +piété,légitimité,acceptation culturelle",
         "Offrir un soutien,1 +opinion COURONNE,relation particulière COURONNE,alliance COURONNE",
         "Plaider la cause du domaine,// +développement,contrôle,opinion populaire",
@@ -803,6 +808,12 @@
             "prison": {
                 "decisions": ["Profiter des avantages"],
                 "arret": true
+            },
+            "survie": {
+                "modifications": {
+                    "Perturber les loyalistes": "undefined"
+                },
+                "arret": false
             }
         }   
     }

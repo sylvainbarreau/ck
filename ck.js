@@ -6411,7 +6411,9 @@ function evidence(id, texte, ttLeTps=false) {
     liOuiNon("Restaurer l'Empire romain", 'dec-d-rom-2', "A DEFINIR");
     liOuiNon("Rétablir les frontières théodosiennes", 'dec-d-rom-3', "A DEFINIR");
     liOuiNon("Tenir un triomphe", 'dec-d-rom-4', "A DEFINIR");
-    liOuiNon("Évangéliser les païens", 'dec-d-rom-5', "A DEFINIR");
+    liOuiNon("Évangéliser les païens", 'dec-d-rom-5', decisionOuNon(decisionsResult,
+        new Set(["Alliance", "Légende", "Influence", "Prestige"]),
+        new Set(["Piété"])));
     liOuiNon("Reconfirmer l'allocation céréalière", 'dec-d-rom-6', "A DEFINIR");
     // Ruler - Décisions de courtisans
     liOuiNon("Recruter pour un poste au tribunal", 'dec-d-court-1', "A DEFINIR");
@@ -6665,6 +6667,8 @@ function evidence(id, texte, ttLeTps=false) {
     liOuiNon("Abandonner la foi secrète", 'dec-f', decisionOuNon(decisionsResult,
         null,
         null));
+    // Affichage Décisions romaines
+    liDec('decRom', 'dec-d-rom-5'); //"Évangéliser les païens",
     // Affichage Décisions importantes d'aventurier
     liDec('decImp', 'dec-a-maj-1');
     liDec('decImp', 'dec-a-maj-2');

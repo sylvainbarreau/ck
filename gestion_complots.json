@@ -135,7 +135,8 @@
             "domaine": { "arret": false },
             "cultInnov": { "arret": false },
             "revenu": { "arret": false },
-            "prestige": { "arret": false }
+            "prestige": { "arret": false },
+            "survie": { "arret": false }
         }
     },
     "contreMesure": {
@@ -236,6 +237,9 @@
             },
             "survie": {
                 "decisions": ["Garde doublée"],
+                "modifications": {
+                    "Retrait de la vie publique": "undefined"
+                },
                 "arret": false
             },
             "enfant": {
@@ -328,18 +332,6 @@
             "categories": ["Complots"],
             "idElement": "hostileResult"
         },
-        "optionsCommentaires": ["Contester le statut//0 (agents) +Influence Statut du défi",
-        "Destitution//1 (agents) Déposer",
-        "Consolider la base du pouvoir//2 (agents) +Influence,opinion Mentor en gouvernance",
-        "Intégrer le gouvernorat//3 (agents) Subsumer la gouvernance",
-        "Promouvoir//4 (agents) +succession Promouvoir",
-        "Diffamation//5 (agents) -succession Calomnier",
-        "Légitimité des dommages//6 -légitimité",
-        "Favoriser la légitimité//7 +légitimité,hameçon",
-        "Pillage de la possession//8 (agents) +Or",
-        "Famille ingrate//9 +Influence,opinion,amitié",
-        "Dispute frontalière//10 (agents) Conflit frontalier"
-    ],
     "siRien": null,
     "defaut": ["Saisie du pays", "Revendiquer le trône", "Déposer le régent", "Voler un artefact", "Aucune"],
     "selonEtats": {
@@ -436,7 +428,8 @@
             "piete": { "arret": false },
             "factionPop": { "arret": false },
             "domaine": { "arret": false },
-            "prison": { "arret": false }
+            "prison": { "arret": false },
+            "survie": { "arret": false }
         }
     },
     "compPolitique": {
@@ -444,6 +437,18 @@
             "categories": ["Complots"],
             "idElement": "politiqueResult"
         },
+        "optionsCommentaires": ["Contester le statut//0 (agents) +Influence Statut du défi",
+        "Destitution//1 (agents) Déposer",
+        "Consolider la base du pouvoir//2 (agents) +Influence,opinion Mentor en gouvernance",
+        "Intégrer le gouvernorat//3 (agents) Subsumer la gouvernance",
+        "Promouvoir//4 (agents) +succession Promouvoir",
+        "Diffamation//5 (agents) -succession Calomnier",
+        "Légitimité des dommages//6 -légitimité",
+        "Favoriser la légitimité//7 +légitimité,hameçon",
+        "Pillage de la possession//8 (agents) +Or",
+        "Famille ingrate//9 +Influence,opinion,amitié",
+        "Dispute frontalière//10 (agents) Conflit frontalier"
+        ],
         "siRien": null,
         "defaut": "Consolider la base du pouvoir, Intégrer le gouvernorat, Dispute frontalière, Pillage de la possession",
         "selonEtats": {
@@ -574,7 +579,8 @@
             "conseiller": { "arret": false },
             "factionPop": { "arret": false },
             "domaine": { "arret": false },
-            "cultInnov": { "arret": false }
+            "cultInnov": { "arret": false },
+            "survie": { "arret": false }
         }
     }
 }

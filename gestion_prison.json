@@ -240,7 +240,8 @@
                 "arret": false
             },
             "domaine": { "arret": false },
-            "cultInnov": { "arret": false }
+            "cultInnov": { "arret": false },
+            "survie": { "arret": false }
         }
     }
 }
