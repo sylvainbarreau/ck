@@ -1,0 +1,68 @@
+{
+    "dec-d-min-20": {
+        "lib": "Favoriser les experts étrangers",
+        "categorieDecision": "Character - Minor decisions",
+        "positionVue": {
+            "categories": ["Décisions de courtisan"],
+            "idListe": "decCour",
+            "precedent": null
+        },
+        "effetsPositifs": ["Recruter"],
+        "effetsNegatifs": ["Prestige", "Opinion"]
+    },
+    "dec-d-court-5": {
+        "lib": "Faire avec ce qui reste",
+        "categorieDecision": "Character - Court decisions",
+        "positionVue": {
+            "categories": ["Décisions de courtisan"],
+            "idListe": "decCour",
+            "precedent": "Favoriser les experts étrangers"
+        },
+        "effetsPositifs": ["Recruter"],
+        "effetsNegatifs": ["Prestige"]
+    },
+    "dec-d-court-6": {
+        "lib": "Recruter un spécialiste du terrain",
+        "categorieDecision": "Character - Court decisions",
+        "positionVue": {
+            "categories": ["Décisions de courtisan"],
+            "idListe": "decCour",
+            "precedent": "Faire avec ce qui reste"
+        },
+        "effetsPositifs": ["Recruter"],
+        "effetsNegatifs": ["Or", "Prestige"]
+    },
+    "dec-d-min-0": {
+        "lib": "Recruter à un poste de la Cour",
+        "categorieDecision": "Character - Minor decisions",
+        "positionVue": {
+            "categories": ["Décisions de courtisan"],
+            "idListe": "decCour",
+            "precedent": "Recruter un spécialiste du terrain"
+        },
+        "effetsPositifs": ["Recruter", "Santé", "Points d'expérience"],
+        "effetsNegatifs": ["Or", "Prestige"]
+    },
+    "dec-d-court-2": {
+        "lib": "Inviter des chevaliers",
+        "categorieDecision": "Character - Court decisions",
+        "positionVue": {
+            "categories": ["Décisions de courtisan"],
+            "idListe": "decCour",
+            "precedent": "Recruter à un poste de la Cour"
+        },
+        "effetsPositifs": ["Recruter", "Recruter chevalier", "Recruter chevalier SI prouesse>=8"],
+        "effetsNegatifs": ["Prestige"]
+    },
+    "dec-d-court-3": {
+        "lib": "Inviter des prétendants",
+        "categorieDecision": "Character - Court decisions",
+        "positionVue": {
+            "categories": ["Décisions de courtisan"],
+            "idListe": "decCour",
+            "precedent": "Inviter des chevaliers"
+        },
+        "effetsPositifs": ["Recruter"],
+        "effetsNegatifs": ["Prestige"]
+    }
+}

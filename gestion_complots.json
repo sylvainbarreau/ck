@@ -136,7 +136,23 @@
             "cultInnov": { "arret": false },
             "revenu": { "arret": false },
             "prestige": { "arret": false },
-            "survie": { "arret": false }
+            "survie": { 
+                "decisions": [
+                    "Influencer Maître-espion",
+                    "Influencer Garde du corps",
+                    "Influencer Médecin personnel",
+                    "Influencer Conjoint",
+                    "Séduire Maître-espion",
+                    "Séduire Garde du corps",
+                    "Séduire Médecin personnel",
+                    "Séduire Conjoint",
+                    "Apprendre la langue Maître-espion",
+                    "Apprendre la langue Garde du corps",
+                    "Apprendre la langue Médecin personnel",
+                    "Apprendre la langue Conjoint"
+                ],
+                "arret": false
+            }
         }
     },
     "contreMesure": {

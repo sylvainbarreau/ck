@@ -23,10 +23,7 @@ function (p, t=new Array(), o=null) {
         case 'dirigeantAInfluencer': // opinion, Diplomatie, Intrigue, Or
         case 'influence' : // besoin agent //influence SI vassal direct LUI OU courtisan LUI OU invité LUI, Influence, Or, Prestige, hameçon
         case 'erudition': *
-        case 'demande': // Prestige, opinion,Diplomatie,Intrigue,Or
-        case 'demande2': // (activité, contrat, Or, Provisions, mariage) Prestige, opinion,Diplomatie,Intrigue
-        A SUPPRIMER ? case 'survie':
-        case 'perteTerresRevoquer': // accorder titre SINON chercher secret,Opinion,Diplomatie,Intrigue,Or,hameçon,Intrigue (pour révoquer)
+         A SUPPRIMER ?         case 'perteTerresRevoquer': // accorder titre SINON chercher secret,Opinion,Diplomatie,Intrigue,Or,hameçon,Intrigue (pour révoquer)
          *
         case 'guerre': // guerre, Influence,opinion,Diplomatie,Intrigue SI gouvernmt admin
         case 'declarationGuerre':
@@ -54,7 +51,10 @@ function (p, t=new Array(), o=null) {
         case 'domaine': //Intendance
         case 'cultInnov': //SI Chef culturel : Erudition SINON Promouvoir la culture Intendance, Faire diverger la culture Prestige
         case 'prison': //Prestige,Intrigue,opinion,Diplomatie,puissance militaire
-        default:
+        case 'survie':
+    case 'demande': // Prestige, opinion,Diplomatie,Intrigue,Or
+        case 'demande2': // (activité, contrat, Or, Provisions, mariage) Prestige, opinion,Diplomatie,Intrigue
+       default:
             return (p.slice(1), t, o);
     }
 }
@@ -6215,6 +6215,12 @@ function evidence(id, texte, ttLeTps=false) {
     const influenceResult = influence(p);
     const politiqueResult = compPolitique(p);
     const decisionsResult = decisions(p);
+
+    // Afficher les décisions de jeu avec le système data-driven
+    if (typeof displayDecisionsJeu === 'function') {
+        displayDecisionsJeu(decisionsResult);
+    }
+
     const courResult = typeCour(p);
     const commoditesModeResult = commoditesMode(p);
     const commoditesNourritureResult = commoditesNourriture(p);
@@ -6667,6 +6673,10 @@ function evidence(id, texte, ttLeTps=false) {
     liOuiNon("Abandonner la foi secrète", 'dec-f', decisionOuNon(decisionsResult,
         null,
         null));
+    liOuiNon("Assister à la confirmation des gouvernorats", 'dec-g', decisionOuNon(decisionsResult,
+        new Set([]),
+        null
+    ));
     // Affichage Décisions romaines
     liDec('decRom', 'dec-d-rom-5'); //"Évangéliser les païens",
     // Affichage Décisions importantes d'aventurier

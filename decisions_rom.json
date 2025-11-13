@@ -1,0 +1,13 @@
+{
+    "dec-d-rom-5": {
+        "lib": "Évangéliser les païens",
+        "categorieDecision": "Ruler - Décisions romaines",
+        "positionVue": {
+            "categories": ["Décisions romaines"],
+            "idListe": "decRom",
+            "precedent": null
+        },
+        "effetsPositifs": ["Alliance", "Légende", "Influence", "Prestige"],
+        "effetsNegatifs": ["Piété"]
+    }
+}

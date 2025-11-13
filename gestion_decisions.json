@@ -308,10 +308,10 @@
                     "Santé",
                     "Provisions",
                     "Diminuer stress",
-                    "Opinion maître-espion",
-                    "Opinion garde du corps",
-                    "Opinion médecin",
-                    "Opinion conjoint"
+                    "Opinion Maître-espion",
+                    "Opinion Garde du corps",
+                    "Opinion Médecin personnel",
+                    "Opinion Conjoint"
                 ],
                 "arret": false
             },
@@ -429,7 +429,7 @@
             },
             "prison": {
                 "decisions": [
-                    "Prestige",
+                    "Prestige SI Prestige dépensé pour emprisonnement",
                     "Intrigue",
                     "Emprisonner SI Atout \"Sombres connaissances\"",
                     "secret SI emprisonnable ET Atout \"Sombres connaissances\"",

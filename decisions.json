@@ -1,0 +1,387 @@
+{
+    "dec-d-min-10": {
+        "lib": "Commander un artefact",
+        "categorieDecision": "Character - Minor decisions",
+        "positionVue": {
+            "categories": ["Décisions"],
+            "idListe": "dec",
+            "precedent": null
+        },
+        "effetsPositifs": ["Artefact"],
+        "effetsNegatifs": ["Or"]
+    },
+    "dec-d-min-7": {
+        "lib": "Introduire une nouvelle mode à la Cour",
+        "categorieDecision": "Character - Minor decisions",
+        "positionVue": {
+            "categories": ["Décisions"],
+            "idListe": "dec",
+            "precedent": "Commander un artefact"
+        },
+        "effetsPositifs": [],
+        "effetsNegatifs": ["Or", "Prestige"]
+    },
+    "dec-d-maj-26": {
+        "lib": "Devenir un aventurier",
+        "categorieDecision": "Ruler - Major decisions",
+        "positionVue": {
+            "categories": ["Décisions"],
+            "idListe": "dec",
+            "precedent": "Introduire une nouvelle mode à la Cour"
+        },
+        "effetsPositifs": [],
+        "effetsNegatifs": []
+    },
+    "dec-p-tr-1": {
+        "lib": "Accélérer les complots",
+        "categorieDecision": "Character - Minor decisions - traits",
+        "positionVue": {
+            "categories": ["Décisions"],
+            "idListe": "dec",
+            "precedent": "Devenir un aventurier"
+        },
+        "effetsPositifs": [],
+        "effetsNegatifs": []
+    },
+    "dec-p-2": {
+        "lib": "Emprunter de l'or à l'Ordre sacré",
+        "categorieDecision": "Character - Minor decisions",
+        "positionVue": {
+            "categories": ["Décisions"],
+            "idListe": "dec",
+            "precedent": "Accélérer les complots"
+        },
+        "effetsPositifs": ["Or"],
+        "effetsNegatifs": ["Piété"]
+    },
+    "dec-e": {
+        "lib": "Révéler la vraie foi",
+        "categorieDecision": "Character",
+        "positionVue": {
+            "categories": ["Décisions"],
+            "idListe": "dec",
+            "precedent": "Emprunter de l'or à l'Ordre sacré"
+        },
+        "effetsPositifs": [],
+        "effetsNegatifs": ["Piété"]
+    },
+    "dec-f": {
+        "lib": "Abandonner la foi secrète",
+        "categorieDecision": "Character",
+        "positionVue": {
+            "categories": ["Décisions"],
+            "idListe": "dec",
+            "precedent": "Révéler la vraie foi"
+        },
+        "effetsPositifs": [],
+        "effetsNegatifs": []
+    },
+    "dec-d-min-21": {
+        "lib": "S'entraîner pour un tournoi",
+        "categorieDecision": "Character - Minor decisions",
+        "positionVue": {
+            "categories": ["Décisions"],
+            "idListe": "dec",
+            "precedent": "Abandonner la foi secrète"
+        },
+        "effetsPositifs": ["Prouesse"],
+        "effetsNegatifs": ["Prestige"]
+    },
+    "dec-p-tr-2": {
+        "lib": "Vivre la communion mystique",
+        "categorieDecision": "Character - Minor decisions - traits",
+        "positionVue": {
+            "categories": ["Décisions"],
+            "idListe": "dec",
+            "precedent": "S'entraîner pour un tournoi"
+        },
+        "effetsPositifs": ["Erudition", "Martialité", "Diminuer stress"],
+        "effetsNegatifs": ["Piété"]
+    },
+    "dec-d-min-cour-2": {
+        "lib": "Ordonner une expulsion massive",
+        "categorieDecision": "Character - Minor decisions - court",
+        "positionVue": {
+            "categories": ["Décisions"],
+            "idListe": "dec",
+            "precedent": "Vivre la communion mystique"
+        },
+        "effetsPositifs": [],
+        "effetsNegatifs": ["Prestige"]
+    },
+    "dec-d-min-av-2": {
+        "lib": "Vendre des titres sans importance",
+        "categorieDecision": "Character - Minor decisions - adventurer",
+        "positionVue": {
+            "categories": ["Décisions"],
+            "idListe": "dec",
+            "precedent": "Ordonner une expulsion massive"
+        },
+        "effetsPositifs": ["Or"],
+        "effetsNegatifs": ["Prestige"]
+    },
+    "dec-d-min-av-3": {
+        "lib": "Extorquer des sujets",
+        "categorieDecision": "Character - Minor decisions - adventurer",
+        "positionVue": {
+            "categories": ["Décisions"],
+            "idListe": "dec",
+            "precedent": "Vendre des titres sans importance"
+        },
+        "effetsPositifs": ["Or"],
+        "effetsNegatifs": []
+    },
+    "dec-d-min-13": {
+        "lib": "Révoquer le bail de l'ordre sacré",
+        "categorieDecision": "Character - Minor decisions",
+        "positionVue": {
+            "categories": ["Décisions"],
+            "idListe": "dec",
+            "precedent": "Extorquer des sujets"
+        },
+        "effetsPositifs": [],
+        "effetsNegatifs": ["Piété", "Augmenter levées"]
+    },
+    "dec-p-av-1": {
+        "lib": "Embrasser le célibat",
+        "categorieDecision": "Character - Minor decisions - advantages",
+        "positionVue": {
+            "categories": ["Décisions"],
+            "idListe": "dec",
+            "precedent": "Révoquer le bail de l'ordre sacré"
+        },
+        "effetsPositifs": ["Piété"],
+        "effetsNegatifs": ["coucher SI NON mort", "Opinion"]
+    },
+    "dec-x": {
+        "lib": "Allumer le feu royal",
+        "categorieDecision": "Character",
+        "positionVue": {
+            "categories": ["Décisions"],
+            "idListe": "dec",
+            "precedent": "Embrasser le célibat"
+        },
+        "effetsPositifs": ["Renommée", "Santé"],
+        "effetsNegatifs": []
+    },
+    "dec-p-tr-3": {
+        "lib": "Étudier l'art de l'intrigue",
+        "categorieDecision": "Character - Minor decisions - traits",
+        "positionVue": {
+            "categories": ["Décisions"],
+            "idListe": "dec",
+            "precedent": "Allumer le feu royal"
+        },
+        "effetsPositifs": ["Opinion vassal direct ou courtisan ou invité CIBLE-S"],
+        "effetsNegatifs": []
+    },
+    "dec-p-1": {
+        "lib": "Adopter la culture locale",
+        "categorieDecision": "Character - Minor decisions",
+        "positionVue": {
+            "categories": ["Décisions"],
+            "idListe": "dec",
+            "precedent": "Étudier l'art de l'intrigue"
+        },
+        "effetsPositifs": [],
+        "effetsNegatifs": ["Prestige"]
+    },
+    "dec-p-tr-cop-5": {
+        "lib": "Faites-vous plaisir en buvant",
+        "categorieDecision": "Character - Minor decisions - traits - coping",
+        "positionVue": {
+            "categories": ["Décisions"],
+            "idListe": "dec",
+            "precedent": "Adopter la culture locale"
+        },
+        "effetsPositifs": ["Diminuer stress"],
+        "effetsNegatifs": ["Prestige"]
+    },
+    "dec-d-min-18": {
+        "lib": "Amnistier les faux convertis",
+        "categorieDecision": "Character - Minor decisions",
+        "positionVue": {
+            "categories": ["Décisions"],
+            "idListe": "dec",
+            "precedent": "Faites-vous plaisir en buvant"
+        },
+        "effetsPositifs": [],
+        "effetsNegatifs": ["Piété"]
+    },
+    "dec-p-6": {
+        "lib": "Méditer dans l'isolement",
+        "categorieDecision": "Character - Minor decisions",
+        "positionVue": {
+            "categories": ["Décisions"],
+            "idListe": "dec",
+            "precedent": "Amnistier les faux convertis"
+        },
+        "effetsPositifs": ["Diminuer stress", "Erudition"],
+        "effetsNegatifs": ["Diplomatie", "Martialité", "Intendance", "Intrigue"]
+    },
+    "dec-d-min-seign-0": {
+        "lib": "Demander audience au ...",
+        "categorieDecision": "Character - Minor decisions - seigneur",
+        "positionVue": {
+            "categories": ["Décisions"],
+            "idListe": "dec",
+            "precedent": "Méditer dans l'isolement"
+        },
+        "effetsPositifs": [],
+        "effetsNegatifs": []
+    },
+    "dec-p-tr-cop-14": {
+        "lib": "Aller dans un lupanar",
+        "categorieDecision": "Character - Minor decisions - traits - coping",
+        "positionVue": {
+            "categories": ["Décisions"],
+            "idListe": "dec",
+            "precedent": "Demander audience au ..."
+        },
+        "effetsPositifs": ["Diminuer stress"],
+        "effetsNegatifs": []
+    },
+    "dec-p-tr-cop-3": {
+        "lib": "Faire la charité",
+        "categorieDecision": "Character - Minor decisions - traits - coping",
+        "positionVue": {
+            "categories": ["Décisions"],
+            "idListe": "dec",
+            "precedent": "Aller dans un lupanar"
+        },
+        "effetsPositifs": ["Diminuer stress"],
+        "effetsNegatifs": ["Or"]
+    },
+    "dec-p-7": {
+        "lib": "Tenter de se suicider",
+        "categorieDecision": "Character - Minor decisions",
+        "positionVue": {
+            "categories": ["Décisions"],
+            "idListe": "dec",
+            "precedent": "Faire la charité"
+        },
+        "effetsPositifs": [],
+        "effetsNegatifs": ["Piété"]
+    },
+    "dec-p-foi-6": {
+        "lib": "Faire voeu de pauvreté",
+        "categorieDecision": "Character - Minor decisions - foi",
+        "positionVue": {
+            "categories": ["Décisions"],
+            "idListe": "dec",
+            "precedent": "Tenter de se suicider"
+        },
+        "effetsPositifs": ["Piété"],
+        "effetsNegatifs": ["Or"]
+    },
+    "dec-p-tr-cop-2": {
+        "lib": "Consommer des gâteaux au haschisch",
+        "categorieDecision": "Character - Minor decisions - traits - coping",
+        "positionVue": {
+            "categories": ["Décisions"],
+            "idListe": "dec",
+            "precedent": "Faire voeu de pauvreté"
+        },
+        "effetsPositifs": ["Diminuer stress"],
+        "effetsNegatifs": ["Intendance", "Erudition"]
+    },
+    "dec-p-tr-cop-9": {
+        "lib": "Eviter la nourriture",
+        "categorieDecision": "Character - Minor decisions - traits - coping",
+        "positionVue": {
+            "categories": ["Décisions"],
+            "idListe": "dec",
+            "precedent": "Consommer des gâteaux au haschisch"
+        },
+        "effetsPositifs": ["Diminuer stress"],
+        "effetsNegatifs": ["Prouesse", "Santé"]
+    },
+    "dec-p-tr-cop-12": {
+        "lib": "Évacuer le stress",
+        "categorieDecision": "Character - Minor decisions - traits - coping",
+        "positionVue": {
+            "categories": ["Décisions"],
+            "idListe": "dec",
+            "precedent": "Eviter la nourriture"
+        },
+        "effetsPositifs": ["Diminuer stress"],
+        "effetsNegatifs": ["Opinion"]
+    },
+    "dec-p-tr-cop-8": {
+        "lib": "S'isoler",
+        "categorieDecision": "Character - Minor decisions - traits - coping",
+        "positionVue": {
+            "categories": ["Décisions"],
+            "idListe": "dec",
+            "precedent": "Évacuer le stress"
+        },
+        "effetsPositifs": ["Diminuer stress"],
+        "effetsNegatifs": ["Prestige"]
+    },
+    "dec-p-tr-cop-11": {
+        "lib": "Visiter le marché",
+        "categorieDecision": "Character - Minor decisions - traits - coping",
+        "positionVue": {
+            "categories": ["Décisions"],
+            "idListe": "dec",
+            "precedent": "S'isoler"
+        },
+        "effetsPositifs": ["Diminuer stress"],
+        "effetsNegatifs": ["Or"]
+    },
+    "dec-p-tr-cop-10": {
+        "lib": "Se confier",
+        "categorieDecision": "Character - Minor decisions - traits - coping",
+        "positionVue": {
+            "categories": ["Décisions"],
+            "idListe": "dec",
+            "precedent": "Visiter le marché"
+        },
+        "effetsPositifs": ["Diminuer stress"],
+        "effetsNegatifs": ["Opinion"]
+    },
+    "dec-p-3": {
+        "lib": "Caresser ...",
+        "categorieDecision": "Character - Minor decisions",
+        "positionVue": {
+            "categories": ["Décisions"],
+            "idListe": "dec",
+            "precedent": "Se confier"
+        },
+        "effetsPositifs": ["Diminuer stress"],
+        "effetsNegatifs": []
+    },
+    "dec-p-tr-cop-4": {
+        "lib": "S'adonner à la flagellation",
+        "categorieDecision": "Character - Minor decisions - traits - coping",
+        "positionVue": {
+            "categories": ["Décisions"],
+            "idListe": "dec",
+            "precedent": "Caresser ..."
+        },
+        "effetsPositifs": ["Diminuer stress"],
+        "effetsNegatifs": ["Martialité", "Intrigue", "Prouesse", "Santé", "Redoutabilité"]
+    },
+    "dec-b": {
+        "lib": "Avouer",
+        "categorieDecision": "Character",
+        "positionVue": {
+            "categories": ["Décisions"],
+            "idListe": "dec",
+            "precedent": "S'adonner à la flagellation"
+        },
+        "effetsPositifs": ["Diminuer stress"],
+        "effetsNegatifs": ["Opinion"]
+    },
+    "dec-p-8": {
+        "lib": "Manger votre fromage",
+        "categorieDecision": "Character - Minor decisions",
+        "positionVue": {
+            "categories": ["Décisions"],
+            "idListe": "dec",
+            "precedent": "Avouer"
+        },
+        "effetsPositifs": ["Diminuer stress"],
+        "effetsNegatifs": ["Artefact"]
+    }
+}

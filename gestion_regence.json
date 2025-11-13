@@ -83,8 +83,8 @@
             },
             "prison": {
                 "decisions": [
-                    "Promouvoir l'autorité SI -S conseiller",
-                    "Remplir les coffres"
+                    "Promouvoir l'autorité SI PRISONNIER-S conseiller",
+                    "Gonfler les rangs"
                 ],
                 "arret": true
             },

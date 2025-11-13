@@ -1,0 +1,90 @@
+{
+    "dec-g": {
+        "lib": "Assister à la confirmation des gouvernorats",
+        "categorieDecision": "inconnue",
+        "positionVue": {
+            "categories": ["Décisions administratives"],
+            "idListe": "decAdm",
+            "precedent": null
+        },
+        "effetsPositifs": ["Renommee", "Prestige", "Influence"],
+        "effetsNegatifs": ["Prestige"]
+    },
+    "dec-p-adm-build-4": {
+        "lib": "Commander une icône",
+        "categorieDecision": "Character - Administrative decisions - Estate building decisions",
+        "positionVue": {
+            "categories": ["Décisions administratives"],
+            "idListe": "decAdm",
+            "precedent": "Assister à la confirmation des gouvernorats"
+        },
+        "effetsPositifs": ["Artefact"],
+        "effetsNegatifs": ["Or"]
+    },
+    "dec-p-adm-5": {
+        "lib": "Embrasser l'hérésie",
+        "categorieDecision": "Character - Administrative decisions",
+        "positionVue": {
+            "categories": ["Décisions administratives"],
+            "idListe": "decAdm",
+            "precedent": "Commander une icône"
+        },
+        "effetsPositifs": ["Hameçon", "Influence"],
+        "effetsNegatifs": []
+    },
+    "dec-p-adm-7": {
+        "lib": "Établir la production de soie",
+        "categorieDecision": "Character - Administrative decisions",
+        "positionVue": {
+            "categories": ["Décisions administratives"],
+            "idListe": "decAdm",
+            "precedent": "Embrasser l'hérésie"
+        },
+        "effetsPositifs": ["Construire", "Influence"],
+        "effetsNegatifs": ["Or"]
+    },
+    "dec-p-adm-2": {
+        "lib": "Obtenir des soutiens pour la faction",
+        "categorieDecision": "Character - Administrative decisions",
+        "positionVue": {
+            "categories": ["Décisions administratives"],
+            "idListe": "decAdm",
+            "precedent": "Établir la production de soie"
+        },
+        "effetsPositifs": ["Créer une faction"],
+        "effetsNegatifs": ["Influence"]
+    },
+    "dec-h": {
+        "lib": "Se retirer du poste de gouverneur",
+        "categorieDecision": "inconnue",
+        "positionVue": {
+            "categories": ["Décisions administratives"],
+            "idListe": "decAdm",
+            "precedent": "Obtenir des soutiens pour la faction"
+        },
+        "effetsPositifs": [],
+        "effetsNegatifs": ["Influence"]
+    },
+    "dec-i": {
+        "lib": "Se retirer de la direction de la Maison ...",
+        "categorieDecision": "inconnue",
+        "positionVue": {
+            "categories": ["Décisions administratives"],
+            "idListe": "decAdm",
+            "precedent": "Se retirer du poste de gouverneur"
+        },
+        "effetsPositifs": [],
+        "effetsNegatifs": ["Influence"]
+    },
+    "dec-p-adm-1": {
+        "lib": "Changer l'aspiration impériale",
+        "categorieDecision": "Character - Administrative decisions",
+        "positionVue": {
+            "categories": ["Décisions administratives"],
+            "idListe": "decAdm",
+            "precedent": "Se retirer de la direction de la Maison ..."
+        },
+        "effetsPositifs": ["Diminuer stress"],
+        "effetsNegatifs": ["Influence"]
+    }
+}

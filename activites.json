@@ -1005,5 +1005,125 @@
             },
             "conseiller": { "arret": false }
         }
+    },
+    "inspec": {
+        "positionVue": {
+            "categories": ["Activités", "Inspection"],
+            "idElement": "inspec"
+        },
+        "optionsCommentaires": ["Détermination de superviseur //+Or",
+            "Intention de l'étude //+Développement"],
+        "siRien": ["Détermination de superviseur"],
+        "defaut": ["Intention de l'étude"],
+        "selonEtats": {
+            "revenu": {
+                "decisions": ["Détermination de superviseur"],
+                "arret": true
+            },
+            "rancon": {
+                "decisions": ["Détermination de superviseur"],
+                "arret": true
+            },
+            "guerre": {
+                "decisions": ["Intention de l'étude"],
+                "arret": true
+            },
+            "controle": { "arret": false            },
+            "assassinat": { "arret": false            },
+            "succession": { "arret": false            },
+            "dirigeantAInfluencer": { "arret": false            },
+            "religieuxAInfluencer": { "arret": false            },
+            "aInfluencer": { "arret": false            },
+            "hamecon": { "arret": false            },
+            "recruterChevalier": { "arret": false            },
+            "chevalierPartisan": { 
+                "decisions": [],
+                "arret": true
+            },
+            "demande": { "decisions": [],
+                "arret": true
+            },
+            "demande2": { "decisions": [],
+                "arret": true
+            },
+            "proclame": { "arret": false },
+            "declarationGuerre": {
+                "decisions": ["Intention de l'étude"],
+                "arret": true
+            },
+            "stress": { "arret": false            },
+            "prestige": { "arret": false            },
+            "enfant": { "arret": false            },
+            "influence": { "arret": false            },
+            "piete": { "arret": false            },
+            "agent": { 
+                "decisions": ["Détermination de superviseur"],
+                "arret": true
+            },
+            "denoncer": { "arret": false            },
+            "conseiller": { "arret": false            },
+            "factionPop": { "arret": false            },
+            "vassalAInfluencer": { "arret": false            },
+            "vassal": { "arret": false            },
+            "domaine": { "arret": false            },
+            "cultInnov": { "arret": false            },
+            "prison": { 
+                "decisions": ["Intention de l'étude"],
+                "arret": true
+            }    
+        }
+    },
+    "inspecFinance": {
+        "positionVue": {
+            "categories": ["Activités", "Inspection"],
+            "idElement": "inspecFinance"
+        },
+        "optionsCommentaires": ["Financements importants +Or -Or",
+            "Financements adéquats +Or -Or",
+            "Pas de financements +Or"],
+        "siRien": ["Pas de financements"],
+        "defaut": ["Pas de financements"],
+        "selonEtats": {
+            "revenu": {
+                "decisions": ["Pas de financements"],
+                "arret": true
+            },
+            "rancon": {
+                "decisions": ["Pas de financements"],
+                "arret": true
+            },
+            "guerre": { "arret": false            },
+            "controle": { "arret": false           },
+            "assassinat": { "arret": false           },
+            "succession": { "arret": false           },
+            "dirigeantAInfluencer": { "arret": false           },
+            "religieuxAInfluencer": { "arret": false           },
+            "aInfluencer": { "arret": false           },
+            "hamecon": { "arret": false           },
+            "recruterChevalier": { "arret": false           },
+            "chevalierPartisan": { "decisions": [], "arret": true           },
+            "demande": { "decisions": [], "arret": true           },
+            "demande2": { "decisions": [], "arret": true           },
+            "proclame": { "arret": false },
+            "declarationGuerre": {"arret": false             },
+            "stress": { "arret": false           },
+            "prestige": { "arret": false           },
+            "enfant": { "arret": false           },
+            "influence": { "arret": false           },
+            "piete": { "arret": false           },
+            "agent": {
+                "decisions": ["Pas de financements"],
+                "arret": true
+            },
+            "denoncer": { "arret": false           },
+            "conseiller": { "arret": false           },
+            "factionPop": { "arret": false           },
+            "vassalAInfluencer": { "arret": false           },
+            "vassal": { "arret": false           },
+            "domaine": { "arret": false           },
+            "cultInnov": { "arret": false           },
+            "prison": { "arret": false           },
+            "survie": { "arret": false           }
+        }
     }
 }
