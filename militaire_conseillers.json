@@ -337,7 +337,8 @@
             "categories": ["Conseillers"],
             "idElement": "conseilMarechalResult"
         },
-        "siRien": "Augmenter le contrôle comtal",
+        "siRien": ["Augmenter le contrôle comtal", "Augmenter le contrôle comtal SI Augmentation de l'opinion du baron",
+            "ne rien changer"],
         "defaut": ["Augmenter le contrôle comtal SI Augmentation de l'opinion du baron",
             "ne rien changer"],
         "selonEtats": {
@@ -512,7 +513,7 @@
             "categories": ["Conseillers"],
             "idElement": "intendantResult"
         },
-        "siRien": "Convaincre le territoire de jure",
+        "siRien": ["Convaincre le territoire de jure", "Augmenter le développement comtal"],
         "defaut": ["Convaincre le territoire de jure", "Augmenter le développement comtal"],
         "selonEtats": {
             "controle": {

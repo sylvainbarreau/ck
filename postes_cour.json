@@ -226,7 +226,11 @@
         "// aucune +or"
         ],
         "siRien": "Améliorer les artefacts",
-        "defaut": "Exposer les objets illustres",
+        "defaut": ["Exposer les objets illustres",
+            "Améliorer les artefacts",
+            "Rechercher des artefacts rares",
+            "aucune fonction"
+        ],
         "selonEtats": {
             "revenu": {
                 "decisions": ["aucune fonction"],
@@ -788,15 +792,26 @@
             "categories": ["Postes de la cour"],
             "idElement": "posteChasse"
         },
-        "siRien": "Organiser une chasse",
-        "defaut": "Organiser une chasse",
+        "optionsCommentaires": ["Traquer une bête ordinaire//0 -or",
+        "Traquer une bête dangereuse//1 -or",
+        "Traquer une bête légendaire//2 -or",
+        "// aucune +or,prestige"],
+        "siRien": ["aucune fonction"],
+        "defaut": ["Traquer une bête légendaire",
+            "Traquer une bête dangereuse",
+            "Traquer une bête ordinaire"],
         "selonEtats": {
             "revenu": { "decisions": ["aucune fonction"], "arret": true },
             "rancon": { "decisions": ["aucune fonction"], "arret": true },
             "chevalierPartisan": { "decisions": [], "arret": true },
             "demande": { "decisions": [], "arret": true },
             "demande2": { "decisions": [], "arret": true },
-            "survie":{ "arret": false }
+            "survie":{ "arret": false },
+            "prestige": { 
+                "decisions": ["aucune fonction"],
+                "arret": true
+            },
+            "influence": { "arret": false }
         }
     },
 
