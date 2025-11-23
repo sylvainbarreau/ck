@@ -168,7 +168,7 @@
             "Garde doublée",
             "Retrait de la vie publique"
         ],
-        "optionsCommentaires": ["Primes pour les dénonciations//0 -or,prestige",
+        "optionsCommentaires": ["Primes pour les dénonciations//0 -Or,prestige",
         "Arrestations arbitraires//1 -opinion courtisan,invité",
         "Sentinelles renforcées//2 -opinion courtisan,invité,vassal",
         "Garde doublée//3 +survie -opinion courtisan,invité,vassal",
@@ -350,7 +350,7 @@
             "idElement": "hostileResult"
         },
     "optionsCommentaires": ["Voler le troupeau// +troupeau",
-      "Ponctionner le Trésor// +or"],
+      "Ponctionner le Trésor// +Or"],
     "siRien": null,
     "defaut": ["Saisie du pays", "Revendiquer le trône", "Déposer le régent", "Voler un artefact", "Voler le troupeau", "aucun"],
     "selonEtats": {

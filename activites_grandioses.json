@@ -713,7 +713,7 @@
         "Offrir un soutien,1 +opinion COURONNE,relation particulière COURONNE,alliance COURONNE",
         "Plaider la cause du domaine,// +développement,contrôle,opinion populaire",
         "Prétendre à des droits,// +hameçon seigneur lige,contrat vassalique moi",
-        "Profiter des avantages,//2 +or,prestige,revendication",
+        "Profiter des avantages,//2 +Or,prestige,revendication",
         "Perturber les loyalistes //+faction de moi,problème"],
         "positionVue": {
             "categories": ["Activités", "Activités grandioses", "Couronnement"],
