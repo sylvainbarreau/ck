@@ -88,6 +88,7 @@
                     "Influencer ADOPTE POTENTIEL SI Aventurier",
                     "Séduire ADOPTE POTENTIEL SI Aventurier",
                     "Apprendre la langue ADOPTE POTENTIEL SI Aventurier",
+                    "\n",
                     "Séduire",
                     "Faire la cour",
                     "Marier clandestinement"
@@ -348,14 +349,17 @@
             "categories": ["Complots"],
             "idElement": "hostileResult"
         },
+    "optionsCommentaires": ["Voler le troupeau// +troupeau",
+      "Ponctionner le Trésor// +or"],
     "siRien": null,
-    "defaut": ["Saisie du pays", "Revendiquer le trône", "Déposer le régent", "Voler un artefact", "Aucune"],
+    "defaut": ["Saisie du pays", "Revendiquer le trône", "Déposer le régent", "Voler un artefact", "Voler le troupeau", "aucun"],
     "selonEtats": {
         "siRien": {
                 "decisions": [
                     "Revendiquer le trône",
                     "Déposer le régent",
                     "Saisie du pays",
+                    "Ponctionner le Trésor",
                     "Fabrication d'un hameçon POUR Acheter une terre/Acquérir une possession"
                 ],
                 "arret": false
@@ -393,6 +397,7 @@
             },
             "rancon": {
                 "decisions": [
+                    "Ponctionner le Trésor",
                     "Voler un artefact",
                     "Fabrication d'un hameçon GEOLIER"
                 ],
@@ -438,6 +443,13 @@
                 ],
                 "arret": false
             },
+            "revenu": {
+                "decisions": [
+                    "Ponctionner le Trésor",
+                    "Voler un artefact"
+                ],
+                "arret": false
+            },
             "agent": { "arret": false },
             "denoncer": { "arret": false },
             "chevalierPartisan": { "arret": false },
@@ -453,20 +465,24 @@
             "categories": ["Complots"],
             "idElement": "politiqueResult"
         },
-        "optionsCommentaires": ["Contester le statut//0 (agents) +Influence Statut du défi",
-        "Destitution//1 (agents) Déposer",
-        "Consolider la base du pouvoir//2 (agents) +Influence,opinion Mentor en gouvernance",
-        "Intégrer le gouvernorat//3 (agents) Subsumer la gouvernance",
-        "Promouvoir//4 (agents) +succession Promouvoir",
-        "Diffamation//5 (agents) -succession Calomnier",
-        "Légitimité des dommages//6 -légitimité",
-        "Favoriser la légitimité//7 +légitimité,hameçon",
-        "Pillage de la possession//8 (agents) +Or",
-        "Famille ingrate//9 +Influence,opinion,amitié",
-        "Dispute frontalière//10 (agents) Conflit frontalier"
+        "optionsCommentaires": ["Contester le statut//0 (agents) +Influence Etat du défi",
+        "Promouvoir// (agents) +succession,opinion maison Promouvoir",
+        "Diffamation// (agents) -succession Calomnier",
+        "Pillage de la possession// (agents) +Or Domaine de raid",
+        "Dispute frontalière// (agents) Conflit frontalier",
+        "Intégrer le gouvernorat// (agents) Subsumer la gouvernance",
+        "Famille ingrate// +Influence,opinion,amitié Insulter la famille",
+        "Consolider la base du pouvoir// (agents) +Influence,opinion Mentor en gouvernance",
+        "Promouvoir le pouvoir du mouvement (agents)",
+        "Pouvoir du mouvement de calomnie (agents)",
+        "mentorat",
+        "Légitimité des dommages// -légitimité cible Dommage à la légitimité",
+        "Favoriser la légitimité// +hameçon",
+        "Destitution// (agents) Déposer"
         ],
         "siRien": null,
-        "defaut": "Consolider la base du pouvoir, Intégrer le gouvernorat, Dispute frontalière, Pillage de la possession",
+        "defaut": ["Consolider la base du pouvoir",
+         "Intégrer le gouvernorat", "Dispute frontalière", "Pillage de la possession"],
         "selonEtats": {
             "siRien": {
                 "decisions": [
@@ -557,13 +573,10 @@
                 "decisions": [],
                 "arret": true
             },
-            "agent": {
+            "agent": { 
                 "decisions": [
                     "Famille ingrate AGENT-S",
-                    "Consolider la base du pouvoir AGENT-S",
-                    "Pillage de la possession",
-                    "Favoriser la légitimité AGENT-S"
-                ],
+                    "Favoriser la légitimité AGENT-S"                ],
                 "arret": false
             },
             "aInfluencer": {

@@ -239,7 +239,7 @@
             "precedent": "Demander audience au ..."
         },
         "effetsPositifs": ["Diminuer stress"],
-        "effetsNegatifs": []
+        "effetsNegatifs": ["Or"]
     },
     "dec-p-tr-cop-3": {
         "lib": "Faire la charité",

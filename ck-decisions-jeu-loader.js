@@ -146,6 +146,9 @@ function afficherDecisionsDansListe(idListe, decisions, decisionsResult) {
         return;
     }
 
+    // Vider la liste avant d'afficher les nouvelles décisions
+    liste.innerHTML = '';
+
     decisions.forEach(decision => {
         // Créer les Sets pour decisionOuNon
         const setOui = decision.effetsPositifs ? new Set(decision.effetsPositifs) : null;
