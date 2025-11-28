@@ -85,13 +85,16 @@
             },
             "enfant": {
                 "decisions": [
-                    "Influencer ADOPTE POTENTIEL SI Aventurier",
-                    "Séduire ADOPTE POTENTIEL SI Aventurier",
-                    "Apprendre la langue ADOPTE POTENTIEL SI Aventurier",
+                    "Influencer ADOPTE POTENTIEL-S",
+                    "Séduire ADOPTE POTENTIEL-S",
+                    "Apprendre la langue ADOPTE POTENTIEL-S",
                     "\n",
                     "Séduire",
                     "Faire la cour",
-                    "Marier clandestinement"
+                    "Marier clandestinement",
+                    "Influencer CHEF DE FOI SI divorce",
+                    "Séduire CHEF DE FOI SI divorce",
+                    "Apprendre la langue CHEF DE FOI SI divorce"
                 ],
                 "arret": false
             },
@@ -260,15 +263,16 @@
                 "arret": false
             },
             "enfant": {
-                "decisions": ["Garde doublée"],
-                "arret": false,
+                "decisions": ["aucune SI aventurier adopter", "Garde doublée"],
                 "modifications": {
-                    "Primes pour les dénonciations": "Primes pour les dénonciations SI NON adoption/aventurier",
-                    "Arrestations arbitraires": "Arrestations arbitraires SI NON adoption/aventurier",
-                    "Sentinelles renforcées": "Sentinelles renforcées SI NON adoption/aventurier",
-                    "Garde doublée": "Garde doublée SI NON adoption/aventurier",
-                    "Retrait de la vie publique": "Retrait de la vie publique SI NON adoption/aventurier"
-                }
+                    "Primes pour les dénonciations": "Primes pour les dénonciations SI NON aventurier adopter",
+                    "Arrestations arbitraires": "Arrestations arbitraires SI NON aventurier adopter",
+                    "Sentinelles renforcées": "Sentinelles renforcées SI NON aventurier adopter",
+                    "Garde doublée": "Garde doublée SI NON aventurier adopter",
+                    "Retrait de la vie publique": "Retrait de la vie publique SI NON aventurier adopter ET NON divorce"
+                },
+                "arret": false
+                
             },
             "revenu": {
                 "decisions": [],
@@ -391,7 +395,7 @@
             },
             "enfant": {
                 "decisions": [
-                    "Voler un artefact SI adoption/aventurier"
+                    "Voler un artefact"
                 ],
                 "arret": false
             },
@@ -603,7 +607,12 @@
                 "arret": false
             },
             "denoncer": { "arret": false },
-            "enfant": { "arret": false },
+            "enfant": { 
+                "decisions": [
+                    "Famille ingrate CHEF DE FOI SI divorce",
+                    "Consolider la base du pouvoir CHEF DE FOI SI divorce"
+                ],
+                "arret": false },
             "piete": { "arret": false },
             "conseiller": { "arret": false },
             "factionPop": { "arret": false },

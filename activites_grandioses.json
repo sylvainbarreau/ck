@@ -231,7 +231,7 @@
                 "arret": true
             },
             "enfant": {
-                "decisions": ["Participe SI adoption/aventurier", "Ne participe pas"],
+                "decisions": ["Participe SI aventurier adopter", "Ne participe pas"],
                 "arret": true
             },
             "vassalAInfluencer": {
@@ -438,7 +438,7 @@
                 "arret": true
             },
             "enfant": {
-                "decisions": ["Tentes délabrées SI adoption/aventurier", "Campements luxueux", "Pavillons simples", "Tentes délabrées"],
+                "decisions": ["A DEFINIR"],
                 "arret": true
             },
             "chevalierPartisan": {
@@ -468,11 +468,7 @@
         "selonEtats": {
             "enfant": {
                 "decisions": [
-                    "Prix magnifiques SI adoption/aventurier ET Triompher",
-                    "Bons prix SI adoption/aventurier ET Triompher",
-                    "Prix corrects SI adoption/aventurier ET Triompher",
-                    "Prix décents SI adoption/aventurier ET Triompher",
-                    "Prix quelconques SI adoption/aventurier"
+                    "A DEFINIR"
                 ],
                 "arret": false
             },
@@ -767,7 +763,9 @@
                 "arret": true
             },
             "enfant": {
-                "decisions": ["Profiter des avantages SI adoption/aventurier"],
+                "decisions": ["Profiter des avantages SI aventurier adopter",
+                    "Offrir un soutien SI futur enfant légitime",
+                    "Être témoin SI divorce"],
                 "arret": false
             },
             "piete":{

@@ -74,7 +74,6 @@
                 "arret": true
             },
             "enfant": {
-                "decisions": ["Remplir les coffres SI adoption/aventurier"],
                 "arret": false
             },
             "perteTerresRevoquer": {

@@ -129,7 +129,7 @@
         "defaut": "ne rien changer",
         "selonEtats": {
             "enfant": {
-                "decisions": ["S'occuper de politique"],
+                "decisions": ["Patronner"],
                 "arret": true
             },
             "guerre": {
@@ -327,7 +327,9 @@
             "conseiller": { "arret": false },
             "factionPop": { "arret": false },
             "domaine": { "arret": false },
-            "enfant": { "arret": false },
+            "enfant": { 
+                "decisions": ["Gérer les affaires étrangères SI divorce ET CHEF DE FOI dirigeant"],
+                "arret": false },
             "survie": { "arret": false }
         }
     },
@@ -503,7 +505,9 @@
             "conseiller": { "arret": false },
             "domaine": { "arret": false },
             "cultInnov": { "arret": false },
-            "enfant": { "arret": false },
+            "enfant": { 
+                "decisions":["Améliorer les relations religieuses SI divorce"],
+                "arret": false },
             "survie": { "arret": false }
         }
     },

@@ -56,7 +56,13 @@ class DataDrivenEngine {
     process(p, t = [], o = null, optionModifications = new Map(), isInitialCall = true) {
         // Initialiser la stack si nécessaire (pour decisions qui commence toujours avec "stress éviter niveau+")
         if (this.initialStack && t.length === 0 && isInitialCall) {
-            t.push(this.initialStack);
+            // Si initialStack est un tableau, ajouter chaque élément
+            if (Array.isArray(this.initialStack)) {
+                this.initialStack.forEach(item => t.push(item));
+            } else {
+                // Sinon, ajouter l'élément unique
+                t.push(this.initialStack);
+            }
         }
 
         // Cas 1: siRien - aucun problème dès le départ (appel initial sans problèmes)

@@ -62,7 +62,7 @@
                 "arret": false
             },
             "enfant": {
-                "decisions": ["Faire de la recherche avancée SI adoption/aventurier", "Atténuer les épidémies", "Améliorer les aptitudes"],
+                "decisions": ["Faire de la recherche avancée", "Atténuer les épidémies", "Améliorer les aptitudes", "aucune fonction"],
                 "arret": false
             },
             "guerre": {
@@ -178,8 +178,11 @@
             "demande2": { "arret": false },
             "prestige": { "arret": false },
             "enfant": {
-                "decisions": ["aucune fonction SI adoption/aventurier", "Faire des réserves pour les voyages"],
-                "arret": true
+                "decisions": ["Faire des réserves pour les voyages"],
+                "modifications": {
+                    "Améliorer les aptitudes": "Améliorer les aptitudes SI NON aventurier adopter"
+                },
+                "arret": false
             },
             "guerre": {
                 "decisions": ["Préparer les armées", "Améliorer les aptitudes", "aucune fonction SI gouvernement administratif"],
@@ -220,6 +223,7 @@
             "categories": ["Postes de la cour"],
             "idElement": "posteAntiqResult"
         },
+        "options": ["Améliorer les artefacts", "Exposer les objets illustres", "Rechercher des artefacts rares"],
         "optionsCommentaires": ["Améliorer les artefacts,//0 +artefact -or",
         "Exposer les objets illustres//1 +intendance,légende -prestige",
         "Rechercher des artefacts rares//2 +artefact -prestige",
@@ -301,7 +305,10 @@
                 "arret": false
             },
             "enfant": {
-                "decisions": ["Améliorer les artefacts", "Rechercher des artefacts rares"],
+                "decisions": ["Améliorer les artefacts SI aventurier adopter", "Rechercher des artefacts rares"],
+                "modifications": {
+                    "Exposer les objets illustres": "Exposer les objets illustres SI NON aventurier adopter"
+                },
                 "arret": false
             },
             "piete": {
@@ -416,7 +423,7 @@
             "declarationGuerre": { "arret": false },
             "survie": { "arret": false },
             "stress": { "arret": false },
-            "enfant": { "arret": false },
+            "enfant": { "decisions": ["aucune fonction"], "arret": true },
             "piete": { "arret": false },
             "conseiller": { "arret": false },
             "factionPop": { "arret": false },
@@ -480,7 +487,7 @@
                 "decisions": ["Toilettage des chevaux de guerre", "Supervise la reproduction", "aucune fonction SI gouvernement administratif"],
                 "arret": false
             },
-            "enfant": { "arret": false },
+            "enfant": { "decisions": ["aucune fonction SI aventurier adopter"], "arret": false },
             "survie": { "arret": false },
             "cultInnov": {
                 "decisions": ["aucune fonction SI NON Chef culturel"],
@@ -506,6 +513,7 @@
             "categories": ["Postes de la cour"],
             "idElement": "posteChampResult"
         },
+        "options": ["Concourir en son nom", "Entraîner le dirigeant", "Améliorer les aptitudes"],
         "siRien": "Concourir en son nom",
         "defaut": "Concourir en son nom",
         "selonEtats": {
@@ -558,7 +566,12 @@
             },
             "survie": { "arret": false },
             "stress": { "arret": false },
-            "enfant": { "arret": false },
+            "enfant": { "decisions":["Concourir en son nom SI aventurier adopter"],
+                "modifications": {
+                    "Entraîner le dirigeant": "undefined",
+                    "Améliorer les aptitudes": "Améliorer les aptitudes SI NON aventurier adopter"
+                },
+                "arret": false },
             "cultInnov": {
                 "decisions": ["Concourir en son nom SI NON Chef culturel", "aucune fonction SI NON Chef culturel"],
                 "arret": false
@@ -581,6 +594,7 @@
             "idElement": "posteSenech",
             "motLiaison": "SINON"
         },
+        "options": ["Organiser la Cour", "Gérer le domaine", "Gérer la possession"],
         "optionsCommentaires": ["Organiser la Cour,//0 -prestige",
         "Gérer le domaine,//1 +controle -or",
         "Gérer la possession,//2 +Influence,construction -or, prestige",
@@ -618,7 +632,12 @@
                 "decisions": ["aucune fonction"],
                 "arret": true
             },
-            "enfant": { "arret": false },
+            "enfant": { "decisions": ["aucune fonction SI aventurier adopter"],
+             "modifications": {
+                "Organiser la Cour": "Organiser la Cour SI NON aventurier adopter",
+                "Gérer la possession": "Gérer la possession SI NON aventurier adopter"
+             },
+            "arret": false },
             "piete": { "arret": false },
             "denoncer": {
                 "decisions": ["aucune fonction"],
@@ -653,6 +672,7 @@
             "categories": ["Postes de la cour"],
             "idElement": "posteProf"
         },
+        "options": ["Faire de la recherche avancée", "Enseigner à la Cour", "Eduquer les enfants"],
         "optionsCommentaires": ["Faire de la recherche avancée//0 +exp -or",
         "Enseigner à la Cour//1 +diplo,intendance,eru,martialite -prestige",
         "Eduquer les enfants//2 -prestige",
@@ -762,7 +782,13 @@
                         "arret": false
                     },
                     "enfant": {
-                        "decisions": ["Faire de la recherche avancée"],
+                        "decisions": ["aucune fonction SI aventurier adopter",
+                            "Faire de la recherche avancée",
+                            "Enseigner à la Cour SI divorce"],
+                        "modifications": {
+                            "Enseigner à la Cour": "Enseigner à la Cour SI NON aventurier adopter",
+                            "Eduquer les enfants": "Eduquer les enfants SI NON aventurier adopter"
+                        },
                         "arret": false
                     },
                     "survie": {
@@ -811,7 +837,12 @@
                 "decisions": ["aucune fonction"],
                 "arret": true
             },
-            "influence": { "arret": false }
+            "influence": { "arret": false },
+            "enfant": 
+            {
+                "decisions": ["aucune fonction SI aventurier adopter"],
+                "arret": false
+            }
         }
     },
 
@@ -848,7 +879,8 @@
             "declarationGuerre": { "arret": false },
             "survie": { "arret": false },
             "stress": { "arret": false },
-            "enfant": { "arret": false },
+            "enfant": { "decisions": ["aucune fonction SI aventurier adopter"],
+                "arret": false },
             "piete": { "arret": false },
             "conseiller": { "arret": false },
             "factionPop": { "arret": false },
@@ -869,7 +901,10 @@
             "survie": { "decisions": ["Divertir les courtisans"], "arret": false },
             "chevalierPartisan": { "decisions": [], "arret": true },
             "demande": { "decisions": [], "arret": true },
-            "demande2": { "decisions": [], "arret": true }
+            "demande2": { "decisions": [], "arret": true },
+            "enfant": { "decisions": ["aucune fonction SI aventurier adopter",
+                "Divertir les courtisans"],
+                "arret": false  }
         }
     },
 
@@ -881,7 +916,9 @@
         "siRien": "aucune fonction",
         "defaut": "aucune fonction",
         "selonEtats": {
-            "enfant": { "decisions": ["Organiser une éducation SI NON adoption/aventurier"], "arret": true },
+            "enfant": { "decisions": ["aucune fonction SI aventurier adopter",
+            "Rester à l'écoute du terrain",
+            "aucune fonction"], "arret": true },
             "chevalierPartisan": { "decisions": [], "arret": true },
             "demande": { "decisions": [], "arret": true },
             "demande2": { "decisions": [], "arret": true },
@@ -904,7 +941,8 @@
             "assassinat": { "decisions": ["Protéger le dirigeant"], "arret": true },
             "chevalierPartisan": { "decisions": [], "arret": true },
             "demande": { "decisions": [], "arret": true },
-            "demande2": { "decisions": [], "arret": true }
+            "demande2": { "decisions": [], "arret": true },
+            "enfant": { "decisions": ["aucune fonction SI aventurier adopter"], "arret": false }
         }
     }
 }

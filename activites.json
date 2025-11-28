@@ -128,7 +128,7 @@
                 "arret": true
             },
             "enfant": {
-                "decisions": ["Etudier durement SI adoption/aventurier", "Mener une vie goliardique"],
+                "decisions": ["Etudier durement SI aventurier adopter", "Mener une vie goliardique"],
                 "arret": true
             }
         }
@@ -353,11 +353,11 @@
             },
             "enfant": {
                 "decisions": [
-                    "Groupes de gardes-chasse SI adoption/aventurier ET Prestige < 150",
-                    "Groupes de chasse SI adoption/aventurier ET Prestige < 150",
-                    "Gardes-chasse locaux SI adoption/aventurier"
+                    "Groupes de gardes-chasse",
+                    "Groupes de chasse",
+                    "Gardes-chasse locaux"
                 ],
-                "arret": false
+                "arret": true
             },
             "conseiller": { "arret": false },
             "survie": {
@@ -443,8 +443,8 @@
                 "arret": true
             },
             "enfant": {
-                "decisions": ["Grand groupe SI adoption/aventurier", "Groupe raisonnable SI adoption/aventurier", "Petit groupe"],
-                "arret": true
+                "decisions": ["Grand groupe SI aventurier adopter", "Groupe raisonnable SI aventurier adopter"],
+                "arret": false
             },
             "prestige": {
                 "decisions": ["Grand groupe", "Groupe raisonnable"],
@@ -601,8 +601,8 @@
                 "arret": true
             },
             "enfant": {
-                "decisions": ["Faire de l'exercice SI adoption/aventurier", "Renouer avec la nature"],
-                "arret": true
+                "decisions": ["Amitié SI ADOPTE POTENTIEL-S", "Amitié SI divorce ET CHEF DE FOI"],
+                "arret": false
             },
             "conseiller": { "arret": false }
         }
@@ -614,7 +614,12 @@
         },
         "siRien": "Pèlerinage SI même foi",
         "defaut": "Pèlerinage SI même foi",
-        "selonEtats": {}
+        "selonEtats": {
+            "enfant": {
+                "decisions": ["Pèlerinage pieux SI divorce"],
+                "arret": false      
+            }
+        }
     },
     "pelerinIntent": {
         "positionVue": {
@@ -738,7 +743,7 @@
             },
             "survie": { "arret": false             },
             "enfant": {
-                "decisions": ["Gagner de la piété SI adoption/aventurier", "Trouver la paix intérieure"],
+                "decisions": ["Faire preuve d'altruisme", "Réflexion", "Fanatisme"],
                 "arret": true
             },
             "conseiller": { "arret": false }
@@ -825,8 +830,8 @@
                 "arret": true
             },
             "enfant": {
-                "decisions": ["Zèle absolu", "Dévotion publique", "Apparences pieuses"],
-                "arret": true
+                "decisions": ["Contemplatif SI divorce", "Pèlerin SI divorce"],
+                "arret": false
             },
             "influence": {
                 "decisions": ["Zèle absolu", "Dévotion publique", "Apparences pieuses"],
@@ -954,8 +959,11 @@
                 "arret": true
             },
             "enfant": {
-                "decisions": ["Magnifique", "Grand", "Modeste"],
-                "arret": true
+                "decisions": ["En nombre SI divorce", "Cérémoniel SI divorce", "Approprié"],
+                "modifications": {
+                    "Humble": "undefined"
+                },
+                "arret": false
             },
             "influence": {
                 "decisions": ["Magnifique", "Grand", "Modeste"],
