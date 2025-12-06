@@ -128,7 +128,10 @@
                 "arret": true
             },
             "enfant": {
-                "decisions": ["Etudier durement SI aventurier adopter", "Mener une vie goliardique"],
+                "decisions": ["Etudier durement SI aventurier adopter",
+                "Mener une vie goliardique SI futur enfant légitime",
+                "Etudier durement SI divorce",
+                "Mener une vie goliardique"],
                 "arret": true
             }
         }
@@ -138,6 +141,10 @@
             "categories": ["Activités", "Séjour universitaire"],
             "idElement": "univMat"
         },
+        "optionsCommentaires": ["Bouts de parchemin//0 +or",
+        "Livres et notes//1 +diplo,martial,intendance,intrigue,eru -or",
+        "Bibliothèque//2 +artefact,diplo,martial,intendance,intrigue,eru -or"
+        ],
         "siRien": ["Bibliothèque", "Livres et notes", "Bouts de parchemin"],
         "defaut": ["Bibliothèque", "Livres et notes", "Bouts de parchemin"],
         "selonEtats": {
@@ -268,6 +275,9 @@
             "categories": ["Activités", "Chasse"],
             "idElement": "participChasse"
         },
+        "optionsCommentaires": ["Gardes-chasse locaux//0", 
+        "Groupes de chasse//1 artefact, Prestige",
+        "Groupes de gardes-chasse//2 artefact, Prestige"],
         "siRien": ["Groupes de gardes-chasse", "Groupes de chasse", "Gardes-chasse locaux"],
         "defaut": ["Groupes de gardes-chasse", "Groupes de chasse", "Gardes-chasse locaux"],
         "selonEtats": {
@@ -473,6 +483,10 @@
             "categories": ["Activités", "Randonnée"],
             "idElement": "activRando"
         },
+        "optionsCommentaires": ["Se détendre//0",
+        "Conteur//1 gloire",
+        "Amitié//2 opinion"
+    ],
         "siRien": "Faire de l'exercice",
         "defaut": "Faire de l'exercice",
         "selonEtats": {
@@ -601,7 +615,7 @@
                 "arret": true
             },
             "enfant": {
-                "decisions": ["Amitié SI ADOPTE POTENTIEL-S", "Amitié SI divorce ET CHEF DE FOI"],
+                "decisions": ["Amitié ADOPTE POTENTIEL-S", "Amitié CHEF DE FOI SI divorce"],
                 "arret": false
             },
             "conseiller": { "arret": false }
@@ -612,11 +626,14 @@
             "categories": ["Activités", "Pélerinage"],
             "idElement": "activPelerin"
         },
-        "siRien": "Pèlerinage SI même foi",
-        "defaut": "Pèlerinage SI même foi",
+        "optionsCommentaires": ["Pèlerinage pieux//0 +piété",
+        "Pèlerinage mondain//1 +culture"
+    ],
+        "siRien": "Pèlerinage pieux",
+        "defaut": "Pèlerinage pieux",
         "selonEtats": {
             "enfant": {
-                "decisions": ["Pèlerinage pieux SI divorce"],
+                "decisions": ["A DEFINIR", "Pèlerinage pieux SI divorce"],
                 "arret": false      
             }
         }
@@ -626,6 +643,10 @@
             "categories": ["Activités", "Pélerinage"],
             "idElement": "pelerinIntent"
         },
+        "optionsCommentaires": ["Réflexion//0 +stress",
+        "Faire preuve d'altruisme//1 +opinion populaire,piété,stress",
+        "Fanatisme//2"
+    ],
         "siRien": "Gagner de la piété",
         "defaut": "Gagner de la piété",
         "selonEtats": {

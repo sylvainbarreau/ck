@@ -129,7 +129,7 @@
         "defaut": "ne rien changer",
         "selonEtats": {
             "enfant": {
-                "decisions": ["Patronner"],
+                "decisions": ["S'occuper des intrigues SI futur enfant légitime", "Patronner"],
                 "arret": true
             },
             "guerre": {

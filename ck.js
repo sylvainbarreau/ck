@@ -40,7 +40,8 @@ function (p, t=new Array(), o=null) {
         case 'stress':
         case 'prestige':
         case 'enfant': //SI aventurier ET adopter Prestige jusqu'à 150,opinion,Diplomatie,Intrigue
-            //SINON SI futur enfant légitime procréer SINON divorce,Piété,opinion Chef de foi,Diplomatie,Intrigue
+            //SI futur enfant légitime procréer,Intrigue
+            //SI divorce,Piété,opinion Chef de foi,Diplomatie,Intrigue
             //; survivre
         case 'piete': // Piété, Erudition
         case 'denoncer': // Prestige, Renommée 

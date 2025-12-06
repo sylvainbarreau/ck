@@ -89,9 +89,9 @@
                     "Séduire ADOPTE POTENTIEL-S",
                     "Apprendre la langue ADOPTE POTENTIEL-S",
                     "\n",
-                    "Séduire",
-                    "Faire la cour",
-                    "Marier clandestinement",
+                    "Séduire SI futur enfant légitime",
+                    "Marier clandestinement SI futur enfant légitime",
+                    "\n",
                     "Influencer CHEF DE FOI SI divorce",
                     "Séduire CHEF DE FOI SI divorce",
                     "Apprendre la langue CHEF DE FOI SI divorce"
@@ -269,7 +269,7 @@
                     "Arrestations arbitraires": "Arrestations arbitraires SI NON aventurier adopter",
                     "Sentinelles renforcées": "Sentinelles renforcées SI NON aventurier adopter",
                     "Garde doublée": "Garde doublée SI NON aventurier adopter",
-                    "Retrait de la vie publique": "Retrait de la vie publique SI NON aventurier adopter ET NON divorce"
+                    "Retrait de la vie publique": "undefined"
                 },
                 "arret": false
                 

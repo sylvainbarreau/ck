@@ -62,7 +62,7 @@
                 "arret": false
             },
             "enfant": {
-                "decisions": ["Faire de la recherche avancée", "Atténuer les épidémies", "Améliorer les aptitudes", "aucune fonction"],
+                "decisions": ["Faire de la recherche avancée", "Atténuer les épidémies", "Améliorer les aptitudes SI NON aventurier adopter", "aucune fonction"],
                 "arret": false
             },
             "guerre": {
@@ -305,8 +305,9 @@
                 "arret": false
             },
             "enfant": {
-                "decisions": ["Améliorer les artefacts SI aventurier adopter", "Rechercher des artefacts rares"],
+                "decisions": ["Améliorer les artefacts", "Rechercher des artefacts rares SI NON aventurier adopter"],
                 "modifications": {
+                    "Rechercher des artefacts rares": "Rechercher des artefacts rares SI NON aventurier adopter",
                     "Exposer les objets illustres": "Exposer les objets illustres SI NON aventurier adopter"
                 },
                 "arret": false
@@ -423,7 +424,8 @@
             "declarationGuerre": { "arret": false },
             "survie": { "arret": false },
             "stress": { "arret": false },
-            "enfant": { "decisions": ["aucune fonction"], "arret": true },
+            "enfant": { "decisions": ["aucune fonction SI aventurier adopter"],
+                 "arret": false },
             "piete": { "arret": false },
             "conseiller": { "arret": false },
             "factionPop": { "arret": false },
@@ -785,10 +787,6 @@
                         "decisions": ["aucune fonction SI aventurier adopter",
                             "Faire de la recherche avancée",
                             "Enseigner à la Cour SI divorce"],
-                        "modifications": {
-                            "Enseigner à la Cour": "Enseigner à la Cour SI NON aventurier adopter",
-                            "Eduquer les enfants": "Eduquer les enfants SI NON aventurier adopter"
-                        },
                         "arret": false
                     },
                     "survie": {

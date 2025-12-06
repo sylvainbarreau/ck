@@ -231,7 +231,7 @@
                 "arret": true
             },
             "enfant": {
-                "decisions": ["Participe SI aventurier adopter", "Ne participe pas"],
+                "decisions": ["Participe SI aventurier adopter", "Participe SI divorce", "Ne participe pas"],
                 "arret": true
             },
             "vassalAInfluencer": {
@@ -765,7 +765,8 @@
             "enfant": {
                 "decisions": ["Profiter des avantages SI aventurier adopter",
                     "Offrir un soutien SI futur enfant légitime",
-                    "Être témoin SI divorce"],
+                    "Être témoin SI divorce",
+                    "Offrir un soutien SI divorce ET couronné CHEF DE FOI"],
                 "arret": false
             },
             "piete":{
