@@ -6278,7 +6278,7 @@ function evidence(id, texte, ttLeTps=false) {
     evidence('domestiques', sansDoublon(commoditesDomestiquesResult), true);
     evidence('activite', sansDoublon(activTournoiResult, "SINON"));
     evidence('particip', sansDoublon(participResult));
-    evidence('regence', sansDoublon(regenceResult, ""));
+    evidence('regence', sansDoublon(regenceResult));
     evidence('activite2', sansDoublon(activMariageResult, "SINON"));
     evidence('mariageDiverti', sansDoublon(mariageDivertiResult, "SINON"));
     evidence('mariageNourr', sansDoublon(mariageNourrResult, "SINON"));

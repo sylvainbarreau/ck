@@ -13,7 +13,21 @@
                 "decisions": [
                     "Influencer LUI SI gouvernement administratif",
                     "Séduire LUI SI gouvernement administratif",
-                    "Apprendre la langue LUI SI gouvernement administratif"
+                    "Apprendre la langue LUI SI gouvernement administratif",
+                    "Influencer ALLIE-S",
+                    "Séduire ALLIE-S",
+                    "Apprendre la langue ALLIE-S"
+                ],
+                "arret": false
+            },
+            "declarationGuerre": {
+                "decisions": [
+                    "Influencer LUI SI gouvernement administratif",
+                    "Séduire LUI SI gouvernement administratif",
+                    "Apprendre la langue LUI SI gouvernement administratif",
+                    "Influencer ALLIE-S",
+                    "Séduire ALLIE-S",
+                    "Apprendre la langue ALLIE-S"
                 ],
                 "arret": false
             },
