@@ -1154,5 +1154,135 @@
             "prison": { "arret": false           },
             "survie": { "arret": false           }
         }
+    },
+    "activChasse": {
+        "positionVue": {
+            "categories": ["Activités", "Chasse"],
+            "idElement": "activChasse"
+        },
+        "optionsCommentaires": [
+            "Se détendre//0 +stress",
+            "Abattre une bête//1",
+            "Tuer//2",
+            "Séduire//3",
+            "Nouer une amitié//4"
+        ],
+        "siRien": [
+            "Abattre une bête SI NON aventurier",
+            "Séduire SEIGNEUR LIGE",
+            "Séduire REGENT SEIGNEUR LIGE",
+            "Abattre une bête SI aventurier",
+            "Séduire SOUTIEN invasion SI aventurier",
+            "Nouer une amitié vassal puissant non intimidé non factiable",
+            "Nouer une amitié vassal puissant intimidé non factiable",
+            "Nouer une amitié vassal non intimidé non factiable",
+            "Nouer une amitié vassal intimidé non factiable",
+            "Abattre une bête",
+            "Se détendre"
+        ],
+        "defaut": [
+            "Nouer une amitié vassal puissant non intimidé non factiable",
+            "Nouer une amitié vassal puissant intimidé non factiable",
+            "Nouer une amitié vassal non intimidé non factiable",
+            "Nouer une amitié vassal intimidé non factiable",
+            "Abattre une bête",
+            "Se détendre"
+        ],
+        "selonEtats": {
+            "guerre": {
+                "decisions": ["Séduire LUI SI gouvernement administratif"],
+                "arret": false
+            },
+            "enfant": {
+                "decisions": [
+                    "Abattre une bête SI adoption/aventurier ET Prestige < 150",
+                    "Séduire LUI SI adoption/aventurier",
+                    "Abattre une bête SI adoption/aventurier",
+                    "Séduire",
+                    "Se détendre"
+                ],
+                "arret": true
+            },
+            "assassinat": {
+                "decisions": ["Tuer DANS LA SUCCESSION-S"],
+                "arret": false
+            },
+            "agent": {
+                "decisions": ["Séduire AGENT-S", "Abattre une bête"],
+                "arret": false
+            },
+            "vassalAInfluencer": {
+                "decisions": ["Nouer une amitié FACTIEUX", "Séduire FACTIEUX", "Abattre une bête"],
+                "arret": false
+            },
+            "vassal": {
+                "arret": false
+            },
+            "religieuxAInfluencer": {
+                "decisions": ["Séduire CONSEILLER RELIGIEUX"],
+                "arret": false
+            },
+            "vassalSOppose": {
+                "decisions": ["Séduire VASSAL-S"],
+                "arret": false
+            },
+            "dirigeantAInfluencer": {
+                "decisions": ["Séduire MECENE-S"],
+                "arret": false
+            },
+            "demande": {
+                "decisions": ["Séduire MECENE-S"],
+                "arret": false
+            },
+            "demande2": {
+                "decisions": ["Séduire MECENE-S"],
+                "arret": false
+            },
+            "aInfluencer": {
+                "decisions": ["Séduire ALLIE POTENTIEL-S", "Abattre une bête"],
+                "arret": false
+            },
+            "survie": {
+                "decisions": ["Se détendre"],
+                "arret": true
+            },
+            "stress": {
+                "decisions": ["Se détendre"],
+                "arret": true
+            },
+            "prestige": {
+                "decisions": ["Abattre une bête"],
+                "arret": false
+            },
+            "denoncer": {
+                "decisions": ["Abattre une bête"],
+                "arret": false
+            },
+            "factionPop": {
+                "decisions": ["Abattre une bête"],
+                "arret": false
+            },
+            "rancon": {
+                "decisions": ["Abattre une bête"],
+                "arret": false
+            },
+            "perteTerresRevoquer": {
+                "decisions": ["Abattre une bête", "Séduire VASSAL A REVOQUER-S"],
+                "arret": false
+            },
+            "cultInnov": {
+                "decisions": ["Abattre une bête SI NON Chef culturel"],
+                "arret": false
+            },
+            "prison": {
+                "decisions": ["Abattre une bête", "Séduire PRISONNIER-S"],
+                "arret": false
+            },
+            "recruterChevalier": { "arret": false },
+            "piete": { "arret": false },
+            "conseiller": { "arret": false },
+            "chevalierPartisan": { "arret": false },
+            "domaine": { "arret": false }
+        }
     }
 }
