@@ -7,7 +7,7 @@
         },
         "initialStack": ["stress éviter niveau+", "\n"],
         "siRien": null,
-        "defaut": ["Points d'expérience", "Renommée", "Légitimation", "légende", "Artefact", "stress descendre niveau 0", "mission", "Redoutabilité", "emprisonner", "vassal non factiable", "éviter rivalité/rancune", "hameçon OU secret", "Recruter", "Développement", "Piété", "Prestige", "Or", "Trésor", "Influence", "Diminuer stress", "Provisions"],
+        "defaut": ["Points d'expérience", "Renommée", "Légitimation", "légende", "Artefact", "stress descendre niveau 0", "obtenir mécène", "Mission/Contrat", "Redoutabilité", "emprisonner", "vassal non factiable", "éviter rivalité/rancune", "hameçon OU secret", "Recruter", "Développement", "Piété", "Prestige", "Or", "Trésor", "Influence", "Diminuer stress", "Provisions"],
         "selonEtats": {
             "siRien": {
                 "decisions": [

@@ -157,11 +157,20 @@ function afficherDecisionsDansListe(idListe, decisions, decisionsResult) {
         // Appeler decisionOuNon pour déterminer true/false
         const ouiNon = decisionOuNon(decisionsResult, setOui, setNon);
 
-        // Stocker avec liOuiNon
-        liOuiNon(decision.lib, decision.id, ouiNon);
+        // Créer l'élément <li> pour cette décision
+        const li = document.createElement('li');
+        li.textContent = decision.lib + ': ';
 
-        // Afficher avec liDec
-        liDec(idListe, decision.id);
+        // Créer le <span> pour la valeur true/false
+        const span = document.createElement('span');
+        span.id = decision.id;
+        span.textContent = String(ouiNon);
+
+        li.appendChild(span);
+        liste.appendChild(li);
+
+        // Utiliser evidence() pour mettre en évidence si changement
+        evidence(decision.id, String(ouiNon));
     });
 
     console.log(`✅ ${decisions.length} décisions affichées dans #${idListe}`);
