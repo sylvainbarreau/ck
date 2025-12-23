@@ -146,9 +146,6 @@ function afficherDecisionsDansListe(idListe, decisions, decisionsResult) {
         return;
     }
 
-    // Vider la liste avant d'afficher les nouvelles décisions
-    liste.innerHTML = '';
-
     decisions.forEach(decision => {
         // Créer les Sets pour decisionOuNon
         const setOui = decision.effetsPositifs ? new Set(decision.effetsPositifs) : null;
@@ -157,20 +154,27 @@ function afficherDecisionsDansListe(idListe, decisions, decisionsResult) {
         // Appeler decisionOuNon pour déterminer true/false
         const ouiNon = decisionOuNon(decisionsResult, setOui, setNon);
 
-        // Créer l'élément <li> pour cette décision
-        const li = document.createElement('li');
-        li.textContent = decision.lib + ': ';
+        // Convertir true/false en "cocher"/"décocher"
+        const texteAffiche = ouiNon ? "cocher" : "décocher";
 
-        // Créer le <span> pour la valeur true/false
-        const span = document.createElement('span');
-        span.id = decision.id;
-        span.textContent = String(ouiNon);
+        // Chercher si le span existe déjà
+        let span = document.getElementById(decision.id);
 
-        li.appendChild(span);
-        liste.appendChild(li);
+        if (!span) {
+            // Créer le <li> et le <span> s'ils n'existent pas
+            const li = document.createElement('li');
+            li.textContent = decision.lib + ': ';
+
+            span = document.createElement('span');
+            span.id = decision.id;
+            span.textContent = texteAffiche;
+
+            li.appendChild(span);
+            liste.appendChild(li);
+        }
 
         // Utiliser evidence() pour mettre en évidence si changement
-        evidence(decision.id, String(ouiNon));
+        evidence(decision.id, texteAffiche);
     });
 
     console.log(`✅ ${decisions.length} décisions affichées dans #${idListe}`);

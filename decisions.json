@@ -383,5 +383,16 @@
         },
         "effetsPositifs": ["Diminuer stress"],
         "effetsNegatifs": ["Artefact"]
+    },
+    "dec-p-15": {
+        "lib": "Visiter un marché de la Route de la Soie",
+        "categorieDecision": "Character - Minor decisions",
+        "positionVue": {
+            "categories": ["Décisions"],
+            "idListe": "dec",
+            "precedent": "Adopter la culture locale"
+        },
+        "effetsPositifs": ["Artefact", "Or"],
+        "effetsNegatifs": []
     }
 }

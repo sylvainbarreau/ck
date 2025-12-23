@@ -6136,18 +6136,27 @@ function liDec(idPage, id) {
     const jsonData = JSON.parse(value);
     let listeDecisions = document.getElementById(idPage);
     let li = document.getElementById(id);
+
+    // Convertir booléen en "cocher"/"décocher"
+    let texteAffiche;
+    if (typeof jsonData.ouiNon === "boolean") {
+        texteAffiche = jsonData.ouiNon ? "cocher" : "décocher";
+    } else {
+        texteAffiche = String(jsonData.ouiNon);
+    }
+
     // si élément html id n'existe pas, le créer :
     if (!li) {
         li = document.createElement('li');
         li.textContent = jsonData.lib + ': ';
         const span = document.createElement('span');
         span.id = id;
-        span.textContent = jsonData.ouiNon;
+        span.textContent = texteAffiche;
         li.appendChild(span);
         listeDecisions.appendChild(li);
     }
-    console.log(id, typeof jsonData.ouiNon === "boolean" ? String(jsonData.ouiNon) : jsonData.ouiNon);
-    evidence(id, typeof jsonData.ouiNon === "boolean" ? String(jsonData.ouiNon) : jsonData.ouiNon);
+    console.log(id, texteAffiche);
+    evidence(id, texteAffiche);
 }
 function liOuiNon(lib, id, ouiNon) {
     const data = {
@@ -6859,6 +6868,7 @@ function formatDecisions(decisions, liaison = "SINON") {
     let texte = "";
     let faits = new Set();
     let premiereLigne = true;
+    let toutPremiereLigne = true; // Pour distinguer la toute première ligne du texte
 
     for (let i = 0; i < decisions.length; i++) {
         const decision = decisions[i];
@@ -6882,7 +6892,14 @@ function formatDecisions(decisions, liaison = "SINON") {
 
         // Ajouter la décision au texte
         if (premiereLigne) {
-            texte += decision;
+            // Si c'est la toute première ligne du texte, ne pas ajouter de liaison
+            if (toutPremiereLigne) {
+                texte += decision;
+                toutPremiereLigne = false;
+            } else {
+                // Sinon, c'est une nouvelle ligne après un \n, ajouter le mot de liaison
+                texte += liaison + " " + decision;
+            }
             premiereLigne = false;
         } else {
             texte += " " + liaison + " " + decision;
