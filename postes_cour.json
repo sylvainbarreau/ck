@@ -9,7 +9,7 @@
         "options": ["Atténuer les épidémies",
         "Faire de la recherche avancée",
         "Améliorer les aptitudes"],
-        "optionsCommentaires": ["Atténuer les épidémies, 0 +santé -or",
+        "optionsCommentaires": ["Atténuer les épidémies, 0 ++santé -or",
         "Faire de la recherche avancée,//1 +exp -or",
         "Améliorer les aptitudes//2 +santé -prestige"],
         "selonEtats": {
@@ -142,6 +142,9 @@
             "categories": ["Postes de la cour"],
             "idElement": "posteCaravanierResult"
         },
+        "optionsCommentaires": ["Faire des réserves pour les voyages//0 +santé -Or",
+        "Préparer les armées +guerre -Or",
+        "Améliorer les aptitudes//2 +Martialité?,Intendance -Prestige"],
         "siRien": "aucune fonction",
         "defaut": "aucune fonction",
         "selonEtats": {
@@ -489,7 +492,7 @@
                 "decisions": ["Toilettage des chevaux de guerre", "Supervise la reproduction", "aucune fonction SI gouvernement administratif"],
                 "arret": false
             },
-            "enfant": { "decisions": ["aucune fonction SI aventurier adopter"], "arret": false },
+            "enfant": { "decisions": ["A DEFINIR"], "arret": false },
             "survie": { "arret": false },
             "cultInnov": {
                 "decisions": ["aucune fonction SI NON Chef culturel"],
@@ -568,7 +571,7 @@
             },
             "survie": { "arret": false },
             "stress": { "arret": false },
-            "enfant": { "decisions":["Concourir en son nom SI aventurier adopter"],
+            "enfant": { "decisions":["Améliorer les aptitudes", "Concourir en son nom SI aventurier adopter"],
                 "modifications": {
                     "Entraîner le dirigeant": "undefined",
                     "Améliorer les aptitudes": "Améliorer les aptitudes SI NON aventurier adopter"
@@ -784,9 +787,9 @@
                         "arret": false
                     },
                     "enfant": {
-                        "decisions": ["aucune fonction SI aventurier adopter",
+                        "decisions": [
                             "Faire de la recherche avancée",
-                            "Enseigner à la Cour SI divorce"],
+                            "Enseigner à la Cour SI divorce","aucune fonction SI aventurier adopter"],
                         "arret": false
                     },
                     "survie": {
@@ -877,7 +880,7 @@
             "declarationGuerre": { "arret": false },
             "survie": { "arret": false },
             "stress": { "arret": false },
-            "enfant": { "decisions": ["aucune fonction SI aventurier adopter"],
+            "enfant": { "decisions": ["A DEFINIR", "aucune fonction SI aventurier adopter"],
                 "arret": false },
             "piete": { "arret": false },
             "conseiller": { "arret": false },
@@ -900,7 +903,7 @@
             "chevalierPartisan": { "decisions": [], "arret": true },
             "demande": { "decisions": [], "arret": true },
             "demande2": { "decisions": [], "arret": true },
-            "enfant": { "decisions": ["aucune fonction SI aventurier adopter",
+            "enfant": { "decisions": ["A DEFINIR", "aucune fonction SI aventurier adopter",
                 "Divertir les courtisans"],
                 "arret": false  }
         }
@@ -914,7 +917,7 @@
         "siRien": "aucune fonction",
         "defaut": "aucune fonction",
         "selonEtats": {
-            "enfant": { "decisions": ["aucune fonction SI aventurier adopter",
+            "enfant": { "decisions": ["A DEFINIR", "aucune fonction SI aventurier adopter",
             "Rester à l'écoute du terrain",
             "aucune fonction"], "arret": true },
             "chevalierPartisan": { "decisions": [], "arret": true },
@@ -940,7 +943,7 @@
             "chevalierPartisan": { "decisions": [], "arret": true },
             "demande": { "decisions": [], "arret": true },
             "demande2": { "decisions": [], "arret": true },
-            "enfant": { "decisions": ["aucune fonction SI aventurier adopter"], "arret": false }
+            "enfant": { "decisions": ["A DEFINIR", "aucune fonction SI aventurier adopter"], "arret": false }
         }
     }
 }

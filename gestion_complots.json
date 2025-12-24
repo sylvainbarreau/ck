@@ -99,17 +99,16 @@
             },
             "enfant": {
                 "decisions": [
-                    "Influencer ADOPTE POTENTIEL-S",
-                    "Séduire ADOPTE POTENTIEL-S",
-                    "Apprendre la langue ADOPTE POTENTIEL-S",
-                    "\n",
                     "Séduire SI futur enfant légitime",
                     "Marier clandestinement SI futur enfant légitime",
                     "\n",
                     "Influencer CHEF DE FOI SI divorce",
                     "Séduire CHEF DE FOI SI divorce",
-                    "Apprendre la langue CHEF DE FOI SI divorce"
-                ],
+                    "Apprendre la langue CHEF DE FOI SI divorce",
+                    "\n",            
+                    "Influencer ADOPTE POTENTIEL-S",
+                    "Séduire ADOPTE POTENTIEL-S",
+                    "Apprendre la langue ADOPTE POTENTIEL-S" ],
                 "arret": false
             },
             "chevalierPartisan": {

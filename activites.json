@@ -128,9 +128,9 @@
                 "arret": true
             },
             "enfant": {
-                "decisions": ["Etudier durement SI aventurier adopter",
-                "Mener une vie goliardique SI futur enfant légitime",
+                "decisions": [                "Mener une vie goliardique SI futur enfant légitime",
                 "Etudier durement SI divorce",
+                "Etudier durement SI aventurier adopter",
                 "Mener une vie goliardique"],
                 "arret": true
             }
@@ -615,7 +615,7 @@
                 "arret": true
             },
             "enfant": {
-                "decisions": ["Amitié ADOPTE POTENTIEL-S", "Amitié CHEF DE FOI SI divorce"],
+                "decisions": ["Amitié CHEF DE FOI SI divorce", "Amitié ADOPTE POTENTIEL-S"],
                 "arret": false
             },
             "conseiller": { "arret": false }
@@ -1195,10 +1195,10 @@
             },
             "enfant": {
                 "decisions": [
+                    "Séduire",
                     "Abattre une bête SI adoption/aventurier ET Prestige < 150",
                     "Séduire LUI SI adoption/aventurier",
                     "Abattre une bête SI adoption/aventurier",
-                    "Séduire",
                     "Se détendre"
                 ],
                 "arret": true
