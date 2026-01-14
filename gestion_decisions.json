@@ -407,6 +407,7 @@
                     "Diplomatie",
                     "Intrigue",
                     "emprisonner SI Atout \"Sombres connaissances\" ET (NON aventurier OU Outils du tortionnaire)",
+                    "hameçon vassal direct ou courtisan ou invité CIBLE-S",
                     "Influence",
                     "Or",
                     "hameçon OU secret SI Atout \"Obligations en or\"",
@@ -416,7 +417,6 @@
                     "emprisonner",
                     "Prestige",
                     "secret SI Atout \"Je suis bien en comparaison\"",
-                    "hameçon vassal direct ou courtisan ou invité CIBLE-S",
                     "Piété",
                     "Erudition"
                 ],
