@@ -6688,7 +6688,7 @@ function evidence(id, texte, ttLeTps=false) {
     liOuiNon("Assister à la confirmation des gouvernorats", 'dec-g', decisionOuNon(decisionsResult,
         new Set([]),
         null
-    ));
+    )); //dec-h
     // Affichage Décisions romaines
     liDec('decRom', 'dec-d-rom-5'); //"Évangéliser les païens",
     // Affichage Décisions importantes d'aventurier

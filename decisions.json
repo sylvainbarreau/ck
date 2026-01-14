@@ -393,6 +393,16 @@
             "precedent": "Adopter la culture locale"
         },
         "effetsPositifs": ["Artefact", "Or"],
-        "effetsNegatifs": []
+        "effetsNegatifs": ["Or"]
+    },
+    "dec-h": {
+        "lib": "Inviter des exilés religieux",
+        "positionVue":{
+            "categories":["Décisions"],
+            "idListe":"dec",
+            "precedent":null
+        },
+        "effetsPositifs": ["Développement"],
+        "effetsNegatifs": ["Piété"]
     }
 }
