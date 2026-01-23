@@ -483,15 +483,15 @@
             "categories": ["Activités", "Randonnée"],
             "idElement": "activRando"
         },
-        "optionsCommentaires": ["Se détendre//0",
-        "Conteur//1 gloire",
-        "Amitié//2 opinion"
+        "optionsCommentaires": ["Se détendre//0 +stress",
+        "Conteur//1 +gloire",
+        "Amitié//2 +opinion"
     ],
-        "siRien": "Faire de l'exercice",
-        "defaut": "Faire de l'exercice",
+        "siRien": "Conteur",
+        "defaut": "Conteur",
         "selonEtats": {
             "stress": {
-                "decisions": ["Renouer avec la nature"],
+                "decisions": ["Se détendre"],
                 "arret": true
             },
             "survie": {
@@ -499,120 +499,108 @@
                 "arret": true
             },
             "guerre": {
-                "decisions": ["Faire de l'exercice"],
+                "decisions": ["A DEFINIR"],
                 "arret": true
             },
             "controle": {
-                "decisions": ["Faire de l'exercice"],
-                "arret": true
+                "arret": false
             },
             "declarationGuerre": {
-                "decisions": ["Faire de l'exercice"],
+                "decisions": ["A DEFINIR"],
                 "arret": true
             },
             "assassinat": {
-                "decisions": ["Faire de l'exercice"],
+                "decisions": ["A DEFINIR"],
                 "arret": true
             },
             "succession": {
-                "decisions": ["Faire de l'exercice"],
+                "decisions": ["A DEFINIR"],
                 "arret": true
             },
             "vassalAInfluencer": {
-                "decisions": ["Faire de l'exercice"],
+                "decisions": ["Amitié"],
                 "arret": true
             },
             "vassalSOppose": {
-                "decisions": ["Faire de l'exercice"],
+                "decisions": ["Amitié"],
                 "arret": true
             },
             "vassal": {
-                "decisions": ["Faire de l'exercice"],
+                "decisions": ["Amitié"],
                 "arret": true
             },
             "factionPop": {
-                "decisions": ["Faire de l'exercice"],
-                "arret": true
+                "arret": false
             },
             "religieuxAInfluencer": {
                 "decisions": ["Amitié"],
-                "arret": false
+                "arret": true
             },
             "dirigeantAInfluencer": {
-                "decisions": ["Faire de l'exercice"],
+                "decisions": ["Amitié"],
                 "arret": true
             },
             "perteTerresRevoquer": {
-                "decisions": ["Faire de l'exercice"],
+                "decisions": ["A DEFINIR"],
                 "arret": true
             },
             "prison": {
-                "decisions": ["Faire de l'exercice"],
+                "decisions": ["Amitié"],
                 "arret": true
             },
             "cultInnov": {
-                "decisions": ["Faire de l'exercice"],
+                "decisions": ["A DEFINIR"],
                 "arret": true
             },
             "domaine": {
-                "decisions": ["Faire de l'exercice"],
-                "arret": true
+                "arret": false
             },
             "aInfluencer": {
-                "decisions": ["Faire de l'exercice"],
+                "decisions": ["Amitié"],
                 "arret": true
             },
             "recruterChevalier": {
-                "decisions": ["Faire de l'exercice"],
-                "arret": true
+                "arret": false
             },
             "chevalierPartisan": {
-                "decisions": ["Faire de l'exercice"],
-                "arret": true
+                "arret": false
             },
             "piete": {
-                "decisions": ["Faire de l'exercice"],
-                "arret": true
+                "arret": false
             },
             "prestige": {
-                "decisions": ["Faire de l'exercice"],
+                "decisions": ["Conteur"],
                 "arret": true
             },
             "denoncer": {
-                "decisions": ["Faire de l'exercice"],
-                "arret": true
+                "arret": false
             },
             "influence": {
-                "decisions": ["Faire de l'exercice"],
-                "arret": true
+                "arret": false
             },
             "agent": {
-                "decisions": ["Faire de l'exercice"],
+                "decisions": ["Amitié"],
                 "arret": true
             },
             "hamecon": {
-                "decisions": ["Faire de l'exercice"],
-                "arret": true
+                "arret": false
             },
             "demande": {
-                "decisions": ["Faire de l'exercice"],
+                "decisions": ["Amitié"],
                 "arret": true
             },
             "demande2": {
-                "decisions": ["Faire de l'exercice"],
+                "decisions": ["Amitié"],
                 "arret": true
             },
             "proclame": {
-                "decisions": ["Faire de l'exercice"],
-                "arret": true
+                "arret": false
             },
             "rancon": {
-                "decisions": ["Faire de l'exercice"],
-                "arret": true
+                "arret": false
             },
             "revenu": {
-                "decisions": ["Faire de l'exercice"],
-                "arret": true
+                "arret": false
             },
             "enfant": {
                 "decisions": ["Amitié CHEF DE FOI SI divorce", "Amitié ADOPTE POTENTIEL-S"],
