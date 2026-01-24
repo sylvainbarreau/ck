@@ -58,10 +58,10 @@ class DataDrivenEngine {
         if (this.initialStack && t.length === 0 && isInitialCall) {
             // Si initialStack est un tableau, ajouter chaque élément
             if (Array.isArray(this.initialStack)) {
-                this.initialStack.forEach(item => t.push(item));
+                this.initialStack.forEach(item => t.push(new TexteDecision(item)));
             } else {
                 // Sinon, ajouter l'élément unique
-                t.push(this.initialStack);
+                t.push(new TexteDecision(this.initialStack));
             }
         }
 
@@ -98,7 +98,7 @@ class DataDrivenEngine {
         if (Array.isArray(this.siRien)) {
             this.siRien.forEach(decision => {
                 if (decision && decision !== "undefined") {
-                    t.push(decision);
+                    t.push(new TexteDecision(decision));
                 }
             });
         }
@@ -106,13 +106,13 @@ class DataDrivenEngine {
         else if (typeof this.siRien === 'object' && this.siRien.decisions) {
             this.siRien.decisions.forEach(decision => {
                 if (decision && decision !== "undefined") {
-                    t.push(decision);
+                    t.push(new TexteDecision(decision));
                 }
             });
         }
         // Cas 3: siRien est une chaîne simple
         else if (typeof this.siRien === 'string') {
-            t.push(this.siRien);
+            t.push(new TexteDecision(this.siRien));
         }
 
         return t;
@@ -132,7 +132,7 @@ class DataDrivenEngine {
             this.defaut.forEach(decision => {
                 const modifiedDecision = this.applyModificationsToText(decision, optionModifications);
                 if (modifiedDecision && modifiedDecision !== "undefined") {
-                    t.push(modifiedDecision);
+                    t.push(new TexteDecision(modifiedDecision));
                 }
             });
         }
@@ -141,14 +141,14 @@ class DataDrivenEngine {
             this.defaut.decisions.forEach(decision => {
                 const modifiedDecision = this.applyModificationsToText(decision, optionModifications);
                 if (modifiedDecision && modifiedDecision !== "undefined") {
-                    t.push(modifiedDecision);
+                    t.push(new TexteDecision(modifiedDecision));
                 }
             });
         }
         // Cas 3: defaut est une chaîne simple
         else if (typeof this.defaut === 'string') {
             const defautText = this.applyModificationsToText(this.defaut, optionModifications);
-            t.push(defautText);
+            t.push(new TexteDecision(defautText));
         }
 
         return t;
@@ -181,7 +181,7 @@ class DataDrivenEngine {
             regle.decisions.forEach(decision => {
                 const modifiedDecision = this.applyModificationsToText(decision, optionModifications);
                 if (modifiedDecision !== "undefined") {
-                    t.push(modifiedDecision);
+                    t.push(new TexteDecision(modifiedDecision));
                 }
             });
         }

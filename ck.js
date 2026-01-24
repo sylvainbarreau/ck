@@ -22,42 +22,43 @@ function (p, t=new Array(), o=null) {
         case 'factionFoi':
         case 'dirigeantAInfluencer': // opinion, Diplomatie, Intrigue, Or
         case 'influence' : // besoin agent //influence SI vassal direct LUI OU courtisan LUI OU invité LUI, Influence, Or, Prestige, hameçon
-        case 'erudition': *
+        case 'erudition':
+            case 'rancon': // Or, hameçon
+         *
          A SUPPRIMER ?         case 'perteTerresRevoquer': // accorder titre SINON chercher secret,Opinion,Diplomatie,Intrigue,Or,hameçon,Intrigue (pour révoquer)
          *
-        case 'guerre': // guerre, Influence,opinion,Diplomatie,Intrigue SI gouvernmt admin
-        case 'declarationGuerre':
-        case 'revenu':
-        case 'controle':
-        case 'assassinat': // Faire démissionner ou Assassiner
-        case 'succession':
-        case 'religieuxAInfluencer': // opinion,Diplomatie,Intrigue,Piété,Erudition
         case 'aInfluencer': // (alliance) opinion, Diplomatie, Intrigue
-        case 'hamecon':
         case 'recruterChevalier':
         case 'chevalierPartisan': // comme recruterChevalier sans Martialité
         case 'proclame':
-        case 'stress':
-        case 'prestige':
-        case 'enfant': //SI aventurier ET adopter Prestige jusqu'à 150,opinion,Diplomatie,Intrigue
-            //SI futur enfant légitime procréer,Intrigue
-            //SI divorce,Piété,opinion Chef de foi,Diplomatie,Intrigue
-            //; survivre
-        case 'piete': // Piété, Erudition
-        case 'denoncer': // Prestige, Renommée 
-        case 'agent': // opinion SI vassal direct ou courtisan ou invité CIBLE,Diplomatie,Intrigue (Influence) Or, Prestige, hameçon, Piété (parfois)
-        case 'rancon': // Or, hameçon
         case 'conseiller': // recruter
-        case 'factionPop': // Opinion populaire
-        case 'vassalAInfluencer': //(Faction) opinion,Diplomatie,Intrigue, allié, hameçon fort,Intrigue ami, amant, prisonnier,Intrigue, terrifié,redoutabilité
-        case 'vassal': //allié, hameçon fort,Intrigue, ami,opinion,Diplomatie,Intrigue amant, prisonnier,Intrigue, terrifié,redoutabilité
-        case 'domaine': //Intendance
-        case 'cultInnov': //SI Chef culturel : Erudition SINON Promouvoir la culture Intendance, Faire diverger la culture Prestige
+        case 'controle':
+        case 'assassinat': // Faire démissionner ou Assassiner
+        case 'denoncer': // Prestige, Renommée 
         case 'prison': //Prestige,Intrigue,opinion,Diplomatie,puissance militaire
         case 'survie':
-    case 'demande': // Prestige, opinion,Diplomatie,Intrigue,Or
+        case 'factionPop': // Opinion populaire
+        case 'vassalAInfluencer': //(Faction) opinion,Diplomatie,Intrigue, allié, hameçon fort,Intrigue ami, amant, prisonnier,Intrigue, terrifié,redoutabilité
+        case 'demande': // Prestige, opinion,Diplomatie,Intrigue,Or
         case 'demande2': // (activité, contrat, Or, Provisions, mariage) Prestige, opinion,Diplomatie,Intrigue
-       default:
+        case 'guerre': // guerre, Influence,opinion,Diplomatie,Intrigue SI gouvernmt admin
+        case 'declarationGuerre':
+        case 'hamecon':
+        case 'enfant': //SI futur enfant légitime procréer,Intrigue
+            //SI aventurier ET adopter Prestige jusqu'à 150,opinion,Diplomatie,Intrigue
+            //SI divorce,Piété,opinion Chef de foi,Diplomatie,Intrigue
+            //; survivre
+        case 'cultInnov': //SI Chef culturel : Erudition SINON Promouvoir la culture Intendance, Faire diverger la culture Prestige
+        case 'domaine': //Intendance
+        case 'religieuxAInfluencer': // opinion,Diplomatie,Intrigue,Piété,Erudition
+        case 'revenu':
+        case 'stress':
+        case 'piete': // Piété, Erudition
+        case 'agent': // opinion SI vassal direct ou courtisan ou invité CIBLE,Diplomatie,Intrigue (Influence) Or, Prestige, hameçon, Piété (parfois)
+        case 'prestige':
+        case 'succession':
+        case 'vassal': //allié, hameçon fort,Intrigue, ami,opinion,Diplomatie,Intrigue amant, prisonnier,Intrigue, terrifié,redoutabilité
+        default:
             return (p.slice(1), t, o);
     }
 }
@@ -6080,9 +6081,14 @@ function posteGout(p, t=new Array(), o=null) {
 function decisionOuNon(res, setOui, setNon) {
     // rechercher dans res si au moins 1 setOui (Mot complet) est avant tout setNon (Mot dans phrase)
 
-    // Support pour les nouveaux tableaux simples (data-driven)
-    if (res.length > 0 && typeof res[0] === 'string') {
+    // Support pour les nouveaux tableaux simples (data-driven) et objets TexteDecision
+    if (res.length > 0 && (typeof res[0] === 'string' || (typeof res[0] === 'object' && res[0].toString))) {
         for (let e of res) {
+            // Convertir les objets TexteDecision en chaînes
+            if (typeof e === 'object' && e.toString) {
+                e = e.toString();
+            }
+
             // parcourir setOui
             if (setOui) {
                 for (let o of setOui) {
@@ -6871,7 +6877,12 @@ function formatDecisions(decisions, liaison = "SINON") {
     let toutPremiereLigne = true; // Pour distinguer la toute première ligne du texte
 
     for (let i = 0; i < decisions.length; i++) {
-        const decision = decisions[i];
+        let decision = decisions[i];
+
+        // Convertir les objets TexteDecision en chaînes
+        if (decision && typeof decision === 'object' && decision.toString) {
+            decision = decision.toString();
+        }
 
         // Ignorer les décisions vides ou undefined
         if (!decision || decision === "" || decision === "undefined") {

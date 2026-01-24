@@ -945,5 +945,58 @@
             "demande2": { "decisions": [], "arret": true },
             "enfant": { "decisions": ["A DEFINIR", "aucune fonction SI aventurier adopter"], "arret": false }
         }
+    },
+    "posteAstro": {
+        "positionVue": {
+            "categories": ["Courtisans (Camp)","Postes de la cour (Officiers)"],
+            "idElement": "posteAstro"
+        },
+        "optionsCommentaires": ["Guider les bergers +Fertilité comtale -Prestige",
+        "Superviser les préparatifs +Troupeau -Prestige",
+        "aucune fonction +Prestige"],
+        "siRien":["aucune fonction"],
+        "defaut":["aucune fonction"],
+        "selonEtats": {
+            "recruterChevalier":{
+                "decisions":["aucune fonction"],
+                "arret":true
+            },
+            "proclame":{
+                "decisions":["aucune fonction"],
+                "arret":true
+            },
+            "denoncer":{
+                "decisions":["aucune fonction"],
+                "arret":true
+            },
+            "prison":{
+                "decisions":["aucune fonction"],
+                "arret":true
+            },
+            "demande":{
+                "decisions":["aucune fonction"],
+                "arret":true
+            },
+            "demande2":{
+                "decisions":["aucune fonction"],
+                "arret":true
+            },
+            "enfant":{
+                "decisions":["aucune fonction SI Aventurier ET adopter"],
+                "arret":false
+            },
+            "cultInnov":{
+                "decisions":["aucune fonction SI NON Chef culturel"],
+                "arret":false
+            },
+            "agent":{
+                "decisions":["aucune fonction"],
+                "arret":true
+            },
+            "prestige":{
+                "decisions":["aucune fonction"],
+                "arret":true
+            }
+        }
     }
 }

@@ -138,6 +138,7 @@
       <h1>Courtisans (Camp)</h1>
       <h2>Postes de la cour (Officiers)</h2>
       <ul>
+        <li><h3>Astronome</h3><p id="posteAstro"></p></li>
         <li><h3>Médecin personnel</h3><p id="epidResult"></p></li>
         <li><h3>Maître-caravanier</h3><p id="posteCaravanierResult"></p></li>
         <li><h3>Antiquaire</h3><p id="posteAntiqResult"></p></li>
@@ -387,7 +388,7 @@
     domaines.set('declarationGuerre', 'Guerre (préparation)');
     domaines.set('hamecon', 'Hameçon');
     domaines.set('enfant', 'Héritier');
-    domaines.set('influence', "Influence");
+    //domaines.set('influence', "Influence");
     domaines.set('cultInnov', "innovation culturelle manquante");
     domaines.set('domaine', 'limite du domaine (accorder impensable)');
     domaines.set('religieuxAInfluencer','opinion Conseiller religieux');
@@ -531,6 +532,7 @@ table.addEventListener('change', function() {
   </script>
   <script src="ck.js"></script>
   <!-- Système data-driven (NOUVEAU) - charge APRÈS ck.js pour remplacer les fonctions -->
+<script src="textedecision.class.js"></script>
 <script src="ck-data-engine.js"></script>
 <script src="ck-data-loader.js"></script>
 <script src="ck-decisions-jeu-loader.js"></script>
