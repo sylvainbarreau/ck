@@ -4,6 +4,9 @@
             "categories": ["Activités", "Séjour universitaire"],
             "idElement": "activUniv"
         },
+        "optionsCommentaires": ["Etudier durement//0",
+        "Mener une vie goliardique//1"
+    ],
         "siRien": null,
         "defaut": "Etudier durement",
         "selonEtats": {
@@ -132,6 +135,10 @@
                 "Etudier durement SI divorce",
                 "Etudier durement SI aventurier adopter",
                 "Mener une vie goliardique"],
+                "arret": true
+            },
+            "successionChaos": {
+                "decisions": ["Etudier durement"],
                 "arret": true
             }
         }
@@ -267,8 +274,119 @@
             "cultInnov": {
                 "decisions": ["Bibliothèque"],
                 "arret": true
+            },
+            "successionChaos": {
+                "decisions": ["Bibliothèque"],
+                "arret": false
             }
+
         }
+    },
+    "chasseType": {
+        "positionVue":{
+            "categories": ["Activités","Activités","Chasse"],
+            "idElement": "typeChasse"
+        },
+        "optionsCommentaires": ["Chasse +Erudition,Prouesse,diminuer stress,Prestige sexe martial",
+        "Fauconnerie +Intendance,Erudition,Prestige,attirance",
+        "Nerge +Légitimité,Or,Redoutabilité,Prestige,Martialité",
+        "Légendaire"],
+        "siRien": ["Fauconnerie SI NON Aventurier", "Chasse SI Aventurier ET sexe martial", "Fauconnerie"],
+        "defaut": ["Légendaire A DEFINIR", "Nerge", "Chasse SI sexe martial", "Fauconnerie"],
+        "selonEtats": {
+            "aInfluencer":{
+                "decisions":["Fauconnerie SI ALLIE POTENTIEL-S attiré"],
+                "arret": false
+            },
+            "recruterChevalier":{
+                "decisions":["Nerge", "Chasse SI sexe martial", "Fauconnerie"],
+                "arret": true
+            },
+            "proclame": {
+                "decisions":["Nerge", "Chasse SI sexe martial", "Fauconnerie"],
+                "arret": true
+            },
+            "controle":{
+                "decisions":["Nerge"],
+                "arret":false
+            },
+            "denoncer":{
+                "decisions":["Nerge", "Chasse SI sexe martial", "Fauconnerie"],
+                "arret": true
+            },
+            "prison":{
+                "decisions":["Nerge", "Chasse SI sexe martial", "Fauconnerie"],
+                "arret": true
+            },
+            "survie":{
+                "decisions":["Chasse SI sexe martial"],
+                "arret": false
+            },
+            "vassalAInfluencer":{
+                "decisions":["Fauconnerie SI FACTIEUX attiré", "Nerge"],
+                "arret": false
+            },
+            "demande":{
+                "decisions":["Nerge", "Chasse SI sexe martial", "Fauconnerie"],
+                "arret": true
+            },
+            "demande2":{
+                "decisions":["Nerge", "Chasse SI sexe martial", "Fauconnerie"],
+                "arret": true
+            },
+            "guerre":{
+                "decisions":["Chasse SI sexe martial", "Nerge", "Fauconnerie SI Gouvernement administratif attiré"],
+                "arret": false
+            },
+            "declarationGuerre":{
+                "decisions":["Nerge", "Chasse SI sexe martial"],
+                "arret": false
+            },
+            "enfant":{
+                "decisions":["Fauconnerie"],
+                "arret": true
+            },
+            "cultInnov":{
+                "decisions":["Fauconnerie"],
+                "arret": true
+            },
+            "domaine":{
+                "decisions":["Fauconnerie"],
+                "arret": true
+            },
+            "religieuxAInfluencer":{
+                "decisions":["Fauconnerie"],
+                "arret": true
+            },
+            "revenu":{
+                "decisions":["Nerge", "Fauconnerie"],
+                "arret": true
+            },
+            "stress":{
+                "decisions":["Chasse SI sexe martial"],
+                "arret": false
+            },
+            "piete":{
+                "decisions":["Fauconnerie"],
+                "arret":true
+            },
+            "agent":{
+                "decisions":["Fauconnerie SI vassal direct ou courtisan ou invité CIBLE attiré", "Nerge", "Chasse SI sexe martial", "Fauconnerie"],
+                "arret": true
+            },
+            "prestige":{
+                "decisions":["Nerge", "Chasse SI sexe martial", "Fauconnerie"],
+                "arret": true
+            },
+            "successionChaos":{
+                "decisions":["Nerge"],
+                "arret": false
+            },
+            "vassal":{
+                "decisions":["Fauconnerie SI VASSAL-S attiré", "Nerge"],
+                "arret": false
+            }
+        }         
     },
     "participChasse": {
         "positionVue": {
@@ -373,7 +491,12 @@
             "survie": {
                 "decisions": ["Groupes de gardes-chasse", "Groupes de chasse", "Gardes-chasse locaux"],
                 "arret": true
+            },
+            "successionChaos": {
+                "decisions": ["A DEFINIR"],
+                "arret": true
             }
+
         }
     },
     "grpeChasse": {
@@ -381,6 +504,10 @@
             "categories": ["Activités", "Chasse"],
             "idElement": "grpeChasse"
         },
+        "optionsCommentaires": ["Petit groupe",
+        "Groupe raisonnable//1 +Prestige -Troupeau",
+        "Grand groupe//2 ++Prestige -Troupeau"
+    ],
         "siRien": ["Grand groupe", "Groupe raisonnable", "Petit groupe"],
         "defaut": ["Grand groupe", "Groupe raisonnable", "Petit groupe"],
         "selonEtats": {
@@ -475,7 +602,11 @@
             "influence": { "arret": false },
             "assassinat": { "arret": false },
             "conseiller": { "arret": false },
-            "survie": { "arret": false }
+            "survie": { "arret": false },
+            "successionChaos": {
+                "decisions":["Petit groupe"],
+                "arret": true
+            }
         }
     },
     "activRando": {
@@ -606,7 +737,10 @@
                 "decisions": ["Amitié CHEF DE FOI SI divorce", "Amitié ADOPTE POTENTIEL-S"],
                 "arret": false
             },
-            "conseiller": { "arret": false }
+            "conseiller": { "arret": false },
+            "successionChaos": {
+                "arret": false
+            }
         }
     },
     "activPelerin": {
@@ -755,7 +889,10 @@
                 "decisions": ["Faire preuve d'altruisme", "Réflexion", "Fanatisme"],
                 "arret": true
             },
-            "conseiller": { "arret": false }
+            "conseiller": { "arret": false },
+            "successionChaos": {
+                "arret": false
+            }
         }
     },
     "pelerinFidel": {
@@ -763,6 +900,10 @@
             "categories": ["Activités", "Pélerinage"],
             "idElement": "pelerinFidel"
         },
+        "optionsCommentaires": ["Obligatoire//0 +vitesse -piété",
+        "Pèlerin//1 +piété",
+        "Contemplatif//2 ++piété -vitesse"
+    ],
         "siRien": ["Zèle absolu", "Dévotion publique", "Apparences pieuses"],
         "defaut": ["Zèle absolu", "Dévotion publique", "Apparences pieuses"],
         "selonEtats": {
@@ -891,6 +1032,11 @@
             "categories": ["Activités", "Pélerinage"],
             "idElement": "pelerinApp"
         },
+        "optionsCommentaires": ["Humble//0 +piété,or -santé",
+        "Approprié//1 +or",
+        "Cérémoniel//2 +piété -or",
+        "En nombre//3 ++piété -or"
+    ],
         "options": ["Humble", "Approprié", "Cérémoniel", "En nombre"],
         "siRien": ["Magnifique", "Grand", "Modeste"],
         "defaut": ["Magnifique", "Grand", "Modeste"],
@@ -1146,14 +1292,17 @@
     "activChasse": {
         "positionVue": {
             "categories": ["Activités", "Chasse"],
-            "idElement": "activChasse"
+            "idElement": "activite3"
         },
         "optionsCommentaires": [
             "Se détendre//0 +stress",
             "Abattre une bête//1",
             "Tuer//2",
             "Séduire//3",
-            "Nouer une amitié//4"
+            "Nouer une amitié//4",
+            "Réussi +Légitimité,Prestige,Redoutabilité,Or,Martialité",
+            "Epouvantable +Redoutabilité",
+            "Imposer l'obéissance +obéissance"
         ],
         "siRien": [
             "Abattre une bête SI NON aventurier",
@@ -1270,7 +1419,11 @@
             "piete": { "arret": false },
             "conseiller": { "arret": false },
             "chevalierPartisan": { "arret": false },
-            "domaine": { "arret": false }
+            "domaine": { "arret": false },
+            "successionChaos": {
+                "decisions":["Imposer l'obéissance","Epouvantable", "Réussi"],
+                "arret": false
+            }
         }
     }
 }

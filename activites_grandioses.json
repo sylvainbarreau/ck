@@ -92,7 +92,11 @@
                 "arret": true
             },
             "declarationGuerre": { "arret": false },
-            "survie": { "arret": false }
+            "survie": { "arret": false },
+            "successionChaos": { 
+                "decisions": ["A DEFINIR"],
+                "arret": true
+            }
         }
     },
     "luxe": {
@@ -100,6 +104,12 @@
             "categories": ["Activités grandioses", "Grande tournée"],
             "idElement": "luxe"
         },
+        "optionsCommentaires": ["Mobilier en excès//0 ++++objectif tournée,prestige ----or",
+        "Mobilier luxueux//1 +++objectif tournée,prestige ---or",
+        "Luxe extravagant//2 ++objectif tournée --or",
+        "Biens de luxe essentiels//3 +objectif tournée -or",
+        "Aucun luxe//4 -or"
+        ],
         "siRien": "A DEFINIR",
         "defaut": ["Mobilier en excès", "Mobilier luxueux", "Aucun luxe"],
         "selonEtats": {
@@ -216,7 +226,11 @@
             "influence": { "arret": false },
             "succession": { "arret": false },
             "survie": { "arret": false }
-        }
+        },
+            "successionChaos": { 
+                "decisions": ["A DEFINIR"],
+                "arret": true
+            }
     },
     "particip": {
         "positionVue": {
@@ -455,7 +469,11 @@
             },
             "recruterChevalier": { "arret": false },
             "piete": { "arret": false },
-            "survie": { "decisions": ["A DEFINIR"], "arret": true}
+            "survie": { "decisions": ["A DEFINIR"], "arret": true},
+            "successionChaos": { 
+                "decisions": ["A DEFINIR"],
+                "arret": true
+            }
         }
     },
     "prix": {
@@ -700,7 +718,11 @@
             "succession": { "arret": false },
             "conseiller": { "arret": false },
             "influence": { "arret": false },
-            "survie": { "arret": false }
+            "survie": { "arret": false },
+            "successionChaos": { 
+                "decisions": ["A DEFINIR"],
+                "arret": true
+            }
         }
     },
     "activCouro": {
@@ -814,6 +836,10 @@
                     "Perturber les loyalistes": "undefined"
                 },
                 "arret": false
+            },
+            "successionChaos": { 
+                "decisions": ["Être témoin"],
+                "arret": true
             }
         }   
     }

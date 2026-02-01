@@ -5,6 +5,9 @@
             "idElement": "regence",
             "motLiaison": "SINON"
         },
+        "optionsCommentaires": ["Remplir les coffres //0 +or,développement,levées",
+    "Gonfler les rangs //1 +chevalier,recruter",
+    "Promouvoir l'autorité //2 +faction,opinion conseiller"],
         "siRien": "Remplir les coffres",
         "defaut": ["Promouvoir l'autorité"],
         "selonEtats": {

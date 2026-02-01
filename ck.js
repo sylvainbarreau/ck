@@ -24,13 +24,24 @@ function (p, t=new Array(), o=null) {
         case 'influence' : // besoin agent //influence SI vassal direct LUI OU courtisan LUI OU invité LUI, Influence, Or, Prestige, hameçon
         case 'erudition':
             case 'rancon': // Or, hameçon
+        'troupeau' // troupeau
          *
          A SUPPRIMER ?         case 'perteTerresRevoquer': // accorder titre SINON chercher secret,Opinion,Diplomatie,Intrigue,Or,hameçon,Intrigue (pour révoquer)
          *
         case 'aInfluencer': // (alliance) opinion, Diplomatie, Intrigue
-        case 'recruterChevalier':
+        case 'recruterChevalier': Recruter chevalier");
+            e6.add("hameçon OU secret SI chevalier possible");
+            e6.add("Martialité");
+            e6.add("emprisonner SI chevalier possible");
+            e6.add("Prestige");
+            //e6.add("secret SI Atout \"Je suis bien en comparaison\"");
         case 'chevalierPartisan': // comme recruterChevalier sans Martialité
-        case 'proclame':
+        case 'proclame':Recruter chevalier");
+            e6.add("hameçon OU secret SI chevalier possible prouesse >8");
+            e6.add("Martialité");
+            e6.add("emprisonner SI chevalier possible prouesse >8");
+            e6.add("Prestige");
+            //e6.add("secret SI Atout \"Je suis bien en comparaison\"");
         case 'conseiller': // recruter
         case 'controle':
         case 'assassinat': // Faire démissionner ou Assassiner
@@ -56,6 +67,7 @@ function (p, t=new Array(), o=null) {
         case 'piete': // Piété, Erudition
         case 'agent': // opinion SI vassal direct ou courtisan ou invité CIBLE,Diplomatie,Intrigue (Influence) Or, Prestige, hameçon, Piété (parfois)
         case 'prestige':
+        'successionChaos' // obéissance,Redoutabilité, Domination (troupeau), Légitimité
         case 'succession':
         case 'vassal': //allié, hameçon fort,Intrigue, ami,opinion,Diplomatie,Intrigue amant, prisonnier,Intrigue, terrifié,redoutabilité
         default:
@@ -6733,7 +6745,6 @@ function evidence(id, texte, ttLeTps=false) {
     liDec('dec', 'dec-d-maj-26'); //Devenir un aventurier", 'dec-d-maj-26
     liDec('dec', 'dec-p-tr-1'); //Accélérer les complots", 'dec-p-tr-1
     liDec('dec', 'dec-e'); //Révéler la vraie foi", 'dec-e
-    liDec('dec', 'dec-f'); //Abandonner la foi secrète", 'dec-f
     liDec('dec', 'dec-d-min-21'); //S'entraîner pour un tournoi", 'dec-d-min-21
     liDec('dec', 'dec-p-tr-2'); //Vivre la communion mystique", 'dec-p-tr-2
     liDec('dec', 'dec-d-min-cour-2'); //Ordonner une expulsion massive", 'dec-d-min-cour-2
@@ -6770,56 +6781,8 @@ function evidence(id, texte, ttLeTps=false) {
     liDec('decCour', 'dec-d-min-0'); //Recruter à un poste de la Cour", 'dec-d-min-0
     liDec('decCour', 'dec-d-court-2'); //Inviter des chevaliers", 'dec-d-court-2
     liDec('decCour', 'dec-d-court-3'); //Inviter des prétendants", 'dec-d-court-3
-    liDec('decCour', 'dec-d-court-3'); //Inviter des prétendants", 'dec-d-court-3
-    // Activités
-    liOuiNon("Grande tournée", 'act-g-1', decisionOuNon(decisionsResult,
-        new Set(["Contrôle SI &lt;100", "Opinion comtale", "Légitimation", "Diminuer stress", "Prestige"]),
-        new Set(["Or"])));
-    liOuiNon("Grand tournoi", 'act-g-0', decisionOuNon(decisionsResult,
-        new Set(["Prestige", "Légitimation", "Diminuer stress"]),
-        new Set(["Or"])));
-    liOuiNon("Séjour universitaire", 'act-1', decisionOuNon(decisionsResult,
-        new Set(["Diplomatie", "Martialité", "Intendance", "Intrigue", "Erudition", "Points d'expérience", "Artefact", "Recruter"]),
-        new Set(["Or"])));
-    liOuiNon("Festin", 'act-0', decisionOuNon(decisionsResult,
-        new Set(["Prestige", "Légitimation", "Diminuer stress", "Intrigue"]),
-        new Set(["Or"])));
-    liOuiNon("Funérailles", 'act-7', decisionOuNon(decisionsResult,
-        new Set(["Diminuer stress", "Piété", "Légitimation"]),
-        new Set(["Or"])));
-    liOuiNon("Fête de camp", 'act-2', decisionOuNon(decisionsResult,
-            new Set(["Diminuer stress", "Provisions", "Diplomatie", "Martialité", "Intendance", "Intrigue", "Erudition", "Construire", "Artefact", "Recruter"]),
-            new Set(["Or"])));
-    liOuiNon("Randonnée", 'act-3', decisionOuNon(decisionsResult,
-                new Set(["Diminuer stress", "Prestige", "Erudition"]),
-                new Set(["Or"])));
-    liOuiNon("Chasse", 'act-4', decisionOuNon(decisionsResult,
-        new Set(["Prestige", "Provisions", "Artefact", "Légende", "Légitimation", "Diminuer stress", "Prouesse"]),
-        new Set(["Or"])));
-    liOuiNon("Inspection", 'act-8', decisionOuNon(decisionsResult,
-        new Set([/*décision si rien*/ "Développement", "Contrôle SI &lt;100", "Augmenter levées", "Opinion"]),
-        new Set(["Or"])));
-    liOuiNon("Expédition vers un monument", 'act-5', decisionOuNon(decisionsResult,
-        new Set(["Intrigue", "Diplomatie", "Martialité", "Erudition", "Intendance", "Recruter", "Prestige"]),
-        new Set(["Or"])));
-    liOuiNon("Pélerinage", 'act-6', decisionOuNon(decisionsResult,
-            new Set(["Piété", "Légitimation", "Diminuer stress", "Eviter Gibier de potence", "Construire"]),
-            new Set(["Or"])));
-    liOuiNon("Rencontre des pairs", 'act-9', decisionOuNon(decisionsResult,
-        new Set(["Opinion"]),
-        new Set(["Or"])));
-    liDec('activitesGrand', 'act-g-1'); //Grande tournée
-    liDec('activitesGrand', 'act-g-0'); //Grand tournoi
-    liDec('activites', 'act-9'); //Rencontre des pairs
-    liDec('activites', 'act-0'); //Festin
-    liDec('activites', 'act-2'); //Fête de camp
-    liDec('activites', 'act-7'); //Funérailles
-    liDec('activites', 'act-3'); //Randonnée
-    liDec('activites', 'act-4'); //Chasse
-    liDec('activites', 'act-8'); //Inspection
-    liDec('activites', 'act-5'); //Expédition vers un monument
-    liDec('activites', 'act-6'); //Pélerinage
-    liDec('activites', 'act-1'); //Séjour universitaire
+    
+    // Activités - gérées par le système data-driven (decisions_activites.json)
     }
 function sansDoublon(tab, liaison="") {
     // Support pour les nouveaux tableaux simples du moteur data-driven

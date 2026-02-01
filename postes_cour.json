@@ -133,10 +133,13 @@
                 "decisions": ["Faire de la recherche avancée"],
                 "arret": false
             },
-            "conseiller": { "arret": false }
+            "conseiller": { "arret": false },
+            "successionChaos": {
+                "decisions": ["Faire de la recherche avancée"],
+                "arret": false
+            }
         }
     },
-
     "posteCaravanier": {
         "positionVue": {
             "categories": ["Postes de la cour"],
@@ -220,7 +223,6 @@
             "domaine": { "arret": false }
         }
     },
-
     "posteAntiq": {
         "positionVue": {
             "categories": ["Postes de la cour"],
@@ -260,7 +262,7 @@
                 "arret": true
             },
             "religieuxAInfluencer": {
-"decisions": ["Améliorer les artefacts", "Rechercher des artefacts rares", "Exposer les objets illustres", "aucune fonction"],
+                "decisions": ["Améliorer les artefacts", "Rechercher des artefacts rares", "Exposer les objets illustres", "aucune fonction"],
                 "arret": true
             },
             "influence": {
@@ -328,7 +330,7 @@
                 "arret": true
             },
             "aInfluencer": {
-"decisions": ["Améliorer les artefacts", "Rechercher des artefacts rares", "Exposer les objets illustres", "aucune fonction"],
+                "decisions": ["Améliorer les artefacts", "Rechercher des artefacts rares", "Exposer les objets illustres", "aucune fonction"],
                 "arret": true
             },
             "factionPop": {
@@ -351,10 +353,13 @@
                 "decisions": ["Améliorer les artefacts", "aucune fonction"],
                 "arret": true
             },
-            "conseiller": { "arret": false }
+            "conseiller": { "arret": false },
+            "successionChaos": {
+                "decisions": ["Rechercher des artefacts rares", "Améliorer les artefacts"],
+                "arret": false
+            }
         }
     },
-
     "posteNour": {
         "positionVue": {
             "categories": ["Postes de la cour"],
@@ -364,7 +369,7 @@
         "Promouvoir l'amitié//1 -prestige",
         "Encourager la compétition//2 -prestige",
         "// aucune +or,prestige"
-    ],
+        ],
         "siRien": "aucune fonction",
         "defaut": "aucune fonction",
         "selonEtats": {
@@ -436,12 +441,14 @@
             "domaine": { "arret": false }
         }
     },
-
     "posteEcuyer": {
         "positionVue": {
             "categories": ["Postes de la cour"],
             "idElement": "posteEcuyerResult"
         },
+        "optionsCommentaires": ["Supervise la reproduction//0 +guerre -or",
+        "Toilettage des chevaux de guerre//1 +guerre SI commande -or",
+        "// aucune +or,prestige"    ],
         "siRien": "aucune fonction",
         "defaut": "aucune fonction",
         "selonEtats": {
@@ -512,12 +519,16 @@
             "domaine": { "arret": false }
         }
     },
-
     "posteChamp": {
         "positionVue": {
             "categories": ["Postes de la cour"],
             "idElement": "posteChampResult"
         },
+        "optionsCommentaires": ["Concourir en son nom//0 +prestige -or",
+        "Entraîner le dirigeant//1 +prouesse -prestige,stress",
+        "Améliorer les aptitudes//2 +prouesse -prestige",
+        "// aucune +or"
+    ],
         "options": ["Concourir en son nom", "Entraîner le dirigeant", "Améliorer les aptitudes"],
         "siRien": "Concourir en son nom",
         "defaut": "Concourir en son nom",
@@ -671,7 +682,6 @@
             }
         }
     },
-
     "posteProf": {
         "positionVue": {
             "categories": ["Postes de la cour"],
@@ -810,10 +820,12 @@
                     },
                     "conseiller": {
                         "arret": false
-                    }
+                    },
+                    "successionChaos": {
+                        "decisions": ["Faire de la recherche avancée"],
+                        "arret": true}
         }
     },
-
     "posteChasse": {
         "positionVue": {
             "categories": ["Postes de la cour"],
@@ -846,12 +858,16 @@
             }
         }
     },
-
     "posteChroni": {
         "positionVue": {
             "categories": ["Postes de la cour"],
             "idElement": "posteChroniqueur"
         },
+        "optionsCommentaires": ["Rechercher des légendes//0 +légende -or",
+        "Exalter la légende dans le pays//1 +légende -or",
+        "Répandre la légende à l'étranger//2 +légende -or",
+        "// aucune +or,prestige"
+    ],
         "siRien": "aucune fonction",
         "defaut": ["Exalter la légende dans le pays SI légende", "Rechercher des légendes"],
         "selonEtats": {
@@ -889,12 +905,16 @@
             "domaine": { "arret": false }
         }
     },
-
     "posteBouffon": {
         "positionVue": {
             "categories": ["Postes de la cour"],
             "idElement": "posteBouffon"
         },
+        "optionsCommentaires": ["Divertir les courtisans//0 +stress -prestige",
+        "Alimenter la rumeur//1 +complot ennemi -prestige",
+        "Abuser du bouffon//2 +redoutabilité -prestige",
+        "// aucune +or,prestige"
+        ],
         "siRien": "Divertir la Cour",
         "defaut": "Divertir la Cour",
         "selonEtats": {
@@ -905,15 +925,20 @@
             "demande2": { "decisions": [], "arret": true },
             "enfant": { "decisions": ["A DEFINIR", "aucune fonction SI aventurier adopter",
                 "Divertir les courtisans"],
-                "arret": false  }
+                "arret": false  },
+            "successionChaos": { 
+                "decisions": ["Abuser du bouffon"],
+                "arret": false
+            }
         }
     },
-
     "posteDame": {
         "positionVue": {
             "categories": ["Postes de la cour"],
             "idElement": "posteDame"
         },
+        "optionsCommentaires": ["Rester à l'écoute du terrain//0 +découverte complot,Intrigue -Prestige"
+        ],
         "siRien": "aucune fonction",
         "defaut": "aucune fonction",
         "selonEtats": {
@@ -929,12 +954,14 @@
             }
         }
     },
-
     "posteGarde": {
         "positionVue": {
             "categories": ["Postes de la cour"],
             "idElement": "posteGardeCorps"
         },
+        "optionsCommentaires": ["Terrifier la Cour//0 +redout -prestige,opinion cour",
+        "// aucune +or,prestige"
+        ],
         "siRien": "Garder la chambre",
         "defaut": "Garder la chambre",
         "selonEtats": {
@@ -943,7 +970,11 @@
             "chevalierPartisan": { "decisions": [], "arret": true },
             "demande": { "decisions": [], "arret": true },
             "demande2": { "decisions": [], "arret": true },
-            "enfant": { "decisions": ["A DEFINIR", "aucune fonction SI aventurier adopter"], "arret": false }
+            "enfant": { "decisions": ["A DEFINIR", "aucune fonction SI aventurier adopter"], "arret": false },
+            "successionChaos": { 
+                "decisions": ["Terrifier la Cour"],
+                "arret": false
+            }
         }
     },
     "posteAstro": {
@@ -996,6 +1027,10 @@
             "prestige":{
                 "decisions":["aucune fonction"],
                 "arret":true
+            },
+            "successionChaos": {
+                "decisions":["Superviser les préparatifs"],
+                "arret": false
             }
         }
     }

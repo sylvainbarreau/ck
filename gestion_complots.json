@@ -474,7 +474,11 @@
             "factionPop": { "arret": false },
             "domaine": { "arret": false },
             "prison": { "arret": false },
-            "survie": { "arret": false }
+            "survie": { "arret": false },
+            "successionChaos": {
+                "decisions": ["Voler le troupeau"],
+                "arret": false
+            }
         }
     },
     "compPolitique": {

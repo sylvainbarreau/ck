@@ -13,7 +13,9 @@ const DECISIONS_FILES = [
     'decisions_rom.json',
     'decisions_admin.json',
     'decisions.json',
-    'decisions_cour.json'
+    'decisions_cour.json',
+    'decisions_nom.json',
+    'decisions_activites.json'
 ];
 
 /**

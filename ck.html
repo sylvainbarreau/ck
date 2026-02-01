@@ -122,7 +122,7 @@
       <h2>Affecter des commandants</h2>
       <p id="comm"></p>
       <h2></h2><p id="militaireResult"></p>
-      <h1>Conseil</h1>
+      <h1>Conseil (Kouroultaï)</h1>
       <h2>Conjoint</h2>
       <p id="conseilConjointResult"></p>
       <h2>Chancelier</h2>
@@ -135,6 +135,8 @@
       <p><em>sans annuler </em><span id="intendantResult"></span></p>
       <h2>Maître-espion</h2>
       <p id="espionResult"></p>
+      <h2>Membre du Kouroultaï</h2>
+      <p id="kouroultai"></p>
       <h1>Courtisans (Camp)</h1>
       <h2>Postes de la cour (Officiers)</h2>
       <ul>
@@ -172,9 +174,11 @@
       <p id="secretsResult"></p>
       <h1>Décisions (et Contrats)</h1><h2>Décisions</h2>
       <h3>Décisions romaines</h3><ul id="decRom"></ul>
+      <h3>Décisions nomades majeures</h3>
       <h3>Décisions importantes</h3>
       <h3>(Décisions importantes d'aventurier)</h3><ul id="decImp"></ul>
       <h3>Décisions de lutte</h3><ul id="decLutte"></ul>
+      <h3>Décisions nomades</h3><ul id="decNomade"></ul>
       <h3>Décisions de pays</h3><ul id="decPays"></ul>
       <h3>Décisions administratives</h3><ul id="decAdm"></ul>
       <h3>(Décisions d'aventurier)</h3><ul id="decAv"></ul>
@@ -323,7 +327,7 @@
             <h4>Options d'activité</h4>
             <h5>Longueur du voyage</h5>
             <p id="randoOption"></p>
-            <h3>Chasse</h3>
+            <h3>Chasse</h3><p id="typeChasse"></p>
             <h4>Intention</h4>
             <p id="activite3"></p>
             <h4>Options d'activité</h4>
@@ -371,6 +375,7 @@
     const domaines = new Map();
     // situation annoncée (si projet long terme) OU descendre à l'option
     domaines.set('aInfluencer', "Alliance");
+    //domaines.set('troupeau', "augmenter troupeau");
     domaines.set('recruterChevalier', 'Chevalier');
     domaines.set('chevalierPartisan', 'Chevalier (aventurier)');
     domaines.set('proclame', 'Chevalier proclamé');
@@ -400,6 +405,7 @@
     domaines.set('agent', "place d'agent");
     domaines.set('prestige', 'Prestige');
     //domaines.set('rancon', 'rançon');
+    domaines.set('successionChaos', "Succession chaotique");
     domaines.set('succession', 'succession par acclamation ou nomination à remonter');
     domaines.set('vassal', "vassal puissant");
     //domaines.set('vassalSOppose', "Vassal qui s'oppose");

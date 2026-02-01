@@ -1,0 +1,90 @@
+{
+    "dec-p-nom-a": {
+        "lib": "Recruter des courtisans venant des capitales nomades",
+        "categorieDecision": null,
+        "positionVue": {
+            "categories": ["Décisions (et Contrats)","Décisions","Décisions nomades"],
+            "idListe": "decNomade",
+            "precedent": null
+        },
+        "effetsPositifs": ["recruter"],
+        "effetsNegatifs": ["Troupeau"]
+    },
+    "dec-p-nom-b": {
+        "lib": "Concevoir un Palais des plaisirs",
+        "categorieDecision": null,
+        "positionVue": {
+            "categories": ["Décisions (et Contrats)","Décisions","Décisions nomades"],
+            "idListe": "decNomade",
+            "precedent": "Recruter des courtisans venant des capitales nomades"
+        },
+        "effetsPositifs": ["Construire", "Or", "Prestige", "augmenter levées", "Troupeau", "Magnificence"],
+        "effetsNegatifs": ["Prestige", "Troupeau", "Or"]
+    },
+    "dec-p-nom-3": {
+        "lib": "Faire venir des personnes fortunées via des offres locales",
+        "categorieDecision": "Character - Nomadic Decisions",
+        "positionVue": {
+            "categories": ["Décisions (et Contrats)","Décisions","Décisions nomades"],
+            "idListe": "decNomade",
+            "precedent": "Concevoir un Palais des plaisirs"
+        },
+        "effetsPositifs": ["Or", "Artefact"],
+        "effetsNegatifs": ["Prestige"]
+    },
+    "dec-p-nom-c": {
+        "lib": "Appel à une assemblée",
+        "categorieDecision": null,
+        "positionVue": {
+            "categories": ["Décisions (et Contrats)","Décisions","Décisions nomades"],
+            "idListe": "decNomade",
+            "precedent": "Faire venir des personnes fortunées via des offres locales"
+        },
+        "effetsPositifs": ["Fertilité comtale"],
+        "effetsNegatifs": ["Troupeau"]
+    },
+    "dec-p-nom-conv-5": {
+        "lib": "Embrasser le tengrisme",
+        "categorieDecision": "Character - Nomadic decisions - Conversion decisions",
+        "positionVue": {
+            "categories": ["Décisions (et Contrats)","Décisions","Décisions nomades"],
+            "idListe": "decNomade",
+            "precedent": "Appel à une assemblée"
+        },
+        "effetsPositifs": [],
+        "effetsNegatifs": ["Piété"]
+    },
+    "dec-p-nom-2": {
+        "lib": "Maîtriser l'art du commandement",
+        "categorieDecision": "Character - Nomadic decisions",
+        "positionVue": {
+            "categories": ["Décisions (et Contrats)","Décisions","Décisions nomades"],
+            "idListe": "decNomade",
+            "precedent": "Embrasser le tengrisme"
+        },
+        "effetsPositifs": ["Martialité"],
+        "effetsNegatifs": ["stress"]
+    },
+    "dec-p-nom-d": {
+        "lib": "Présenter l'héritier",
+        "categorieDecision": null,
+        "positionVue": {
+            "categories": ["Décisions (et Contrats)","Décisions","Décisions nomades"],
+            "idListe": "decNomade",
+            "precedent": "Maîtriser l'art du commandement"
+        },
+        "effetsPositifs": ["obéissance"],
+        "effetsNegatifs": ["Prestige", "Piété"]
+    },
+    "dec-p-nom-e": {
+        "lib": "Abandonner le nomadisme",
+        "categorieDecision": null,
+        "positionVue": {
+            "categories": ["Décisions (et Contrats)","Décisions","Décisions nomades"],
+            "idListe": "decNomade",
+            "precedent": "Présenter l'héritier"
+        },
+        "effetsPositifs": ["Or"],
+        "effetsNegatifs": ["Prestige", "Renommée"]
+    }
+}

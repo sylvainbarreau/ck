@@ -1,0 +1,144 @@
+{
+    "act-g-1": {
+        "lib": "Grande tournée",
+        "categorieDecision": "Activités grandioses",
+        "positionVue": {
+            "categories": ["Activités", "Activités grandioses"],
+            "idListe": "activitesGrand",
+            "precedent": null
+        },
+        "effetsPositifs": ["Contrôle SI <100", "Opinion comtale", "Légitimation", "Diminuer stress", "Prestige"],
+        "effetsNegatifs": ["Or"]
+    },
+    "act-g-0": {
+        "lib": "Grand tournoi",
+        "categorieDecision": "Activités grandioses",
+        "positionVue": {
+            "categories": ["Activités", "Activités grandioses"],
+            "idListe": "activitesGrand",
+            "precedent": "Grande tournée"
+        },
+        "effetsPositifs": ["Prestige", "Légitimation", "Diminuer stress"],
+        "effetsNegatifs": ["Or"]
+    },
+    "act-g-2": {
+        "lib": "Grand mariage",
+        "positionVue":{
+            "categories": ["Activités", "Activités grandioses"],
+            "idListe": "activitesGrand",
+            "precedent": "Grande tournée"
+        },
+        "effetsPositifs": ["Prestige", "Légitimation", "diminuer stress", "Diplomatie", "Intrigue", "Renommée", "Intendance"],
+        "effetsNegatifs": ["Or"]
+    },
+    "act-1": {
+        "lib": "Séjour universitaire",
+        "categorieDecision": "Activités",
+        "positionVue": {
+            "categories": ["Activités"],
+            "idListe": "activites",
+            "precedent": "Pélerinage"
+        },
+        "effetsPositifs": ["Diplomatie", "Martialité", "Intendance", "Intrigue", "Erudition", "Points d'expérience", "Artefact", "Recruter"],
+        "effetsNegatifs": ["Or"]
+    },
+    "act-0": {
+        "lib": "Festin",
+        "categorieDecision": "Activités",
+        "positionVue": {
+            "categories": ["Activités"],
+            "idListe": "activites",
+            "precedent": "Grand mariage"
+        },
+        "effetsPositifs": ["Prestige", "Légitimation", "Diminuer stress", "Intrigue"],
+        "effetsNegatifs": ["Or"]
+    },
+    "act-7": {
+        "lib": "Funérailles",
+        "categorieDecision": "Activités",
+        "positionVue": {
+            "categories": ["Activités"],
+            "idListe": "activites",
+            "precedent": "Festin"
+        },
+        "effetsPositifs": ["Diminuer stress", "Piété", "Légitimation"],
+        "effetsNegatifs": ["Or"]
+    },
+    "act-2": {
+        "lib": "Fête de camp",
+        "categorieDecision": "Activités",
+        "positionVue": {
+            "categories": ["Activités"],
+            "idListe": "activites",
+            "precedent": "Funérailles"
+        },
+        "effetsPositifs": ["Diminuer stress", "Provisions", "Diplomatie", "Martialité", "Intendance", "Intrigue", "Erudition", "Construire", "Artefact", "Recruter"],
+        "effetsNegatifs": ["Or"]
+    },
+    "act-3": {
+        "lib": "Randonnée",
+        "categorieDecision": "Activités",
+        "positionVue": {
+            "categories": ["Activités"],
+            "idListe": "activites",
+            "precedent": "Fête de camp"
+        },
+        "effetsPositifs": ["Diminuer stress", "Prestige", "Erudition"],
+        "effetsNegatifs": ["Or"]
+    },
+    "act-4": {
+        "lib": "Chasse",
+        "categorieDecision": "Activités",
+        "positionVue": {
+            "categories": ["Activités"],
+            "idListe": "activites",
+            "precedent": "Randonnée"
+        },
+        "effetsPositifs": ["Prestige", "Provisions", "Artefact", "Légende", "Légitimation", "diminuer stress", "Prouesse", "Redoutabilité SI Nomade"],
+        "effetsNegatifs": ["Or", "Troupeau"]
+    },
+    "act-8": {
+        "lib": "Inspection",
+        "categorieDecision": "Activités",
+        "positionVue": {
+            "categories": ["Activités"],
+            "idListe": "activites",
+            "precedent": "Chasse"
+        },
+        "effetsPositifs": ["Développement", "Contrôle SI <100", "Augmenter levées", "Opinion"],
+        "effetsNegatifs": ["Or"]
+    },
+    "act-5": {
+        "lib": "Expédition vers un monument",
+        "categorieDecision": "Activités",
+        "positionVue": {
+            "categories": ["Activités"],
+            "idListe": "activites",
+            "precedent": "Inspection"
+        },
+        "effetsPositifs": ["Intrigue", "Diplomatie", "Martialité", "Erudition", "Intendance", "Recruter", "Prestige"],
+        "effetsNegatifs": ["Or"]
+    },
+    "act-6": {
+        "lib": "Pélerinage",
+        "categorieDecision": "Activités",
+        "positionVue": {
+            "categories": ["Activités"],
+            "idListe": "activites",
+            "precedent": "Expédition vers un monument"
+        },
+        "effetsPositifs": ["Piété", "Légitimation", "Diminuer stress", "Eviter Gibier de potence", "Construire"],
+        "effetsNegatifs": ["Or"]
+    },
+    "act-9": {
+        "lib": "Rencontre des pairs",
+        "categorieDecision": "Activités",
+        "positionVue": {
+            "categories": ["Activités"],
+            "idListe": "activites",
+            "precedent": "Pélerinage"
+        },
+        "effetsPositifs": ["Opinion"],
+        "effetsNegatifs": ["Or"]
+    }
+}

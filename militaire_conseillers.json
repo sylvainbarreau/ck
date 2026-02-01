@@ -663,6 +663,152 @@
             "cultInnov": { "arret": false },
             "prison": { "arret": false }
         }
+    },
+    "kouroultai": {
+        "positionVue": {
+            "categories": ["Conseil (Kouroultaï)", "Membre du Kouroultaï"],
+            "idElement": "kouroultai"
+        },
+        "options": ["Soutenir les bergers", "Gérer la fertilité", "Augmenter le contrôle", "Aider l'astronome", "Affaires intérieures", "Exploiter les terres", "Organiser des pillages", "Explorer les cultures"],
+        "optionsCommentaires": ["Soutenir les bergers +troupeau +Obtenez l'armée des cavaliers de la Horde,Augmenter la taille du troupeau -Diminuer la taille du troupeau,Perte de contrôle",
+                "Gérer la fertilité +Fertilité comtale +Augmenter l'opinion du comté,Augmenter la fertilité -Perte de prestige,Réduire la fertilité",
+                "Augmenter le contrôle -corruption +Augmentation de l'opinion du baron,Augmenter l'opinion du comté -Perte d'opinion du baron,Avis du comté de Lose,Perte de contrôle",
+                "Aider l'astronome +Piété +Gagner la piété,Gagnez l'avis d'un astronome amateur -Perdre la piété,Perdre l'avis d'un astronome amateur",
+                "Affaires intérieures +opinion Vassal -Tyrannie +Mettre fin à la guerre civile,Partition des forces pour le vassal,Contrat féodal amélioré,Augmenter l'opinion des vassaux -Avis des vassaux abaissé,Contrat féodal aggravé",
+                "Exploiter les terres +Fertilité comtale, Or +Gagnez en terreur,Gagnez de l'or -Avis du comté de Lose,Perdre de l'opinion comtale",
+                "Organiser des pillages +Or +Gagnez en terreur,Gagnez du prestige -La peur de la perte,Perdre du prestige",
+                "Explorer les cultures +Obtenir l'acceptation culturelle,Acquérir des opinions culturelles différentes -Perte d'acceptation culturelle,Perdre une opinion culturelle différente"],
+        "siRien": ["Augmenter le contrôle", "Organiser des pillages", "Exploiter les terres", "Affaires intérieures SI Contrat féodal amélioré", "Aider l'astronome"],
+        "defaut": ["Aider l'astronome"],
+        "selonEtats": {
+            "aInfluencer": {
+                "decisions": ["Affaires intérieures SI ALLIE POTENTIEL-S vassal", "Explorer les cultures SI Acquérir des opinions culturelles différentes ET ALLIE POTENTIEL-S culture différente"],
+                "modifications": {
+                    "Explorer les cultures": "Explorer les cultures SI NON Perdre une opinion culturelle différente ET ALLIE POTENTIEL-S culture différente"
+                },
+                "arret": false
+            },
+            "troupeau": {
+                "decisions": ["Soutenir les bergers"],
+                "arret": false
+            },
+            "recruterChevalier": {
+                "decisions": ["Organiser des pillages SI Gagnez du prestige"],
+                "modifications": {
+                    "Organiser des pillages": "Organiser des pillages SI NON Perdre du prestige"
+                },
+                "arret": false
+            },
+            "chevalierPartisan":{
+                "decisions": [],
+                "arret": true
+            },
+            "proclame": {
+                "decisions": ["Organiser des pillages SI Gagnez du prestige"],
+                "modifications": {
+                    "Organiser des pillages": "Organiser des pillages SI NON Perdre du prestige"
+                },
+                "arret": false
+            },
+            "controle": {
+                "decisions": ["Augmenter le contrôle"],
+                "modifications":{
+                    "Soutenir les bergers": "Soutenir les bergers SI NON Perte de contrôle"
+                },
+                "arret": false
+            },
+            "denoncer":{
+                "decisions": ["Organiser des pillages SI Gagnez du prestige"],
+                "modifications": {
+                    "Organiser des pillages": "Organiser des pillages SI NON Perdre du prestige"
+                },
+                "arret": false
+            },
+            "prison":{
+                "decisions": ["Organiser des pillages SI Gagnez du prestige", "Affaires intérieures SI PRISONNIER-S vassal", "Explorer les cultures SI Acquérir des opinions culturelles différentes ET PRISONNIER-S culture différente"],
+                "modifications": {
+                    "Organiser des pillages": "Organiser des pillages SI NON Perdre du prestige",
+                    "Explorer les cultures": "Explorer les cultures SI NON Perdre une opinion culturelle différente ET PRISONNIER-S culture différente"
+                },
+                "arret": false
+            },
+            "factionPop": { 
+                "decisions":["Gérer la fertilité"],
+                "modifications":{
+                    "Augmenter le contrôle": "Augmenter le contrôle SI NON Perdre de l'opinion comtale",
+                    "Exploiter les terres": "Exploiter les terres SI NON Perdre de l'opinion comtale"
+                },
+                "arret": false
+            },
+            "vassalAInfluencer": {
+                "decisions": ["Affaires intérieures VASSAL-S", "Explorer les cultures SI Acquérir des opinions culturelles différentes ET VASSAL-S culture différente"],
+                "modifications": {
+                    "Explorer les cultures": "Explorer les cultures SI NON Perdre une opinion culturelle différente ET VASSAL-S culture différente"
+                },
+                "arret": false
+            },
+            "demande":{
+                "decisions": [],
+                "arret": true
+            },
+            "demande2":{
+                "decisions": [],
+                "arret": true
+            },
+            "guerre": { 
+                "decisions": ["Soutenir les bergers"],
+                "arret": true
+            },
+            "declarationGuerre": { 
+                "decisions": ["Soutenir les bergers"],
+                "arret": true
+            },
+            "enfant":{
+                "decisions": ["Aider l'astronome SI divorce"],
+                "arret": false
+            },
+            "cultInnov": { 
+                "decisions": ["Explorer les cultures", "Organiser des pillages SI Gagnez du prestige"],
+                "modifications": {
+                    "Organiser des pillages": "Organiser des pillages SI NON Perdre du prestige"
+                },
+                "arret": false
+            },
+            "religieuxAInfluencer": { "decisions": [], "arret": true },
+            "revenu":{
+                "decisions": ["Organiser des pillages"],
+                "arret":false
+            },
+            "piete": { 
+                "decisions": ["Aider l'astronome"],
+                "arret": true
+            },
+            "agent":{
+                "decisions": ["Affaires intérieures SI vassal direct CIBLE", "Explorer les cultures SI Acquérir des opinions culturelles différentes ET vassal direct ou courtisan ou invité CIBLE culture différente", "Organiser des pillages", "Aider l'astronome"],
+                "modifications": {
+                    "Explorer les cultures": "Explorer les cultures SI NON Perdre une opinion culturelle différente ET vassal direct ou courtisan ou invité CIBLE culture différente"
+                },
+                "arret": false
+            },
+            "prestige":{
+                "decisions": ["Organiser des pillages SI Gagnez du prestige"],
+                "modifications": {
+                    "Organiser des pillages": "Organiser des pillages SI NON Perdre du prestige"
+                },
+                "arret": false
+            },
+            "successionChaos":{
+                "decisions": ["Soutenir les bergers"],
+                "arret": false
+            },
+            "vassal": {
+                "decisions": ["Affaires intérieures VASSAL-S", "Explorer les cultures SI Acquérir des opinions culturelles différentes ET VASSAL-S culture différente"],
+                "modifications": {
+                    "Explorer les cultures": "Explorer les cultures SI NON Perdre une opinion culturelle différente ET VASSAL-S culture différente"
+                },
+                "arret": false
+            }
+        }
     }
 
 }

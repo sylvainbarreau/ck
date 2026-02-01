@@ -3,11 +3,14 @@ class TexteDecision {
     cible = null;
     dirigeant = null;
     conditions = [];
-    implications = [];
+    leviers = [];
 
     constructor(texteStr) {
         if (texteStr) {
             this.parseTexte(texteStr);
+        }
+        if (this.texteId == 'Augmenter levées') {
+            this.leviers.push(new TexteDecision('Troupeau'));
         }
     }
 

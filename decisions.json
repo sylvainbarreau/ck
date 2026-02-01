@@ -5,7 +5,7 @@
         "positionVue": {
             "categories": ["Décisions"],
             "idListe": "dec",
-            "precedent": null
+            "precedent": "Sacrifier un ours"
         },
         "effetsPositifs": ["Artefact"],
         "effetsNegatifs": ["Or"]
@@ -27,7 +27,7 @@
         "positionVue": {
             "categories": ["Décisions"],
             "idListe": "dec",
-            "precedent": "Introduire une nouvelle mode à la Cour"
+            "precedent": "Inviter des exilés religieux"
         },
         "effetsPositifs": [],
         "effetsNegatifs": []
@@ -390,7 +390,7 @@
         "positionVue": {
             "categories": ["Décisions"],
             "idListe": "dec",
-            "precedent": "Adopter la culture locale"
+            "precedent": "Devenir un aventurier"
         },
         "effetsPositifs": ["Artefact"],
         "effetsNegatifs": ["Or"]
@@ -400,9 +400,19 @@
         "positionVue":{
             "categories":["Décisions"],
             "idListe":"dec",
-            "precedent":null
+            "precedent":"Commander un artefact"
         },
         "effetsPositifs": ["Développement"],
         "effetsNegatifs": ["Piété"]
+    },
+    "dec-k": {
+        "lib": "Sacrifier un ours",
+        "positionVue":{
+            "categories":["Décisions (et Contrats)","Décisions","Décisions"],
+            "idListe":"dec",
+            "precedent":null
+        },
+        "effetsPositifs": ["Piété", "avantage", "augmenter levées", "Or", "contrôle", "opinion comtale"],
+        "effetsNegatifs": []
     }
 }
