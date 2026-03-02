@@ -58,10 +58,10 @@ class DataDrivenEngine {
         if (this.initialStack && t.length === 0 && isInitialCall) {
             // Si initialStack est un tableau, ajouter chaque élément
             if (Array.isArray(this.initialStack)) {
-                this.initialStack.forEach(item => this.pushDecisionAvecLeviers(t, new TexteDecision(item)));
+                this.initialStack.forEach(item => this.pushDecision(t, item));
             } else {
                 // Sinon, ajouter l'élément unique
-                this.pushDecisionAvecLeviers(t, new TexteDecision(this.initialStack));
+                this.pushDecision(t, this.initialStack);
             }
         }
 
@@ -98,7 +98,7 @@ class DataDrivenEngine {
         if (Array.isArray(this.siRien)) {
             this.siRien.forEach(decision => {
                 if (decision && decision !== "undefined") {
-                    this.pushDecisionAvecLeviers(t, new TexteDecision(decision));
+                    this.pushDecision(t, decision);
                 }
             });
         }
@@ -106,13 +106,13 @@ class DataDrivenEngine {
         else if (typeof this.siRien === 'object' && this.siRien.decisions) {
             this.siRien.decisions.forEach(decision => {
                 if (decision && decision !== "undefined") {
-                    this.pushDecisionAvecLeviers(t, new TexteDecision(decision));
+                    this.pushDecision(t, decision);
                 }
             });
         }
         // Cas 3: siRien est une chaîne simple
         else if (typeof this.siRien === 'string') {
-            this.pushDecisionAvecLeviers(t, new TexteDecision(this.siRien));
+            this.pushDecision(t, this.siRien);
         }
 
         return t;
@@ -132,7 +132,7 @@ class DataDrivenEngine {
             this.defaut.forEach(decision => {
                 const modifiedDecision = this.applyModificationsToText(decision, optionModifications);
                 if (modifiedDecision && modifiedDecision !== "undefined") {
-                    this.pushDecisionAvecLeviers(t, new TexteDecision(modifiedDecision));
+                    this.pushDecision(t, modifiedDecision);
                 }
             });
         }
@@ -141,14 +141,14 @@ class DataDrivenEngine {
             this.defaut.decisions.forEach(decision => {
                 const modifiedDecision = this.applyModificationsToText(decision, optionModifications);
                 if (modifiedDecision && modifiedDecision !== "undefined") {
-                    this.pushDecisionAvecLeviers(t, new TexteDecision(modifiedDecision));
+                    this.pushDecision(t, modifiedDecision);
                 }
             });
         }
         // Cas 3: defaut est une chaîne simple
         else if (typeof this.defaut === 'string') {
             const defautText = this.applyModificationsToText(this.defaut, optionModifications);
-            this.pushDecisionAvecLeviers(t, new TexteDecision(defautText));
+            this.pushDecision(t, defautText);
         }
 
         return t;
@@ -181,7 +181,7 @@ class DataDrivenEngine {
             regle.decisions.forEach(decision => {
                 const modifiedDecision = this.applyModificationsToText(decision, optionModifications);
                 if (modifiedDecision !== "undefined") {
-                    this.pushDecisionAvecLeviers(t, new TexteDecision(modifiedDecision));
+                    this.pushDecision(t, modifiedDecision);
                 }
             });
         }
@@ -248,9 +248,18 @@ class DataDrivenEngine {
     }
 
     /**
-     * Ajoute un TexteDecision au tableau t et ajoute ses leviers s'il en a
+     * Ajoute une décision au tableau t
+     * Si c'est "\n", l'ajoute directement (retour à la ligne pour l'affichage)
+     * Sinon crée un TexteDecision et ajoute ses leviers s'il en a
      */
-    pushDecisionAvecLeviers(t, decision) {
+    pushDecision(t, texteDecision) {
+        // Si c'est un retour à la ligne, l'ajouter directement
+        if (texteDecision === "\n") {
+            t.push("\n");
+            return;
+        }
+
+        const decision = new TexteDecision(texteDecision);
         t.push(decision);
 
         // Si la décision a des leviers, les ajouter aussi

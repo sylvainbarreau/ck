@@ -7,7 +7,8 @@
         },
         "initialStack": ["stress éviter niveau+", "\n"],
         "siRien": null,
-        "defaut": ["Points d'expérience", "Renommée", "Légitimation", "légende", "Artefact", "stress descendre niveau 0", "obtenir mécène", "Mission/Contrat", "Redoutabilité", "emprisonner", "vassal non factiable", "éviter rivalité/rancune", "hameçon", " secret", "Recruter", "Développement", "Piété", "Prestige", "Or", "Trésor", "Fertilité comtale SI Nomade", "Troupeau SI Nomade", "Influence", "Diminuer stress", "Provisions"],
+        "defaut": ["Points d'expérience", "Renommée", "Légitimation", "légende", "Artefact", "stress descendre niveau 0", "obtenir mécène", "Mission/Contrat", "Redoutabilité", "emprisonner", "vassal non factiable", "éviter rivalité/rancune", "hameçon", " secret", "Recruter", "Développement", "Piété", "Prestige", "Or", "Trésor", "Fertilité comtale SI Nomade", "Troupeau SI Nomade", "Influence", "Mérite",
+            "Diminuer stress", "Provisions"],
         "selonEtats": {
             "siRien": {
                 "decisions": [
@@ -31,6 +32,10 @@
                     "Contrôle SI <100",
                     "Développement",
                     "Emprisonner SI NON aventurier", "\n",
+                    "Or SI Nomade",
+                    "Hameçon SI Nomade ET Atout \"Obligations en or\"",
+                    "Secret SI Nomade ET Atout \"Obligations en or\"",
+                    "Emprisonner SI Nomade", "\n",                    
                     "Prestige",
                     "Secret SI Atout \"Je suis bien en comparaison\"",
                     "Intrigue",
