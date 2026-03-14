@@ -12,6 +12,18 @@ class TexteDecision {
         if (this.texteId == 'Augmenter levées') {
             this.leviers.push(new TexteDecision('Troupeau'));
         }
+        if (this.texteId == 'Prestige') {
+            this.leviers.push(new TexteDecision('Secret SI Atout "Je suis bien en comparaison"'));
+        }
+        if (this.texteId == 'Domination') {
+            this.leviers.push(new TexteDecision('Troupeau'));
+        }
+        if (this.texteId == 'Or') {
+            this.leviers.push(new TexteDecision('Trésor'));
+            this.leviers.push(new TexteDecision('Hameçon SI Atout "Obligations en or"'));
+            this.leviers.push(new TexteDecision('Troupeau'));
+            this.leviers.push(new TexteDecision('emprisonner'));
+        }
     }
 
     parseTexte(texte) {

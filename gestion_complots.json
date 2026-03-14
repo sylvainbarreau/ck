@@ -169,7 +169,10 @@
                     "Apprendre la langue Conjoint"
                 ],
                 "arret": false
-            }
+            },
+            "successionChaos": { "decisions": [], "arret": false },
+            "tributaire": { "arret": false},
+            "troupeau": { "arret": false}
         }
     },
     "contreMesure": {
@@ -358,7 +361,12 @@
             "chevalierPartisan": { "arret": false },
             "piete": { "arret": false },
             "conseiller": { "arret": false },
-            "domaine": { "arret": false }
+            "domaine": { "arret": false },
+            "successionChaos": { "decisions": [], "arret": false },
+            "tributaire": { "modifications":{ "Primes pour les dénonciations": "undefined"},
+                "arret": false},
+            "troupeau": { "arret": false}
+
         }
     },
     "compHostile": {
@@ -478,7 +486,15 @@
             "successionChaos": {
                 "decisions": ["Voler le troupeau"],
                 "arret": false
-            }
+            },
+            "tributaire": { 
+                "decisions": [
+                    "Voler le troupeau"
+                ],
+                "arret": false
+            },
+            "troupeau": { "decisions": ["Voler le troupeau"], "arret": false}
+
         }
     },
     "compPolitique": {
@@ -635,7 +651,11 @@
             "factionPop": { "arret": false },
             "domaine": { "arret": false },
             "cultInnov": { "arret": false },
-            "survie": { "arret": false }
+            "survie": { "arret": false },
+            "successionChaos": { "decisions": [], "arret": false },
+            "tributaire": { "decisions": [],"arret": true},
+            "troupeau": { "decisions": [],"arret": true}
+
         }
     }
 }

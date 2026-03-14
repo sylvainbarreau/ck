@@ -93,10 +93,12 @@
             },
             "declarationGuerre": { "arret": false },
             "survie": { "arret": false },
-            "successionChaos": { 
+            "successionChaos": {
                 "decisions": ["A DEFINIR"],
                 "arret": true
-            }
+            },
+            "troupeau": { "decisions": [], "arret": true },
+            "tributaire": { "decisions": [], "arret": true }
         }
     },
     "luxe": {
@@ -227,10 +229,12 @@
             "succession": { "arret": false },
             "survie": { "arret": false }
         },
-            "successionChaos": { 
+            "successionChaos": {
                 "decisions": ["A DEFINIR"],
                 "arret": true
-            }
+            },
+            "troupeau": { "decisions": [], "arret": true },
+            "tributaire": { "decisions": [], "arret": true }
     },
     "particip": {
         "positionVue": {
@@ -372,7 +376,10 @@
                 "decisions": ["Participe"],
                 "arret": true
             },
-            "conseiller": { "arret": false }
+            "conseiller": { "arret": false },
+            "successionChaos": { "decisions": [], "arret": false },
+            "troupeau": { "decisions": ["Participe"], "arret": false },
+            "tributaire": { "decisions": ["Participe"], "arret": false }
         }
     },
     "tournoiHeberg": {
@@ -470,10 +477,12 @@
             "recruterChevalier": { "arret": false },
             "piete": { "arret": false },
             "survie": { "decisions": ["A DEFINIR"], "arret": true},
-            "successionChaos": { 
+            "successionChaos": {
                 "decisions": ["A DEFINIR"],
                 "arret": true
-            }
+            },
+            "troupeau": { "decisions": [], "arret": true },
+            "tributaire": { "decisions": [], "arret": true }
         }
     },
     "prix": {
@@ -719,10 +728,12 @@
             "conseiller": { "arret": false },
             "influence": { "arret": false },
             "survie": { "arret": false },
-            "successionChaos": { 
+            "successionChaos": {
                 "decisions": ["A DEFINIR"],
                 "arret": true
-            }
+            },
+            "troupeau": { "decisions": [], "arret": true },
+            "tributaire": { "decisions": [], "arret": true }
         }
     },
     "activCouro": {
@@ -837,10 +848,12 @@
                 },
                 "arret": false
             },
-            "successionChaos": { 
+            "successionChaos": {
                 "decisions": ["Être témoin"],
                 "arret": true
-            }
-        }   
+            },
+            "troupeau": { "decisions": [], "arret": false },
+            "tributaire": { "decisions": ["Profiter des avantages", "Être témoin"], "arret": false }
+        }
     }
 }

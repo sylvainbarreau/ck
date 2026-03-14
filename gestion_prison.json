@@ -251,7 +251,9 @@
             "successionChaos": {
                 "decisions": ["Castrer le prisonnier", "Exécuter SI Redoutabilité", "Négocier la libération > Bannir SI artefact"],
                 "arret": false
-            }
+            },
+            "troupeau": { "decisions": ["Négocier la libération > Bannir SI artefact"], "arret": false },
+            "tributaire": { "decisions": ["Torturer SI Atout \"Je suis bien en comparaison\"", "Castrer le prisonnier", "Exécuter SI Redoutabilité", "Négocier la libération > Bannir SI artefact"], "arret": false }
         }
     }
 }

@@ -52,7 +52,10 @@
                 "decisions": ["cocher Renforcement mensuel", "Créer un régiment", "régiment > Augmenter la taille"],
                 "arret": true
             },
-            "survie": { "arret": false }
+            "survie": { "arret": false },
+            "successionChaos": { "decisions": [], "arret": false },
+                "tributaire":{ "decisions": [], "arret": true},
+                    "troupeau":{ "decisions": [], "arret": true}
         }
     },
     "militaireAuto": {
@@ -116,7 +119,10 @@
             "prison": {
                 "decisions": ["Automatisé"],
                 "arret": true
-            }
+            },
+            "successionChaos": { "decisions": [], "arret": false },
+            "tributaire":{ "arret":false},
+             "troupeau":{ "arret":false}
         }
     },
 
@@ -248,7 +254,10 @@
             "demande": { "arret": false },
             "demande2": { "arret": false },
             "conseiller": { "arret": false },
-            "survie": { "arret": false }
+            "survie": { "arret": false },
+            "successionChaos": { "decisions": [], "arret": false },
+                "tributaire":{ "arret":false},
+                "troupeau":{ "arret":false}
         }
     },
 
@@ -330,7 +339,10 @@
             "enfant": { 
                 "decisions": ["Gérer les affaires étrangères SI divorce ET CHEF DE FOI dirigeant"],
                 "arret": false },
-            "survie": { "arret": false }
+            "survie": { "arret": false },
+            "successionChaos": { "decisions": [], "arret": false },
+                "tributaire":{ "decisions": [], "arret": true},
+                "troupeau":{ "decisions": [], "arret": true}
         }
     },
 
@@ -426,7 +438,11 @@
             "piete": { "arret": false },
             "denoncer": { "arret": false },
             "domaine": { "arret": false },
-            "cultInnov": { "arret": false }
+            "cultInnov": { "arret": false },
+            "successionChaos": { "decisions": [], "arret": false },
+                "tributaire":{ "decisions": [], "arret": true},
+                "troupeau":{ "decisions": [], "arret": true}
+
         }
     },
 
@@ -508,7 +524,11 @@
             "enfant": { 
                 "decisions":["Améliorer les relations religieuses SI divorce"],
                 "arret": false },
-            "survie": { "arret": false }
+            "survie": { "arret": false },
+            "successionChaos": { "decisions": [], "arret": false },
+                "tributaire":{ "decisions": [], "arret": true},
+                "troupeau":{ "decisions": [], "arret": true}
+
         }
     },
 
@@ -595,7 +615,11 @@
             "conseiller": { "arret": false },
             "domaine": { "arret": false },
             "enfant": { "arret": false },
-            "survie": { "arret": false }
+            "survie": { "arret": false },
+            "successionChaos": { "decisions": [], "arret": false },
+                "tributaire":{ "decisions": [], "arret": true},
+                "troupeau":{ "decisions": [], "arret": true}
+
         }
     },
 
@@ -661,7 +685,10 @@
             "conseiller": { "arret": false },
             "factionPop": { "arret": false },
             "cultInnov": { "arret": false },
-            "prison": { "arret": false }
+            "prison": { "arret": false },
+            "successionChaos": { "decisions": [], "arret": false },
+            "tributaire":{"arret":false },
+            "troupeau":{"arret":false}
         }
     },
     "kouroultai": {
@@ -690,6 +717,14 @@
             },
             "troupeau": {
                 "decisions": ["Soutenir les bergers"],
+                "arret": false
+            },
+            "tributaire": {
+                "decisions": ["Organiser des pillages SI Gagnez du prestige", "Soutenir les bergers"],
+                "modifications": {
+                    "Organiser des pillages": "Organiser des pillages SI NON Perdre du prestige",
+                    "Gérer la fertilité" : "Gérer la fertilité SI NON Perte de prestige"
+                },
                 "arret": false
             },
             "recruterChevalier": {

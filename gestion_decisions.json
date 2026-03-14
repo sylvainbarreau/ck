@@ -457,6 +457,14 @@
             "successionChaos": {
                 "decisions": ["obéissance","Redoutabilité SI Nomade", "Troupeau", "Légitimité"],
                 "arret": false
+            },
+            "troupeau": {
+                "decisions": ["Troupeau"],
+                "arret": false
+            },
+            "tributaire": {
+                "decisions": ["Prestige", "Domination", "Légitimité", "Redoutabilité"],
+                "arret": false
             }
         }
     }

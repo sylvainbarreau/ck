@@ -140,7 +140,9 @@
             "successionChaos": {
                 "decisions": ["Etudier durement"],
                 "arret": true
-            }
+            },
+            "troupeau": { "decisions": [], "arret": false },
+            "tributaire": { "decisions": [], "arret": false }
         }
     },
     "univMat": {
@@ -278,7 +280,9 @@
             "successionChaos": {
                 "decisions": ["Bibliothèque"],
                 "arret": false
-            }
+            },
+            "troupeau": { "decisions": ["Bibliothèque"], "arret": false },
+            "tributaire": { "decisions": ["Bibliothèque"], "arret": false }
 
         }
     },
@@ -382,6 +386,8 @@
                 "decisions":["Nerge"],
                 "arret": false
             },
+            "troupeau": { "decisions": [], "arret": false },
+            "tributaire": { "decisions": ["Nerge", "Chasse SI sexe martial", "Fauconnerie"], "arret": false },
             "vassal":{
                 "decisions":["Fauconnerie SI VASSAL-S attiré", "Nerge"],
                 "arret": false
@@ -495,7 +501,9 @@
             "successionChaos": {
                 "decisions": ["A DEFINIR"],
                 "arret": true
-            }
+            },
+            "troupeau": { "decisions": [], "arret": false },
+            "tributaire": { "decisions": ["Groupes de gardes-chasse", "Groupes de chasse"], "arret": false }
 
         }
     },
@@ -606,7 +614,9 @@
             "successionChaos": {
                 "decisions":["Petit groupe"],
                 "arret": true
-            }
+            },
+            "troupeau": { "decisions": ["Petit groupe"], "arret": true },
+            "tributaire": { "decisions": ["Grand groupe", "Groupe raisonnable", "Petit groupe"], "arret": true }
         }
     },
     "activRando": {
@@ -740,7 +750,9 @@
             "conseiller": { "arret": false },
             "successionChaos": {
                 "arret": false
-            }
+            },
+            "troupeau": { "decisions": [], "arret": false },
+            "tributaire": { "decisions": [], "arret": false }
         }
     },
     "activPelerin": {
@@ -756,8 +768,12 @@
         "selonEtats": {
             "enfant": {
                 "decisions": ["A DEFINIR", "Pèlerinage pieux SI divorce"],
-                "arret": false      
-            }
+                "arret": false
+            },
+            "successionChaos": { "decisions": [], "arret": false },
+            "troupeau": { "decisions": [], "arret": false },
+            "tributaire": { "decisions": [], "arret": false }
+
         }
     },
     "pelerinIntent": {
@@ -892,7 +908,9 @@
             "conseiller": { "arret": false },
             "successionChaos": {
                 "arret": false
-            }
+            },
+            "troupeau": { "decisions": [], "arret": false },
+            "tributaire": { "decisions": [], "arret": false }
         }
     },
     "pelerinFidel": {
@@ -1024,7 +1042,11 @@
                 "decisions": ["Zèle absolu", "Dévotion publique"],
                 "arret": false
             },
-            "conseiller": { "arret": false }
+            "conseiller": { "arret": false },
+            "successionChaos": { "decisions": [], "arret": false },
+            "troupeau": { "decisions": [], "arret": false },
+            "tributaire": { "decisions": [], "arret": false }
+
         }
     },
     "pelerinApp": {
@@ -1166,7 +1188,11 @@
                 },
                 "arret": false
             },
-            "conseiller": { "arret": false }
+            "conseiller": { "arret": false },
+            "successionChaos": { "decisions": [], "arret": false },
+            "troupeau": { "decisions": [], "arret": false },
+            "tributaire": { "decisions": [], "arret": false }
+
         }
     },
     "inspec": {
@@ -1230,10 +1256,13 @@
             "vassal": { "arret": false            },
             "domaine": { "arret": false            },
             "cultInnov": { "arret": false            },
-            "prison": { 
+            "prison": {
                 "decisions": ["Intention de l'étude"],
                 "arret": true
-            }    
+            },
+            "successionChaos": { "decisions": [], "arret": false },
+            "troupeau": { "decisions": [], "arret": false },
+            "tributaire": { "decisions": [], "arret": false }
         }
     },
     "inspecFinance": {
@@ -1286,7 +1315,10 @@
             "domaine": { "arret": false           },
             "cultInnov": { "arret": false           },
             "prison": { "arret": false           },
-            "survie": { "arret": false           }
+            "survie": { "arret": false           },
+            "successionChaos": { "decisions": [], "arret": false },
+            "troupeau": { "decisions": [], "arret": false },
+            "tributaire": { "decisions": [], "arret": false }
         }
     },
     "activChasse": {
@@ -1423,7 +1455,9 @@
             "successionChaos": {
                 "decisions":["Imposer l'obéissance","Epouvantable", "Réussi"],
                 "arret": false
-            }
+            },
+            "troupeau": { "decisions": [], "arret": false },
+            "tributaire": { "decisions": ["Imposer l'obéissance", "Réussi", "Abattre une bête", "Epouvantable"], "arret": false }
         }
     }
 }

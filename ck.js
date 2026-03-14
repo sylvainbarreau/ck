@@ -25,7 +25,6 @@ function (p, t=new Array(), o=null) {
         case 'influence' : // besoin agent //influence SI vassal direct LUI OU courtisan LUI OU invité LUI, Influence, Or, Prestige, hameçon
         case 'erudition':
             case 'rancon': // Or, hameçon
-        'troupeau' // troupeau
          *
          A SUPPRIMER ?         case 'perteTerresRevoquer': // accorder titre SINON chercher secret,Opinion,Diplomatie,Intrigue,Or,hameçon,Intrigue (pour révoquer)
          *
@@ -69,6 +68,8 @@ function (p, t=new Array(), o=null) {
         case 'agent': // opinion SI vassal direct ou courtisan ou invité CIBLE,Diplomatie,Intrigue (Influence) Or, Prestige, hameçon, Piété (parfois)
         case 'prestige':
         'successionChaos' // obéissance,Redoutabilité, Domination (troupeau), Légitimité
+        'troupeau': // Augmenter troupeau
+        'tributaire': // Négocier l'obéissance : Prestige, Domination (Troupeau), Légitimité, Redoutabilité
         case 'succession':
         case 'vassal': //allié, hameçon fort,Intrigue, ami,opinion,Diplomatie,Intrigue amant, prisonnier,Intrigue, terrifié,redoutabilité
         default:

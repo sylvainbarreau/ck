@@ -106,7 +106,10 @@
             "piete": { "arret": false },
             "domaine": { "arret": false },
             "cultInnov": { "arret": false },
-            "survie": { "arret": false }
+            "survie": { "arret": false },
+            "successionChaos": { "decisions": [], "arret": false },
+            "troupeau": { "decisions": [], "arret": false },
+            "tributaire": { "decisions": [], "arret": false }
         }
     }
 }
