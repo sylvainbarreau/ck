@@ -377,9 +377,9 @@
                 "arret": true
             },
             "conseiller": { "arret": false },
-            "successionChaos": { "decisions": [], "arret": false },
-            "troupeau": { "decisions": ["Participe"], "arret": false },
-            "tributaire": { "decisions": ["Participe"], "arret": false }
+            "successionChaos": { "decisions": ["Participe"], "arret": true },
+            "troupeau": { "decisions": ["Participe"], "arret": true },
+            "tributaire": { "decisions": ["Participe"], "arret": true }
         }
     },
     "tournoiHeberg": {
