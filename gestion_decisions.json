@@ -8,7 +8,7 @@
         "initialStack": ["stress éviter niveau+", "\n"],
         "siRien": null,
         "defaut": ["Points d'expérience", "Renommée", "Légitimation", "légende", "Artefact", "stress descendre niveau 0", "obtenir mécène", 
-            "Activité/Contrat", "Redoutabilité", "emprisonner", "vassal non factiable", "éviter rivalité/rancune", "hameçon", " secret", "Recruter", "Développement", "Piété", "Prestige", "Or", "Trésor", "Fertilité comtale SI Nomade", "Troupeau SI Nomade", "Influence", "Mérite",
+            "Activité/Contrat", "Redoutabilité", "emprisonner", "vassal non factiable", "éviter rivalité/rancune", "hameçon", " secret", "Recruter", "Développement", "Piété", "Prestige", "Or", "Trésor", "Fertilité comtale SI Nomade", "Troupeau", "Influence", "Mérite",
             "Diminuer stress", "Provisions"],
         "selonEtats": {
             "siRien": {
