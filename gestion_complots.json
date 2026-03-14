@@ -246,11 +246,11 @@
                 }
             },
             "agent": {
-                "decisions": ["Aucune"],
+                "decisions": ["Aucune contre-mesure"],
                 "arret": true
             },
             "factionPop": {
-                "decisions": ["Aucune"],
+                "decisions": ["Aucune contre-mesure"],
                 "arret": true
             },
             "religieuxAInfluencer": {
@@ -279,7 +279,7 @@
                 "arret": false
             },
             "enfant": {
-                "decisions": ["aucune SI aventurier adopter", "Garde doublée"],
+                "decisions": ["Aucune contre-mesure SI aventurier adopter", "Garde doublée"],
                 "modifications": {
                     "Primes pour les dénonciations": "Primes pour les dénonciations SI NON aventurier adopter",
                     "Arrestations arbitraires": "Arrestations arbitraires SI NON aventurier adopter",
