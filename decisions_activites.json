@@ -48,7 +48,7 @@
         "positionVue": {
             "categories": ["Activités"],
             "idListe": "activites",
-            "precedent": "Grand mariage"
+            "precedent": null
         },
         "effetsPositifs": ["Prestige", "Légitimation", "Diminuer stress", "Intrigue"],
         "effetsNegatifs": ["Or"]
@@ -136,7 +136,7 @@
         "positionVue": {
             "categories": ["Activités"],
             "idListe": "activites",
-            "precedent": "Pélerinage"
+            "precedent": "Séjour universitaire"
         },
         "effetsPositifs": ["Opinion"],
         "effetsNegatifs": ["Or"]
