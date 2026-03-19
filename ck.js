@@ -4,7 +4,7 @@ function (p, t=new Array(), o=null) {
     if (o == null) { o= ["",//0
     ]; }
     if (rien) {
-        // pas de cb (case terrJureSinonRevendic) : (Convaincre territoire de jure) magnificence,Intendance, Diplomatie (o) SI gouvernmt admin, (Revendication comtale) Erudition
+        // pas de cb (case terrJureSinonRevendic) : (Convaincre territoire de jure) magnificence,Intendance, Diplomatie,opinion,Intrigue SI gouvernmt admin, (Revendication comtale) Erudition
         //   (Revendiquer trône) Erudition, (Factions), (Revendiquer titre seigneur lige) Prestige, (Me faire déclarer régent) Prestige,opinion lige,opinion régent,Diplomatie, (Bâtiment) Or
         // Nomade : (Bâtiment) Or
         // aventurier : complot Saisie du pays (Prestige, Intrigue) SINON Acheter terre (éviter Gibier de potence, éviter Baroudeur, hameçon, Or, langue, opinion,Diplomatie) SINON Demander soutien invasion (Prestige), (Bâtiment) Or
@@ -44,7 +44,7 @@ function (p, t=new Array(), o=null) {
             //e6.add("secret SI Atout \"Je suis bien en comparaison\"");
         case 'conseiller': // recruter
         case 'controle':
-        case 'assassinat': // Faire démissionner ou Assassiner
+        case 'assassinat': // Faire démissionner ou Assassiner Intrigue
         case 'denoncer': // Prestige, Renommée 
         case 'prison': //Prestige,Intrigue,opinion,Diplomatie,puissance militaire
         case 'survie':
@@ -70,7 +70,7 @@ function (p, t=new Array(), o=null) {
         'successionChaos' // obéissance,Redoutabilité, Domination (troupeau), Légitimité
         'troupeau': // Augmenter troupeau
         'tributaire': // Négocier l'obéissance : Prestige, Domination (Troupeau), Légitimité, Redoutabilité
-        case 'succession':
+        case 'succession': par acclamation ou élection
         case 'vassal': //allié, hameçon fort,Intrigue, ami,opinion,Diplomatie,Intrigue amant, prisonnier,Intrigue, terrifié,redoutabilité
         default:
             return (p.slice(1), t, o);

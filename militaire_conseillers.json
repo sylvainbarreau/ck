@@ -58,6 +58,56 @@
                     "troupeau":{ "decisions": [], "arret": true}
         }
     },
+    "intentionPillage": {
+        "positionVue": {
+            "categories": ["Militaire"],
+            "idElement": "intentionPillageResult"
+        },
+        "optionsCommentaires":["Piller ++or,troupeau",
+            "Terroriser +Prestige,Redoutabilité",
+            "Capturer +or,troupeau,emprisonner",
+            "Saccager +++or,troupeau +innovation",
+            "S'aventurer ++or,troupeau"
+        ],
+        "siRien": ["Saccager SI Dirigeant", "Capturer SI Dirigeant ET gouvernement administratif ET Atout \"Sombres connaissances\"", "Terroriser SI Dirigeant", "Capturer SI Dirigeant ET Atout \"Sombres connaissances\"", "\n",
+            "Terroriser SI Aventurier", "Saccager SI Aventurier", "Capturer SI Aventurier ET Atout \"Sombres connaissances\"", 
+            "Saccager", "S'aventurer"],
+        "defaut": ["Saccager", "Terroriser", "Capturer"],
+        "selonEtats": {
+            "guerre": { "decisions": ["Saccager", "Capturer"],"arret": true },
+            "declarationGuerre": { "decisions": ["Saccager", "Capturer"], "arret": true },
+            "revenu": { "decisions": ["Saccager", "S'aventurer"],"arret": true },
+            "controle": { "decisions": ["Saccager"], "arret": false },
+            "assassinat": { "decisions": ["Saccager", "Capturer SI Atout \"Sombres connaissances\""], "arret": false },
+            "succession": { "decisions": ["Saccager"], "arret": false },
+            "religieuxAInfluencer": { "decisions": ["Saccager", "Capturer SI Atout \"Sombres connaissances\""], "arret": false },
+            "aInfluencer": { "decisions": ["Saccager", "Capturer SI Atout \"Sombres connaissances\""], "arret": false },
+            "hamecon": { "decisions": ["Saccager", "Capturer SI Atout \"Sombres connaissances\""], "arret": false },
+            "recruterChevalier": { "decisions": ["Capturer"], "arret": true },
+            "chevalierPartisan": { "decisions": [], "arret": true },
+            "proclame": { "decisions": ["Capturer"], "arret": true },
+            "stress": { "decisions": ["Saccager"], "arret": false },
+            "prestige": { "decisions": ["Terroriser", "Saccager"], "arret": false },
+            "enfant": { "decisions": ["Saccager SI divorce", "Capturer SI divorce ET Atout \"Sombres connaissances\"", "\n",
+                "Saccager SI futur enfant légitime", "Capturer SI futur enfant légitime ET Atout \"Sombres connaissances\"", "\n",
+                "Terroriser SI Aventurier ET adopter ET Prestige<150", "Capturer SI Aventurier ET adopter ET Atout \"Sombres connaissances\"", "\n",
+                "Terroriser SI Aventurier ET adopter", "\n"], "arret": false },
+            "piete": { "decisions": ["Saccager"], "arret": false },
+            "denoncer": { "decisions": ["Terroriser", "Saccager"], "arret": false },
+            "agent": { "decisions": ["Saccager", "Capturer SI Atout \"Sombres connaissances\"", "S'aventurer"], "arret": true },
+            "conseiller": { "decisions": ["Capturer"], "arret": true },
+            "factionPop": { "decisions": ["Saccager"], "arret": false },
+            "vassalAInfluencer": { "decisions": ["Saccager", "Capturer SI Atout \"Sombres connaissances\"", "Terroriser"], "arret": false },
+            "vassal": { "decisions": ["Saccager", "Capturer SI Atout \"Sombres connaissances\"", "Terroriser"], "arret": false },
+            "domaine": { "decisions": ["Saccager"], "arret": false },
+            "cultInnov": { "decisions": ["Saccager SI NON chef culturel", "Terroriser SI NON chef culturel", "Saccager"], "arret": false },
+            "prison": { "decisions": ["Terroriser", "Capturer SI Atout \"Sombres connaissances\"", "Saccager", "Capturer"], "arret": true },
+            "survie": { "decisions": ["Saccager"], "arret": false },
+            "successionChaos": { "decisions": ["Saccager", "Terroriser", "S'aventurer"], "arret": true },
+            "tributaire": { "decisions": ["Terroriser", "S'aventurer"], "arret": true },
+            "troupeau": { "decisions": ["S'aventurer"], "arret": true }
+        }
+    },
     "militaireAuto": {
         "positionVue": {
             "categories": ["Militaire"],
