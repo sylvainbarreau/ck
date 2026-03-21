@@ -414,5 +414,15 @@
         },
         "effetsPositifs": ["Piété", "avantage", "augmenter levées", "Or", "contrôle", "opinion comtale"],
         "effetsNegatifs": []
+    },
+    "dec-l": {
+        "lib": "Devenir nomade",
+        "positionVue":{
+            "categories":["Décisions (et Contrats)","Décisions","Décisions"],
+            "idListe":"dec",
+            "precedent":"S'isoler"
+        },
+        "effetsPositifs": ["Renommée"],
+        "effetsNegatifs": ["Prestige"]
     }
 }

@@ -6190,20 +6190,20 @@ function liOuiNon(lib, id, ouiNon) {
 function evidence(id, texte, ttLeTps=false) {
     let e=document.getElementById(id);
 
-    // Créer un élément temporaire pour décoder les entités HTML
+    // Retirer d'abord le wrapper <strong> avant le décodage (sinon textarea.value retourne '' car
+    // le navigateur crée un élément <strong> enfant sans nœud texte direct dans la textarea)
+    const rawInner = e.innerHTML.replace(/^<strong>/i, "").replace(/<\/strong>$/i, "");
+
+    // Décoder les entités HTML via textarea
     const decoder = document.createElement('textarea');
-    decoder.innerHTML = e.innerHTML;
+    decoder.innerHTML = rawInner;
     const decodedInner = decoder.value;
 
     // Normaliser les balises <br> pour la comparaison
     const normalizedInner = decodedInner.replace(/<br\s*\/?>/gi, "<br>");
     const normalizedTexte = texte.replace(/<br\s*\/?>/gi, "<br>");
 
-    // Extraire le texte sans les balises <strong> si présentes
-    const innerWithoutStrong = normalizedInner.replace(/^<strong>|<\/strong>$/g, "");
-
-    console.log(innerWithoutStrong, " diff? ", normalizedTexte);
-    if (ttLeTps || (innerWithoutStrong != normalizedTexte)) {
+    if (ttLeTps || (normalizedInner != normalizedTexte)) {
         texte = '<strong>' + texte + '</strong>';
     }
     e.innerHTML = texte;
