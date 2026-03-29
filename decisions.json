@@ -390,7 +390,7 @@
         "positionVue": {
             "categories": ["Décisions"],
             "idListe": "dec",
-            "precedent": "Devenir un aventurier"
+            "precedent": "Devenir nomade"
         },
         "effetsPositifs": ["Artefact"],
         "effetsNegatifs": ["Or"]
