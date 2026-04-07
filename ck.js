@@ -50,7 +50,7 @@ function (p, t=new Array(), o=null) {
         case 'survie':
         case 'factionPop': // Opinion populaire
         case 'vassalAInfluencer': //(Faction) opinion,Diplomatie,Intrigue, allié, hameçon fort,Intrigue ami, amant, prisonnier,Intrigue, terrifié,redoutabilité
-        case 'demande': // Prestige, opinion,Diplomatie,Intrigue,Or
+        case 'demande': // Prestige, opinion,Diplomatie,Intrigue
         case 'demande2': // (activité, contrat, Or, Provisions, mariage) Prestige, opinion,Diplomatie,Intrigue
         case 'guerre': // guerre, Influence,opinion,Diplomatie,Intrigue SI gouvernmt admin
         case 'declarationGuerre':

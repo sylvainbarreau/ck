@@ -1338,18 +1338,14 @@
         ],
         "siRien": [
             "Abattre une bête SI NON aventurier",
+            "Réussi",
             "Séduire SEIGNEUR LIGE",
             "Séduire REGENT SEIGNEUR LIGE",
             "Abattre une bête SI aventurier",
-            "Séduire SOUTIEN invasion SI aventurier",
-            "Nouer une amitié vassal puissant non intimidé non factiable",
-            "Nouer une amitié vassal puissant intimidé non factiable",
-            "Nouer une amitié vassal non intimidé non factiable",
-            "Nouer une amitié vassal intimidé non factiable",
-            "Abattre une bête",
-            "Se détendre"
+            "Séduire SOUTIEN invasion SI aventurier"
         ],
         "defaut": [
+            "Réussi",
             "Nouer une amitié vassal puissant non intimidé non factiable",
             "Nouer une amitié vassal puissant intimidé non factiable",
             "Nouer une amitié vassal non intimidé non factiable",
@@ -1457,7 +1453,8 @@
                 "arret": false
             },
             "troupeau": { "decisions": [], "arret": false },
-            "tributaire": { "decisions": ["Imposer l'obéissance", "Réussi", "Abattre une bête", "Epouvantable"], "arret": false }
+            "tributaire": { "decisions": ["Imposer l'obéissance", "Réussi", "Abattre une bête", "Epouvantable"], "arret": false },
+            "controle": { "decisions": ["Réussi"], "arret": false }
         }
     }
 }
