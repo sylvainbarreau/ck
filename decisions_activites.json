@@ -83,7 +83,7 @@
             "idListe": "activites",
             "precedent": "Fête de camp"
         },
-        "effetsPositifs": ["Diminuer stress", "Prestige", "Erudition"],
+        "effetsPositifs": ["Diminuer stress", "gloire", "Erudition"],
         "effetsNegatifs": ["Or"]
     },
     "act-4": {

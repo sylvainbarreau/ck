@@ -12,7 +12,7 @@ class TexteDecision {
         if (this.texteId == 'Augmenter levées') {
             this.leviers.push(new TexteDecision('Troupeau'));
         }
-        if (this.texteId == 'Prestige') {
+        if (this.texteId == 'prestige') {
             this.leviers.push(new TexteDecision('Secret SI Atout "Je suis bien en comparaison"'));
         }
         if (this.texteId == 'Domination') {
@@ -24,6 +24,11 @@ class TexteDecision {
             this.leviers.push(new TexteDecision('Troupeau'));
             this.leviers.push(new TexteDecision('emprisonner'));
         }
+        if (this.texteId == 'gloire') {
+            this.leviers.push(new TexteDecision('prestige'));
+            this.leviers.push(new TexteDecision('Secret SI Atout "Je suis bien en comparaison"'));
+        }
+        
     }
 
     parseTexte(texte) {
