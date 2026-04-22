@@ -301,7 +301,11 @@
                 "decisions": [],
                 "arret": false,
                 "modifications": {
-                    "Primes pour les dénonciations": "undefined"
+                    "Primes pour les dénonciations": "Primes pour les dénonciations SI prestige dépensé pour emprisonner",
+        "Arrestations arbitraires": "undefined",
+        "Sentinelles renforcées": "undefined",
+        "Garde doublée": "undefined",
+        "Retrait de la vie publique": "undefined"
                 }
             },
             "denoncer": {

@@ -1,0 +1,69 @@
+{
+    "campObjectif": {
+        "positionVue": {
+            "categories": ["Pays", "(Objectif du camp)"],
+            "idElement": "campObjectif",
+            "motLiaison": "SINON"
+        },
+        "optionsCommentaires": ["Nous sommes Vagabonds!//0 +prestige -prestige",
+        "Devenir lames à louer//1 +guerre,or,complot hostile -prestige",
+        "Devenir érudits//2 +exp,santé,redoutabilité,piété,prestige,guerre -prestige",
+        "Devenir explorateurs//3 +santé,guerre,intrigue -prestige",
+        "Devenir écumeurs//4 +or,intrigue,guerre -gibier de potence,prestige",
+        "Devenir légitimistes//5 +guerre,érudition,diplomatie,or,prestige -prestige"
+        ],
+        "siRien": ["Devenir légitimistes SI aucun coût", "Nous sommes Vagabonds! SI aucun coût", "ne rien changer"],
+        "defaut": ["Devenir érudits", "ne rien changer"],
+        "selonEtats": {
+            "guerre": {
+            "decisions": ["Devenir lames à louer"],
+            "arret": true
+            },
+            "declarationGuerre": {
+            "decisions": ["Devenir lames à louer"],
+            "arret": true
+            },
+            "revenu": {
+            "decisions": ["Devenir écumeurs"],
+            "arret": true
+            },
+            "controle": {
+                "decisions":[], "arret": true            },
+            "assassinat": {
+                "decisions":["Devenir érudits"], "arret": true            },
+            "succession": { "decisions":[], "arret": true },
+            "religieuxAInfluencer": { "decisions":[], "arret": true },
+            "aInfluencer": { "decisions":["Devenir érudits"], "arret": true },
+            "hamecon": { "decisions":["Devenir érudits"], "arret": true },
+            "recruterChevalier": { "decisions":[], "arret": true },
+            "chevalierPartisan": { "decisions":["Devenir érudits"], "arret": true },
+            "proclame": { "decisions":[], "arret": true },
+            "stress": {                "arret": false            },
+            "prestige": { 
+                "decisions":["Nous sommes Vagabonds! SI aucun coût", "ne rien changer"], "arret": true            },
+            "enfant": { 
+                "decisions":["Devenir érudits", "ne rien changer"], "arret": true            },
+            "piete": { "decisions":["Devenir érudits"], "arret": true },
+            "denoncer": { "decisions":["Nous sommes Vagabonds! SI aucun coût", "ne rien changer"], "arret": true },
+            "agent": {"decisions":["Devenir érudits"], "arret": true
+            },
+            "rancon": {
+                "decisions": ["Devenir écumeurs"],
+            "arret": true
+            },
+            "conseiller": { "decisions":[], "arret": true },
+            "factionPop": { "decisions":[], "arret": true },
+            "vassalAInfluencer": { "decisions":[], "arret": true },
+            "vassal": { "decisions":[], "arret": true },
+            "domaine": { "decisions":[], "arret": true },
+            "cultInnov": { "decisions":[], "arret": true },
+            "prison": {
+                "decisions":["Devenir érudits"], "arret": true
+            },
+            "survie": { "decisions":["Devenir explorateurs"], "arret": true },
+            "successionChaos": { "decisions": [], "arret": false },
+                "tributaire":{ "decisions": [], "arret": true},
+                "troupeau":{ "decisions": [], "arret": true}
+            }
+        }
+    }

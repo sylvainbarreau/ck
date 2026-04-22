@@ -1457,4 +1457,189 @@
             "controle": { "decisions": ["Réussi"], "arret": false }
         }
     }
+,
+    "feteCamp": {
+        "positionVue": {
+            "categories": ["Activités", "Activités", "Fête de camp"],
+            "idElement": "fete",
+            "motLiaison": "SINON"
+        },
+        "optionsCommentaires": [
+            "Se détendre +stress",
+        "Nouer une amitié +ami",
+        "Conversation au coin du feu +recruter"
+        ],
+        "siRien": [],
+        "defaut": ["Conversation au coin du feu", "Se détendre"],
+        "selonEtats": {
+            "stress": {
+                "decisions": ["Se détendre"],
+                "arret": true
+            },
+            "survie": {
+                "decisions": ["Se détendre"],
+                "arret": true
+            },
+            "piete": {
+                "arret": false
+            },
+            "enfant": {
+                "decisions": ["Nouer une amitié ADOPTE POTENTIEL-S", "Se détendre"],
+                "arret": true
+            },
+            "successionChaos": { "decisions": [], "arret": true },
+            "troupeau": { "decisions": [], "arret": true },
+            "tributaire": { "decisions": [], "arret": true },
+            "aInfluencer": { 
+                "decisions": ["Nouer une amitié ALLIE POTENTIEL-S"], "arret": false },
+            "recruterChevalier": { "decisions": [], "arret": true },
+            "chevalierPartisan": { "decisions":["Conversation au coin du feu"],"arret": false },
+            "proclame": { "decisions": [], "arret": true },
+            "conseiller": { "decisions": [], "arret": true },
+            "controle": { "decisions": [], "arret": true },
+            "assassinat": { "arret": false },
+            "denoncer": { "arret": false },
+            "prison": { "decisions": ["Nouer une amitié PRISONNIER-S"], "arret": false },
+            "factionPop": { "decisions": [], "arret": true },
+            "vassalAInfluencer": { "decisions": [], "arret": true },
+            "demande": { "decisions": ["Nouer une amitié MECENE-S"], "arret": false },
+            "guerre": { "decisions":["Conversation au coin du feu"],"arret": false },
+            "declarationGuerre": { "decisions": [], "arret": true },
+            "hamecon": { "arret": false },
+            "cultInnov": { "arret": false },
+            "domaine": { "decisions": [], "arret": true },
+            "religieuxAInfluencer": { "decisions": [], "arret": true },
+            "revenu": { "arret": false },
+            "agent": { "decisions": ["Nouer une amitié AGENT-S"], "arret": false },
+            "prestige": { "arret": false },
+            "succession": { "arret": false },
+            "vassal": { "decisions": [], "arret": true }
+        }
+    },
+    "feteCampNourr": {
+        "positionVue": {
+            "categories": ["Activités", "Activités", "Fête de camp", "Options d'activité", "Nourriture"],
+            "idElement": "feteNourr",
+            "motLiaison": "SINON"
+        },
+        "optionsCommentaires": [
+            "Maigres repas +or,//0",
+        "Repas simples,//1 +amusement -or,Provisions",
+        "Banquet somptueux//2 +amusement,recruter -or,Provisions"
+        ],
+        "siRien": [],
+        "defaut": ["Banquet somptueux", "Repas simples", "Maigres repas"],
+        "selonEtats": {
+            "stress": {
+                "arret": false
+            },
+            "survie": {
+                "decisions": ["Maigres repas"],
+                "arret": true
+            },
+            "piete": {
+                "arret": false
+            },
+            "enfant": {
+                "decisions": ["Maigres repas"],
+                "arret": true
+            },
+            "successionChaos": { "decisions": [], "arret": true },
+            "troupeau": { "decisions": [], "arret": true },
+            "tributaire": { "decisions": [], "arret": true },
+            "aInfluencer": { 
+                "arret": false },
+            "recruterChevalier": { "decisions": [], "arret": true },
+            "chevalierPartisan": { "decisions": ["Banquet somptueux"], "arret": false  },
+            "proclame": { "decisions": [], "arret": true },
+            "conseiller": { "decisions": [], "arret": true },
+            "controle": { "decisions": [], "arret": true },
+            "assassinat": { "arret": false },
+            "denoncer": { "arret": false },
+            "prison": { "arret": false },
+            "factionPop": { "decisions": [], "arret": true },
+            "vassalAInfluencer": { "decisions": [], "arret": true },
+            "demande": { "arret": false },
+            "guerre": { "decisions":["Banquet somptueux"],"arret": false },
+            "declarationGuerre": { "decisions": [], "arret": true },
+            "hamecon": { "arret": false },
+            "cultInnov": { "arret": false },
+            "domaine": { "decisions": [], "arret": true },
+            "religieuxAInfluencer": { "decisions": [], "arret": true },
+            "revenu": { "decisions": ["Maigres repas"], "arret": true },
+            "agent": { "decisions": ["Maigres repas"], "arret": true },
+            "prestige": { "arret": false },
+            "succession": { "arret": false },
+            "vassal": { "decisions": [], "arret": true }
+        }
+    },
+    "feteCampBoiss": {
+        "positionVue": {
+            "categories": ["Activités", "Activités", "Fête de camp", "Options d'activité", "Boissons"],
+            "idElement": "feteBoiss",
+            "motLiaison": "SINON"
+        },
+        "optionsCommentaires": [
+            "Rares boissons//0",
+        "Boissons adéquates//1 +opinion,diplo,intrigue,",
+        "Boissons abondantes//2 +opinion,diplo,intrigue,prestige,stress,Provisions"
+        ],
+        "siRien": ["A DEFINIR"],
+        "defaut": ["A DEFINIR"],
+        "selonEtats": {
+            "stress": {
+                "decisions": ["A DEFINIR"],
+                "arret": true
+            },
+            "survie": {
+                "decisions": ["A DEFINIR"],
+                "arret": true
+            },
+            "piete": {
+                "decisions": ["A DEFINIR"],
+                "arret": true
+            },
+            "enfant": {
+                "decisions": ["A DEFINIR"],
+                "arret": true
+            },
+            "successionChaos": { "decisions": [], "arret": true },
+            "troupeau": { "decisions": [], "arret": true },
+            "tributaire": { "decisions": [], "arret": true },
+            "aInfluencer": { 
+                "decisions": ["A DEFINIR"],
+                "arret": true },
+            "recruterChevalier": { "decisions": [], "arret": true },
+            "chevalierPartisan": { "decisions": ["A DEFINIR"],
+                "arret": true },
+            "proclame": { "decisions": [], "arret": true },
+            "conseiller": { "decisions": [], "arret": true },
+            "controle": { "decisions": [], "arret": true },
+            "assassinat": { "decisions": ["A DEFINIR"],
+                "arret": true },
+            "denoncer": { "decisions": ["A DEFINIR"],
+                "arret": true },
+            "prison": { "decisions": ["A DEFINIR"],
+                "arret": true },
+            "factionPop": { "decisions": [], "arret": true },
+            "vassalAInfluencer": { "decisions": [], "arret": true },
+            "demande": { "decisions": ["A DEFINIR"],
+                "arret": true },
+            "guerre": { "decisions": ["A DEFINIR"],
+                "arret": true },
+            "declarationGuerre": { "decisions": [], "arret": true },
+            "hamecon": { "decisions": ["A DEFINIR"],
+                "arret": true },
+            "cultInnov": { "decisions": ["A DEFINIR"],
+                "arret": true },
+            "domaine": { "decisions": [], "arret": true },
+            "religieuxAInfluencer": { "decisions": [], "arret": true },
+            "revenu": { "decisions": ["A DEFINIR"], "arret": true },
+            "agent": { "decisions": ["A DEFINIR"], "arret": true },
+            "prestige": { "decisions": ["A DEFINIR"], "arret": true },
+            "succession": { "decisions": ["A DEFINIR"],
+                "arret": true },
+            "vassal": { "decisions": [], "arret": true }
+        }
+    }
 }

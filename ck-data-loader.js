@@ -15,6 +15,7 @@ window.ckDataRegistry = new DataDrivenRegistry();
 
 // Liste de tous les fichiers JSON à charger
 const JSON_FILES = [
+    'gestion_pays.json',
     'militaire_conseillers.json',
     'postes_cour.json',
     'gestion_prison.json',

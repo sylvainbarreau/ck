@@ -68,8 +68,8 @@
                 "arret": false
             },
             "prison": {
-                "decisions": ["Suite nombreuse", "Entourage modeste"],
-                "arret": false
+                "decisions": ["A DEFINIR"],
+                "arret": true
             },
             "revenu": {
                 "decisions": ["Suite modeste"],
