@@ -420,7 +420,7 @@
         "positionVue":{
             "categories":["Décisions (et Contrats)","Décisions","Décisions"],
             "idListe":"dec",
-            "precedent":"S'isoler"
+            "precedent":"Visiter le marché"
         },
         "effetsPositifs": ["Renommée"],
         "effetsNegatifs": ["Prestige"]

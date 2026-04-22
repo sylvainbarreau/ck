@@ -10,25 +10,37 @@ class TexteDecision {
             this.parseTexte(texteStr);
         }
         if (this.texteId == 'Augmenter levées') {
-            this.leviers.push(new TexteDecision('Troupeau'));
+            this.leviers.push(new TexteDecision(this._appendParentConditions('Troupeau')));
         }
         if (this.texteId == 'prestige') {
-            this.leviers.push(new TexteDecision('Secret SI Atout "Je suis bien en comparaison"'));
+            this.leviers.push(new TexteDecision(this._appendParentConditions('Secret SI Atout "Je suis bien en comparaison"')));
         }
         if (this.texteId == 'Domination') {
-            this.leviers.push(new TexteDecision('Troupeau'));
+            this.leviers.push(new TexteDecision(this._appendParentConditions('Troupeau')));
         }
         if (this.texteId == 'Or') {
-            this.leviers.push(new TexteDecision('Trésor'));
-            this.leviers.push(new TexteDecision('Hameçon SI Atout "Obligations en or"'));
-            this.leviers.push(new TexteDecision('Troupeau'));
-            this.leviers.push(new TexteDecision('emprisonner'));
+            this.leviers.push(new TexteDecision(this._appendParentConditions('Trésor')));
+            this.leviers.push(new TexteDecision(this._appendParentConditions('Hameçon SI Atout "Obligations en or"')));
+            this.leviers.push(new TexteDecision(this._appendParentConditions('Troupeau')));
+            this.leviers.push(new TexteDecision(this._appendParentConditions('emprisonner')));
         }
         if (this.texteId == 'gloire') {
-            this.leviers.push(new TexteDecision('prestige'));
-            this.leviers.push(new TexteDecision('Secret SI Atout "Je suis bien en comparaison"'));
+            this.leviers.push(new TexteDecision(this._appendParentConditions('prestige')));
+            this.leviers.push(new TexteDecision(this._appendParentConditions('Secret SI Atout "Je suis bien en comparaison"')));
         }
-        
+
+    }
+
+    _appendParentConditions(levierTexte) {
+        const parentParts = [];
+        if (this.dirigeant) parentParts.push(this.dirigeant);
+        parentParts.push(...this.conditions);
+        if (parentParts.length === 0) return levierTexte;
+
+        const suffix = parentParts.join(' ET ');
+        return levierTexte.includes(' SI ')
+            ? levierTexte + ' ET ' + suffix
+            : levierTexte + ' SI ' + suffix;
     }
 
     parseTexte(texte) {

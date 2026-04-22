@@ -5,7 +5,8 @@
             "idElement": "influenceResult"
         },
         "siRien": ["Influencer SEIGNEUR LIGE", "Séduire SEIGNEUR LIGE", "Apprendre la langue SEIGNEUR LIGE",
-            "Apprendre la langue DIRIGEANT A QUI ACHETER TERRE", "Influencer DIRIGEANT A QUI ACHETER TERRE", "Séduire DIRIGEANT A QUI ACHETER TERRE"],
+            "Apprendre la langue DIRIGEANT A QUI ACHETER TERRE", "Influencer DIRIGEANT A QUI ACHETER TERRE", "Séduire DIRIGEANT A QUI ACHETER TERRE",
+        "Influencer vassal puissant non intimidé non factiable", "Influencer vassal puissant intimidé non factiable", "Influencer vassal non intimidé non factiable", "Influencer vassal intimidé non factiable", "Influencer conseiller religieux", "Influencer allié", "Influencer seigneur lige", "Influencer maître-espion", "Influencer conjoint", "Influencer Médecin", "Influencer Garde du corps"],
         "defaut": ["Influencer vassal puissant non intimidé non factiable", "Influencer vassal puissant intimidé non factiable", "Influencer vassal non intimidé non factiable", "Influencer vassal intimidé non factiable", "Influencer conseiller religieux", "Influencer allié", "Influencer seigneur lige", "Influencer maître-espion", "Influencer conjoint", "Influencer Médecin", "Influencer Garde du corps"],
         "selonEtats": {
             "guerre": {
