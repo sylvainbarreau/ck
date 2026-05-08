@@ -1641,5 +1641,87 @@
                 "arret": true },
             "vassal": { "decisions": [], "arret": true }
         }
+    },
+    "activMonum": {
+        "positionVue": {
+            "categories": ["Activités", "Activités", "Expédition vers un monument"],
+            "idElement": "monum",
+            "motLiaison": "SINON"
+        },
+        "optionsCommentaires": [
+            "Amassage de savoirs +diplo,martialité,intendance,intrigue,érudition -stress //0",
+            "Curiosité +acceptation culturelle,recruter //1",
+            "Répandre la légende +légende //2"
+        ],
+        "siRien": ["Amassage de savoirs"],
+        "defaut": ["Répandre la légende", "Curiosité"],
+        "selonEtats": {
+            "controle":            { "decisions": ["Amassage de savoirs"], "arret": true },
+            "assassinat":          { "decisions": ["Amassage de savoirs"], "arret": true },
+            "succession":          { "decisions": ["A DEFINIR"], "arret": true },
+            "aInfluencer":         { "decisions": ["Curiosité SI ALLIE POTENTIEL-S autre culture", "Amassage de savoirs"], "arret": true },
+            "hamecon":             { "decisions": ["Amassage de savoirs"], "arret": true },
+            "recruterChevalier":   { "decisions": ["Curiosité"], "arret": true },
+            "chevalierPartisan":   { "decisions": ["Curiosité"], "arret": true },
+            "demande":             { "decisions": ["Curiosité SI MECENE-S autre culture", "Amassage de savoirs"], "arret": true },
+            "proclame":            { "decisions": ["Curiosité"], "arret": true },
+            "declarationGuerre":   { "decisions": ["Amassage de savoirs"], "arret": true },
+            "prestige":            { "arret": false },
+            "denoncer":            { "arret": false },
+            "revenu":              { "decisions": ["Amassage de savoirs"], "arret": true },
+            "religieuxAInfluencer":{ "decisions": ["Curiosité SI CONSEILLER RELIGIEUX autre culture", "Amassage de savoirs"], "arret": true },
+            "survie":              { "modifications": { "Amassage de savoirs": "undefined" }, "arret": false },
+            "stress":              { "modifications": { "Amassage de savoirs": "undefined" }, "arret": false },
+            "enfant":              { "decisions": ["Curiosité SI ADOPTE-S autre culture"], "modifications": { "Amassage de savoirs": "undefined" }, "arret": false },
+            "agent":               { "decisions": ["Curiosité SI AGENT-S autre culture", "Amassage de savoirs"], "arret": true },
+            "conseiller":          { "decisions": ["Curiosité"], "arret": true },
+            "factionPop":          { "decisions": ["Curiosité"], "arret": true },
+            "guerre":              { "decisions": ["Curiosité"], "arret": true },
+            "vassalAInfluencer":   { "decisions": ["Curiosité SI FACTIEUX-S autre culture", "Amassage de savoirs"], "arret": true },
+            "vassal":              { "decisions": ["Amassage de savoirs"], "arret": true },
+            "domaine":             { "decisions": ["Amassage de savoirs"], "arret": true },
+            "cultInnov":           { "decisions": ["Amassage de savoirs"], "arret": true },
+            "prison":              { "decisions": ["Amassage de savoirs"], "arret": true }
+        }
+    },
+    "activMonumScribe": {
+        "positionVue": {
+            "categories": ["Activités", "Activités", "Expédition vers un monument", "Scribes"],
+            "idElement": "monumScribe",
+            "motLiaison": "SINON"
+        },
+        "optionsCommentaires": [
+            "Pas de scribes +or //0",
+            "Recruter des scribes compétents +diplo,martialité,intendance,intrigue,érudition,recruter -or //1"
+        ],
+        "siRien": ["Recruter des scribes compétents", "Pas de scribes"],
+        "defaut": ["Recruter des scribes compétents", "Pas de scribes"],
+        "selonEtats": {
+            "guerre":              { "decisions": ["Recruter des scribes compétents", "Pas de scribes"], "arret": true },
+            "controle":            { "decisions": ["Recruter des scribes compétents", "Pas de scribes"], "arret": true },
+            "assassinat":          { "decisions": ["Recruter des scribes compétents", "Pas de scribes"], "arret": true },
+            "succession":          { "decisions": ["A DEFINIR"], "arret": true },
+            "dirigeantAInfluencer":{ "decisions": ["Recruter des scribes compétents", "Pas de scribes"], "arret": true },
+            "religieuxAInfluencer":{ "decisions": ["Recruter des scribes compétents", "Pas de scribes"], "arret": true },
+            "aInfluencer":         { "decisions": ["Recruter des scribes compétents", "Pas de scribes"], "arret": true },
+            "hamecon":             { "decisions": ["Recruter des scribes compétents", "Pas de scribes"], "arret": true },
+            "recruterChevalier":   { "decisions": ["Recruter des scribes compétents", "Pas de scribes"], "arret": true },
+            "chevalierPartisan":   { "decisions": ["Recruter des scribes compétents", "Pas de scribes"], "arret": true },
+            "demande":             { "decisions": ["Recruter des scribes compétents", "Pas de scribes"], "arret": true },
+            "proclame":            { "decisions": ["Recruter des scribes compétents", "Pas de scribes"], "arret": true },
+            "declarationGuerre":   { "decisions": ["Recruter des scribes compétents", "Pas de scribes"], "arret": true },
+            "prestige":            { "arret": false },
+            "denoncer":            { "arret": false },
+            "revenu":              { "decisions": ["Pas de scribes"], "arret": true },
+            "enfant":              { "decisions": ["Recruter des scribes compétents", "Pas de scribes"], "arret": true },
+            "agent":               { "decisions": ["Recruter des scribes compétents", "Pas de scribes"], "arret": true },
+            "conseiller":          { "decisions": ["Recruter des scribes compétents", "Pas de scribes"], "arret": true },
+            "factionPop":          { "decisions": ["Recruter des scribes compétents", "Pas de scribes"], "arret": true },
+            "vassalAInfluencer":   { "decisions": ["Recruter des scribes compétents", "Pas de scribes"], "arret": true },
+            "vassal":              { "decisions": ["Recruter des scribes compétents", "Pas de scribes"], "arret": true },
+            "domaine":             { "decisions": ["Recruter des scribes compétents", "Pas de scribes"], "arret": true },
+            "cultInnov":           { "decisions": ["Recruter des scribes compétents", "Pas de scribes"], "arret": true },
+            "prison":              { "decisions": ["Recruter des scribes compétents", "Pas de scribes"], "arret": true }
+        }
     }
 }

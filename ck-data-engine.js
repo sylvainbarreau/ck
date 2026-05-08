@@ -171,12 +171,8 @@ class DataDrivenEngine {
             return this.process(p.slice(1), t, o, optionModifications, false);
         }
 
-        // Enregistrer les modifications de cet état (si présentes)
-        if (regle.modifications) {
-            this.accumulateModifications(optionModifications, regle.modifications);
-        }
-
-        // Appliquer les décisions si présentes
+        // Appliquer les décisions AVANT d'accumuler les modifications de cet état
+        // (les modifications n'affectent que les états SUIVANTS, pas le courant)
         if (regle.decisions && regle.decisions.length > 0) {
             regle.decisions.forEach(decision => {
                 const modifiedDecision = this.applyModificationsToText(decision, optionModifications);
@@ -184,6 +180,11 @@ class DataDrivenEngine {
                     this.pushDecision(t, modifiedDecision);
                 }
             });
+        }
+
+        // Enregistrer les modifications APRÈS les décisions
+        if (regle.modifications) {
+            this.accumulateModifications(optionModifications, regle.modifications);
         }
 
         // Si arret: true, retourner immédiatement
