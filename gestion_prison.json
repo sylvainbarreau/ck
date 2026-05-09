@@ -249,10 +249,10 @@
             "cultInnov": { "arret": false },
             "survie": { "arret": false },
             "successionChaos": {
-                "decisions": ["Castrer le prisonnier", "Exécuter SI Redoutabilité", "Négocier la libération > Bannir SI artefact"],
+                "decisions": ["Castrer le prisonnier", "Exécuter SI Redoutabilité", "Rançonner > Troupeau", "Négocier la libération > Bannir SI artefact"],
                 "arret": false
             },
-            "troupeau": { "decisions": ["Négocier la libération > Bannir SI artefact"], "arret": false },
+            "troupeau": { "decisions": ["Rançonner > Troupeau", "Négocier la libération > Bannir SI artefact"], "arret": false },
             "tributaire": { "decisions": ["Torturer SI Atout \"Je suis bien en comparaison\"", "Castrer le prisonnier", "Exécuter SI Redoutabilité", "Négocier la libération > Bannir SI artefact"], "arret": false }
         }
     }
