@@ -69,8 +69,9 @@
             "Saccager +++or,troupeau +innovation",
             "S'aventurer ++or,troupeau"
         ],
-        "siRien": ["Saccager SI Dirigeant", "Capturer SI Dirigeant ET gouvernement administratif ET Atout \"Sombres connaissances\"", "Terroriser SI Dirigeant", "Capturer SI Dirigeant ET Atout \"Sombres connaissances\"", "\n",
-            "Terroriser SI Aventurier", "Saccager SI Aventurier", "Capturer SI Aventurier ET Atout \"Sombres connaissances\"", 
+        "siRien": ["Saccager SI seigneur lige", "Capturer SI gouvernement administratif ET Atout \"Sombres connaissances\"", "\n",
+            "Terroriser SI vassal", "Capturer SI vassal ET Atout \"Sombres connaissances\"", "\n",
+            "Terroriser SI aventurier", "Saccager SI aventurier", "Capturer SI aventurier ET Atout \"Sombres connaissances\"", "\n",
             "Saccager", "S'aventurer"],
         "defaut": ["Saccager", "Terroriser", "Capturer"],
         "selonEtats": {

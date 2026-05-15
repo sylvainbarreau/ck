@@ -10,7 +10,7 @@ function (p, t=new Array(), o=null) {
         //      SI seigneur lige (avec chapelain) : (Revendication comtale) Erudition
         //      (Revendiquer trône) Erudition, (Factions),
         //      SI vassal : (Revendiquer titre seigneur lige) Prestige, (Me faire déclarer régent) Prestige,opinion lige,opinion régent,Diplomatie
-        //      Nomade : ...
+        //      Nomade : (rien)
         //      aventurier : complot Saisie du pays (gloire, Prestige, Intrigue) SINON Acheter terre (éviter Gibier de potence, éviter Baroudeur, hameçon, Or, langue, opinion,Diplomatie) SINON Demander soutien invasion (Prestige)
         // tous : (Bâtiment) Or
         t.push(new Set().add(""));
