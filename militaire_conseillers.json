@@ -9,11 +9,11 @@
         "defaut": "ne rien changer",
         "selonEtats": {
             "guerre": {
-            "decisions": ["cocher Renforcement mensuel", "Créer un régiment", "régiment > Augmenter la taille"],
+            "decisions": ["cocher Renforcement mensuel OU Renforcer les hommes d'armes", "Créer un régiment", "régiment > Augmenter la taille"],
             "arret": true
             },
             "declarationGuerre": {
-            "decisions": ["cocher Renforcement mensuel", "Créer un régiment", "régiment > Augmenter la taille"],
+            "decisions": ["cocher Renforcement mensuel OU Renforcer les hommes d'armes", "Créer un régiment", "régiment > Augmenter la taille"],
             "arret": true
             },
             "revenu": {
@@ -49,7 +49,7 @@
             "domaine": {                "arret": false            },
             "cultInnov": {                "arret": false            },
             "prison": {
-                "decisions": ["cocher Renforcement mensuel", "Créer un régiment", "régiment > Augmenter la taille"],
+                "decisions": ["cocher Renforcement mensuel OU Renforcer les hommes d'armes", "Créer un régiment", "régiment > Augmenter la taille"],
                 "arret": true
             },
             "survie": { "arret": false },

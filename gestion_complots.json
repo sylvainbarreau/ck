@@ -6,17 +6,18 @@
         },
         "siRien": ["Influencer SEIGNEUR LIGE", "Séduire SEIGNEUR LIGE", "Apprendre la langue SEIGNEUR LIGE",
             "Apprendre la langue DIRIGEANT A QUI ACHETER TERRE", "Influencer DIRIGEANT A QUI ACHETER TERRE", "Séduire DIRIGEANT A QUI ACHETER TERRE",
-        "Influencer vassal puissant non intimidé non factiable", "Influencer vassal puissant intimidé non factiable", "Influencer vassal non intimidé non factiable", "Influencer vassal intimidé non factiable", "Influencer conseiller religieux", "Influencer allié", "Influencer seigneur lige", "Influencer maître-espion", "Influencer conjoint", "Influencer Médecin", "Influencer Garde du corps"],
-        "defaut": ["Influencer vassal puissant non intimidé non factiable", "Influencer vassal puissant intimidé non factiable", "Influencer vassal non intimidé non factiable", "Influencer vassal intimidé non factiable", "Influencer conseiller religieux", "Influencer allié", "Influencer seigneur lige", "Influencer maître-espion", "Influencer conjoint", "Influencer Médecin", "Influencer Garde du corps"],
+        "Influencer vassal puissant non intimidé non factiable", "Influencer vassal puissant intimidé non factiable", "Influencer vassal non intimidé non factiable", "Influencer vassal intimidé non factiable", "Influencer conseiller religieux", "Influencer allié-s", "Influencer seigneur lige", "Influencer maître-espion", "Influencer conjoint", "Influencer Médecin", "Influencer Garde du corps"],
+        "defaut": ["Influencer vassal puissant non intimidé non factiable", "Influencer vassal puissant intimidé non factiable", "Influencer vassal non intimidé non factiable", "Influencer vassal intimidé non factiable", "Influencer conseiller religieux", "Influencer allié-s", "Influencer seigneur lige", "Influencer maître-espion", "Influencer conjoint", "Influencer Médecin", "Influencer Garde du corps"],
         "selonEtats": {
             "guerre": {
                 "decisions": [
                     "Influencer LUI SI gouvernement administratif",
                     "Séduire LUI SI gouvernement administratif",
                     "Apprendre la langue LUI SI gouvernement administratif",
-                    "Influencer ALLIE-S",
-                    "Séduire ALLIE-S",
-                    "Apprendre la langue ALLIE-S"
+                    "\n",
+                    "Influencer allié-s",
+                    "Séduire allié-s",
+                    "Apprendre la langue allié-s"
                 ],
                 "arret": false
             },
@@ -25,9 +26,10 @@
                     "Influencer LUI SI gouvernement administratif",
                     "Séduire LUI SI gouvernement administratif",
                     "Apprendre la langue LUI SI gouvernement administratif",
-                    "Influencer ALLIE-S",
-                    "Séduire ALLIE-S",
-                    "Apprendre la langue ALLIE-S"
+                    "\n",
+                    "Influencer allié-s",
+                    "Séduire allié-s",
+                    "Apprendre la langue allié-s"
                 ],
                 "arret": false
             },
