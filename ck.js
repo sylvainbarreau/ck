@@ -5972,7 +5972,6 @@ function evidence(id, texte, ttLeTps=false) {
     const tourneeIntentionResult = intentionTournee(p);
     const festinResult = activFestin(p);
     const funResult = activFun(p);
-    const campObjectifResult = campObjectif(p);
     // Afficher les résultats dans la section des résultats sur la page
     // NOTE: Les fonctions suivantes sont maintenant gérées automatiquement par displayAllResults()
     // evidence('militaireResult', sansDoublon(militaireResult));
@@ -6024,7 +6023,6 @@ function evidence(id, texte, ttLeTps=false) {
     evidence('festin', sansDoublon(festinResult, "SINON"));
     evidence('festinRepas', sansDoublon(activFestinRepas(p), "SINON"));
     evidence('festinPlats', sansDoublon(activFestinPlats(p), "SINON"));
-    evidence('campObjectif', sansDoublon(campObjectifResult, "SINON"));
     evidence('activCouro', sansDoublon(activCouro(p), "SINON"));
     // NOTE: Les postes de cour migrés sont maintenant gérés par displayAllResults()
     // liOuiNon("Médecin", 'poste-0', sansDoublon(epidemies(p), "SINON"));
