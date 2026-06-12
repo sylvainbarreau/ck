@@ -1,0 +1,2536 @@
+# Convention de nommage des textes de décisions
+
+Date: 2026-06-12
+
+Objectif: maximiser la lisibilité front et la stabilité des comparaisons sensibles à la casse.
+
+## 1) Format canonique
+
+- Patron unique: Verbe Objet [SI Condition] [ET Condition] [OU Condition] [PUIS Action].
+- Exemple: Recruter VASSAL-S SI Prestige < 150 ET Nomade.
+- Une ligne = une intention principale.
+
+## 2) Casse obligatoire
+
+- Unités de jeu: PascalCase, singulier (Prestige, Or, Influence, Mérite, Piété).
+- Cibles variables: UPPERCASE, suffixe -S si pluralisable (MECENE-S, VASSAL-S, PRISONNIER-S).
+- Opérateurs logiques: UPPERCASE strict (SI, ET, OU, NON, PUIS).
+- Types de personnage: PascalCase strict (Aventurier, Nomade, Chevalier, Vassal, Régent).
+- Verbes: infinitif en PascalCase (Recruter, Emprisonner, Influencer, Séduire).
+- Booléens de décision: Oui et Non uniquement.
+
+## 3) Lisibilité front (règles de qualité)
+
+- Longueur cible: 3 à 10 mots.
+- Pas de doublon de forme pour un même token (prestige/Prestige interdit).
+- Pas d'abréviation nouvelle dans le texte affiché.
+- Éviter les parenthèses imbriquées et les formulations ambiguës.
+- Conserver une terminologie stable entre tous les JSON.
+- Prioriser un vocabulaire actionnable: verbe clair + objet explicite.
+
+## 4) Pictogrammes (front uniquement)
+
+- La donnée source reste textuelle canonique.
+- Mapping UI suggéré: SI=ic-logic-if, ET=ic-logic-and, OU=ic-logic-or, PUIS=ic-logic-then.
+- Mapping UI suggéré types: Aventurier=ic-char-adventurer, Nomade=ic-char-nomad, Chevalier=ic-char-knight.
+
+## 5) Statistiques
+
+- Occurrences totales extraites depuis les champs decisions: 2493
+- Textes distincts après réparation d'encodage: 610
+
+## 6) Annexe exhaustive corrigée: fichier | chemin | texte
+
+- activites.json | activChasse.selonEtats.agent.decisions[0] | Séduire AGENT-S
+- activites.json | activChasse.selonEtats.agent.decisions[1] | Abattre une bête
+- activites.json | activChasse.selonEtats.aInfluencer.decisions[0] | Séduire ALLIE POTENTIEL-S
+- activites.json | activChasse.selonEtats.aInfluencer.decisions[1] | Abattre une bête
+- activites.json | activChasse.selonEtats.assassinat.decisions[0] | Tuer DANS LA SUCCESSION-S
+- activites.json | activChasse.selonEtats.controle.decisions[0] | Réussi
+- activites.json | activChasse.selonEtats.cultInnov.decisions[0] | Abattre une bête SI NON Chef culturel
+- activites.json | activChasse.selonEtats.demande.decisions[0] | Séduire MECENE-S
+- activites.json | activChasse.selonEtats.demande2.decisions[0] | Séduire MECENE-S
+- activites.json | activChasse.selonEtats.denoncer.decisions[0] | Abattre une bête
+- activites.json | activChasse.selonEtats.dirigeantAInfluencer.decisions[0] | Séduire MECENE-S
+- activites.json | activChasse.selonEtats.enfant.decisions[0] | Séduire
+- activites.json | activChasse.selonEtats.enfant.decisions[1] | Abattre une bête SI adoption/aventurier ET Prestige < 150
+- activites.json | activChasse.selonEtats.enfant.decisions[2] | Séduire LUI SI adoption/aventurier
+- activites.json | activChasse.selonEtats.enfant.decisions[3] | Abattre une bête SI adoption/aventurier
+- activites.json | activChasse.selonEtats.enfant.decisions[4] | Se détendre
+- activites.json | activChasse.selonEtats.factionPop.decisions[0] | Abattre une bête
+- activites.json | activChasse.selonEtats.guerre.decisions[0] | Séduire LUI SI gouvernement administratif
+- activites.json | activChasse.selonEtats.perteTerresRevoquer.decisions[0] | Abattre une bête
+- activites.json | activChasse.selonEtats.perteTerresRevoquer.decisions[1] | Séduire VASSAL A REVOQUER-S
+- activites.json | activChasse.selonEtats.prestige.decisions[0] | Abattre une bête
+- activites.json | activChasse.selonEtats.prison.decisions[0] | Abattre une bête
+- activites.json | activChasse.selonEtats.prison.decisions[1] | Séduire PRISONNIER-S
+- activites.json | activChasse.selonEtats.rancon.decisions[0] | Abattre une bête
+- activites.json | activChasse.selonEtats.religieuxAInfluencer.decisions[0] | Séduire CONSEILLER RELIGIEUX
+- activites.json | activChasse.selonEtats.stress.decisions[0] | Se détendre
+- activites.json | activChasse.selonEtats.successionChaos.decisions[0] | Imposer l'obéissance
+- activites.json | activChasse.selonEtats.successionChaos.decisions[1] | Epouvantable
+- activites.json | activChasse.selonEtats.successionChaos.decisions[2] | Réussi
+- activites.json | activChasse.selonEtats.survie.decisions[0] | Se détendre
+- activites.json | activChasse.selonEtats.tributaire.decisions[0] | Imposer l'obéissance
+- activites.json | activChasse.selonEtats.tributaire.decisions[1] | Réussi
+- activites.json | activChasse.selonEtats.tributaire.decisions[2] | Abattre une bête
+- activites.json | activChasse.selonEtats.tributaire.decisions[3] | Epouvantable
+- activites.json | activChasse.selonEtats.vassalAInfluencer.decisions[0] | Nouer une amitié FACTIEUX
+- activites.json | activChasse.selonEtats.vassalAInfluencer.decisions[1] | Séduire FACTIEUX
+- activites.json | activChasse.selonEtats.vassalAInfluencer.decisions[2] | Abattre une bête
+- activites.json | activChasse.selonEtats.vassalSOppose.decisions[0] | Séduire VASSAL-S
+- activites.json | activMonum.selonEtats.agent.decisions[0] | Curiosité SI AGENT-S autre culture
+- activites.json | activMonum.selonEtats.agent.decisions[1] | Amassage de savoirs
+- activites.json | activMonum.selonEtats.aInfluencer.decisions[0] | Curiosité SI ALLIE POTENTIEL-S autre culture
+- activites.json | activMonum.selonEtats.aInfluencer.decisions[1] | Amassage de savoirs
+- activites.json | activMonum.selonEtats.assassinat.decisions[0] | Amassage de savoirs
+- activites.json | activMonum.selonEtats.chevalierPartisan.decisions[0] | Curiosité
+- activites.json | activMonum.selonEtats.conseiller.decisions[0] | Curiosité
+- activites.json | activMonum.selonEtats.controle.decisions[0] | Amassage de savoirs
+- activites.json | activMonum.selonEtats.cultInnov.decisions[0] | Amassage de savoirs
+- activites.json | activMonum.selonEtats.declarationGuerre.decisions[0] | Amassage de savoirs
+- activites.json | activMonum.selonEtats.demande.decisions[0] | Curiosité SI MECENE-S autre culture
+- activites.json | activMonum.selonEtats.demande.decisions[1] | Amassage de savoirs
+- activites.json | activMonum.selonEtats.domaine.decisions[0] | Amassage de savoirs
+- activites.json | activMonum.selonEtats.enfant.decisions[0] | Curiosité SI ADOPTE-S autre culture
+- activites.json | activMonum.selonEtats.factionPop.decisions[0] | Curiosité
+- activites.json | activMonum.selonEtats.guerre.decisions[0] | Curiosité
+- activites.json | activMonum.selonEtats.hamecon.decisions[0] | Amassage de savoirs
+- activites.json | activMonum.selonEtats.prison.decisions[0] | Amassage de savoirs
+- activites.json | activMonum.selonEtats.proclame.decisions[0] | Curiosité
+- activites.json | activMonum.selonEtats.recruterChevalier.decisions[0] | Curiosité
+- activites.json | activMonum.selonEtats.religieuxAInfluencer.decisions[0] | Curiosité SI CONSEILLER RELIGIEUX autre culture
+- activites.json | activMonum.selonEtats.religieuxAInfluencer.decisions[1] | Amassage de savoirs
+- activites.json | activMonum.selonEtats.revenu.decisions[0] | Amassage de savoirs
+- activites.json | activMonum.selonEtats.succession.decisions[0] | A DEFINIR
+- activites.json | activMonum.selonEtats.vassal.decisions[0] | Amassage de savoirs
+- activites.json | activMonum.selonEtats.vassalAInfluencer.decisions[0] | Curiosité SI FACTIEUX-S autre culture
+- activites.json | activMonum.selonEtats.vassalAInfluencer.decisions[1] | Amassage de savoirs
+- activites.json | activMonumScribe.selonEtats.agent.decisions[0] | Recruter des scribes compétents
+- activites.json | activMonumScribe.selonEtats.agent.decisions[1] | Pas de scribes
+- activites.json | activMonumScribe.selonEtats.aInfluencer.decisions[0] | Recruter des scribes compétents
+- activites.json | activMonumScribe.selonEtats.aInfluencer.decisions[1] | Pas de scribes
+- activites.json | activMonumScribe.selonEtats.assassinat.decisions[0] | Recruter des scribes compétents
+- activites.json | activMonumScribe.selonEtats.assassinat.decisions[1] | Pas de scribes
+- activites.json | activMonumScribe.selonEtats.chevalierPartisan.decisions[0] | Recruter des scribes compétents
+- activites.json | activMonumScribe.selonEtats.chevalierPartisan.decisions[1] | Pas de scribes
+- activites.json | activMonumScribe.selonEtats.conseiller.decisions[0] | Recruter des scribes compétents
+- activites.json | activMonumScribe.selonEtats.conseiller.decisions[1] | Pas de scribes
+- activites.json | activMonumScribe.selonEtats.controle.decisions[0] | Recruter des scribes compétents
+- activites.json | activMonumScribe.selonEtats.controle.decisions[1] | Pas de scribes
+- activites.json | activMonumScribe.selonEtats.cultInnov.decisions[0] | Recruter des scribes compétents
+- activites.json | activMonumScribe.selonEtats.cultInnov.decisions[1] | Pas de scribes
+- activites.json | activMonumScribe.selonEtats.declarationGuerre.decisions[0] | Recruter des scribes compétents
+- activites.json | activMonumScribe.selonEtats.declarationGuerre.decisions[1] | Pas de scribes
+- activites.json | activMonumScribe.selonEtats.demande.decisions[0] | Recruter des scribes compétents
+- activites.json | activMonumScribe.selonEtats.demande.decisions[1] | Pas de scribes
+- activites.json | activMonumScribe.selonEtats.dirigeantAInfluencer.decisions[0] | Recruter des scribes compétents
+- activites.json | activMonumScribe.selonEtats.dirigeantAInfluencer.decisions[1] | Pas de scribes
+- activites.json | activMonumScribe.selonEtats.domaine.decisions[0] | Recruter des scribes compétents
+- activites.json | activMonumScribe.selonEtats.domaine.decisions[1] | Pas de scribes
+- activites.json | activMonumScribe.selonEtats.enfant.decisions[0] | Recruter des scribes compétents
+- activites.json | activMonumScribe.selonEtats.enfant.decisions[1] | Pas de scribes
+- activites.json | activMonumScribe.selonEtats.factionPop.decisions[0] | Recruter des scribes compétents
+- activites.json | activMonumScribe.selonEtats.factionPop.decisions[1] | Pas de scribes
+- activites.json | activMonumScribe.selonEtats.guerre.decisions[0] | Recruter des scribes compétents
+- activites.json | activMonumScribe.selonEtats.guerre.decisions[1] | Pas de scribes
+- activites.json | activMonumScribe.selonEtats.hamecon.decisions[0] | Recruter des scribes compétents
+- activites.json | activMonumScribe.selonEtats.hamecon.decisions[1] | Pas de scribes
+- activites.json | activMonumScribe.selonEtats.prison.decisions[0] | Recruter des scribes compétents
+- activites.json | activMonumScribe.selonEtats.prison.decisions[1] | Pas de scribes
+- activites.json | activMonumScribe.selonEtats.proclame.decisions[0] | Recruter des scribes compétents
+- activites.json | activMonumScribe.selonEtats.proclame.decisions[1] | Pas de scribes
+- activites.json | activMonumScribe.selonEtats.recruterChevalier.decisions[0] | Recruter des scribes compétents
+- activites.json | activMonumScribe.selonEtats.recruterChevalier.decisions[1] | Pas de scribes
+- activites.json | activMonumScribe.selonEtats.religieuxAInfluencer.decisions[0] | Recruter des scribes compétents
+- activites.json | activMonumScribe.selonEtats.religieuxAInfluencer.decisions[1] | Pas de scribes
+- activites.json | activMonumScribe.selonEtats.revenu.decisions[0] | Pas de scribes
+- activites.json | activMonumScribe.selonEtats.succession.decisions[0] | A DEFINIR
+- activites.json | activMonumScribe.selonEtats.vassal.decisions[0] | Recruter des scribes compétents
+- activites.json | activMonumScribe.selonEtats.vassal.decisions[1] | Pas de scribes
+- activites.json | activMonumScribe.selonEtats.vassalAInfluencer.decisions[0] | Recruter des scribes compétents
+- activites.json | activMonumScribe.selonEtats.vassalAInfluencer.decisions[1] | Pas de scribes
+- activites.json | activPelerin.selonEtats.enfant.decisions[0] | A DEFINIR
+- activites.json | activPelerin.selonEtats.enfant.decisions[1] | Pèlerinage pieux SI divorce
+- activites.json | activRando.selonEtats.agent.decisions[0] | Amitié
+- activites.json | activRando.selonEtats.aInfluencer.decisions[0] | Amitié
+- activites.json | activRando.selonEtats.assassinat.decisions[0] | A DEFINIR
+- activites.json | activRando.selonEtats.cultInnov.decisions[0] | A DEFINIR
+- activites.json | activRando.selonEtats.declarationGuerre.decisions[0] | A DEFINIR
+- activites.json | activRando.selonEtats.demande.decisions[0] | Amitié
+- activites.json | activRando.selonEtats.demande2.decisions[0] | Amitié
+- activites.json | activRando.selonEtats.dirigeantAInfluencer.decisions[0] | Amitié
+- activites.json | activRando.selonEtats.enfant.decisions[0] | Amitié CHEF DE FOI SI divorce
+- activites.json | activRando.selonEtats.enfant.decisions[1] | Amitié ADOPTE POTENTIEL-S
+- activites.json | activRando.selonEtats.guerre.decisions[0] | A DEFINIR
+- activites.json | activRando.selonEtats.perteTerresRevoquer.decisions[0] | A DEFINIR
+- activites.json | activRando.selonEtats.prestige.decisions[0] | Conteur
+- activites.json | activRando.selonEtats.prison.decisions[0] | Amitié
+- activites.json | activRando.selonEtats.religieuxAInfluencer.decisions[0] | Amitié
+- activites.json | activRando.selonEtats.stress.decisions[0] | Se détendre
+- activites.json | activRando.selonEtats.succession.decisions[0] | A DEFINIR
+- activites.json | activRando.selonEtats.survie.decisions[0] | Se détendre
+- activites.json | activRando.selonEtats.vassal.decisions[0] | Amitié
+- activites.json | activRando.selonEtats.vassalAInfluencer.decisions[0] | Amitié
+- activites.json | activRando.selonEtats.vassalSOppose.decisions[0] | Amitié
+- activites.json | activUniv.selonEtats.agent.decisions[0] | Etudier durement
+- activites.json | activUniv.selonEtats.aInfluencer.decisions[0] | Etudier durement
+- activites.json | activUniv.selonEtats.assassinat.decisions[0] | Etudier durement
+- activites.json | activUniv.selonEtats.chevalierPartisan.decisions[0] | Etudier durement
+- activites.json | activUniv.selonEtats.conseiller.decisions[0] | Mener une vie goliardique
+- activites.json | activUniv.selonEtats.controle.decisions[0] | Etudier durement
+- activites.json | activUniv.selonEtats.cultInnov.decisions[0] | Etudier durement
+- activites.json | activUniv.selonEtats.declarationGuerre.decisions[0] | Etudier durement
+- activites.json | activUniv.selonEtats.demande.decisions[0] | Etudier durement
+- activites.json | activUniv.selonEtats.demande2.decisions[0] | Etudier durement
+- activites.json | activUniv.selonEtats.dirigeantAInfluencer.decisions[0] | Etudier durement
+- activites.json | activUniv.selonEtats.domaine.decisions[0] | Etudier durement
+- activites.json | activUniv.selonEtats.enfant.decisions[0] | Mener une vie goliardique SI futur enfant légitime
+- activites.json | activUniv.selonEtats.enfant.decisions[1] | Etudier durement SI divorce
+- activites.json | activUniv.selonEtats.enfant.decisions[2] | Etudier durement SI aventurier adopter
+- activites.json | activUniv.selonEtats.enfant.decisions[3] | Mener une vie goliardique
+- activites.json | activUniv.selonEtats.factionPop.decisions[0] | Etudier durement
+- activites.json | activUniv.selonEtats.guerre.decisions[0] | Etudier durement
+- activites.json | activUniv.selonEtats.hamecon.decisions[0] | Etudier durement
+- activites.json | activUniv.selonEtats.influence.decisions[0] | Etudier durement
+- activites.json | activUniv.selonEtats.perteTerresRevoquer.decisions[0] | Etudier durement
+- activites.json | activUniv.selonEtats.piete.decisions[0] | Etudier durement
+- activites.json | activUniv.selonEtats.prestige.decisions[0] | Etudier durement
+- activites.json | activUniv.selonEtats.prison.decisions[0] | Etudier durement
+- activites.json | activUniv.selonEtats.proclame.decisions[0] | Etudier durement
+- activites.json | activUniv.selonEtats.rancon.decisions[0] | Etudier durement
+- activites.json | activUniv.selonEtats.recruterChevalier.decisions[0] | Etudier durement
+- activites.json | activUniv.selonEtats.religieuxAInfluencer.decisions[0] | Etudier durement
+- activites.json | activUniv.selonEtats.revenu.decisions[0] | Etudier durement
+- activites.json | activUniv.selonEtats.stress.decisions[0] | Mener une vie goliardique
+- activites.json | activUniv.selonEtats.succession.decisions[0] | Etudier durement
+- activites.json | activUniv.selonEtats.successionChaos.decisions[0] | Etudier durement
+- activites.json | activUniv.selonEtats.survie.decisions[0] | Mener une vie goliardique
+- activites.json | activUniv.selonEtats.vassal.decisions[0] | Etudier durement
+- activites.json | activUniv.selonEtats.vassalAInfluencer.decisions[0] | Etudier durement
+- activites.json | chasseType.selonEtats.agent.decisions[0] | Fauconnerie SI vassal direct ou courtisan ou invité CIBLE attiré
+- activites.json | chasseType.selonEtats.agent.decisions[1] | Nerge
+- activites.json | chasseType.selonEtats.agent.decisions[2] | Chasse SI sexe martial
+- activites.json | chasseType.selonEtats.agent.decisions[3] | Fauconnerie
+- activites.json | chasseType.selonEtats.aInfluencer.decisions[0] | Fauconnerie SI ALLIE POTENTIEL-S attiré
+- activites.json | chasseType.selonEtats.controle.decisions[0] | Nerge
+- activites.json | chasseType.selonEtats.cultInnov.decisions[0] | Fauconnerie
+- activites.json | chasseType.selonEtats.declarationGuerre.decisions[0] | Nerge
+- activites.json | chasseType.selonEtats.declarationGuerre.decisions[1] | Chasse SI sexe martial
+- activites.json | chasseType.selonEtats.demande.decisions[0] | Nerge
+- activites.json | chasseType.selonEtats.demande.decisions[1] | Chasse SI sexe martial
+- activites.json | chasseType.selonEtats.demande.decisions[2] | Fauconnerie
+- activites.json | chasseType.selonEtats.demande2.decisions[0] | Nerge
+- activites.json | chasseType.selonEtats.demande2.decisions[1] | Chasse SI sexe martial
+- activites.json | chasseType.selonEtats.demande2.decisions[2] | Fauconnerie
+- activites.json | chasseType.selonEtats.denoncer.decisions[0] | Nerge
+- activites.json | chasseType.selonEtats.denoncer.decisions[1] | Chasse SI sexe martial
+- activites.json | chasseType.selonEtats.denoncer.decisions[2] | Fauconnerie
+- activites.json | chasseType.selonEtats.domaine.decisions[0] | Fauconnerie
+- activites.json | chasseType.selonEtats.enfant.decisions[0] | Fauconnerie
+- activites.json | chasseType.selonEtats.guerre.decisions[0] | Chasse SI sexe martial
+- activites.json | chasseType.selonEtats.guerre.decisions[1] | Nerge
+- activites.json | chasseType.selonEtats.guerre.decisions[2] | Fauconnerie SI Gouvernement administratif attiré
+- activites.json | chasseType.selonEtats.piete.decisions[0] | Fauconnerie
+- activites.json | chasseType.selonEtats.prestige.decisions[0] | Nerge
+- activites.json | chasseType.selonEtats.prestige.decisions[1] | Chasse SI sexe martial
+- activites.json | chasseType.selonEtats.prestige.decisions[2] | Fauconnerie
+- activites.json | chasseType.selonEtats.prison.decisions[0] | Nerge
+- activites.json | chasseType.selonEtats.prison.decisions[1] | Chasse SI sexe martial
+- activites.json | chasseType.selonEtats.prison.decisions[2] | Fauconnerie
+- activites.json | chasseType.selonEtats.proclame.decisions[0] | Nerge
+- activites.json | chasseType.selonEtats.proclame.decisions[1] | Chasse SI sexe martial
+- activites.json | chasseType.selonEtats.proclame.decisions[2] | Fauconnerie
+- activites.json | chasseType.selonEtats.recruterChevalier.decisions[0] | Nerge
+- activites.json | chasseType.selonEtats.recruterChevalier.decisions[1] | Chasse SI sexe martial
+- activites.json | chasseType.selonEtats.recruterChevalier.decisions[2] | Fauconnerie
+- activites.json | chasseType.selonEtats.religieuxAInfluencer.decisions[0] | Fauconnerie
+- activites.json | chasseType.selonEtats.revenu.decisions[0] | Nerge
+- activites.json | chasseType.selonEtats.revenu.decisions[1] | Fauconnerie
+- activites.json | chasseType.selonEtats.stress.decisions[0] | Chasse SI sexe martial
+- activites.json | chasseType.selonEtats.successionChaos.decisions[0] | Nerge
+- activites.json | chasseType.selonEtats.survie.decisions[0] | Chasse SI sexe martial
+- activites.json | chasseType.selonEtats.tributaire.decisions[0] | Nerge
+- activites.json | chasseType.selonEtats.tributaire.decisions[1] | Chasse SI sexe martial
+- activites.json | chasseType.selonEtats.tributaire.decisions[2] | Fauconnerie
+- activites.json | chasseType.selonEtats.vassal.decisions[0] | Fauconnerie SI VASSAL-S attiré
+- activites.json | chasseType.selonEtats.vassal.decisions[1] | Nerge
+- activites.json | chasseType.selonEtats.vassalAInfluencer.decisions[0] | Fauconnerie SI FACTIEUX attiré
+- activites.json | chasseType.selonEtats.vassalAInfluencer.decisions[1] | Nerge
+- activites.json | feteCamp.selonEtats.agent.decisions[0] | Nouer une amitié AGENT-S
+- activites.json | feteCamp.selonEtats.aInfluencer.decisions[0] | Nouer une amitié ALLIE POTENTIEL-S
+- activites.json | feteCamp.selonEtats.chevalierPartisan.decisions[0] | Conversation au coin du feu
+- activites.json | feteCamp.selonEtats.demande.decisions[0] | Nouer une amitié MECENE-S
+- activites.json | feteCamp.selonEtats.enfant.decisions[0] | Nouer une amitié ADOPTE POTENTIEL-S
+- activites.json | feteCamp.selonEtats.enfant.decisions[1] | Se détendre
+- activites.json | feteCamp.selonEtats.guerre.decisions[0] | Conversation au coin du feu
+- activites.json | feteCamp.selonEtats.prison.decisions[0] | Nouer une amitié PRISONNIER-S
+- activites.json | feteCamp.selonEtats.stress.decisions[0] | Se détendre
+- activites.json | feteCamp.selonEtats.survie.decisions[0] | Se détendre
+- activites.json | feteCampBoiss.selonEtats.agent.decisions[0] | A DEFINIR
+- activites.json | feteCampBoiss.selonEtats.aInfluencer.decisions[0] | A DEFINIR
+- activites.json | feteCampBoiss.selonEtats.assassinat.decisions[0] | A DEFINIR
+- activites.json | feteCampBoiss.selonEtats.chevalierPartisan.decisions[0] | A DEFINIR
+- activites.json | feteCampBoiss.selonEtats.cultInnov.decisions[0] | A DEFINIR
+- activites.json | feteCampBoiss.selonEtats.demande.decisions[0] | A DEFINIR
+- activites.json | feteCampBoiss.selonEtats.denoncer.decisions[0] | A DEFINIR
+- activites.json | feteCampBoiss.selonEtats.enfant.decisions[0] | A DEFINIR
+- activites.json | feteCampBoiss.selonEtats.guerre.decisions[0] | A DEFINIR
+- activites.json | feteCampBoiss.selonEtats.hamecon.decisions[0] | A DEFINIR
+- activites.json | feteCampBoiss.selonEtats.piete.decisions[0] | A DEFINIR
+- activites.json | feteCampBoiss.selonEtats.prestige.decisions[0] | A DEFINIR
+- activites.json | feteCampBoiss.selonEtats.prison.decisions[0] | A DEFINIR
+- activites.json | feteCampBoiss.selonEtats.revenu.decisions[0] | A DEFINIR
+- activites.json | feteCampBoiss.selonEtats.stress.decisions[0] | A DEFINIR
+- activites.json | feteCampBoiss.selonEtats.succession.decisions[0] | A DEFINIR
+- activites.json | feteCampBoiss.selonEtats.survie.decisions[0] | A DEFINIR
+- activites.json | feteCampNourr.selonEtats.agent.decisions[0] | Maigres repas
+- activites.json | feteCampNourr.selonEtats.chevalierPartisan.decisions[0] | Banquet somptueux
+- activites.json | feteCampNourr.selonEtats.enfant.decisions[0] | Maigres repas
+- activites.json | feteCampNourr.selonEtats.guerre.decisions[0] | Banquet somptueux
+- activites.json | feteCampNourr.selonEtats.revenu.decisions[0] | Maigres repas
+- activites.json | feteCampNourr.selonEtats.survie.decisions[0] | Maigres repas
+- activites.json | grpeChasse.selonEtats.aInfluencer.decisions[0] | Grand groupe
+- activites.json | grpeChasse.selonEtats.aInfluencer.decisions[1] | Groupe raisonnable
+- activites.json | grpeChasse.selonEtats.aInfluencer.decisions[2] | Petit groupe
+- activites.json | grpeChasse.selonEtats.controle.decisions[0] | Grand groupe
+- activites.json | grpeChasse.selonEtats.controle.decisions[1] | Groupe raisonnable
+- activites.json | grpeChasse.selonEtats.controle.decisions[2] | Petit groupe
+- activites.json | grpeChasse.selonEtats.cultInnov.decisions[0] | Grand groupe
+- activites.json | grpeChasse.selonEtats.cultInnov.decisions[1] | Groupe raisonnable
+- activites.json | grpeChasse.selonEtats.cultInnov.decisions[2] | Petit groupe
+- activites.json | grpeChasse.selonEtats.declarationGuerre.decisions[0] | Grand groupe
+- activites.json | grpeChasse.selonEtats.declarationGuerre.decisions[1] | Groupe raisonnable
+- activites.json | grpeChasse.selonEtats.declarationGuerre.decisions[2] | Petit groupe
+- activites.json | grpeChasse.selonEtats.denoncer.decisions[0] | Grand groupe
+- activites.json | grpeChasse.selonEtats.denoncer.decisions[1] | Groupe raisonnable
+- activites.json | grpeChasse.selonEtats.dirigeantAInfluencer.decisions[0] | Grand groupe
+- activites.json | grpeChasse.selonEtats.dirigeantAInfluencer.decisions[1] | Groupe raisonnable
+- activites.json | grpeChasse.selonEtats.dirigeantAInfluencer.decisions[2] | Petit groupe
+- activites.json | grpeChasse.selonEtats.domaine.decisions[0] | Grand groupe
+- activites.json | grpeChasse.selonEtats.domaine.decisions[1] | Groupe raisonnable
+- activites.json | grpeChasse.selonEtats.domaine.decisions[2] | Petit groupe
+- activites.json | grpeChasse.selonEtats.enfant.decisions[0] | Grand groupe SI aventurier adopter
+- activites.json | grpeChasse.selonEtats.enfant.decisions[1] | Groupe raisonnable SI aventurier adopter
+- activites.json | grpeChasse.selonEtats.factionPop.decisions[0] | Grand groupe
+- activites.json | grpeChasse.selonEtats.factionPop.decisions[1] | Groupe raisonnable
+- activites.json | grpeChasse.selonEtats.factionPop.decisions[2] | Petit groupe
+- activites.json | grpeChasse.selonEtats.guerre.decisions[0] | Grand groupe
+- activites.json | grpeChasse.selonEtats.guerre.decisions[1] | Groupe raisonnable
+- activites.json | grpeChasse.selonEtats.guerre.decisions[2] | Petit groupe
+- activites.json | grpeChasse.selonEtats.perteTerresRevoquer.decisions[0] | Grand groupe
+- activites.json | grpeChasse.selonEtats.perteTerresRevoquer.decisions[1] | Groupe raisonnable
+- activites.json | grpeChasse.selonEtats.perteTerresRevoquer.decisions[2] | Petit groupe
+- activites.json | grpeChasse.selonEtats.piete.decisions[0] | Grand groupe
+- activites.json | grpeChasse.selonEtats.piete.decisions[1] | Groupe raisonnable
+- activites.json | grpeChasse.selonEtats.piete.decisions[2] | Petit groupe
+- activites.json | grpeChasse.selonEtats.prestige.decisions[0] | Grand groupe
+- activites.json | grpeChasse.selonEtats.prestige.decisions[1] | Groupe raisonnable
+- activites.json | grpeChasse.selonEtats.prison.decisions[0] | Grand groupe
+- activites.json | grpeChasse.selonEtats.prison.decisions[1] | Groupe raisonnable
+- activites.json | grpeChasse.selonEtats.prison.decisions[2] | Petit groupe
+- activites.json | grpeChasse.selonEtats.rancon.decisions[0] | Petit groupe
+- activites.json | grpeChasse.selonEtats.religieuxAInfluencer.decisions[0] | Grand groupe
+- activites.json | grpeChasse.selonEtats.religieuxAInfluencer.decisions[1] | Groupe raisonnable
+- activites.json | grpeChasse.selonEtats.religieuxAInfluencer.decisions[2] | Petit groupe
+- activites.json | grpeChasse.selonEtats.revenu.decisions[0] | Petit groupe
+- activites.json | grpeChasse.selonEtats.successionChaos.decisions[0] | Petit groupe
+- activites.json | grpeChasse.selonEtats.tributaire.decisions[0] | Grand groupe
+- activites.json | grpeChasse.selonEtats.tributaire.decisions[1] | Groupe raisonnable
+- activites.json | grpeChasse.selonEtats.tributaire.decisions[2] | Petit groupe
+- activites.json | grpeChasse.selonEtats.troupeau.decisions[0] | Petit groupe
+- activites.json | grpeChasse.selonEtats.vassal.decisions[0] | Grand groupe
+- activites.json | grpeChasse.selonEtats.vassal.decisions[1] | Groupe raisonnable
+- activites.json | grpeChasse.selonEtats.vassal.decisions[2] | Petit groupe
+- activites.json | grpeChasse.selonEtats.vassalAInfluencer.decisions[0] | Grand groupe
+- activites.json | grpeChasse.selonEtats.vassalAInfluencer.decisions[1] | Groupe raisonnable
+- activites.json | grpeChasse.selonEtats.vassalAInfluencer.decisions[2] | Petit groupe
+- activites.json | grpeChasse.selonEtats.vassalSOppose.decisions[0] | Grand groupe
+- activites.json | grpeChasse.selonEtats.vassalSOppose.decisions[1] | Groupe raisonnable
+- activites.json | grpeChasse.selonEtats.vassalSOppose.decisions[2] | Petit groupe
+- activites.json | inspec.selonEtats.agent.decisions[0] | Détermination de superviseur
+- activites.json | inspec.selonEtats.declarationGuerre.decisions[0] | Intention de l'étude
+- activites.json | inspec.selonEtats.guerre.decisions[0] | Intention de l'étude
+- activites.json | inspec.selonEtats.prison.decisions[0] | Intention de l'étude
+- activites.json | inspec.selonEtats.rancon.decisions[0] | Détermination de superviseur
+- activites.json | inspec.selonEtats.revenu.decisions[0] | Détermination de superviseur
+- activites.json | inspecFinance.selonEtats.agent.decisions[0] | Pas de financements
+- activites.json | inspecFinance.selonEtats.rancon.decisions[0] | Pas de financements
+- activites.json | inspecFinance.selonEtats.revenu.decisions[0] | Pas de financements
+- activites.json | participChasse.selonEtats.agent.decisions[0] | Groupes de gardes-chasse
+- activites.json | participChasse.selonEtats.agent.decisions[1] | Groupes de chasse
+- activites.json | participChasse.selonEtats.agent.decisions[2] | Gardes-chasse locaux
+- activites.json | participChasse.selonEtats.aInfluencer.decisions[0] | Groupes de gardes-chasse
+- activites.json | participChasse.selonEtats.aInfluencer.decisions[1] | Groupes de chasse
+- activites.json | participChasse.selonEtats.aInfluencer.decisions[2] | Gardes-chasse locaux
+- activites.json | participChasse.selonEtats.assassinat.decisions[0] | Groupes de gardes-chasse
+- activites.json | participChasse.selonEtats.assassinat.decisions[1] | Groupes de chasse
+- activites.json | participChasse.selonEtats.assassinat.decisions[2] | Gardes-chasse locaux
+- activites.json | participChasse.selonEtats.chevalierPartisan.decisions[0] | Groupes de gardes-chasse
+- activites.json | participChasse.selonEtats.chevalierPartisan.decisions[1] | Groupes de chasse
+- activites.json | participChasse.selonEtats.chevalierPartisan.decisions[2] | Gardes-chasse locaux
+- activites.json | participChasse.selonEtats.cultInnov.decisions[0] | Groupes de gardes-chasse
+- activites.json | participChasse.selonEtats.cultInnov.decisions[1] | Groupes de chasse
+- activites.json | participChasse.selonEtats.cultInnov.decisions[2] | Gardes-chasse locaux
+- activites.json | participChasse.selonEtats.declarationGuerre.decisions[0] | Groupes de gardes-chasse
+- activites.json | participChasse.selonEtats.declarationGuerre.decisions[1] | Groupes de chasse
+- activites.json | participChasse.selonEtats.declarationGuerre.decisions[2] | Gardes-chasse locaux
+- activites.json | participChasse.selonEtats.demande.decisions[0] | Groupes de gardes-chasse
+- activites.json | participChasse.selonEtats.demande.decisions[1] | Groupes de chasse
+- activites.json | participChasse.selonEtats.demande.decisions[2] | Gardes-chasse locaux
+- activites.json | participChasse.selonEtats.demande2.decisions[0] | Groupes de gardes-chasse
+- activites.json | participChasse.selonEtats.demande2.decisions[1] | Groupes de chasse
+- activites.json | participChasse.selonEtats.demande2.decisions[2] | Gardes-chasse locaux
+- activites.json | participChasse.selonEtats.denoncer.decisions[0] | Groupes de gardes-chasse
+- activites.json | participChasse.selonEtats.denoncer.decisions[1] | Groupes de chasse
+- activites.json | participChasse.selonEtats.denoncer.decisions[2] | Gardes-chasse locaux
+- activites.json | participChasse.selonEtats.dirigeantAInfluencer.decisions[0] | Groupes de gardes-chasse
+- activites.json | participChasse.selonEtats.dirigeantAInfluencer.decisions[1] | Groupes de chasse
+- activites.json | participChasse.selonEtats.dirigeantAInfluencer.decisions[2] | Gardes-chasse locaux
+- activites.json | participChasse.selonEtats.domaine.decisions[0] | Groupes de gardes-chasse
+- activites.json | participChasse.selonEtats.domaine.decisions[1] | Groupes de chasse
+- activites.json | participChasse.selonEtats.domaine.decisions[2] | Gardes-chasse locaux
+- activites.json | participChasse.selonEtats.enfant.decisions[0] | Groupes de gardes-chasse
+- activites.json | participChasse.selonEtats.enfant.decisions[1] | Groupes de chasse
+- activites.json | participChasse.selonEtats.enfant.decisions[2] | Gardes-chasse locaux
+- activites.json | participChasse.selonEtats.factionPop.decisions[0] | Groupes de gardes-chasse
+- activites.json | participChasse.selonEtats.factionPop.decisions[1] | Groupes de chasse
+- activites.json | participChasse.selonEtats.factionPop.decisions[2] | Gardes-chasse locaux
+- activites.json | participChasse.selonEtats.guerre.decisions[0] | Groupes de gardes-chasse
+- activites.json | participChasse.selonEtats.guerre.decisions[1] | Groupes de chasse
+- activites.json | participChasse.selonEtats.guerre.decisions[2] | Gardes-chasse locaux
+- activites.json | participChasse.selonEtats.perteTerresRevoquer.decisions[0] | Groupes de gardes-chasse
+- activites.json | participChasse.selonEtats.perteTerresRevoquer.decisions[1] | Groupes de chasse
+- activites.json | participChasse.selonEtats.perteTerresRevoquer.decisions[2] | Gardes-chasse locaux
+- activites.json | participChasse.selonEtats.piete.decisions[0] | Groupes de gardes-chasse
+- activites.json | participChasse.selonEtats.piete.decisions[1] | Groupes de chasse
+- activites.json | participChasse.selonEtats.piete.decisions[2] | Gardes-chasse locaux
+- activites.json | participChasse.selonEtats.prison.decisions[0] | Groupes de gardes-chasse
+- activites.json | participChasse.selonEtats.prison.decisions[1] | Groupes de chasse
+- activites.json | participChasse.selonEtats.prison.decisions[2] | Gardes-chasse locaux
+- activites.json | participChasse.selonEtats.rancon.decisions[0] | Gardes-chasse locaux
+- activites.json | participChasse.selonEtats.revenu.decisions[0] | Gardes-chasse locaux
+- activites.json | participChasse.selonEtats.successionChaos.decisions[0] | A DEFINIR
+- activites.json | participChasse.selonEtats.survie.decisions[0] | Groupes de gardes-chasse
+- activites.json | participChasse.selonEtats.survie.decisions[1] | Groupes de chasse
+- activites.json | participChasse.selonEtats.survie.decisions[2] | Gardes-chasse locaux
+- activites.json | participChasse.selonEtats.tributaire.decisions[0] | Groupes de gardes-chasse
+- activites.json | participChasse.selonEtats.tributaire.decisions[1] | Groupes de chasse
+- activites.json | participChasse.selonEtats.vassal.decisions[0] | Groupes de gardes-chasse
+- activites.json | participChasse.selonEtats.vassal.decisions[1] | Groupes de chasse
+- activites.json | participChasse.selonEtats.vassal.decisions[2] | Gardes-chasse locaux
+- activites.json | participChasse.selonEtats.vassalAInfluencer.decisions[0] | Groupes de gardes-chasse
+- activites.json | participChasse.selonEtats.vassalAInfluencer.decisions[1] | Groupes de chasse
+- activites.json | participChasse.selonEtats.vassalAInfluencer.decisions[2] | Gardes-chasse locaux
+- activites.json | pelerinApp.selonEtats.agent.decisions[0] | Magnifique
+- activites.json | pelerinApp.selonEtats.agent.decisions[1] | Grand
+- activites.json | pelerinApp.selonEtats.agent.decisions[2] | Modeste
+- activites.json | pelerinApp.selonEtats.aInfluencer.decisions[0] | Magnifique
+- activites.json | pelerinApp.selonEtats.aInfluencer.decisions[1] | Grand
+- activites.json | pelerinApp.selonEtats.aInfluencer.decisions[2] | Modeste
+- activites.json | pelerinApp.selonEtats.assassinat.decisions[0] | Magnifique
+- activites.json | pelerinApp.selonEtats.assassinat.decisions[1] | Grand
+- activites.json | pelerinApp.selonEtats.assassinat.decisions[2] | Modeste
+- activites.json | pelerinApp.selonEtats.chevalierPartisan.decisions[0] | Magnifique
+- activites.json | pelerinApp.selonEtats.chevalierPartisan.decisions[1] | Grand
+- activites.json | pelerinApp.selonEtats.chevalierPartisan.decisions[2] | Modeste
+- activites.json | pelerinApp.selonEtats.controle.decisions[0] | Magnifique
+- activites.json | pelerinApp.selonEtats.controle.decisions[1] | Grand
+- activites.json | pelerinApp.selonEtats.controle.decisions[2] | Modeste
+- activites.json | pelerinApp.selonEtats.cultInnov.decisions[0] | Magnifique
+- activites.json | pelerinApp.selonEtats.cultInnov.decisions[1] | Grand
+- activites.json | pelerinApp.selonEtats.cultInnov.decisions[2] | Modeste
+- activites.json | pelerinApp.selonEtats.declarationGuerre.decisions[0] | Magnifique
+- activites.json | pelerinApp.selonEtats.declarationGuerre.decisions[1] | Grand
+- activites.json | pelerinApp.selonEtats.declarationGuerre.decisions[2] | Modeste
+- activites.json | pelerinApp.selonEtats.demande.decisions[0] | Magnifique
+- activites.json | pelerinApp.selonEtats.demande.decisions[1] | Grand
+- activites.json | pelerinApp.selonEtats.demande.decisions[2] | Modeste
+- activites.json | pelerinApp.selonEtats.demande2.decisions[0] | Magnifique
+- activites.json | pelerinApp.selonEtats.demande2.decisions[1] | Grand
+- activites.json | pelerinApp.selonEtats.demande2.decisions[2] | Modeste
+- activites.json | pelerinApp.selonEtats.dirigeantAInfluencer.decisions[0] | Magnifique
+- activites.json | pelerinApp.selonEtats.dirigeantAInfluencer.decisions[1] | Grand
+- activites.json | pelerinApp.selonEtats.dirigeantAInfluencer.decisions[2] | Modeste
+- activites.json | pelerinApp.selonEtats.domaine.decisions[0] | Magnifique
+- activites.json | pelerinApp.selonEtats.domaine.decisions[1] | Grand
+- activites.json | pelerinApp.selonEtats.domaine.decisions[2] | Modeste
+- activites.json | pelerinApp.selonEtats.enfant.decisions[0] | En nombre SI divorce
+- activites.json | pelerinApp.selonEtats.enfant.decisions[1] | Cérémoniel SI divorce
+- activites.json | pelerinApp.selonEtats.enfant.decisions[2] | Approprié
+- activites.json | pelerinApp.selonEtats.factionPop.decisions[0] | Magnifique
+- activites.json | pelerinApp.selonEtats.factionPop.decisions[1] | Grand
+- activites.json | pelerinApp.selonEtats.factionPop.decisions[2] | Modeste
+- activites.json | pelerinApp.selonEtats.guerre.decisions[0] | Magnifique
+- activites.json | pelerinApp.selonEtats.guerre.decisions[1] | Grand
+- activites.json | pelerinApp.selonEtats.guerre.decisions[2] | Modeste
+- activites.json | pelerinApp.selonEtats.hamecon.decisions[0] | Magnifique
+- activites.json | pelerinApp.selonEtats.hamecon.decisions[1] | Grand
+- activites.json | pelerinApp.selonEtats.hamecon.decisions[2] | Modeste
+- activites.json | pelerinApp.selonEtats.influence.decisions[0] | Magnifique
+- activites.json | pelerinApp.selonEtats.influence.decisions[1] | Grand
+- activites.json | pelerinApp.selonEtats.influence.decisions[2] | Modeste
+- activites.json | pelerinApp.selonEtats.perteTerresRevoquer.decisions[0] | Magnifique
+- activites.json | pelerinApp.selonEtats.perteTerresRevoquer.decisions[1] | Grand
+- activites.json | pelerinApp.selonEtats.perteTerresRevoquer.decisions[2] | Modeste
+- activites.json | pelerinApp.selonEtats.piete.decisions[0] | Magnifique
+- activites.json | pelerinApp.selonEtats.piete.decisions[1] | Grand
+- activites.json | pelerinApp.selonEtats.piete.decisions[2] | Modeste
+- activites.json | pelerinApp.selonEtats.prestige.decisions[0] | Magnifique
+- activites.json | pelerinApp.selonEtats.prestige.decisions[1] | Grand
+- activites.json | pelerinApp.selonEtats.prestige.decisions[2] | Modeste
+- activites.json | pelerinApp.selonEtats.prison.decisions[0] | Magnifique
+- activites.json | pelerinApp.selonEtats.prison.decisions[1] | Grand
+- activites.json | pelerinApp.selonEtats.prison.decisions[2] | Modeste
+- activites.json | pelerinApp.selonEtats.proclame.decisions[0] | Magnifique
+- activites.json | pelerinApp.selonEtats.proclame.decisions[1] | Grand
+- activites.json | pelerinApp.selonEtats.proclame.decisions[2] | Modeste
+- activites.json | pelerinApp.selonEtats.rancon.decisions[0] | Modeste
+- activites.json | pelerinApp.selonEtats.recruterChevalier.decisions[0] | Magnifique
+- activites.json | pelerinApp.selonEtats.recruterChevalier.decisions[1] | Grand
+- activites.json | pelerinApp.selonEtats.recruterChevalier.decisions[2] | Modeste
+- activites.json | pelerinApp.selonEtats.religieuxAInfluencer.decisions[0] | En nombre
+- activites.json | pelerinApp.selonEtats.religieuxAInfluencer.decisions[1] | Humble
+- activites.json | pelerinApp.selonEtats.revenu.decisions[0] | Modeste
+- activites.json | pelerinApp.selonEtats.stress.decisions[0] | Magnifique
+- activites.json | pelerinApp.selonEtats.stress.decisions[1] | Grand
+- activites.json | pelerinApp.selonEtats.stress.decisions[2] | Modeste
+- activites.json | pelerinApp.selonEtats.succession.decisions[0] | Magnifique
+- activites.json | pelerinApp.selonEtats.succession.decisions[1] | Grand
+- activites.json | pelerinApp.selonEtats.succession.decisions[2] | Modeste
+- activites.json | pelerinApp.selonEtats.vassal.decisions[0] | Magnifique
+- activites.json | pelerinApp.selonEtats.vassal.decisions[1] | Grand
+- activites.json | pelerinApp.selonEtats.vassal.decisions[2] | Modeste
+- activites.json | pelerinApp.selonEtats.vassalAInfluencer.decisions[0] | Magnifique
+- activites.json | pelerinApp.selonEtats.vassalAInfluencer.decisions[1] | Grand
+- activites.json | pelerinApp.selonEtats.vassalAInfluencer.decisions[2] | Modeste
+- activites.json | pelerinFidel.selonEtats.agent.decisions[0] | Zèle absolu
+- activites.json | pelerinFidel.selonEtats.agent.decisions[1] | Dévotion publique
+- activites.json | pelerinFidel.selonEtats.agent.decisions[2] | Apparences pieuses
+- activites.json | pelerinFidel.selonEtats.aInfluencer.decisions[0] | Zèle absolu
+- activites.json | pelerinFidel.selonEtats.aInfluencer.decisions[1] | Dévotion publique
+- activites.json | pelerinFidel.selonEtats.aInfluencer.decisions[2] | Apparences pieuses
+- activites.json | pelerinFidel.selonEtats.assassinat.decisions[0] | Zèle absolu
+- activites.json | pelerinFidel.selonEtats.assassinat.decisions[1] | Dévotion publique
+- activites.json | pelerinFidel.selonEtats.assassinat.decisions[2] | Apparences pieuses
+- activites.json | pelerinFidel.selonEtats.chevalierPartisan.decisions[0] | Zèle absolu
+- activites.json | pelerinFidel.selonEtats.chevalierPartisan.decisions[1] | Dévotion publique
+- activites.json | pelerinFidel.selonEtats.chevalierPartisan.decisions[2] | Apparences pieuses
+- activites.json | pelerinFidel.selonEtats.controle.decisions[0] | Zèle absolu
+- activites.json | pelerinFidel.selonEtats.controle.decisions[1] | Dévotion publique
+- activites.json | pelerinFidel.selonEtats.controle.decisions[2] | Apparences pieuses
+- activites.json | pelerinFidel.selonEtats.cultInnov.decisions[0] | Zèle absolu
+- activites.json | pelerinFidel.selonEtats.cultInnov.decisions[1] | Dévotion publique
+- activites.json | pelerinFidel.selonEtats.declarationGuerre.decisions[0] | Zèle absolu
+- activites.json | pelerinFidel.selonEtats.declarationGuerre.decisions[1] | Dévotion publique
+- activites.json | pelerinFidel.selonEtats.declarationGuerre.decisions[2] | Apparences pieuses
+- activites.json | pelerinFidel.selonEtats.demande.decisions[0] | Zèle absolu
+- activites.json | pelerinFidel.selonEtats.demande.decisions[1] | Dévotion publique
+- activites.json | pelerinFidel.selonEtats.demande.decisions[2] | Apparences pieuses
+- activites.json | pelerinFidel.selonEtats.demande2.decisions[0] | Zèle absolu
+- activites.json | pelerinFidel.selonEtats.demande2.decisions[1] | Dévotion publique
+- activites.json | pelerinFidel.selonEtats.demande2.decisions[2] | Apparences pieuses
+- activites.json | pelerinFidel.selonEtats.dirigeantAInfluencer.decisions[0] | Zèle absolu
+- activites.json | pelerinFidel.selonEtats.dirigeantAInfluencer.decisions[1] | Dévotion publique
+- activites.json | pelerinFidel.selonEtats.dirigeantAInfluencer.decisions[2] | Apparences pieuses
+- activites.json | pelerinFidel.selonEtats.domaine.decisions[0] | Zèle absolu
+- activites.json | pelerinFidel.selonEtats.domaine.decisions[1] | Dévotion publique
+- activites.json | pelerinFidel.selonEtats.domaine.decisions[2] | Apparences pieuses
+- activites.json | pelerinFidel.selonEtats.enfant.decisions[0] | Contemplatif SI divorce
+- activites.json | pelerinFidel.selonEtats.enfant.decisions[1] | Pèlerin SI divorce
+- activites.json | pelerinFidel.selonEtats.factionPop.decisions[0] | Zèle absolu
+- activites.json | pelerinFidel.selonEtats.factionPop.decisions[1] | Dévotion publique
+- activites.json | pelerinFidel.selonEtats.guerre.decisions[0] | Zèle absolu
+- activites.json | pelerinFidel.selonEtats.guerre.decisions[1] | Dévotion publique
+- activites.json | pelerinFidel.selonEtats.guerre.decisions[2] | Apparences pieuses
+- activites.json | pelerinFidel.selonEtats.hamecon.decisions[0] | Zèle absolu
+- activites.json | pelerinFidel.selonEtats.hamecon.decisions[1] | Dévotion publique
+- activites.json | pelerinFidel.selonEtats.hamecon.decisions[2] | Apparences pieuses
+- activites.json | pelerinFidel.selonEtats.influence.decisions[0] | Zèle absolu
+- activites.json | pelerinFidel.selonEtats.influence.decisions[1] | Dévotion publique
+- activites.json | pelerinFidel.selonEtats.influence.decisions[2] | Apparences pieuses
+- activites.json | pelerinFidel.selonEtats.perteTerresRevoquer.decisions[0] | Zèle absolu
+- activites.json | pelerinFidel.selonEtats.perteTerresRevoquer.decisions[1] | Dévotion publique
+- activites.json | pelerinFidel.selonEtats.perteTerresRevoquer.decisions[2] | Apparences pieuses
+- activites.json | pelerinFidel.selonEtats.piete.decisions[0] | Zèle absolu
+- activites.json | pelerinFidel.selonEtats.piete.decisions[1] | Dévotion publique
+- activites.json | pelerinFidel.selonEtats.piete.decisions[2] | Apparences pieuses
+- activites.json | pelerinFidel.selonEtats.prestige.decisions[0] | Zèle absolu
+- activites.json | pelerinFidel.selonEtats.prestige.decisions[1] | Dévotion publique
+- activites.json | pelerinFidel.selonEtats.prestige.decisions[2] | Apparences pieuses
+- activites.json | pelerinFidel.selonEtats.prison.decisions[0] | Zèle absolu
+- activites.json | pelerinFidel.selonEtats.prison.decisions[1] | Dévotion publique
+- activites.json | pelerinFidel.selonEtats.prison.decisions[2] | Apparences pieuses
+- activites.json | pelerinFidel.selonEtats.proclame.decisions[0] | Zèle absolu
+- activites.json | pelerinFidel.selonEtats.proclame.decisions[1] | Dévotion publique
+- activites.json | pelerinFidel.selonEtats.proclame.decisions[2] | Apparences pieuses
+- activites.json | pelerinFidel.selonEtats.rancon.decisions[0] | Apparences pieuses
+- activites.json | pelerinFidel.selonEtats.recruterChevalier.decisions[0] | Zèle absolu
+- activites.json | pelerinFidel.selonEtats.recruterChevalier.decisions[1] | Dévotion publique
+- activites.json | pelerinFidel.selonEtats.recruterChevalier.decisions[2] | Apparences pieuses
+- activites.json | pelerinFidel.selonEtats.religieuxAInfluencer.decisions[0] | Contemplatif
+- activites.json | pelerinFidel.selonEtats.religieuxAInfluencer.decisions[1] | Pèlerin
+- activites.json | pelerinFidel.selonEtats.religieuxAInfluencer.decisions[2] | Obligatoire
+- activites.json | pelerinFidel.selonEtats.revenu.decisions[0] | Apparences pieuses
+- activites.json | pelerinFidel.selonEtats.stress.decisions[0] | Zèle absolu
+- activites.json | pelerinFidel.selonEtats.stress.decisions[1] | Dévotion publique
+- activites.json | pelerinFidel.selonEtats.stress.decisions[2] | Apparences pieuses
+- activites.json | pelerinFidel.selonEtats.succession.decisions[0] | Zèle absolu
+- activites.json | pelerinFidel.selonEtats.succession.decisions[1] | Dévotion publique
+- activites.json | pelerinFidel.selonEtats.succession.decisions[2] | Apparences pieuses
+- activites.json | pelerinFidel.selonEtats.vassal.decisions[0] | Zèle absolu
+- activites.json | pelerinFidel.selonEtats.vassal.decisions[1] | Dévotion publique
+- activites.json | pelerinFidel.selonEtats.vassalAInfluencer.decisions[0] | Zèle absolu
+- activites.json | pelerinFidel.selonEtats.vassalAInfluencer.decisions[1] | Dévotion publique
+- activites.json | pelerinIntent.selonEtats.agent.decisions[0] | Gagner de la piété
+- activites.json | pelerinIntent.selonEtats.aInfluencer.decisions[0] | Gagner de la piété
+- activites.json | pelerinIntent.selonEtats.assassinat.decisions[0] | Gagner de la piété
+- activites.json | pelerinIntent.selonEtats.chevalierPartisan.decisions[0] | Gagner de la piété
+- activites.json | pelerinIntent.selonEtats.controle.decisions[0] | Gagner de la piété
+- activites.json | pelerinIntent.selonEtats.cultInnov.decisions[0] | Gagner de la piété
+- activites.json | pelerinIntent.selonEtats.declarationGuerre.decisions[0] | Gagner de la piété
+- activites.json | pelerinIntent.selonEtats.demande.decisions[0] | Gagner de la piété
+- activites.json | pelerinIntent.selonEtats.demande2.decisions[0] | Gagner de la piété
+- activites.json | pelerinIntent.selonEtats.dirigeantAInfluencer.decisions[0] | Gagner de la piété
+- activites.json | pelerinIntent.selonEtats.domaine.decisions[0] | Gagner de la piété
+- activites.json | pelerinIntent.selonEtats.enfant.decisions[0] | Faire preuve d'altruisme
+- activites.json | pelerinIntent.selonEtats.enfant.decisions[1] | Réflexion
+- activites.json | pelerinIntent.selonEtats.enfant.decisions[2] | Fanatisme
+- activites.json | pelerinIntent.selonEtats.factionPop.decisions[0] | Gagner de la piété
+- activites.json | pelerinIntent.selonEtats.guerre.decisions[0] | Gagner de la piété
+- activites.json | pelerinIntent.selonEtats.hamecon.decisions[0] | Gagner de la piété
+- activites.json | pelerinIntent.selonEtats.influence.decisions[0] | Gagner de la piété
+- activites.json | pelerinIntent.selonEtats.perteTerresRevoquer.decisions[0] | Gagner de la piété
+- activites.json | pelerinIntent.selonEtats.piete.decisions[0] | Gagner de la piété
+- activites.json | pelerinIntent.selonEtats.prestige.decisions[0] | Gagner de la piété
+- activites.json | pelerinIntent.selonEtats.prison.decisions[0] | Gagner de la piété
+- activites.json | pelerinIntent.selonEtats.proclame.decisions[0] | Gagner de la piété
+- activites.json | pelerinIntent.selonEtats.rancon.decisions[0] | Gagner de la piété
+- activites.json | pelerinIntent.selonEtats.recruterChevalier.decisions[0] | Gagner de la piété
+- activites.json | pelerinIntent.selonEtats.religieuxAInfluencer.decisions[0] | Faire preuve d'altruisme
+- activites.json | pelerinIntent.selonEtats.revenu.decisions[0] | Gagner de la piété
+- activites.json | pelerinIntent.selonEtats.stress.decisions[0] | Trouver la paix intérieure
+- activites.json | pelerinIntent.selonEtats.succession.decisions[0] | Gagner de la piété
+- activites.json | pelerinIntent.selonEtats.vassal.decisions[0] | Gagner de la piété
+- activites.json | pelerinIntent.selonEtats.vassalAInfluencer.decisions[0] | Gagner de la piété
+- activites.json | univMat.selonEtats.agent.decisions[0] | Bibliothèque
+- activites.json | univMat.selonEtats.agent.decisions[1] | Livres et notes
+- activites.json | univMat.selonEtats.agent.decisions[2] | Bouts de parchemin
+- activites.json | univMat.selonEtats.aInfluencer.decisions[0] | Bibliothèque
+- activites.json | univMat.selonEtats.aInfluencer.decisions[1] | Livres et notes
+- activites.json | univMat.selonEtats.aInfluencer.decisions[2] | Bouts de parchemin
+- activites.json | univMat.selonEtats.assassinat.decisions[0] | Bibliothèque
+- activites.json | univMat.selonEtats.assassinat.decisions[1] | Livres et notes
+- activites.json | univMat.selonEtats.assassinat.decisions[2] | Bouts de parchemin
+- activites.json | univMat.selonEtats.chevalierPartisan.decisions[0] | Bibliothèque
+- activites.json | univMat.selonEtats.chevalierPartisan.decisions[1] | Livres et notes
+- activites.json | univMat.selonEtats.chevalierPartisan.decisions[2] | Bouts de parchemin
+- activites.json | univMat.selonEtats.controle.decisions[0] | Bibliothèque
+- activites.json | univMat.selonEtats.controle.decisions[1] | Livres et notes
+- activites.json | univMat.selonEtats.controle.decisions[2] | Bouts de parchemin
+- activites.json | univMat.selonEtats.cultInnov.decisions[0] | Bibliothèque
+- activites.json | univMat.selonEtats.declarationGuerre.decisions[0] | Bibliothèque
+- activites.json | univMat.selonEtats.declarationGuerre.decisions[1] | Livres et notes
+- activites.json | univMat.selonEtats.declarationGuerre.decisions[2] | Bouts de parchemin
+- activites.json | univMat.selonEtats.demande.decisions[0] | Bibliothèque
+- activites.json | univMat.selonEtats.demande.decisions[1] | Livres et notes
+- activites.json | univMat.selonEtats.demande.decisions[2] | Bouts de parchemin
+- activites.json | univMat.selonEtats.demande2.decisions[0] | Bibliothèque
+- activites.json | univMat.selonEtats.demande2.decisions[1] | Livres et notes
+- activites.json | univMat.selonEtats.demande2.decisions[2] | Bouts de parchemin
+- activites.json | univMat.selonEtats.dirigeantAInfluencer.decisions[0] | Bibliothèque
+- activites.json | univMat.selonEtats.dirigeantAInfluencer.decisions[1] | Livres et notes
+- activites.json | univMat.selonEtats.dirigeantAInfluencer.decisions[2] | Bouts de parchemin
+- activites.json | univMat.selonEtats.domaine.decisions[0] | Bibliothèque
+- activites.json | univMat.selonEtats.domaine.decisions[1] | Livres et notes
+- activites.json | univMat.selonEtats.domaine.decisions[2] | Bouts de parchemin
+- activites.json | univMat.selonEtats.enfant.decisions[0] | Bibliothèque
+- activites.json | univMat.selonEtats.enfant.decisions[1] | Livres et notes
+- activites.json | univMat.selonEtats.enfant.decisions[2] | Bouts de parchemin
+- activites.json | univMat.selonEtats.factionPop.decisions[0] | Bibliothèque
+- activites.json | univMat.selonEtats.guerre.decisions[0] | Bibliothèque
+- activites.json | univMat.selonEtats.guerre.decisions[1] | Livres et notes
+- activites.json | univMat.selonEtats.guerre.decisions[2] | Bouts de parchemin
+- activites.json | univMat.selonEtats.hamecon.decisions[0] | Bibliothèque
+- activites.json | univMat.selonEtats.hamecon.decisions[1] | Livres et notes
+- activites.json | univMat.selonEtats.hamecon.decisions[2] | Bouts de parchemin
+- activites.json | univMat.selonEtats.influence.decisions[0] | Bibliothèque
+- activites.json | univMat.selonEtats.influence.decisions[1] | Livres et notes
+- activites.json | univMat.selonEtats.influence.decisions[2] | Bouts de parchemin
+- activites.json | univMat.selonEtats.perteTerresRevoquer.decisions[0] | Bibliothèque
+- activites.json | univMat.selonEtats.perteTerresRevoquer.decisions[1] | Livres et notes
+- activites.json | univMat.selonEtats.perteTerresRevoquer.decisions[2] | Bouts de parchemin
+- activites.json | univMat.selonEtats.piete.decisions[0] | Bibliothèque
+- activites.json | univMat.selonEtats.piete.decisions[1] | Livres et notes
+- activites.json | univMat.selonEtats.piete.decisions[2] | Bouts de parchemin
+- activites.json | univMat.selonEtats.prestige.decisions[0] | Bibliothèque
+- activites.json | univMat.selonEtats.prestige.decisions[1] | Livres et notes
+- activites.json | univMat.selonEtats.prestige.decisions[2] | Bouts de parchemin
+- activites.json | univMat.selonEtats.prison.decisions[0] | Bibliothèque
+- activites.json | univMat.selonEtats.prison.decisions[1] | Livres et notes
+- activites.json | univMat.selonEtats.prison.decisions[2] | Bouts de parchemin
+- activites.json | univMat.selonEtats.proclame.decisions[0] | Bibliothèque
+- activites.json | univMat.selonEtats.proclame.decisions[1] | Livres et notes
+- activites.json | univMat.selonEtats.proclame.decisions[2] | Bouts de parchemin
+- activites.json | univMat.selonEtats.rancon.decisions[0] | Bouts de parchemin
+- activites.json | univMat.selonEtats.recruterChevalier.decisions[0] | Bibliothèque
+- activites.json | univMat.selonEtats.recruterChevalier.decisions[1] | Livres et notes
+- activites.json | univMat.selonEtats.recruterChevalier.decisions[2] | Bouts de parchemin
+- activites.json | univMat.selonEtats.religieuxAInfluencer.decisions[0] | Bibliothèque
+- activites.json | univMat.selonEtats.religieuxAInfluencer.decisions[1] | Livres et notes
+- activites.json | univMat.selonEtats.religieuxAInfluencer.decisions[2] | Bouts de parchemin
+- activites.json | univMat.selonEtats.revenu.decisions[0] | Bouts de parchemin
+- activites.json | univMat.selonEtats.stress.decisions[0] | Bibliothèque
+- activites.json | univMat.selonEtats.stress.decisions[1] | Livres et notes
+- activites.json | univMat.selonEtats.stress.decisions[2] | Bouts de parchemin
+- activites.json | univMat.selonEtats.succession.decisions[0] | Bibliothèque
+- activites.json | univMat.selonEtats.succession.decisions[1] | Livres et notes
+- activites.json | univMat.selonEtats.succession.decisions[2] | Bouts de parchemin
+- activites.json | univMat.selonEtats.successionChaos.decisions[0] | Bibliothèque
+- activites.json | univMat.selonEtats.survie.decisions[0] | Bibliothèque
+- activites.json | univMat.selonEtats.tributaire.decisions[0] | Bibliothèque
+- activites.json | univMat.selonEtats.troupeau.decisions[0] | Bibliothèque
+- activites.json | univMat.selonEtats.vassal.decisions[0] | Bibliothèque
+- activites.json | univMat.selonEtats.vassalAInfluencer.decisions[0] | Bibliothèque
+- activites_grandioses.json | activCouro.selonEtats.agent.decisions[0] | Être témoin
+- activites_grandioses.json | activCouro.selonEtats.aInfluencer.decisions[0] | Être témoin SI ALLIE POTENTIEL-S culture différente
+- activites_grandioses.json | activCouro.selonEtats.assassinat.decisions[0] | Perturber les loyalistes SI DANS LA LIGNE DE SUCCESSION
+- activites_grandioses.json | activCouro.selonEtats.controle.decisions[0] | Plaider la cause du domaine
+- activites_grandioses.json | activCouro.selonEtats.cultInnov.decisions[0] | Profiter des avantages SI NON chef culturel
+- activites_grandioses.json | activCouro.selonEtats.declarationGuerre.decisions[0] | Offrir un soutien
+- activites_grandioses.json | activCouro.selonEtats.denoncer.decisions[0] | Profiter des avantages
+- activites_grandioses.json | activCouro.selonEtats.enfant.decisions[0] | Être témoin SI divorce
+- activites_grandioses.json | activCouro.selonEtats.enfant.decisions[1] | Offrir un soutien SI divorce ET couronné CHEF DE FOI
+- activites_grandioses.json | activCouro.selonEtats.enfant.decisions[2] | Profiter des avantages SI aventurier adopter
+- activites_grandioses.json | activCouro.selonEtats.enfant.decisions[3] | Offrir un soutien SI futur enfant légitime
+- activites_grandioses.json | activCouro.selonEtats.factionPop.decisions[0] | Plaider la cause du domaine
+- activites_grandioses.json | activCouro.selonEtats.guerre.decisions[0] | Plaider la cause du domaine
+- activites_grandioses.json | activCouro.selonEtats.guerre.decisions[1] | Offrir un soutien
+- activites_grandioses.json | activCouro.selonEtats.hamecon.decisions[0] | Prétendre à des droits SI A HAMEÇONNER-S seigneur lige
+- activites_grandioses.json | activCouro.selonEtats.piete.decisions[0] | Être témoin
+- activites_grandioses.json | activCouro.selonEtats.prestige.decisions[0] | Profiter des avantages
+- activites_grandioses.json | activCouro.selonEtats.prison.decisions[0] | Profiter des avantages
+- activites_grandioses.json | activCouro.selonEtats.rancon.decisions[0] | Profiter des avantages
+- activites_grandioses.json | activCouro.selonEtats.religieuxAInfluencer.decisions[0] | Être témoin SI CONSEILLER RELIGIEUX culture différente
+- activites_grandioses.json | activCouro.selonEtats.revenu.decisions[0] | Profiter des avantages
+- activites_grandioses.json | activCouro.selonEtats.succession.decisions[0] | A DEFINIR
+- activites_grandioses.json | activCouro.selonEtats.successionChaos.decisions[0] | Être témoin
+- activites_grandioses.json | activCouro.selonEtats.tributaire.decisions[0] | Profiter des avantages
+- activites_grandioses.json | activCouro.selonEtats.tributaire.decisions[1] | Être témoin
+- activites_grandioses.json | activCouro.selonEtats.vassal.decisions[0] | Offrir un soutien SI VASSAL-S couronné
+- activites_grandioses.json | activCouro.selonEtats.vassalAInfluencer.decisions[0] | Être témoin SI FACTIEUX-S culture différente
+- activites_grandioses.json | activCouro.selonEtats.vassalAInfluencer.decisions[1] | Offrir un soutien SI FACTIEUX-S couronné
+- activites_grandioses.json | luxe.selonEtats.agent.decisions[0] | A DEFINIR
+- activites_grandioses.json | luxe.selonEtats.aInfluencer.decisions[0] | A DEFINIR
+- activites_grandioses.json | luxe.selonEtats.assassinat.decisions[0] | A DEFINIR
+- activites_grandioses.json | luxe.selonEtats.conseiller.decisions[0] | A DEFINIR
+- activites_grandioses.json | luxe.selonEtats.cultInnov.decisions[0] | A DEFINIR
+- activites_grandioses.json | luxe.selonEtats.denoncer.decisions[0] | Mobilier en excès
+- activites_grandioses.json | luxe.selonEtats.denoncer.decisions[1] | Mobilier luxueux
+- activites_grandioses.json | luxe.selonEtats.denoncer.decisions[2] | Luxe extravagant
+- activites_grandioses.json | luxe.selonEtats.denoncer.decisions[3] | Biens de luxe essentiels
+- activites_grandioses.json | luxe.selonEtats.dirigeantAInfluencer.decisions[0] | A DEFINIR
+- activites_grandioses.json | luxe.selonEtats.domaine.decisions[0] | A DEFINIR
+- activites_grandioses.json | luxe.selonEtats.enfant.decisions[0] | A DEFINIR
+- activites_grandioses.json | luxe.selonEtats.factionFoi.decisions[0] | Mobilier en excès
+- activites_grandioses.json | luxe.selonEtats.factionFoi.decisions[1] | Mobilier luxueux
+- activites_grandioses.json | luxe.selonEtats.factionFoi.decisions[2] | Luxe extravagant
+- activites_grandioses.json | luxe.selonEtats.factionFoi.decisions[3] | Biens de luxe essentiels
+- activites_grandioses.json | luxe.selonEtats.factionPop.decisions[0] | A DEFINIR
+- activites_grandioses.json | luxe.selonEtats.guerre.decisions[0] | A DEFINIR
+- activites_grandioses.json | luxe.selonEtats.hamecon.decisions[0] | A DEFINIR
+- activites_grandioses.json | luxe.selonEtats.perteTerresRevoquer.decisions[0] | A DEFINIR
+- activites_grandioses.json | luxe.selonEtats.piete.decisions[0] | A DEFINIR
+- activites_grandioses.json | luxe.selonEtats.prestige.decisions[0] | Mobilier en excès
+- activites_grandioses.json | luxe.selonEtats.prestige.decisions[1] | Mobilier luxueux
+- activites_grandioses.json | luxe.selonEtats.prison.decisions[0] | Mobilier en excès
+- activites_grandioses.json | luxe.selonEtats.prison.decisions[1] | Mobilier luxueux
+- activites_grandioses.json | luxe.selonEtats.proclame.decisions[0] | A DEFINIR
+- activites_grandioses.json | luxe.selonEtats.rancon.decisions[0] | Aucun luxe
+- activites_grandioses.json | luxe.selonEtats.recruterChevalier.decisions[0] | A DEFINIR
+- activites_grandioses.json | luxe.selonEtats.revenu.decisions[0] | Aucun luxe
+- activites_grandioses.json | luxe.selonEtats.vassal.decisions[0] | A DEFINIR
+- activites_grandioses.json | luxe.selonEtats.vassalAInfluencer.decisions[0] | Mobilier en excès
+- activites_grandioses.json | luxe.selonEtats.vassalAInfluencer.decisions[1] | Mobilier luxueux
+- activites_grandioses.json | luxe.selonEtats.vassalAInfluencer.decisions[2] | Luxe extravagant
+- activites_grandioses.json | luxe.selonEtats.vassalAInfluencer.decisions[3] | Biens de luxe essentiels
+- activites_grandioses.json | luxe.selonEtats.vassalSOppose.decisions[0] | Mobilier en excès
+- activites_grandioses.json | luxe.selonEtats.vassalSOppose.decisions[1] | Mobilier luxueux
+- activites_grandioses.json | luxe.selonEtats.vassalSOppose.decisions[2] | Luxe extravagant
+- activites_grandioses.json | luxe.selonEtats.vassalSOppose.decisions[3] | Biens de luxe essentiels
+- activites_grandioses.json | luxe.successionChaos.decisions[0] | A DEFINIR
+- activites_grandioses.json | mariage.selonEtats.agent.decisions[0] | Séduire AGENT-S
+- activites_grandioses.json | mariage.selonEtats.aInfluencer.decisions[0] | Diplomatie ALLIE POTENTIEL-S
+- activites_grandioses.json | mariage.selonEtats.aInfluencer.decisions[1] | Séduire ALLIE POTENTIEL-S
+- activites_grandioses.json | mariage.selonEtats.assassinat.decisions[0] | Tuer DANS LA SUCCESSION-S
+- activites_grandioses.json | mariage.selonEtats.conseiller.decisions[0] | Faiseur de mariages
+- activites_grandioses.json | mariage.selonEtats.declarationGuerre.decisions[0] | Faiseur de mariages
+- activites_grandioses.json | mariage.selonEtats.demande.decisions[0] | Séduire MECENE-S
+- activites_grandioses.json | mariage.selonEtats.demande2.decisions[0] | Séduire MECENE-S
+- activites_grandioses.json | mariage.selonEtats.denoncer.decisions[0] | A DEFINIR
+- activites_grandioses.json | mariage.selonEtats.dirigeantAInfluencer.decisions[0] | Séduire MECENE-S
+- activites_grandioses.json | mariage.selonEtats.domaine.decisions[0] | A DEFINIR
+- activites_grandioses.json | mariage.selonEtats.enfant.decisions[0] | Séduire
+- activites_grandioses.json | mariage.selonEtats.enfant.decisions[1] | Faiseur de mariages
+- activites_grandioses.json | mariage.selonEtats.enfant.decisions[2] | Se détendre
+- activites_grandioses.json | mariage.selonEtats.guerre.decisions[0] | Faiseur de mariages
+- activites_grandioses.json | mariage.selonEtats.guerre.decisions[1] | Séduire LUI SI gouvernement administratif
+- activites_grandioses.json | mariage.selonEtats.prison.decisions[0] | Séduire PRISONNIER-S
+- activites_grandioses.json | mariage.selonEtats.stress.decisions[0] | Se détendre
+- activites_grandioses.json | mariage.selonEtats.survie.decisions[0] | Se détendre
+- activites_grandioses.json | mariage.selonEtats.vassal.decisions[0] | Diplomatie VASSAL PUISSANT
+- activites_grandioses.json | mariage.selonEtats.vassal.decisions[1] | Séduire VASSAL PUISSANT
+- activites_grandioses.json | mariage.selonEtats.vassalAInfluencer.decisions[0] | Diplomatie FACTIEUX
+- activites_grandioses.json | mariage.selonEtats.vassalAInfluencer.decisions[1] | Séduire FACTIEUX
+- activites_grandioses.json | mariageDiverti.selonEtats.agent.decisions[0] | Troubadours et monstres exotiques
+- activites_grandioses.json | mariageDiverti.selonEtats.agent.decisions[1] | Acrobates et musiciens
+- activites_grandioses.json | mariageDiverti.selonEtats.agent.decisions[2] | Divertissements privés
+- activites_grandioses.json | mariageDiverti.selonEtats.aInfluencer.decisions[0] | A DEFINIR
+- activites_grandioses.json | mariageDiverti.selonEtats.chevalierPartisan.decisions[0] | Troubadours et monstres exotiques
+- activites_grandioses.json | mariageDiverti.selonEtats.chevalierPartisan.decisions[1] | Acrobates et musiciens
+- activites_grandioses.json | mariageDiverti.selonEtats.chevalierPartisan.decisions[2] | Divertissements privés
+- activites_grandioses.json | mariageDiverti.selonEtats.conseiller.decisions[0] | A DEFINIR
+- activites_grandioses.json | mariageDiverti.selonEtats.cultInnov.decisions[0] | A DEFINIR
+- activites_grandioses.json | mariageDiverti.selonEtats.declarationGuerre.decisions[0] | A DEFINIR
+- activites_grandioses.json | mariageDiverti.selonEtats.demande.decisions[0] | Troubadours et monstres exotiques
+- activites_grandioses.json | mariageDiverti.selonEtats.demande.decisions[1] | Acrobates et musiciens
+- activites_grandioses.json | mariageDiverti.selonEtats.demande.decisions[2] | Divertissements privés
+- activites_grandioses.json | mariageDiverti.selonEtats.demande2.decisions[0] | Troubadours et monstres exotiques
+- activites_grandioses.json | mariageDiverti.selonEtats.demande2.decisions[1] | Acrobates et musiciens
+- activites_grandioses.json | mariageDiverti.selonEtats.demande2.decisions[2] | Divertissements privés
+- activites_grandioses.json | mariageDiverti.selonEtats.denoncer.decisions[0] | Troubadours et monstres exotiques
+- activites_grandioses.json | mariageDiverti.selonEtats.denoncer.decisions[1] | Acrobates et musiciens
+- activites_grandioses.json | mariageDiverti.selonEtats.denoncer.decisions[2] | Divertissements privés
+- activites_grandioses.json | mariageDiverti.selonEtats.dirigeantAInfluencer.decisions[0] | A DEFINIR
+- activites_grandioses.json | mariageDiverti.selonEtats.domaine.decisions[0] | A DEFINIR
+- activites_grandioses.json | mariageDiverti.selonEtats.enfant.decisions[0] | Troubadours et monstres exotiques SI adoption/aventurier
+- activites_grandioses.json | mariageDiverti.selonEtats.enfant.decisions[1] | Acrobates et musiciens SI adoption/aventurier
+- activites_grandioses.json | mariageDiverti.selonEtats.enfant.decisions[2] | Divertissements privés SI adoption/aventurier
+- activites_grandioses.json | mariageDiverti.selonEtats.factionPop.decisions[0] | A DEFINIR
+- activites_grandioses.json | mariageDiverti.selonEtats.guerre.decisions[0] | A DEFINIR
+- activites_grandioses.json | mariageDiverti.selonEtats.perteTerresRevoquer.decisions[0] | A DEFINIR
+- activites_grandioses.json | mariageDiverti.selonEtats.prestige.decisions[0] | Troubadours et monstres exotiques
+- activites_grandioses.json | mariageDiverti.selonEtats.prestige.decisions[1] | Acrobates et musiciens
+- activites_grandioses.json | mariageDiverti.selonEtats.prestige.decisions[2] | Divertissements privés
+- activites_grandioses.json | mariageDiverti.selonEtats.prison.decisions[0] | A DEFINIR
+- activites_grandioses.json | mariageDiverti.selonEtats.proclame.decisions[0] | Troubadours et monstres exotiques
+- activites_grandioses.json | mariageDiverti.selonEtats.proclame.decisions[1] | Acrobates et musiciens
+- activites_grandioses.json | mariageDiverti.selonEtats.proclame.decisions[2] | Divertissements privés
+- activites_grandioses.json | mariageDiverti.selonEtats.rancon.decisions[0] | Divertissements privés
+- activites_grandioses.json | mariageDiverti.selonEtats.recruterChevalier.decisions[0] | Troubadours et monstres exotiques
+- activites_grandioses.json | mariageDiverti.selonEtats.recruterChevalier.decisions[1] | Acrobates et musiciens
+- activites_grandioses.json | mariageDiverti.selonEtats.recruterChevalier.decisions[2] | Divertissements privés
+- activites_grandioses.json | mariageDiverti.selonEtats.revenu.decisions[0] | Divertissements privés
+- activites_grandioses.json | mariageDiverti.selonEtats.vassal.decisions[0] | Troubadours et monstres exotiques SI VASSAL PUISSANT
+- activites_grandioses.json | mariageDiverti.selonEtats.vassal.decisions[1] | Acrobates et musiciens SI VASSAL PUISSANT
+- activites_grandioses.json | mariageDiverti.selonEtats.vassal.decisions[2] | Divertissements privés
+- activites_grandioses.json | mariageDiverti.selonEtats.vassalAInfluencer.decisions[0] | Troubadours et monstres exotiques SI FACTIEUX
+- activites_grandioses.json | mariageDiverti.selonEtats.vassalAInfluencer.decisions[1] | Acrobates et musiciens SI FACTIEUX
+- activites_grandioses.json | mariageDiverti.selonEtats.vassalAInfluencer.decisions[2] | Divertissements privés
+- activites_grandioses.json | mariageDiverti.selonEtats.vassalSOppose.decisions[0] | Troubadours et monstres exotiques SI LUI
+- activites_grandioses.json | mariageDiverti.selonEtats.vassalSOppose.decisions[1] | Acrobates et musiciens SI LUI
+- activites_grandioses.json | mariageLieu.selonEtats.agent.decisions[0] | Argent et or
+- activites_grandioses.json | mariageLieu.selonEtats.agent.decisions[1] | Guirlandes et torches
+- activites_grandioses.json | mariageLieu.selonEtats.agent.decisions[2] | Fleurs sauvages
+- activites_grandioses.json | mariageLieu.selonEtats.aInfluencer.decisions[0] | A DEFINIR
+- activites_grandioses.json | mariageLieu.selonEtats.chevalierPartisan.decisions[0] | Argent et or
+- activites_grandioses.json | mariageLieu.selonEtats.chevalierPartisan.decisions[1] | Guirlandes et torches
+- activites_grandioses.json | mariageLieu.selonEtats.conseiller.decisions[0] | A DEFINIR
+- activites_grandioses.json | mariageLieu.selonEtats.cultInnov.decisions[0] | A DEFINIR
+- activites_grandioses.json | mariageLieu.selonEtats.declarationGuerre.decisions[0] | A DEFINIR
+- activites_grandioses.json | mariageLieu.selonEtats.demande.decisions[0] | Argent et or
+- activites_grandioses.json | mariageLieu.selonEtats.demande.decisions[1] | Guirlandes et torches
+- activites_grandioses.json | mariageLieu.selonEtats.demande2.decisions[0] | Argent et or
+- activites_grandioses.json | mariageLieu.selonEtats.demande2.decisions[1] | Guirlandes et torches
+- activites_grandioses.json | mariageLieu.selonEtats.denoncer.decisions[0] | Argent et or
+- activites_grandioses.json | mariageLieu.selonEtats.denoncer.decisions[1] | Guirlandes et torches
+- activites_grandioses.json | mariageLieu.selonEtats.dirigeantAInfluencer.decisions[0] | A DEFINIR
+- activites_grandioses.json | mariageLieu.selonEtats.domaine.decisions[0] | A DEFINIR
+- activites_grandioses.json | mariageLieu.selonEtats.enfant.decisions[0] | A DEFINIR
+- activites_grandioses.json | mariageLieu.selonEtats.factionPop.decisions[0] | A DEFINIR
+- activites_grandioses.json | mariageLieu.selonEtats.guerre.decisions[0] | A DEFINIR
+- activites_grandioses.json | mariageLieu.selonEtats.perteTerresRevoquer.decisions[0] | A DEFINIR
+- activites_grandioses.json | mariageLieu.selonEtats.prestige.decisions[0] | Argent et or
+- activites_grandioses.json | mariageLieu.selonEtats.prestige.decisions[1] | Guirlandes et torches
+- activites_grandioses.json | mariageLieu.selonEtats.prison.decisions[0] | A DEFINIR
+- activites_grandioses.json | mariageLieu.selonEtats.proclame.decisions[0] | Argent et or
+- activites_grandioses.json | mariageLieu.selonEtats.proclame.decisions[1] | Guirlandes et torches
+- activites_grandioses.json | mariageLieu.selonEtats.rancon.decisions[0] | Fleurs sauvages
+- activites_grandioses.json | mariageLieu.selonEtats.recruterChevalier.decisions[0] | Argent et or
+- activites_grandioses.json | mariageLieu.selonEtats.recruterChevalier.decisions[1] | Guirlandes et torches
+- activites_grandioses.json | mariageLieu.selonEtats.revenu.decisions[0] | Fleurs sauvages
+- activites_grandioses.json | mariageLieu.selonEtats.succession.decisions[0] | Argent et or
+- activites_grandioses.json | mariageLieu.selonEtats.vassal.decisions[0] | A DEFINIR
+- activites_grandioses.json | mariageLieu.selonEtats.vassalAInfluencer.decisions[0] | Argent et or SI FACTIEUX
+- activites_grandioses.json | mariageLieu.selonEtats.vassalAInfluencer.decisions[1] | Guirlandes et torches SI FACTIEUX
+- activites_grandioses.json | mariageLieu.selonEtats.vassalAInfluencer.decisions[2] | Fleurs sauvages SI FACTIEUX
+- activites_grandioses.json | mariageLieu.selonEtats.vassalAInfluencer.decisions[3] | Argent et or
+- activites_grandioses.json | mariageLieu.selonEtats.vassalSOppose.decisions[0] | Argent et or SI FACTIEUX
+- activites_grandioses.json | mariageLieu.selonEtats.vassalSOppose.decisions[1] | Guirlandes et torches SI FACTIEUX
+- activites_grandioses.json | mariageLieu.selonEtats.vassalSOppose.decisions[2] | Fleurs sauvages SI FACTIEUX
+- activites_grandioses.json | mariageLieu.selonEtats.vassalSOppose.decisions[3] | Argent et or
+- activites_grandioses.json | mariageNourr.selonEtats.agent.decisions[0] | Repas gargantuesque
+- activites_grandioses.json | mariageNourr.selonEtats.agent.decisions[1] | Festin généreux
+- activites_grandioses.json | mariageNourr.selonEtats.agent.decisions[2] | Fête modeste
+- activites_grandioses.json | mariageNourr.selonEtats.aInfluencer.decisions[0] | Repas gargantuesque SI ALLIE POTENTIEL-S invité
+- activites_grandioses.json | mariageNourr.selonEtats.aInfluencer.decisions[1] | Festin généreux SI ALLIE POTENTIEL-S invité
+- activites_grandioses.json | mariageNourr.selonEtats.aInfluencer.decisions[2] | Fête modeste
+- activites_grandioses.json | mariageNourr.selonEtats.conseiller.decisions[0] | A DEFINIR
+- activites_grandioses.json | mariageNourr.selonEtats.cultInnov.decisions[0] | A DEFINIR
+- activites_grandioses.json | mariageNourr.selonEtats.declarationGuerre.decisions[0] | A DEFINIR
+- activites_grandioses.json | mariageNourr.selonEtats.demande.decisions[0] | A DEFINIR
+- activites_grandioses.json | mariageNourr.selonEtats.demande2.decisions[0] | A DEFINIR
+- activites_grandioses.json | mariageNourr.selonEtats.dirigeantAInfluencer.decisions[0] | A DEFINIR
+- activites_grandioses.json | mariageNourr.selonEtats.domaine.decisions[0] | A DEFINIR
+- activites_grandioses.json | mariageNourr.selonEtats.enfant.decisions[0] | Repas gargantuesque
+- activites_grandioses.json | mariageNourr.selonEtats.enfant.decisions[1] | Festin généreux
+- activites_grandioses.json | mariageNourr.selonEtats.enfant.decisions[2] | Fête modeste
+- activites_grandioses.json | mariageNourr.selonEtats.factionPop.decisions[0] | A DEFINIR
+- activites_grandioses.json | mariageNourr.selonEtats.guerre.decisions[0] | A DEFINIR
+- activites_grandioses.json | mariageNourr.selonEtats.perteTerresRevoquer.decisions[0] | A DEFINIR
+- activites_grandioses.json | mariageNourr.selonEtats.prison.decisions[0] | A DEFINIR
+- activites_grandioses.json | mariageNourr.selonEtats.rancon.decisions[0] | Fête modeste
+- activites_grandioses.json | mariageNourr.selonEtats.religieuxAInfluencer.decisions[0] | Repas gargantuesque SI LUI invité
+- activites_grandioses.json | mariageNourr.selonEtats.religieuxAInfluencer.decisions[1] | Festin généreux SI LUI invité
+- activites_grandioses.json | mariageNourr.selonEtats.religieuxAInfluencer.decisions[2] | Fête modeste
+- activites_grandioses.json | mariageNourr.selonEtats.revenu.decisions[0] | Fête modeste
+- activites_grandioses.json | mariageNourr.selonEtats.stress.decisions[0] | Repas gargantuesque
+- activites_grandioses.json | mariageNourr.selonEtats.survie.decisions[0] | Repas gargantuesque
+- activites_grandioses.json | mariageNourr.selonEtats.survie.decisions[1] | Festin généreux
+- activites_grandioses.json | mariageNourr.selonEtats.survie.decisions[2] | Fête modeste
+- activites_grandioses.json | mariageNourr.selonEtats.vassal.decisions[0] | Repas gargantuesque
+- activites_grandioses.json | mariageNourr.selonEtats.vassal.decisions[1] | Festin généreux
+- activites_grandioses.json | mariageNourr.selonEtats.vassal.decisions[2] | Fête modeste
+- activites_grandioses.json | mariageNourr.selonEtats.vassalAInfluencer.decisions[0] | Repas gargantuesque
+- activites_grandioses.json | mariageNourr.selonEtats.vassalAInfluencer.decisions[1] | Festin généreux
+- activites_grandioses.json | mariageNourr.selonEtats.vassalAInfluencer.decisions[2] | Fête modeste
+- activites_grandioses.json | mariageNourr.selonEtats.vassalSOppose.decisions[0] | Repas gargantuesque
+- activites_grandioses.json | mariageNourr.selonEtats.vassalSOppose.decisions[1] | Festin généreux
+- activites_grandioses.json | mariageNourr.selonEtats.vassalSOppose.decisions[2] | Fête modeste
+- activites_grandioses.json | particip.selonEtats.agent.decisions[0] | Participe
+- activites_grandioses.json | particip.selonEtats.aInfluencer.decisions[0] | Participe
+- activites_grandioses.json | particip.selonEtats.assassinat.decisions[0] | Participe
+- activites_grandioses.json | particip.selonEtats.chevalierPartisan.decisions[0] | Participe
+- activites_grandioses.json | particip.selonEtats.controle.decisions[0] | Participe
+- activites_grandioses.json | particip.selonEtats.cultInnov.decisions[0] | Participe
+- activites_grandioses.json | particip.selonEtats.declarationGuerre.decisions[0] | Participe
+- activites_grandioses.json | particip.selonEtats.demande.decisions[0] | Participe
+- activites_grandioses.json | particip.selonEtats.demande2.decisions[0] | Participe
+- activites_grandioses.json | particip.selonEtats.denoncer.decisions[0] | Participe
+- activites_grandioses.json | particip.selonEtats.dirigeantAInfluencer.decisions[0] | Participe
+- activites_grandioses.json | particip.selonEtats.domaine.decisions[0] | Participe
+- activites_grandioses.json | particip.selonEtats.enfant.decisions[0] | Participe SI divorce
+- activites_grandioses.json | particip.selonEtats.enfant.decisions[1] | Participe SI aventurier adopter
+- activites_grandioses.json | particip.selonEtats.enfant.decisions[2] | Ne participe pas
+- activites_grandioses.json | particip.selonEtats.factionCult.decisions[0] | Participe
+- activites_grandioses.json | particip.selonEtats.factionFoi.decisions[0] | Participe
+- activites_grandioses.json | particip.selonEtats.factionPop.decisions[0] | Participe
+- activites_grandioses.json | particip.selonEtats.guerre.decisions[0] | Participe
+- activites_grandioses.json | particip.selonEtats.hamecon.decisions[0] | Participe
+- activites_grandioses.json | particip.selonEtats.influence.decisions[0] | Participe
+- activites_grandioses.json | particip.selonEtats.perteTerresRevoquer.decisions[0] | Participe
+- activites_grandioses.json | particip.selonEtats.piete.decisions[0] | Participe
+- activites_grandioses.json | particip.selonEtats.prestige.decisions[0] | Participe
+- activites_grandioses.json | particip.selonEtats.prison.decisions[0] | Participe
+- activites_grandioses.json | particip.selonEtats.proclame.decisions[0] | Participe
+- activites_grandioses.json | particip.selonEtats.rancon.decisions[0] | Participe
+- activites_grandioses.json | particip.selonEtats.recruterChevalier.decisions[0] | Participe
+- activites_grandioses.json | particip.selonEtats.religieuxAInfluencer.decisions[0] | Participe
+- activites_grandioses.json | particip.selonEtats.revenu.decisions[0] | Participe
+- activites_grandioses.json | particip.selonEtats.succession.decisions[0] | Participe
+- activites_grandioses.json | particip.selonEtats.successionChaos.decisions[0] | Participe
+- activites_grandioses.json | particip.selonEtats.survie.decisions[0] | Ne participe pas
+- activites_grandioses.json | particip.selonEtats.tributaire.decisions[0] | Participe
+- activites_grandioses.json | particip.selonEtats.troupeau.decisions[0] | Participe
+- activites_grandioses.json | particip.selonEtats.vassal.decisions[0] | Participe
+- activites_grandioses.json | particip.selonEtats.vassalAInfluencer.decisions[0] | Participe
+- activites_grandioses.json | particip.selonEtats.vassalSOppose.decisions[0] | Participe
+- activites_grandioses.json | prix.selonEtats.agent.decisions[0] | Prix magnifiques SI Triompher
+- activites_grandioses.json | prix.selonEtats.agent.decisions[1] | Bons prix SI Triompher
+- activites_grandioses.json | prix.selonEtats.agent.decisions[2] | Prix corrects SI Triompher ET présent dans le tournoi
+- activites_grandioses.json | prix.selonEtats.agent.decisions[3] | Prix décents ET présent dans le tournoi
+- activites_grandioses.json | prix.selonEtats.agent.decisions[4] | Prix quelconques
+- activites_grandioses.json | prix.selonEtats.aInfluencer.decisions[0] | A DEFINIR
+- activites_grandioses.json | prix.selonEtats.assassinat.decisions[0] | Prix magnifiques SI Triompher
+- activites_grandioses.json | prix.selonEtats.assassinat.decisions[1] | Bons prix SI Triompher
+- activites_grandioses.json | prix.selonEtats.assassinat.decisions[2] | Prix corrects SI Triompher
+- activites_grandioses.json | prix.selonEtats.assassinat.decisions[3] | Prix décents SI Triompher
+- activites_grandioses.json | prix.selonEtats.assassinat.decisions[4] | Prix quelconques
+- activites_grandioses.json | prix.selonEtats.controle.decisions[0] | Prix magnifiques SI Triompher
+- activites_grandioses.json | prix.selonEtats.controle.decisions[1] | Bons prix SI Triompher
+- activites_grandioses.json | prix.selonEtats.controle.decisions[2] | Prix corrects SI Triompher
+- activites_grandioses.json | prix.selonEtats.controle.decisions[3] | Prix décents SI Triompher
+- activites_grandioses.json | prix.selonEtats.controle.decisions[4] | Prix quelconques
+- activites_grandioses.json | prix.selonEtats.cultInnov.decisions[0] | Prix magnifiques SI Triompher
+- activites_grandioses.json | prix.selonEtats.cultInnov.decisions[1] | Bons prix SI Triompher
+- activites_grandioses.json | prix.selonEtats.cultInnov.decisions[2] | Prix corrects SI Triompher
+- activites_grandioses.json | prix.selonEtats.cultInnov.decisions[3] | Prix décents SI Triompher
+- activites_grandioses.json | prix.selonEtats.cultInnov.decisions[4] | Prix quelconques
+- activites_grandioses.json | prix.selonEtats.denoncer.decisions[0] | Prix magnifiques SI Triompher
+- activites_grandioses.json | prix.selonEtats.denoncer.decisions[1] | Bons prix SI Triompher
+- activites_grandioses.json | prix.selonEtats.denoncer.decisions[2] | Prix corrects SI Triompher
+- activites_grandioses.json | prix.selonEtats.denoncer.decisions[3] | Prix décents SI Triompher
+- activites_grandioses.json | prix.selonEtats.denoncer.decisions[4] | Prix quelconques
+- activites_grandioses.json | prix.selonEtats.dirigeantAInfluencer.decisions[0] | Bons prix SI Triompher
+- activites_grandioses.json | prix.selonEtats.dirigeantAInfluencer.decisions[1] | Prix corrects SI Triompher
+- activites_grandioses.json | prix.selonEtats.dirigeantAInfluencer.decisions[2] | Prix décents SI Triompher
+- activites_grandioses.json | prix.selonEtats.dirigeantAInfluencer.decisions[3] | Prix quelconques
+- activites_grandioses.json | prix.selonEtats.domaine.decisions[0] | Prix magnifiques SI Triompher
+- activites_grandioses.json | prix.selonEtats.domaine.decisions[1] | Bons prix SI Triompher
+- activites_grandioses.json | prix.selonEtats.domaine.decisions[2] | Prix corrects SI Triompher
+- activites_grandioses.json | prix.selonEtats.domaine.decisions[3] | Prix décents SI Triompher
+- activites_grandioses.json | prix.selonEtats.domaine.decisions[4] | Prix quelconques
+- activites_grandioses.json | prix.selonEtats.enfant.decisions[0] | A DEFINIR
+- activites_grandioses.json | prix.selonEtats.erudition.decisions[0] | Prix magnifiques SI Triompher
+- activites_grandioses.json | prix.selonEtats.erudition.decisions[1] | Bons prix SI Triompher
+- activites_grandioses.json | prix.selonEtats.erudition.decisions[2] | Prix corrects SI Triompher
+- activites_grandioses.json | prix.selonEtats.erudition.decisions[3] | Prix décents SI Triompher
+- activites_grandioses.json | prix.selonEtats.erudition.decisions[4] | Prix quelconques
+- activites_grandioses.json | prix.selonEtats.factionFoi.decisions[0] | Prix magnifiques SI Triompher
+- activites_grandioses.json | prix.selonEtats.factionFoi.decisions[1] | Bons prix SI Triompher
+- activites_grandioses.json | prix.selonEtats.factionFoi.decisions[2] | Prix corrects SI Triompher
+- activites_grandioses.json | prix.selonEtats.factionFoi.decisions[3] | Prix décents SI Triompher
+- activites_grandioses.json | prix.selonEtats.factionFoi.decisions[4] | Prix quelconques
+- activites_grandioses.json | prix.selonEtats.factionPop.decisions[0] | Prix magnifiques SI Triompher
+- activites_grandioses.json | prix.selonEtats.factionPop.decisions[1] | Bons prix SI Triompher
+- activites_grandioses.json | prix.selonEtats.factionPop.decisions[2] | Prix corrects SI Triompher
+- activites_grandioses.json | prix.selonEtats.factionPop.decisions[3] | Prix décents SI Triompher
+- activites_grandioses.json | prix.selonEtats.factionPop.decisions[4] | Prix quelconques
+- activites_grandioses.json | prix.selonEtats.guerre.decisions[0] | Bons prix SI Triompher
+- activites_grandioses.json | prix.selonEtats.guerre.decisions[1] | Prix corrects SI Triompher
+- activites_grandioses.json | prix.selonEtats.guerre.decisions[2] | Prix décents SI Triompher
+- activites_grandioses.json | prix.selonEtats.guerre.decisions[3] | Prix quelconques
+- activites_grandioses.json | prix.selonEtats.hamecon.decisions[0] | Prix magnifiques SI Triompher
+- activites_grandioses.json | prix.selonEtats.hamecon.decisions[1] | Bons prix SI Triompher
+- activites_grandioses.json | prix.selonEtats.hamecon.decisions[2] | Prix corrects SI Triompher
+- activites_grandioses.json | prix.selonEtats.hamecon.decisions[3] | Prix décents SI Triompher
+- activites_grandioses.json | prix.selonEtats.hamecon.decisions[4] | Prix quelconques
+- activites_grandioses.json | prix.selonEtats.perteTerresRevoquer.decisions[0] | Prix magnifiques SI Triompher
+- activites_grandioses.json | prix.selonEtats.perteTerresRevoquer.decisions[1] | Bons prix SI Triompher
+- activites_grandioses.json | prix.selonEtats.perteTerresRevoquer.decisions[2] | Prix corrects SI Triompher
+- activites_grandioses.json | prix.selonEtats.perteTerresRevoquer.decisions[3] | Prix décents SI Triompher
+- activites_grandioses.json | prix.selonEtats.perteTerresRevoquer.decisions[4] | Prix quelconques
+- activites_grandioses.json | prix.selonEtats.piete.decisions[0] | Prix magnifiques SI Triompher
+- activites_grandioses.json | prix.selonEtats.piete.decisions[1] | Bons prix SI Triompher
+- activites_grandioses.json | prix.selonEtats.piete.decisions[2] | Prix corrects SI Triompher
+- activites_grandioses.json | prix.selonEtats.piete.decisions[3] | Prix décents SI Triompher
+- activites_grandioses.json | prix.selonEtats.piete.decisions[4] | Prix quelconques
+- activites_grandioses.json | prix.selonEtats.prestige.decisions[0] | Prix magnifiques SI Triompher
+- activites_grandioses.json | prix.selonEtats.prestige.decisions[1] | Bons prix SI Triompher
+- activites_grandioses.json | prix.selonEtats.prestige.decisions[2] | Prix corrects SI Triompher
+- activites_grandioses.json | prix.selonEtats.prestige.decisions[3] | Prix décents SI Triompher
+- activites_grandioses.json | prix.selonEtats.prestige.decisions[4] | Prix quelconques
+- activites_grandioses.json | prix.selonEtats.prison.decisions[0] | Prix magnifiques SI Triompher
+- activites_grandioses.json | prix.selonEtats.prison.decisions[1] | Bons prix SI Triompher
+- activites_grandioses.json | prix.selonEtats.prison.decisions[2] | Prix corrects SI Triompher
+- activites_grandioses.json | prix.selonEtats.prison.decisions[3] | Prix décents SI Triompher
+- activites_grandioses.json | prix.selonEtats.prison.decisions[4] | Prix quelconques
+- activites_grandioses.json | prix.selonEtats.rancon.decisions[0] | Prix quelconques
+- activites_grandioses.json | prix.selonEtats.religieuxAInfluencer.decisions[0] | Prix magnifiques SI Triompher
+- activites_grandioses.json | prix.selonEtats.religieuxAInfluencer.decisions[1] | Bons prix SI Triompher
+- activites_grandioses.json | prix.selonEtats.religieuxAInfluencer.decisions[2] | Prix corrects SI Triompher
+- activites_grandioses.json | prix.selonEtats.religieuxAInfluencer.decisions[3] | Prix décents SI Triompher
+- activites_grandioses.json | prix.selonEtats.religieuxAInfluencer.decisions[4] | Prix quelconques
+- activites_grandioses.json | prix.selonEtats.revenu.decisions[0] | Prix quelconques
+- activites_grandioses.json | prix.selonEtats.successionChaos.decisions[0] | A DEFINIR
+- activites_grandioses.json | prix.selonEtats.vassal.decisions[0] | Prix magnifiques SI Triompher
+- activites_grandioses.json | prix.selonEtats.vassal.decisions[1] | Bons prix SI Triompher
+- activites_grandioses.json | prix.selonEtats.vassal.decisions[2] | Prix corrects SI Triompher
+- activites_grandioses.json | prix.selonEtats.vassal.decisions[3] | Prix décents SI Triompher
+- activites_grandioses.json | prix.selonEtats.vassal.decisions[4] | Prix quelconques
+- activites_grandioses.json | prix.selonEtats.vassalAInfluencer.decisions[0] | Prix magnifiques SI Triompher
+- activites_grandioses.json | prix.selonEtats.vassalAInfluencer.decisions[1] | Bons prix SI Triompher
+- activites_grandioses.json | prix.selonEtats.vassalAInfluencer.decisions[2] | Prix corrects SI Triompher
+- activites_grandioses.json | prix.selonEtats.vassalAInfluencer.decisions[3] | Prix décents SI Triompher
+- activites_grandioses.json | prix.selonEtats.vassalAInfluencer.decisions[4] | Prix quelconques
+- activites_grandioses.json | prix.selonEtats.vassalSOppose.decisions[0] | Prix magnifiques SI Triompher
+- activites_grandioses.json | prix.selonEtats.vassalSOppose.decisions[1] | Bons prix SI Triompher
+- activites_grandioses.json | prix.selonEtats.vassalSOppose.decisions[2] | Prix corrects SI Triompher
+- activites_grandioses.json | prix.selonEtats.vassalSOppose.decisions[3] | Prix décents SI Triompher
+- activites_grandioses.json | prix.selonEtats.vassalSOppose.decisions[4] | Prix quelconques
+- activites_grandioses.json | suite.selonEtats.agent.decisions[0] | A DEFINIR
+- activites_grandioses.json | suite.selonEtats.aInfluencer.decisions[0] | A DEFINIR
+- activites_grandioses.json | suite.selonEtats.conseiller.decisions[0] | A DEFINIR
+- activites_grandioses.json | suite.selonEtats.cultInnov.decisions[0] | A DEFINIR
+- activites_grandioses.json | suite.selonEtats.denoncer.decisions[0] | Suite nombreuse
+- activites_grandioses.json | suite.selonEtats.denoncer.decisions[1] | Entourage modeste
+- activites_grandioses.json | suite.selonEtats.dirigeantAInfluencer.decisions[0] | A DEFINIR
+- activites_grandioses.json | suite.selonEtats.domaine.decisions[0] | A DEFINIR
+- activites_grandioses.json | suite.selonEtats.enfant.decisions[0] | A DEFINIR
+- activites_grandioses.json | suite.selonEtats.factionPop.decisions[0] | A DEFINIR
+- activites_grandioses.json | suite.selonEtats.guerre.decisions[0] | A DEFINIR
+- activites_grandioses.json | suite.selonEtats.perteTerresRevoquer.decisions[0] | A DEFINIR
+- activites_grandioses.json | suite.selonEtats.piete.decisions[0] | A DEFINIR
+- activites_grandioses.json | suite.selonEtats.prestige.decisions[0] | Suite nombreuse
+- activites_grandioses.json | suite.selonEtats.prestige.decisions[1] | Entourage modeste
+- activites_grandioses.json | suite.selonEtats.prison.decisions[0] | A DEFINIR
+- activites_grandioses.json | suite.selonEtats.rancon.decisions[0] | Suite modeste
+- activites_grandioses.json | suite.selonEtats.revenu.decisions[0] | Suite modeste
+- activites_grandioses.json | suite.selonEtats.successionChaos.decisions[0] | A DEFINIR
+- activites_grandioses.json | suite.selonEtats.vassal.decisions[0] | A DEFINIR
+- activites_grandioses.json | suite.selonEtats.vassalAInfluencer.decisions[0] | A DEFINIR
+- activites_grandioses.json | tournoiHeberg.selonEtats.agent.decisions[0] | Tentes délabrées
+- activites_grandioses.json | tournoiHeberg.selonEtats.aInfluencer.decisions[0] | A DEFINIR
+- activites_grandioses.json | tournoiHeberg.selonEtats.assassinat.decisions[0] | Tentes délabrées
+- activites_grandioses.json | tournoiHeberg.selonEtats.conseiller.decisions[0] | VERIF heb
+- activites_grandioses.json | tournoiHeberg.selonEtats.cultInnov.decisions[0] | VERIF heb
+- activites_grandioses.json | tournoiHeberg.selonEtats.declarationGuerre.decisions[0] | Tentes délabrées
+- activites_grandioses.json | tournoiHeberg.selonEtats.denoncer.decisions[0] | Tentes délabrées
+- activites_grandioses.json | tournoiHeberg.selonEtats.dirigeantAInfluencer.decisions[0] | A DEFINIR
+- activites_grandioses.json | tournoiHeberg.selonEtats.domaine.decisions[0] | VERIF heb
+- activites_grandioses.json | tournoiHeberg.selonEtats.enfant.decisions[0] | A DEFINIR
+- activites_grandioses.json | tournoiHeberg.selonEtats.factionPop.decisions[0] | VERIF heb
+- activites_grandioses.json | tournoiHeberg.selonEtats.guerre.decisions[0] | Tentes délabrées
+- activites_grandioses.json | tournoiHeberg.selonEtats.perteTerresRevoquer.decisions[0] | VERIF heb
+- activites_grandioses.json | tournoiHeberg.selonEtats.prison.decisions[0] | VERIF heb
+- activites_grandioses.json | tournoiHeberg.selonEtats.rancon.decisions[0] | Tentes délabrées
+- activites_grandioses.json | tournoiHeberg.selonEtats.revenu.decisions[0] | Tentes délabrées
+- activites_grandioses.json | tournoiHeberg.selonEtats.successionChaos.decisions[0] | A DEFINIR
+- activites_grandioses.json | tournoiHeberg.selonEtats.survie.decisions[0] | A DEFINIR
+- activites_grandioses.json | tournoiHeberg.selonEtats.vassal.decisions[0] | VERIF heb
+- activites_grandioses.json | tournoiHeberg.selonEtats.vassalAInfluencer.decisions[0] | VERIF heb
+- gestion_complots.json | compHostile.selonEtats.aInfluencer.decisions[0] | Voler un artefact
+- gestion_complots.json | compHostile.selonEtats.assassinat.decisions[0] | Assassinat DANS LA SUCCESSION-S SI NON Destituer
+- gestion_complots.json | compHostile.selonEtats.assassinat.decisions[1] | Enlèvement DANS LA SUCCESSION-S
+- gestion_complots.json | compHostile.selonEtats.conseiller.decisions[0] | Enlèvement
+- gestion_complots.json | compHostile.selonEtats.cultInnov.decisions[0] | Voler un artefact
+- gestion_complots.json | compHostile.selonEtats.demande.decisions[0] | Fabrication d'un hameçon MECENE-S
+- gestion_complots.json | compHostile.selonEtats.demande2.decisions[0] | Fabrication d'un hameçon MECENE-S
+- gestion_complots.json | compHostile.selonEtats.enfant.decisions[0] | Voler un artefact
+- gestion_complots.json | compHostile.selonEtats.hamecon.decisions[0] | Fabrication d'un hameçon A HAMECONNER-S
+- gestion_complots.json | compHostile.selonEtats.perteTerresRevoquer.decisions[0] | Voler un artefact
+- gestion_complots.json | compHostile.selonEtats.perteTerresRevoquer.decisions[1] | Fabrication d'un hameçon VASSAL A REVOQUER-S
+- gestion_complots.json | compHostile.selonEtats.rancon.decisions[0] | Ponctionner le Trésor
+- gestion_complots.json | compHostile.selonEtats.rancon.decisions[1] | Voler un artefact
+- gestion_complots.json | compHostile.selonEtats.rancon.decisions[2] | Fabrication d'un hameçon GEOLIER
+- gestion_complots.json | compHostile.selonEtats.revenu.decisions[0] | Ponctionner le Trésor
+- gestion_complots.json | compHostile.selonEtats.revenu.decisions[1] | Voler un artefact
+- gestion_complots.json | compHostile.selonEtats.siRien.decisions[0] | Revendiquer le trône
+- gestion_complots.json | compHostile.selonEtats.siRien.decisions[1] | Déposer le régent
+- gestion_complots.json | compHostile.selonEtats.siRien.decisions[2] | Saisie du pays
+- gestion_complots.json | compHostile.selonEtats.siRien.decisions[3] | Ponctionner le Trésor
+- gestion_complots.json | compHostile.selonEtats.siRien.decisions[4] | Fabrication d'un hameçon POUR Acheter une terre/Acquérir une possession
+- gestion_complots.json | compHostile.selonEtats.successionChaos.decisions[0] | Voler le troupeau
+- gestion_complots.json | compHostile.selonEtats.tributaire.decisions[0] | Voler le troupeau
+- gestion_complots.json | compHostile.selonEtats.troupeau.decisions[0] | Voler le troupeau
+- gestion_complots.json | compHostile.selonEtats.vassal.decisions[0] | Fabrication d'un hameçon VASSAL PUISSANT
+- gestion_complots.json | compHostile.selonEtats.vassal.decisions[1] | Enlèvement VASSAL PUISSANT
+- gestion_complots.json | compHostile.selonEtats.vassalAInfluencer.decisions[0] | Fabrication d'un hameçon FACTIEUX
+- gestion_complots.json | compHostile.selonEtats.vassalAInfluencer.decisions[1] | Enlèvement FACTIEUX
+- gestion_complots.json | compHostile.selonEtats.vassalAInfluencer.decisions[2] | Voler un artefact
+- gestion_complots.json | compPolitique.selonEtats.agent.decisions[0] | Famille ingrate AGENT-S
+- gestion_complots.json | compPolitique.selonEtats.agent.decisions[1] | Favoriser la légitimité AGENT-S
+- gestion_complots.json | compPolitique.selonEtats.aInfluencer.decisions[0] | Famille ingrate OU Consolider la base du pouvoir ALLIE POTENTIEL-S
+- gestion_complots.json | compPolitique.selonEtats.aInfluencer.decisions[1] | Favoriser la légitimité ALLIE POTENTIEL-S
+- gestion_complots.json | compPolitique.selonEtats.assassinat.decisions[0] | Destitution
+- gestion_complots.json | compPolitique.selonEtats.enfant.decisions[0] | Famille ingrate CHEF DE FOI SI divorce
+- gestion_complots.json | compPolitique.selonEtats.enfant.decisions[1] | Consolider la base du pouvoir CHEF DE FOI SI divorce
+- gestion_complots.json | compPolitique.selonEtats.guerre.decisions[0] | Famille ingrate LUI SI gouvernement administratif
+- gestion_complots.json | compPolitique.selonEtats.guerre.decisions[1] | Consolider la base du pouvoir LUI SI gouvernement administratif
+- gestion_complots.json | compPolitique.selonEtats.influence.decisions[0] | Consolider la base du pouvoir
+- gestion_complots.json | compPolitique.selonEtats.influence.decisions[1] | Famille ingrate
+- gestion_complots.json | compPolitique.selonEtats.influence.decisions[2] | Contester le statut
+- gestion_complots.json | compPolitique.selonEtats.perteTerresRevoquer.decisions[0] | Famille ingrate VASSAL A REVOQUER-S
+- gestion_complots.json | compPolitique.selonEtats.perteTerresRevoquer.decisions[1] | Consolider la base du pouvoir VASSAL A REVOQUER-S
+- gestion_complots.json | compPolitique.selonEtats.perteTerresRevoquer.decisions[2] | Pillage de la possession
+- gestion_complots.json | compPolitique.selonEtats.perteTerresRevoquer.decisions[3] | Favoriser la légitimité VASSAL A REVOQUER-S
+- gestion_complots.json | compPolitique.selonEtats.prison.decisions[0] | Famille ingrate PRISONNIER-S
+- gestion_complots.json | compPolitique.selonEtats.prison.decisions[1] | Consolider la base du pouvoir PRISONNIER-S
+- gestion_complots.json | compPolitique.selonEtats.rancon.decisions[0] | Pillage de la possession
+- gestion_complots.json | compPolitique.selonEtats.revenu.decisions[0] | Pillage de la possession
+- gestion_complots.json | compPolitique.selonEtats.siRien.decisions[0] | Intégrer le gouvernorat
+- gestion_complots.json | compPolitique.selonEtats.siRien.decisions[1] | Dispute frontalière
+- gestion_complots.json | compPolitique.selonEtats.siRien.decisions[2] | Famille ingrate SEIGNEUR LIGE
+- gestion_complots.json | compPolitique.selonEtats.siRien.decisions[3] | Consolider la base du pouvoir SEIGNEUR LIGE
+- gestion_complots.json | compPolitique.selonEtats.siRien.decisions[4] | Famille ingrate REGENT SEIGNEUR LIGE
+- gestion_complots.json | compPolitique.selonEtats.siRien.decisions[5] | Consolider la base du pouvoir REGENT SEIGNEUR LIGE
+- gestion_complots.json | compPolitique.selonEtats.siRien.decisions[6] | Pillage de la possession
+- gestion_complots.json | compPolitique.selonEtats.succession.decisions[0] | Promouvoir
+- gestion_complots.json | compPolitique.selonEtats.vassal.decisions[0] | Favoriser la légitimité VASSAL PUISSANT
+- gestion_complots.json | compPolitique.selonEtats.vassal.decisions[1] | Famille ingrate VASSAL PUISSANT
+- gestion_complots.json | compPolitique.selonEtats.vassal.decisions[2] | Consolider la base du pouvoir VASSAL PUISSANT
+- gestion_complots.json | compPolitique.selonEtats.vassalAInfluencer.decisions[0] | Famille ingrate FACTIEUX
+- gestion_complots.json | compPolitique.selonEtats.vassalAInfluencer.decisions[1] | Consolider la base du pouvoir FACTIEUX
+- gestion_complots.json | compPolitique.selonEtats.vassalSOppose.decisions[0] | Famille ingrate LUI
+- gestion_complots.json | compPolitique.selonEtats.vassalSOppose.decisions[1] | Consolider la base du pouvoir LUI
+- gestion_complots.json | contreMesure.selonEtats.agent.decisions[0] | Aucune contre-mesure
+- gestion_complots.json | contreMesure.selonEtats.enfant.decisions[0] | Aucune contre-mesure SI aventurier adopter
+- gestion_complots.json | contreMesure.selonEtats.enfant.decisions[1] | Garde doublée
+- gestion_complots.json | contreMesure.selonEtats.factionPop.decisions[0] | Aucune contre-mesure
+- gestion_complots.json | contreMesure.selonEtats.survie.decisions[0] | Garde doublée
+- gestion_complots.json | influence.selonEtats.agent.decisions[0] | Influencer AGENT-S
+- gestion_complots.json | influence.selonEtats.agent.decisions[1] | Séduire AGENT-S
+- gestion_complots.json | influence.selonEtats.agent.decisions[2] | Apprendre la langue AGENT-S
+- gestion_complots.json | influence.selonEtats.aInfluencer.decisions[0] | Influencer ALLIE POTENTIEL-S
+- gestion_complots.json | influence.selonEtats.aInfluencer.decisions[1] | Séduire ALLIE POTENTIEL-S
+- gestion_complots.json | influence.selonEtats.aInfluencer.decisions[2] | Apprendre la langue ALLIE POTENTIEL-S
+- gestion_complots.json | influence.selonEtats.chevalierPartisan.decisions[0] | Faire la cour AMANT-S SI chevalier possible ET hors camp > �me soeur
+- gestion_complots.json | influence.selonEtats.chevalierPartisan.decisions[1] | Influencer AMI-S SI chevalier possible ET hors camp > meilleur ami
+- gestion_complots.json | influence.selonEtats.chevalierPartisan.decisions[2] | Influencer AMANT-S SI chevalier possible ET hors camp > �me soeur
+- gestion_complots.json | influence.selonEtats.declarationGuerre.decisions[0] | Influencer LUI SI gouvernement administratif
+- gestion_complots.json | influence.selonEtats.declarationGuerre.decisions[1] | Séduire LUI SI gouvernement administratif
+- gestion_complots.json | influence.selonEtats.declarationGuerre.decisions[2] | Apprendre la langue LUI SI gouvernement administratif
+- gestion_complots.json | influence.selonEtats.declarationGuerre.decisions[3] |  
+- gestion_complots.json | influence.selonEtats.declarationGuerre.decisions[4] | Influencer allié-s
+- gestion_complots.json | influence.selonEtats.declarationGuerre.decisions[5] | Séduire allié-s
+- gestion_complots.json | influence.selonEtats.declarationGuerre.decisions[6] | Apprendre la langue allié-s
+- gestion_complots.json | influence.selonEtats.demande.decisions[0] | Influencer MECENE-S
+- gestion_complots.json | influence.selonEtats.demande.decisions[1] | Séduire MECENE-S
+- gestion_complots.json | influence.selonEtats.demande.decisions[2] | Apprendre la langue MECENE-S
+- gestion_complots.json | influence.selonEtats.demande2.decisions[0] | Influencer MECENE-S
+- gestion_complots.json | influence.selonEtats.demande2.decisions[1] | Séduire MECENE-S
+- gestion_complots.json | influence.selonEtats.demande2.decisions[2] | Apprendre la langue MECENE-S
+- gestion_complots.json | influence.selonEtats.dirigeantAInfluencer.decisions[0] | Influencer MECENE-S
+- gestion_complots.json | influence.selonEtats.dirigeantAInfluencer.decisions[1] | Séduire MECENE-S
+- gestion_complots.json | influence.selonEtats.dirigeantAInfluencer.decisions[2] | Apprendre la langue MECENE-S
+- gestion_complots.json | influence.selonEtats.enfant.decisions[0] | Séduire SI futur enfant légitime
+- gestion_complots.json | influence.selonEtats.enfant.decisions[1] | Marier clandestinement SI futur enfant légitime
+- gestion_complots.json | influence.selonEtats.enfant.decisions[2] |  
+- gestion_complots.json | influence.selonEtats.enfant.decisions[3] | Influencer CHEF DE FOI SI divorce
+- gestion_complots.json | influence.selonEtats.enfant.decisions[4] | Séduire CHEF DE FOI SI divorce
+- gestion_complots.json | influence.selonEtats.enfant.decisions[5] | Apprendre la langue CHEF DE FOI SI divorce
+- gestion_complots.json | influence.selonEtats.enfant.decisions[6] |  
+- gestion_complots.json | influence.selonEtats.enfant.decisions[7] | Influencer ADOPTE POTENTIEL-S
+- gestion_complots.json | influence.selonEtats.enfant.decisions[8] | Séduire ADOPTE POTENTIEL-S
+- gestion_complots.json | influence.selonEtats.enfant.decisions[9] | Apprendre la langue ADOPTE POTENTIEL-S
+- gestion_complots.json | influence.selonEtats.guerre.decisions[0] | Influencer LUI SI gouvernement administratif
+- gestion_complots.json | influence.selonEtats.guerre.decisions[1] | Séduire LUI SI gouvernement administratif
+- gestion_complots.json | influence.selonEtats.guerre.decisions[2] | Apprendre la langue LUI SI gouvernement administratif
+- gestion_complots.json | influence.selonEtats.guerre.decisions[3] |  
+- gestion_complots.json | influence.selonEtats.guerre.decisions[4] | Influencer allié-s
+- gestion_complots.json | influence.selonEtats.guerre.decisions[5] | Séduire allié-s
+- gestion_complots.json | influence.selonEtats.guerre.decisions[6] | Apprendre la langue allié-s
+- gestion_complots.json | influence.selonEtats.perteTerresRevoquer.decisions[0] | Influencer VASSAL A REVOQUER-S
+- gestion_complots.json | influence.selonEtats.perteTerresRevoquer.decisions[1] | Séduire VASSAL A REVOQUER-S
+- gestion_complots.json | influence.selonEtats.perteTerresRevoquer.decisions[2] | Apprendre la langue VASSAL A REVOQUER-S
+- gestion_complots.json | influence.selonEtats.prison.decisions[0] | Influencer PRISONNIER-S
+- gestion_complots.json | influence.selonEtats.prison.decisions[1] | Séduire PRISONNIER-S
+- gestion_complots.json | influence.selonEtats.prison.decisions[2] | Apprendre la langue PRISONNIER-S
+- gestion_complots.json | influence.selonEtats.religieuxAInfluencer.decisions[0] | Influencer CONSEILLER RELIGIEUX
+- gestion_complots.json | influence.selonEtats.religieuxAInfluencer.decisions[1] | Séduire CONSEILLER RELIGIEUX
+- gestion_complots.json | influence.selonEtats.religieuxAInfluencer.decisions[2] | Apprendre la langue CONSEILLER RELIGIEUX
+- gestion_complots.json | influence.selonEtats.survie.decisions[0] | Influencer Maître-espion
+- gestion_complots.json | influence.selonEtats.survie.decisions[1] | Influencer Garde du corps
+- gestion_complots.json | influence.selonEtats.survie.decisions[10] | Apprendre la langue Médecin personnel
+- gestion_complots.json | influence.selonEtats.survie.decisions[11] | Apprendre la langue Conjoint
+- gestion_complots.json | influence.selonEtats.survie.decisions[2] | Influencer Médecin personnel
+- gestion_complots.json | influence.selonEtats.survie.decisions[3] | Influencer Conjoint
+- gestion_complots.json | influence.selonEtats.survie.decisions[4] | Séduire Maître-espion
+- gestion_complots.json | influence.selonEtats.survie.decisions[5] | Séduire Garde du corps
+- gestion_complots.json | influence.selonEtats.survie.decisions[6] | Séduire Médecin personnel
+- gestion_complots.json | influence.selonEtats.survie.decisions[7] | Séduire Conjoint
+- gestion_complots.json | influence.selonEtats.survie.decisions[8] | Apprendre la langue Maître-espion
+- gestion_complots.json | influence.selonEtats.survie.decisions[9] | Apprendre la langue Garde du corps
+- gestion_complots.json | influence.selonEtats.vassal.decisions[0] | Marier clandestinement VASSAL PUISSANT
+- gestion_complots.json | influence.selonEtats.vassal.decisions[1] | Nouer une amitié VASSAL PUISSANT
+- gestion_complots.json | influence.selonEtats.vassal.decisions[2] | Séduire VASSAL PUISSANT
+- gestion_complots.json | influence.selonEtats.vassal.decisions[3] | Influencer VASSAL PUISSANT
+- gestion_complots.json | influence.selonEtats.vassalAInfluencer.decisions[0] | Influencer FACTIEUX
+- gestion_complots.json | influence.selonEtats.vassalAInfluencer.decisions[1] | Nouer une amitié FACTIEUX
+- gestion_complots.json | influence.selonEtats.vassalAInfluencer.decisions[2] | Séduire FACTIEUX
+- gestion_complots.json | influence.selonEtats.vassalAInfluencer.decisions[3] | Apprendre la langue FACTIEUX
+- gestion_complots.json | influence.selonEtats.vassalSOppose.decisions[0] | Influencer VASSAL-S
+- gestion_complots.json | influence.selonEtats.vassalSOppose.decisions[1] | Séduire VASSAL-S
+- gestion_complots.json | influence.selonEtats.vassalSOppose.decisions[2] | Apprendre la langue VASSAL-S
+- gestion_decisions.json | decisions.defaut[0] | Points d'expérience
+- gestion_decisions.json | decisions.defaut[1] | Renommée
+- gestion_decisions.json | decisions.defaut[10] | vassal non factiable
+- gestion_decisions.json | decisions.defaut[11] | éviter rivalité/rancune
+- gestion_decisions.json | decisions.defaut[12] | hameçon
+- gestion_decisions.json | decisions.defaut[13] |  secret
+- gestion_decisions.json | decisions.defaut[14] | Recruter
+- gestion_decisions.json | decisions.defaut[15] | Développement
+- gestion_decisions.json | decisions.defaut[16] | Piété
+- gestion_decisions.json | decisions.defaut[17] | Prestige
+- gestion_decisions.json | decisions.defaut[18] | Or
+- gestion_decisions.json | decisions.defaut[19] | Trésor
+- gestion_decisions.json | decisions.defaut[2] | Légitimation
+- gestion_decisions.json | decisions.defaut[20] | Fertilité comtale SI Nomade
+- gestion_decisions.json | decisions.defaut[21] | Troupeau
+- gestion_decisions.json | decisions.defaut[22] | Influence
+- gestion_decisions.json | decisions.defaut[23] | Mérite
+- gestion_decisions.json | decisions.defaut[24] | Diminuer stress
+- gestion_decisions.json | decisions.defaut[25] | Provisions
+- gestion_decisions.json | decisions.defaut[3] | légende
+- gestion_decisions.json | decisions.defaut[4] | Artefact
+- gestion_decisions.json | decisions.defaut[5] | stress descendre niveau 0
+- gestion_decisions.json | decisions.defaut[6] | obtenir mécène
+- gestion_decisions.json | decisions.defaut[7] | Activité/Contrat
+- gestion_decisions.json | decisions.defaut[8] | Redoutabilité
+- gestion_decisions.json | decisions.defaut[9] | emprisonner
+- gestion_decisions.json | decisions.initialStack[0] | stress éviter niveau+
+- gestion_decisions.json | decisions.initialStack[1] |  
+- gestion_decisions.json | decisions.positionVue.categories[0] | Décisions d'événements
+- gestion_decisions.json | decisions.positionVue.idElement | decisions
+- gestion_decisions.json | decisions.positionVue.motLiaison | PUIS
+- gestion_decisions.json | decisions.selonEtats.agent.decisions[0] | Opinion vassal direct ou courtisan ou invité CIBLE-S
+- gestion_decisions.json | decisions.selonEtats.agent.decisions[0] | Opinion vassal direct ou courtisan ou invité CIBLE-S
+- gestion_decisions.json | decisions.selonEtats.agent.decisions[1] | Diplomatie
+- gestion_decisions.json | decisions.selonEtats.agent.decisions[1] | Diplomatie
+- gestion_decisions.json | decisions.selonEtats.agent.decisions[10] | Intendance
+- gestion_decisions.json | decisions.selonEtats.agent.decisions[10] | Intendance
+- gestion_decisions.json | decisions.selonEtats.agent.decisions[11] | emprisonner
+- gestion_decisions.json | decisions.selonEtats.agent.decisions[11] | emprisonner
+- gestion_decisions.json | decisions.selonEtats.agent.decisions[12] | Prestige
+- gestion_decisions.json | decisions.selonEtats.agent.decisions[12] | Prestige
+- gestion_decisions.json | decisions.selonEtats.agent.decisions[13] | secret SI Atout "Je suis bien en comparaison"
+- gestion_decisions.json | decisions.selonEtats.agent.decisions[13] | secret SI Atout "Je suis bien en comparaison"
+- gestion_decisions.json | decisions.selonEtats.agent.decisions[14] | Piété
+- gestion_decisions.json | decisions.selonEtats.agent.decisions[14] | Piété
+- gestion_decisions.json | decisions.selonEtats.agent.decisions[15] | Erudition
+- gestion_decisions.json | decisions.selonEtats.agent.decisions[15] | Erudition
+- gestion_decisions.json | decisions.selonEtats.agent.decisions[2] | Intrigue
+- gestion_decisions.json | decisions.selonEtats.agent.decisions[2] | Intrigue
+- gestion_decisions.json | decisions.selonEtats.agent.decisions[3] | emprisonner SI Atout "Sombres connaissances" ET (NON aventurier OU Outils du tortionnaire)
+- gestion_decisions.json | decisions.selonEtats.agent.decisions[3] | emprisonner SI Atout "Sombres connaissances" ET (NON aventurier OU Outils du tortionnaire)
+- gestion_decisions.json | decisions.selonEtats.agent.decisions[4] | hameçon vassal direct ou courtisan ou invité CIBLE-S
+- gestion_decisions.json | decisions.selonEtats.agent.decisions[4] | hameçon vassal direct ou courtisan ou invité CIBLE-S
+- gestion_decisions.json | decisions.selonEtats.agent.decisions[5] | Influence
+- gestion_decisions.json | decisions.selonEtats.agent.decisions[5] | Influence
+- gestion_decisions.json | decisions.selonEtats.agent.decisions[6] | Or
+- gestion_decisions.json | decisions.selonEtats.agent.decisions[6] | Or
+- gestion_decisions.json | decisions.selonEtats.agent.decisions[7] | hameçon OU secret SI Atout "Obligations en or"
+- gestion_decisions.json | decisions.selonEtats.agent.decisions[7] | hameçon OU secret SI Atout "Obligations en or"
+- gestion_decisions.json | decisions.selonEtats.agent.decisions[8] | contrôle SI <100
+- gestion_decisions.json | decisions.selonEtats.agent.decisions[8] | contrôle SI <100
+- gestion_decisions.json | decisions.selonEtats.agent.decisions[9] | Développement
+- gestion_decisions.json | decisions.selonEtats.agent.decisions[9] | Développement
+- gestion_decisions.json | decisions.selonEtats.aInfluencer.decisions[0] | Opinion ALLIE POTENTIEL-S
+- gestion_decisions.json | decisions.selonEtats.aInfluencer.decisions[0] | Opinion ALLIE POTENTIEL-S
+- gestion_decisions.json | decisions.selonEtats.aInfluencer.decisions[1] | Diplomatie
+- gestion_decisions.json | decisions.selonEtats.aInfluencer.decisions[1] | Diplomatie
+- gestion_decisions.json | decisions.selonEtats.aInfluencer.decisions[2] | Intrigue
+- gestion_decisions.json | decisions.selonEtats.aInfluencer.decisions[2] | Intrigue
+- gestion_decisions.json | decisions.selonEtats.aInfluencer.decisions[3] | emprisonner SI Atout "Sombres connaissances" ET (NON aventurier OU Outils du tortionnaire)
+- gestion_decisions.json | decisions.selonEtats.aInfluencer.decisions[3] | emprisonner SI Atout "Sombres connaissances" ET (NON aventurier OU Outils du tortionnaire)
+- gestion_decisions.json | decisions.selonEtats.assassinat.decisions[0] | progression succession
+- gestion_decisions.json | decisions.selonEtats.assassinat.decisions[0] | progression succession
+- gestion_decisions.json | decisions.selonEtats.assassinat.decisions[1] | Intrigue
+- gestion_decisions.json | decisions.selonEtats.assassinat.decisions[1] | Intrigue
+- gestion_decisions.json | decisions.selonEtats.assassinat.decisions[2] | emprisonner SI Atout "Sombres connaissances" ET (NON aventurier OU Outils du tortionnaire)
+- gestion_decisions.json | decisions.selonEtats.assassinat.decisions[2] | emprisonner SI Atout "Sombres connaissances" ET (NON aventurier OU Outils du tortionnaire)
+- gestion_decisions.json | decisions.selonEtats.chevalierPartisan.decisions[0] | Recruter chevalier
+- gestion_decisions.json | decisions.selonEtats.chevalierPartisan.decisions[0] | Recruter chevalier
+- gestion_decisions.json | decisions.selonEtats.chevalierPartisan.decisions[1] | emprisonner SI chevalier possible
+- gestion_decisions.json | decisions.selonEtats.chevalierPartisan.decisions[1] | emprisonner SI chevalier possible
+- gestion_decisions.json | decisions.selonEtats.chevalierPartisan.decisions[2] | conjoint SI chevalier possible
+- gestion_decisions.json | decisions.selonEtats.chevalierPartisan.decisions[2] | conjoint SI chevalier possible
+- gestion_decisions.json | decisions.selonEtats.chevalierPartisan.decisions[3] | meilleur ami SI chevalier possible ET hors camp
+- gestion_decisions.json | decisions.selonEtats.chevalierPartisan.decisions[3] | meilleur ami SI chevalier possible ET hors camp
+- gestion_decisions.json | decisions.selonEtats.chevalierPartisan.decisions[4] | �me soeur SI chevalier possible ET hors camp
+- gestion_decisions.json | decisions.selonEtats.chevalierPartisan.decisions[4] | �me soeur SI chevalier possible ET hors camp
+- gestion_decisions.json | decisions.selonEtats.conseiller.decisions[0] | Recruter
+- gestion_decisions.json | decisions.selonEtats.conseiller.decisions[0] | Recruter
+- gestion_decisions.json | decisions.selonEtats.conseiller.decisions[1] | hameçon OU secret SI recrutable
+- gestion_decisions.json | decisions.selonEtats.conseiller.decisions[1] | hameçon OU secret SI recrutable
+- gestion_decisions.json | decisions.selonEtats.conseiller.decisions[2] | emprisonner SI recrutable
+- gestion_decisions.json | decisions.selonEtats.conseiller.decisions[2] | emprisonner SI recrutable
+- gestion_decisions.json | decisions.selonEtats.controle.decisions[0] | contrôle
+- gestion_decisions.json | decisions.selonEtats.controle.decisions[0] | contrôle
+- gestion_decisions.json | decisions.selonEtats.controle.decisions[1] | Martialité
+- gestion_decisions.json | decisions.selonEtats.controle.decisions[1] | Martialité
+- gestion_decisions.json | decisions.selonEtats.cultInnov.decisions[0] | Erudition SI Chef culturel
+- gestion_decisions.json | decisions.selonEtats.cultInnov.decisions[0] | Erudition SI Chef culturel
+- gestion_decisions.json | decisions.selonEtats.cultInnov.decisions[1] | Intendance SI NON Chef culturel
+- gestion_decisions.json | decisions.selonEtats.cultInnov.decisions[1] | Intendance SI NON Chef culturel
+- gestion_decisions.json | decisions.selonEtats.cultInnov.decisions[2] | Prestige SI NON Chef culturel
+- gestion_decisions.json | decisions.selonEtats.cultInnov.decisions[2] | Prestige SI NON Chef culturel
+- gestion_decisions.json | decisions.selonEtats.cultInnov.decisions[3] | Artefact
+- gestion_decisions.json | decisions.selonEtats.cultInnov.decisions[3] | Artefact
+- gestion_decisions.json | decisions.selonEtats.declarationGuerre.decisions[0] | Martialité
+- gestion_decisions.json | decisions.selonEtats.declarationGuerre.decisions[0] | Martialité
+- gestion_decisions.json | decisions.selonEtats.declarationGuerre.decisions[1] | Augmenter levées
+- gestion_decisions.json | decisions.selonEtats.declarationGuerre.decisions[1] | Augmenter levées
+- gestion_decisions.json | decisions.selonEtats.declarationGuerre.decisions[2] | Influence
+- gestion_decisions.json | decisions.selonEtats.declarationGuerre.decisions[2] | Influence
+- gestion_decisions.json | decisions.selonEtats.declarationGuerre.decisions[3] | contrôle SI <100
+- gestion_decisions.json | decisions.selonEtats.declarationGuerre.decisions[3] | contrôle SI <100
+- gestion_decisions.json | decisions.selonEtats.declarationGuerre.decisions[4] | Développement
+- gestion_decisions.json | decisions.selonEtats.declarationGuerre.decisions[4] | Développement
+- gestion_decisions.json | decisions.selonEtats.declarationGuerre.decisions[5] | Recruter chevalier
+- gestion_decisions.json | decisions.selonEtats.declarationGuerre.decisions[5] | Recruter chevalier
+- gestion_decisions.json | decisions.selonEtats.declarationGuerre.decisions[6] | emprisonner SI chevalier possible
+- gestion_decisions.json | decisions.selonEtats.declarationGuerre.decisions[6] | emprisonner SI chevalier possible
+- gestion_decisions.json | decisions.selonEtats.declarationGuerre.decisions[7] | Prouesse
+- gestion_decisions.json | decisions.selonEtats.declarationGuerre.decisions[7] | Prouesse
+- gestion_decisions.json | decisions.selonEtats.declarationGuerre.decisions[8] | emprisonner SI Atout "Sombres connaissances"
+- gestion_decisions.json | decisions.selonEtats.declarationGuerre.decisions[8] | emprisonner SI Atout "Sombres connaissances"
+- gestion_decisions.json | decisions.selonEtats.declarationGuerre.decisions[9] | alliance
+- gestion_decisions.json | decisions.selonEtats.declarationGuerre.decisions[9] | alliance
+- gestion_decisions.json | decisions.selonEtats.demande.decisions[0] | Prestige
+- gestion_decisions.json | decisions.selonEtats.demande.decisions[0] | Prestige
+- gestion_decisions.json | decisions.selonEtats.demande.decisions[1] | secret SI Atout "Je suis bien en comparaison"
+- gestion_decisions.json | decisions.selonEtats.demande.decisions[1] | secret SI Atout "Je suis bien en comparaison"
+- gestion_decisions.json | decisions.selonEtats.demande.decisions[2] | Opinion MECENE-S
+- gestion_decisions.json | decisions.selonEtats.demande.decisions[2] | Opinion MECENE-S
+- gestion_decisions.json | decisions.selonEtats.demande.decisions[3] | Diplomatie
+- gestion_decisions.json | decisions.selonEtats.demande.decisions[3] | Diplomatie
+- gestion_decisions.json | decisions.selonEtats.demande.decisions[4] | Intrigue
+- gestion_decisions.json | decisions.selonEtats.demande.decisions[4] | Intrigue
+- gestion_decisions.json | decisions.selonEtats.demande.decisions[5] | emprisonner SI Atout "Sombres connaissances" ET Outils du tortionnaire
+- gestion_decisions.json | decisions.selonEtats.demande.decisions[5] | emprisonner SI Atout "Sombres connaissances" ET Outils du tortionnaire
+- gestion_decisions.json | decisions.selonEtats.denoncer.decisions[0] | Prestige
+- gestion_decisions.json | decisions.selonEtats.denoncer.decisions[0] | Prestige
+- gestion_decisions.json | decisions.selonEtats.denoncer.decisions[1] | Renommée
+- gestion_decisions.json | decisions.selonEtats.denoncer.decisions[1] | Renommée
+- gestion_decisions.json | decisions.selonEtats.denoncer.decisions[2] | secret SI Atout "Je suis bien en comparaison"
+- gestion_decisions.json | decisions.selonEtats.denoncer.decisions[2] | secret SI Atout "Je suis bien en comparaison"
+- gestion_decisions.json | decisions.selonEtats.dirigeantAInfluencer.decisions[0] | Opinion ALLIE POTENTIEL-S
+- gestion_decisions.json | decisions.selonEtats.dirigeantAInfluencer.decisions[0] | Opinion ALLIE POTENTIEL-S
+- gestion_decisions.json | decisions.selonEtats.dirigeantAInfluencer.decisions[1] | Diplomatie
+- gestion_decisions.json | decisions.selonEtats.dirigeantAInfluencer.decisions[1] | Diplomatie
+- gestion_decisions.json | decisions.selonEtats.dirigeantAInfluencer.decisions[2] | Intrigue
+- gestion_decisions.json | decisions.selonEtats.dirigeantAInfluencer.decisions[2] | Intrigue
+- gestion_decisions.json | decisions.selonEtats.dirigeantAInfluencer.decisions[3] | emprisonner SI Atout "Sombres connaissances" ET Outils du tortionnaire
+- gestion_decisions.json | decisions.selonEtats.dirigeantAInfluencer.decisions[3] | emprisonner SI Atout "Sombres connaissances" ET Outils du tortionnaire
+- gestion_decisions.json | decisions.selonEtats.domaine.decisions[0] | Intendance
+- gestion_decisions.json | decisions.selonEtats.domaine.decisions[0] | Intendance
+- gestion_decisions.json | decisions.selonEtats.enfant.decisions[0] | coucher SI futur enfant légitime ET NON mort
+- gestion_decisions.json | decisions.selonEtats.enfant.decisions[0] | coucher SI futur enfant légitime ET NON mort
+- gestion_decisions.json | decisions.selonEtats.enfant.decisions[1] | Amant SI futur enfant légitime ET NON mort
+- gestion_decisions.json | decisions.selonEtats.enfant.decisions[1] | Amant SI futur enfant légitime ET NON mort
+- gestion_decisions.json | decisions.selonEtats.enfant.decisions[10] | Intrigue SI divorce et NON mort
+- gestion_decisions.json | decisions.selonEtats.enfant.decisions[10] | Intrigue SI divorce et NON mort
+- gestion_decisions.json | decisions.selonEtats.enfant.decisions[11] |  
+- gestion_decisions.json | decisions.selonEtats.enfant.decisions[11] |  
+- gestion_decisions.json | decisions.selonEtats.enfant.decisions[12] | Prestige SI aventurier adopter ET Prestige<150 ET NON mort
+- gestion_decisions.json | decisions.selonEtats.enfant.decisions[12] | Prestige SI aventurier adopter ET Prestige<150 ET NON mort
+- gestion_decisions.json | decisions.selonEtats.enfant.decisions[13] | Secret SI aventurier adopter ET Prestige<150 ET NON mort ET Atout "Je suis bien en comparaison"
+- gestion_decisions.json | decisions.selonEtats.enfant.decisions[13] | Secret SI aventurier adopter ET Prestige<150 ET NON mort ET Atout "Je suis bien en comparaison"
+- gestion_decisions.json | decisions.selonEtats.enfant.decisions[14] |  
+- gestion_decisions.json | decisions.selonEtats.enfant.decisions[14] |  
+- gestion_decisions.json | decisions.selonEtats.enfant.decisions[15] | Opinion ADOPTE POTENTIEL-S SI NON perte Prestige ET NON mort
+- gestion_decisions.json | decisions.selonEtats.enfant.decisions[15] | Opinion ADOPTE POTENTIEL-S SI NON perte Prestige ET NON mort
+- gestion_decisions.json | decisions.selonEtats.enfant.decisions[16] | Diplomatie SI aventurier adopter ET NON perte Prestige ET NON mort
+- gestion_decisions.json | decisions.selonEtats.enfant.decisions[16] | Diplomatie SI aventurier adopter ET NON perte Prestige ET NON mort
+- gestion_decisions.json | decisions.selonEtats.enfant.decisions[17] | Intrigue SI aventurier adopter ET NON perte Prestige ET NON mort
+- gestion_decisions.json | decisions.selonEtats.enfant.decisions[17] | Intrigue SI aventurier adopter ET NON perte Prestige ET NON mort
+- gestion_decisions.json | decisions.selonEtats.enfant.decisions[18] | emprisonner SI aventurier adopter ET NON perte Prestige ET NON mort ET Atout "Sombres connaissances" ET Outils du tortionnaire
+- gestion_decisions.json | decisions.selonEtats.enfant.decisions[18] | emprisonner SI aventurier adopter ET NON perte Prestige ET NON mort ET Atout "Sombres connaissances" ET Outils du tortionnaire
+- gestion_decisions.json | decisions.selonEtats.enfant.decisions[19] |  
+- gestion_decisions.json | decisions.selonEtats.enfant.decisions[19] |  
+- gestion_decisions.json | decisions.selonEtats.enfant.decisions[2] | Intrigue SI futur enfant légitime ET NON mort
+- gestion_decisions.json | decisions.selonEtats.enfant.decisions[2] | Intrigue SI futur enfant légitime ET NON mort
+- gestion_decisions.json | decisions.selonEtats.enfant.decisions[20] | Prestige SI aventurier adopter ET NON mort
+- gestion_decisions.json | decisions.selonEtats.enfant.decisions[20] | Prestige SI aventurier adopter ET NON mort
+- gestion_decisions.json | decisions.selonEtats.enfant.decisions[21] | Secret SI aventurier adopter ET NON mort ET Atout "Je suis bien en comparaison"
+- gestion_decisions.json | decisions.selonEtats.enfant.decisions[21] | Secret SI aventurier adopter ET NON mort ET Atout "Je suis bien en comparaison"
+- gestion_decisions.json | decisions.selonEtats.enfant.decisions[22] |  
+- gestion_decisions.json | decisions.selonEtats.enfant.decisions[22] |  
+- gestion_decisions.json | decisions.selonEtats.enfant.decisions[23] | Santé
+- gestion_decisions.json | decisions.selonEtats.enfant.decisions[23] | Santé
+- gestion_decisions.json | decisions.selonEtats.enfant.decisions[24] | Provisions
+- gestion_decisions.json | decisions.selonEtats.enfant.decisions[24] | Provisions
+- gestion_decisions.json | decisions.selonEtats.enfant.decisions[25] | Diminuer stress
+- gestion_decisions.json | decisions.selonEtats.enfant.decisions[25] | Diminuer stress
+- gestion_decisions.json | decisions.selonEtats.enfant.decisions[26] | Opinion Médecin
+- gestion_decisions.json | decisions.selonEtats.enfant.decisions[26] | Opinion Médecin
+- gestion_decisions.json | decisions.selonEtats.enfant.decisions[27] | Opinion Garde du corps
+- gestion_decisions.json | decisions.selonEtats.enfant.decisions[27] | Opinion Garde du corps
+- gestion_decisions.json | decisions.selonEtats.enfant.decisions[28] | Opinion Conjoint
+- gestion_decisions.json | decisions.selonEtats.enfant.decisions[28] | Opinion Conjoint
+- gestion_decisions.json | decisions.selonEtats.enfant.decisions[29] | Opinion Maître-espion
+- gestion_decisions.json | decisions.selonEtats.enfant.decisions[29] | Opinion Maître-espion
+- gestion_decisions.json | decisions.selonEtats.enfant.decisions[3] | emprisonner SI futur enfant légitime ET NON mort ET Atout "Sombres connaissances" ET (NON aventurier OU Outils du tortionnaire)
+- gestion_decisions.json | decisions.selonEtats.enfant.decisions[3] | emprisonner SI futur enfant légitime ET NON mort ET Atout "Sombres connaissances" ET (NON aventurier OU Outils du tortionnaire)
+- gestion_decisions.json | decisions.selonEtats.enfant.decisions[4] |  
+- gestion_decisions.json | decisions.selonEtats.enfant.decisions[4] |  
+- gestion_decisions.json | decisions.selonEtats.enfant.decisions[5] | divorce SI divorce ET NON mort
+- gestion_decisions.json | decisions.selonEtats.enfant.decisions[5] | divorce SI divorce ET NON mort
+- gestion_decisions.json | decisions.selonEtats.enfant.decisions[6] | Piété SI divorce et NON mort
+- gestion_decisions.json | decisions.selonEtats.enfant.decisions[6] | Piété SI divorce et NON mort
+- gestion_decisions.json | decisions.selonEtats.enfant.decisions[7] | Erudition SI divorce et NON mort
+- gestion_decisions.json | decisions.selonEtats.enfant.decisions[7] | Erudition SI divorce et NON mort
+- gestion_decisions.json | decisions.selonEtats.enfant.decisions[8] | opinion CHEF DE FOI SI divorce et NON mort
+- gestion_decisions.json | decisions.selonEtats.enfant.decisions[8] | opinion CHEF DE FOI SI divorce et NON mort
+- gestion_decisions.json | decisions.selonEtats.enfant.decisions[9] | Diplomatie SI divorce et NON mort
+- gestion_decisions.json | decisions.selonEtats.enfant.decisions[9] | Diplomatie SI divorce et NON mort
+- gestion_decisions.json | decisions.selonEtats.erudition.decisions[0] | Erudition
+- gestion_decisions.json | decisions.selonEtats.erudition.decisions[0] | Erudition
+- gestion_decisions.json | decisions.selonEtats.factionFoi.decisions[0] | Opinion comtale LUI
+- gestion_decisions.json | decisions.selonEtats.factionFoi.decisions[0] | Opinion comtale LUI
+- gestion_decisions.json | decisions.selonEtats.factionFoi.decisions[1] | Piété
+- gestion_decisions.json | decisions.selonEtats.factionFoi.decisions[1] | Piété
+- gestion_decisions.json | decisions.selonEtats.factionFoi.decisions[2] | Erudition
+- gestion_decisions.json | decisions.selonEtats.factionFoi.decisions[2] | Erudition
+- gestion_decisions.json | decisions.selonEtats.factionPop.decisions[0] | Opinion comtale COMTE
+- gestion_decisions.json | decisions.selonEtats.factionPop.decisions[0] | Opinion comtale COMTE
+- gestion_decisions.json | decisions.selonEtats.guerre.decisions[0] | Prouesse
+- gestion_decisions.json | decisions.selonEtats.guerre.decisions[0] | Prouesse
+- gestion_decisions.json | decisions.selonEtats.guerre.decisions[1] | Martialité
+- gestion_decisions.json | decisions.selonEtats.guerre.decisions[1] | Martialité
+- gestion_decisions.json | decisions.selonEtats.guerre.decisions[10] | diplomatie SI gouvernement administratif
+- gestion_decisions.json | decisions.selonEtats.guerre.decisions[10] | diplomatie SI gouvernement administratif
+- gestion_decisions.json | decisions.selonEtats.guerre.decisions[11] | Intrigue SI gouvernement administratif
+- gestion_decisions.json | decisions.selonEtats.guerre.decisions[11] | Intrigue SI gouvernement administratif
+- gestion_decisions.json | decisions.selonEtats.guerre.decisions[2] | Augmenter levées
+- gestion_decisions.json | decisions.selonEtats.guerre.decisions[2] | Augmenter levées
+- gestion_decisions.json | decisions.selonEtats.guerre.decisions[3] | Influence
+- gestion_decisions.json | decisions.selonEtats.guerre.decisions[3] | Influence
+- gestion_decisions.json | decisions.selonEtats.guerre.decisions[4] | contrôle SI <100
+- gestion_decisions.json | decisions.selonEtats.guerre.decisions[4] | contrôle SI <100
+- gestion_decisions.json | decisions.selonEtats.guerre.decisions[5] | Développement
+- gestion_decisions.json | decisions.selonEtats.guerre.decisions[5] | Développement
+- gestion_decisions.json | decisions.selonEtats.guerre.decisions[6] | Recruter chevalier
+- gestion_decisions.json | decisions.selonEtats.guerre.decisions[6] | Recruter chevalier
+- gestion_decisions.json | decisions.selonEtats.guerre.decisions[7] | emprisonner SI Atout "Sombres connaissances" ET (NON aventurier OU Outils du tortionnaire)
+- gestion_decisions.json | decisions.selonEtats.guerre.decisions[7] | emprisonner SI Atout "Sombres connaissances" ET (NON aventurier OU Outils du tortionnaire)
+- gestion_decisions.json | decisions.selonEtats.guerre.decisions[8] | emprisonner SI chevalier possible
+- gestion_decisions.json | decisions.selonEtats.guerre.decisions[8] | emprisonner SI chevalier possible
+- gestion_decisions.json | decisions.selonEtats.guerre.decisions[9] | Opinion LUI SI gouvernement administratif
+- gestion_decisions.json | decisions.selonEtats.guerre.decisions[9] | Opinion LUI SI gouvernement administratif
+- gestion_decisions.json | decisions.selonEtats.hamecon.decisions[0] | hameçon OU secret A HAMECONNER-S
+- gestion_decisions.json | decisions.selonEtats.hamecon.decisions[0] | hameçon OU secret A HAMECONNER-S
+- gestion_decisions.json | decisions.selonEtats.hamecon.decisions[1] | Intrigue
+- gestion_decisions.json | decisions.selonEtats.hamecon.decisions[1] | Intrigue
+- gestion_decisions.json | decisions.selonEtats.hamecon.decisions[2] | emprisonner SI Atout "Sombres connaissances" ET (NON aventurier OU Outils du tortionnaire)
+- gestion_decisions.json | decisions.selonEtats.hamecon.decisions[2] | emprisonner SI Atout "Sombres connaissances" ET (NON aventurier OU Outils du tortionnaire)
+- gestion_decisions.json | decisions.selonEtats.influence.decisions[0] | Influence
+- gestion_decisions.json | decisions.selonEtats.influence.decisions[0] | Influence
+- gestion_decisions.json | decisions.selonEtats.perteTerresRevoquer.decisions[0] | accorder titre VASSAL A REVOQUER-S
+- gestion_decisions.json | decisions.selonEtats.perteTerresRevoquer.decisions[0] | accorder titre VASSAL A REVOQUER-S
+- gestion_decisions.json | decisions.selonEtats.perteTerresRevoquer.decisions[1] | Prestige
+- gestion_decisions.json | decisions.selonEtats.perteTerresRevoquer.decisions[1] | Prestige
+- gestion_decisions.json | decisions.selonEtats.perteTerresRevoquer.decisions[10] | contrôle SI <100
+- gestion_decisions.json | decisions.selonEtats.perteTerresRevoquer.decisions[10] | contrôle SI <100
+- gestion_decisions.json | decisions.selonEtats.perteTerresRevoquer.decisions[11] | Développement
+- gestion_decisions.json | decisions.selonEtats.perteTerresRevoquer.decisions[11] | Développement
+- gestion_decisions.json | decisions.selonEtats.perteTerresRevoquer.decisions[12] | Intendance
+- gestion_decisions.json | decisions.selonEtats.perteTerresRevoquer.decisions[12] | Intendance
+- gestion_decisions.json | decisions.selonEtats.perteTerresRevoquer.decisions[13] | emprisonner
+- gestion_decisions.json | decisions.selonEtats.perteTerresRevoquer.decisions[13] | emprisonner
+- gestion_decisions.json | decisions.selonEtats.perteTerresRevoquer.decisions[14] | hameçon VASSAL A REVOQUER-S
+- gestion_decisions.json | decisions.selonEtats.perteTerresRevoquer.decisions[14] | hameçon VASSAL A REVOQUER-S
+- gestion_decisions.json | decisions.selonEtats.perteTerresRevoquer.decisions[2] | secret VASSAL A REVOQUER-S
+- gestion_decisions.json | decisions.selonEtats.perteTerresRevoquer.decisions[2] | secret VASSAL A REVOQUER-S
+- gestion_decisions.json | decisions.selonEtats.perteTerresRevoquer.decisions[3] | Opinion VASSAL A REVOQUER-S
+- gestion_decisions.json | decisions.selonEtats.perteTerresRevoquer.decisions[3] | Opinion VASSAL A REVOQUER-S
+- gestion_decisions.json | decisions.selonEtats.perteTerresRevoquer.decisions[4] | Diplomatie
+- gestion_decisions.json | decisions.selonEtats.perteTerresRevoquer.decisions[4] | Diplomatie
+- gestion_decisions.json | decisions.selonEtats.perteTerresRevoquer.decisions[5] | Intrigue
+- gestion_decisions.json | decisions.selonEtats.perteTerresRevoquer.decisions[5] | Intrigue
+- gestion_decisions.json | decisions.selonEtats.perteTerresRevoquer.decisions[6] | emprisonner SI Atout "Sombres connaissances"
+- gestion_decisions.json | decisions.selonEtats.perteTerresRevoquer.decisions[6] | emprisonner SI Atout "Sombres connaissances"
+- gestion_decisions.json | decisions.selonEtats.perteTerresRevoquer.decisions[7] | secret SI emprisonnable ET Atout "Sombres connaissances"
+- gestion_decisions.json | decisions.selonEtats.perteTerresRevoquer.decisions[7] | secret SI emprisonnable ET Atout "Sombres connaissances"
+- gestion_decisions.json | decisions.selonEtats.perteTerresRevoquer.decisions[8] | Or
+- gestion_decisions.json | decisions.selonEtats.perteTerresRevoquer.decisions[8] | Or
+- gestion_decisions.json | decisions.selonEtats.perteTerresRevoquer.decisions[9] | hameçon OU secret SI Atout "Obligations en or"
+- gestion_decisions.json | decisions.selonEtats.perteTerresRevoquer.decisions[9] | hameçon OU secret SI Atout "Obligations en or"
+- gestion_decisions.json | decisions.selonEtats.piete.decisions[0] | Piété
+- gestion_decisions.json | decisions.selonEtats.piete.decisions[0] | Piété
+- gestion_decisions.json | decisions.selonEtats.piete.decisions[1] | Erudition
+- gestion_decisions.json | decisions.selonEtats.piete.decisions[1] | Erudition
+- gestion_decisions.json | decisions.selonEtats.prestige.decisions[0] | Prestige
+- gestion_decisions.json | decisions.selonEtats.prestige.decisions[0] | Prestige
+- gestion_decisions.json | decisions.selonEtats.prestige.decisions[1] | secret SI Atout "Je suis bien en comparaison"
+- gestion_decisions.json | decisions.selonEtats.prestige.decisions[1] | secret SI Atout "Je suis bien en comparaison"
+- gestion_decisions.json | decisions.selonEtats.prison.decisions[0] | Prestige SI Prestige dépensé pour emprisonnement
+- gestion_decisions.json | decisions.selonEtats.prison.decisions[0] | Prestige SI Prestige dépensé pour emprisonnement
+- gestion_decisions.json | decisions.selonEtats.prison.decisions[1] | Intrigue
+- gestion_decisions.json | decisions.selonEtats.prison.decisions[1] | Intrigue
+- gestion_decisions.json | decisions.selonEtats.prison.decisions[10] | hameçon OU secret SI chevalier possible
+- gestion_decisions.json | decisions.selonEtats.prison.decisions[10] | hameçon OU secret SI chevalier possible
+- gestion_decisions.json | decisions.selonEtats.prison.decisions[11] | emprisonner SI chevalier possible
+- gestion_decisions.json | decisions.selonEtats.prison.decisions[11] | emprisonner SI chevalier possible
+- gestion_decisions.json | decisions.selonEtats.prison.decisions[2] | Emprisonner SI Atout "Sombres connaissances"
+- gestion_decisions.json | decisions.selonEtats.prison.decisions[2] | Emprisonner SI Atout "Sombres connaissances"
+- gestion_decisions.json | decisions.selonEtats.prison.decisions[3] | secret SI emprisonnable ET Atout "Sombres connaissances"
+- gestion_decisions.json | decisions.selonEtats.prison.decisions[3] | secret SI emprisonnable ET Atout "Sombres connaissances"
+- gestion_decisions.json | decisions.selonEtats.prison.decisions[4] | Opinion PRISONNIER-S
+- gestion_decisions.json | decisions.selonEtats.prison.decisions[4] | Opinion PRISONNIER-S
+- gestion_decisions.json | decisions.selonEtats.prison.decisions[5] | Diplomatie
+- gestion_decisions.json | decisions.selonEtats.prison.decisions[5] | Diplomatie
+- gestion_decisions.json | decisions.selonEtats.prison.decisions[6] | augmenter levées
+- gestion_decisions.json | decisions.selonEtats.prison.decisions[6] | augmenter levées
+- gestion_decisions.json | decisions.selonEtats.prison.decisions[7] | Contrôle SI <100
+- gestion_decisions.json | decisions.selonEtats.prison.decisions[7] | Contrôle SI <100
+- gestion_decisions.json | decisions.selonEtats.prison.decisions[8] | Développement
+- gestion_decisions.json | decisions.selonEtats.prison.decisions[8] | Développement
+- gestion_decisions.json | decisions.selonEtats.prison.decisions[9] | Recruter SI chevalier possible
+- gestion_decisions.json | decisions.selonEtats.prison.decisions[9] | Recruter SI chevalier possible
+- gestion_decisions.json | decisions.selonEtats.proclame.decisions[0] | Recruter chevalier SI prouesse>=8
+- gestion_decisions.json | decisions.selonEtats.proclame.decisions[0] | Recruter chevalier SI prouesse>=8
+- gestion_decisions.json | decisions.selonEtats.proclame.decisions[1] | Martialité
+- gestion_decisions.json | decisions.selonEtats.proclame.decisions[1] | Martialité
+- gestion_decisions.json | decisions.selonEtats.proclame.decisions[2] | emprisonner SI chevalier possible ET prouesse>=8
+- gestion_decisions.json | decisions.selonEtats.proclame.decisions[2] | emprisonner SI chevalier possible ET prouesse>=8
+- gestion_decisions.json | decisions.selonEtats.proclame.decisions[3] | Prestige
+- gestion_decisions.json | decisions.selonEtats.proclame.decisions[3] | Prestige
+- gestion_decisions.json | decisions.selonEtats.rancon.decisions[0] | Or
+- gestion_decisions.json | decisions.selonEtats.rancon.decisions[0] | Or
+- gestion_decisions.json | decisions.selonEtats.rancon.decisions[1] | hameçon OU secret SI Atout "Obligations en or"
+- gestion_decisions.json | decisions.selonEtats.rancon.decisions[1] | hameçon OU secret SI Atout "Obligations en or"
+- gestion_decisions.json | decisions.selonEtats.rancon.decisions[2] | contrôle SI <100
+- gestion_decisions.json | decisions.selonEtats.rancon.decisions[2] | contrôle SI <100
+- gestion_decisions.json | decisions.selonEtats.rancon.decisions[3] | Développement
+- gestion_decisions.json | decisions.selonEtats.rancon.decisions[3] | Développement
+- gestion_decisions.json | decisions.selonEtats.rancon.decisions[4] | Intendance
+- gestion_decisions.json | decisions.selonEtats.rancon.decisions[4] | Intendance
+- gestion_decisions.json | decisions.selonEtats.rancon.decisions[5] | emprisonner
+- gestion_decisions.json | decisions.selonEtats.rancon.decisions[5] | emprisonner
+- gestion_decisions.json | decisions.selonEtats.rancon.decisions[6] | hameçon GEOLIER
+- gestion_decisions.json | decisions.selonEtats.rancon.decisions[6] | hameçon GEOLIER
+- gestion_decisions.json | decisions.selonEtats.rancon.decisions[7] | Intrigue
+- gestion_decisions.json | decisions.selonEtats.rancon.decisions[7] | Intrigue
+- gestion_decisions.json | decisions.selonEtats.recruterChevalier.decisions[0] | Recruter chevalier
+- gestion_decisions.json | decisions.selonEtats.recruterChevalier.decisions[0] | Recruter chevalier
+- gestion_decisions.json | decisions.selonEtats.recruterChevalier.decisions[1] | hameçon OU secret SI chevalier possible
+- gestion_decisions.json | decisions.selonEtats.recruterChevalier.decisions[1] | hameçon OU secret SI chevalier possible
+- gestion_decisions.json | decisions.selonEtats.recruterChevalier.decisions[2] | Martialité
+- gestion_decisions.json | decisions.selonEtats.recruterChevalier.decisions[2] | Martialité
+- gestion_decisions.json | decisions.selonEtats.recruterChevalier.decisions[3] | emprisonner SI chevalier possible
+- gestion_decisions.json | decisions.selonEtats.recruterChevalier.decisions[3] | emprisonner SI chevalier possible
+- gestion_decisions.json | decisions.selonEtats.recruterChevalier.decisions[4] | Prestige
+- gestion_decisions.json | decisions.selonEtats.recruterChevalier.decisions[4] | Prestige
+- gestion_decisions.json | decisions.selonEtats.religieuxAInfluencer.decisions[0] | Opinion CONSEILLER RELIGIEUX
+- gestion_decisions.json | decisions.selonEtats.religieuxAInfluencer.decisions[0] | Opinion CONSEILLER RELIGIEUX
+- gestion_decisions.json | decisions.selonEtats.religieuxAInfluencer.decisions[1] | Diplomatie
+- gestion_decisions.json | decisions.selonEtats.religieuxAInfluencer.decisions[1] | Diplomatie
+- gestion_decisions.json | decisions.selonEtats.religieuxAInfluencer.decisions[2] | Intrigue
+- gestion_decisions.json | decisions.selonEtats.religieuxAInfluencer.decisions[2] | Intrigue
+- gestion_decisions.json | decisions.selonEtats.religieuxAInfluencer.decisions[3] | emprisonner SI Atout "Sombres connaissances"
+- gestion_decisions.json | decisions.selonEtats.religieuxAInfluencer.decisions[3] | emprisonner SI Atout "Sombres connaissances"
+- gestion_decisions.json | decisions.selonEtats.religieuxAInfluencer.decisions[4] | Piété
+- gestion_decisions.json | decisions.selonEtats.religieuxAInfluencer.decisions[4] | Piété
+- gestion_decisions.json | decisions.selonEtats.religieuxAInfluencer.decisions[5] | Erudition
+- gestion_decisions.json | decisions.selonEtats.religieuxAInfluencer.decisions[5] | Erudition
+- gestion_decisions.json | decisions.selonEtats.revenu.decisions[0] | Or
+- gestion_decisions.json | decisions.selonEtats.revenu.decisions[0] | Or
+- gestion_decisions.json | decisions.selonEtats.revenu.decisions[1] | Trésor
+- gestion_decisions.json | decisions.selonEtats.revenu.decisions[1] | Trésor
+- gestion_decisions.json | decisions.selonEtats.revenu.decisions[2] | hameçon OU secret SI Atout "Obligations en or"
+- gestion_decisions.json | decisions.selonEtats.revenu.decisions[2] | hameçon OU secret SI Atout "Obligations en or"
+- gestion_decisions.json | decisions.selonEtats.revenu.decisions[3] | contrôle SI <100
+- gestion_decisions.json | decisions.selonEtats.revenu.decisions[3] | contrôle SI <100
+- gestion_decisions.json | decisions.selonEtats.revenu.decisions[4] | Développement
+- gestion_decisions.json | decisions.selonEtats.revenu.decisions[4] | Développement
+- gestion_decisions.json | decisions.selonEtats.revenu.decisions[5] | Intendance
+- gestion_decisions.json | decisions.selonEtats.revenu.decisions[5] | Intendance
+- gestion_decisions.json | decisions.selonEtats.revenu.decisions[6] | emprisonner
+- gestion_decisions.json | decisions.selonEtats.revenu.decisions[6] | emprisonner
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[0] | Construire
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[0] | Construire
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[1] |  
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[1] |  
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[10] | Créer une faction pour l'indépendance SI NON(Convaincre territoire de jure OU Revendication comtale OU Revendiquer trône)
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[10] | Créer une faction pour l'indépendance SI NON(Convaincre territoire de jure OU Revendication comtale OU Revendiquer trône)
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[11] | Créer une faction de dissolution SI NON(Convaincre territoire de jure OU Revendication comtale OU Revendiquer trône)
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[11] | Créer une faction de dissolution SI NON(Convaincre territoire de jure OU Revendication comtale OU Revendiquer trône)
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[12] | Prestige SI vassal
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[12] | Prestige SI vassal
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[13] | Me faire déclarer régent SI NON(Convaincre territoire de jure OU Revendication comtale OU Revendiquer trône)
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[13] | Me faire déclarer régent SI NON(Convaincre territoire de jure OU Revendication comtale OU Revendiquer trône)
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[14] | Opinion SEIGNEUR LIGE
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[14] | Opinion SEIGNEUR LIGE
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[15] | Opinion REGENT SEIGNEUR LIGE
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[15] | Opinion REGENT SEIGNEUR LIGE
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[16] | Diplomatie SI vassal
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[16] | Diplomatie SI vassal
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[17] | Emprisonner SI vassal ET Atout "Sombres connaissances"
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[17] | Emprisonner SI vassal ET Atout "Sombres connaissances"
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[18] |  
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[18] |  
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[19] | gloire SI aventurier
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[19] | gloire SI aventurier
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[2] | Augmenter Magnificence de la Cour SI seigneur lige
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[2] | Augmenter Magnificence de la Cour SI seigneur lige
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[20] | prestige SI aventurier
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[20] | prestige SI aventurier
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[21] | Secret SI aventurier ET Atout "Je suis bien en comparaison"
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[21] | Secret SI aventurier ET Atout "Je suis bien en comparaison"
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[22] | Intrigue SI aventurier
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[22] | Intrigue SI aventurier
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[23] | Emprisonner SI aventurier ET Atout "Sombres connaissances" ET Outils du tortionnaire
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[23] | Emprisonner SI aventurier ET Atout "Sombres connaissances" ET Outils du tortionnaire
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[24] | Eviter Gibier de potence
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[24] | Eviter Gibier de potence
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[25] | Eviter Baroudeur
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[25] | Eviter Baroudeur
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[26] | hameçon DIRIGEANT A QUI ACHETER TERRE
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[26] | hameçon DIRIGEANT A QUI ACHETER TERRE
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[27] |  
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[27] |  
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[28] | Or
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[28] | Or
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[29] | hameçon SI Atout "Obligations en or"
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[29] | hameçon SI Atout "Obligations en or"
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[3] | Intendance SI seigneur lige
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[3] | Intendance SI seigneur lige
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[30] | secret SI Atout "Obligations en or"
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[30] | secret SI Atout "Obligations en or"
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[31] | Intendance
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[31] | Intendance
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[32] | Contrôle SI <100
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[32] | Contrôle SI <100
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[33] | Développement
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[33] | Développement
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[34] | Emprisonner
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[34] | Emprisonner
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[35] |  
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[35] |  
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[36] | langue DIRIGEANT A QUI ACHETER TERRE
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[36] | langue DIRIGEANT A QUI ACHETER TERRE
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[37] | Erudition SI aventurier
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[37] | Erudition SI aventurier
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[38] | Opinion DIRIGEANT A QUI ACHETER TERRE
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[38] | Opinion DIRIGEANT A QUI ACHETER TERRE
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[39] | Diplomatie SI aventurier
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[39] | Diplomatie SI aventurier
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[4] |  
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[4] |  
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[40] | Martialité SI aventurier
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[40] | Martialité SI aventurier
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[41] | Augmenter Hommes d'armes SI aventurier
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[41] | Augmenter Hommes d'armes SI aventurier
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[42] | Recruter SI aventurier ET chevalier possible
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[42] | Recruter SI aventurier ET chevalier possible
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[43] | Emprisonner SI aventurier ET chevalier possible
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[43] | Emprisonner SI aventurier ET chevalier possible
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[44] | Prouesse SI aventurier
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[44] | Prouesse SI aventurier
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[45] |  
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[45] |  
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[5] | A DEFINIR SI gouvernement administratif
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[5] | A DEFINIR SI gouvernement administratif
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[6] |  
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[6] |  
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[7] | Erudition SI A DEFINIR
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[7] | Erudition SI A DEFINIR
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[8] |  
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[8] |  
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[9] | Créer une faction du prétendant SI NON(Convaincre territoire de jure OU Revendication comtale OU Revendiquer trône)
+- gestion_decisions.json | decisions.selonEtats.siRien.decisions[9] | Créer une faction du prétendant SI NON(Convaincre territoire de jure OU Revendication comtale OU Revendiquer trône)
+- gestion_decisions.json | decisions.selonEtats.stress.decisions[0] | Diminuer stress
+- gestion_decisions.json | decisions.selonEtats.stress.decisions[0] | Diminuer stress
+- gestion_decisions.json | decisions.selonEtats.succession.decisions[0] | Influence
+- gestion_decisions.json | decisions.selonEtats.succession.decisions[0] | Influence
+- gestion_decisions.json | decisions.selonEtats.succession.decisions[1] | Diplomatie
+- gestion_decisions.json | decisions.selonEtats.succession.decisions[1] | Diplomatie
+- gestion_decisions.json | decisions.selonEtats.successionChaos.decisions[0] | obéissance
+- gestion_decisions.json | decisions.selonEtats.successionChaos.decisions[0] | obéissance
+- gestion_decisions.json | decisions.selonEtats.successionChaos.decisions[1] | Redoutabilité SI Nomade
+- gestion_decisions.json | decisions.selonEtats.successionChaos.decisions[1] | Redoutabilité SI Nomade
+- gestion_decisions.json | decisions.selonEtats.successionChaos.decisions[2] | Troupeau
+- gestion_decisions.json | decisions.selonEtats.successionChaos.decisions[2] | Troupeau
+- gestion_decisions.json | decisions.selonEtats.successionChaos.decisions[3] | Légitimité
+- gestion_decisions.json | decisions.selonEtats.successionChaos.decisions[3] | Légitimité
+- gestion_decisions.json | decisions.selonEtats.survie.decisions[0] | Santé
+- gestion_decisions.json | decisions.selonEtats.survie.decisions[0] | Santé
+- gestion_decisions.json | decisions.selonEtats.survie.decisions[1] | Provisions
+- gestion_decisions.json | decisions.selonEtats.survie.decisions[1] | Provisions
+- gestion_decisions.json | decisions.selonEtats.survie.decisions[2] | Diminuer stress
+- gestion_decisions.json | decisions.selonEtats.survie.decisions[2] | Diminuer stress
+- gestion_decisions.json | decisions.selonEtats.survie.decisions[3] | Opinion Maître-espion
+- gestion_decisions.json | decisions.selonEtats.survie.decisions[3] | Opinion Maître-espion
+- gestion_decisions.json | decisions.selonEtats.survie.decisions[4] | Opinion Garde du corps
+- gestion_decisions.json | decisions.selonEtats.survie.decisions[4] | Opinion Garde du corps
+- gestion_decisions.json | decisions.selonEtats.survie.decisions[5] | Opinion Médecin personnel
+- gestion_decisions.json | decisions.selonEtats.survie.decisions[5] | Opinion Médecin personnel
+- gestion_decisions.json | decisions.selonEtats.survie.decisions[6] | Opinion Conjoint
+- gestion_decisions.json | decisions.selonEtats.survie.decisions[6] | Opinion Conjoint
+- gestion_decisions.json | decisions.selonEtats.tributaire.decisions[0] | Prestige
+- gestion_decisions.json | decisions.selonEtats.tributaire.decisions[0] | Prestige
+- gestion_decisions.json | decisions.selonEtats.tributaire.decisions[1] | Domination
+- gestion_decisions.json | decisions.selonEtats.tributaire.decisions[1] | Domination
+- gestion_decisions.json | decisions.selonEtats.tributaire.decisions[2] | Légitimité
+- gestion_decisions.json | decisions.selonEtats.tributaire.decisions[2] | Légitimité
+- gestion_decisions.json | decisions.selonEtats.tributaire.decisions[3] | Redoutabilité
+- gestion_decisions.json | decisions.selonEtats.tributaire.decisions[3] | Redoutabilité
+- gestion_decisions.json | decisions.selonEtats.troupeau.decisions[0] | Troupeau
+- gestion_decisions.json | decisions.selonEtats.troupeau.decisions[0] | Troupeau
+- gestion_decisions.json | decisions.selonEtats.vassal.decisions[0] | alliance VASSAL PUISSANT
+- gestion_decisions.json | decisions.selonEtats.vassal.decisions[0] | alliance VASSAL PUISSANT
+- gestion_decisions.json | decisions.selonEtats.vassal.decisions[1] | hameçon fort VASSAL PUISSANT
+- gestion_decisions.json | decisions.selonEtats.vassal.decisions[1] | hameçon fort VASSAL PUISSANT
+- gestion_decisions.json | decisions.selonEtats.vassal.decisions[10] | emprisonner
+- gestion_decisions.json | decisions.selonEtats.vassal.decisions[10] | emprisonner
+- gestion_decisions.json | decisions.selonEtats.vassal.decisions[2] | amitié VASSAL PUISSANT
+- gestion_decisions.json | decisions.selonEtats.vassal.decisions[2] | amitié VASSAL PUISSANT
+- gestion_decisions.json | decisions.selonEtats.vassal.decisions[3] | liaison VASSAL PUISSANT
+- gestion_decisions.json | decisions.selonEtats.vassal.decisions[3] | liaison VASSAL PUISSANT
+- gestion_decisions.json | decisions.selonEtats.vassal.decisions[4] | emprisonner VASSAL PUISSANT
+- gestion_decisions.json | decisions.selonEtats.vassal.decisions[4] | emprisonner VASSAL PUISSANT
+- gestion_decisions.json | decisions.selonEtats.vassal.decisions[5] | Intrigue
+- gestion_decisions.json | decisions.selonEtats.vassal.decisions[5] | Intrigue
+- gestion_decisions.json | decisions.selonEtats.vassal.decisions[6] | emprisonner SI Atout "Sombres connaissances"
+- gestion_decisions.json | decisions.selonEtats.vassal.decisions[6] | emprisonner SI Atout "Sombres connaissances"
+- gestion_decisions.json | decisions.selonEtats.vassal.decisions[7] | Opinion VASSAL PUISSANT
+- gestion_decisions.json | decisions.selonEtats.vassal.decisions[7] | Opinion VASSAL PUISSANT
+- gestion_decisions.json | decisions.selonEtats.vassal.decisions[8] | Diplomatie
+- gestion_decisions.json | decisions.selonEtats.vassal.decisions[8] | Diplomatie
+- gestion_decisions.json | decisions.selonEtats.vassal.decisions[9] | Redoutabilité
+- gestion_decisions.json | decisions.selonEtats.vassal.decisions[9] | Redoutabilité
+- gestion_decisions.json | decisions.selonEtats.vassalAInfluencer.decisions[0] | alliance FACTIEUX
+- gestion_decisions.json | decisions.selonEtats.vassalAInfluencer.decisions[0] | alliance FACTIEUX
+- gestion_decisions.json | decisions.selonEtats.vassalAInfluencer.decisions[1] | hameçon fort FACTIEUX
+- gestion_decisions.json | decisions.selonEtats.vassalAInfluencer.decisions[1] | hameçon fort FACTIEUX
+- gestion_decisions.json | decisions.selonEtats.vassalAInfluencer.decisions[2] | amitié FACTIEUX
+- gestion_decisions.json | decisions.selonEtats.vassalAInfluencer.decisions[2] | amitié FACTIEUX
+- gestion_decisions.json | decisions.selonEtats.vassalAInfluencer.decisions[3] | liaison FACTIEUX
+- gestion_decisions.json | decisions.selonEtats.vassalAInfluencer.decisions[3] | liaison FACTIEUX
+- gestion_decisions.json | decisions.selonEtats.vassalAInfluencer.decisions[4] | emprisonner FACTIEUX
+- gestion_decisions.json | decisions.selonEtats.vassalAInfluencer.decisions[4] | emprisonner FACTIEUX
+- gestion_decisions.json | decisions.selonEtats.vassalAInfluencer.decisions[5] | Opinion FACTIEUX
+- gestion_decisions.json | decisions.selonEtats.vassalAInfluencer.decisions[5] | Opinion FACTIEUX
+- gestion_decisions.json | decisions.selonEtats.vassalAInfluencer.decisions[6] | Diplomatie
+- gestion_decisions.json | decisions.selonEtats.vassalAInfluencer.decisions[6] | Diplomatie
+- gestion_decisions.json | decisions.selonEtats.vassalAInfluencer.decisions[7] | Intrigue
+- gestion_decisions.json | decisions.selonEtats.vassalAInfluencer.decisions[7] | Intrigue
+- gestion_decisions.json | decisions.selonEtats.vassalAInfluencer.decisions[8] | emprisonner SI Atout "Sombres connaissances"
+- gestion_decisions.json | decisions.selonEtats.vassalAInfluencer.decisions[8] | emprisonner SI Atout "Sombres connaissances"
+- gestion_decisions.json | decisions.selonEtats.vassalAInfluencer.decisions[9] | Redoutabilité
+- gestion_decisions.json | decisions.selonEtats.vassalAInfluencer.decisions[9] | Redoutabilité
+- gestion_decisions.json | decisions.selonEtats.vassalSOppose.decisions[0] | Opinion LUI
+- gestion_decisions.json | decisions.selonEtats.vassalSOppose.decisions[0] | Opinion LUI
+- gestion_decisions.json | decisions.selonEtats.vassalSOppose.decisions[1] | emprisonner LUI
+- gestion_decisions.json | decisions.selonEtats.vassalSOppose.decisions[1] | emprisonner LUI
+- gestion_decisions.json | decisions.selonEtats.vassalSOppose.decisions[2] | Redoutabilité
+- gestion_decisions.json | decisions.selonEtats.vassalSOppose.decisions[2] | Redoutabilité
+- gestion_decisions.json | decisions.selonEtats.vassalSOppose.decisions[3] | emprisonner
+- gestion_decisions.json | decisions.selonEtats.vassalSOppose.decisions[3] | emprisonner
+- gestion_decisions.json | decisions.selonEtats.vassalSOppose.decisions[4] | Diplomatie
+- gestion_decisions.json | decisions.selonEtats.vassalSOppose.decisions[4] | Diplomatie
+- gestion_decisions.json | decisions.selonEtats.vassalSOppose.decisions[5] | Intrigue
+- gestion_decisions.json | decisions.selonEtats.vassalSOppose.decisions[5] | Intrigue
+- gestion_hamecons_secrets.json | hamec.selonEtats.agent.decisions[0] | ne rien faire SI vassal direct ou courtisan ou invité CIBLE-S
+- gestion_hamecons_secrets.json | hamec.selonEtats.chevalierPartisan.decisions[0] | Recruter SI chevalier possible
+- gestion_hamecons_secrets.json | hamec.selonEtats.chevalierPartisan.decisions[1] | Déplacer camp
+- gestion_hamecons_secrets.json | hamec.selonEtats.conseiller.decisions[0] | Recruter
+- gestion_hamecons_secrets.json | hamec.selonEtats.declarationGuerre.decisions[0] | Recruter SI chevalier possible
+- gestion_hamecons_secrets.json | hamec.selonEtats.guerre.decisions[0] | Recruter SI chevalier possible
+- gestion_hamecons_secrets.json | hamec.selonEtats.prison.decisions[0] | Recruter SI chevalier possible
+- gestion_hamecons_secrets.json | hamec.selonEtats.proclame.decisions[0] | Recruter SI chevalier possible ET prouesse>=8
+- gestion_hamecons_secrets.json | hamec.selonEtats.recruterChevalier.decisions[0] | Recruter SI chevalier possible
+- gestion_hamecons_secrets.json | secrets.selonEtats.agent.decisions[0] | Révéler SI emprisonnable ET Atout "Sombres connaissances" ET (NON aventurier OU Outils du tortionnaire) ET NON vassal direct ou courtisan ou invité CIBLE-S
+- gestion_hamecons_secrets.json | secrets.selonEtats.agent.decisions[1] | Faire chanter SI Atout "Obligations en or" ET Or ET NON vassal direct ou courtisan ou invité CIBLE-S
+- gestion_hamecons_secrets.json | secrets.selonEtats.agent.decisions[2] | Révéler SI emprisonnable ET NON vassal direct ou courtisan ou invité CIBLE-S
+- gestion_hamecons_secrets.json | secrets.selonEtats.agent.decisions[3] | Révéler SI Atout "Je suis bien en comparaison" ET NON vassal direct ou courtisan ou invité CIBLE-S
+- gestion_hamecons_secrets.json | secrets.selonEtats.aInfluencer.decisions[0] | Révéler SI emprisonnable ET Atout "Sombres connaissances" ET (NON aventurier OU Outils du tortionnaire) ET NON ALLIE
+- gestion_hamecons_secrets.json | secrets.selonEtats.assassinat.decisions[0] | Révéler SI emprisonnable ET Atout "Sombres connaissances" ET (NON aventurier OU Outils du tortionnaire)
+- gestion_hamecons_secrets.json | secrets.selonEtats.chevalierPartisan.decisions[0] | Faire chanter SI chevalier possible
+- gestion_hamecons_secrets.json | secrets.selonEtats.chevalierPartisan.decisions[1] | Révéler SI emprisonnable ET chevalier possible
+- gestion_hamecons_secrets.json | secrets.selonEtats.chevalierPartisan.decisions[2] | Faire chanter SI mécène
+- gestion_hamecons_secrets.json | secrets.selonEtats.conseiller.decisions[0] | Faire chanter SI recrutable
+- gestion_hamecons_secrets.json | secrets.selonEtats.conseiller.decisions[1] | Révéler SI emprisonnable ET recrutable
+- gestion_hamecons_secrets.json | secrets.selonEtats.declarationGuerre.decisions[0] | Faire chanter SI mécène
+- gestion_hamecons_secrets.json | secrets.selonEtats.declarationGuerre.decisions[1] | Faire chanter SI chevalier possible
+- gestion_hamecons_secrets.json | secrets.selonEtats.declarationGuerre.decisions[2] | Révéler SI emprisonnable ET chevalier possible
+- gestion_hamecons_secrets.json | secrets.selonEtats.declarationGuerre.decisions[3] | Révéler SI emprisonnable ET Atout "Sombres connaissances"
+- gestion_hamecons_secrets.json | secrets.selonEtats.demande.decisions[0] | Révéler SI Atout "Je suis bien en comparaison"
+- gestion_hamecons_secrets.json | secrets.selonEtats.demande.decisions[1] | Révéler SI emprisonnable ET Atout "Sombres connaissances" ET Outils du tortionnaire
+- gestion_hamecons_secrets.json | secrets.selonEtats.demande.decisions[2] | Faire chanter SI mécène
+- gestion_hamecons_secrets.json | secrets.selonEtats.demande2.decisions[0] | Révéler SI Atout "Je suis bien en comparaison"
+- gestion_hamecons_secrets.json | secrets.selonEtats.demande2.decisions[1] | Révéler SI emprisonnable ET Atout "Sombres connaissances" ET Outils du tortionnaire
+- gestion_hamecons_secrets.json | secrets.selonEtats.demande2.decisions[2] | Faire chanter SI mécène
+- gestion_hamecons_secrets.json | secrets.selonEtats.denoncer.decisions[0] | Révéler SI Atout "Je suis bien en comparaison"
+- gestion_hamecons_secrets.json | secrets.selonEtats.dirigeantAInfluencer.decisions[0] | Révéler SI emprisonnable ET Atout "Sombres connaissances" ET Outils du tortionnaire
+- gestion_hamecons_secrets.json | secrets.selonEtats.enfant.decisions[0] | Révéler SI emprisonnable ET Atout "Sombres connaissances" ET (NON aventurier OU Outils du tortionnaire)
+- gestion_hamecons_secrets.json | secrets.selonEtats.enfant.decisions[1] | Révéler SI aventurier adopter ET Prestige<150 ET Atout "Je suis bien en comparaison"
+- gestion_hamecons_secrets.json | secrets.selonEtats.enfant.decisions[2] | Révéler SI aventurier adopter ET emprisonnable ET Atout "Sombres connaissances" ET Outils du tortionnaire
+- gestion_hamecons_secrets.json | secrets.selonEtats.enfant.decisions[3] | Révéler SI aventurier adopter ET Atout "Je suis bien en comparaison"
+- gestion_hamecons_secrets.json | secrets.selonEtats.guerre.decisions[0] | Révéler SI emprisonnable ET Atout "Sombres connaissances" ET (NON aventurier OU Outils du tortionnaire)
+- gestion_hamecons_secrets.json | secrets.selonEtats.guerre.decisions[1] | Faire chanter SI chevalier possible
+- gestion_hamecons_secrets.json | secrets.selonEtats.guerre.decisions[2] | Révéler SI emprisonnable ET chevalier possible
+- gestion_hamecons_secrets.json | secrets.selonEtats.guerre.decisions[3] | Faire chanter SI mécène
+- gestion_hamecons_secrets.json | secrets.selonEtats.guerre.decisions[4] | Faire chanter SI gouvernement administratif
+- gestion_hamecons_secrets.json | secrets.selonEtats.hamecon.decisions[0] | Révéler SI emprisonnable ET Atout "Sombres connaissances" ET (NON aventurier OU Outils du tortionnaire)
+- gestion_hamecons_secrets.json | secrets.selonEtats.influence.decisions[0] | Faire chanter
+- gestion_hamecons_secrets.json | secrets.selonEtats.perteTerresRevoquer.decisions[0] | Révéler SI motif de révocation VASSAL A REVOQUER-S
+- gestion_hamecons_secrets.json | secrets.selonEtats.perteTerresRevoquer.decisions[1] | Révéler SI emprisonnable ET Atout "Sombres connaissances"
+- gestion_hamecons_secrets.json | secrets.selonEtats.perteTerresRevoquer.decisions[2] | Faire chanter SI Atout "Obligations en or" ET Or
+- gestion_hamecons_secrets.json | secrets.selonEtats.perteTerresRevoquer.decisions[3] | Révéler SI emprisonnable
+- gestion_hamecons_secrets.json | secrets.selonEtats.prestige.decisions[0] | Révéler SI Atout "Je suis bien en comparaison"
+- gestion_hamecons_secrets.json | secrets.selonEtats.prison.decisions[0] | Révéler SI emprisonnable ET Atout "Sombres connaissances"
+- gestion_hamecons_secrets.json | secrets.selonEtats.prison.decisions[1] | Faire chanter SI chevalier possible
+- gestion_hamecons_secrets.json | secrets.selonEtats.prison.decisions[2] | Révéler SI emprisonnable ET chevalier possible
+- gestion_hamecons_secrets.json | secrets.selonEtats.proclame.decisions[0] | Faire chanter SI chevalier possible ET prouesse>=8
+- gestion_hamecons_secrets.json | secrets.selonEtats.proclame.decisions[1] | Révéler SI emprisonnable ET chevalier possible ET prouesse>=8
+- gestion_hamecons_secrets.json | secrets.selonEtats.rancon.decisions[0] | Faire chanter SI Atout "Obligations en or" ET Or
+- gestion_hamecons_secrets.json | secrets.selonEtats.rancon.decisions[1] | Faire chanter SI mécène
+- gestion_hamecons_secrets.json | secrets.selonEtats.rancon.decisions[2] | Révéler SI emprisonnable
+- gestion_hamecons_secrets.json | secrets.selonEtats.rancon.decisions[3] | Faire chanter SI GEOLIER
+- gestion_hamecons_secrets.json | secrets.selonEtats.recruterChevalier.decisions[0] | Faire chanter SI chevalier possible
+- gestion_hamecons_secrets.json | secrets.selonEtats.recruterChevalier.decisions[1] | Révéler SI emprisonnable ET chevalier possible
+- gestion_hamecons_secrets.json | secrets.selonEtats.religieuxAInfluencer.decisions[0] | Révéler SI emprisonnable ET Atout "Sombres connaissances" ET NON perte Piété
+- gestion_hamecons_secrets.json | secrets.selonEtats.revenu.decisions[0] | Faire chanter SI Atout "Obligations en or" ET Or
+- gestion_hamecons_secrets.json | secrets.selonEtats.revenu.decisions[1] | Faire chanter SI mécène
+- gestion_hamecons_secrets.json | secrets.selonEtats.revenu.decisions[2] | Révéler SI emprisonnable
+- gestion_hamecons_secrets.json | secrets.selonEtats.siRien.decisions[0] | Révéler SI Atout "Je suis bien en comparaison"
+- gestion_hamecons_secrets.json | secrets.selonEtats.siRien.decisions[1] | Révéler SI emprisonnable ET Atout "Sombres connaissances" ET (NON aventurier OU Outils du tortionnaire)
+- gestion_hamecons_secrets.json | secrets.selonEtats.siRien.decisions[2] | Faire chanter SI Atout "Obligations en or" ET Or
+- gestion_hamecons_secrets.json | secrets.selonEtats.siRien.decisions[3] | Faire chanter SI mécène
+- gestion_hamecons_secrets.json | secrets.selonEtats.siRien.decisions[4] | Révéler SI emprisonnable
+- gestion_hamecons_secrets.json | secrets.selonEtats.siRien.decisions[5] | Faire chanter SI aventurier ET chevalier possible
+- gestion_hamecons_secrets.json | secrets.selonEtats.succession.decisions[0] | Faire chanter
+- gestion_hamecons_secrets.json | secrets.selonEtats.successionChaos.decisions[0] | Révéler SI emprisonnable
+- gestion_hamecons_secrets.json | secrets.selonEtats.tributaire.decisions[0] | Révéler SI Atout "Je suis bien en comparaison"
+- gestion_hamecons_secrets.json | secrets.selonEtats.tributaire.decisions[1] | Révéler SI emprisonnable
+- gestion_hamecons_secrets.json | secrets.selonEtats.vassal.decisions[0] | Faire chanter SI VASSAL PUISSANT
+- gestion_hamecons_secrets.json | secrets.selonEtats.vassal.decisions[1] | Révéler SI emprisonnable
+- gestion_hamecons_secrets.json | secrets.selonEtats.vassalAInfluencer.decisions[0] | Révéler SI emprisonnable ET Atout "Sombres connaissances" ET (NON aventurier OU Outils du tortionnaire)
+- gestion_pays.json | campObjectif.selonEtats.agent.decisions[0] | Devenir érudits
+- gestion_pays.json | campObjectif.selonEtats.aInfluencer.decisions[0] | Devenir érudits
+- gestion_pays.json | campObjectif.selonEtats.assassinat.decisions[0] | Devenir érudits
+- gestion_pays.json | campObjectif.selonEtats.chevalierPartisan.decisions[0] | Devenir érudits
+- gestion_pays.json | campObjectif.selonEtats.declarationGuerre.decisions[0] | Devenir lames à louer
+- gestion_pays.json | campObjectif.selonEtats.denoncer.decisions[0] | Nous sommes Vagabonds! SI aucun coût
+- gestion_pays.json | campObjectif.selonEtats.denoncer.decisions[1] | ne rien changer
+- gestion_pays.json | campObjectif.selonEtats.enfant.decisions[0] | Devenir érudits
+- gestion_pays.json | campObjectif.selonEtats.enfant.decisions[1] | ne rien changer
+- gestion_pays.json | campObjectif.selonEtats.guerre.decisions[0] | Devenir lames à louer
+- gestion_pays.json | campObjectif.selonEtats.hamecon.decisions[0] | Devenir érudits
+- gestion_pays.json | campObjectif.selonEtats.piete.decisions[0] | Devenir érudits
+- gestion_pays.json | campObjectif.selonEtats.prestige.decisions[0] | Nous sommes Vagabonds! SI aucun coût
+- gestion_pays.json | campObjectif.selonEtats.prestige.decisions[1] | ne rien changer
+- gestion_pays.json | campObjectif.selonEtats.prison.decisions[0] | Devenir érudits
+- gestion_pays.json | campObjectif.selonEtats.rancon.decisions[0] | Devenir écumeurs
+- gestion_pays.json | campObjectif.selonEtats.revenu.decisions[0] | Devenir écumeurs
+- gestion_pays.json | campObjectif.selonEtats.survie.decisions[0] | Devenir explorateurs
+- gestion_prison.json | prison.selonEtats.agent.decisions[0] | Torturer SI Atout "Sombres connaissances"
+- gestion_prison.json | prison.selonEtats.agent.decisions[1] | Négocier la libération > Bannir SI Or
+- gestion_prison.json | prison.selonEtats.agent.decisions[2] | Rançonner > Or
+- gestion_prison.json | prison.selonEtats.agent.decisions[3] | Négocier la libération > hameçon SI Atout "Obligations en or"
+- gestion_prison.json | prison.selonEtats.agent.decisions[4] | Rançonner > hameçon SI Atout "Obligations en or"
+- gestion_prison.json | prison.selonEtats.agent.decisions[5] | Négocier la libération > Bannir SI artefact
+- gestion_prison.json | prison.selonEtats.aInfluencer.decisions[0] | Torturer SI Atout "Sombres connaissances"
+- gestion_prison.json | prison.selonEtats.aInfluencer.decisions[1] | Négocier la libération > hameçon SI mécène
+- gestion_prison.json | prison.selonEtats.aInfluencer.decisions[2] | Rançonner > hameçon SI mécène
+- gestion_prison.json | prison.selonEtats.aInfluencer.decisions[3] | Négocier la libération > Bannir SI artefact
+- gestion_prison.json | prison.selonEtats.assassinat.decisions[0] | Torturer SI Atout "Sombres connaissances"
+- gestion_prison.json | prison.selonEtats.assassinat.decisions[1] | Négocier la libération > Bannir SI artefact
+- gestion_prison.json | prison.selonEtats.chevalierPartisan.decisions[0] | Négocier la libération > Recruter SI chevalier possible
+- gestion_prison.json | prison.selonEtats.chevalierPartisan.decisions[1] | Négocier la libération > hameçon SI mécène
+- gestion_prison.json | prison.selonEtats.chevalierPartisan.decisions[2] | Rançonner > hameçon SI mécène
+- gestion_prison.json | prison.selonEtats.chevalierPartisan.decisions[3] | Négocier la libération > Bannir SI artefact
+- gestion_prison.json | prison.selonEtats.conseiller.decisions[0] | Négocier la libération > Recruter
+- gestion_prison.json | prison.selonEtats.declarationGuerre.decisions[0] | Négocier la libération > hameçon SI mécène
+- gestion_prison.json | prison.selonEtats.declarationGuerre.decisions[1] | Rançonner > hameçon SI mécène
+- gestion_prison.json | prison.selonEtats.declarationGuerre.decisions[2] | Négocier la libération > Recruter SI chevalier possible
+- gestion_prison.json | prison.selonEtats.declarationGuerre.decisions[3] | Torturer SI Atout "Sombres connaissances"
+- gestion_prison.json | prison.selonEtats.declarationGuerre.decisions[4] | Négocier la libération > Bannir SI artefact
+- gestion_prison.json | prison.selonEtats.demande.decisions[0] | Torturer SI Atout "Sombres connaissances"
+- gestion_prison.json | prison.selonEtats.demande.decisions[1] | Négocier la libération > Bannir SI Or
+- gestion_prison.json | prison.selonEtats.demande.decisions[2] | Rançonner > Or
+- gestion_prison.json | prison.selonEtats.demande.decisions[3] | Négocier la libération > hameçon SI Atout "Obligations en or"
+- gestion_prison.json | prison.selonEtats.demande.decisions[4] | Rançonner > hameçon SI Atout "Obligations en or"
+- gestion_prison.json | prison.selonEtats.demande.decisions[5] | Négocier la libération > hameçon SI mécène
+- gestion_prison.json | prison.selonEtats.demande.decisions[6] | Rançonner > hameçon SI mécène
+- gestion_prison.json | prison.selonEtats.demande.decisions[7] | Négocier la libération > Bannir SI artefact
+- gestion_prison.json | prison.selonEtats.demande2.decisions[0] | Torturer SI Atout "Sombres connaissances"
+- gestion_prison.json | prison.selonEtats.demande2.decisions[1] | Négocier la libération > hameçon SI mécène
+- gestion_prison.json | prison.selonEtats.demande2.decisions[2] | Rançonner > hameçon SI mécène
+- gestion_prison.json | prison.selonEtats.demande2.decisions[3] | Négocier la libération > Bannir SI artefact
+- gestion_prison.json | prison.selonEtats.denoncer.decisions[0] | Négocier la libération > Bannir SI artefact
+- gestion_prison.json | prison.selonEtats.dirigeantAInfluencer.decisions[0] | Torturer SI Atout "Sombres connaissances"
+- gestion_prison.json | prison.selonEtats.dirigeantAInfluencer.decisions[1] | Négocier la libération > hameçon SI mécène
+- gestion_prison.json | prison.selonEtats.dirigeantAInfluencer.decisions[2] | Rançonner > hameçon SI mécène
+- gestion_prison.json | prison.selonEtats.dirigeantAInfluencer.decisions[3] | Négocier la libération > Bannir SI artefact
+- gestion_prison.json | prison.selonEtats.enfant.decisions[0] | Torturer SI Atout "Sombres connaissances"
+- gestion_prison.json | prison.selonEtats.enfant.decisions[1] | Torturer SI aventurier adopter ET Prestige<150 ET Atout "Je suis bien en comparaison"
+- gestion_prison.json | prison.selonEtats.enfant.decisions[2] | Négocier la libération > Bannir SI artefact
+- gestion_prison.json | prison.selonEtats.enfant.decisions[3] | Torturer SI aventurier adopter ET Atout "Sombres connaissances"
+- gestion_prison.json | prison.selonEtats.enfant.decisions[4] | Torturer SI aventurier adopter ET Atout "Je suis bien en comparaison"
+- gestion_prison.json | prison.selonEtats.factionPop.decisions[0] | Négocier la libération > Bannir SI artefact
+- gestion_prison.json | prison.selonEtats.guerre.decisions[0] | Torturer SI Atout "Sombres connaissances"
+- gestion_prison.json | prison.selonEtats.guerre.decisions[1] | Négocier la libération > Recruter SI chevalier possible
+- gestion_prison.json | prison.selonEtats.guerre.decisions[2] | Négocier la libération > hameçon SI mécène
+- gestion_prison.json | prison.selonEtats.guerre.decisions[3] | Rançonner > hameçon SI mécène
+- gestion_prison.json | prison.selonEtats.guerre.decisions[4] | Négocier la libération > Bannir SI artefact
+- gestion_prison.json | prison.selonEtats.hamecon.decisions[0] | Torturer SI Atout "Sombres connaissances"
+- gestion_prison.json | prison.selonEtats.hamecon.decisions[1] | Négocier la libération > Bannir SI artefact
+- gestion_prison.json | prison.selonEtats.perteTerresRevoquer.decisions[0] | Torturer SI Atout "Sombres connaissances"
+- gestion_prison.json | prison.selonEtats.perteTerresRevoquer.decisions[1] | Négocier la libération > Bannir SI Or
+- gestion_prison.json | prison.selonEtats.perteTerresRevoquer.decisions[2] | Rançonner > Or
+- gestion_prison.json | prison.selonEtats.perteTerresRevoquer.decisions[3] | Négocier la libération > hameçon SI Atout "Obligations en or"
+- gestion_prison.json | prison.selonEtats.perteTerresRevoquer.decisions[4] | Rançonner > hameçon SI Atout "Obligations en or"
+- gestion_prison.json | prison.selonEtats.perteTerresRevoquer.decisions[5] | Négocier la libération > Bannir SI artefact
+- gestion_prison.json | prison.selonEtats.piete.decisions[0] | Négocier la libération > Bannir SI artefact
+- gestion_prison.json | prison.selonEtats.prestige.decisions[0] | Torturer SI Atout "Je suis bien en comparaison"
+- gestion_prison.json | prison.selonEtats.prison.decisions[0] | Négocier la libération > Bannir SI artefact
+- gestion_prison.json | prison.selonEtats.prison.decisions[1] | Torturer SI Atout "Sombres connaissances"
+- gestion_prison.json | prison.selonEtats.prison.decisions[2] | Négocier la libération > Recruter SI chevalier possible
+- gestion_prison.json | prison.selonEtats.proclame.decisions[0] | Négocier la libération > Recruter SI chevalier possible ET prouesse>=8
+- gestion_prison.json | prison.selonEtats.proclame.decisions[1] | Négocier la libération > Bannir SI artefact
+- gestion_prison.json | prison.selonEtats.rancon.decisions[0] | Négocier la libération > Bannir SI Or
+- gestion_prison.json | prison.selonEtats.rancon.decisions[1] | Rançonner > Or
+- gestion_prison.json | prison.selonEtats.rancon.decisions[2] | Négocier la libération > hameçon SI Atout "Obligations en or"
+- gestion_prison.json | prison.selonEtats.rancon.decisions[3] | Rançonner > hameçon SI Atout "Obligations en or"
+- gestion_prison.json | prison.selonEtats.rancon.decisions[4] | Négocier la libération > hameçon SI mécène
+- gestion_prison.json | prison.selonEtats.rancon.decisions[5] | Rançonner > hameçon SI mécène
+- gestion_prison.json | prison.selonEtats.rancon.decisions[6] | Négocier la libération > hameçon SI GEOLIER
+- gestion_prison.json | prison.selonEtats.rancon.decisions[7] | Rançonner > hameçon SI GEOLIER
+- gestion_prison.json | prison.selonEtats.rancon.decisions[8] | Torturer SI Atout "Sombres connaissances"
+- gestion_prison.json | prison.selonEtats.rancon.decisions[9] | Négocier la libération > Bannir SI artefact
+- gestion_prison.json | prison.selonEtats.recruterChevalier.decisions[0] | Négocier la libération > Recruter SI chevalier possible
+- gestion_prison.json | prison.selonEtats.recruterChevalier.decisions[1] | Négocier la libération > Bannir SI artefact
+- gestion_prison.json | prison.selonEtats.religieuxAInfluencer.decisions[0] | Torturer SI Atout "Sombres connaissances"
+- gestion_prison.json | prison.selonEtats.religieuxAInfluencer.decisions[1] | Négocier la libération > Bannir SI artefact
+- gestion_prison.json | prison.selonEtats.revenu.decisions[0] | Négocier la libération > Bannir SI Or
+- gestion_prison.json | prison.selonEtats.revenu.decisions[1] | Rançonner > Or
+- gestion_prison.json | prison.selonEtats.revenu.decisions[2] | Négocier la libération > hameçon SI Atout "Obligations en or"
+- gestion_prison.json | prison.selonEtats.revenu.decisions[3] | Rançonner > hameçon SI Atout "Obligations en or"
+- gestion_prison.json | prison.selonEtats.revenu.decisions[4] | Négocier la libération > hameçon SI mécène
+- gestion_prison.json | prison.selonEtats.revenu.decisions[5] | Rançonner > hameçon SI mécène
+- gestion_prison.json | prison.selonEtats.revenu.decisions[6] | Négocier la libération > Bannir SI artefact
+- gestion_prison.json | prison.selonEtats.successionChaos.decisions[0] | Castrer le prisonnier
+- gestion_prison.json | prison.selonEtats.successionChaos.decisions[1] | Exécuter SI Redoutabilité
+- gestion_prison.json | prison.selonEtats.successionChaos.decisions[2] | Rançonner > Troupeau
+- gestion_prison.json | prison.selonEtats.successionChaos.decisions[3] | Négocier la libération > Bannir SI artefact
+- gestion_prison.json | prison.selonEtats.tributaire.decisions[0] | Torturer SI Atout "Je suis bien en comparaison"
+- gestion_prison.json | prison.selonEtats.tributaire.decisions[1] | Castrer le prisonnier
+- gestion_prison.json | prison.selonEtats.tributaire.decisions[2] | Exécuter SI Redoutabilité
+- gestion_prison.json | prison.selonEtats.tributaire.decisions[3] | Négocier la libération > Bannir SI artefact
+- gestion_prison.json | prison.selonEtats.troupeau.decisions[0] | Rançonner > Troupeau
+- gestion_prison.json | prison.selonEtats.troupeau.decisions[1] | Négocier la libération > Bannir SI artefact
+- gestion_prison.json | prison.selonEtats.vassal.decisions[0] | ne rien faire SI VASSAL PUISSANT
+- gestion_prison.json | prison.selonEtats.vassal.decisions[1] | Torturer SI Atout "Sombres connaissances"
+- gestion_prison.json | prison.selonEtats.vassal.decisions[2] | Castrer le prisonnier
+- gestion_prison.json | prison.selonEtats.vassal.decisions[3] | Exécuter SI Redoutabilité
+- gestion_prison.json | prison.selonEtats.vassalAInfluencer.decisions[0] | Torturer SI Atout "Sombres connaissances"
+- gestion_prison.json | prison.selonEtats.vassalAInfluencer.decisions[1] | Castrer le prisonnier
+- gestion_prison.json | prison.selonEtats.vassalAInfluencer.decisions[2] | Exécuter SI Redoutabilité
+- gestion_regence.json | regence.selonEtats.agent.decisions[0] | Remplir les coffres
+- gestion_regence.json | regence.selonEtats.aInfluencer.decisions[0] | Promouvoir l'autorité SI ALLIE POTENTIEL-S conseiller
+- gestion_regence.json | regence.selonEtats.conseiller.decisions[0] | Gonfler les rangs
+- gestion_regence.json | regence.selonEtats.declarationGuerre.decisions[0] | Gonfler les rangs
+- gestion_regence.json | regence.selonEtats.factionFoi.decisions[0] | Promouvoir l'autorité
+- gestion_regence.json | regence.selonEtats.factionPop.decisions[0] | Promouvoir l'autorité
+- gestion_regence.json | regence.selonEtats.guerre.decisions[0] | Gonfler les rangs
+- gestion_regence.json | regence.selonEtats.perteTerresRevoquer.decisions[0] | Promouvoir l'autorité
+- gestion_regence.json | regence.selonEtats.prison.decisions[0] | Promouvoir l'autorité SI PRISONNIER-S conseiller
+- gestion_regence.json | regence.selonEtats.prison.decisions[1] | Gonfler les rangs
+- gestion_regence.json | regence.selonEtats.proclame.decisions[0] | Gonfler les rangs
+- gestion_regence.json | regence.selonEtats.rancon.decisions[0] | Remplir les coffres
+- gestion_regence.json | regence.selonEtats.recruterChevalier.decisions[0] | Gonfler les rangs
+- gestion_regence.json | regence.selonEtats.religieuxAInfluencer.decisions[0] | Promouvoir l'autorité
+- gestion_regence.json | regence.selonEtats.revenu.decisions[0] | Remplir les coffres
+- gestion_regence.json | regence.selonEtats.vassal.decisions[0] | Promouvoir l'autorité
+- gestion_regence.json | regence.selonEtats.vassalAInfluencer.decisions[0] | Promouvoir l'autorité
+- gestion_regence.json | regence.selonEtats.vassalSOppose.decisions[0] | Promouvoir l'autorité
+- militaire_conseillers.json | chancelier.selonEtats.agent.decisions[0] | Gérer les affaires étrangères
+- militaire_conseillers.json | chancelier.selonEtats.aInfluencer.decisions[0] | Accorder une faveur royale SI Augmentation de l'opinion vassale ALLIE POTENTIEL-S
+- militaire_conseillers.json | chancelier.selonEtats.cultInnov.decisions[0] | Gérer les affaires étrangères SI NON Chef culturel
+- militaire_conseillers.json | chancelier.selonEtats.declarationGuerre.decisions[0] | Gérer les affaires intérieures SI Contrat vassalique amélioré
+- militaire_conseillers.json | chancelier.selonEtats.denoncer.decisions[0] | Gérer les affaires étrangères
+- militaire_conseillers.json | chancelier.selonEtats.dirigeantAInfluencer.decisions[0] | Gérer les affaires étrangères
+- militaire_conseillers.json | chancelier.selonEtats.enfant.decisions[0] | Gérer les affaires étrangères SI divorce ET CHEF DE FOI dirigeant
+- militaire_conseillers.json | chancelier.selonEtats.guerre.decisions[0] | Gérer les affaires intérieures SI Contrat vassalique amélioré
+- militaire_conseillers.json | chancelier.selonEtats.perteTerresRevoquer.decisions[0] | Accorder une faveur royale VASSAL A REVOQUER-S SI Augmentation de l'opinion vassale
+- militaire_conseillers.json | chancelier.selonEtats.perteTerresRevoquer.decisions[1] | Gérer les affaires intérieures SI Contrat vassalique amélioré
+- militaire_conseillers.json | chancelier.selonEtats.perteTerresRevoquer.decisions[2] | Gérer les affaires intérieures SI Contrat vassalique amélioré
+- militaire_conseillers.json | chancelier.selonEtats.prestige.decisions[0] | Gérer les affaires étrangères
+- militaire_conseillers.json | chancelier.selonEtats.prison.decisions[0] | Gérer les affaires étrangères
+- militaire_conseillers.json | chancelier.selonEtats.rancon.decisions[0] | Gérer les affaires intérieures SI Contrat vassalique amélioré
+- militaire_conseillers.json | chancelier.selonEtats.revenu.decisions[0] | Gérer les affaires intérieures SI Contrat vassalique amélioré
+- militaire_conseillers.json | chancelier.selonEtats.vassal.decisions[0] | Accorder une faveur royale VASSAL PUISSANT
+- militaire_conseillers.json | chancelier.selonEtats.vassal.decisions[1] | Gérer les affaires intérieures
+- militaire_conseillers.json | chancelier.selonEtats.vassalAInfluencer.decisions[0] | Accorder une faveur royale FACTIEUX
+- militaire_conseillers.json | chancelier.selonEtats.vassalAInfluencer.decisions[1] | Gérer les affaires intérieures
+- militaire_conseillers.json | chancelier.selonEtats.vassalSOppose.decisions[0] | Accorder une faveur royale LUI
+- militaire_conseillers.json | chancelier.selonEtats.vassalSOppose.decisions[1] | Gérer les affaires intérieures
+- militaire_conseillers.json | conjoint.selonEtats.agent.decisions[0] | S'occuper de politique
+- militaire_conseillers.json | conjoint.selonEtats.aInfluencer.decisions[0] | S'occuper de politique
+- militaire_conseillers.json | conjoint.selonEtats.assassinat.decisions[0] | S'occuper des intrigues
+- militaire_conseillers.json | conjoint.selonEtats.controle.decisions[0] | S'occuper de chevalerie
+- militaire_conseillers.json | conjoint.selonEtats.cultInnov.decisions[0] | Patronner SI Chef culturel
+- militaire_conseillers.json | conjoint.selonEtats.cultInnov.decisions[1] | Gérer le domaine
+- militaire_conseillers.json | conjoint.selonEtats.declarationGuerre.decisions[0] | S'occuper de chevalerie
+- militaire_conseillers.json | conjoint.selonEtats.denoncer.decisions[0] | S'occuper de politique
+- militaire_conseillers.json | conjoint.selonEtats.dirigeantAInfluencer.decisions[0] | S'occuper de politique
+- militaire_conseillers.json | conjoint.selonEtats.domaine.decisions[0] | Gérer le domaine
+- militaire_conseillers.json | conjoint.selonEtats.enfant.decisions[0] | S'occuper des intrigues SI futur enfant légitime
+- militaire_conseillers.json | conjoint.selonEtats.enfant.decisions[1] | Patronner
+- militaire_conseillers.json | conjoint.selonEtats.erudition.decisions[0] | Patronner
+- militaire_conseillers.json | conjoint.selonEtats.factionFoi.decisions[0] | Patronner
+- militaire_conseillers.json | conjoint.selonEtats.factionPop.decisions[0] | Gérer le domaine
+- militaire_conseillers.json | conjoint.selonEtats.guerre.decisions[0] | S'occuper de chevalerie
+- militaire_conseillers.json | conjoint.selonEtats.hamecon.decisions[0] | S'occuper des intrigues
+- militaire_conseillers.json | conjoint.selonEtats.influence.decisions[0] | S'occuper des intrigues
+- militaire_conseillers.json | conjoint.selonEtats.perteTerresRevoquer.decisions[0] | S'occuper de politique
+- militaire_conseillers.json | conjoint.selonEtats.piete.decisions[0] | Patronner
+- militaire_conseillers.json | conjoint.selonEtats.prestige.decisions[0] | S'occuper de politique
+- militaire_conseillers.json | conjoint.selonEtats.prison.decisions[0] | S'occuper de politique
+- militaire_conseillers.json | conjoint.selonEtats.proclame.decisions[0] | S'occuper de chevalerie
+- militaire_conseillers.json | conjoint.selonEtats.rancon.decisions[0] | Gérer le domaine
+- militaire_conseillers.json | conjoint.selonEtats.recruterChevalier.decisions[0] | S'occuper de chevalerie
+- militaire_conseillers.json | conjoint.selonEtats.religieuxAInfluencer.decisions[0] | Patronner
+- militaire_conseillers.json | conjoint.selonEtats.revenu.decisions[0] | Gérer le domaine
+- militaire_conseillers.json | conjoint.selonEtats.succession.decisions[0] | S'occuper de politique
+- militaire_conseillers.json | conjoint.selonEtats.vassal.decisions[0] | S'occuper des intrigues
+- militaire_conseillers.json | conjoint.selonEtats.vassalAInfluencer.decisions[0] | S'occuper de politique
+- militaire_conseillers.json | conjoint.selonEtats.vassalSOppose.decisions[0] | S'occuper de politique
+- militaire_conseillers.json | espion.selonEtats.agent.decisions[0] | Soutenir les complots SI Atout "La vérité est relative"
+- militaire_conseillers.json | espion.selonEtats.agent.decisions[1] | Chercher des secrets AGENT-S
+- militaire_conseillers.json | espion.selonEtats.assassinat.decisions[0] | Soutenir les complots
+- militaire_conseillers.json | espion.selonEtats.enfant.decisions[0] | Interrompre les complots
+- militaire_conseillers.json | espion.selonEtats.hamecon.decisions[0] | Soutenir les complots SI Atout "La vérité est relative"
+- militaire_conseillers.json | espion.selonEtats.hamecon.decisions[1] | Chercher des secrets A HAMECONNER-S
+- militaire_conseillers.json | espion.selonEtats.perteTerresRevoquer.decisions[0] | Chercher des secrets VASSAL A REVOQUER-S
+- militaire_conseillers.json | espion.selonEtats.rancon.decisions[0] | Soutenir les complots SI Atout "La vérité est relative"
+- militaire_conseillers.json | espion.selonEtats.rancon.decisions[1] | Chercher des secrets GEOLIER
+- militaire_conseillers.json | espion.selonEtats.survie.decisions[0] | Interrompre les complots
+- militaire_conseillers.json | espion.selonEtats.vassal.decisions[0] | Soutenir les complots SI Atout "La vérité est relative"
+- militaire_conseillers.json | espion.selonEtats.vassal.decisions[1] | Chercher des secrets VASSAL PUISSANT
+- militaire_conseillers.json | espion.selonEtats.vassalAInfluencer.decisions[0] | Chercher des secrets FACTIEUX
+- militaire_conseillers.json | espion.selonEtats.vassalSOppose.decisions[0] | Chercher des secrets VASSAL OPPOSANT-S
+- militaire_conseillers.json | intendant.selonEtats.agent.decisions[0] | Promouvoir l'acceptation culturelle SI Opinion améliorée vassal direct ou courtisan ou invité CIBLE-S
+- militaire_conseillers.json | intendant.selonEtats.agent.decisions[1] | Convaincre le territoire de jure SI Gain de prestige
+- militaire_conseillers.json | intendant.selonEtats.agent.decisions[2] | Collecter les impôts
+- militaire_conseillers.json | intendant.selonEtats.aInfluencer.decisions[0] | Promouvoir l'acceptation culturelle SI Opinion améliorée ALLIE POTENTIEL-S
+- militaire_conseillers.json | intendant.selonEtats.controle.decisions[0] | Augmenter le développement comtal SI Contrôle accru
+- militaire_conseillers.json | intendant.selonEtats.cultInnov.decisions[0] | Promouvoir la culture SI NON Chef culturel
+- militaire_conseillers.json | intendant.selonEtats.declarationGuerre.decisions[0] | Augmenter le développement comtal
+- militaire_conseillers.json | intendant.selonEtats.denoncer.decisions[0] | Convaincre le territoire de jure SI Gain de prestige
+- militaire_conseillers.json | intendant.selonEtats.factionFoi.decisions[0] | Promouvoir la culture LUI SI Augmentation de l'opinion comtale
+- militaire_conseillers.json | intendant.selonEtats.factionPop.decisions[0] | Promouvoir la culture COMTE SI Augmentation de l'opinion comtale
+- militaire_conseillers.json | intendant.selonEtats.factionPop.decisions[1] | Promouvoir l'acceptation culturelle COMTE SI Opinion améliorée
+- militaire_conseillers.json | intendant.selonEtats.guerre.decisions[0] | Augmenter le développement comtal
+- militaire_conseillers.json | intendant.selonEtats.perteTerresRevoquer.decisions[0] | Convaincre le territoire de jure SI Gain de prestige
+- militaire_conseillers.json | intendant.selonEtats.perteTerresRevoquer.decisions[1] | Promouvoir l'acceptation culturelle VASSAL A REVOQUER-S SI Opinion améliorée
+- militaire_conseillers.json | intendant.selonEtats.perteTerresRevoquer.decisions[2] | Collecter les impôts
+- militaire_conseillers.json | intendant.selonEtats.prestige.decisions[0] | Convaincre le territoire de jure SI Gain de prestige
+- militaire_conseillers.json | intendant.selonEtats.prison.decisions[0] | Convaincre le territoire de jure SI Gain de prestige
+- militaire_conseillers.json | intendant.selonEtats.prison.decisions[1] | Promouvoir l'acceptation culturelle SI Opinion améliorée
+- militaire_conseillers.json | intendant.selonEtats.prison.decisions[2] | Augmenter le développement comtal
+- militaire_conseillers.json | intendant.selonEtats.rancon.decisions[0] | Collecter les impôts
+- militaire_conseillers.json | intendant.selonEtats.revenu.decisions[0] | Collecter les impôts
+- militaire_conseillers.json | intendant.selonEtats.vassal.decisions[0] | Promouvoir l'acceptation culturelle SI Opinion améliorée VASSAL PUISSANT
+- militaire_conseillers.json | intendant.selonEtats.vassalAInfluencer.decisions[0] | Promouvoir l'acceptation culturelle SI Opinion améliorée FACTIEUX
+- militaire_conseillers.json | intendant.selonEtats.vassalSOppose.decisions[0] | Promouvoir l'acceptation culturelle SI Opinion améliorée FACTIEUX
+- militaire_conseillers.json | intendant.selonEtats.vassalSOppose.decisions[1] | Collecter les impôts
+- militaire_conseillers.json | intentionPillage.selonEtats.agent.decisions[0] | Saccager
+- militaire_conseillers.json | intentionPillage.selonEtats.agent.decisions[1] | Capturer SI Atout "Sombres connaissances"
+- militaire_conseillers.json | intentionPillage.selonEtats.agent.decisions[2] | S'aventurer
+- militaire_conseillers.json | intentionPillage.selonEtats.aInfluencer.decisions[0] | Saccager
+- militaire_conseillers.json | intentionPillage.selonEtats.aInfluencer.decisions[1] | Capturer SI Atout "Sombres connaissances"
+- militaire_conseillers.json | intentionPillage.selonEtats.assassinat.decisions[0] | Saccager
+- militaire_conseillers.json | intentionPillage.selonEtats.assassinat.decisions[1] | Capturer SI Atout "Sombres connaissances"
+- militaire_conseillers.json | intentionPillage.selonEtats.conseiller.decisions[0] | Capturer
+- militaire_conseillers.json | intentionPillage.selonEtats.controle.decisions[0] | Saccager
+- militaire_conseillers.json | intentionPillage.selonEtats.cultInnov.decisions[0] | Saccager SI NON chef culturel
+- militaire_conseillers.json | intentionPillage.selonEtats.cultInnov.decisions[1] | Terroriser SI NON chef culturel
+- militaire_conseillers.json | intentionPillage.selonEtats.cultInnov.decisions[2] | Saccager
+- militaire_conseillers.json | intentionPillage.selonEtats.declarationGuerre.decisions[0] | Saccager
+- militaire_conseillers.json | intentionPillage.selonEtats.declarationGuerre.decisions[1] | Capturer
+- militaire_conseillers.json | intentionPillage.selonEtats.denoncer.decisions[0] | Terroriser
+- militaire_conseillers.json | intentionPillage.selonEtats.denoncer.decisions[1] | Saccager
+- militaire_conseillers.json | intentionPillage.selonEtats.domaine.decisions[0] | Saccager
+- militaire_conseillers.json | intentionPillage.selonEtats.enfant.decisions[0] | Saccager SI divorce
+- militaire_conseillers.json | intentionPillage.selonEtats.enfant.decisions[1] | Capturer SI divorce ET Atout "Sombres connaissances"
+- militaire_conseillers.json | intentionPillage.selonEtats.enfant.decisions[10] |  
+- militaire_conseillers.json | intentionPillage.selonEtats.enfant.decisions[2] |  
+- militaire_conseillers.json | intentionPillage.selonEtats.enfant.decisions[3] | Saccager SI futur enfant légitime
+- militaire_conseillers.json | intentionPillage.selonEtats.enfant.decisions[4] | Capturer SI futur enfant légitime ET Atout "Sombres connaissances"
+- militaire_conseillers.json | intentionPillage.selonEtats.enfant.decisions[5] |  
+- militaire_conseillers.json | intentionPillage.selonEtats.enfant.decisions[6] | Terroriser SI Aventurier ET adopter ET Prestige<150
+- militaire_conseillers.json | intentionPillage.selonEtats.enfant.decisions[7] | Capturer SI Aventurier ET adopter ET Atout "Sombres connaissances"
+- militaire_conseillers.json | intentionPillage.selonEtats.enfant.decisions[8] |  
+- militaire_conseillers.json | intentionPillage.selonEtats.enfant.decisions[9] | Terroriser SI Aventurier ET adopter
+- militaire_conseillers.json | intentionPillage.selonEtats.factionPop.decisions[0] | Saccager
+- militaire_conseillers.json | intentionPillage.selonEtats.guerre.decisions[0] | Saccager
+- militaire_conseillers.json | intentionPillage.selonEtats.guerre.decisions[1] | Capturer
+- militaire_conseillers.json | intentionPillage.selonEtats.hamecon.decisions[0] | Saccager
+- militaire_conseillers.json | intentionPillage.selonEtats.hamecon.decisions[1] | Capturer SI Atout "Sombres connaissances"
+- militaire_conseillers.json | intentionPillage.selonEtats.piete.decisions[0] | Saccager
+- militaire_conseillers.json | intentionPillage.selonEtats.prestige.decisions[0] | Terroriser
+- militaire_conseillers.json | intentionPillage.selonEtats.prestige.decisions[1] | Saccager
+- militaire_conseillers.json | intentionPillage.selonEtats.prison.decisions[0] | Terroriser
+- militaire_conseillers.json | intentionPillage.selonEtats.prison.decisions[1] | Capturer SI Atout "Sombres connaissances"
+- militaire_conseillers.json | intentionPillage.selonEtats.prison.decisions[2] | Saccager
+- militaire_conseillers.json | intentionPillage.selonEtats.prison.decisions[3] | Capturer
+- militaire_conseillers.json | intentionPillage.selonEtats.proclame.decisions[0] | Capturer
+- militaire_conseillers.json | intentionPillage.selonEtats.recruterChevalier.decisions[0] | Capturer
+- militaire_conseillers.json | intentionPillage.selonEtats.religieuxAInfluencer.decisions[0] | Saccager
+- militaire_conseillers.json | intentionPillage.selonEtats.religieuxAInfluencer.decisions[1] | Capturer SI Atout "Sombres connaissances"
+- militaire_conseillers.json | intentionPillage.selonEtats.revenu.decisions[0] | Saccager
+- militaire_conseillers.json | intentionPillage.selonEtats.revenu.decisions[1] | S'aventurer
+- militaire_conseillers.json | intentionPillage.selonEtats.stress.decisions[0] | Saccager
+- militaire_conseillers.json | intentionPillage.selonEtats.succession.decisions[0] | Saccager
+- militaire_conseillers.json | intentionPillage.selonEtats.successionChaos.decisions[0] | Saccager
+- militaire_conseillers.json | intentionPillage.selonEtats.successionChaos.decisions[1] | Terroriser
+- militaire_conseillers.json | intentionPillage.selonEtats.successionChaos.decisions[2] | S'aventurer
+- militaire_conseillers.json | intentionPillage.selonEtats.survie.decisions[0] | Saccager
+- militaire_conseillers.json | intentionPillage.selonEtats.tributaire.decisions[0] | Terroriser
+- militaire_conseillers.json | intentionPillage.selonEtats.tributaire.decisions[1] | S'aventurer
+- militaire_conseillers.json | intentionPillage.selonEtats.troupeau.decisions[0] | S'aventurer
+- militaire_conseillers.json | intentionPillage.selonEtats.vassal.decisions[0] | Saccager
+- militaire_conseillers.json | intentionPillage.selonEtats.vassal.decisions[1] | Capturer SI Atout "Sombres connaissances"
+- militaire_conseillers.json | intentionPillage.selonEtats.vassal.decisions[2] | Terroriser
+- militaire_conseillers.json | intentionPillage.selonEtats.vassalAInfluencer.decisions[0] | Saccager
+- militaire_conseillers.json | intentionPillage.selonEtats.vassalAInfluencer.decisions[1] | Capturer SI Atout "Sombres connaissances"
+- militaire_conseillers.json | intentionPillage.selonEtats.vassalAInfluencer.decisions[2] | Terroriser
+- militaire_conseillers.json | kouroultai.selonEtats.agent.decisions[0] | Affaires intérieures SI vassal direct CIBLE
+- militaire_conseillers.json | kouroultai.selonEtats.agent.decisions[1] | Explorer les cultures SI Acquérir des opinions culturelles différentes ET vassal direct ou courtisan ou invité CIBLE culture différente
+- militaire_conseillers.json | kouroultai.selonEtats.agent.decisions[2] | Organiser des pillages
+- militaire_conseillers.json | kouroultai.selonEtats.agent.decisions[3] | Aider l'astronome
+- militaire_conseillers.json | kouroultai.selonEtats.aInfluencer.decisions[0] | Affaires intérieures SI ALLIE POTENTIEL-S vassal
+- militaire_conseillers.json | kouroultai.selonEtats.aInfluencer.decisions[1] | Explorer les cultures SI Acquérir des opinions culturelles différentes ET ALLIE POTENTIEL-S culture différente
+- militaire_conseillers.json | kouroultai.selonEtats.controle.decisions[0] | Augmenter le contrôle
+- militaire_conseillers.json | kouroultai.selonEtats.cultInnov.decisions[0] | Explorer les cultures
+- militaire_conseillers.json | kouroultai.selonEtats.cultInnov.decisions[1] | Organiser des pillages SI Gagnez du prestige
+- militaire_conseillers.json | kouroultai.selonEtats.declarationGuerre.decisions[0] | Soutenir les bergers
+- militaire_conseillers.json | kouroultai.selonEtats.denoncer.decisions[0] | Organiser des pillages SI Gagnez du prestige
+- militaire_conseillers.json | kouroultai.selonEtats.enfant.decisions[0] | Aider l'astronome SI divorce
+- militaire_conseillers.json | kouroultai.selonEtats.factionPop.decisions[0] | Gérer la fertilité
+- militaire_conseillers.json | kouroultai.selonEtats.guerre.decisions[0] | Soutenir les bergers
+- militaire_conseillers.json | kouroultai.selonEtats.piete.decisions[0] | Aider l'astronome
+- militaire_conseillers.json | kouroultai.selonEtats.prestige.decisions[0] | Organiser des pillages SI Gagnez du prestige
+- militaire_conseillers.json | kouroultai.selonEtats.prison.decisions[0] | Organiser des pillages SI Gagnez du prestige
+- militaire_conseillers.json | kouroultai.selonEtats.prison.decisions[1] | Affaires intérieures SI PRISONNIER-S vassal
+- militaire_conseillers.json | kouroultai.selonEtats.prison.decisions[2] | Explorer les cultures SI Acquérir des opinions culturelles différentes ET PRISONNIER-S culture différente
+- militaire_conseillers.json | kouroultai.selonEtats.proclame.decisions[0] | Organiser des pillages SI Gagnez du prestige
+- militaire_conseillers.json | kouroultai.selonEtats.recruterChevalier.decisions[0] | Organiser des pillages SI Gagnez du prestige
+- militaire_conseillers.json | kouroultai.selonEtats.revenu.decisions[0] | Organiser des pillages
+- militaire_conseillers.json | kouroultai.selonEtats.successionChaos.decisions[0] | Soutenir les bergers
+- militaire_conseillers.json | kouroultai.selonEtats.tributaire.decisions[0] | Organiser des pillages SI Gagnez du prestige
+- militaire_conseillers.json | kouroultai.selonEtats.tributaire.decisions[1] | Soutenir les bergers
+- militaire_conseillers.json | kouroultai.selonEtats.troupeau.decisions[0] | Soutenir les bergers
+- militaire_conseillers.json | kouroultai.selonEtats.vassal.decisions[0] | Affaires intérieures VASSAL-S
+- militaire_conseillers.json | kouroultai.selonEtats.vassal.decisions[1] | Explorer les cultures SI Acquérir des opinions culturelles différentes ET VASSAL-S culture différente
+- militaire_conseillers.json | kouroultai.selonEtats.vassalAInfluencer.decisions[0] | Affaires intérieures VASSAL-S
+- militaire_conseillers.json | kouroultai.selonEtats.vassalAInfluencer.decisions[1] | Explorer les cultures SI Acquérir des opinions culturelles différentes ET VASSAL-S culture différente
+- militaire_conseillers.json | marechal.selonEtats.agent.decisions[0] | Augmenter le contrôle comtal vassal direct CIBLE-S SI Augmentation de l'opinion du baron
+- militaire_conseillers.json | marechal.selonEtats.agent.decisions[1] | Augmenter le contrôle comtal
+- militaire_conseillers.json | marechal.selonEtats.aInfluencer.decisions[0] | Augmenter le contrôle comtal SI Augmentation de l'opinion du baron ALLIE POTENTIEL-S
+- militaire_conseillers.json | marechal.selonEtats.conseiller.decisions[0] | Former les commandants
+- militaire_conseillers.json | marechal.selonEtats.controle.decisions[0] | Augmenter le contrôle comtal
+- militaire_conseillers.json | marechal.selonEtats.declarationGuerre.decisions[0] | Augmenter le contrôle comtal
+- militaire_conseillers.json | marechal.selonEtats.declarationGuerre.decisions[1] | Organiser l'armée
+- militaire_conseillers.json | marechal.selonEtats.enfant.decisions[0] | Gérer la garde royale
+- militaire_conseillers.json | marechal.selonEtats.factionFoi.decisions[0] | Augmenter le contrôle comtal LUI SI Augmentation de l'opinion comtale
+- militaire_conseillers.json | marechal.selonEtats.factionPop.decisions[0] | Augmenter le contrôle comtal LUI SI Augmentation de l'opinion comtale
+- militaire_conseillers.json | marechal.selonEtats.guerre.decisions[0] | Augmenter le contrôle comtal
+- militaire_conseillers.json | marechal.selonEtats.guerre.decisions[1] | Organiser l'armée
+- militaire_conseillers.json | marechal.selonEtats.perteTerresRevoquer.decisions[0] | Augmenter le contrôle comtal VASSAL A REVOQUER-S SI Augmentation de l'opinion du baron
+- militaire_conseillers.json | marechal.selonEtats.perteTerresRevoquer.decisions[1] | Augmenter le contrôle comtal
+- militaire_conseillers.json | marechal.selonEtats.prison.decisions[0] | Organiser l'armée
+- militaire_conseillers.json | marechal.selonEtats.proclame.decisions[0] | Former les commandants
+- militaire_conseillers.json | marechal.selonEtats.rancon.decisions[0] | Augmenter le contrôle comtal
+- militaire_conseillers.json | marechal.selonEtats.recruterChevalier.decisions[0] | Former les commandants
+- militaire_conseillers.json | marechal.selonEtats.revenu.decisions[0] | Augmenter le contrôle comtal
+- militaire_conseillers.json | marechal.selonEtats.survie.decisions[0] | Gérer la garde royale
+- militaire_conseillers.json | marechal.selonEtats.vassal.decisions[0] | Augmenter le contrôle comtal VASSAL PUISSANT SI Augmentation de l'opinion du baron
+- militaire_conseillers.json | marechal.selonEtats.vassalAInfluencer.decisions[0] | Augmenter le contrôle comtal FACTIEUX SI Augmentation de l'opinion du baron
+- militaire_conseillers.json | militaire.selonEtats.agent.decisions[0] | décocher Renforcement mensuel
+- militaire_conseillers.json | militaire.selonEtats.declarationGuerre.decisions[0] | cocher Renforcement mensuel OU Renforcer les hommes d'armes
+- militaire_conseillers.json | militaire.selonEtats.declarationGuerre.decisions[1] | Créer un régiment
+- militaire_conseillers.json | militaire.selonEtats.declarationGuerre.decisions[2] | régiment > Augmenter la taille
+- militaire_conseillers.json | militaire.selonEtats.guerre.decisions[0] | cocher Renforcement mensuel OU Renforcer les hommes d'armes
+- militaire_conseillers.json | militaire.selonEtats.guerre.decisions[1] | Créer un régiment
+- militaire_conseillers.json | militaire.selonEtats.guerre.decisions[2] | régiment > Augmenter la taille
+- militaire_conseillers.json | militaire.selonEtats.prison.decisions[0] | cocher Renforcement mensuel OU Renforcer les hommes d'armes
+- militaire_conseillers.json | militaire.selonEtats.prison.decisions[1] | Créer un régiment
+- militaire_conseillers.json | militaire.selonEtats.prison.decisions[2] | régiment > Augmenter la taille
+- militaire_conseillers.json | militaire.selonEtats.rancon.decisions[0] | décocher Renforcement mensuel
+- militaire_conseillers.json | militaire.selonEtats.revenu.decisions[0] | décocher Renforcement mensuel
+- militaire_conseillers.json | militaireAuto.selonEtats.chevalierPartisan.decisions[0] | Manuel
+- militaire_conseillers.json | militaireAuto.selonEtats.conseiller.decisions[0] | Manuel
+- militaire_conseillers.json | militaireAuto.selonEtats.declarationGuerre.decisions[0] | Manuel
+- militaire_conseillers.json | militaireAuto.selonEtats.enfant.decisions[0] | Limité
+- militaire_conseillers.json | militaireAuto.selonEtats.guerre.decisions[0] | Automatisé
+- militaire_conseillers.json | militaireAuto.selonEtats.prison.decisions[0] | Automatisé
+- militaire_conseillers.json | militaireAuto.selonEtats.proclame.decisions[0] | Manuel
+- militaire_conseillers.json | militaireAuto.selonEtats.recruterChevalier.decisions[0] | Manuel
+- militaire_conseillers.json | militaireAuto.selonEtats.vassalAInfluencer.decisions[0] | Automatisé
+- militaire_conseillers.json | religieux.selonEtats.agent.decisions[0] | Convertir le comté SI Augmentation du développement comtal
+- militaire_conseillers.json | religieux.selonEtats.agent.decisions[1] | Améliorer les relations religieuses
+- militaire_conseillers.json | religieux.selonEtats.aInfluencer.decisions[0] | Améliorer les relations religieuses SI Augmentation de l'opinion vassale ALLIE POTENTIEL-S
+- militaire_conseillers.json | religieux.selonEtats.declarationGuerre.decisions[0] | Convertir le comté SI Augmentation des levées comtales
+- militaire_conseillers.json | religieux.selonEtats.declarationGuerre.decisions[1] | Convertir le comté SI Augmentation du développement comtal
+- militaire_conseillers.json | religieux.selonEtats.enfant.decisions[0] | Améliorer les relations religieuses SI divorce
+- militaire_conseillers.json | religieux.selonEtats.factionFoi.decisions[0] | Convertir le comté
+- militaire_conseillers.json | religieux.selonEtats.factionPop.decisions[0] | Convertir le comté LUI SI Augmentation de l'opinion comtale
+- militaire_conseillers.json | religieux.selonEtats.guerre.decisions[0] | Convertir le comté SI Augmentation des levées comtales
+- militaire_conseillers.json | religieux.selonEtats.guerre.decisions[1] | Convertir le comté SI Augmentation du développement comtal
+- militaire_conseillers.json | religieux.selonEtats.perteTerresRevoquer.decisions[0] | Améliorer les relations religieuses SI Augmentation de l'opinion vassale
+- militaire_conseillers.json | religieux.selonEtats.perteTerresRevoquer.decisions[1] | Convertir le comté SI Augmentation du développement comtal
+- militaire_conseillers.json | religieux.selonEtats.piete.decisions[0] | Améliorer les relations religieuses
+- militaire_conseillers.json | religieux.selonEtats.prison.decisions[0] | Améliorer les relations religieuses SI Augmentation de l'opinion vassale PRISONNIER-S
+- militaire_conseillers.json | religieux.selonEtats.prison.decisions[1] | Convertir le comté SI Augmentation des levées comtales
+- militaire_conseillers.json | religieux.selonEtats.prison.decisions[2] | Convertir le comté SI Augmentation du développement comtal
+- militaire_conseillers.json | religieux.selonEtats.rancon.decisions[0] | Convertir le comté SI Augmentation du développement comtal
+- militaire_conseillers.json | religieux.selonEtats.religieuxAInfluencer.decisions[0] | Améliorer les relations religieuses
+- militaire_conseillers.json | religieux.selonEtats.revenu.decisions[0] | Convertir le comté SI Augmentation du développement comtal
+- militaire_conseillers.json | religieux.selonEtats.vassal.decisions[0] | Améliorer les relations religieuses SI Augmentation de l'opinion vassale
+- militaire_conseillers.json | religieux.selonEtats.vassal.decisions[1] | Convertir le comté SI Augmentation du développement comtal
+- militaire_conseillers.json | religieux.selonEtats.vassalAInfluencer.decisions[0] | Améliorer les relations religieuses SI Augmentation de l'opinion vassale
+- militaire_conseillers.json | religieux.selonEtats.vassalSOppose.decisions[0] | Améliorer les relations religieuses SI Augmentation de l'opinion vassale
+- militaire_conseillers.json | religieux.selonEtats.vassalSOppose.decisions[1] | Convertir le comté SI Augmentation du développement comtal
+- postes_cour.json | epidemies.selonEtats.agent.decisions[0] | Faire de la recherche avancée
+- postes_cour.json | epidemies.selonEtats.agent.decisions[1] | aucune fonction
+- postes_cour.json | epidemies.selonEtats.aInfluencer.decisions[0] | Faire de la recherche avancée
+- postes_cour.json | epidemies.selonEtats.assassinat.decisions[0] | Faire de la recherche avancée
+- postes_cour.json | epidemies.selonEtats.chevalierPartisan.decisions[0] | Faire de la recherche avancée
+- postes_cour.json | epidemies.selonEtats.controle.decisions[0] | Faire de la recherche avancée
+- postes_cour.json | epidemies.selonEtats.cultInnov.decisions[0] | Faire de la recherche avancée
+- postes_cour.json | epidemies.selonEtats.declarationGuerre.decisions[0] | Faire de la recherche avancée
+- postes_cour.json | epidemies.selonEtats.demande.decisions[0] | Faire de la recherche avancée
+- postes_cour.json | epidemies.selonEtats.demande.decisions[1] | aucune fonction
+- postes_cour.json | epidemies.selonEtats.demande2.decisions[0] | Faire de la recherche avancée
+- postes_cour.json | epidemies.selonEtats.dirigeantAInfluencer.decisions[0] | Faire de la recherche avancée
+- postes_cour.json | epidemies.selonEtats.domaine.decisions[0] | Faire de la recherche avancée
+- postes_cour.json | epidemies.selonEtats.enfant.decisions[0] | Faire de la recherche avancée
+- postes_cour.json | epidemies.selonEtats.enfant.decisions[1] | Atténuer les épidémies
+- postes_cour.json | epidemies.selonEtats.enfant.decisions[2] | Améliorer les aptitudes SI NON aventurier adopter
+- postes_cour.json | epidemies.selonEtats.enfant.decisions[3] | aucune fonction
+- postes_cour.json | epidemies.selonEtats.factionPop.decisions[0] | Faire de la recherche avancée
+- postes_cour.json | epidemies.selonEtats.guerre.decisions[0] | Faire de la recherche avancée
+- postes_cour.json | epidemies.selonEtats.guerre.decisions[1] | aucune fonction SI gouvernement administratif
+- postes_cour.json | epidemies.selonEtats.hamecon.decisions[0] | Faire de la recherche avancée
+- postes_cour.json | epidemies.selonEtats.influence.decisions[0] | Faire de la recherche avancée
+- postes_cour.json | epidemies.selonEtats.influence.decisions[1] | aucune fonction
+- postes_cour.json | epidemies.selonEtats.perteTerresRevoquer.decisions[0] | Faire de la recherche avancée
+- postes_cour.json | epidemies.selonEtats.perteTerresRevoquer.decisions[1] | aucune fonction
+- postes_cour.json | epidemies.selonEtats.piete.decisions[0] | Faire de la recherche avancée
+- postes_cour.json | epidemies.selonEtats.prestige.decisions[0] | Faire de la recherche avancée
+- postes_cour.json | epidemies.selonEtats.prison.decisions[0] | Faire de la recherche avancée
+- postes_cour.json | epidemies.selonEtats.proclame.decisions[0] | Faire de la recherche avancée
+- postes_cour.json | epidemies.selonEtats.recruterChevalier.decisions[0] | Faire de la recherche avancée
+- postes_cour.json | epidemies.selonEtats.religieuxAInfluencer.decisions[0] | Faire de la recherche avancée
+- postes_cour.json | epidemies.selonEtats.stress.decisions[0] | Faire de la recherche avancée
+- postes_cour.json | epidemies.selonEtats.succession.decisions[0] | Faire de la recherche avancée
+- postes_cour.json | epidemies.selonEtats.succession.decisions[1] | aucune fonction
+- postes_cour.json | epidemies.selonEtats.successionChaos.decisions[0] | Faire de la recherche avancée
+- postes_cour.json | epidemies.selonEtats.survie.decisions[0] | Atténuer les épidémies
+- postes_cour.json | epidemies.selonEtats.survie.decisions[1] | Améliorer les aptitudes
+- postes_cour.json | epidemies.selonEtats.troupeau.decisions[0] | Faire de la recherche avancée
+- postes_cour.json | epidemies.selonEtats.vassal.decisions[0] | Faire de la recherche avancée
+- postes_cour.json | epidemies.selonEtats.vassalAInfluencer.decisions[0] | Faire de la recherche avancée
+- postes_cour.json | posteAntiq.selonEtats.agent.decisions[0] | Rechercher des artefacts rares
+- postes_cour.json | posteAntiq.selonEtats.agent.decisions[1] | Améliorer les artefacts
+- postes_cour.json | posteAntiq.selonEtats.agent.decisions[2] | Exposer les objets illustres
+- postes_cour.json | posteAntiq.selonEtats.agent.decisions[3] | aucune fonction
+- postes_cour.json | posteAntiq.selonEtats.aInfluencer.decisions[0] | Améliorer les artefacts
+- postes_cour.json | posteAntiq.selonEtats.aInfluencer.decisions[1] | Rechercher des artefacts rares
+- postes_cour.json | posteAntiq.selonEtats.aInfluencer.decisions[2] | Exposer les objets illustres
+- postes_cour.json | posteAntiq.selonEtats.aInfluencer.decisions[3] | aucune fonction
+- postes_cour.json | posteAntiq.selonEtats.assassinat.decisions[0] | Améliorer les artefacts
+- postes_cour.json | posteAntiq.selonEtats.assassinat.decisions[1] | Rechercher des artefacts rares
+- postes_cour.json | posteAntiq.selonEtats.controle.decisions[0] | Améliorer les artefacts
+- postes_cour.json | posteAntiq.selonEtats.controle.decisions[1] | Rechercher des artefacts rares
+- postes_cour.json | posteAntiq.selonEtats.cultInnov.decisions[0] | Améliorer les artefacts SI Chef culturel
+- postes_cour.json | posteAntiq.selonEtats.cultInnov.decisions[1] | Rechercher des artefacts rares SI Chef culturel
+- postes_cour.json | posteAntiq.selonEtats.cultInnov.decisions[2] | Exposer les objets illustres SI NON Chef culturel
+- postes_cour.json | posteAntiq.selonEtats.cultInnov.decisions[3] | Améliorer les artefacts SI NON Chef culturel
+- postes_cour.json | posteAntiq.selonEtats.declarationGuerre.decisions[0] | Améliorer les artefacts
+- postes_cour.json | posteAntiq.selonEtats.declarationGuerre.decisions[1] | Rechercher des artefacts rares
+- postes_cour.json | posteAntiq.selonEtats.dirigeantAInfluencer.decisions[0] | Améliorer les artefacts
+- postes_cour.json | posteAntiq.selonEtats.dirigeantAInfluencer.decisions[1] | Rechercher des artefacts rares
+- postes_cour.json | posteAntiq.selonEtats.dirigeantAInfluencer.decisions[2] | Exposer les objets illustres
+- postes_cour.json | posteAntiq.selonEtats.dirigeantAInfluencer.decisions[3] | aucune fonction
+- postes_cour.json | posteAntiq.selonEtats.domaine.decisions[0] | Améliorer les artefacts
+- postes_cour.json | posteAntiq.selonEtats.domaine.decisions[1] | Rechercher des artefacts rares
+- postes_cour.json | posteAntiq.selonEtats.enfant.decisions[0] | Améliorer les artefacts
+- postes_cour.json | posteAntiq.selonEtats.enfant.decisions[1] | Rechercher des artefacts rares SI NON aventurier adopter
+- postes_cour.json | posteAntiq.selonEtats.factionPop.decisions[0] | Rechercher des artefacts rares
+- postes_cour.json | posteAntiq.selonEtats.factionPop.decisions[1] | Améliorer les artefacts
+- postes_cour.json | posteAntiq.selonEtats.guerre.decisions[0] | Améliorer les artefacts
+- postes_cour.json | posteAntiq.selonEtats.guerre.decisions[1] | Rechercher des artefacts rares
+- postes_cour.json | posteAntiq.selonEtats.guerre.decisions[2] | aucune fonction SI gouvernement administratif
+- postes_cour.json | posteAntiq.selonEtats.hamecon.decisions[0] | Améliorer les artefacts
+- postes_cour.json | posteAntiq.selonEtats.hamecon.decisions[1] | Rechercher des artefacts rares
+- postes_cour.json | posteAntiq.selonEtats.influence.decisions[0] | Exposer les objets illustres
+- postes_cour.json | posteAntiq.selonEtats.perteTerresRevoquer.decisions[0] | aucune fonction
+- postes_cour.json | posteAntiq.selonEtats.piete.decisions[0] | Améliorer les artefacts
+- postes_cour.json | posteAntiq.selonEtats.piete.decisions[1] | Rechercher des artefacts rares
+- postes_cour.json | posteAntiq.selonEtats.prison.decisions[0] | Améliorer les artefacts
+- postes_cour.json | posteAntiq.selonEtats.prison.decisions[1] | aucune fonction
+- postes_cour.json | posteAntiq.selonEtats.proclame.decisions[0] | Améliorer les artefacts
+- postes_cour.json | posteAntiq.selonEtats.proclame.decisions[1] | Rechercher des artefacts rares
+- postes_cour.json | posteAntiq.selonEtats.rancon.decisions[0] | aucune fonction
+- postes_cour.json | posteAntiq.selonEtats.recruterChevalier.decisions[0] | Améliorer les artefacts
+- postes_cour.json | posteAntiq.selonEtats.recruterChevalier.decisions[1] | Rechercher des artefacts rares
+- postes_cour.json | posteAntiq.selonEtats.religieuxAInfluencer.decisions[0] | Améliorer les artefacts
+- postes_cour.json | posteAntiq.selonEtats.religieuxAInfluencer.decisions[1] | Rechercher des artefacts rares
+- postes_cour.json | posteAntiq.selonEtats.religieuxAInfluencer.decisions[2] | Exposer les objets illustres
+- postes_cour.json | posteAntiq.selonEtats.religieuxAInfluencer.decisions[3] | aucune fonction
+- postes_cour.json | posteAntiq.selonEtats.revenu.decisions[0] | aucune fonction
+- postes_cour.json | posteAntiq.selonEtats.stress.decisions[0] | Améliorer les artefacts
+- postes_cour.json | posteAntiq.selonEtats.stress.decisions[1] | Rechercher des artefacts rares
+- postes_cour.json | posteAntiq.selonEtats.succession.decisions[0] | Exposer les objets illustres
+- postes_cour.json | posteAntiq.selonEtats.successionChaos.decisions[0] | Rechercher des artefacts rares
+- postes_cour.json | posteAntiq.selonEtats.successionChaos.decisions[1] | Améliorer les artefacts
+- postes_cour.json | posteAntiq.selonEtats.survie.decisions[0] | Améliorer les artefacts
+- postes_cour.json | posteAntiq.selonEtats.survie.decisions[1] | Rechercher des artefacts rares
+- postes_cour.json | posteAntiq.selonEtats.tributaire.decisions[0] | Améliorer les artefacts
+- postes_cour.json | posteAntiq.selonEtats.tributaire.decisions[1] | aucune fonction
+- postes_cour.json | posteAntiq.selonEtats.troupeau.decisions[0] | Rechercher des artefacts rares
+- postes_cour.json | posteAntiq.selonEtats.troupeau.decisions[1] | Améliorer les artefacts
+- postes_cour.json | posteAntiq.selonEtats.vassal.decisions[0] | Rechercher des artefacts rares
+- postes_cour.json | posteAntiq.selonEtats.vassal.decisions[1] | Améliorer les artefacts
+- postes_cour.json | posteAntiq.selonEtats.vassalAInfluencer.decisions[0] | Rechercher des artefacts rares
+- postes_cour.json | posteAntiq.selonEtats.vassalAInfluencer.decisions[1] | Améliorer les artefacts
+- postes_cour.json | posteAntiq.selonEtats.vassalAInfluencer.decisions[2] | aucune fonction
+- postes_cour.json | posteAstro.selonEtats.agent.decisions[0] | aucune fonction
+- postes_cour.json | posteAstro.selonEtats.cultInnov.decisions[0] | aucune fonction SI NON Chef culturel
+- postes_cour.json | posteAstro.selonEtats.demande.decisions[0] | aucune fonction
+- postes_cour.json | posteAstro.selonEtats.demande2.decisions[0] | aucune fonction
+- postes_cour.json | posteAstro.selonEtats.denoncer.decisions[0] | aucune fonction
+- postes_cour.json | posteAstro.selonEtats.enfant.decisions[0] | aucune fonction SI Aventurier ET adopter
+- postes_cour.json | posteAstro.selonEtats.prestige.decisions[0] | aucune fonction
+- postes_cour.json | posteAstro.selonEtats.prison.decisions[0] | aucune fonction
+- postes_cour.json | posteAstro.selonEtats.proclame.decisions[0] | aucune fonction
+- postes_cour.json | posteAstro.selonEtats.recruterChevalier.decisions[0] | aucune fonction
+- postes_cour.json | posteAstro.selonEtats.successionChaos.decisions[0] | Superviser les préparatifs
+- postes_cour.json | posteAstro.selonEtats.tributaire.decisions[0] | aucune fonction
+- postes_cour.json | posteAstro.selonEtats.troupeau.decisions[0] | Superviser les préparatifs
+- postes_cour.json | posteBouffon.selonEtats.enfant.decisions[0] | A DEFINIR
+- postes_cour.json | posteBouffon.selonEtats.enfant.decisions[1] | aucune fonction SI aventurier adopter
+- postes_cour.json | posteBouffon.selonEtats.enfant.decisions[2] | Divertir les courtisans
+- postes_cour.json | posteBouffon.selonEtats.stress.decisions[0] | Divertir les courtisans
+- postes_cour.json | posteBouffon.selonEtats.successionChaos.decisions[0] | Abuser du bouffon
+- postes_cour.json | posteBouffon.selonEtats.survie.decisions[0] | Divertir les courtisans
+- postes_cour.json | posteCaravanier.selonEtats.agent.decisions[0] | aucune fonction
+- postes_cour.json | posteCaravanier.selonEtats.chevalierPartisan.decisions[0] | Améliorer les aptitudes
+- postes_cour.json | posteCaravanier.selonEtats.declarationGuerre.decisions[0] | Améliorer les aptitudes
+- postes_cour.json | posteCaravanier.selonEtats.demande.decisions[0] | aucune fonction
+- postes_cour.json | posteCaravanier.selonEtats.enfant.decisions[0] | Faire des réserves pour les voyages
+- postes_cour.json | posteCaravanier.selonEtats.guerre.decisions[0] | Préparer les armées
+- postes_cour.json | posteCaravanier.selonEtats.guerre.decisions[1] | Améliorer les aptitudes
+- postes_cour.json | posteCaravanier.selonEtats.guerre.decisions[2] | aucune fonction SI gouvernement administratif
+- postes_cour.json | posteCaravanier.selonEtats.influence.decisions[0] | aucune fonction
+- postes_cour.json | posteCaravanier.selonEtats.perteTerresRevoquer.decisions[0] | aucune fonction
+- postes_cour.json | posteCaravanier.selonEtats.proclame.decisions[0] | Améliorer les aptitudes
+- postes_cour.json | posteCaravanier.selonEtats.recruterChevalier.decisions[0] | Améliorer les aptitudes
+- postes_cour.json | posteCaravanier.selonEtats.succession.decisions[0] | aucune fonction
+- postes_cour.json | posteCaravanier.selonEtats.survie.decisions[0] | Faire des réserves pour les voyages
+- postes_cour.json | posteChamp.selonEtats.agent.decisions[0] | aucune fonction
+- postes_cour.json | posteChamp.selonEtats.cultInnov.decisions[0] | Concourir en son nom SI NON Chef culturel
+- postes_cour.json | posteChamp.selonEtats.cultInnov.decisions[1] | aucune fonction SI NON Chef culturel
+- postes_cour.json | posteChamp.selonEtats.declarationGuerre.decisions[0] | Améliorer les aptitudes
+- postes_cour.json | posteChamp.selonEtats.declarationGuerre.decisions[1] | Entraîner le dirigeant
+- postes_cour.json | posteChamp.selonEtats.enfant.decisions[0] | Améliorer les aptitudes
+- postes_cour.json | posteChamp.selonEtats.enfant.decisions[1] | Concourir en son nom SI aventurier adopter
+- postes_cour.json | posteChamp.selonEtats.guerre.decisions[0] | Améliorer les aptitudes
+- postes_cour.json | posteChamp.selonEtats.guerre.decisions[1] | Entraîner le dirigeant
+- postes_cour.json | posteChamp.selonEtats.guerre.decisions[2] | aucune fonction SI gouvernement administratif
+- postes_cour.json | posteChamp.selonEtats.influence.decisions[0] | aucune fonction
+- postes_cour.json | posteChamp.selonEtats.perteTerresRevoquer.decisions[0] | Concourir en son nom
+- postes_cour.json | posteChamp.selonEtats.perteTerresRevoquer.decisions[1] | aucune fonction
+- postes_cour.json | posteChamp.selonEtats.prestige.decisions[0] | Concourir en son nom
+- postes_cour.json | posteChamp.selonEtats.prestige.decisions[1] | aucune fonction
+- postes_cour.json | posteChamp.selonEtats.prison.decisions[0] | Concourir en son nom
+- postes_cour.json | posteChamp.selonEtats.prison.decisions[1] | aucune fonction
+- postes_cour.json | posteChamp.selonEtats.rancon.decisions[0] | aucune fonction
+- postes_cour.json | posteChamp.selonEtats.revenu.decisions[0] | aucune fonction
+- postes_cour.json | posteChamp.selonEtats.succession.decisions[0] | aucune fonction
+- postes_cour.json | posteChamp.selonEtats.tributaire.decisions[0] | Concourir en son nom
+- postes_cour.json | posteChamp.selonEtats.tributaire.decisions[1] | aucune fonction
+- postes_cour.json | posteChasse.selonEtats.enfant.decisions[0] | aucune fonction SI aventurier adopter
+- postes_cour.json | posteChasse.selonEtats.prestige.decisions[0] | aucune fonction
+- postes_cour.json | posteChasse.selonEtats.rancon.decisions[0] | aucune fonction
+- postes_cour.json | posteChasse.selonEtats.revenu.decisions[0] | aucune fonction
+- postes_cour.json | posteChroni.selonEtats.agent.decisions[0] | aucune fonction
+- postes_cour.json | posteChroni.selonEtats.cultInnov.decisions[0] | aucune fonction SI NON Chef culturel
+- postes_cour.json | posteChroni.selonEtats.enfant.decisions[0] | A DEFINIR
+- postes_cour.json | posteChroni.selonEtats.enfant.decisions[1] | aucune fonction SI aventurier adopter
+- postes_cour.json | posteChroni.selonEtats.guerre.decisions[0] | aucune fonction SI gouvernement administratif
+- postes_cour.json | posteChroni.selonEtats.influence.decisions[0] | aucune fonction
+- postes_cour.json | posteChroni.selonEtats.perteTerresRevoquer.decisions[0] | aucune fonction
+- postes_cour.json | posteChroni.selonEtats.prestige.decisions[0] | aucune fonction
+- postes_cour.json | posteChroni.selonEtats.prison.decisions[0] | aucune fonction
+- postes_cour.json | posteChroni.selonEtats.rancon.decisions[0] | aucune fonction
+- postes_cour.json | posteChroni.selonEtats.revenu.decisions[0] | aucune fonction
+- postes_cour.json | posteChroni.selonEtats.succession.decisions[0] | aucune fonction
+- postes_cour.json | posteDame.selonEtats.enfant.decisions[0] | A DEFINIR
+- postes_cour.json | posteDame.selonEtats.enfant.decisions[1] | aucune fonction SI aventurier adopter
+- postes_cour.json | posteDame.selonEtats.enfant.decisions[2] | Rester à l'écoute du terrain
+- postes_cour.json | posteDame.selonEtats.enfant.decisions[3] | aucune fonction
+- postes_cour.json | posteDame.selonEtats.survie.decisions[0] | Rester à l'écoute du terrain
+- postes_cour.json | posteDame.selonEtats.survie.decisions[1] | aucune fonction
+- postes_cour.json | posteEcuyer.selonEtats.agent.decisions[0] | aucune fonction
+- postes_cour.json | posteEcuyer.selonEtats.cultInnov.decisions[0] | aucune fonction SI NON Chef culturel
+- postes_cour.json | posteEcuyer.selonEtats.enfant.decisions[0] | A DEFINIR
+- postes_cour.json | posteEcuyer.selonEtats.guerre.decisions[0] | Toilettage des chevaux de guerre
+- postes_cour.json | posteEcuyer.selonEtats.guerre.decisions[1] | Supervise la reproduction
+- postes_cour.json | posteEcuyer.selonEtats.guerre.decisions[2] | aucune fonction SI gouvernement administratif
+- postes_cour.json | posteEcuyer.selonEtats.influence.decisions[0] | aucune fonction
+- postes_cour.json | posteEcuyer.selonEtats.perteTerresRevoquer.decisions[0] | aucune fonction
+- postes_cour.json | posteEcuyer.selonEtats.prestige.decisions[0] | aucune fonction
+- postes_cour.json | posteEcuyer.selonEtats.prison.decisions[0] | aucune fonction
+- postes_cour.json | posteEcuyer.selonEtats.rancon.decisions[0] | aucune fonction
+- postes_cour.json | posteEcuyer.selonEtats.revenu.decisions[0] | aucune fonction
+- postes_cour.json | posteEcuyer.selonEtats.succession.decisions[0] | aucune fonction
+- postes_cour.json | posteEcuyer.selonEtats.tributaire.decisions[0] | aucune fonction
+- postes_cour.json | posteGarde.selonEtats.assassinat.decisions[0] | Protéger le dirigeant
+- postes_cour.json | posteGarde.selonEtats.enfant.decisions[0] | A DEFINIR
+- postes_cour.json | posteGarde.selonEtats.enfant.decisions[1] | aucune fonction SI aventurier adopter
+- postes_cour.json | posteGarde.selonEtats.successionChaos.decisions[0] | Terrifier la Cour
+- postes_cour.json | posteNour.selonEtats.agent.decisions[0] | aucune fonction
+- postes_cour.json | posteNour.selonEtats.cultInnov.decisions[0] | aucune fonction SI NON Chef culturel
+- postes_cour.json | posteNour.selonEtats.enfant.decisions[0] | aucune fonction SI aventurier adopter
+- postes_cour.json | posteNour.selonEtats.guerre.decisions[0] | aucune fonction SI gouvernement administratif
+- postes_cour.json | posteNour.selonEtats.influence.decisions[0] | aucune fonction
+- postes_cour.json | posteNour.selonEtats.perteTerresRevoquer.decisions[0] | aucune fonction
+- postes_cour.json | posteNour.selonEtats.prestige.decisions[0] | aucune fonction
+- postes_cour.json | posteNour.selonEtats.prison.decisions[0] | aucune fonction
+- postes_cour.json | posteNour.selonEtats.rancon.decisions[0] | aucune fonction
+- postes_cour.json | posteNour.selonEtats.revenu.decisions[0] | aucune fonction
+- postes_cour.json | posteNour.selonEtats.succession.decisions[0] | aucune fonction
+- postes_cour.json | posteNour.selonEtats.tributaire.decisions[0] | aucune fonction
+- postes_cour.json | posteNour.selonEtats.vassalAInfluencer.decisions[0] | aucune fonction
+- postes_cour.json | posteProf.selonEtats.agent.decisions[0] | Faire de la recherche avancée
+- postes_cour.json | posteProf.selonEtats.agent.decisions[1] | Enseigner à la Cour
+- postes_cour.json | posteProf.selonEtats.agent.decisions[2] | aucune fonction
+- postes_cour.json | posteProf.selonEtats.aInfluencer.decisions[0] | Faire de la recherche avancée
+- postes_cour.json | posteProf.selonEtats.aInfluencer.decisions[1] | Enseigner à la Cour
+- postes_cour.json | posteProf.selonEtats.assassinat.decisions[0] | Faire de la recherche avancée
+- postes_cour.json | posteProf.selonEtats.controle.decisions[0] | Enseigner à la Cour
+- postes_cour.json | posteProf.selonEtats.controle.decisions[1] | Faire de la recherche avancée
+- postes_cour.json | posteProf.selonEtats.cultInnov.decisions[0] | Enseigner à la Cour SI Chef culturel
+- postes_cour.json | posteProf.selonEtats.cultInnov.decisions[1] | Faire de la recherche avancée SI Chef culturel
+- postes_cour.json | posteProf.selonEtats.cultInnov.decisions[2] | Enseigner à la Cour
+- postes_cour.json | posteProf.selonEtats.cultInnov.decisions[3] | aucune fonction SI NON Chef culturel
+- postes_cour.json | posteProf.selonEtats.declarationGuerre.decisions[0] | Enseigner à la Cour
+- postes_cour.json | posteProf.selonEtats.declarationGuerre.decisions[1] | Faire de la recherche avancée
+- postes_cour.json | posteProf.selonEtats.dirigeantAInfluencer.decisions[0] | Enseigner à la Cour
+- postes_cour.json | posteProf.selonEtats.dirigeantAInfluencer.decisions[1] | Faire de la recherche avancée
+- postes_cour.json | posteProf.selonEtats.domaine.decisions[0] | Enseigner à la Cour
+- postes_cour.json | posteProf.selonEtats.enfant.decisions[0] | Faire de la recherche avancée
+- postes_cour.json | posteProf.selonEtats.enfant.decisions[1] | Enseigner à la Cour SI divorce
+- postes_cour.json | posteProf.selonEtats.enfant.decisions[2] | aucune fonction SI aventurier adopter
+- postes_cour.json | posteProf.selonEtats.factionPop.decisions[0] | Faire de la recherche avancée
+- postes_cour.json | posteProf.selonEtats.guerre.decisions[0] | Enseigner à la Cour
+- postes_cour.json | posteProf.selonEtats.guerre.decisions[1] | Faire de la recherche avancée
+- postes_cour.json | posteProf.selonEtats.guerre.decisions[2] | aucune fonction SI gouvernement administratif
+- postes_cour.json | posteProf.selonEtats.hamecon.decisions[0] | Faire de la recherche avancée
+- postes_cour.json | posteProf.selonEtats.influence.decisions[0] | Faire de la recherche avancée
+- postes_cour.json | posteProf.selonEtats.influence.decisions[1] | Enseigner à la Cour
+- postes_cour.json | posteProf.selonEtats.influence.decisions[2] | aucune fonction
+- postes_cour.json | posteProf.selonEtats.perteTerresRevoquer.decisions[0] | aucune fonction
+- postes_cour.json | posteProf.selonEtats.piete.decisions[0] | Enseigner à la Cour
+- postes_cour.json | posteProf.selonEtats.piete.decisions[1] | Faire de la recherche avancée
+- postes_cour.json | posteProf.selonEtats.prestige.decisions[0] | Faire de la recherche avancée
+- postes_cour.json | posteProf.selonEtats.prison.decisions[0] | aucune fonction
+- postes_cour.json | posteProf.selonEtats.proclame.decisions[0] | Enseigner à la Cour
+- postes_cour.json | posteProf.selonEtats.proclame.decisions[1] | Faire de la recherche avancée
+- postes_cour.json | posteProf.selonEtats.rancon.decisions[0] | aucune fonction
+- postes_cour.json | posteProf.selonEtats.recruterChevalier.decisions[0] | Enseigner à la Cour
+- postes_cour.json | posteProf.selonEtats.recruterChevalier.decisions[1] | Faire de la recherche avancée
+- postes_cour.json | posteProf.selonEtats.religieuxAInfluencer.decisions[0] | Faire de la recherche avancée
+- postes_cour.json | posteProf.selonEtats.religieuxAInfluencer.decisions[1] | Enseigner à la Cour
+- postes_cour.json | posteProf.selonEtats.revenu.decisions[0] | aucune fonction
+- postes_cour.json | posteProf.selonEtats.stress.decisions[0] | Faire de la recherche avancée
+- postes_cour.json | posteProf.selonEtats.succession.decisions[0] | Faire de la recherche avancée
+- postes_cour.json | posteProf.selonEtats.succession.decisions[1] | Enseigner à la Cour
+- postes_cour.json | posteProf.selonEtats.succession.decisions[2] | aucune fonction
+- postes_cour.json | posteProf.selonEtats.successionChaos.decisions[0] | Faire de la recherche avancée
+- postes_cour.json | posteProf.selonEtats.survie.decisions[0] | Faire de la recherche avancée
+- postes_cour.json | posteProf.selonEtats.vassal.decisions[0] | Faire de la recherche avancée
+- postes_cour.json | posteProf.selonEtats.vassal.decisions[1] | Enseigner à la Cour
+- postes_cour.json | posteProf.selonEtats.vassalAInfluencer.decisions[0] | Faire de la recherche avancée
+- postes_cour.json | posteProf.selonEtats.vassalAInfluencer.decisions[1] | Enseigner à la Cour
+- postes_cour.json | posteProf.selonEtats.vassalAInfluencer.decisions[2] | aucune fonction
+- postes_cour.json | posteSenechal.selonEtats.agent.decisions[0] | aucune fonction
+- postes_cour.json | posteSenechal.selonEtats.controle.decisions[0] | Gérer le domaine
+- postes_cour.json | posteSenechal.selonEtats.cultInnov.decisions[0] | aucune fonction SI NON Chef culturel
+- postes_cour.json | posteSenechal.selonEtats.declarationGuerre.decisions[0] | Gérer le domaine
+- postes_cour.json | posteSenechal.selonEtats.denoncer.decisions[0] | aucune fonction
+- postes_cour.json | posteSenechal.selonEtats.enfant.decisions[0] | aucune fonction SI aventurier adopter
+- postes_cour.json | posteSenechal.selonEtats.guerre.decisions[0] | Gérer le domaine
+- postes_cour.json | posteSenechal.selonEtats.prestige.decisions[0] | aucune fonction
+- postes_cour.json | posteSenechal.selonEtats.prison.decisions[0] | aucune fonction
+- postes_cour.json | posteSenechal.selonEtats.rancon.decisions[0] | aucune fonction
+- postes_cour.json | posteSenechal.selonEtats.revenu.decisions[0] | aucune fonction
+- postes_cour.json | posteSenechal.selonEtats.tributaire.decisions[0] | aucune fonction
