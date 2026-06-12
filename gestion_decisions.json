@@ -228,23 +228,7 @@
                     "Opinion MECENE-S",
                     "Diplomatie",
                     "Intrigue",
-                    "emprisonner SI Atout \"Sombres connaissances\" ET Outils du tortionnaire",
-                    "Or",
-                    "hameçon OU secret SI Atout \"Obligations en or\"",
-                    "Intendance",
-                    "emprisonner"
-                ],
-                "arret": false
-            },
-            "demande2": {
-                "decisions": [
-                    "Prestige",
-                    "secret SI Atout \"Je suis bien en comparaison\"",
-                    "Opinion MECENE-S",
-                    "Diplomatie",
-                    "Intrigue",
-                    "emprisonner SI Atout \"Sombres connaissances\" ET Outils du tortionnaire"
-                ],
+                    "emprisonner SI Atout \"Sombres connaissances\" ET Outils du tortionnaire"                ],
                 "arret": false
             },
             "proclame": {
