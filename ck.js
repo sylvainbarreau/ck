@@ -6002,9 +6002,9 @@ function evidence(id, texte, ttLeTps=false) {
     evidence('mariageDiverti', sansDoublon(mariageDivertiResult, "SINON"));
     evidence('mariageNourr', sansDoublon(mariageNourrResult, "SINON"));
     evidence('mariageLieu', sansDoublon(mariageLieuResult, "SINON"));
-    evidence('activite3', sansDoublon(activChasseResult, "SINON"));
-    evidence('participChasse', sansDoublon(participChasseResult, "SINON"));
-    evidence('grpeChasse', sansDoublon(grpeChasseResult, "SINON"));
+    // activite3 est déjà géré par displayAllResults() avec evidence().
+    // participChasse et grpeChasse sont déjà gérés par displayAllResults()
+    // avec evidence(), éviter le double appel qui annule la mise en évidence.
     evidence('activRando', sansDoublon(activRando(p), "SINON"));
     evidence('randoOption', sansDoublon(activRandoLong(p), "SINON"));
     evidence('activUniv', sansDoublon(activUniv(p), "SINON"));
