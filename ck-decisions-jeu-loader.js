@@ -91,46 +91,57 @@ window.displayDecisionsJeu = function(decisionsResult) {
  * @returns {Array} Décisions triées
  */
 function trierDecisionsParOrdre(decisions) {
-    const decisionsMap = new Map();
     const decisionsSansPrec = [];
+    const decisionsOrphelines = [];
 
-    // Créer une map par libellé ET par id pour accès rapide
+    // Index par libellé pour savoir si un "precedent" pointe vers une décision existante
     const decisionsParLib = new Map();
     decisions.forEach(dec => {
-        decisionsMap.set(dec.id, dec);
         decisionsParLib.set(dec.lib, dec);
+    });
 
-        if (!dec.positionVue?.precedent || dec.positionVue.precedent === null) {
+    // Index enfants: libellé du précédent -> décisions qui en dépendent
+    const enfantsParPrecedent = new Map();
+    decisions.forEach(dec => {
+        const precedent = dec.positionVue?.precedent;
+
+        if (precedent === null || precedent === undefined || precedent === "") {
             decisionsSansPrec.push(dec);
+            return;
         }
+
+        if (!decisionsParLib.has(precedent)) {
+            decisionsOrphelines.push(dec);
+        }
+
+        if (!enfantsParPrecedent.has(precedent)) {
+            enfantsParPrecedent.set(precedent, []);
+        }
+        enfantsParPrecedent.get(precedent).push(dec);
     });
 
     const resultat = [];
     const visite = new Set();
 
-    // Fonction récursive pour construire l'ordre
+    // DFS stable: respecte l'ordre source pour les égalités (même precedent)
     function ajouterDecisionEtSuivantes(dec) {
         if (!dec || visite.has(dec.id)) return;
 
         visite.add(dec.id);
         resultat.push(dec);
 
-        // Trouver la décision suivante (celle qui a precedent === dec.lib)
-        const suivante = decisions.find(d => d.positionVue?.precedent === dec.lib);
-        if (suivante) {
-            ajouterDecisionEtSuivantes(suivante);
-        }
+        const suivantes = enfantsParPrecedent.get(dec.lib) || [];
+        suivantes.forEach(ajouterDecisionEtSuivantes);
     }
 
-    // Commencer par les décisions sans précédent
+    // 1) Commencer par les décisions sans précédent
     decisionsSansPrec.forEach(dec => ajouterDecisionEtSuivantes(dec));
 
-    // Ajouter les décisions restantes (si cycles ou erreurs)
-    decisions.forEach(dec => {
-        if (!visite.has(dec.id)) {
-            resultat.push(dec);
-        }
-    });
+    // 2) Puis les orphelines (precedent absent du jeu de décisions)
+    decisionsOrphelines.forEach(dec => ajouterDecisionEtSuivantes(dec));
+
+    // 3) Compléter avec le reste (cycles, cas pathologiques)
+    decisions.forEach(dec => ajouterDecisionEtSuivantes(dec));
 
     return resultat;
 }
