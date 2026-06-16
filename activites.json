@@ -299,7 +299,7 @@
         "defaut": ["Légendaire A DEFINIR", "Nerge", "Chasse SI sexe martial", "Fauconnerie"],
         "selonEtats": {
             "aInfluencer":{
-                "decisions":["Fauconnerie SI ALLIE POTENTIEL-S attiré"],
+                "decisions":["Fauconnerie SI CIBLE-S attiré"],
                 "arret": false
             },
             "recruterChevalier":{
