@@ -5847,8 +5847,17 @@ function decisionOuNon(res, setOui, setNon) {
     return false; // Défaut: false si rien trouvé
 }
 function liDec(idPage, id) {
+    // Ne pas écraser les décisions déjà gérées par le système data-driven.
+    if (window.decisionsJeu && window.decisionsJeu[id]) {
+        return;
+    }
+
     // Récupérer la valeur associée à la clé depuis le localStorage
     const value = localStorage.getItem(id);
+    if (!value) {
+        return;
+    }
+
     const jsonData = JSON.parse(value);
     let listeDecisions = document.getElementById(idPage);
     let li = document.getElementById(id);
