@@ -35,7 +35,7 @@ function (p, t=new Array(), o=null) {
          *
          A SUPPRIMER ?         case 'perteTerresRevoquer': // accorder titre SINON chercher secret,Opinion,Diplomatie,Intrigue,Or,hameçon,Intrigue (pour révoquer)
          *
-         aInfluencer
+aInfluencer
 recruterChevalier
 chevalierPartisan
 proclame

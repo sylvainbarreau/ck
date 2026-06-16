@@ -57,7 +57,7 @@
             "controle": {
                 "decisions": [
                     "contrôle",
-                    "Martialité"
+                    "Martialité", "\n"
                 ],
                 "arret": false
             },
@@ -72,7 +72,7 @@
                     "emprisonner SI chevalier possible",
                     "Prouesse",
                     "emprisonner SI Atout \"Sombres connaissances\"",
-                    "alliance"
+                    "alliance", "\n"
                 ],
                 "arret": false
             },
@@ -89,7 +89,7 @@
                     "emprisonner SI chevalier possible",
                     "Opinion LUI SI gouvernement administratif",
                     "diplomatie SI gouvernement administratif",
-                    "Intrigue SI gouvernement administratif"
+                    "Intrigue SI gouvernement administratif", "\n"
                 ],
                 "arret": false
             },
@@ -104,7 +104,7 @@
                     "Diplomatie",
                     "Intrigue",
                     "emprisonner SI Atout \"Sombres connaissances\"",
-                    "Redoutabilité"
+                    "Redoutabilité", "\n"
                 ],
                 "arret": false
             },
@@ -120,17 +120,8 @@
                     "Opinion VASSAL PUISSANT",
                     "Diplomatie",
                     "Redoutabilité",
-                    "emprisonner"
+                    "emprisonner", "\n"
                 ],
-                "arret": false
-            },
-            "dirigeantAInfluencer": {
-                "decisions": [
-                    "Opinion ALLIE POTENTIEL-S",
-                    "Diplomatie",
-                    "Intrigue",
-                    "emprisonner SI Atout \"Sombres connaissances\" ET Outils du tortionnaire"
-],
                 "arret": false
             },
             "aInfluencer": {
@@ -138,7 +129,7 @@
                     "Opinion ALLIE POTENTIEL-S",
                     "Diplomatie",
                     "Intrigue",
-                    "emprisonner SI Atout \"Sombres connaissances\" ET (NON aventurier OU Outils du tortionnaire)"          
+                    "emprisonner SI Atout \"Sombres connaissances\" ET (NON aventurier OU Outils du tortionnaire)", "\n"  
                       ],
                 "arret": false
             },
@@ -173,7 +164,7 @@
                     "Opinion Médecin",
                     "Opinion Garde du corps",
                     "Opinion Conjoint",
-                    "Opinion Maître-espion"
+                    "Opinion Maître-espion", "\n"
                 ],
                 "arret": false
             },
@@ -181,7 +172,7 @@
                 "decisions": [
                     "hameçon OU secret A HAMECONNER-S",
                     "Intrigue",
-                    "emprisonner SI Atout \"Sombres connaissances\" ET (NON aventurier OU Outils du tortionnaire)"
+                    "emprisonner SI Atout \"Sombres connaissances\" ET (NON aventurier OU Outils du tortionnaire)", "\n"
                 ],
                 "arret": false
             },
@@ -189,7 +180,7 @@
                 "decisions": [
                     "progression succession",
                     "Intrigue",
-                    "emprisonner SI Atout \"Sombres connaissances\" ET (NON aventurier OU Outils du tortionnaire)"
+                    "emprisonner SI Atout \"Sombres connaissances\" ET (NON aventurier OU Outils du tortionnaire)", "\n"
                 ],
                 "arret": false
             },
@@ -199,7 +190,7 @@
                     "hameçon OU secret SI chevalier possible",
                     "Martialité",
                     "emprisonner SI chevalier possible",
-                    "Prestige"
+                    "Prestige", "\n"
                 ],
                 "arret": false
             },
@@ -207,7 +198,7 @@
                 "decisions": [
                     "Recruter",
                     "hameçon OU secret SI recrutable",
-                    "emprisonner SI recrutable"
+                    "emprisonner SI recrutable", "\n"
                 ],
                 "arret": false
             },
@@ -217,7 +208,7 @@
                     "emprisonner SI chevalier possible",
                     "conjoint SI chevalier possible",
                     "meilleur ami SI chevalier possible ET hors camp",
-                    "âme soeur SI chevalier possible ET hors camp"
+                    "âme soeur SI chevalier possible ET hors camp", "\n"
                 ],
                 "arret": false
             },
@@ -228,7 +219,7 @@
                     "Opinion MECENE-S",
                     "Diplomatie",
                     "Intrigue",
-                    "emprisonner SI Atout \"Sombres connaissances\" ET Outils du tortionnaire"                ],
+                    "emprisonner SI Atout \"Sombres connaissances\" ET Outils du tortionnaire", "\n"],
                 "arret": false
             },
             "proclame": {
@@ -236,27 +227,7 @@
                     "Recruter chevalier SI prouesse>=8",
                     "Martialité",
                     "emprisonner SI chevalier possible ET prouesse>=8",
-                    "Prestige"
-                ],
-                "arret": false
-            },
-            "perteTerresRevoquer": {
-                "decisions": [
-                    "accorder titre VASSAL A REVOQUER-S",
-                    "Prestige",
-                    "secret VASSAL A REVOQUER-S",
-                    "Opinion VASSAL A REVOQUER-S",
-                    "Diplomatie",
-                    "Intrigue",
-                    "emprisonner SI Atout \"Sombres connaissances\"",
-                    "secret SI emprisonnable ET Atout \"Sombres connaissances\"",
-                    "Or",
-                    "hameçon OU secret SI Atout \"Obligations en or\"",
-                    "contrôle SI <100",
-                    "Développement",
-                    "Intendance",
-                    "emprisonner",
-                    "hameçon VASSAL A REVOQUER-S"
+                    "Prestige", "\n"
                 ],
                 "arret": false
             },
@@ -267,26 +238,13 @@
                     "contrôle SI <100",
                     "Développement",
                     "Intendance",
-                    "emprisonner"
-                ],
-                "arret": false
-            },
-            "rancon": {
-                "decisions": [
-                    "Or",
-                    "hameçon OU secret SI Atout \"Obligations en or\"",
-                    "contrôle SI <100",
-                    "Développement",
-                    "Intendance",
-                    "emprisonner",
-                    "hameçon GEOLIER",
-                    "Intrigue"
+                    "emprisonner", "\n"
                 ],
                 "arret": false
             },
             "domaine": {
                 "decisions": [
-                    "Intendance"
+                    "Intendance", "\n"
                 ],
                 "arret": false
             },
@@ -298,20 +256,20 @@
                     "Opinion Maître-espion",
                     "Opinion Garde du corps",
                     "Opinion Médecin personnel",
-                    "Opinion Conjoint"
+                    "Opinion Conjoint", "\n"
                 ],
                 "arret": false
             },
             "stress": {
                 "decisions": [
-                    "Diminuer stress"
+                    "Diminuer stress", "\n"
                 ],
                 "arret": false
             },
             "prestige": {
                 "decisions": [
                     "Prestige",
-                    "secret SI Atout \"Je suis bien en comparaison\""
+                    "secret SI Atout \"Je suis bien en comparaison\"", "\n"
                 ],
                 "arret": false
             },
@@ -319,13 +277,7 @@
                 "decisions": [
                     "Prestige",
                     "Renommée",
-                    "secret SI Atout \"Je suis bien en comparaison\""
-                ],
-                "arret": false
-            },
-            "erudition": {
-                "decisions": [
-                    "Erudition"
+                    "secret SI Atout \"Je suis bien en comparaison\"", "\n"
                 ],
                 "arret": false
             },
@@ -336,52 +288,27 @@
                     "Intrigue",
                     "emprisonner SI Atout \"Sombres connaissances\"",
                     "Piété",
-                    "Erudition"
+                    "Erudition", "\n"
                 ],
                 "arret": false
             },
             "piete": {
                 "decisions": [
                     "Piété",
-                    "Erudition"
-                ],
-                "arret": false
-            },
-            "factionFoi": {
-                "decisions": [
-                    "Opinion comtale LUI",
-                    "Piété",
-                    "Erudition"
+                    "Erudition", "\n"
                 ],
                 "arret": false
             },
             "factionPop": {
                 "decisions": [
-                    "Opinion comtale COMTE"
-                ],
-                "arret": false
-            },
-            "vassalSOppose": {
-                "decisions": [
-                    "Opinion LUI",
-                    "emprisonner LUI",
-                    "Redoutabilité",
-                    "emprisonner",
-                    "Diplomatie",
-                    "Intrigue"
+                    "Opinion comtale COMTE", "\n"
                 ],
                 "arret": false
             },
             "succession": {
                 "decisions": [
                     "Influence",
-                    "Diplomatie"
-                ],
-                "arret": false
-            },
-            "influence": {
-                "decisions": [
-                    "Influence"
+                    "Diplomatie", "\n"
                 ],
                 "arret": false
             },
@@ -402,7 +329,7 @@
                     "Prestige",
                     "secret SI Atout \"Je suis bien en comparaison\"",
                     "Piété",
-                    "Erudition"
+                    "Erudition", "\n"
                 ],
                 "arret": false
             },
@@ -411,7 +338,7 @@
                     "Erudition SI Chef culturel",
                     "Intendance SI NON Chef culturel",
                     "Prestige SI NON Chef culturel",
-                    "Artefact"
+                    "Artefact", "\n"
                 ],
                 "arret": false
             },
@@ -428,20 +355,20 @@
                     "Développement",
                     "Recruter SI chevalier possible",
                     "hameçon OU secret SI chevalier possible",
-                    "emprisonner SI chevalier possible"
+                    "emprisonner SI chevalier possible", "\n"
                 ],
                 "arret": false
             },
             "successionChaos": {
-                "decisions": ["obéissance","Redoutabilité SI Nomade", "Troupeau", "Légitimité"],
+                "decisions": ["obéissance","Redoutabilité SI Nomade", "Troupeau", "Légitimité", "\n"],
                 "arret": false
             },
             "troupeau": {
-                "decisions": ["Troupeau"],
+                "decisions": ["Troupeau", "\n"],
                 "arret": false
             },
             "tributaire": {
-                "decisions": ["Prestige", "Domination", "Légitimité", "Redoutabilité"],
+                "decisions": ["Prestige", "Domination", "Légitimité", "Redoutabilité", "\n"],
                 "arret": false
             }
         }
