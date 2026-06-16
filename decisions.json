@@ -424,5 +424,16 @@
         },
         "effetsPositifs": ["Artefact"],
         "effetsNegatifs": ["Or"]
+    },
+    "dec-p-16": {
+        "lib": "Effectuer un sacrifice rituel",
+        "categorieDecision": "Character - Minor decisions",
+        "positionVue": {
+            "categories": ["Décisions"],
+            "idListe": "dec",
+            "precedent": null
+        },
+        "effetsPositifs": ["Piété"],
+        "effetsNegatifs": ["Or", "Prestige"]
     }
 }
