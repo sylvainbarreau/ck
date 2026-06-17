@@ -72,7 +72,7 @@ vassal
             e6.add("emprisonner SI chevalier possible");
             e6.add("Prestige");
             //e6.add("secret SI Atout \"Je suis bien en comparaison\"");
-        case 'chevalierPartisan': // comme recruterChevalier sans Martialité
+        case 'chevalierPartisan': // comme recruterChevalier sans Martialité ni Prestige
         case 'proclame':Recruter chevalier");
             e6.add("hameçon OU secret SI chevalier possible prouesse >8");
             e6.add("Martialité");

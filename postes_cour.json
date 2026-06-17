@@ -370,6 +370,145 @@
             "tributaire": { "decisions": ["Améliorer les artefacts", "aucune fonction"], "arret": true }
         }
     },
+    "posteIngeSiege": {
+        "positionVue": {
+            "categories": ["Postes de la cour"],
+            "idElement": "posteIngeSiege"
+        },
+        "optionsCommentaires": ["Fortifier les terres +fortification,garnison -Or",
+            "Construire de l'équipement de siège +siège,hommes d'arme -Or",
+            "aucune fonction +Or"],
+        "siRien": ["aucune fonction"],
+        "defaut": ["Construire de l'équipement de siège", "aucune fonction"],
+        "selonEtats": {
+            "aInfluencer": { "arret": false },
+            "recruterChevalier": { "arret": false },
+            "chevalierPartisan": { "arret": false },
+            "proclame": { "arret": false },
+            "conseiller": { "arret": false },
+            "controle": { "arret": false },
+            "assassinat": { "arret": false },
+            "denoncer": { "arret": false },
+            "prison": {
+                "arret": false
+            },
+            "survie": { "decisions": ["Fortifier les terres"],
+                "arret": true },
+            "factionPop": { "arret": false },
+            "vassalAInfluencer": {
+                "arret": false
+            },
+            "demande": { 
+                "arret": false },
+            "guerre": {
+                "decisions": ["Construire de l'équipement de siège", "Fortifier les terres"],
+                "arret": true
+            },
+            "declarationGuerre": { "decisions": ["Construire de l'équipement de siège", "Fortifier les terres"],
+                "arret": true },
+            "hamecon": { "arret": false },
+            "enfant": {
+                "decisions": ["Fortifier les terres"],
+                "arret": true            },
+            "cultInnov": {"arret": false
+            },
+            "domaine": { "arret": false },
+            "religieuxAInfluencer": { "arret": false },
+            "revenu": {
+                "decisions": ["aucune fonction"],
+                "arret": true
+            },
+            "stress": { "arret": false },
+            "piete": { "arret": false },
+            "agent": {
+                "decisions": ["aucune fonction"],
+                "arret": true
+            },
+            "prestige": {"arret": false  },
+            "successionChaos": { "arret": false },
+            "troupeau": { "arret": false },
+            "tributaire": { "arret": false },
+            "succession": {
+                "arret": false
+            },
+            "vassal": { "arret": false }
+        }
+    },
+    "posteEmissaire": {
+        "positionVue": {
+            "categories": ["Postes de la cour"],
+            "idElement": "posteEmissaire"
+        },
+        "optionsCommentaires": ["Divertir les courtisans -Prestige", 
+            "Accueillir les tributaires +Opinion tributaire,acceptation culturelle -Or"],
+        "options": ["Divertir les courtisans", "Accueillir les tributaires"],
+        "siRien": "aucune fonction",
+        "defaut": "aucune fonction",
+        "selonEtats": {
+            "aInfluencer": { "decisions": ["Accueillir les tributaires SI CIBLE-S culture différente"],
+                "arret": false },
+            "recruterChevalier": { "modifications":{"Divertir les courtisans":"undefined"},
+                "arret": false },
+            "chevalierPartisan": { "modifications":{"Divertir les courtisans":"undefined"},
+                "arret": false },
+            "proclame": { "modifications":{"Divertir les courtisans":"undefined"},
+                "arret": false },
+            "conseiller": { "arret": false },
+            "controle": { "arret": false },
+            "assassinat": { "arret": false },
+            "denoncer": { "modifications":{"Divertir les courtisans":"undefined"},
+                "arret": false },
+            "prison": {
+                "decisions": ["A DEFINIR"],
+                "arret": true
+            },
+            "survie": { "arret": false },
+            "factionPop": { "arret": false },
+            "vassalAInfluencer": {
+                "decisions": ["Accueillir les tributaires SI FACTIEUX culture différente"],
+                "arret": false
+            },
+            "demande": { "decisions": ["Accueillir les tributaires SI MECENE-S culture différente", "aucune fonction"],
+                "arret": true },
+            "guerre": {"arret": false
+            },
+            "declarationGuerre": { "arret": false },
+            "hamecon": { "arret": false },
+            "enfant": {
+                "decisions": ["Accueillir les tributaires"],
+                "arret": false
+            },
+            "cultInnov": {
+                "modifications": {"Divertir les courtisans":"Divertir les courtisans SI Chef culturel"},
+                "arret": false
+            },
+            "domaine": { "arret": false },
+            "religieuxAInfluencer": { "arret": false },
+            "revenu": {
+                "modifications":{"Accueillir les tributaires":"undefined"},
+                "arret": false
+            },
+            "stress": { "arret": false },
+            "piete": { "arret": false },
+            "agent": {
+                "decisions": ["Accueillir les tributaires SI CIBLE-S culture différente", "aucune fonction"],
+                "arret": true
+            },
+            "prestige": {
+                "modifications":{"Divertir les courtisans":"undefined"},
+                "arret": false
+            },
+            "successionChaos": { "arret": false },
+            "troupeau": { "arret": false },
+            "tributaire": { "modifications":{"Divertir les courtisans":"undefined"},
+                "arret": false
+ },
+            "succession": {"arret": false
+            },
+            "vassal": { "decisions": ["Accueillir les tributaires SI VASSAL-S culture différente"],
+                "arret": false }
+        }
+    },
     "posteNour": {
         "positionVue": {
             "categories": ["Postes de la cour"],
