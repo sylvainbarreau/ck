@@ -435,5 +435,16 @@
         },
         "effetsPositifs": ["Piété"],
         "effetsNegatifs": ["Or", "Prestige"]
+    },
+    "dec-p-tr-cop-7": {
+        "lib": "S'en prendre au premier venu",
+        "categorieDecision": "Character - Minor decisions - traits - coping",
+        "positionVue": {
+            "categories": ["Décisions"],
+            "idListe": "dec",
+            "precedent": "Adopter la culture locale"
+        },
+        "effetsPositifs": ["Diminuer Stress"],
+        "effetsNegatifs": ["Opinion"]
     }
 }

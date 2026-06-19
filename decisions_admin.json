@@ -54,7 +54,7 @@
         "effetsPositifs": ["Créer une faction"],
         "effetsNegatifs": ["Influence"]
     },
-    "dec-h": {
+    "dec-adm-h": {
         "lib": "Se retirer du poste de gouverneur",
         "categorieDecision": "inconnue",
         "positionVue": {

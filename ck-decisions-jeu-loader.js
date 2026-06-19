@@ -160,22 +160,17 @@ function afficherDecisionsDansListe(idListe, decisions, decisionsResult) {
     }
 
     decisions.forEach(decision => {
-        // Créer les Sets pour decisionOuNon
         const setOui = decision.effetsPositifs ? new Set(decision.effetsPositifs) : null;
         const setNon = decision.effetsNegatifs ? new Set(decision.effetsNegatifs) : null;
 
-        // Appeler decisionOuNon pour déterminer true/false
         const ouiNon = decisionOuNon(decisionsResult, setOui, setNon);
-
-        // Convertir true/false en "cocher"/"décocher"
         const texteAffiche = ouiNon ? "cocher" : "décocher";
 
-        // Chercher si le span existe déjà
         let span = document.getElementById(decision.id);
+        let li;
 
         if (!span) {
-            // Créer le <li> et le <span> s'ils n'existent pas
-            const li = document.createElement('li');
+            li = document.createElement('li');
             li.textContent = decision.lib + ': ';
 
             span = document.createElement('span');
@@ -183,10 +178,14 @@ function afficherDecisionsDansListe(idListe, decisions, decisionsResult) {
             span.textContent = texteAffiche;
 
             li.appendChild(span);
-            liste.appendChild(li);
+        } else {
+            li = span.closest('li');
         }
 
-        // Utiliser evidence() pour mettre en évidence si changement
+        // Toujours appender pour maintenir/restaurer l'ordre trié
+        // (déplace l'élément s'il existe déjà, le crée sinon)
+        if (li) liste.appendChild(li);
+
         evidence(decision.id, texteAffiche);
     });
 

@@ -301,7 +301,7 @@
                 "decisions": ["Patronner SI Chef culturel", "Gérer le domaine"],
                 "arret": true
             },
-            "chevalierPartisan": { "arret": false },
+            "chevalierPartisan": { "decisions": [], "arret": true },
             "demande": { "arret": false },
             "demande2": { "arret": false },
             "conseiller": { "arret": false },
@@ -380,7 +380,7 @@
                 "decisions": ["Gérer les affaires étrangères SI NON Chef culturel"],
                 "arret": false
             },
-            "chevalierPartisan": { "arret": false },
+            "chevalierPartisan": { "decisions": [], "arret": true },
             "demande": { "arret": false },
             "demande2": { "arret": false },
             "piete": { "arret": false },
@@ -483,7 +483,7 @@
                 "decisions": ["Organiser l'armée"],
                 "arret": true
             },
-            "chevalierPartisan": { "arret": false },
+            "chevalierPartisan": { "decisions": [], "arret": true },
             "demande": { "arret": false },
             "demande2": { "arret": false },
             "piete": { "arret": false },
@@ -565,7 +565,7 @@
                 "decisions": ["Améliorer les relations religieuses SI Augmentation de l'opinion vassale PRISONNIER-S", "Convertir le comté SI Augmentation des levées comtales", "Convertir le comté SI Augmentation du développement comtal"],
                 "arret": false
             },
-            "chevalierPartisan": { "arret": false },
+            "chevalierPartisan": { "decisions": [], "arret": true },
             "demande": { "arret": false },
             "demande2": { "arret": false },
             "denoncer": { "arret": false },
@@ -659,7 +659,7 @@
                 "decisions": ["Convaincre le territoire de jure SI Gain de prestige", "Promouvoir l'acceptation culturelle SI Opinion améliorée", "Augmenter le développement comtal"],
                 "arret": true
             },
-            "chevalierPartisan": { "arret": false },
+            "chevalierPartisan": { "decisions": [], "arret": true },
             "demande": { "arret": false },
             "demande2": { "arret": false },
             "piete": { "arret": false },
@@ -722,7 +722,7 @@
                 "decisions": ["Soutenir les complots SI Atout \"La vérité est relative\"", "Chercher des secrets VASSAL PUISSANT"],
                 "arret": false
             },
-            "chevalierPartisan": { "arret": false },
+            "chevalierPartisan": { "decisions": [], "arret": true },
             "demande": { "arret": false },
             "demande2": { "arret": false },
             "prestige": { "arret": false },

@@ -483,7 +483,7 @@
             },
             "agent": { "arret": false },
             "denoncer": { "arret": false },
-            "chevalierPartisan": { "arret": false },
+            "chevalierPartisan": { "decisions":["Enlèvement"], "arret": false },
             "piete": { "arret": false },
             "factionPop": { "arret": false },
             "domaine": { "arret": false },

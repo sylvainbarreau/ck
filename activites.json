@@ -194,8 +194,8 @@
                 "arret": true
             },
             "chevalierPartisan": {
-                "decisions": ["Bibliothèque", "Livres et notes", "Bouts de parchemin"],
-                "arret": true
+                "decisions": ["Bibliothèque"],
+                "arret": false
             },
             "demande": {
                 "decisions": ["Bibliothèque", "Livres et notes", "Bouts de parchemin"],
@@ -833,8 +833,7 @@
                 "arret": true
             },
             "chevalierPartisan": {
-                "decisions": ["Gagner de la piété"],
-                "arret": true
+                "arret": false
             },
             "demande": {
                 "decisions": ["Gagner de la piété"],
@@ -970,8 +969,7 @@
                 "arret": true
             },
             "chevalierPartisan": {
-                "decisions": ["Zèle absolu", "Dévotion publique", "Apparences pieuses"],
-                "arret": true
+                "arret": false
             },
             "demande": {
                 "decisions": ["Zèle absolu", "Dévotion publique", "Apparences pieuses"],
@@ -1108,8 +1106,7 @@
                 "arret": true
             },
             "chevalierPartisan": {
-                "decisions": ["Magnifique", "Grand", "Modeste"],
-                "arret": true
+                "arret": false
             },
             "demande": {
                 "decisions": ["Magnifique", "Grand", "Modeste"],
@@ -1610,8 +1607,7 @@
                 "decisions": ["A DEFINIR"],
                 "arret": true },
             "recruterChevalier": { "decisions": [], "arret": true },
-            "chevalierPartisan": { "decisions": ["A DEFINIR"],
-                "arret": true },
+            "chevalierPartisan": { "arret": false },
             "proclame": { "decisions": [], "arret": true },
             "conseiller": { "decisions": [], "arret": true },
             "controle": { "decisions": [], "arret": true },

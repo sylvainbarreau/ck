@@ -277,7 +277,7 @@
                 "decisions": ["Exposer les objets illustres"],
                 "arret": false
             },
-            "chevalierPartisan": { "arret": false },
+            "chevalierPartisan": { "decisions": [], "arret": true },
             "demande": { "arret": false },
             "demande2": { "arret": false },
             "prestige": { "arret": false },
@@ -383,7 +383,7 @@
         "selonEtats": {
             "aInfluencer": { "arret": false },
             "recruterChevalier": { "arret": false },
-            "chevalierPartisan": { "arret": false },
+            "chevalierPartisan": { "decisions": [], "arret": true },
             "proclame": { "arret": false },
             "conseiller": { "arret": false },
             "controle": { "arret": false },
@@ -449,8 +449,7 @@
                 "arret": false },
             "recruterChevalier": { "modifications":{"Divertir les courtisans":"undefined"},
                 "arret": false },
-            "chevalierPartisan": { "modifications":{"Divertir les courtisans":"undefined"},
-                "arret": false },
+            "chevalierPartisan": { "arret": false },
             "proclame": { "modifications":{"Divertir les courtisans":"undefined"},
                 "arret": false },
             "conseiller": { "arret": false },
@@ -550,7 +549,7 @@
                 "decisions": ["aucune fonction"],
                 "arret": true
             },
-            "chevalierPartisan": { "arret": false },
+            "chevalierPartisan": { "decisions": [], "arret": true },
             "demande": { "arret": false },
             "demande2": { "arret": false },
             "revenu": {
@@ -644,7 +643,7 @@
                 "decisions": ["aucune fonction"],
                 "arret": true
             },
-            "chevalierPartisan": { "arret": false },
+            "chevalierPartisan": { "decisions": [], "arret": true },
             "demande": { "arret": false },
             "demande2": { "arret": false },
             "guerre": {
@@ -712,7 +711,7 @@
                 "decisions": ["aucune fonction"],
                 "arret": true
             },
-            "chevalierPartisan": { "arret": false },
+            "chevalierPartisan": { "decisions": [], "arret": true },
             "demande": { "arret": false },
             "demande2": { "arret": false },
             "prestige": {
@@ -798,7 +797,7 @@
             "aInfluencer": { "arret": false },
             "hamecon": { "arret": false },
             "recruterChevalier": { "arret": false },
-            "chevalierPartisan": { "arret": true },
+            "chevalierPartisan": { "decisions": [], "arret": true },
             "proclame": { "arret": false },
             "stress": { "arret": false },
             "survie": { "arret": false },
@@ -1140,7 +1139,7 @@
         "selonEtats": {
             "survie": { "arret": false },
             "assassinat": { "decisions": ["Protéger le dirigeant"], "arret": true },
-            "chevalierPartisan": { "decisions": [], "arret": true },
+            "chevalierPartisan": { "arret": false },
             "demande": { "decisions": [], "arret": true },
             "demande2": { "decisions": [], "arret": true },
             "enfant": { "decisions": ["A DEFINIR", "aucune fonction SI aventurier adopter"], "arret": false },

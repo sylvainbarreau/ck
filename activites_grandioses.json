@@ -913,7 +913,7 @@
         "selonEtats": {
             "aInfluencer": { "decisions": ["A DEFINIR"], "arret": true },
             "recruterChevalier": { "decisions": ["Troubadours et monstres exotiques", "Acrobates et musiciens", "Divertissements privés"], "arret": true },
-            "chevalierPartisan": { "decisions": ["Troubadours et monstres exotiques", "Acrobates et musiciens", "Divertissements privés"], "arret": true },
+            "chevalierPartisan": { "decisions": [], "arret": true },
             "proclame": { "decisions": ["Troubadours et monstres exotiques", "Acrobates et musiciens", "Divertissements privés"], "arret": true },
             "conseiller": { "decisions": ["A DEFINIR"], "arret": true },
             "controle": { "arret": false },
@@ -959,7 +959,7 @@
         "selonEtats": {
             "aInfluencer": { "decisions": ["Repas gargantuesque SI ALLIE POTENTIEL-S invité", "Festin généreux SI ALLIE POTENTIEL-S invité", "Fête modeste"], "arret": true },
             "recruterChevalier": { "arret": false },
-            "chevalierPartisan": { "arret": false },
+            "chevalierPartisan": { "decisions": [], "arret": true },
             "proclame": { "arret": false },
             "conseiller": { "decisions": ["A DEFINIR"], "arret": true },
             "controle": { "arret": false },
@@ -1005,7 +1005,7 @@
         "selonEtats": {
             "aInfluencer": { "decisions": ["A DEFINIR"], "arret": true },
             "recruterChevalier": { "decisions": ["Argent et or", "Guirlandes et torches"], "arret": false },
-            "chevalierPartisan": { "decisions": ["Argent et or", "Guirlandes et torches"], "arret": false },
+            "chevalierPartisan": { "decisions": [], "arret": true },
             "proclame": { "decisions": ["Argent et or", "Guirlandes et torches"], "arret": false },
             "conseiller": { "decisions": ["A DEFINIR"], "arret": true },
             "controle": { "arret": false },
