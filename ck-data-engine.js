@@ -90,32 +90,30 @@ class DataDrivenEngine {
      * = "Que faire quand tout va bien dès le début ?"
      */
     handleRien(t) {
-        if (!this.siRien) {
-            return t;
+        if (this.siRien) {
+            // Cas 1: siRien est un tableau de décisions
+            if (Array.isArray(this.siRien)) {
+                this.siRien.forEach(decision => {
+                    if (decision && decision !== "undefined") {
+                        this.pushDecision(t, decision, false);
+                    }
+                });
+            }
+            // Cas 2: siRien est un objet avec { decisions: [...] }
+            else if (typeof this.siRien === 'object' && this.siRien.decisions) {
+                this.siRien.decisions.forEach(decision => {
+                    if (decision && decision !== "undefined") {
+                        this.pushDecision(t, decision, false);
+                    }
+                });
+            }
+            // Cas 3: siRien est une chaîne simple
+            else if (typeof this.siRien === 'string') {
+                this.pushDecision(t, this.siRien, false);
+            }
         }
 
-        // Cas 1: siRien est un tableau de décisions
-        if (Array.isArray(this.siRien)) {
-            this.siRien.forEach(decision => {
-                if (decision && decision !== "undefined") {
-                    this.pushDecision(t, decision);
-                }
-            });
-        }
-        // Cas 2: siRien est un objet avec { decisions: [...] }
-        else if (typeof this.siRien === 'object' && this.siRien.decisions) {
-            this.siRien.decisions.forEach(decision => {
-                if (decision && decision !== "undefined") {
-                    this.pushDecision(t, decision);
-                }
-            });
-        }
-        // Cas 3: siRien est une chaîne simple
-        else if (typeof this.siRien === 'string') {
-            this.pushDecision(t, this.siRien);
-        }
-
-        return t;
+        return this.handleDefaut(t, new Map());
     }
 
     /**
@@ -132,7 +130,7 @@ class DataDrivenEngine {
             this.defaut.forEach(decision => {
                 const modifiedDecision = this.applyModificationsToText(decision, optionModifications);
                 if (modifiedDecision && modifiedDecision !== "undefined") {
-                    this.pushDecision(t, modifiedDecision);
+                    this.pushDecision(t, modifiedDecision, false);
                 }
             });
         }
@@ -141,14 +139,14 @@ class DataDrivenEngine {
             this.defaut.decisions.forEach(decision => {
                 const modifiedDecision = this.applyModificationsToText(decision, optionModifications);
                 if (modifiedDecision && modifiedDecision !== "undefined") {
-                    this.pushDecision(t, modifiedDecision);
+                    this.pushDecision(t, modifiedDecision, false);
                 }
             });
         }
         // Cas 3: defaut est une chaîne simple
         else if (typeof this.defaut === 'string') {
             const defautText = this.applyModificationsToText(this.defaut, optionModifications);
-            this.pushDecision(t, defautText);
+            this.pushDecision(t, defautText, false);
         }
 
         return t;
@@ -251,9 +249,9 @@ class DataDrivenEngine {
     /**
      * Ajoute une décision au tableau t
      * Si c'est "\n", l'ajoute directement (retour à la ligne pour l'affichage)
-     * Sinon crée un TexteDecision et ajoute ses leviers s'il en a
+     * Sinon crée un TexteDecision et ajoute ses leviers s'il en a (sauf si avecLeviers = false)
      */
-    pushDecision(t, texteDecision) {
+    pushDecision(t, texteDecision, avecLeviers = true) {
         // Si c'est un retour à la ligne, l'ajouter directement
         if (texteDecision === "\n") {
             t.push("\n");
@@ -263,8 +261,8 @@ class DataDrivenEngine {
         const decision = new TexteDecision(texteDecision);
         t.push(decision);
 
-        // Si la décision a des leviers, les ajouter aussi
-        if (decision.leviers && decision.leviers.length > 0) {
+        // Si la décision a des leviers, les ajouter aussi (sauf pour les décisions par défaut)
+        if (avecLeviers && decision.leviers && decision.leviers.length > 0) {
             decision.leviers.forEach(levier => {
                 t.push(levier);
             });

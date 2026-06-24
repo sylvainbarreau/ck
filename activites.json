@@ -5,8 +5,7 @@
             "idElement": "activUniv"
         },
         "optionsCommentaires": ["Etudier durement//0",
-        "Mener une vie goliardique//1"
-    ],
+        "Mener une vie goliardique//1"],
         "siRien": null,
         "defaut": "Etudier durement",
         "selonEtats": {
