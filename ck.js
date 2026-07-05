@@ -91,7 +91,8 @@ vassal
         case 'guerre': // guerre, Influence,opinion,Diplomatie,Intrigue SI gouvernmt admin
         case 'declarationGuerre':
         case 'hamecon':
-        case 'enfant': //SI futur enfant légitime procréer,Intrigue
+        case 'enfant': annoncé : membre de la dynastie dans la ligne de succession (non vérifiable) : changer la loi ou assassiner
+        //SI futur enfant légitime procréer,Intrigue
             //SI aventurier ET adopter Prestige jusqu'à 150,opinion,Diplomatie,Intrigue
             //SI divorce,Piété,opinion Chef de foi,Diplomatie,Intrigue
             //; survivre

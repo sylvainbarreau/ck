@@ -382,6 +382,151 @@
             "tributaire": { "decisions": ["Participe"], "arret": true }
         }
     },
+    "activTournoi": {
+        "options": ["Se détendre", "Triompher", "Recruter", "Tuer", "Séduire", "Nouer une amitié"],
+        "positionVue": {
+            "categories": ["Activités grandioses", "Grand tournoi"],
+            "idElement": "activite"
+        },
+        "siRien": [
+            "Triompher",
+            "Séduire SEIGNEUR LIGE",
+            "Séduire REGENT SEIGNEUR LIGE",
+            "Séduire SOUTIEN invasion",
+            "Recruter SI aventurier"
+        ],
+        "defaut": [
+            "Nouer une amitié vassal puissant non intimidé non factiable",
+            "Nouer une amitié vassal puissant intimidé non factiable",
+            "Nouer une amitié vassal non intimidé non factiable",
+            "Nouer une amitié vassal intimidé non factiable",
+            "Triompher",
+            "Se détendre"
+        ],
+        "selonEtats": {
+            "aInfluencer": {
+                "decisions": ["Séduire ALLIE POTENTIEL-S", "Triompher"],
+                "arret": false
+            },
+            "recruterChevalier": {
+                "decisions": ["Recruter"],
+                "arret": false
+            },
+            "chevalierPartisan": {
+                "arret": false
+            },
+            "proclame": {
+                "decisions": ["Recruter", "Séduire LUI SI gouvernement administratif", "Triompher SI gouvernement administratif"],
+                "arret": false
+            },
+            "conseiller": {
+                "decisions": ["Recruter"],
+                "arret": false
+            },
+            "controle": {
+                "decisions": ["Triompher"],
+                "arret": false
+            },
+            "assassinat": {
+                "decisions": ["Tuer DANS LA SUCCESSION-S"],
+                "arret": false
+            },
+            "denoncer": {
+                "decisions": ["Triompher"],
+                "arret": false
+            },
+            "prison": {
+                "decisions": ["Triompher", "Séduire PRISONNIER-S", "Recruter"],
+                "arret": false
+            },
+            "survie": {
+                "decisions": ["Se détendre"],
+                "arret": true
+            },
+            "factionPop": {
+                "decisions": ["Triompher"],
+                "arret": false
+            },
+            "vassalAInfluencer": {
+                "decisions": ["Nouer une amitié FACTIEUX", "Séduire FACTIEUX", "Triompher"],
+                "arret": false
+            },
+            "demande": {
+                "decisions": ["Triompher"],
+                "arret": false
+            },
+            "guerre": {
+                "decisions": ["Recruter", "Séduire LUI SI gouvernement administratif", "Triompher SI gouvernement administratif"],
+                "arret": false
+            },
+            "declarationGuerre": {
+                "decisions": ["Recruter"],
+                "arret": false
+            },
+            "hamecon": {
+                "decisions": ["Triompher"],
+                "arret": false
+            },
+            "enfant": {
+                "decisions": [
+                    "Triompher SI adoption/aventurier ET Prestige < 150",
+                    "Séduire LUI SI adoption/aventurier",
+                    "Triompher SI adoption/aventurier",
+                    "Séduire SI enfant légitime",
+                    "Se détendre"
+                ],
+                "arret": true
+            },
+            "cultInnov": {
+                "decisions": ["Triompher"],
+                "arret": false
+            },
+            "domaine": {
+                "decisions": ["Triompher"],
+                "arret": false
+            },
+            "religieuxAInfluencer": {
+                "decisions": ["Séduire LUI", "Triompher"],
+                "arret": false
+            },
+            "revenu": {
+                "decisions": ["Triompher"],
+                "arret": false
+            },
+            "stress": {
+                "decisions": ["Se détendre"],
+                "arret": true
+            },
+            "piete": {
+                "decisions": ["Triompher"],
+                "arret": false
+            },
+            "agent": {
+                "decisions": ["Séduire AGENT-S", "Triompher"],
+                "arret": false
+            },
+            "prestige": {
+                "decisions": ["Triompher"],
+                "arret": false
+            },
+            "successionChaos": {
+                "arret": false
+            },
+            "troupeau": {
+                "arret": false
+            },
+            "tributaire": {
+                "arret": false
+            },
+            "succession": {
+                "arret": false
+            },
+            "vassal": {
+                "decisions": ["Nouer une amitié VASSAL PUISSANT", "Séduire VASSAL PUISSANT", "Triompher"],
+                "arret": false
+            }
+        }
+    },
     "tournoiHeberg": {
         "positionVue": {
             "categories": ["Activités grandioses", "Grand tournoi"],
@@ -881,7 +1026,7 @@
             "guerre": { "decisions": ["Faiseur de mariages", "Séduire LUI SI gouvernement administratif"], "arret": false },
             "declarationGuerre": { "decisions": ["Faiseur de mariages"], "arret": false },
             "hamecon": { "arret": false },
-            "enfant": { "decisions": ["Séduire", "Faiseur de mariages", "Se détendre"], "arret": true },
+            "enfant": { "decisions": ["Séduire SI enfant légitime", "Faiseur de mariages", "Se détendre"], "arret": true },
             "cultInnov": { "arret": false },
             "domaine": { "decisions": ["A DEFINIR"], "arret": true },
             "religieuxAInfluencer": { "arret": false },
