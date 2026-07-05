@@ -18,7 +18,7 @@
             "idListe": "decNomade",
             "precedent": "Recruter des courtisans venant des capitales nomades"
         },
-        "effetsPositifs": ["Construire", "Or", "Prestige", "augmenter levées", "Troupeau", "Magnificence"],
+        "effetsPositifs": ["Construire", "Or", "Prestige", "Augmenter Levées", "Troupeau", "Magnificence"],
         "effetsNegatifs": ["Prestige", "Troupeau", "Or"]
     },
     "dec-p-nom-3": {

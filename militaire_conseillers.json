@@ -754,7 +754,7 @@
                 "Aider l'astronome +Piété +Gagner la piété,Gagnez l'avis d'un astronome amateur -Perdre la piété,Perdre l'avis d'un astronome amateur",
                 "Affaires intérieures +opinion Vassal -Tyrannie +Mettre fin à la guerre civile,Partition des forces pour le vassal,Contrat féodal amélioré,Augmenter l'opinion des vassaux -Avis des vassaux abaissé,Contrat féodal aggravé",
                 "Exploiter les terres +Fertilité comtale, Or +Gagnez en terreur,Gagnez de l'or -Avis du comté de Lose,Perdre de l'opinion comtale",
-                "Organiser des pillages +Or +Gagnez en terreur,Gagnez du prestige -La peur de la perte,Perdre du prestige",
+                "Organiser des pillages +Or +Gagnez en terreur,Gagner du prestige -La peur de la perte,Perdre du prestige",
                 "Explorer les cultures +Obtenir l'acceptation culturelle,Acquérir des opinions culturelles différentes -Perte d'acceptation culturelle,Perdre une opinion culturelle différente"],
         "siRien": ["Augmenter le contrôle", "Organiser des pillages", "Exploiter les terres", "Affaires intérieures SI Contrat féodal amélioré", "Aider l'astronome"],
         "defaut": ["Aider l'astronome"],
@@ -771,7 +771,7 @@
                 "arret": false
             },
             "tributaire": {
-                "decisions": ["Organiser des pillages SI Gagnez du prestige", "Soutenir les bergers"],
+                "decisions": ["Organiser des pillages SI Gagner du prestige", "Soutenir les bergers"],
                 "modifications": {
                     "Organiser des pillages": "Organiser des pillages SI NON Perdre du prestige",
                     "Gérer la fertilité" : "Gérer la fertilité SI NON Perte de prestige"
@@ -779,7 +779,7 @@
                 "arret": false
             },
             "recruterChevalier": {
-                "decisions": ["Organiser des pillages SI Gagnez du prestige"],
+                "decisions": ["Organiser des pillages SI Gagner du prestige"],
                 "modifications": {
                     "Organiser des pillages": "Organiser des pillages SI NON Perdre du prestige"
                 },
@@ -790,7 +790,7 @@
                 "arret": true
             },
             "proclame": {
-                "decisions": ["Organiser des pillages SI Gagnez du prestige"],
+                "decisions": ["Organiser des pillages SI Gagner du prestige"],
                 "modifications": {
                     "Organiser des pillages": "Organiser des pillages SI NON Perdre du prestige"
                 },
@@ -804,14 +804,14 @@
                 "arret": false
             },
             "denoncer":{
-                "decisions": ["Organiser des pillages SI Gagnez du prestige"],
+                "decisions": ["Organiser des pillages SI Gagner du prestige"],
                 "modifications": {
                     "Organiser des pillages": "Organiser des pillages SI NON Perdre du prestige"
                 },
                 "arret": false
             },
             "prison":{
-                "decisions": ["Organiser des pillages SI Gagnez du prestige", "Affaires intérieures SI PRISONNIER-S vassal", "Explorer les cultures SI Acquérir des opinions culturelles différentes ET PRISONNIER-S culture différente"],
+                "decisions": ["Organiser des pillages SI Gagner du prestige", "Affaires intérieures SI PRISONNIER-S vassal", "Explorer les cultures SI Acquérir des opinions culturelles différentes ET PRISONNIER-S culture différente"],
                 "modifications": {
                     "Organiser des pillages": "Organiser des pillages SI NON Perdre du prestige",
                     "Explorer les cultures": "Explorer les cultures SI NON Perdre une opinion culturelle différente ET PRISONNIER-S culture différente"
@@ -854,7 +854,7 @@
                 "arret": false
             },
             "cultInnov": { 
-                "decisions": ["Explorer les cultures", "Organiser des pillages SI Gagnez du prestige"],
+                "decisions": ["Explorer les cultures", "Organiser des pillages SI Gagner du prestige"],
                 "modifications": {
                     "Organiser des pillages": "Organiser des pillages SI NON Perdre du prestige"
                 },
@@ -877,7 +877,7 @@
                 "arret": false
             },
             "prestige":{
-                "decisions": ["Organiser des pillages SI Gagnez du prestige"],
+                "decisions": ["Organiser des pillages SI Gagner du prestige"],
                 "modifications": {
                     "Organiser des pillages": "Organiser des pillages SI NON Perdre du prestige"
                 },
